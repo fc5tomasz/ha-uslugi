@@ -1,1969 +1,867 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="pl">
 <head>
-	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-	<title></title>
-	<meta name="generator" content="LibreOffice 24.2.7.2 (Linux)"/>
-	<meta name="created" content="2025-12-10T15:36:20.394045236"/>
-	<meta name="changed" content="2025-12-12T14:30:44.697996478"/>
-	<style type="text/css">
-		@page { size: 21cm 29.7cm; margin-left: 2cm; margin-right: 1cm; margin-top: 1cm; margin-bottom: 1cm }
-		p { line-height: 115%; margin-bottom: 0.25cm; background: transparent }
-		a:link { color: #000080; text-decoration: underline }
-		a:visited { color: #800000; text-decoration: underline }
-	</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="robots" content="index,follow" />
+  <meta name="author" content="Tomasz Furdal" />
+  <meta name="theme-color" content="#0f172a" />
+
+  <!-- Canonical + hreflang -->
+  <link rel="canonical" href="https://fc5tomasz.github.io/ha-uslugi/" />
+  <link rel="alternate" hreflang="pl" href="https://fc5tomasz.github.io/ha-uslugi/?lang=pl" />
+  <link rel="alternate" hreflang="da" href="https://fc5tomasz.github.io/ha-uslugi/?lang=da" />
+  <link rel="alternate" hreflang="en" href="https://fc5tomasz.github.io/ha-uslugi/?lang=en" />
+  <link rel="alternate" hreflang="x-default" href="https://fc5tomasz.github.io/ha-uslugi/" />
+
+  <!-- Primary SEO (will be updated by JS per language too) -->
+  <title>Home Assistant – konfiguracja i integracje | Tomasz Furdal</title>
+  <meta name="description" content="Tomasz Furdal – konfiguracja i integracja Home Assistant. Polska i Dania. Home Assistant setup, automatyzacje, Zigbee/Tuya, inteligentny dom." />
+  <meta name="keywords" content="Tomasz Furdal, Home Assistant, konfiguracja Home Assistant Polska Dania, Home Assistant setup Denmark, integracje automatyzacje inteligentny dom" />
+
+  <!-- OpenGraph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Home Assistant – konfiguracja i integracje | Tomasz Furdal" />
+  <meta property="og:description" content="Konfiguracja i integracja Home Assistant (PL/DK/EN). Automatyzacje, Zigbee/Tuya i porządek w Twojej instalacji." />
+  <meta property="og:locale" content="pl_PL" />
+  <meta property="og:locale:alternate" content="da_DK" />
+  <meta property="og:locale:alternate" content="en_GB" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Home Assistant – konfiguracja i integracje | Tomasz Furdal" />
+  <meta name="twitter:description" content="Konfiguracja i integracja Home Assistant (PL/DK/EN). Automatyzacje, Zigbee/Tuya i porządek w Twojej instalacji." />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": ["Person", "ProfessionalService"],
+    "name": "Tomasz Furdal",
+    "url": "https://fc5tomasz.github.io/ha-uslugi/",
+    "email": "mailto:fc5tomasz@gmail.com",
+    "areaServed": [{"@type": "Country", "name": "Poland"}, {"@type": "Country", "name": "Denmark"}],
+    "availableLanguage": ["pl", "da", "en"],
+    "serviceType": ["Home Assistant configuration", "Home Assistant integrations", "Smart home automation", "Zigbee/Tuya integration"]
+  }
+  </script>
+
+  <style>
+    :root{
+      --bg:#0f172a;
+      --bg-alt:#020617;
+      --card:#0b1220;
+      --accent:#00b16a;
+      --accent-soft: rgba(0,177,106,.14);
+      --text:#e5e7eb;
+      --muted:#9ca3af;
+      --border:#1f2937;
+      --radius-lg:18px;
+      --radius-sm:10px;
+      --shadow-soft:0 18px 45px rgba(0,0,0,.55);
+      --shadow-subtle:0 10px 30px rgba(0,0,0,.35);
+      --max:1100px;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      background: radial-gradient(circle at top, #1f2937 0, #020617 45%, #000 100%);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+    }
+    a{color:inherit;text-decoration:none}
+
+    header{
+      position:sticky; top:0; z-index:20;
+      backdrop-filter: blur(14px);
+      background: linear-gradient(to bottom, rgba(15,23,42,.92), rgba(15,23,42,.78), transparent);
+      border-bottom:1px solid rgba(31,41,55,.6);
+    }
+    .nav{
+      max-width:var(--max); margin:0 auto; padding:10px 20px;
+      display:flex; align-items:center; justify-content:space-between; gap:14px;
+    }
+    .logo{display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; font-size:.95rem}
+    .logo-mark{
+      width:28px;height:28px;border-radius:999px;
+      background: radial-gradient(circle at 30% 20%, #bbf7d0, var(--accent) 45%, #007a49 100%);
+      display:flex;align-items:center;justify-content:center;
+      box-shadow:0 0 25px rgba(0,177,106,.65);
+      font-size:14px;
+    }
+
+    nav ul{list-style:none; display:flex; gap:18px; margin:0; padding:0; font-size:.9rem}
+    nav li a{padding:6px 10px; border-radius:999px; color:var(--muted)}
+    nav li a:hover{background: rgba(0,177,106,.12); color: var(--text); text-shadow:0 0 6px rgba(0,177,106,.8)}
+
+    .lang-switch{display:flex; gap:8px; align-items:center}
+    .lang-btn{
+      padding:8px 10px; border-radius:999px;
+      border:1px solid rgba(148,163,184,.5);
+      background: rgba(15,23,42,.7);
+      cursor:pointer; font-size:1rem; line-height:1;
+    }
+    .lang-btn.active{border-color: rgba(0,177,106,.85); background: var(--accent-soft)}
+
+    .nav-cta{
+      padding:9px 14px; border-radius:999px; font-weight:700; font-size:.9rem;
+      background: var(--accent);
+      color:#022c22;
+      box-shadow:0 0 0 1px rgba(0,177,106,.35), 0 10px 30px rgba(0,177,106,.35);
+      white-space:nowrap;
+    }
+    .nav-cta:hover{background:#11c77f}
+
+    main{max-width:var(--max); margin:0 auto}
+    .section{padding:44px 20px}
+    .section + .section{padding-top:22px}
+
+    .section-label{font-size:.78rem; color:var(--muted); letter-spacing:.18em; text-transform:uppercase; margin-bottom:6px}
+    .section-title{font-size:1.45rem; margin:0 0 8px 0; color:#f9fafb}
+    .section-subtitle{font-size:.92rem; color:var(--muted); margin:0}
+
+    .hero{
+      padding-top:28px;
+      display:grid; grid-template-columns: 1fr;
+      gap:28px; align-items:center;
+    }
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      font-size:.8rem; padding:4px 10px 4px 4px;
+      border-radius:999px;
+      background: rgba(15,23,42,.95);
+      border:1px solid rgba(0,177,106,.65);
+      color: var(--muted);
+      margin-bottom:10px;
+    }
+    .badge-dot{
+      width:18px;height:18px;border-radius:999px;background:var(--accent-soft);
+      display:flex;align-items:center;justify-content:center;
+      box-shadow:0 0 18px rgba(0,177,106,.55);
+    }
+    .badge-dot-inner{width:10px;height:10px;border-radius:999px;background:var(--accent)}
+    h1{margin:0 0 10px 0; font-size:clamp(2rem,3vw,2.6rem); letter-spacing:.02em; color:#f9fafb}
+    h1 span{color:var(--accent)}
+    .hero-sub{max-width:560px; color:var(--muted); font-size:.98rem; margin:0 0 18px 0}
+    .hero-actions{display:flex; flex-wrap:wrap; gap:10px; align-items:center}
+    .btn-primary{
+      display:inline-flex; align-items:center; justify-content:center; gap:8px;
+      padding:10px 18px; border-radius:999px; border:none;
+      background: var(--accent);
+      color:#022c22; font-weight:800; cursor:pointer;
+    }
+    .btn-primary:hover{background:#11c77f}
+    .btn-ghost{
+      display:inline-flex; align-items:center; justify-content:center; gap:8px;
+      padding:10px 14px; border-radius:999px;
+      border:1px solid rgba(148,163,184,.5);
+      background: rgba(15,23,42,.7);
+      color: var(--muted);
+      cursor:pointer;
+    }
+    .btn-ghost:hover{border-color: rgba(148,163,184,.85); color: var(--text)}
+
+    .card{
+      background: rgba(15,23,42,.95);
+      border-radius: var(--radius-lg);
+      border:1px solid rgba(31,41,55,.98);
+      padding:16px;
+      box-shadow: var(--shadow-subtle);
+    }
+    .hero-right{
+      border-radius:24px;
+      padding:18px 16px 16px;
+      background: radial-gradient(circle at top left, #1f2937 0, #020617 55%);
+      border:1px solid rgba(31,41,55,.9);
+      box-shadow: var(--shadow-soft);
+    }
+    .hero-tag{font-size:.78rem; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-bottom:8px}
+    .hero-right h3{margin:0 0 8px 0; font-size:1rem}
+    .pill-row{display:flex; flex-wrap:wrap; gap:6px; margin-top:10px}
+    .pill{
+      font-size:.78rem; padding:4px 8px; border-radius:999px;
+      border:1px solid rgba(55,65,81,.95);
+      background: rgba(15,23,42,.95);
+      color: var(--muted);
+    }
+    .pill.ok{border-color: rgba(0,177,106,.75); background: rgba(0,177,106,.12); color:#bbf7d0}
+
+    .grid-3{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px}
+    .grid-2{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px}
+    .card h3{margin:0 0 6px 0; font-size:1rem; color:#f9fafb}
+    .card p{margin:0; color:var(--muted); font-size:.9rem}
+    .card ul{margin:8px 0 0; padding-left:18px; color:var(--muted); font-size:.9rem}
+
+    .pricing-grid{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px}
+    .price-card{position:relative}
+    .ribbon{
+      position:absolute; top:10px; right:10px;
+      font-size:.7rem; padding:3px 7px; border-radius:999px;
+      background: var(--accent-soft);
+      border:1px solid rgba(0,177,106,.6);
+      color:#bbf7d0;
+    }
+
+    .contact-grid{display:grid; grid-template-columns:minmax(0,1.2fr) minmax(0,1fr); gap:18px; align-items:flex-start}
+    form{margin:0}
+    .form-grid{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; margin-bottom:10px}
+    .form-group{display:flex; flex-direction:column; gap:4px; font-size:.86rem; color:var(--muted)}
+    .form-group.full{grid-column:1 / -1}
+    label span{color:#f97373; margin-left:2px}
+    input,textarea{
+      padding:8px 10px;
+      border-radius:10px;
+      border:1px solid rgba(51,65,85,.9);
+      background: rgba(15,23,42,.95);
+      color:var(--text);
+      font-family:inherit;
+      font-size:.92rem;
+      outline:none;
+      resize:vertical;
+      min-height:38px;
+    }
+    textarea{min-height:120px}
+    input:focus,textarea:focus{border-color: rgba(0,177,106,.8); box-shadow:0 0 0 1px rgba(0,177,106,.55)}
+    .checkbox-row{display:flex; gap:8px; align-items:flex-start; font-size:.82rem; color:var(--muted); margin:10px 0}
+    .checkbox-row input{width:15px;height:15px;margin-top:2px}
+    .form-status{margin-top:10px; font-size:.86rem; color:var(--muted)}
+    .form-status.ok{color:#bbf7d0}
+    .form-status.err{color:#fecaca}
+
+    footer{
+      border-top:1px solid rgba(31,41,55,.9);
+      padding:14px 20px 18px;
+      font-size:.78rem;
+      color:var(--muted);
+      margin-top:26px;
+    }
+    .footer-inner{
+      max-width:var(--max); margin:0 auto;
+      display:flex; justify-content:space-between; align-items:center;
+      gap:10px; flex-wrap:wrap;
+    }
+
+    @media (max-width: 900px){
+      .hero{grid-template-columns:1fr}
+      nav ul{display:none}
+      .pricing-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .grid-3{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .contact-grid{grid-template-columns:1fr}
+    }
+    @media (max-width: 720px){
+      .section{padding-inline:16px}
+      .grid-3,.grid-2,.pricing-grid,.form-grid{grid-template-columns:1fr}
+      .hero-actions{flex-direction:column; align-items:stretch}
+      .btn-primary,.btn-ghost{width:100%}
+    }
+  </style>
 </head>
-<body lang="pl-PL" link="#000080" vlink="#800000" dir="ltr"><p>&lt;!DOCTYPE
-html&gt;</p>
-<p>&lt;html lang=&quot;pl&quot;&gt;</p>
-<p>&lt;head&gt;</p>
-<p>&lt;meta charset=&quot;UTF-8&quot; /&gt;</p>
-<p>&lt;title&gt;Home Assistant – usługi konfiguracji i
-automatyzacji&lt;/title&gt;</p>
-<p>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
-initial-scale=1&quot; /&gt;</p>
-<p>&lt;style&gt;</p>
-<p>:root {</p>
-<p>--bg: #0f172a;</p>
-<p>--bg-alt: #020617;</p>
-<p>--card: #111827;</p>
-<p>--accent: #22c55e;</p>
-<p>--accent-soft: rgba(34, 197, 94, 0.12);</p>
-<p>--text: #e5e7eb;</p>
-<p>--muted: #9ca3af;</p>
-<p>--border: #1f2937;</p>
-<p>--danger: #f97373;</p>
-<p>--radius-lg: 18px;</p>
-<p>--radius-sm: 10px;</p>
-<p>--shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.5);</p>
-<p>--shadow-subtle: 0 10px 30px rgba(0, 0, 0, 0.35);</p>
-<p>--max-width: 1100px;</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>* {</p>
-<p>box-sizing: border-box;</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>body {</p>
-<p>margin: 0;</p>
-<p>font-family: system-ui, -apple-system, BlinkMacSystemFont, &quot;Segoe
-UI&quot;,</p>
-<p>sans-serif;</p>
-<p>background: radial-gradient(circle at top, #1f2937 0, #020617 45%,
-#000 100%);</p>
-<p>color: var(--text);</p>
-<p>-webkit-font-smoothing: antialiased;</p>
-<p>scroll-behavior: smooth;</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>a {</p>
-<p>color: inherit;</p>
-<p>text-decoration: none;</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.page {</p>
-<p>min-height: 100vh;</p>
-<p>display: flex;</p>
-<p>flex-direction: column;</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>header {</p>
-<p>position: sticky;</p>
-<p>top: 0;</p>
-<p>z-index: 20;</p>
-<p>backdrop-filter: blur(14px);</p>
-<p>background: linear-gradient(</p>
-<p>to bottom,</p>
-<p>rgba(15, 23, 42, 0.9),</p>
-<p>rgba(15, 23, 42, 0.7),</p>
-<p>transparent</p>
-<p>);</p>
-<p>border-bottom: 1px solid rgba(31, 41, 55, 0.6);</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.nav {</p>
-<p>max-width: var(--max-width);</p>
-<p>margin: 0 auto;</p>
-<p>padding: 10px 20px;</p>
-<p>display: flex;</p>
-<p>align-items: center;</p>
-<p>justify-content: space-between;</p>
-<p>gap: 16px;</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.logo {</p>
-<p>display: flex;</p>
-<p>align-items: center;</p>
-<p>gap: 10px;</p>
-<p>font-weight: 600;</p>
-<p>letter-spacing: 0.03em;</p>
-<p>font-size: 0.98rem;</p>
-<p>text-transform: uppercase;</p>
-<p>color: #e5f8ef;</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.logo-mark {</p>
-<p>width: 28px;</p>
-<p>height: 28px;</p>
-<p>border-radius: 999px;</p>
-<p>background: radial-gradient(circle at 30% 20%, #bbf7d0, #22c55e
-45%, #16a34a 100%);</p>
-<p>display: flex;</p>
-<p>align-items: center;</p>
-<p>justify-content: center;</p>
-<p>box-shadow: 0 0 25px rgba(34, 197, 94, 0.7);</p>
-<p>font-size: 14px;</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.logo span {</p>
-<p>opacity: 0.85;</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>nav ul {</p>
-<p>list-style: none;</p>
-<p>display: flex;</p>
-<p>gap: 18px;</p>
-<p>margin: 0;</p>
-<p>padding: 0;</p>
-<p>font-size: 0.9rem;</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>nav li a {</p>
-<p>padding: 6px 10px;</p>
-<p>border-radius: 999px;</p>
-<p>color: var(--muted);</p>
-<p>transition: color 0.18s ease, background 0.18s ease, transform
-0.18s ease;</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>nav li a:hover {</p>
-<p>background: rgba(15, 23, 42, 0.9);</p>
-<p>color: var(--text);</p>
-<p>transform: translateY(-1px);</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.nav-cta {</p>
-<p>padding: 7px 14px;</p>
-<p>border-radius: 999px;</p>
-<p>background: var(--accent);</p>
-<p>color: #022c22;</p>
-<p>font-weight: 600;</p>
-<p>font-size: 0.9rem;</p>
-<p>display: inline-flex;</p>
-<p>align-items: center;</p>
-<p>gap: 6px;</p>
-<p>box-shadow: 0 0 0 1px rgba(74, 222, 128, 0.4),</p>
-<p>0 10px 30px rgba(34, 197, 94, 0.45);</p>
-<p>transition: transform 0.18s ease, box-shadow 0.18s ease,</p>
-<p>background 0.18s ease;</p>
-<p>white-space: nowrap;</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.nav-cta:hover {</p>
-<p>transform: translateY(-1px);</p>
-<p>background: #4ade80;</p>
-<p>box-shadow: 0 16px 40px rgba(22, 163, 74, 0.65);</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>main {</p>
-<p>flex: 1;</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.section {</p>
-<p>max-width: var(--max-width);</p>
-<p>margin: 0 auto;</p>
-<p>padding: 40px 20px;</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>/* HERO */</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.hero {</p>
-<p>padding-top: 32px;</p>
-<p>padding-bottom: 40px;</p>
-<p>display: grid;</p>
-<p>grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);</p>
-<p>gap: 32px;</p>
-<p>align-items: center;</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.badge {</p>
-<p>display: inline-flex;</p>
-<p>align-items: center;</p>
-<p>gap: 8px;</p>
-<p>font-size: 0.8rem;</p>
-<p>padding: 4px 9px 4px 4px;</p>
-<p>border-radius: 999px;</p>
-<p>background: rgba(15, 23, 42, 0.95);</p>
-<p>border: 1px solid rgba(34, 197, 94, 0.6);</p>
-<p>color: var(--muted);</p>
-<p>margin-bottom: 10px;</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.badge-dot {</p>
-<p>width: 18px;</p>
-<p>height: 18px;</p>
-<p>border-radius: 999px;</p>
-<p>background: var(--accent-soft);</p>
-<p>display: flex;</p>
-<p>align-items: center;</p>
-<p>justify-content: center;</p>
-<p>box-shadow: 0 0 20px rgba(34, 197, 94, 0.7);</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.badge-dot-inner {</p>
-<p>width: 10px;</p>
-<p>height: 10px;</p>
-<p>border-radius: 999px;</p>
-<p>background: var(--accent);</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.hero h1 {</p>
-<p>font-size: clamp(2rem, 3vw, 2.6rem);</p>
-<p>margin: 0 0 10px 0;</p>
-<p>letter-spacing: 0.02em;</p>
-<p>color: #f9fafb;</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.hero h1 span {</p>
-<p>color: var(--accent);</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.hero-subtitle {</p>
-<p>font-size: 0.98rem;</p>
-<p>max-width: 540px;</p>
-<p>color: var(--muted);</p>
-<p>margin-bottom: 18px;</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.hero-list {</p>
-<p>display: grid;</p>
-<p>grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));</p>
-<p>gap: 10px;</p>
-<p>margin-bottom: 22px;</p>
-<p>font-size: 0.9rem;</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.hero-list-item {</p>
-<p>display: inline-flex;</p>
-<p>align-items: center;</p>
-<p>gap: 8px;</p>
-<p>color: var(--muted);</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.hero-list-item strong {</p>
-<p>color: var(--text);</p>
-<p>font-weight: 600;</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.dot {</p>
-<p>width: 8px;</p>
-<p>height: 8px;</p>
-<p>border-radius: 999px;</p>
-<p>background: var(--accent);</p>
-<p>box-shadow: 0 0 12px rgba(34, 197, 94, 0.9);</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.hero-actions {</p>
-<p>display: flex;</p>
-<p>flex-wrap: wrap;</p>
-<p>gap: 10px;</p>
-<p>margin-bottom: 16px;</p>
-<p>align-items: center;</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.btn-primary {</p>
-<p>padding: 10px 20px;</p>
-<p>border-radius: 999px;</p>
-<p>border: none;</p>
-<p>cursor: pointer;</p>
-<p>font-weight: 600;</p>
-<p>font-size: 0.95rem;</p>
-<p>background: linear-gradient(135deg, #22c55e, #4ade80);</p>
-<p>color: #022c22;</p>
-<p>box-shadow: 0 18px 45px rgba(22, 163, 74, 0.75);</p>
-<p>display: inline-flex;</p>
-<p>align-items: center;</p>
-<p>gap: 8px;</p>
-<p>transition: transform 0.18s ease, box-shadow 0.18s ease;</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.btn-primary:hover {</p>
-<p>transform: translateY(-1px);</p>
-<p>box-shadow: 0 24px 55px rgba(21, 128, 61, 0.9);</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.btn-ghost {</p>
-<p>padding: 9px 14px;</p>
-<p>border-radius: 999px;</p>
-<p>border: 1px solid rgba(148, 163, 184, 0.5);</p>
-<p>background: rgba(15, 23, 42, 0.7);</p>
-<p>color: var(--muted);</p>
-<p>font-size: 0.9rem;</p>
-<p>display: inline-flex;</p>
-<p>align-items: center;</p>
-<p>gap: 8px;</p>
-<p>cursor: pointer;</p>
-<p>transition: border 0.18s ease, background 0.18s ease, color 0.18s
-ease,</p>
-<p>transform 0.18s ease;</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.btn-ghost:hover {</p>
-<p>border-color: rgba(148, 163, 184, 0.9);</p>
-<p>background: rgba(15, 23, 42, 0.95);</p>
-<p>color: var(--text);</p>
-<p>transform: translateY(-1px);</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.hero-note {</p>
-<p>font-size: 0.82rem;</p>
-<p>color: var(--muted);</p>
-<p>max-width: 420px;</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.hero-note strong {</p>
-<p>color: var(--text);</p>
-<p>font-weight: 500;</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.hero-right {</p>
-<p>background: radial-gradient(circle at top left, #1f2937 0, #020617
-55%);</p>
-<p>border-radius: 24px;</p>
-<p>padding: 18px 16px 16px;</p>
-<p>border: 1px solid rgba(31, 41, 55, 0.9);</p>
-<p>box-shadow: var(--shadow-soft);</p>
-<p>position: relative;</p>
-<p>overflow: hidden;</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.hero-tag {</p>
-<p>font-size: 0.78rem;</p>
-<p>color: var(--muted);</p>
-<p>margin-bottom: 8px;</p>
-<p>letter-spacing: 0.14em;</p>
-<p>text-transform: uppercase;</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.hero-card-title {</p>
-<p>font-size: 1rem;</p>
-<p>font-weight: 600;</p>
-<p>margin-bottom: 4px;</p>
-<p>display: flex;</p>
-<p>align-items: baseline;</p>
-<p>justify-content: space-between;</p>
-<p>gap: 8px;</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.hero-card-title span {</p>
-<p>font-size: 0.8rem;</p>
-<p>color: var(--muted);</p>
-<p>font-weight: 400;</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.hero-pill-row {</p>
-<p>display: flex;</p>
-<p>flex-wrap: wrap;</p>
-<p>gap: 6px;</p>
-<p>font-size: 0.78rem;</p>
-<p>margin-bottom: 10px;</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.hero-pill {</p>
-<p>padding: 4px 8px;</p>
-<p>border-radius: 999px;</p>
-<p>border: 1px solid rgba(55, 65, 81, 0.95);</p>
-<p>background: rgba(15, 23, 42, 0.95);</p>
-<p>color: var(--muted);</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.hero-pill.positive {</p>
-<p>border-color: rgba(34, 197, 94, 0.7);</p>
-<p>color: #bbf7d0;</p>
-<p>background: rgba(15, 118, 110, 0.35);</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.hero-metrics {</p>
-<p>display: grid;</p>
-<p>grid-template-columns: repeat(2, minmax(0, 1fr));</p>
-<p>gap: 8px;</p>
-<p>margin-top: 10px;</p>
-<p>margin-bottom: 8px;</p>
-<p>font-size: 0.78rem;</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.metric-card {</p>
-<p>border-radius: var(--radius-sm);</p>
-<p>background: rgba(15, 23, 42, 0.9);</p>
-<p>border: 1px solid rgba(31, 41, 55, 0.9);</p>
-<p>padding: 8px;</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.metric-label {</p>
-<p>color: var(--muted);</p>
-<p>margin-bottom: 3px;</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.metric-value {</p>
-<p>font-size: 0.95rem;</p>
-<p>font-weight: 600;</p>
-<p>color: #e5f8ef;</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.metric-chip {</p>
-<p>display: inline-flex;</p>
-<p>align-items: center;</p>
-<p>gap: 4px;</p>
-<p>margin-top: 3px;</p>
-<p>padding: 2px 6px;</p>
-<p>border-radius: 999px;</p>
-<p>background: rgba(22, 163, 74, 0.15);</p>
-<p>color: #bbf7d0;</p>
-<p>font-size: 0.75rem;</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.hero-footer {</p>
-<p>display: flex;</p>
-<p>justify-content: space-between;</p>
-<p>align-items: center;</p>
-<p>gap: 10px;</p>
-<p>margin-top: 10px;</p>
-<p>font-size: 0.75rem;</p>
-<p>color: var(--muted);</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.hero-dot-row {</p>
-<p>display: flex;</p>
-<p>gap: 6px;</p>
-<p>align-items: center;</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.hero-dot {</p>
-<p>width: 8px;</p>
-<p>height: 8px;</p>
-<p>border-radius: 999px;</p>
-<p>background: var(--accent);</p>
-<p>box-shadow: 0 0 12px rgba(34, 197, 94, 0.9);</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.hero-alert {</p>
-<p>display: inline-flex;</p>
-<p>align-items: center;</p>
-<p>gap: 6px;</p>
-<p>padding: 5px 8px;</p>
-<p>border-radius: 999px;</p>
-<p>background: rgba(248, 113, 113, 0.12);</p>
-<p>color: #fecaca;</p>
-<p>border: 1px solid rgba(248, 113, 113, 0.4);</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>/* GENERIC SECTION STYLES */</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.section-header {</p>
-<p>max-width: 640px;</p>
-<p>margin-bottom: 20px;</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.section-label {</p>
-<p>font-size: 0.78rem;</p>
-<p>color: var(--muted);</p>
-<p>text-transform: uppercase;</p>
-<p>letter-spacing: 0.18em;</p>
-<p>margin-bottom: 6px;</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.section-title {</p>
-<p>font-size: 1.4rem;</p>
-<p>margin: 0 0 6px 0;</p>
-<p>color: #f9fafb;</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.section-subtitle {</p>
-<p>font-size: 0.9rem;</p>
-<p>color: var(--muted);</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.grid-3 {</p>
-<p>display: grid;</p>
-<p>grid-template-columns: repeat(3, minmax(0, 1fr));</p>
-<p>gap: 16px;</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.grid-2 {</p>
-<p>display: grid;</p>
-<p>grid-template-columns: repeat(2, minmax(0, 1fr));</p>
-<p>gap: 16px;</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.card {</p>
-<p>background: rgba(15, 23, 42, 0.95);</p>
-<p>border-radius: var(--radius-lg);</p>
-<p>border: 1px solid rgba(31, 41, 55, 0.98);</p>
-<p>padding: 16px;</p>
-<p>box-shadow: var(--shadow-subtle);</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.card h3 {</p>
-<p>margin-top: 0;</p>
-<p>margin-bottom: 6px;</p>
-<p>font-size: 1rem;</p>
-<p>color: #f9fafb;</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.card p {</p>
-<p>margin: 0;</p>
-<p>font-size: 0.9rem;</p>
-<p>color: var(--muted);</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.card ul {</p>
-<p>margin: 8px 0 0;</p>
-<p>padding-left: 18px;</p>
-<p>font-size: 0.9rem;</p>
-<p>color: var(--muted);</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.chip-row {</p>
-<p>display: flex;</p>
-<p>flex-wrap: wrap;</p>
-<p>gap: 8px;</p>
-<p>margin-top: 10px;</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.chip {</p>
-<p>font-size: 0.78rem;</p>
-<p>padding: 4px 8px;</p>
-<p>border-radius: 999px;</p>
-<p>border: 1px solid rgba(55, 65, 81, 0.9);</p>
-<p>color: var(--muted);</p>
-<p>background: rgba(15, 23, 42, 0.9);</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.chip.green {</p>
-<p>border-color: rgba(34, 197, 94, 0.7);</p>
-<p>color: #bbf7d0;</p>
-<p>background: rgba(15, 118, 110, 0.35);</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.step {</p>
-<p>display: flex;</p>
-<p>gap: 10px;</p>
-<p>align-items: flex-start;</p>
-<p>padding: 10px 12px;</p>
-<p>border-radius: var(--radius-lg);</p>
-<p>background: rgba(15, 23, 42, 0.9);</p>
-<p>border: 1px solid rgba(31, 41, 55, 0.9);</p>
-<p>box-shadow: 0 14px 30px rgba(0, 0, 0, 0.5);</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.step-number {</p>
-<p>width: 24px;</p>
-<p>height: 24px;</p>
-<p>border-radius: 999px;</p>
-<p>background: rgba(34, 197, 94, 0.18);</p>
-<p>border: 1px solid rgba(34, 197, 94, 0.65);</p>
-<p>display: flex;</p>
-<p>align-items: center;</p>
-<p>justify-content: center;</p>
-<p>font-size: 0.8rem;</p>
-<p>color: #bbf7d0;</p>
-<p>flex-shrink: 0;</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.step-title {</p>
-<p>font-size: 0.95rem;</p>
-<p>color: #f9fafb;</p>
-<p>margin-bottom: 2px;</p>
-<p>font-weight: 600;</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.step-text {</p>
-<p>font-size: 0.88rem;</p>
-<p>color: var(--muted);</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>/* PRICING */</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.pricing-grid {</p>
-<p>display: grid;</p>
-<p>grid-template-columns: repeat(3, minmax(0, 1fr));</p>
-<p>gap: 16px;</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.price-card {</p>
-<p>background: rgba(15, 23, 42, 0.96);</p>
-<p>border-radius: var(--radius-lg);</p>
-<p>border: 1px solid rgba(31, 41, 55, 0.98);</p>
-<p>padding: 16px;</p>
-<p>box-shadow: var(--shadow-subtle);</p>
-<p>display: flex;</p>
-<p>flex-direction: column;</p>
-<p>gap: 6px;</p>
-<p>position: relative;</p>
-<p>overflow: hidden;</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.price-badge {</p>
-<p>font-size: 0.72rem;</p>
-<p>text-transform: uppercase;</p>
-<p>letter-spacing: 0.18em;</p>
-<p>color: var(--muted);</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.price-title {</p>
-<p>font-size: 1rem;</p>
-<p>color: #f9fafb;</p>
-<p>font-weight: 600;</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.price-tag {</p>
-<p>font-size: 0.9rem;</p>
-<p>color: #bbf7d0;</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.price-desc {</p>
-<p>font-size: 0.88rem;</p>
-<p>color: var(--muted);</p>
-<p>margin-top: 4px;</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.price-list {</p>
-<p>margin: 8px 0 0;</p>
-<p>padding-left: 18px;</p>
-<p>font-size: 0.88rem;</p>
-<p>color: var(--muted);</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.price-highlight {</p>
-<p>border-color: rgba(34, 197, 94, 0.9);</p>
-<p>box-shadow: 0 18px 45px rgba(22, 163, 74, 0.7);</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.price-ribbon {</p>
-<p>position: absolute;</p>
-<p>top: 10px;</p>
-<p>right: 10px;</p>
-<p>font-size: 0.7rem;</p>
-<p>padding: 3px 7px;</p>
-<p>border-radius: 999px;</p>
-<p>background: rgba(34, 197, 94, 0.18);</p>
-<p>border: 1px solid rgba(34, 197, 94, 0.6);</p>
-<p>color: #bbf7d0;</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>/* CONTACT */</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.contact-grid {</p>
-<p>display: grid;</p>
-<p>grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);</p>
-<p>gap: 18px;</p>
-<p>align-items: flex-start;</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.contact-card {</p>
-<p>background: rgba(15, 23, 42, 0.98);</p>
-<p>border-radius: var(--radius-lg);</p>
-<p>border: 1px solid rgba(31, 41, 55, 0.98);</p>
-<p>padding: 16px;</p>
-<p>box-shadow: var(--shadow-subtle);</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.contact-card p {</p>
-<p>font-size: 0.9rem;</p>
-<p>color: var(--muted);</p>
-<p>margin-top: 0;</p>
-<p>margin-bottom: 12px;</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.form-grid {</p>
-<p>display: grid;</p>
-<p>grid-template-columns: repeat(2, minmax(0, 1fr));</p>
-<p>gap: 10px;</p>
-<p>margin-bottom: 10px;</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.form-group {</p>
-<p>display: flex;</p>
-<p>flex-direction: column;</p>
-<p>gap: 4px;</p>
-<p>font-size: 0.86rem;</p>
-<p>color: var(--muted);</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.form-group.full {</p>
-<p>grid-column: 1 / -1;</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>label span {</p>
-<p>color: #f97373;</p>
-<p>margin-left: 2px;</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>input,</p>
-<p>textarea {</p>
-<p>padding: 7px 9px;</p>
-<p>border-radius: 10px;</p>
-<p>border: 1px solid rgba(51, 65, 85, 0.9);</p>
-<p>background: rgba(15, 23, 42, 0.95);</p>
-<p>color: var(--text);</p>
-<p>font-family: inherit;</p>
-<p>font-size: 0.9rem;</p>
-<p>outline: none;</p>
-<p>transition: border 0.16s ease, box-shadow 0.16s ease,</p>
-<p>background 0.16s ease;</p>
-<p>resize: vertical;</p>
-<p>min-height: 36px;</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>input:focus,</p>
-<p>textarea:focus {</p>
-<p>border-color: rgba(34, 197, 94, 0.8);</p>
-<p>box-shadow: 0 0 0 1px rgba(34, 197, 94, 0.6);</p>
-<p>background: rgba(15, 23, 42, 0.98);</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>textarea {</p>
-<p>min-height: 110px;</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.checkbox-row {</p>
-<p>display: flex;</p>
-<p>align-items: flex-start;</p>
-<p>gap: 8px;</p>
-<p>font-size: 0.8rem;</p>
-<p>color: var(--muted);</p>
-<p>margin-bottom: 10px;</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.checkbox-row input[type=&quot;checkbox&quot;] {</p>
-<p>width: 15px;</p>
-<p>height: 15px;</p>
-<p>margin-top: 2px;</p>
-<p>cursor: pointer;</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.contact-footer {</p>
-<p>display: flex;</p>
-<p>flex-wrap: wrap;</p>
-<p>gap: 8px;</p>
-<p>align-items: center;</p>
-<p>justify-content: space-between;</p>
-<p>font-size: 0.8rem;</p>
-<p>color: var(--muted);</p>
-<p>margin-top: 6px;</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.contact-alt {</p>
-<p>font-size: 0.86rem;</p>
-<p>color: var(--muted);</p>
-<p>margin: 0 0 6px 0;</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>footer {</p>
-<p>border-top: 1px solid rgba(31, 41, 55, 0.9);</p>
-<p>padding: 14px 20px 18px;</p>
-<p>font-size: 0.78rem;</p>
-<p>color: var(--muted);</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>footer .footer-inner {</p>
-<p>max-width: var(--max-width);</p>
-<p>margin: 0 auto;</p>
-<p>display: flex;</p>
-<p>justify-content: space-between;</p>
-<p>align-items: center;</p>
-<p>gap: 10px;</p>
-<p>flex-wrap: wrap;</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>footer a {</p>
-<p>color: var(--muted);</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>footer a:hover {</p>
-<p>color: var(--text);</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>/* RESPONSIVE */</p>
-<p><br/>
-<br/>
-
-</p>
-<p>@media (max-width: 900px) {</p>
-<p>.hero {</p>
-<p>grid-template-columns: 1fr;</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.hero-right {</p>
-<p>order: -1;</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.grid-3,</p>
-<p>.pricing-grid {</p>
-<p>grid-template-columns: repeat(2, minmax(0, 1fr));</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.contact-grid {</p>
-<p>grid-template-columns: 1fr;</p>
-<p>}</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>@media (max-width: 720px) {</p>
-<p>.nav {</p>
-<p>flex-wrap: wrap;</p>
-<p>justify-content: space-between;</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>nav ul {</p>
-<p>display: none;</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.section {</p>
-<p>padding-inline: 16px;</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.hero {</p>
-<p>padding-top: 24px;</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.grid-3,</p>
-<p>.grid-2,</p>
-<p>.pricing-grid,</p>
-<p>.form-grid {</p>
-<p>grid-template-columns: 1fr;</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.hero-actions {</p>
-<p>flex-direction: column;</p>
-<p>align-items: stretch;</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.btn-primary,</p>
-<p>.btn-ghost {</p>
-<p>justify-content: center;</p>
-<p>width: 100%;</p>
-<p>}</p>
-<p><br/>
-<br/>
-
-</p>
-<p>.form-group.full {</p>
-<p>grid-column: auto;</p>
-<p>}</p>
-<p>}</p>
-<p>&lt;/style&gt;</p>
-<p>&lt;/head&gt;</p>
-<p>&lt;body&gt;</p>
-<p>&lt;div class=&quot;page&quot;&gt;</p>
-<p>&lt;header&gt;</p>
-<p>&lt;div class=&quot;nav&quot;&gt;</p>
-<p>&lt;div class=&quot;logo&quot;&gt;</p>
-<p>&lt;div class=&quot;logo-mark&quot;&gt;HA&lt;/div&gt;</p>
-<p>&lt;span&gt;Home Assistant · konfiguracja &amp;
-automatyzacje&lt;/span&gt;</p>
-<p>&lt;/div&gt;</p>
-<p>&lt;nav&gt;</p>
-<p>&lt;ul&gt;</p>
-<p>&lt;li&gt;&lt;a href=&quot;#services&quot;&gt;Usługi&lt;/a&gt;&lt;/li&gt;</p>
-<p>&lt;li&gt;&lt;a href=&quot;#for-whom&quot;&gt;Dla kogo&lt;/a&gt;&lt;/li&gt;</p>
-<p>&lt;li&gt;&lt;a href=&quot;#process&quot;&gt;Jak pracuję&lt;/a&gt;&lt;/li&gt;</p>
-<p>&lt;li&gt;&lt;a href=&quot;#pricing&quot;&gt;Pakiety&lt;/a&gt;&lt;/li&gt;</p>
-<p>&lt;li&gt;&lt;a href=&quot;#contact&quot;&gt;Kontakt&lt;/a&gt;&lt;/li&gt;</p>
-<p>&lt;/ul&gt;</p>
-<p>&lt;/nav&gt;</p>
-<p>&lt;a href=&quot;#contact&quot; class=&quot;nav-cta&quot;&gt;Bezpłatna
-konsultacja&lt;/a&gt;</p>
-<p>&lt;/div&gt;</p>
-<p>&lt;/header&gt;</p>
-<p><br/>
-<br/>
-
-</p>
-<p>&lt;main&gt;</p>
-<p>&lt;!-- HERO --&gt;</p>
-<p>&lt;section class=&quot;section hero&quot; id=&quot;top&quot;&gt;</p>
-<p>&lt;div&gt;</p>
-<p>&lt;div class=&quot;badge&quot;&gt;</p>
-<p>&lt;div class=&quot;badge-dot&quot;&gt;</p>
-<p>&lt;div class=&quot;badge-dot-inner&quot;&gt;&lt;/div&gt;</p>
-<p>&lt;/div&gt;</p>
-<p>Realne instalacje · prawdziwe domy · bez marketingowego bełkotu</p>
-<p>&lt;/div&gt;</p>
-<p>&lt;h1&gt;</p>
-<p>Home Assistant – ogarniam Twój</p>
-<p>&lt;span&gt;inteligentny dom&lt;/span&gt; od A do Z</p>
-<p>&lt;/h1&gt;</p>
-<p>&lt;p class=&quot;hero-subtitle&quot;&gt;</p>
-<p>Porządkuję istniejące instalacje, tworzę sensowne
-automatyzacje i</p>
-<p>pomagam zużyć mniej energii – bez wymiany całego sprzętu i</p>
-<p>kombinowania w ciemno.</p>
-<p>&lt;/p&gt;</p>
-<p><br/>
-<br/>
-
-</p>
-<p>&lt;div class=&quot;hero-list&quot;&gt;</p>
-<p>&lt;div class=&quot;hero-list-item&quot;&gt;</p>
-<p>&lt;div class=&quot;dot&quot;&gt;&lt;/div&gt;</p>
-<p>&lt;span&gt;&lt;strong&gt;Home Assistant&lt;/strong&gt; · Zigbee
-· Tuya · MQTT&lt;/span&gt;</p>
-<p>&lt;/div&gt;</p>
-<p>&lt;div class=&quot;hero-list-item&quot;&gt;</p>
-<p>&lt;div class=&quot;dot&quot;&gt;&lt;/div&gt;</p>
-<p>&lt;span&gt;Rolety, ogrzewanie, PV, czujniki, kamery IP&lt;/span&gt;</p>
-<p>&lt;/div&gt;</p>
-<p>&lt;/div&gt;</p>
-<p><br/>
-<br/>
-
-</p>
-<p>&lt;div class=&quot;hero-actions&quot;&gt;</p>
-<p>&lt;button class=&quot;btn-primary&quot;
-onclick=&quot;document.getElementById('contact').scrollIntoView({behavior:
-'smooth'})&quot;&gt;</p>
-<p>Umów bezpłatną konsultację 30 min</p>
-<p>&lt;span&gt;→&lt;/span&gt;</p>
-<p>&lt;/button&gt;</p>
-<p>&lt;button class=&quot;btn-ghost&quot;
-onclick=&quot;document.getElementById('services').scrollIntoView({behavior:
-'smooth'})&quot;&gt;</p>
-<p>Zobacz, w czym konkretnie pomagam</p>
-<p>&lt;/button&gt;</p>
-<p>&lt;/div&gt;</p>
-<p><br/>
-<br/>
-
-</p>
-<p>&lt;p class=&quot;hero-note&quot;&gt;</p>
-<p>&lt;strong&gt;Pracuję zdalnie&lt;/strong&gt; (online, po polsku),
-a w wybranych</p>
-<p>przypadkach również lokalnie – w zależności od lokalizacji i</p>
-<p>zakresu prac.</p>
-<p>&lt;/p&gt;</p>
-<p>&lt;/div&gt;</p>
-<p><br/>
-<br/>
-
-</p>
-<p>&lt;aside class=&quot;hero-right&quot;&gt;</p>
-<p>&lt;div class=&quot;hero-tag&quot;&gt;Podgląd instalacji&lt;/div&gt;</p>
-<p>&lt;div class=&quot;hero-card-title&quot;&gt;</p>
-<p>Dom klienta – widok z Home Assistanta</p>
-<p>&lt;span&gt;przykładowa konfiguracja&lt;/span&gt;</p>
-<p>&lt;/div&gt;</p>
-<p><br/>
-<br/>
-
-</p>
-<p>&lt;div class=&quot;hero-pill-row&quot;&gt;</p>
-<p>&lt;div class=&quot;hero-pill positive&quot;&gt;Stabilne
-Zigbee&lt;/div&gt;</p>
-<p>&lt;div class=&quot;hero-pill&quot;&gt;Rolety · 9 stref&lt;/div&gt;</p>
-<p>&lt;div class=&quot;hero-pill&quot;&gt;Kocioł gazowy +
-bufor&lt;/div&gt;</p>
-<p>&lt;div class=&quot;hero-pill&quot;&gt;PV + zużycie energii&lt;/div&gt;</p>
-<p>&lt;/div&gt;</p>
-<p><br/>
-<br/>
-
-</p>
-<p>&lt;div class=&quot;hero-metrics&quot;&gt;</p>
-<p>&lt;div class=&quot;metric-card&quot;&gt;</p>
-<p>&lt;div class=&quot;metric-label&quot;&gt;Zużycie gazu vs
-komfort&lt;/div&gt;</p>
-<p>&lt;div class=&quot;metric-value&quot;&gt;✔
-zoptymalizowane&lt;/div&gt;</p>
-<p>&lt;div class=&quot;metric-chip&quot;&gt;</p>
-<p>&lt;span&gt;↓ mniej startów kotła&lt;/span&gt;</p>
-<p>&lt;/div&gt;</p>
-<p>&lt;/div&gt;</p>
-<p>&lt;div class=&quot;metric-card&quot;&gt;</p>
-<p>&lt;div class=&quot;metric-label&quot;&gt;Zigbee&lt;/div&gt;</p>
-<p>&lt;div class=&quot;metric-value&quot;&gt;stabilna sieć
-mesh&lt;/div&gt;</p>
-<p>&lt;div class=&quot;metric-chip&quot;&gt;</p>
-<p>&lt;span&gt;watchdog + dobre routery&lt;/span&gt;</p>
-<p>&lt;/div&gt;</p>
-<p>&lt;/div&gt;</p>
-<p>&lt;/div&gt;</p>
-<p><br/>
-<br/>
-
-</p>
-<p>&lt;div class=&quot;hero-footer&quot;&gt;</p>
-<p>&lt;div class=&quot;hero-dot-row&quot;&gt;</p>
-<p>&lt;div class=&quot;hero-dot&quot;&gt;&lt;/div&gt;</p>
-<p>&lt;span&gt;Automatyzacje testowane „na żywo” w domach, a nie
-tylko na blogach.&lt;/span&gt;</p>
-<p>&lt;/div&gt;</p>
-<p>&lt;div class=&quot;hero-alert&quot;&gt;</p>
-<p>&lt;span&gt;!&lt;/span&gt;</p>
-<p>&lt;span&gt;Na starcie niczego nie kasuję – najpierw robię
-kopię zapasową.&lt;/span&gt;</p>
-<p>&lt;/div&gt;</p>
-<p>&lt;/div&gt;</p>
-<p>&lt;/aside&gt;</p>
-<p>&lt;/section&gt;</p>
-<p><br/>
-<br/>
-
-</p>
-<p>&lt;!-- SERVICES --&gt;</p>
-<p>&lt;section class=&quot;section&quot; id=&quot;services&quot;&gt;</p>
-<p>&lt;div class=&quot;section-header&quot;&gt;</p>
-<p>&lt;div class=&quot;section-label&quot;&gt;Usługi&lt;/div&gt;</p>
-<p>&lt;h2 class=&quot;section-title&quot;&gt;W czym konkretnie mogę
-Ci pomóc?&lt;/h2&gt;</p>
-<p>&lt;p class=&quot;section-subtitle&quot;&gt;</p>
-<p>Zamiast instalować „wszystko jak leci”, dobieram rozwiązania
-do</p>
-<p>tego, co faktycznie masz w domu – i co chcesz osiągnąć.</p>
-<p>&lt;/p&gt;</p>
-<p>&lt;/div&gt;</p>
-<p><br/>
-<br/>
-
-</p>
-<p>&lt;div class=&quot;grid-3&quot;&gt;</p>
-<p>&lt;div class=&quot;card&quot;&gt;</p>
-<p>&lt;h3&gt;Start z Home Assistantem&lt;/h3&gt;</p>
-<p>&lt;p&gt;</p>
-<p>Instalacja, pierwsza konfiguracja, podstawowe automatyzacje –</p>
-<p>tak, żeby system był od razu używalny, a nie tylko
-„zainstalowany”.</p>
-<p>&lt;/p&gt;</p>
-<p>&lt;ul&gt;</p>
-<p>&lt;li&gt;Instalacja na Raspberry Pi / NUC / VM / Synology&lt;/li&gt;</p>
-<p>&lt;li&gt;Integracje z najpopularniejszymi usługami&lt;/li&gt;</p>
-<p>&lt;li&gt;Proste, zrozumiałe dashboardy na początek&lt;/li&gt;</p>
-<p>&lt;/ul&gt;</p>
-<p>&lt;/div&gt;</p>
-<p><br/>
-<br/>
-
-</p>
-<p>&lt;div class=&quot;card&quot;&gt;</p>
-<p>&lt;h3&gt;Porządkowanie „bałaganu”&lt;/h3&gt;</p>
-<p>&lt;p&gt;</p>
-<p>Ktoś już coś ustawił, ale działa losowo? Uporządkuję encje,</p>
-<p>nazwy, integracje i automatyzacje tak, żebyś nie bał się tego</p>
-<p>dotknąć.</p>
-<p>&lt;/p&gt;</p>
-<p>&lt;ul&gt;</p>
-<p>&lt;li&gt;Przegląd istniejącej konfiguracji&lt;/li&gt;</p>
-<p>&lt;li&gt;Uproszczenie automatyzacji, usunięcie zbędnych&lt;/li&gt;</p>
-<p>&lt;li&gt;Czytelne nazwy, grupy, logiczne foldery&lt;/li&gt;</p>
-<p>&lt;/ul&gt;</p>
-<p>&lt;/div&gt;</p>
-<p><br/>
-<br/>
-
-</p>
-<p>&lt;div class=&quot;card&quot;&gt;</p>
-<p>&lt;h3&gt;Zigbee &amp; Tuya&lt;/h3&gt;</p>
-<p>&lt;p&gt;</p>
-<p>Koordynator, kanały, zasięg, OTA, urządzenia wiecznie „offline”
-–</p>
-<p>ogarniam całą sieć, zamiast tylko dokładać kolejne routery.</p>
-<p>&lt;/p&gt;</p>
-<p>&lt;ul&gt;</p>
-<p>&lt;li&gt;Dobór koordynatora i urządzeń&lt;/li&gt;</p>
-<p>&lt;li&gt;Optymalizacja kanałów i mocy nadajnika&lt;/li&gt;</p>
-<p>&lt;li&gt;Watchdogi i automatyczne „reanimowanie”
-urządzeń&lt;/li&gt;</p>
-<p>&lt;/ul&gt;</p>
-<p>&lt;/div&gt;</p>
-<p>&lt;/div&gt;</p>
-<p><br/>
-<br/>
-
-</p>
-<p>&lt;div style=&quot;height: 12px&quot;&gt;&lt;/div&gt;</p>
-<p><br/>
-<br/>
-
-</p>
-<p>&lt;div class=&quot;grid-3&quot;&gt;</p>
-<p>&lt;div class=&quot;card&quot;&gt;</p>
-<p>&lt;h3&gt;Ogrzewanie i komfort&lt;/h3&gt;</p>
-<p>&lt;p&gt;</p>
-<p>Sterowanie kotłem, buforem, grzejnikami, głowicami, tryby
-noc/dzień,</p>
-<p>osobne strefy – tak, żeby było ciepło tam, gdzie trzeba.</p>
-<p>&lt;/p&gt;</p>
-<p>&lt;ul&gt;</p>
-<p>&lt;li&gt;Logika start/stop kotła zamiast „byle grzało”&lt;/li&gt;</p>
-<p>&lt;li&gt;Integracja z czujnikami temperatury i głowicami&lt;/li&gt;</p>
-<p>&lt;li&gt;Tryby: dzień, noc, wyjazd, goście&lt;/li&gt;</p>
-<p>&lt;/ul&gt;</p>
-<p>&lt;/div&gt;</p>
-<p><br/>
-<br/>
-
-</p>
-<p>&lt;div class=&quot;card&quot;&gt;</p>
-<p>&lt;h3&gt;Energia i PV&lt;/h3&gt;</p>
-<p>&lt;p&gt;</p>
-<p>Dashboardy pokazujące, gdzie znika energia – i kiedy opłaca
-się</p>
-<p>dogrzewać prądem zamiast gazem.</p>
-<p>&lt;/p&gt;</p>
-<p>&lt;ul&gt;</p>
-<p>&lt;li&gt;Porównanie gaz / prąd / PV na wykresach&lt;/li&gt;</p>
-<p>&lt;li&gt;Podstawowe algorytmy „grzania, gdy tanio”&lt;/li&gt;</p>
-<p>&lt;li&gt;Integracja z licznikami i falownikami (tam, gdzie to
-możliwe)&lt;/li&gt;</p>
-<p>&lt;/ul&gt;</p>
-<p>&lt;/div&gt;</p>
-<p><br/>
-<br/>
-
-</p>
-<p>&lt;div class=&quot;card&quot;&gt;</p>
-<p>&lt;h3&gt;Kamery &amp; bezpieczeństwo&lt;/h3&gt;</p>
-<p>&lt;p&gt;</p>
-<p>Rejestratory, kamery IP, ONVIF, powiadomienia o ruchu/obrazie,</p>
-<p>integracja z roletami, światłem i alarmem.</p>
-<p>&lt;/p&gt;</p>
-<p>&lt;ul&gt;</p>
-<p>&lt;li&gt;Podgląd z kamer w panelach HA&lt;/li&gt;</p>
-<p>&lt;li&gt;Powiadomienia na telefon przy alarmie&lt;/li&gt;</p>
-<p>&lt;li&gt;Prosta logika: ruch → światło / roleta /
-nagranie&lt;/li&gt;</p>
-<p>&lt;/ul&gt;</p>
-<p>&lt;/div&gt;</p>
-<p>&lt;/div&gt;</p>
-<p><br/>
-<br/>
-
-</p>
-<p>&lt;div class=&quot;chip-row&quot;&gt;</p>
-<p>&lt;div class=&quot;chip green&quot;&gt;</p>
-<p>Jeśli używasz Tuya / aplikacji producenta – często da się to
-włączyć</p>
-<p>w Home Assistanta bez wymiany sprzętu.</p>
-<p>&lt;/div&gt;</p>
-<p>&lt;/div&gt;</p>
-<p>&lt;/section&gt;</p>
-<p><br/>
-<br/>
-
-</p>
-<p>&lt;!-- FOR WHOM --&gt;</p>
-<p>&lt;section class=&quot;section&quot; id=&quot;for-whom&quot;&gt;</p>
-<p>&lt;div class=&quot;section-header&quot;&gt;</p>
-<p>&lt;div class=&quot;section-label&quot;&gt;Dla kogo&lt;/div&gt;</p>
-<p>&lt;h2 class=&quot;section-title&quot;&gt;Dla kogo są te
-usługi?&lt;/h2&gt;</p>
-<p>&lt;p class=&quot;section-subtitle&quot;&gt;</p>
-<p>Nie musisz być informatykiem ani elektrykiem. Wystarczy, że</p>
-<p>chcesz, żeby Twój dom po prostu działał sensownie.</p>
-<p>&lt;/p&gt;</p>
-<p>&lt;/div&gt;</p>
-<p><br/>
-<br/>
-
-</p>
-<p>&lt;div class=&quot;grid-2&quot;&gt;</p>
-<p>&lt;div class=&quot;card&quot;&gt;</p>
-<p>&lt;h3&gt;Masz już Home Assistanta&lt;/h3&gt;</p>
-<p>&lt;p&gt;</p>
-<p>i czujesz, że „coś tam działa”, ale boisz się ruszać,
-żeby nie</p>
-<p>popsuć?</p>
-<p>&lt;/p&gt;</p>
-<p>&lt;ul&gt;</p>
-<p>&lt;li&gt;Kilka/kilkadziesiąt automatyzacji – część działa,
-część nie&lt;/li&gt;</p>
-<p>&lt;li&gt;Różne integracje (Zigbee, Tuya, Wi-Fi, kamery)&lt;/li&gt;</p>
-<p>&lt;li&gt;Brak całościowego spojrzenia: co, z czym i po co&lt;/li&gt;</p>
-<p>&lt;/ul&gt;</p>
-<p>&lt;/div&gt;</p>
-<p><br/>
-<br/>
-
-</p>
-<p>&lt;div class=&quot;card&quot;&gt;</p>
-<p>&lt;h3&gt;Chcesz dopiero zacząć&lt;/h3&gt;</p>
-<p>&lt;p&gt;</p>
-<p>ale nie masz czasu na czytanie dokumentacji i forum – i wolisz</p>
-<p>zacząć od sensownej, prostej konfiguracji.</p>
-<p>&lt;/p&gt;</p>
-<p>&lt;ul&gt;</p>
-<p>&lt;li&gt;Dobór urządzeń, które mają sens (a nie tylko są
-„fajne”)&lt;/li&gt;</p>
-<p>&lt;li&gt;Start od prostych scenariuszy, które używasz
-codziennie&lt;/li&gt;</p>
-<p>&lt;li&gt;Możliwość rozbudowy w przyszłości, bez wywracania
-wszystkiego&lt;/li&gt;</p>
-<p>&lt;/ul&gt;</p>
-<p>&lt;/div&gt;</p>
-<p>&lt;/div&gt;</p>
-<p><br/>
-<br/>
-
-</p>
-<p>&lt;div class=&quot;chip-row&quot;&gt;</p>
-<p>&lt;div class=&quot;chip&quot;&gt;</p>
-<p>Rolety, termostaty, głowice, czujniki ruchu/temperatury,</p>
-<p>rekuperacja, PV, kamery IP…</p>
-<p>&lt;/div&gt;</p>
-<p>&lt;div class=&quot;chip&quot;&gt;</p>
-<p>Domy jednorodzinne, mieszkania, warsztaty, małe biura.</p>
-<p>&lt;/div&gt;</p>
-<p>&lt;div class=&quot;chip&quot;&gt;</p>
-<p>Współpraca w języku polskim – online.</p>
-<p>&lt;/div&gt;</p>
-<p>&lt;/div&gt;</p>
-<p>&lt;/section&gt;</p>
-<p><br/>
-<br/>
-
-</p>
-<p>&lt;!-- PROCESS --&gt;</p>
-<p>&lt;section class=&quot;section&quot; id=&quot;process&quot;&gt;</p>
-<p>&lt;div class=&quot;section-header&quot;&gt;</p>
-<p>&lt;div class=&quot;section-label&quot;&gt;Jak pracuję&lt;/div&gt;</p>
-<p>&lt;h2 class=&quot;section-title&quot;&gt;Współpraca krok po
-kroku&lt;/h2&gt;</p>
-<p>&lt;p class=&quot;section-subtitle&quot;&gt;</p>
-<p>Zamiast „pakietu cud” – konkretny plan, co robię, w jakiej
-kolejności</p>
-<p>i za ile. Bez zaskoczeń.</p>
-<p>&lt;/p&gt;</p>
-<p>&lt;/div&gt;</p>
-<p><br/>
-<br/>
-
-</p>
-<p>&lt;div class=&quot;grid-2&quot;&gt;</p>
-<p>&lt;div class=&quot;card&quot;&gt;</p>
-<p>&lt;div class=&quot;step&quot;&gt;</p>
-<p>&lt;div class=&quot;step-number&quot;&gt;1&lt;/div&gt;</p>
-<p>&lt;div&gt;</p>
-<p>&lt;div class=&quot;step-title&quot;&gt;</p>
-<p>Bezpłatna konsultacja (do 30 min)</p>
-<p>&lt;/div&gt;</p>
-<p>&lt;div class=&quot;step-text&quot;&gt;</p>
-<p>Rozmawiamy przez telefon / online. Pokazujesz mi, co już masz</p>
-<p>(screeny, krótki opis, zdjęcia instalacji). Ustalamy, co jest</p>
-<p>realne i co ma priorytet.</p>
-<p>&lt;/div&gt;</p>
-<p>&lt;/div&gt;</p>
-<p>&lt;/div&gt;</p>
-<p><br/>
-<br/>
-
-</p>
-<p>&lt;div style=&quot;height: 8px&quot;&gt;&lt;/div&gt;</p>
-<p><br/>
-<br/>
-
-</p>
-<p>&lt;div class=&quot;step&quot;&gt;</p>
-<p>&lt;div class=&quot;step-number&quot;&gt;2&lt;/div&gt;</p>
-<p>&lt;div&gt;</p>
-<p>&lt;div class=&quot;step-title&quot;&gt;Audyt i plan
-działania&lt;/div&gt;</p>
-<p>&lt;div class=&quot;step-text&quot;&gt;</p>
-<p>Loguję się zdalnie lub pracuję na podstawie Twojej</p>
-<p>konfiguracji. Sprawdzam integracje, Zigbee, automatyzacje.</p>
-<p>Dostajesz prosty plan: co robię i ile to potrwa.</p>
-<p>&lt;/div&gt;</p>
-<p>&lt;/div&gt;</p>
-<p>&lt;/div&gt;</p>
-<p>&lt;/div&gt;</p>
-<p><br/>
-<br/>
-
-</p>
-<p>&lt;div class=&quot;card&quot;&gt;</p>
-<p>&lt;div class=&quot;step&quot;&gt;</p>
-<p>&lt;div class=&quot;step-number&quot;&gt;3&lt;/div&gt;</p>
-<p>&lt;div&gt;</p>
-<p>&lt;div class=&quot;step-title&quot;&gt;Realizacja + testy&lt;/div&gt;</p>
-<p>&lt;div class=&quot;step-text&quot;&gt;</p>
-<p>Konfiguruję automatyzacje, dashboardy, logikę ogrzewania,</p>
-<p>rolety, powiadomienia z kamer. Razem testujemy typowe</p>
-<p>scenariusze – dzień, noc, wyjazd, goście.</p>
-<p>&lt;/div&gt;</p>
-<p>&lt;/div&gt;</p>
-<p>&lt;/div&gt;</p>
-<p><br/>
-<br/>
-
-</p>
-<p>&lt;div style=&quot;height: 8px&quot;&gt;&lt;/div&gt;</p>
-<p><br/>
-<br/>
-
-</p>
-<p>&lt;div class=&quot;step&quot;&gt;</p>
-<p>&lt;div class=&quot;step-number&quot;&gt;4&lt;/div&gt;</p>
-<p>&lt;div&gt;</p>
-<p>&lt;div class=&quot;step-title&quot;&gt;Wsparcie po
-wdrożeniu&lt;/div&gt;</p>
-<p>&lt;div class=&quot;step-text&quot;&gt;</p>
-<p>Dostajesz krótką instrukcję „jak tym sterować”. Możesz</p>
-<p>wrócić z kolejnymi pomysłami, gdy będziesz chciał rozbudować</p>
-<p>system – bez zaczynania od zera.</p>
-<p>&lt;/div&gt;</p>
-<p>&lt;/div&gt;</p>
-<p>&lt;/div&gt;</p>
-<p>&lt;/div&gt;</p>
-<p>&lt;/div&gt;</p>
-<p>&lt;/section&gt;</p>
-<p><br/>
-<br/>
-
-</p>
-<p>&lt;!-- PRICING --&gt;</p>
-<p>&lt;section class=&quot;section&quot; id=&quot;pricing&quot;&gt;</p>
-<p>&lt;div class=&quot;section-header&quot;&gt;</p>
-<p>&lt;div class=&quot;section-label&quot;&gt;Pakiety&lt;/div&gt;</p>
-<p>&lt;h2 class=&quot;section-title&quot;&gt;Proste zasady
-rozliczeń&lt;/h2&gt;</p>
-<p>&lt;p class=&quot;section-subtitle&quot;&gt;</p>
-<p>Zawsze ustalamy zakres i orientacyjny koszt &lt;strong&gt;przed&lt;/strong&gt;</p>
-<p>rozpoczęciem pracy. Bez niespodzianek na koniec.</p>
-<p>&lt;/p&gt;</p>
-<p>&lt;/div&gt;</p>
-<p><br/>
-<br/>
-
-</p>
-<p>&lt;div class=&quot;pricing-grid&quot;&gt;</p>
-<p>&lt;div class=&quot;price-card&quot;&gt;</p>
-<p>&lt;div class=&quot;price-badge&quot;&gt;Pakiet start&lt;/div&gt;</p>
-<p>&lt;div class=&quot;price-title&quot;&gt;„Ogarnij chaos”&lt;/div&gt;</p>
-<p>&lt;div class=&quot;price-tag&quot;&gt;na mniejsze / średnie
-instalacje&lt;/div&gt;</p>
-<p>&lt;p class=&quot;price-desc&quot;&gt;</p>
-<p>Idealny, gdy masz już Home Assistanta i kilka/kilkanaście</p>
-<p>automatyzacji, ale coś się sypie.</p>
-<p>&lt;/p&gt;</p>
-<p>&lt;ul class=&quot;price-list&quot;&gt;</p>
-<p>&lt;li&gt;Bezpłatna konsultacja (do 30 min)&lt;/li&gt;</p>
-<p>&lt;li&gt;Do 2 godzin pracy zdalnej nad Twoim systemem&lt;/li&gt;</p>
-<p>&lt;li&gt;Porządki w automatyzacjach i encjach&lt;/li&gt;</p>
-<p>&lt;li&gt;Krótki raport: co zrobiono i co warto dodać
-później&lt;/li&gt;</p>
-<p>&lt;/ul&gt;</p>
-<p>&lt;/div&gt;</p>
-<p><br/>
-<br/>
-
-</p>
-<p>&lt;div class=&quot;price-card price-highlight&quot;&gt;</p>
-<p>&lt;div class=&quot;price-ribbon&quot;&gt;Najczęstszy wybór&lt;/div&gt;</p>
-<p>&lt;div class=&quot;price-badge&quot;&gt;Pakiet rozszerzony&lt;/div&gt;</p>
-<p>&lt;div class=&quot;price-title&quot;&gt;Dom + ogrzewanie +
-Zigbee&lt;/div&gt;</p>
-<p>&lt;div class=&quot;price-tag&quot;&gt;</p>
-<p>dla bardziej rozbudowanych instalacji</p>
-<p>&lt;/div&gt;</p>
-<p>&lt;p class=&quot;price-desc&quot;&gt;</p>
-<p>Gdy w grę wchodzi kocioł/bufor, kilka stref grzania, sporo</p>
-<p>Zigbee i więcej niż kilka kamer/urządzeń.</p>
-<p>&lt;/p&gt;</p>
-<p>&lt;ul class=&quot;price-list&quot;&gt;</p>
-<p>&lt;li&gt;Audyt systemu i propozycja zmian&lt;/li&gt;</p>
-<p>&lt;li&gt;4–6 godzin pracy (w kilku sesjach)&lt;/li&gt;</p>
-<p>&lt;li&gt;Optymalizacja logiki ogrzewania i automatyzacji&lt;/li&gt;</p>
-<p>&lt;li&gt;Dashboardy z najważniejszymi danymi&lt;/li&gt;</p>
-<p>&lt;li&gt;Krótka „instrukcja obsługi” po wdrożeniu&lt;/li&gt;</p>
-<p>&lt;/ul&gt;</p>
-<p>&lt;/div&gt;</p>
-<p><br/>
-<br/>
-
-</p>
-<p>&lt;div class=&quot;price-card&quot;&gt;</p>
-<p>&lt;div class=&quot;price-badge&quot;&gt;Rozliczenie
-godzinowe&lt;/div&gt;</p>
-<p>&lt;div class=&quot;price-title&quot;&gt;Elastycznie „na
-licznik”&lt;/div&gt;</p>
-<p>&lt;div class=&quot;price-tag&quot;&gt;</p>
-<p>idealne przy nietypowych / trudnych przypadkach</p>
-<p>&lt;/div&gt;</p>
-<p>&lt;p class=&quot;price-desc&quot;&gt;</p>
-<p>Umawiamy się na stawkę godzinową i wspólnie pilnujemy czasu.</p>
-<p>&lt;/p&gt;</p>
-<p>&lt;ul class=&quot;price-list&quot;&gt;</p>
-<p>&lt;li&gt;Rozliczenie za realnie poświęcone godziny&lt;/li&gt;</p>
-<p>&lt;li&gt;Możesz zatrzymać pracę w dowolnym momencie&lt;/li&gt;</p>
-<p>&lt;li&gt;Przejrzysty podział: co kiedy i ile zajęło&lt;/li&gt;</p>
-<p>&lt;li&gt;Stawkę ustalamy indywidualnie (PL / DK)&lt;/li&gt;</p>
-<p>&lt;/ul&gt;</p>
-<p>&lt;/div&gt;</p>
-<p>&lt;/div&gt;</p>
-<p>&lt;/section&gt;</p>
-<p><br/>
-<br/>
-
-</p>
-<p>&lt;!-- WHY ME --&gt;</p>
-<p>&lt;section class=&quot;section&quot;&gt;</p>
-<p>&lt;div class=&quot;section-header&quot;&gt;</p>
-<p>&lt;div class=&quot;section-label&quot;&gt;Dlaczego ja&lt;/div&gt;</p>
-<p>&lt;h2 class=&quot;section-title&quot;&gt;Dlaczego warto powierzyć
-mi Twój HA?&lt;/h2&gt;</p>
-<p>&lt;p class=&quot;section-subtitle&quot;&gt;</p>
-<p>Zamiast obiecywać „kosmiczną automatykę”, robię to, co ma
-sens na</p>
-<p>co dzień – i co da się utrzymać bez magii.</p>
-<p>&lt;/p&gt;</p>
-<p>&lt;/div&gt;</p>
-<p><br/>
-<br/>
-
-</p>
-<p>&lt;div class=&quot;grid-2&quot;&gt;</p>
-<p>&lt;div class=&quot;card&quot;&gt;</p>
-<p>&lt;h3&gt;Sam używam HA na co dzień&lt;/h3&gt;</p>
-<p>&lt;p&gt;</p>
-<p>Rolety, ogrzewanie, Zigbee, Tuya, PV, kamery – wszystko testuję</p>
-<p>u siebie, zanim zaproponuję to u kogoś innego.</p>
-<p>&lt;/p&gt;</p>
-<p>&lt;div class=&quot;chip-row&quot;&gt;</p>
-<p>&lt;div class=&quot;chip&quot;&gt;Realne doświadczenie z awariami
-i „czkawkami”&lt;/div&gt;</p>
-<p>&lt;div class=&quot;chip&quot;&gt;Nie boję się grzebać pod
-maską&lt;/div&gt;</p>
-<p>&lt;/div&gt;</p>
-<p>&lt;/div&gt;</p>
-<p><br/>
-<br/>
-
-</p>
-<p>&lt;div class=&quot;card&quot;&gt;</p>
-<p>&lt;h3&gt;Porządek w konfiguracji&lt;/h3&gt;</p>
-<p>&lt;p&gt;</p>
-<p>Czytelne nazwy, posegregowane automatyzacje, minimum</p>
-<p>„czarów”, maksimum logiki. Tak, żebyś wiedział, co do
-czego</p>
-<p>służy – nawet za rok.</p>
-<p>&lt;/p&gt;</p>
-<p>&lt;div class=&quot;chip-row&quot;&gt;</p>
-<p>&lt;div class=&quot;chip&quot;&gt;Zero „ukrytej magii” bez
-dokumentacji&lt;/div&gt;</p>
-<p>&lt;div class=&quot;chip&quot;&gt;Szanuję kopie zapasowe&lt;/div&gt;</p>
-<p>&lt;/div&gt;</p>
-<p>&lt;/div&gt;</p>
-<p><br/>
-<br/>
-
-</p>
-<p>&lt;div class=&quot;card&quot;&gt;</p>
-<p>&lt;h3&gt;Bez wciskania sprzętu&lt;/h3&gt;</p>
-<p>&lt;p&gt;</p>
-<p>Nie sprzedaję konkretnych marek. Najpierw wykorzystuję to, co</p>
-<p>już masz. Nowy sprzęt proponuję tylko wtedy, gdy ma to sens.</p>
-<p>&lt;/p&gt;</p>
-<p>&lt;/div&gt;</p>
-<p><br/>
-<br/>
-
-</p>
-<p>&lt;div class=&quot;card&quot;&gt;</p>
-<p>&lt;h3&gt;Wsparcie po wdrożeniu&lt;/h3&gt;</p>
-<p>&lt;p&gt;</p>
-<p>Po wszystkim możesz wrócić z pytaniami lub nowymi pomysłami.</p>
-<p>Nie znikam w momencie, gdy skończymy pierwsze wdrożenie.</p>
-<p>&lt;/p&gt;</p>
-<p>&lt;/div&gt;</p>
-<p>&lt;/div&gt;</p>
-<p>&lt;/section&gt;</p>
-<p><br/>
-<br/>
-
-</p>
-<p>&lt;!-- CONTACT --&gt;</p>
-<p>&lt;section class=&quot;section&quot; id=&quot;contact&quot;&gt;</p>
-<p>&lt;div class=&quot;section-header&quot;&gt;</p>
-<p>&lt;div class=&quot;section-label&quot;&gt;Kontakt&lt;/div&gt;</p>
-<p>&lt;h2 class=&quot;section-title&quot;&gt;Napisz, co chcesz
-ogarnąć w swoim domu&lt;/h2&gt;</p>
-<p>&lt;p class=&quot;section-subtitle&quot;&gt;</p>
-<p>Im prościej opiszesz sytuację, tym lepiej. Nie musisz znać</p>
-<p>wszystkich nazw integracji – od tego jestem ja.</p>
-<p>&lt;/p&gt;</p>
-<p>&lt;/div&gt;</p>
-<p><br/>
-<br/>
-
-</p>
-<p>&lt;div class=&quot;contact-grid&quot;&gt;</p>
-<p>&lt;div class=&quot;contact-card&quot;&gt;</p>
-<p>&lt;p&gt;</p>
-<p>Opisz krótko swoją instalację: na czym działa Home Assistant</p>
-<p>(Raspberry Pi, NUC, VM, Synology), ile masz mniej więcej urządzeń</p>
-<p>oraz co najbardziej Cię boli (Zigbee, ogrzewanie, rolety,</p>
-<p>kamery, coś innego).</p>
-<p>&lt;/p&gt;</p>
-<p><br/>
-<br/>
-
-</p>
-<p>&lt;form&gt;</p>
-<p>&lt;div class=&quot;form-grid&quot;&gt;</p>
-<p>&lt;div class=&quot;form-group&quot;&gt;</p>
-<p>&lt;label for=&quot;name&quot;&gt;Imię&lt;span&gt;*&lt;/span&gt;&lt;/label&gt;</p>
-<p>&lt;input id=&quot;name&quot; type=&quot;text&quot;
-placeholder=&quot;Np. Michał&quot; /&gt;</p>
-<p>&lt;/div&gt;</p>
-<p>&lt;div class=&quot;form-group&quot;&gt;</p>
-<p>&lt;label for=&quot;email&quot;&gt;E-mail&lt;span&gt;*&lt;/span&gt;&lt;/label&gt;</p>
-<p>&lt;input</p>
-<p>id=&quot;email&quot;</p>
-<p>type=&quot;email&quot;</p>
-<p>placeholder=&quot;Twój adres e-mail do kontaktu&quot;</p>
-<p>/&gt;</p>
-<p>&lt;/div&gt;</p>
-<p>&lt;div class=&quot;form-group full&quot;&gt;</p>
-<p>&lt;label for=&quot;phone&quot;&gt;Telefon (opcjonalnie)&lt;/label&gt;</p>
-<p>&lt;input</p>
-<p>id=&quot;phone&quot;</p>
-<p>type=&quot;tel&quot;</p>
-<p>placeholder=&quot;Jeśli wolisz rozmowę telefoniczną&quot;</p>
-<p>/&gt;</p>
-<p>&lt;/div&gt;</p>
-<p><br/>
-<br/>
-
-</p>
-<p>&lt;div class=&quot;form-group full&quot;&gt;</p>
-<p>&lt;label for=&quot;message&quot;&gt;Krótki opis systemu i
-problemu&lt;span&gt;*&lt;/span&gt;&lt;/label&gt;</p>
-<p>&lt;textarea</p>
-<p>id=&quot;message&quot;</p>
-<p>placeholder=&quot;Np.: Raspberry Pi 4, ok. 30 urządzeń Zigbee,
-problemy z zasięgiem i roletami, chciałbym też ustawić sensowną
-logikę ogrzewania...&quot;</p>
-<p>&gt;&lt;/textarea&gt;</p>
-<p>&lt;/div&gt;</p>
-<p>&lt;/div&gt;</p>
-<p><br/>
-<br/>
-
-</p>
-<p>&lt;div class=&quot;checkbox-row&quot;&gt;</p>
-<p>&lt;input id=&quot;consult&quot; type=&quot;checkbox&quot; checked
-/&gt;</p>
-<p>&lt;label for=&quot;consult&quot;&gt;</p>
-<p>Chcę bezpłatną konsultację online (do 30 min), żeby</p>
-<p>omówić moją instalację i możliwe rozwiązania.</p>
-<p>&lt;/label&gt;</p>
-<p>&lt;/div&gt;</p>
-<p><br/>
-<br/>
-
-</p>
-<p>&lt;button type=&quot;submit&quot; class=&quot;btn-primary&quot;&gt;</p>
-<p>Wyślij wiadomość</p>
-<p>&lt;span&gt;→&lt;/span&gt;</p>
-<p>&lt;/button&gt;</p>
-<p><br/>
-<br/>
-
-</p>
-<p>&lt;div class=&quot;contact-footer&quot;&gt;</p>
-<p>&lt;span&gt;</p>
-<p>Formularz jest wersją poglądową. Na docelowej stronie podłącz</p>
-<p>go do swojego systemu (np. formularz kontaktowy, e-mail).</p>
-<p>&lt;/span&gt;</p>
-<p>&lt;/div&gt;</p>
-<p>&lt;/form&gt;</p>
-<p>&lt;/div&gt;</p>
-<p><br/>
-<br/>
-
-</p>
-<p>&lt;div&gt;</p>
-<p>&lt;p class=&quot;contact-alt&quot;&gt;</p>
-<p>Jeśli wolisz, możesz od razu napisać maila:</p>
-<p>&lt;/p&gt;</p>
-<p>&lt;div class=&quot;card&quot;&gt;</p>
-<p>&lt;div class=&quot;chip-row&quot;&gt;</p>
-<p>&lt;div class=&quot;chip green&quot;&gt;</p>
-<p>E-mail: &lt;strong&gt;twoj.mail@example.com&lt;/strong&gt;</p>
-<p>&lt;/div&gt;</p>
-<p>&lt;/div&gt;</p>
-<p>&lt;p style=&quot;margin-top: 10px&quot;&gt;</p>
-<p>W temacie możesz dopisać: &lt;strong&gt;„Home Assistant –
-konsultacja”&lt;/strong&gt;,</p>
-<p>a w treści wkleić kilka screenów z Home Assistanta (np.</p>
-<p>dashboard, Zigbee, ogrzewanie). To bardzo ułatwia pierwszą</p>
-<p>analizę.</p>
-<p>&lt;/p&gt;</p>
-<p>&lt;p style=&quot;font-size: 0.8rem; color: var(--muted);
-margin-top: 10px&quot;&gt;</p>
-<p>Dane kontaktowe powyżej są przykładowe – wpisz tu swój
-prawdziwy</p>
-<p>adres e-mail, numer telefonu i ewentualnie link do komunikatora</p>
-<p>(np. WhatsApp / Signal).</p>
-<p>&lt;/p&gt;</p>
-<p>&lt;/div&gt;</p>
-<p>&lt;/div&gt;</p>
-<p>&lt;/div&gt;</p>
-<p>&lt;/section&gt;</p>
-<p>&lt;/main&gt;</p>
-<p><br/>
-<br/>
-
-</p>
-<p>&lt;footer&gt;</p>
-<p>&lt;div class=&quot;footer-inner&quot;&gt;</p>
-<p>&lt;span&gt;</p>
-<p>© &lt;span id=&quot;year&quot;&gt;&lt;/span&gt; Home Assistant –
-konfiguracja &amp; automatyzacje.</p>
-<p>&lt;/span&gt;</p>
-<p>&lt;span&gt;</p>
-<p>Strona poglądowa – treść i układ możesz dowolnie dopasować
-do swojego</p>
-<p>stylu i logo.</p>
-<p>&lt;/span&gt;</p>
-<p>&lt;/div&gt;</p>
-<p>&lt;/footer&gt;</p>
-<p>&lt;/div&gt;</p>
-<p><br/>
-<br/>
-
-</p>
-<p>&lt;script&gt;</p>
-<p>// Rok w stopce</p>
-<p>document.getElementById(&quot;year&quot;).textContent = new
-Date().getFullYear();</p>
-<p>&lt;/script&gt;</p>
-<p>&lt;/body&gt;</p>
-<p>&lt;/html&gt;</p>
+
+<body>
+  <header>
+    <div class="nav">
+      <div class="logo">
+        <div class="logo-mark">HA</div>
+        <div data-i18n="logo_text">TOMASZ FURDAL · HOME ASSISTANT</div>
+      </div>
+
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="#services" data-i18n="nav_services">Usługi</a></li>
+          <li><a href="#for" data-i18n="nav_for">Dla kogo</a></li>
+          <li><a href="#process" data-i18n="nav_process">Jak pracuję</a></li>
+                    
+        </ul>
+      </nav>
+
+      <div class="lang-switch" aria-label="Language switch">
+        <button class="lang-btn" type="button" data-lang="pl" aria-label="Polski">🇵🇱</button>
+        <button class="lang-btn" type="button" data-lang="da" aria-label="Dansk">🇩🇰</button>
+        <button class="lang-btn" type="button" data-lang="en" aria-label="English">🇬🇧</button>
+      </div>
+
+      <a class="nav-cta" href="#contact" data-i18n="nav_cta">Gratis diagnose</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="section hero" id="top">
+      <div>
+        <div class="badge">
+          <div class="badge-dot"><div class="badge-dot-inner"></div></div>
+          <span data-i18n="hero_badge">Ustawiam HA tak, żeby działał sam, dodaję osobne panele z powiązanymi funkcjami.</span>
+        </div>
+
+        <h1 data-i18n-html="hero_h1">Home Assistant: konfiguracja i integracje <span>PL / DK</span></h1>
+        <p class="hero-sub" data-i18n="hero_sub">
+          Opisujesz problem przez formularz albo e-mail. Ja analizuję i odpisuję. Jeśli trzeba – przechodzimy na kontakt telefoniczny.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn-primary" href="#contact" data-i18n="hero_btn_primary">Gratis diagnose  →</a>
+          <a class="btn-ghost" href="#services" data-i18n="hero_btn_ghost">Zobacz usługi</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="section" id="services">
+      <div class="section-label" data-i18n="services_label">Usługi</div>
+      <h2 class="section-title" data-i18n="services_title">W czym pomagam</h2>
+      <p class="section-subtitle" data-i18n="services_subtitle">
+        Home Assistant – konfiguracja, integracje i automatyzacje. 
+      </p>
+
+      <div class="grid-3" style="margin-top:16px">
+        <div class="card">
+          <h3 data-i18n="svc1_t">Start / uporządkowanie HA</h3>
+          
+          <ul>
+            <li data-i18n="svc1_lx1">Instalacja</li>
+<li data-i18n="svc1_lx2">Konfiguracja</li>
+<li data-i18n="svc1_lx3">Sensowny dashboard</li>
+<li data-i18n="svc1_l1">Raspberry Pi / miniPC / Linux</li>
+            <li data-i18n="svc1_l2">Integracje i porządek w encjach</li>
+            <li data-i18n="svc1_l3">Backup przed zmianami</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3 data-i18n="svc2_t">Zigbee / Tuya</h3>
+          
+          <ul>
+            <li data-i18n="svc2_l1">ZHA lub Zigbee2MQTT</li>
+<li data-i18n="svc2_lx">Dodanie integracji</li>
+            <li data-i18n="svc2_l2">Dobranie kanału, żeby nie było konfliktu z siecią Wi‑Fi 2.4GHz</li>
+            
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3 data-i18n="svc3_t">Automatyzacje</h3>
+          
+          <ul>
+            <li data-i18n="svc3_l1">Jasna logika — bez chaosu</li>
+            <li data-i18n="svc3_l2">Testy: co się stanie i kiedy</li>
+            <li data-i18n="svc3_l3">Dokumentacja: co jest do czego</li>
+          <li data-i18n="svc3_l4">Skrypty</li>
+<li data-i18n="svc3_l5">Integracje</li>
+<li data-i18n="svc3_l6">Alerty</li>
+</ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOR WHOM -->
+    <section class="section" id="for">
+      <div class="section-label" data-i18n="for_label">Dla kogo</div>
+      <h2 class="section-title" data-i18n="for_title">To jest dla Ciebie, jeśli…</h2>
+      <p class="section-subtitle" data-i18n="for_subtitle">Nie musisz być informatykiem, ale chciałbyś smart home.</p>
+
+      <div class="grid-2" style="margin-top:16px">
+        <div class="card">
+          <h3 data-i18n="for1_t">Masz już Home Assistanta</h3>
+          <p data-i18n="for1_p">…ale część rzeczy nie działa, a Ty nie wiesz dlaczego.</p>
+          <ul>
+            <li data-i18n="for1_l1">Zigbee czasem nie reaguje</li>
+            <li data-i18n="for1_l2">Automatyzacje „raz działają, raz nie”</li>
+            <li data-i18n="for1_l3">Brak porządku i kontroli</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3 data-i18n="for2_t">Chcesz dopiero zacząć</h3>
+          <p data-i18n="for2_p">…ale wolisz szybki start z kimś, kto to robi praktycznie i ma doświadczenie.</p>
+          <ul>
+            <li data-i18n="for2_l1">Dobór sensownych urządzeń</li>
+            <li data-i18n="for2_l2">Pierwsze sceny: światło/rolety/alerty</li>
+            <li data-i18n="for2_l3">Plan rozbudowy</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section class="section" id="process">
+      <div class="section-label" data-i18n="proc_label">Proces</div>
+      <h2 class="section-title" data-i18n="proc_title">Jak to wygląda</h2>
+      <p class="section-subtitle" data-i18n="proc_subtitle">Krótko: najpierw rozpoznanie, potem robota, potem test.</p>
+
+      <div class="grid-2" style="margin-top:16px">
+        <div class="card">
+          <h3 data-i18n="step1_t">1) Gratis diagnose </h3>
+          <p data-i18n="step1_p">Opisujesz problem. Ustalamy, co ma sens zrobić lub gdzie leży problem.</p>
+        </div>
+        <div class="card">
+          <h3 data-i18n="step2_t">2) Praca i testy</h3>
+          <p data-i18n="step2_p">Po ustaleniu przyczyny problemu: praca godzinowa albo projekt od podstaw w zależności od zadania (wycena indywidualna). Łączymy się online (AnyDesk / VPN), robię zmiany etapami i na koniec testujemy. Jak wszystko w porządku – dokonujesz opłaty.</p>
+        </div>
+      </div>
+    
+      
+
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="contact">
+      <div class="section-label" data-i18n="c_label">Kontakt</div>
+      <h2 class="section-title" data-i18n="c_title">Napisz, co chcesz ogarnąć</h2>
+      <p class="section-subtitle" data-i18n="c_subtitle">
+        Najpierw formularz albo e-mail. Potem ja wracam z odpowiedzią i dopiero ustalamy dalszy kanał (np. Telegram).
+      </p>
+
+      <div class="contact-grid" style="margin-top:16px">
+        <div class="card">
+          <p data-i18n="c_hint">
+            Opisz krótko: gdzie działa Home Assistant, ile masz urządzeń i co nie działa (np. Zigbee, rolety, ogrzewanie, kamery).
+          </p>
+
+          <form id="contactForm" action="https://formspree.io/f/mkgdyyrv" method="POST">
+            <input type="hidden" name="lang" id="formLang" value="pl" />
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="name" data-i18n="f_name_label">Imię<span>*</span></label>
+                <input id="name" name="name" type="text" required data-i18n-placeholder="f_name_ph" placeholder="Np. Michał" />
+              </div>
+              <div class="form-group">
+                <label for="email" data-i18n="f_email_label">E-mail<span>*</span></label>
+                <input id="email" name="email" type="email" required data-i18n-placeholder="f_email_ph" placeholder="Twój adres e-mail do kontaktu" />
+              </div>
+
+              <div class="form-group full">
+                <label for="message" data-i18n="f_msg_label">Opis problemu<span>*</span></label>
+                <textarea id="message" name="message" required data-i18n-placeholder="f_msg_ph" placeholder="Np.: Raspberry Pi, ~30 urządzeń Zigbee, brak synchronizacji stanu, chcę ogarnąć automatyzacje..."></textarea>
+              </div>
+            </div>
+            <button class="btn-primary" type="submit" data-i18n="f_submit">Wyślij →</button>
+            <div id="formStatus" class="form-status" role="status" aria-live="polite"></div>
+          </form>
+        </div>
+
+        <div class="card">
+          <p data-i18n="alt_title">Jeśli wolisz, możesz napisać bezpośrednio:</p>
+          <div class="pill-row" style="margin-top:6px">
+            <div class="pill ok"><span style="cursor:pointer;color:#00ff99;text-decoration:underline;" onclick="navigator.clipboard.writeText('fc5tomasz@gmail.com');alert('Skopiowano adres e-mail do schowka!');">fc5tomasz@gmail.com</span></div>
+          </div>
+          <p style="margin-top:12px" data-i18n="alt_text">
+            W temacie dopisz „Home Assistant – konsultacja”, a w treści wklej 1–2 screeny z Home Assistanta (np. dashboard / Zigbee). To przyspiesza analizę.
+          </p>
+        </div>
+      </div>
+    </section>
+  
+<section class="section" id="payments" style="display:none;">
+  <div class="card">
+    <p>Płatność: DK – MobilePay. PL/EN – przelew bankowy. Dane wysyłam po ustaleniu współpracy. Możliwy również PayPal.</p>
+  </div>
+</section>
+<script>
+document.querySelector('a[href="#payments"]').addEventListener('click', (e) => {
+  e.preventDefault();
+  document.getElementById('payments').style.display = 'block';
+  document.getElementById('payments').scrollIntoView({ behavior: 'smooth' });
+});
+</script>
+
+</main>
+
+  <footer>
+    <div class="footer-inner">
+      <span data-i18n-html="footer_left">© <span id="year"></span> Tomasz Furdal – Home Assistant &amp; Integrations</span>
+      <span data-i18n="footer_right">Płatności: przelewy bankowe, PayPal, MobilePay</span>
+    </div>
+  </footer>
+
+  <script>
+    // year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const supported = ["pl","da","en"];
+
+    const I18N = {
+      pl: {
+        meta_title: "Home Assistant – konfiguracja i integracje | Tomasz Furdal",
+        meta_desc: "Tomasz Furdal – konfiguracja i integracja Home Assistant. Polska i Dania. Home Assistant setup, automatyzacje, Zigbee/Tuya, inteligentny dom.",
+        meta_keywords: "Tomasz Furdal, Home Assistant, konfiguracja Home Assistant Polska Dania, Home Assistant setup Denmark, integracje automatyzacje inteligentny dom",
+
+        logo_text: "TOMASZ FURDAL · HOME ASSISTANT",
+        nav_services: "Usługi",
+        nav_for: "Dla kogo",
+        nav_process: "Jak pracuję",
+nav_contact: "Kontakt",
+        nav_cta: "Bezpłatna diagnoza",
+
+        hero_badge: "Ustawiam HA tak, żeby działał sam, dodaję osobne panele z powiązanymi funkcjami.",
+        hero_h1: "Home Assistant: konfiguracja i integracje <span>PL / DK</span>",
+        hero_sub: "Opisujesz problem przez formularz albo e-mail. Ja analizuję i odpisuję. Jeśli trzeba – przechodzimy na kontakt telefoniczny.",
+        hero_btn_primary: "Bezpłatna diagnoza  →",
+        hero_btn_ghost: "Zobacz usługi",
+services_label: "Usługi",
+        services_title: "W czym pomagam",
+        services_subtitle: "Home Assistant – konfiguracja, integracje i automatyzacje. ",
+        svc1_t: "Start / uporządkowanie HA",
+        svc1_p: "Instalacja, konfiguracja, naprawa bałaganu, sensowny dashboard.",
+        svc1_lx1: "Instalacja",
+        svc1_lx2: "Konfiguracja",
+        svc1_lx3: "Sensowny dashboard",
+        svc1_l1: "Raspberry Pi / miniPC / Linux",
+        svc1_l2: "Integracje i porządek w encjach",
+        svc1_l3: "Backup przed zmianami",
+        svc2_t: "Zigbee / Tuya",
+        svc2_p: "Stabilność sieci, zasięg, routery, dobre praktyki.",
+        svc2_l1: "ZHA lub Zigbee2MQTT",
+        svc2_lx: "Dodanie integracji",
+        svc2_l2: "Kanały i konflikt Wi‑Fi",
+        svc2_l3: "Naprawa urządzeń „offline”",
+        svc3_t: "Automatyzacje",
+        svc3_p: "Sceny, skrypty, integracje, alerty – prosto i przewidywalnie.",
+        svc3_l1: "Jasna logika — bez chaosu",
+        svc3_l2: "Testy: co się stanie i kiedy",
+        svc3_l3: "Dokumentacja: co jest do czego",
+        svc3_l4: "Skrypty",
+        svc3_l5: "Integracje",
+        svc3_l6: "Alerty",
+
+        for_label: "Dla kogo",
+        for_title: "To jest dla Ciebie, jeśli…",
+        for_subtitle: "Nie musisz być informatykiem, ale chciałbyś smart home.",
+        for1_t: "Masz już Home Assistanta",
+        for1_p: "…ale część rzeczy nie działa, a Ty nie wiesz dlaczego.",
+        for1_l1: "Zigbee czasem nie reaguje",
+        for1_l2: "Automatyzacje „raz działają, raz nie”",
+        for1_l3: "Brak porządku i kontroli",
+        for2_t: "Chcesz dopiero zacząć",
+        for2_p: "…ale wolisz szybki start z kimś, kto to robi praktycznie i ma doświadczenie.",
+        for2_l1: "Dobór sensownych urządzeń",
+        for2_l2: "Pierwsze sceny: światło/rolety/alerty",
+        for2_l3: "Plan rozbudowy",
+
+        proc_label: "Proces",
+        proc_title: "Jak to wygląda",
+        proc_subtitle: "Krótko: najpierw rozpoznanie, potem robota, potem test.",
+        step1_t: "1) Bezpłatna diagnoza ",
+        step1_p: "Opisujesz problem. Ustalamy, co ma sens zrobić lub gdzie leży problem.",
+        step2_t: "2) Praca i testy",
+        step2_p: "Po ustaleniu przyczyny problemu: praca godzinowa albo projekt od podstaw w zależności od zadania (wycena indywidualna). Łączymy się online (AnyDesk / VPN), robię zmiany etapami i na koniec testujemy. Jak wszystko w porządku – dokonujesz opłaty.",
+
+        pay_note_plain: "Płatność: DK – MobilePay. PL/EN – przelew bankowy. Dane wysyłam po ustaleniu współpracy. PayPal – nie.",
+c_label: "Kontakt",
+        c_title: "Napisz, co chcesz ogarnąć",
+        c_subtitle: "Najpierw formularz albo e-mail. Potem ja wracam z odpowiedzią i dopiero ustalamy dalszy kanał (np. Telegram).",
+        c_hint: "Opisz krótko: gdzie działa Home Assistant, ile masz urządzeń i co nie działa (np. Zigbee, rolety, ogrzewanie, kamery).",
+        f_name_label: "Imię",
+        f_email_label: "E-mail",
+        f_msg_label: "Opis problemu",
+        f_name_ph: "Np. Michał",
+        f_email_ph: "Twój adres e-mail do kontaktu",
+        f_msg_ph: "Np.: Raspberry Pi, ~30 urządzeń Zigbee, brak synchronizacji stanu, chcę ogarnąć automatyzacje...",
+f_submit: "Wyślij →",
+        alt_title: "Jeśli wolisz, możesz napisać bezpośrednio:",
+        alt_text: "W temacie dopisz „Home Assistant – konsultacja”, a w treści wklej 1–2 screeny z Home Assistanta (np. dashboard / Zigbee). To przyspiesza analizę.",
+
+        footer_left: "© <span id=\"year\"></span> Tomasz Furdal – Home Assistant &amp; Integrations",
+        footer_right: "Płatności: przelewy bankowe, PayPal, MobilePay",
+
+        status_sending: "Wysyłam…",
+        status_ok: "Gotowe. Otrzymałem wiadomość – wrócę z odpowiedzią na maila.",
+        status_err: "Nie wyszło. Spróbuj ponownie albo napisz na: fc5tomasz@gmail.com"
+      },
+
+      da: {
+        meta_title: "Home Assistant – opsætning og integrationer | Tomasz Furdal",
+        meta_desc: "Tomasz Furdal – opsætning og integration af Home Assistant. Danmark og Polen. Automatiseringer, Zigbee/Tuya, smart home.",
+        meta_keywords: "Tomasz Furdal, Home Assistant, Home Assistant setup Denmark, konfiguracja Home Assistant Polska Dania, integracje automatyzacje inteligentny dom",
+
+        logo_text: "TOMASZ FURDAL · HOME ASSISTANT",
+        nav_services: "Ydelser",
+        nav_for: "For hvem",
+        nav_process: "Sådan arbejder jeg",
+nav_contact: "Kontakt",
+        nav_cta: "Gratis diagnose",
+
+        hero_badge: "Jeg får HA til at køre selvstændigt og tilføjer særskilte paneler med relaterede funktioner.",
+        hero_h1: "Home Assistant: opsætning og integrationer <span>DK / PL</span>",
+        hero_sub: "Du beskriver problemet via formular eller e-mail. Jeg analyserer og svarer. Hvis nødvendigt, tager vi kontakt telefonisk.",
+        hero_btn_primary: "Gratis diagnose  →",
+        hero_btn_ghost: "Se ydelser",
+services_label: "Ydelser",
+        services_title: "Hvad jeg hjælper med",
+        services_subtitle: "Home Assistant – opsætning, integrationer og automatiseringer. Uden at skifte hele huset ud.",
+        svc1_t: "Start / oprydning i HA",
+        svc1_p: "Installation, opsætning, oprydning og overskueligt dashboard.",
+        svc1_lx1: "Installation",
+        svc1_lx2: "Konfiguration",
+        svc1_lx3: "Overskueligt dashboard",
+        svc1_l1: "Raspberry Pi / miniPC / Linux",
+        svc1_l2: "Integrationer og orden i entiteter",
+        svc1_l3: "Backup før ændringer",
+        svc2_t: "Zigbee / Tuya",
+        svc2_p: "Stabilitet, rækkevidde, routere, offline-fix og best practices.",
+        svc2_l1: "ZHA eller Zigbee2MQTT",
+        svc2_lx: "Tilføj integrationer",
+        svc2_l2: "Kanaler og Wi‑Fi konflikter",
+        svc2_l3: "Fix af enheder der går offline",
+        svc3_t: "Automatiseringer",
+        svc3_p: "Scener, knapper, rullegardiner, alarmer – simpelt og forudsigeligt.",
+        svc3_l1: "Klar logik – uden kaos",
+        svc3_l2: "Test: hvad sker hvornår",
+        svc3_l3: "Kort dokumentation",
+        svc3_l4: "Skripter",
+        svc3_l5: "Integrationer",
+        svc3_l6: "Alarmer",
+
+        for_label: "For hvem",
+        for_title: "Det er til dig, hvis…",
+        for_subtitle: "Du behøver ikke være nørd, men du vil gerne have et smart home.",
+        for1_t: "Du har allerede Home Assistant",
+        for1_p: "…men noget er ustabilt, og du ved ikke hvorfor.",
+        for1_l1: "Zigbee reagerer ikke altid",
+        for1_l2: "Automatiseringer virker kun nogle gange",
+        for1_l3: "Mangler overblik og kontrol",
+        for2_t: "Du vil starte fra nul",
+        for2_p: "…men vil hellere i gang hurtigt med en praktisk opsætning.",
+        for2_l1: "Valg af udstyr der giver mening",
+        for2_l2: "Første scenarier: lys/rullegardiner/alarmer",
+        for2_l3: "Plan for udvidelse uden at bygge alt om",
+
+        proc_label: "Proces",
+        proc_title: "Sådan foregår det",
+        proc_subtitle: "Kort: afklaring → arbejde → test.",
+        step1_t: "1) Gratis diagnose ",
+        step1_p: "Du forklarer problemet. Vi finder årsagen eller næste skridt.",
+        step2_t: "2) Arbejde og test",
+        step2_p: "Når årsagen er fundet: timebaseret arbejde eller projekt fra bunden afhængigt af opgaven (individuel pris). Vi forbinder online (AnyDesk / VPN), jeg laver ændringer i trin, tester og derefter betaler du.",
+
+        pay_note_plain: "Betaling: DK – MobilePay. PL/EN – bankoverførsel. Oplysninger sendes efter aftale. PayPal – nej.",
+c_label: "Kontakt",
+        c_title: "Skriv hvad du vil have løst i dit hjem",
+        c_subtitle: "Først formular eller e-mail. Jeg svarer – og først derefter aftaler vi kanal (fx Telegram).",
+        c_hint: "Skriv kort: hvor kører Home Assistant, ca. antal enheder og hvad der driller (Zigbee, rullegardiner, varme, kameraer).",
+        f_name_label: "Navn",
+        f_email_label: "E-mail",
+        f_msg_label: "Kort beskrivelse",
+        f_name_ph: "Fx Jørgen",
+        f_email_ph: "Din e-mail",
+        f_msg_ph: "Fx: miniPC, ~30 Zigbee-enheder, ustabil status, vil have bedre automatiseringer...",
+f_submit: "Send →",
+        alt_title: "Hvis du vil, kan du også skrive direkte:",
+        alt_text: "Skriv i emnet “Home Assistant – konsultation” og indsæt 1–2 screenshots (dashboard/Zigbee). Det gør analysen hurtigere.",
+
+        footer_left: "© <span id=\"year\"></span> Tomasz Furdal – Home Assistant &amp; Integrations",
+        footer_right: "Betaling: bankoverførsel, PayPal, MobilePay",
+
+        status_sending: "Sender…",
+        status_ok: "Sendt. Jeg svarer tilbage på mail.",
+        status_err: "Noget gik galt. Prøv igen eller skriv til: fc5tomasz@gmail.com"
+      },
+
+      en: {
+        meta_title: "Home Assistant – setup & integrations | Tomasz Furdal",
+        meta_desc: "Tomasz Furdal – Home Assistant setup and integrations (Denmark & Poland). Automations, Zigbee/Tuya, smart home.",
+        meta_keywords: "Tomasz Furdal, Home Assistant, Home Assistant setup Denmark, konfiguracja Home Assistant Polska Dania, integracje automatyzacje inteligentny dom",
+
+        logo_text: "TOMASZ FURDAL · HOME ASSISTANT",
+        nav_services: "Services",
+        nav_for: "Who it’s for",
+        nav_process: "How I work",
+nav_contact: "Contact",
+        nav_cta: "Free diagnosis",
+
+        hero_badge: "I make HA work independently, adding separate panels with related functions.",
+        hero_h1: "Home Assistant: setup & integrations <span>EN / DK</span>",
+        hero_sub: "You describe the issue via the form or e‑mail. I analyze and reply. If needed, we can switch to a phone contact.",
+        hero_btn_primary: "Free diagnosis  →",
+        hero_btn_ghost: "See services",
+services_label: "Services",
+        services_title: "What I help with",
+        services_subtitle: "Home Assistant — setup, integrations and automations. Without rebuilding your whole house.",
+        svc1_t: "Start / cleanup",
+        svc1_p: "Install, configure, clean up and make dashboards readable.",
+        svc1_lx1: "Installation",
+        svc1_lx2: "Configuration",
+        svc1_lx3: "Sensible dashboard",
+        svc1_l1: "Raspberry Pi / miniPC / Linux",
+        svc1_l2: "Integrations + entity cleanup",
+        svc1_l3: "Backup before changes",
+        svc2_t: "Zigbee / Tuya",
+        svc2_p: "Stability, range, routers, offline recovery and best practices.",
+        svc2_l1: "ZHA or Zigbee2MQTT",
+        svc2_lx: "Add integrations",
+        svc2_l2: "Channels and Wi‑Fi interference",
+        svc2_l3: "Fixing offline devices",
+        svc3_t: "Automations",
+        svc3_p: "Scenes, buttons, shutters, alerts — simple and predictable.",
+        svc3_l1: "Clear logic — no chaos",
+        svc3_l2: "Testing: what happens when",
+        svc3_l3: "Short documentation",
+        svc3_l4: "Scripts",
+        svc3_l5: "Integrations",
+        svc3_l6: "Alerts",
+
+        for_label: "Who it’s for",
+        for_title: "This is for you if…",
+        for_subtitle: "You don’t need to be an IT pro, but you’d like a smart home.",
+        for1_t: "You already have Home Assistant",
+        for1_p: "…but parts of the setup are flaky and you don’t know why.",
+        for1_l1: "Zigbee sometimes misses events",
+        for1_l2: "Automations are unreliable",
+        for1_l3: "No structure and control",
+        for2_t: "You want to start from scratch",
+        for2_p: "…but you prefer a quick, practical baseline.",
+        for2_l1: "Choosing devices that make sense",
+        for2_l2: "First scenarios: lights/shutters/alerts",
+        for2_l3: "Growth plan without rebuilding everything",
+
+        proc_label: "Process",
+        proc_title: "How it works",
+        proc_subtitle: "Short: clarify → implement → test.",
+        step1_t: "1) Free diagnosis ",
+        step1_p: "You describe the issue. We find the cause or next logical step.",
+        step2_t: "2) Implementation & testing",
+        step2_p: "After identifying the cause: hourly work or a project from scratch depending on the case (custom pricing). We connect online (AnyDesk / VPN), I make step-by-step changes, then we test. Once all is good, you make the payment.",
+
+        pay_note_plain: "Payment: DK – MobilePay. PL/EN – bank transfer. Details after we agree on cooperation. No PayPal.",
+c_label: "Contact",
+        c_title: "Tell me what you want to fix",
+        c_subtitle: "First the form or e‑mail. I reply — then we choose the next channel (e.g., Telegram).",
+        c_hint: "Briefly: where HA runs, approx. device count and what’s broken (Zigbee, shutters, heating, cameras).",
+        f_name_label: "Name",
+        f_email_label: "E-mail",
+        f_msg_label: "Issue description",
+        f_name_ph: "e.g., John",
+        f_email_ph: "Your e-mail",
+        f_msg_ph: "e.g., miniPC, ~30 Zigbee devices, unreliable states, need better automations...",
+f_submit: "Send →",
+        alt_title: "If you prefer, e‑mail me directly:",
+        alt_text: "Use subject “Home Assistant – consultation” and paste 1–2 screenshots (dashboard/Zigbee). It speeds up the analysis.",
+
+        footer_left: "© <span id=\"year\"></span> Tomasz Furdal – Home Assistant &amp; Integrations",
+        footer_right: "Payments: bank transfer, PayPal, MobilePay",
+
+        status_sending: "Sending…",
+        status_ok: "Done. I received your message — I’ll reply by e‑mail.",
+        status_err: "Failed. Try again or e‑mail: fc5tomasz@gmail.com"
+      }
+    };
+
+    function qs(sel){ return document.querySelector(sel); }
+    function setMeta(nameOrProp, value, isProp=false){
+      const sel = isProp ? `meta[property="${nameOrProp}"]` : `meta[name="${nameOrProp}"]`;
+      const el = document.querySelector(sel);
+      if(el) el.setAttribute("content", value);
+    }
+
+    function getLangFromUrl(){
+      const p = new URLSearchParams(window.location.search);
+      const lang = (p.get("lang") || "").toLowerCase();
+      return supported.includes(lang) ? lang : null;
+    }
+
+    function detectLang(){
+      const fromUrl = getLangFromUrl();
+      if(fromUrl) return fromUrl;
+
+      const stored = (localStorage.getItem("lang") || "").toLowerCase();
+      if(supported.includes(stored)) return stored;
+
+      const nav = (navigator.language || "pl").toLowerCase();
+      if(nav.startsWith("da")) return "da";
+      if(nav.startsWith("en")) return "en";
+      return "pl";
+    }
+
+    function applyLang(lang){
+      if(!supported.includes(lang)) lang = "pl";
+      document.documentElement.setAttribute("lang", lang);
+      localStorage.setItem("lang", lang);
+
+      const dict = I18N[lang];
+
+      // text
+      document.querySelectorAll("[data-i18n]").forEach(el=>{
+        const key = el.getAttribute("data-i18n");
+        if(dict[key] != null) el.textContent = dict[key];
+      });
+      // html
+      document.querySelectorAll("[data-i18n-html]").forEach(el=>{
+        const key = el.getAttribute("data-i18n-html");
+        if(dict[key] != null) el.innerHTML = dict[key];
+      });
+      // placeholders
+      document.querySelectorAll("[data-i18n-placeholder]").forEach(el=>{
+        const key = el.getAttribute("data-i18n-placeholder");
+        if(dict[key] != null) el.setAttribute("placeholder", dict[key]);
+      });
+
+      // meta
+      document.title = dict.meta_title || document.title;
+      setMeta("description", dict.meta_desc || "");
+      setMeta("keywords", dict.meta_keywords || "");
+      setMeta("twitter:title", dict.meta_title || "");
+      setMeta("twitter:description", dict.meta_desc || "");
+      setMeta("og:title", dict.meta_title || "", true);
+      setMeta("og:description", dict.meta_desc || "", true);
+
+      // form hidden language
+      const formLang = qs("#formLang");
+      if(formLang) formLang.value = lang;
+
+      // active flag
+      document.querySelectorAll(".lang-btn").forEach(btn=>{
+        btn.classList.toggle("active", btn.dataset.lang === lang);
+      });
+    }
+
+    // Language buttons
+    document.querySelectorAll(".lang-btn").forEach(btn=>{
+      btn.addEventListener("click", ()=>{
+        const lang = btn.dataset.lang;
+        applyLang(lang);
+        const url = new URL(window.location.href);
+        url.searchParams.set("lang", lang);
+        window.history.replaceState({}, "", url.toString());
+      });
+    });
+
+    // Form submit (AJAX to keep page)
+    const form = qs("#contactForm");
+    const statusEl = qs("#formStatus");
+
+    if(form){
+      form.addEventListener("submit", async (e)=>{
+        e.preventDefault();
+        const lang = detectLang();
+        const dict = I18N[lang] || I18N.pl;
+
+        statusEl.className = "form-status";
+        statusEl.textContent = dict.status_sending;
+
+        try{
+          const resp = await fetch(form.action, {
+            method: "POST",
+            headers: { "Accept": "application/json" },
+            body: new FormData(form)
+          });
+
+          if(resp.ok){
+            statusEl.className = "form-status ok";
+            statusEl.textContent = dict.status_ok;
+            form.reset();
+            const hl = qs("#formLang"); if(hl) hl.value = lang;
+          }else{
+            statusEl.className = "form-status err";
+            statusEl.textContent = dict.status_err;
+          }
+        }catch(_){
+          statusEl.className = "form-status err";
+          statusEl.textContent = dict.status_err;
+        }
+      });
+    }
+
+    // initial language
+    applyLang(detectLang());
+  </script>
 </body>
 </html>
