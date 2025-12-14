@@ -9,29 +9,27 @@
   <meta name="google-site-verification" content="L88MYiIC2YGzQ9Qgb5BJIqNChLdfIA77m8Tol5MGRrE" />
 
   <!-- Canonical + hreflang -->
-  <link rel="canonical" href="https://fc5tomasz.github.io/ha-uslugi/" />
+  <link rel="canonical" id="canonical" href="https://fc5tomasz.github.io/ha-uslugi/?lang=pl" />
   <link rel="alternate" hreflang="pl" href="https://fc5tomasz.github.io/ha-uslugi/?lang=pl" />
   <link rel="alternate" hreflang="da" href="https://fc5tomasz.github.io/ha-uslugi/?lang=da" />
   <link rel="alternate" hreflang="en" href="https://fc5tomasz.github.io/ha-uslugi/?lang=en" />
-  <link rel="alternate" hreflang="x-default" href="https://fc5tomasz.github.io/ha-uslugi/" />
+  <link rel="alternate" hreflang="x-default" href="https://fc5tomasz.github.io/ha-uslugi/?lang=pl" />
 
-  <!-- Primary SEO (will be updated by JS per language too) -->
-  <title>Home Assistant – konfiguracja i integracje | Tomasz Furdal</title>
-  <meta name="description" content="Tomasz Furdal – konfiguracja i integracja Home Assistant. Polska i Dania. Home Assistant setup, automatyzacje, Zigbee/Tuya, inteligentny dom." />
-  <meta name="keywords" content="Tomasz Furdal, Home Assistant, konfiguracja Home Assistant Polska Dania, Home Assistant setup Denmark, integracje automatyzacje inteligentny dom" />
+  <!-- Primary SEO (updated by JS per language) -->
+  <title>Konfiguracja Home Assistant PL/DK – Zigbee, Tuya, automatyzacje | Tomasz Furdal</title>
+  <meta name="description" content="Konfiguracja i naprawa Home Assistant (Polska / Dania). Integracje Zigbee2MQTT/ZHA, Tuya, automatyzacje, porządek w encjach i dashboard. Diagnoza gratis." />
+  <meta name="keywords" content="Tomasz Furdal, konfiguracja Home Assistant, Home Assistant Polska, Home Assistant Dania, Zigbee2MQTT, ZHA, Tuya, automatyzacje, inteligentny dom" />
 
   <!-- OpenGraph -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Home Assistant – konfiguracja i integracje | Tomasz Furdal" />
-  <meta property="og:description" content="Konfiguracja i integracja Home Assistant (PL/DK/EN). Automatyzacje, Zigbee/Tuya i porządek w Twojej instalacji." />
+  <meta property="og:title" content="Konfiguracja Home Assistant PL/DK – Zigbee, Tuya, automatyzacje | Tomasz Furdal" />
+  <meta property="og:description" content="Konfiguracja i naprawa Home Assistant (PL/DK/EN). Automatyzacje, Zigbee/Tuya i porządek w Twojej instalacji." />
   <meta property="og:locale" content="pl_PL" />
-  <meta property="og:locale:alternate" content="da_DK" />
-  <meta property="og:locale:alternate" content="en_GB" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Home Assistant – konfiguracja i integracje | Tomasz Furdal" />
-  <meta name="twitter:description" content="Konfiguracja i integracja Home Assistant (PL/DK/EN). Automatyzacje, Zigbee/Tuya i porządek w Twojej instalacji." />
+  <meta name="twitter:title" content="Konfiguracja Home Assistant PL/DK – Zigbee, Tuya, automatyzacje | Tomasz Furdal" />
+  <meta name="twitter:description" content="Konfiguracja i naprawa Home Assistant (PL/DK/EN). Automatyzacje, Zigbee/Tuya i porządek w Twojej instalacji." />
 
   <script type="application/ld+json">
   {
@@ -121,6 +119,7 @@
     .section-label{font-size:.78rem; color:var(--muted); letter-spacing:.18em; text-transform:uppercase; margin-bottom:6px}
     .section-title{font-size:1.45rem; margin:0 0 8px 0; color:#f9fafb}
     .section-subtitle{font-size:.92rem; color:var(--muted); margin:0}
+    .section-subtitle + .section-subtitle{margin-top:10px}
 
     .hero{
       padding-top:28px;
@@ -165,44 +164,17 @@
 
     .card{
       background: rgba(15,23,42,.95);
-      border-radius: var(--radius-lg);
+      border-radius: 18px;
       border:1px solid rgba(31,41,55,.98);
       padding:16px;
-      box-shadow: var(--shadow-subtle);
+      box-shadow: 0 10px 30px rgba(0,0,0,.35);
     }
-    .hero-right{
-      border-radius:24px;
-      padding:18px 16px 16px;
-      background: radial-gradient(circle at top left, #1f2937 0, #020617 55%);
-      border:1px solid rgba(31,41,55,.9);
-      box-shadow: var(--shadow-soft);
-    }
-    .hero-tag{font-size:.78rem; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-bottom:8px}
-    .hero-right h3{margin:0 0 8px 0; font-size:1rem}
-    .pill-row{display:flex; flex-wrap:wrap; gap:6px; margin-top:10px}
-    .pill{
-      font-size:.78rem; padding:4px 8px; border-radius:999px;
-      border:1px solid rgba(55,65,81,.95);
-      background: rgba(15,23,42,.95);
-      color: var(--muted);
-    }
-    .pill.ok{border-color: rgba(0,177,106,.75); background: rgba(0,177,106,.12); color:#bbf7d0}
 
     .grid-3{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px}
     .grid-2{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px}
     .card h3{margin:0 0 6px 0; font-size:1rem; color:#f9fafb}
     .card p{margin:0; color:var(--muted); font-size:.9rem}
     .card ul{margin:8px 0 0; padding-left:18px; color:var(--muted); font-size:.9rem}
-
-    .pricing-grid{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px}
-    .price-card{position:relative}
-    .ribbon{
-      position:absolute; top:10px; right:10px;
-      font-size:.7rem; padding:3px 7px; border-radius:999px;
-      background: var(--accent-soft);
-      border:1px solid rgba(0,177,106,.6);
-      color:#bbf7d0;
-    }
 
     .contact-grid{display:grid; grid-template-columns:minmax(0,1.2fr) minmax(0,1fr); gap:18px; align-items:flex-start}
     form{margin:0}
@@ -224,8 +196,6 @@
     }
     textarea{min-height:120px}
     input:focus,textarea:focus{border-color: rgba(0,177,106,.8); box-shadow:0 0 0 1px rgba(0,177,106,.55)}
-    .checkbox-row{display:flex; gap:8px; align-items:flex-start; font-size:.82rem; color:var(--muted); margin:10px 0}
-    .checkbox-row input{width:15px;height:15px;margin-top:2px}
     .form-status{margin-top:10px; font-size:.86rem; color:var(--muted)}
     .form-status.ok{color:#bbf7d0}
     .form-status.err{color:#fecaca}
@@ -246,13 +216,12 @@
     @media (max-width: 900px){
       .hero{grid-template-columns:1fr}
       nav ul{display:none}
-      .pricing-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
       .grid-3{grid-template-columns:repeat(2,minmax(0,1fr))}
       .contact-grid{grid-template-columns:1fr}
     }
     @media (max-width: 720px){
       .section{padding-inline:16px}
-      .grid-3,.grid-2,.pricing-grid,.form-grid{grid-template-columns:1fr}
+      .grid-3,.grid-2,.form-grid{grid-template-columns:1fr}
       .hero-actions{flex-direction:column; align-items:stretch}
       .btn-primary,.btn-ghost{width:100%}
     }
@@ -272,7 +241,7 @@
           <li><a href="#services" data-i18n="nav_services">Usługi</a></li>
           <li><a href="#for" data-i18n="nav_for">Dla kogo</a></li>
           <li><a href="#process" data-i18n="nav_process">Jak pracuję</a></li>
-                    
+          <li><a href="#contact" data-i18n="nav_contact">Kontakt</a></li>
         </ul>
       </nav>
 
@@ -295,7 +264,7 @@
           <span data-i18n="hero_badge">Ustawiam HA tak, żeby działał sam, dodaję osobne panele z powiązanymi funkcjami.</span>
         </div>
 
-        <h1 data-i18n-html="hero_h1">Home Assistant: konfiguracja i integracje <span>PL / DK</span></h1>
+        <h1 data-i18n-html="hero_h1">Konfiguracja Home Assistant (Polska / Dania) <span>Zigbee · Tuya · Automatyzacje</span></h1>
         <p class="hero-sub" data-i18n="hero_sub">
           Opisujesz problem przez formularz albo e-mail. Ja analizuję i odpisuję. Jeśli trzeba – przechodzimy na kontakt telefoniczny.
         </p>
@@ -312,18 +281,20 @@
       <div class="section-label" data-i18n="services_label">Usługi</div>
       <h2 class="section-title" data-i18n="services_title">W czym pomagam</h2>
       <p class="section-subtitle" data-i18n="services_subtitle">
-        Home Assistant – konfiguracja, integracje i automatyzacje. 
+        Home Assistant – konfiguracja, integracje i automatyzacje.
+      </p>
+      <p class="section-subtitle" data-i18n="services_subtitle2">
+        Pomagam uruchomić, naprawić i uporządkować Home Assistant: niestabilne Zigbee/Tuya, automatyzacje „raz działają raz nie”, bałagan w encjach i brak czytelnego dashboardu. Polska i Dania. Zdalnie (AnyDesk/VPN).
       </p>
 
       <div class="grid-3" style="margin-top:16px">
         <div class="card">
           <h3 data-i18n="svc1_t">Start / uporządkowanie HA</h3>
-          
           <ul>
             <li data-i18n="svc1_lx1">Instalacja</li>
-<li data-i18n="svc1_lx2">Konfiguracja</li>
-<li data-i18n="svc1_lx3">Sensowny dashboard</li>
-<li data-i18n="svc1_l1">Raspberry Pi / miniPC / Linux</li>
+            <li data-i18n="svc1_lx2">Konfiguracja</li>
+            <li data-i18n="svc1_lx3">Sensowny dashboard</li>
+            <li data-i18n="svc1_l1">Raspberry Pi / miniPC / Linux</li>
             <li data-i18n="svc1_l2">Integracje i porządek w encjach</li>
             <li data-i18n="svc1_l3">Backup przed zmianami</li>
           </ul>
@@ -331,26 +302,23 @@
 
         <div class="card">
           <h3 data-i18n="svc2_t">Zigbee / Tuya</h3>
-          
           <ul>
             <li data-i18n="svc2_l1">ZHA lub Zigbee2MQTT</li>
-<li data-i18n="svc2_lx">Dodanie integracji</li>
+            <li data-i18n="svc2_lx">Dodanie integracji</li>
             <li data-i18n="svc2_l2">Dobranie kanału, żeby nie było konfliktu z siecią Wi‑Fi 2.4GHz</li>
-            
           </ul>
         </div>
 
         <div class="card">
           <h3 data-i18n="svc3_t">Automatyzacje</h3>
-          
           <ul>
             <li data-i18n="svc3_l1">Jasna logika — bez chaosu</li>
             <li data-i18n="svc3_l2">Testy: co się stanie i kiedy</li>
             <li data-i18n="svc3_l3">Dokumentacja: co jest do czego</li>
-          <li data-i18n="svc3_l4">Skrypty</li>
-<li data-i18n="svc3_l5">Integracje</li>
-<li data-i18n="svc3_l6">Alerty</li>
-</ul>
+            <li data-i18n="svc3_l4">Skrypty</li>
+            <li data-i18n="svc3_l5">Integracje</li>
+            <li data-i18n="svc3_l6">Alerty</li>
+          </ul>
         </div>
       </div>
     </section>
@@ -399,9 +367,6 @@
           <p data-i18n="step2_p">Po ustaleniu przyczyny problemu: praca godzinowa albo projekt od podstaw w zależności od zadania (wycena indywidualna). Łączymy się online (AnyDesk / VPN), robię zmiany etapami i na koniec testujemy. Jak wszystko w porządku – dokonujesz opłaty.</p>
         </div>
       </div>
-    
-      
-
     </section>
 
     <!-- CONTACT -->
@@ -451,21 +416,14 @@
         </div>
       </div>
     </section>
-  
-<section class="section" id="payments" style="display:none;">
-  <div class="card">
-    <p>Płatność: DK – MobilePay. PL/EN – przelew bankowy. Dane wysyłam po ustaleniu współpracy. Możliwy również PayPal.</p>
-  </div>
-</section>
-<script>
-document.querySelector('a[href="#payments"]').addEventListener('click', (e) => {
-  e.preventDefault();
-  document.getElementById('payments').style.display = 'block';
-  document.getElementById('payments').scrollIntoView({ behavior: 'smooth' });
-});
-</script>
 
-</main>
+    <section class="section" id="payments" style="display:none;">
+      <div class="card">
+        <p data-i18n="pay_note_plain">Płatność: DK – MobilePay. PL/EN – przelew bankowy. Dane wysyłam po ustaleniu współpracy. PayPal – nie.</p>
+      </div>
+    </section>
+
+  </main>
 
   <footer>
     <div class="footer-inner">
@@ -482,41 +440,42 @@ document.querySelector('a[href="#payments"]').addEventListener('click', (e) => {
 
     const I18N = {
       pl: {
-        meta_title: "Home Assistant – konfiguracja i integracje | Tomasz Furdal",
-        meta_desc: "Tomasz Furdal – konfiguracja i integracja Home Assistant. Polska i Dania. Home Assistant setup, automatyzacje, Zigbee/Tuya, inteligentny dom.",
-        meta_keywords: "Tomasz Furdal, Home Assistant, konfiguracja Home Assistant Polska Dania, Home Assistant setup Denmark, integracje automatyzacje inteligentny dom",
+        meta_title: "Konfiguracja Home Assistant PL/DK – Zigbee, Tuya, automatyzacje | Tomasz Furdal",
+        meta_desc: "Konfiguracja i naprawa Home Assistant (Polska / Dania). Integracje Zigbee2MQTT/ZHA, Tuya, automatyzacje, porządek w encjach i dashboard. Diagnoza gratis.",
+        meta_keywords: "Tomasz Furdal, konfiguracja Home Assistant, Home Assistant Polska, Home Assistant Dania, Zigbee2MQTT, ZHA, Tuya, automatyzacje, inteligentny dom",
 
         logo_text: "TOMASZ FURDAL · HOME ASSISTANT",
         nav_services: "Usługi",
         nav_for: "Dla kogo",
         nav_process: "Jak pracuję",
-nav_contact: "Kontakt",
+        nav_contact: "Kontakt",
         nav_cta: "Bezpłatna diagnoza",
 
         hero_badge: "Ustawiam HA tak, żeby działał sam, dodaję osobne panele z powiązanymi funkcjami.",
-        hero_h1: "Home Assistant: konfiguracja i integracje <span>PL / DK</span>",
+        hero_h1: "Konfiguracja Home Assistant (Polska / Dania) <span>Zigbee · Tuya · Automatyzacje</span>",
         hero_sub: "Opisujesz problem przez formularz albo e-mail. Ja analizuję i odpisuję. Jeśli trzeba – przechodzimy na kontakt telefoniczny.",
         hero_btn_primary: "Bezpłatna diagnoza  →",
         hero_btn_ghost: "Zobacz usługi",
-services_label: "Usługi",
+
+        services_label: "Usługi",
         services_title: "W czym pomagam",
-        services_subtitle: "Home Assistant – konfiguracja, integracje i automatyzacje. ",
+        services_subtitle: "Home Assistant – konfiguracja, integracje i automatyzacje.",
+        services_subtitle2: "Pomagam uruchomić, naprawić i uporządkować Home Assistant: niestabilne Zigbee/Tuya, automatyzacje „raz działają raz nie”, bałagan w encjach i brak czytelnego dashboardu. Polska i Dania. Zdalnie (AnyDesk/VPN).",
+
         svc1_t: "Start / uporządkowanie HA",
-        svc1_p: "Instalacja, konfiguracja, naprawa bałaganu, sensowny dashboard.",
         svc1_lx1: "Instalacja",
         svc1_lx2: "Konfiguracja",
         svc1_lx3: "Sensowny dashboard",
         svc1_l1: "Raspberry Pi / miniPC / Linux",
         svc1_l2: "Integracje i porządek w encjach",
         svc1_l3: "Backup przed zmianami",
+
         svc2_t: "Zigbee / Tuya",
-        svc2_p: "Stabilność sieci, zasięg, routery, dobre praktyki.",
         svc2_l1: "ZHA lub Zigbee2MQTT",
         svc2_lx: "Dodanie integracji",
         svc2_l2: "Kanały i konflikt Wi‑Fi",
-        svc2_l3: "Naprawa urządzeń „offline”",
+
         svc3_t: "Automatyzacje",
-        svc3_p: "Sceny, skrypty, integracje, alerty – prosto i przewidywalnie.",
         svc3_l1: "Jasna logika — bez chaosu",
         svc3_l2: "Testy: co się stanie i kiedy",
         svc3_l3: "Dokumentacja: co jest do czego",
@@ -541,13 +500,14 @@ services_label: "Usługi",
         proc_label: "Proces",
         proc_title: "Jak to wygląda",
         proc_subtitle: "Krótko: najpierw rozpoznanie, potem robota, potem test.",
-        step1_t: "1) Bezpłatna diagnoza ",
+        step1_t: "1) Bezpłatna diagnoza",
         step1_p: "Opisujesz problem. Ustalamy, co ma sens zrobić lub gdzie leży problem.",
         step2_t: "2) Praca i testy",
         step2_p: "Po ustaleniu przyczyny problemu: praca godzinowa albo projekt od podstaw w zależności od zadania (wycena indywidualna). Łączymy się online (AnyDesk / VPN), robię zmiany etapami i na koniec testujemy. Jak wszystko w porządku – dokonujesz opłaty.",
 
         pay_note_plain: "Płatność: DK – MobilePay. PL/EN – przelew bankowy. Dane wysyłam po ustaleniu współpracy. PayPal – nie.",
-c_label: "Kontakt",
+
+        c_label: "Kontakt",
         c_title: "Napisz, co chcesz ogarnąć",
         c_subtitle: "Najpierw formularz albo e-mail. Potem ja wracam z odpowiedzią i dopiero ustalamy dalszy kanał (np. Telegram).",
         c_hint: "Opisz krótko: gdzie działa Home Assistant, ile masz urządzeń i co nie działa (np. Zigbee, rolety, ogrzewanie, kamery).",
@@ -557,7 +517,8 @@ c_label: "Kontakt",
         f_name_ph: "Np. Michał",
         f_email_ph: "Twój adres e-mail do kontaktu",
         f_msg_ph: "Np.: Raspberry Pi, ~30 urządzeń Zigbee, brak synchronizacji stanu, chcę ogarnąć automatyzacje...",
-f_submit: "Wyślij →",
+        f_submit: "Wyślij →",
+
         alt_title: "Jeśli wolisz, możesz napisać bezpośrednio:",
         alt_text: "W temacie dopisz „Home Assistant – konsultacja”, a w treści wklej 1–2 screeny z Home Assistanta (np. dashboard / Zigbee). To przyspiesza analizę.",
 
@@ -570,41 +531,42 @@ f_submit: "Wyślij →",
       },
 
       da: {
-        meta_title: "Home Assistant – opsætning og integrationer | Tomasz Furdal",
-        meta_desc: "Tomasz Furdal – opsætning og integration af Home Assistant. Danmark og Polen. Automatiseringer, Zigbee/Tuya, smart home.",
-        meta_keywords: "Tomasz Furdal, Home Assistant, Home Assistant setup Denmark, konfiguracja Home Assistant Polska Dania, integracje automatyzacje inteligentny dom",
+        meta_title: "Home Assistant opsætning (DK/PL) – Zigbee, Tuya, automatisering | Tomasz Furdal",
+        meta_desc: "Opsætning og fejlfinding af Home Assistant (Danmark / Polen). Zigbee2MQTT/ZHA, Tuya, automatiseringer, dashboards og oprydning i entiteter. Gratis diagnose.",
+        meta_keywords: "Tomasz Furdal, Home Assistant setup Denmark, Home Assistant Danmark, Zigbee2MQTT, ZHA, Tuya, automatisering, smart home",
 
         logo_text: "TOMASZ FURDAL · HOME ASSISTANT",
         nav_services: "Ydelser",
         nav_for: "For hvem",
         nav_process: "Sådan arbejder jeg",
-nav_contact: "Kontakt",
+        nav_contact: "Kontakt",
         nav_cta: "Gratis diagnose",
 
         hero_badge: "Jeg får HA til at køre selvstændigt og tilføjer særskilte paneler med relaterede funktioner.",
-        hero_h1: "Home Assistant: opsætning og integrationer <span>DK / PL</span>",
+        hero_h1: "Home Assistant opsætning (Danmark / Polen) <span>Zigbee · Tuya · Automatisering</span>",
         hero_sub: "Du beskriver problemet via formular eller e-mail. Jeg analyserer og svarer. Hvis nødvendigt, tager vi kontakt telefonisk.",
         hero_btn_primary: "Gratis diagnose  →",
         hero_btn_ghost: "Se ydelser",
-services_label: "Ydelser",
+
+        services_label: "Ydelser",
         services_title: "Hvad jeg hjælper med",
-        services_subtitle: "Home Assistant – opsætning, integrationer og automatiseringer. Uden at skifte hele huset ud.",
+        services_subtitle: "Home Assistant — opsætning, integrationer og automatiseringer.",
+        services_subtitle2: "Jeg hjælper med at få Home Assistant stabil: Zigbee/Tuya der driller, automatiseringer der er ustabile, rod i entiteter og uoverskueligt dashboard. Danmark og Polen. Online (AnyDesk/VPN).",
+
         svc1_t: "Start / oprydning i HA",
-        svc1_p: "Installation, opsætning, oprydning og overskueligt dashboard.",
         svc1_lx1: "Installation",
         svc1_lx2: "Konfiguration",
         svc1_lx3: "Overskueligt dashboard",
         svc1_l1: "Raspberry Pi / miniPC / Linux",
         svc1_l2: "Integrationer og orden i entiteter",
         svc1_l3: "Backup før ændringer",
+
         svc2_t: "Zigbee / Tuya",
-        svc2_p: "Stabilitet, rækkevidde, routere, offline-fix og best practices.",
         svc2_l1: "ZHA eller Zigbee2MQTT",
         svc2_lx: "Tilføj integrationer",
         svc2_l2: "Kanaler og Wi‑Fi konflikter",
-        svc2_l3: "Fix af enheder der går offline",
+
         svc3_t: "Automatiseringer",
-        svc3_p: "Scener, knapper, rullegardiner, alarmer – simpelt og forudsigeligt.",
         svc3_l1: "Klar logik – uden kaos",
         svc3_l2: "Test: hvad sker hvornår",
         svc3_l3: "Kort dokumentation",
@@ -624,28 +586,30 @@ services_label: "Ydelser",
         for2_p: "…men vil hellere i gang hurtigt med en praktisk opsætning.",
         for2_l1: "Valg af udstyr der giver mening",
         for2_l2: "Første scenarier: lys/rullegardiner/alarmer",
-        for2_l3: "Plan for udvidelse uden at bygge alt om",
+        for2_l3: "Plan for udvidelse",
 
         proc_label: "Proces",
         proc_title: "Sådan foregår det",
         proc_subtitle: "Kort: afklaring → arbejde → test.",
-        step1_t: "1) Gratis diagnose ",
+        step1_t: "1) Gratis diagnose",
         step1_p: "Du forklarer problemet. Vi finder årsagen eller næste skridt.",
         step2_t: "2) Arbejde og test",
         step2_p: "Når årsagen er fundet: timebaseret arbejde eller projekt fra bunden afhængigt af opgaven (individuel pris). Vi forbinder online (AnyDesk / VPN), jeg laver ændringer i trin, tester og derefter betaler du.",
 
         pay_note_plain: "Betaling: DK – MobilePay. PL/EN – bankoverførsel. Oplysninger sendes efter aftale. PayPal – nej.",
-c_label: "Kontakt",
-        c_title: "Skriv hvad du vil have løst i dit hjem",
+
+        c_label: "Kontakt",
+        c_title: "Skriv hvad du vil have løst",
         c_subtitle: "Først formular eller e-mail. Jeg svarer – og først derefter aftaler vi kanal (fx Telegram).",
-        c_hint: "Skriv kort: hvor kører Home Assistant, ca. antal enheder og hvad der driller (Zigbee, rullegardiner, varme, kameraer).",
+        c_hint: "Skriv kort: hvor HA kører, ca. antal enheder og hvad der driller (Zigbee, rullegardiner, varme, kameraer).",
         f_name_label: "Navn",
         f_email_label: "E-mail",
         f_msg_label: "Kort beskrivelse",
         f_name_ph: "Fx Jørgen",
         f_email_ph: "Din e-mail",
         f_msg_ph: "Fx: miniPC, ~30 Zigbee-enheder, ustabil status, vil have bedre automatiseringer...",
-f_submit: "Send →",
+        f_submit: "Send →",
+
         alt_title: "Hvis du vil, kan du også skrive direkte:",
         alt_text: "Skriv i emnet “Home Assistant – konsultation” og indsæt 1–2 screenshots (dashboard/Zigbee). Det gør analysen hurtigere.",
 
@@ -658,41 +622,42 @@ f_submit: "Send →",
       },
 
       en: {
-        meta_title: "Home Assistant – setup & integrations | Tomasz Furdal",
-        meta_desc: "Tomasz Furdal – Home Assistant setup and integrations (Denmark & Poland). Automations, Zigbee/Tuya, smart home.",
-        meta_keywords: "Tomasz Furdal, Home Assistant, Home Assistant setup Denmark, konfiguracja Home Assistant Polska Dania, integracje automatyzacje inteligentny dom",
+        meta_title: "Home Assistant setup (DK/PL) – Zigbee, Tuya, automations | Tomasz Furdal",
+        meta_desc: "Home Assistant setup & troubleshooting (Denmark / Poland). Zigbee2MQTT/ZHA, Tuya, automations, dashboards and entity cleanup. Free diagnosis.",
+        meta_keywords: "Tomasz Furdal, Home Assistant setup Denmark, Home Assistant Denmark, Zigbee2MQTT, ZHA, Tuya, automations, smart home",
 
         logo_text: "TOMASZ FURDAL · HOME ASSISTANT",
         nav_services: "Services",
         nav_for: "Who it’s for",
         nav_process: "How I work",
-nav_contact: "Contact",
+        nav_contact: "Contact",
         nav_cta: "Free diagnosis",
 
-        hero_badge: "I make HA work independently, adding separate panels with related functions.",
-        hero_h1: "Home Assistant: setup & integrations <span>EN / DK</span>",
+        hero_badge: "I make HA work reliably and add separate panels with related functions.",
+        hero_h1: "Home Assistant setup (Denmark / Poland) <span>Zigbee · Tuya · Automations</span>",
         hero_sub: "You describe the issue via the form or e‑mail. I analyze and reply. If needed, we can switch to a phone contact.",
         hero_btn_primary: "Free diagnosis  →",
         hero_btn_ghost: "See services",
-services_label: "Services",
+
+        services_label: "Services",
         services_title: "What I help with",
-        services_subtitle: "Home Assistant — setup, integrations and automations. Without rebuilding your whole house.",
+        services_subtitle: "Home Assistant — setup, integrations and automations.",
+        services_subtitle2: "I help you make Home Assistant stable: flaky Zigbee/Tuya, unreliable automations, messy entities and unreadable dashboards. Denmark & Poland. Remote (AnyDesk/VPN).",
+
         svc1_t: "Start / cleanup",
-        svc1_p: "Install, configure, clean up and make dashboards readable.",
         svc1_lx1: "Installation",
         svc1_lx2: "Configuration",
         svc1_lx3: "Sensible dashboard",
         svc1_l1: "Raspberry Pi / miniPC / Linux",
         svc1_l2: "Integrations + entity cleanup",
         svc1_l3: "Backup before changes",
+
         svc2_t: "Zigbee / Tuya",
-        svc2_p: "Stability, range, routers, offline recovery and best practices.",
         svc2_l1: "ZHA or Zigbee2MQTT",
         svc2_lx: "Add integrations",
         svc2_l2: "Channels and Wi‑Fi interference",
-        svc2_l3: "Fixing offline devices",
+
         svc3_t: "Automations",
-        svc3_p: "Scenes, buttons, shutters, alerts — simple and predictable.",
         svc3_l1: "Clear logic — no chaos",
         svc3_l2: "Testing: what happens when",
         svc3_l3: "Short documentation",
@@ -717,13 +682,14 @@ services_label: "Services",
         proc_label: "Process",
         proc_title: "How it works",
         proc_subtitle: "Short: clarify → implement → test.",
-        step1_t: "1) Free diagnosis ",
+        step1_t: "1) Free diagnosis",
         step1_p: "You describe the issue. We find the cause or next logical step.",
         step2_t: "2) Implementation & testing",
         step2_p: "After identifying the cause: hourly work or a project from scratch depending on the case (custom pricing). We connect online (AnyDesk / VPN), I make step-by-step changes, then we test. Once all is good, you make the payment.",
 
-        pay_note_plain: "Payment: DK – MobilePay. PL/EN – bank transfer. Details after we agree on cooperation. No PayPal.",
-c_label: "Contact",
+        pay_note_plain: "Payment: DK – MobilePay. PL/EN – bank transfer. Details after we agree on cooperation. PayPal – no.",
+
+        c_label: "Contact",
         c_title: "Tell me what you want to fix",
         c_subtitle: "First the form or e‑mail. I reply — then we choose the next channel (e.g., Telegram).",
         c_hint: "Briefly: where HA runs, approx. device count and what’s broken (Zigbee, shutters, heating, cameras).",
@@ -733,7 +699,8 @@ c_label: "Contact",
         f_name_ph: "e.g., John",
         f_email_ph: "Your e-mail",
         f_msg_ph: "e.g., miniPC, ~30 Zigbee devices, unreliable states, need better automations...",
-f_submit: "Send →",
+        f_submit: "Send →",
+
         alt_title: "If you prefer, e‑mail me directly:",
         alt_text: "Use subject “Home Assistant – consultation” and paste 1–2 screenshots (dashboard/Zigbee). It speeds up the analysis.",
 
@@ -772,6 +739,15 @@ f_submit: "Send →",
       return "pl";
     }
 
+    function applyCanonical(lang){
+      const base = "https://fc5tomasz.github.io/ha-uslugi/";
+      const canonical = document.getElementById("canonical");
+      if(canonical) canonical.href = `${base}?lang=${lang}`;
+
+      const xdef = document.querySelector('link[hreflang="x-default"]');
+      if(xdef) xdef.href = `${base}?lang=pl`;
+    }
+
     function applyLang(lang){
       if(!supported.includes(lang)) lang = "pl";
       document.documentElement.setAttribute("lang", lang);
@@ -804,6 +780,9 @@ f_submit: "Send →",
       setMeta("og:title", dict.meta_title || "", true);
       setMeta("og:description", dict.meta_desc || "", true);
 
+      // canonical for ?lang versions
+      applyCanonical(lang);
+
       // form hidden language
       const formLang = qs("#formLang");
       if(formLang) formLang.value = lang;
@@ -824,6 +803,19 @@ f_submit: "Send →",
         window.history.replaceState({}, "", url.toString());
       });
     });
+
+    // Optional payments reveal (safe - no crash if link doesn't exist)
+    const payLink = document.querySelector('a[href="#payments"]');
+    if(payLink){
+      payLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        const sec = document.getElementById('payments');
+        if(sec){
+          sec.style.display = 'block';
+          sec.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    }
 
     // Form submit (AJAX to keep page)
     const form = qs("#contactForm");
