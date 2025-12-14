@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://fc5tomasz.github.io/ha-uslugi/sitemap.xml
+Sitemap: https://fc5tomasz.github.io/ha-uslugi/sitemap-ha.xml
+
