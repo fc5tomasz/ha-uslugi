@@ -1,50 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset
-  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-  xmlns:xhtml="http://www.w3.org/1999/xhtml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-
-  <!-- Strona główna (polski) -->
-  <url>
-    <loc>https://fc5tomasz.github.io/ha-uslugi/</loc>
-    <lastmod>2025-12-15T00:46:50+00:00</lastmod>
-    <xhtml:link rel="alternate" hreflang="pl" href="https://fc5tomasz.github.io/ha-uslugi/?lang=pl"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://fc5tomasz.github.io/ha-uslugi/?lang=en"/>
-    <xhtml:link rel="alternate" hreflang="da" href="https://fc5tomasz.github.io/ha-uslugi/?lang=da"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://fc5tomasz.github.io/ha-uslugi/"/>
-  </url>
-
-  <!-- Angielska wersja -->
-  <url>
-    <loc>https://fc5tomasz.github.io/ha-uslugi/?lang=en</loc>
-    <lastmod>2025-12-15T00:46:50+00:00</lastmod>
-    <xhtml:link rel="alternate" hreflang="pl" href="https://fc5tomasz.github.io/ha-uslugi/?lang=pl"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://fc5tomasz.github.io/ha-uslugi/?lang=en"/>
-    <xhtml:link rel="alternate" hreflang="da" href="https://fc5tomasz.github.io/ha-uslugi/?lang=da"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://fc5tomasz.github.io/ha-uslugi/"/>
-  </url>
-
-  <!-- Duńska wersja -->
-  <url>
-    <loc>https://fc5tomasz.github.io/ha-uslugi/?lang=da</loc>
-    <lastmod>2025-12-15T00:46:50+00:00</lastmod>
-    <xhtml:link rel="alternate" hreflang="pl" href="https://fc5tomasz.github.io/ha-uslugi/?lang=pl"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://fc5tomasz.github.io/ha-uslugi/?lang=en"/>
-    <xhtml:link rel="alternate" hreflang="da" href="https://fc5tomasz.github.io/ha-uslugi/?lang=da"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://fc5tomasz.github.io/ha-uslugi/"/>
-  </url>
-
-  <!-- Polska wersja -->
-  <url>
-    <loc>https://fc5tomasz.github.io/ha-uslugi/?lang=pl</loc>
-    <lastmod>2025-12-15T00:46:50+00:00</lastmod>
-    <xhtml:link rel="alternate" hreflang="pl" href="https://fc5tomasz.github.io/ha-uslugi/?lang=pl"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://fc5tomasz.github.io/ha-uslugi/?lang=en"/>
-    <xhtml:link rel="alternate" hreflang="da" href="https://fc5tomasz.github.io/ha-uslugi/?lang=da"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://fc5tomasz.github.io/ha-uslugi/"/>
-  </url>
-
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://fc5tomasz.github.io/ha-uslugi/</loc></url>
+  <url><loc>https://fc5tomasz.github.io/ha-uslugi/?lang=pl</loc></url>
+  <url><loc>https://fc5tomasz.github.io/ha-uslugi/?lang=da</loc></url>
+  <url><loc>https://fc5tomasz.github.io/ha-uslugi/?lang=en</loc></url>
 </urlset>
-
