@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="robots" content="index,follow" />
+  <title>Demonstracja możliwości Home Assistant | Tomasz Furdal</title>
+  <meta name="description" content="Live demonstracja animowanego panelu Home Assistant: energia, ogrzewanie, pogoda, rekuperacja i stany domu w jednej wizualizacji." />
+  <link rel="canonical" href="https://fc5tomasz.github.io/ha-uslugi/demo/" />
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="stylesheet" href="./demo.css" />
+</head>
+<body class="demo-page">
+  <main class="demo-shell">
+    <section class="demo-head">
+      <div>
+        <span class="demo-kicker" data-i18n="kicker">Live demo</span>
+        <h1 class="demo-title" data-i18n="title">Demonstracja możliwości Home Assistant</h1>
+        <p class="demo-subtitle" data-i18n="subtitle">To jest osobna podstrona pokazująca działający panel animowany oparty na logice instalacji Home Assistant. Widzisz wyłącznie panel demonstracyjny.</p>
+      </div>
+
+      <div class="demo-actions">
+        <a class="btn-primary" id="backLink" href="../" data-i18n="back_btn">Wróć do strony głównej</a>
+        <button class="btn-ghost" id="refreshBtn" type="button" data-i18n="refresh_btn">Odśwież panel</button>
+      </div>
+    </section>
+
+    <section class="demo-topbar">
+      <div class="card">
+        <div class="section-label" data-i18n="what_label">Co pokazuje panel</div>
+        <div class="demo-info-grid">
+          <div class="demo-metric">
+            <strong data-i18n="metric1_t">Energia i PV</strong>
+            <span data-i18n="metric1_p">Produkcję fotowoltaiki, przepływy energii i aktywne obiegi.</span>
+          </div>
+          <div class="demo-metric">
+            <strong data-i18n="metric2_t">Dom i ogrzewanie</strong>
+            <span data-i18n="metric2_p">Bufor, pompy, piec, grzałki, światła i obecność jako część jednej animacji.</span>
+          </div>
+          <div class="demo-metric">
+            <strong data-i18n="metric3_t">Pogoda i rekuperacja</strong>
+            <span data-i18n="metric3_p">Pogodę live, fazę dnia i pracę rekuperacji z animowanymi wirnikami.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card demo-status-card">
+        <div class="demo-status-row">
+          <span class="demo-status-label" data-i18n="status_label">Status połączenia</span>
+          <span id="demoStatus" class="demo-status-pill">
+            <span class="demo-status-dot"></span>
+            <span id="demoStatusText" data-i18n="status_loading">Uruchamianie panelu demo…</span>
+          </span>
+        </div>
+        <p id="demoStatusNote" class="demo-status-note" data-i18n="status_note">Panel odświeża się automatycznie i pokazuje demonstracyjny przebieg dnia.</p>
+      </div>
+    </section>
+
+    <section class="card demo-panel-wrap">
+      <div id="panelMount" class="demo-panel-frame"></div>
+    </section>
+  </main>
+
+  <script src="./panel-demo.js"></script>
+</body>
+</html>
