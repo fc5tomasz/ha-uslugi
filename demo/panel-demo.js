@@ -422,8 +422,7 @@
       return `
         <g transform="translate(${cx} ${cy})">
           <circle cx="0" cy="0" r="16" fill="rgba(255,255,255,0.07)" />
-          <g>
-            ${active ? `<animateTransform attributeName="transform" type="rotate" from="0 0 0" to="360 0 0" dur="${dur}" repeatCount="indefinite" />` : ""}
+          <g class="rotor-blades ${active ? "rotor-active" : ""}" style="--rotor-dur:${dur};">
             <path d="M 0 -22 C 8 -14, 8 -5, 0 0 C -8 -5, -8 -14, 0 -22 Z" fill="${color}" />
             <path d="M 22 0 C 14 8, 5 8, 0 0 C 5 -8, 14 -8, 22 0 Z" fill="${color}" />
             <path d="M 0 22 C -8 14, -8 5, 0 0 C 8 5, 8 14, 0 22 Z" fill="${color}" />
@@ -716,9 +715,7 @@
                 <circle cx="-6" cy="-6" r="2.3" fill="${state.boilerOn ? "#86baf0" : "rgba(160,176,196,0.4)"}"/>
                 <circle cx="5" cy="-6" r="2.3" fill="${state.boilerOn ? "#86baf0" : "rgba(160,176,196,0.4)"}"/>
                 <rect x="-8" y="2" width="14" height="10" rx="3" fill="rgba(15,23,34,0.55)" stroke="rgba(255,255,255,0.16)" stroke-width="1.5"/>
-                <path d="M -1 8 C -8 3, -6 -6, 0 -10 C 6 -6, 8 3, 1 8 Z" fill="${state.boilerOn ? "#ff9d5c" : "rgba(160,176,196,0.28)"}">
-                  ${state.boilerOn ? '<animate attributeName="d" dur="1.6s" repeatCount="indefinite" values="M -1 8 C -8 3, -6 -6, 0 -10 C 6 -6, 8 3, 1 8 Z;M -1 8 C -7 4, -7 -5, 0 -12 C 5 -6, 8 4, 1 8 Z;M -1 8 C -8 3, -6 -6, 0 -10 C 6 -6, 8 3, 1 8 Z" />' : ""}
-                </path>
+                <path d="M -1 8 C -8 3, -6 -6, 0 -10 C 6 -6, 8 3, 1 8 Z" class="${state.boilerOn ? "boiler-flame boiler-flame-active" : "boiler-flame"}" fill="${state.boilerOn ? "#ff9d5c" : "rgba(160,176,196,0.28)"}"></path>
               </g>
 
               <rect x="${pos.radiator.x}" y="${pos.radiator.y}" rx="16" ry="16" width="${pos.radiator.w}" height="${pos.radiator.h}" class="${stateBox(tarasToRadiator, true)}"/>

@@ -182,10 +182,22 @@ body.demo-page{
 .demo-panel-frame .box-warm { fill: rgba(255,160,89,0.12); stroke: rgba(255,173,96,0.82); }
 .demo-panel-frame .sun-ray-spin { transform-box: fill-box; transform-origin: center; animation: sunSpin 14s linear infinite; }
 .demo-panel-frame .sun-core-pulse { animation: sunPulse 2.2s ease-in-out infinite; }
+.demo-panel-frame .rotor-blades { transform-box: fill-box; transform-origin: center; }
+.demo-panel-frame .rotor-blades.rotor-active { animation: rotorSpin var(--rotor-dur, 1.6s) linear infinite; will-change: transform; }
+.demo-panel-frame .boiler-flame { transform-box: fill-box; transform-origin: center bottom; }
+.demo-panel-frame .boiler-flame.boiler-flame-active { animation: boilerFlicker 1.4s ease-in-out infinite; will-change: transform, opacity; }
 
 @keyframes flowDash { from { stroke-dashoffset: 0; } to { stroke-dashoffset: -48; } }
 @keyframes sunSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 @keyframes sunPulse { 0% { transform: scale(1); } 50% { transform: scale(1.08); } 100% { transform: scale(1); } }
+@keyframes rotorSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes boilerFlicker {
+  0% { transform: translateY(0) scale(1, 1); opacity: .92; }
+  25% { transform: translateY(-1px) scale(.96, 1.08); opacity: 1; }
+  50% { transform: translateY(-2px) scale(1.04, .94); opacity: .88; }
+  75% { transform: translateY(-1px) scale(.98, 1.05); opacity: 1; }
+  100% { transform: translateY(0) scale(1, 1); opacity: .92; }
+}
 
 @media (max-width: 980px){
   .demo-topbar{
