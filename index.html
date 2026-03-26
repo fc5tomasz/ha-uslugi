@@ -767,6 +767,19 @@
       return supported.includes(lang) ? lang : null;
     }
 
+    function getBrowserPreferredLang(){
+      const langs = Array.isArray(navigator.languages) && navigator.languages.length
+        ? navigator.languages
+        : [navigator.language || navigator.userLanguage || ""];
+
+      for(const raw of langs){
+        const lang = String(raw || "").toLowerCase();
+        if(lang.startsWith("pl")) return "pl";
+        if(lang.startsWith("da") || lang.includes("-dk") || lang.endsWith("_dk")) return "da";
+      }
+      return "en";
+    }
+
     function detectLang(){
       // Support old links like ?lang=da / ?lang=en / ?lang=pl
       const fromUrl = getLangFromUrl();
@@ -777,7 +790,20 @@
           return fromUrl;
         }
       }
-      // Static page language (no auto-redirects based on browser/storage)
+
+      // On the root/PL page, choose default language from browser locale.
+      if(PAGE_LANG === "pl"){
+        const preferred = getBrowserPreferredLang();
+        if(preferred !== "pl" && URLS[preferred]){
+          const target = URLS[preferred] + window.location.hash;
+          if(window.location.href !== target){
+            window.location.replace(target);
+            return preferred;
+          }
+        }
+      }
+
+      // Static page language for direct language URLs.
       return PAGE_LANG;
     }
 
