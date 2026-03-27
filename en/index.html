@@ -290,6 +290,70 @@
       </div>
     </section>
 
+    <section class="section" id="examples">
+      <div class="section-label" data-i18n="examples_label">Examples</div>
+      <h2 class="section-title" data-i18n="examples_title">Example panels</h2>
+      <p class="section-subtitle" data-i18n="examples_subtitle">Selected views show both clean day-to-day control and the logic behind the installation.</p>
+
+      <div class="grid-3 showcase-grid">
+        <article class="card showcase-card">
+          <div class="showcase-media">
+            <img src="../assets/examples/heating-control.png" data-i18n-alt="ex1_alt" alt="Heating and buffer control panel" loading="lazy" data-lightbox-src="../assets/examples/heating-control.png" />
+          </div>
+          <div class="showcase-copy">
+            <h3 data-i18n="ex1_t">Heating and buffer control</h3>
+            <p data-i18n="ex1_p">A view of the heating process with an active buffer tank, interlocks, and dependencies between heat sources.</p>
+          </div>
+        </article>
+
+        <article class="card showcase-card">
+          <div class="showcase-media">
+            <img src="../assets/examples/heating-status.png" data-i18n-alt="ex2_alt" alt="Installation status and temperature panel" loading="lazy" data-lightbox-src="../assets/examples/heating-status.png" />
+          </div>
+          <div class="showcase-copy">
+            <h3 data-i18n="ex2_t">Statuses, temperatures, and system logic</h3>
+            <p data-i18n="ex2_p">Parameters, states, and dependencies that make it easier to diagnose a live installation.</p>
+          </div>
+        </article>
+
+        <article class="card showcase-card">
+          <div class="showcase-media">
+            <img src="../assets/examples/blinds-control.png" data-i18n-alt="ex3_alt" alt="Blinds and everyday control panel" loading="lazy" data-lightbox-src="../assets/examples/blinds-control.png" />
+          </div>
+          <div class="showcase-copy">
+            <h3 data-i18n="ex3_t">Blinds, groups, and scenes</h3>
+            <p data-i18n="ex3_p">The panel supports control of individual blinds, blind groups, and scenes such as cinema mode. It also covers whole-home control and time-based automation, for example opening at sunrise and closing at sunset.</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="tech-block">
+        <div class="card tech-copy">
+          <div class="section-label" data-i18n="tech_label">Technical layer</div>
+          <h3 class="section-title section-title-small" data-i18n="tech_title">Zigbee diagnostics and Zigbee2MQTT</h3>
+          <p class="section-subtitle" data-i18n="tech_subtitle">A technical network view helps assess connection stability, device routing, and issues inside an existing installation.</p>
+          <div class="showcase-copy showcase-copy-compact">
+            <h3 data-i18n="zigbee_t">Zigbee network map</h3>
+            <p data-i18n="zigbee_p">Useful for diagnosing range issues, routing, stability, and device choices in Zigbee2MQTT.</p>
+          </div>
+        </div>
+
+        <article class="card showcase-card tech-card">
+          <div class="showcase-media tech-media">
+            <img src="../assets/examples/zigbee-map.png" data-i18n-alt="zigbee_alt" alt="Zigbee2MQTT network map" loading="lazy" data-lightbox-src="../assets/examples/zigbee-map.png" />
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <div class="lightbox" id="lightbox" hidden aria-hidden="true">
+      <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Close preview">Close</button>
+      <div class="lightbox-backdrop" id="lightboxBackdrop"></div>
+      <div class="lightbox-dialog" role="dialog" aria-modal="true" aria-label="Panel preview">
+        <img id="lightboxImage" src="" alt="" />
+      </div>
+    </div>
+
     <!-- CONTACT -->
     <section class="section" id="contact">
       <div class="section-label" data-i18n="c_label">Contact</div>
@@ -723,6 +787,24 @@
         step1_p: "You describe the issue. We find the cause or next logical step.",
         step2_t: "2) Implementation & testing",
         step2_p: "Once the cause of the problem is identified, we decide whether it is hourly work or a project built from scratch, depending on the scope of the task (individual pricing). You create a temporary account in your Home Assistant and give me access. I make the agreed changes, and when the work is done, we verify everything together. If everything works correctly, you make the payment and remove the temporary account. If creating such an account is difficult for you, we can use another access method.",
+        examples_label: "Examples",
+        examples_title: "Example panels",
+        examples_subtitle: "Selected views show both clean day-to-day control and the logic behind the installation.",
+        ex1_t: "Heating and buffer control",
+        ex1_p: "A view of the heating process with an active buffer tank, interlocks, and dependencies between heat sources.",
+        ex1_alt: "Heating and buffer control panel",
+        ex2_t: "Statuses, temperatures, and system logic",
+        ex2_p: "Parameters, states, and dependencies that make it easier to diagnose a live installation.",
+        ex2_alt: "Installation status and temperature panel",
+        ex3_t: "Blinds, groups, and scenes",
+        ex3_p: "The panel supports control of individual blinds, blind groups, and scenes such as cinema mode. It also covers whole-home control and time-based automation, for example opening at sunrise and closing at sunset.",
+        ex3_alt: "Blinds and everyday control panel",
+        tech_label: "Technical layer",
+        tech_title: "Zigbee diagnostics and Zigbee2MQTT",
+        tech_subtitle: "A technical network view helps assess connection stability, device routing, and issues inside an existing installation.",
+        zigbee_t: "Zigbee network map",
+        zigbee_p: "Useful for diagnosing range issues, routing, stability, and device choices in Zigbee2MQTT.",
+        zigbee_alt: "Zigbee2MQTT network map",
 
         pay_note_plain: "Payment: DK – MobilePay. PL/EN – bank transfer or Revolut. Details after we agree on cooperation. PayPal – no.",
 
@@ -813,6 +895,10 @@ const dict = I18N[lang];
         const key = el.getAttribute("data-i18n-placeholder");
         if(dict[key] != null) el.setAttribute("placeholder", dict[key]);
       });
+      document.querySelectorAll("[data-i18n-alt]").forEach(el=>{
+        const key = el.getAttribute("data-i18n-alt");
+        if(dict[key] != null) el.setAttribute("alt", dict[key]);
+      });
 
       // meta
       document.title = dict.meta_title || document.title;
@@ -852,6 +938,42 @@ const dict = I18N[lang];
     // Form submit (AJAX to keep page)
     const form = qs("#contactForm");
     const statusEl = qs("#formStatus");
+    const lightbox = qs("#lightbox");
+    const lightboxImage = qs("#lightboxImage");
+    const lightboxClose = qs("#lightboxClose");
+    const lightboxBackdrop = qs("#lightboxBackdrop");
+
+    function openLightbox(src, alt){
+      if(!lightbox || !lightboxImage) return;
+      lightboxImage.src = src;
+      lightboxImage.alt = alt || "";
+      lightbox.hidden = false;
+      lightbox.setAttribute("aria-hidden", "false");
+      document.body.classList.add("lightbox-open");
+    }
+
+    function closeLightbox(){
+      if(!lightbox || !lightboxImage) return;
+      lightbox.hidden = true;
+      lightbox.setAttribute("aria-hidden", "true");
+      lightboxImage.src = "";
+      lightboxImage.alt = "";
+      document.body.classList.remove("lightbox-open");
+    }
+
+    document.querySelectorAll("[data-lightbox-src]").forEach(img=>{
+      img.addEventListener("click", ()=>{
+        openLightbox(img.getAttribute("data-lightbox-src"), img.getAttribute("alt"));
+      });
+    });
+
+    if(lightboxClose) lightboxClose.addEventListener("click", closeLightbox);
+    if(lightboxBackdrop) lightboxBackdrop.addEventListener("click", closeLightbox);
+    document.addEventListener("keydown", (e)=>{
+      if(e.key === "Escape" && lightbox && !lightbox.hidden){
+        closeLightbox();
+      }
+    });
 
     if(form){
       form.addEventListener("submit", async (e)=>{

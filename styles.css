@@ -573,6 +573,130 @@ h1 span{
   position:relative;
 }
 
+.showcase-grid{
+  margin-top:18px;
+}
+
+.showcase-card{
+  padding:0;
+  overflow:hidden;
+}
+
+.showcase-media{
+  aspect-ratio:16/10;
+  overflow:hidden;
+  background:rgba(255,255,255,.03);
+  border-bottom:1px solid rgba(255,255,255,.08);
+  cursor:zoom-in;
+}
+
+.showcase-media img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+}
+
+.lightbox-open{
+  overflow:hidden;
+}
+
+.lightbox{
+  position:fixed;
+  inset:0;
+  z-index:1200;
+}
+
+.lightbox-backdrop{
+  position:absolute;
+  inset:0;
+  background:rgba(4,10,18,.86);
+  backdrop-filter:blur(6px);
+}
+
+.lightbox-dialog{
+  position:relative;
+  z-index:1;
+  width:min(96vw, 1500px);
+  height:min(92vh, 980px);
+  margin:4vh auto;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+
+.lightbox-dialog img{
+  max-width:100%;
+  max-height:100%;
+  width:auto;
+  height:auto;
+  display:block;
+  object-fit:contain;
+  border-radius:18px;
+  box-shadow:0 22px 60px rgba(0,0,0,.45);
+  background:#0b1118;
+}
+
+.lightbox-close{
+  position:absolute;
+  top:18px;
+  right:18px;
+  z-index:2;
+  min-width:120px;
+  height:48px;
+  padding:0 18px;
+  border:1px solid rgba(102,226,255,.28);
+  border-radius:999px;
+  background:linear-gradient(135deg, rgba(102,226,255,.26), rgba(18,200,132,.2));
+  color:#fff;
+  font-size:1rem;
+  font-weight:700;
+  line-height:1;
+  cursor:pointer;
+  box-shadow:0 12px 26px rgba(0,0,0,.28);
+}
+
+.showcase-copy{
+  padding:18px;
+}
+
+.showcase-copy h3{
+  margin:0 0 10px;
+  font-size:1.05rem;
+  color:#f8fbff;
+}
+
+.showcase-copy p{
+  margin:0;
+  color:var(--muted);
+  line-height:1.65;
+}
+
+.showcase-copy-compact{
+  padding:18px 0 0;
+}
+
+.tech-block{
+  display:grid;
+  grid-template-columns:minmax(280px,.92fr) minmax(0,1.08fr);
+  gap:18px;
+  margin-top:18px;
+  align-items:stretch;
+}
+
+.section-title-small{
+  font-size:clamp(1.35rem, 1.8vw, 1.7rem);
+}
+
+.tech-card{
+  min-height:100%;
+}
+
+.tech-media{
+  aspect-ratio:16/9;
+}
+
 .process-card{
   padding-top:22px;
 }
@@ -748,6 +872,10 @@ html[lang="da"] nav li a{padding:10px 11px}
 
   .grid-3{
     grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .tech-block{
+    grid-template-columns:1fr;
   }
 
   .contact-grid{
