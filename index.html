@@ -10,7 +10,7 @@
 
   <!-- Canonical + hreflang -->
   <link rel="canonical" id="canonical" href="https://ha-expert.com/" />
-  <link rel="alternate" hreflang="pl" href="https://ha-expert.com/" />
+  <link rel="alternate" hreflang="pl" href="https://ha-expert.com/pl/" />
   <link rel="alternate" hreflang="da" href="https://ha-expert.com/da/" />
   <link rel="alternate" hreflang="en" href="https://ha-expert.com/en/" />
   <link rel="alternate" hreflang="x-default" href="https://ha-expert.com/" />
@@ -106,7 +106,7 @@
       </nav>
 
       <div class="lang-switch" aria-label="Language switch">
-        <a class="lang-btn active" href="./index.html" data-lang="pl" aria-label="Polski" aria-current="page">🇵🇱</a>
+        <a class="lang-btn active" href="./pl/index.html" data-lang="pl" aria-label="Polski" aria-current="page">🇵🇱</a>
         <a class="lang-btn" href="./da/index.html" data-lang="da" aria-label="Dansk">🇩🇰</a>
         <a class="lang-btn" href="./en/index.html" data-lang="en" aria-label="English">🇬🇧</a>
       </div>
@@ -434,27 +434,37 @@
     const IS_FILE = (window.location.protocol === "file:");
     const IS_LOCAL_DEV = ["127.0.0.1", "localhost"].includes(window.location.hostname);
     const PAGE_LANG = (document.documentElement.getAttribute("lang") || "pl").toLowerCase();
+    const PATHNAME = String(window.location.pathname || "").replace(/\/+/g, "/");
+    const IS_PL_PATH = /\/pl\/(?:index\.html)?$/.test(PATHNAME);
+    const IS_DA_PATH = /\/da\/(?:index\.html)?$/.test(PATHNAME);
+    const IS_EN_PATH = /\/en\/(?:index\.html)?$/.test(PATHNAME);
+    const IS_ROOT_ENTRY = !IS_PL_PATH && !IS_DA_PATH && !IS_EN_PATH && (PATHNAME === "/" || /\/index\.html$/.test(PATHNAME));
+    const ROOT_URL = IS_FILE ? "./index.html" : IS_LOCAL_DEV ? `${window.location.origin}/` : "https://ha-expert.com/";
 
     const URLS = IS_FILE ? (
-      PAGE_LANG === "da" ? {
-        pl: "../index.html",
+      IS_DA_PATH ? {
+        pl: "../pl/index.html",
         da: "./index.html",
         en: "../en/index.html"
-      } : PAGE_LANG === "en" ? {
-        pl: "../index.html",
+      } : IS_EN_PATH ? {
+        pl: "../pl/index.html",
         da: "../da/index.html",
         en: "./index.html"
-      } : {
+      } : IS_PL_PATH ? {
         pl: "./index.html",
+        da: "../da/index.html",
+        en: "../en/index.html"
+      } : {
+        pl: "./pl/index.html",
         da: "./da/index.html",
         en: "./en/index.html"
       }
     ) : IS_LOCAL_DEV ? {
-      pl: `${window.location.origin}/`,
+      pl: `${window.location.origin}/pl/`,
       da: `${window.location.origin}/da/`,
       en: `${window.location.origin}/en/`
     } : {
-      pl: "https://ha-expert.com/",
+      pl: "https://ha-expert.com/pl/",
       da: "https://ha-expert.com/da/",
       en: "https://ha-expert.com/en/"
     };
@@ -909,10 +919,10 @@
         }
       }
 
-      // On the root/PL page, choose default language from browser locale.
-      if(PAGE_LANG === "pl"){
+      // On the root entry page, choose language from browser locale.
+      if(IS_ROOT_ENTRY){
         const preferred = getBrowserPreferredLang();
-        if(preferred !== "pl" && URLS[preferred]){
+        if(URLS[preferred]){
           const target = URLS[preferred] + window.location.hash;
           if(window.location.href !== target){
             window.location.replace(target);
@@ -933,7 +943,7 @@
       if(canonical && URLS[lang]) canonical.href = URLS[lang];
     
       const xdef = document.querySelector('link[hreflang="x-default"]');
-      if(xdef) xdef.href = URLS.pl;
+      if(xdef) xdef.href = ROOT_URL;
     }
 
 

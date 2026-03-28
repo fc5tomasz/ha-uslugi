@@ -2,21 +2,28 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://ha-expert.com/</loc>
-    <xhtml:link rel="alternate" hreflang="pl" href="https://ha-expert.com/" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://ha-expert.com/pl/" />
+    <xhtml:link rel="alternate" hreflang="da" href="https://ha-expert.com/da/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://ha-expert.com/en/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ha-expert.com/" />
+  </url>
+  <url>
+    <loc>https://ha-expert.com/pl/</loc>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://ha-expert.com/pl/" />
     <xhtml:link rel="alternate" hreflang="da" href="https://ha-expert.com/da/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://ha-expert.com/en/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ha-expert.com/" />
   </url>
   <url>
     <loc>https://ha-expert.com/da/</loc>
-    <xhtml:link rel="alternate" hreflang="pl" href="https://ha-expert.com/" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://ha-expert.com/pl/" />
     <xhtml:link rel="alternate" hreflang="da" href="https://ha-expert.com/da/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://ha-expert.com/en/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ha-expert.com/" />
   </url>
   <url>
     <loc>https://ha-expert.com/en/</loc>
-    <xhtml:link rel="alternate" hreflang="pl" href="https://ha-expert.com/" />
+    <xhtml:link rel="alternate" hreflang="pl" href="https://ha-expert.com/pl/" />
     <xhtml:link rel="alternate" hreflang="da" href="https://ha-expert.com/da/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://ha-expert.com/en/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ha-expert.com/" />
