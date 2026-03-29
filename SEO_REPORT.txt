@@ -1,0 +1,214 @@
+SEO REPORT
+Projekt: ha-expert.com
+Zakres: wersje PL (/pl/), EN (/en/), DA (/da/)
+Data analizy: 2026-03-29
+Status: FINAL
+
+1. META TITLE I META DESCRIPTION
+
+PL
+Title:
+Ekspert Home Assistant | Pomoc, Diagnoza i Automatyzacje Smart Dom
+Description:
+Profesjonalna pomoc i diagnostyka Home Assistant. Rozwiązuję problemy z automatyzacją, integracjami i sterowaniem. Twój inteligentny dom w rękach eksperta.
+Ocena fraz:
+- Home Assistant: TAK
+- Ekspert: TAK
+- Zigbee: NIE w title/description
+- Diagnostyka / Diagnoza: TAK
+
+EN
+Title:
+Home Assistant Expert | Help, Diagnostics & Smart Home Automations
+Description:
+Professional Home Assistant help and diagnostics. I solve problems with automations, integrations, and control. Your smart home managed by an expert.
+Ocena fraz:
+- Home Assistant: TAK
+- Expert: TAK
+- Zigbee: NIE w title/description
+- Diagnostics: TAK
+
+DA
+Title:
+Home Assistant Ekspert | Hjælp, Diagnostik og Smart Home Automatisering
+Description:
+Professionel hjælp og diagnostik til Home Assistant. Jeg løser problemer med automatisering, integrationer og styring. Dit smart home i eksperthænder.
+Ocena fraz:
+- Home Assistant: TAK
+- Ekspert: TAK
+- Zigbee: NIE w title/description
+- Diagnostik: TAK
+
+Wniosek:
+Meta tytuły i opisy są spójne z aktualnym pozycjonowaniem na eksperta Home Assistant, pomoc, diagnostykę i automatykę smart home.
+Fraza Zigbee została celowo przeniesiona do meta keywords oraz treści sekcji technicznych, a nie do wszystkich title/description.
+
+2. META KEYWORDS
+
+PL:
+Home Assistant, ekspert, pomoc, diagnostyka Zigbee, inteligentny dom, automatyka, sterowanie ogrzewaniem, dashboard, zdalny dostęp, naprawa błędów
+
+EN:
+Home Assistant expert, help, Zigbee diagnostics, smart home, automation, heating control, dashboard design, remote access, troubleshooting
+
+DA:
+Home Assistant ekspert, hjælp, Zigbee-diagnostik, smart home, automatisering, varmestyring, dashboard design, fjernadgang, fejlfinding
+
+Wniosek:
+Meta keywords zostały zaktualizowane i są teraz zgodne z docelowym zakresem usług: ekspert, pomoc, diagnostyka, automatyka, Zigbee, dostęp zdalny.
+
+3. STRUKTURA NAGŁÓWKÓW
+
+PL
+H1:
+- Ekspercka opieka nad Twoim Home Assistant
+H2:
+- Konkretnie, spokojnie i bez chaosu.
+- W czym pomagam
+- To jest dla Ciebie, jeśli…
+- Jak to wygląda
+- Przykładowe panele
+- Napisz, co chcesz ogarnąć
+Ocena:
+Jeden H1. H2 są logiczne, zwięzłe i odpowiadają głównym sekcjom.
+
+EN
+H1:
+- Expert care for your Home Assistant
+H2:
+- Clear, calm, and without chaos.
+- What I help with
+- This is for you if…
+- How it works
+- Example panels
+- Tell me what you want to fix
+Ocena:
+Jeden H1. H2 są logiczne i odpowiadają strukturze wersji PL.
+
+DA
+H1:
+- Ekspertpleje til dit Home Assistant
+H2:
+- Konkret, roligt og uden kaos.
+- Hvad jeg hjælper med
+- Det er til dig, hvis…
+- Sådan foregår det
+- Eksempler på paneler
+- Skriv hvad du vil have løst
+Ocena:
+Jeden H1. H2 są spójne z wersją polską i angielską.
+
+4. IMPLEMENTACJA JĘZYKOWA
+
+Przekierowanie językowe jest zaimplementowane w rootowym pliku index.html na podstawie navigator.language:
+
+<script>
+  (function() {
+    var lang = navigator.language || navigator.userLanguage;
+    if (lang.startsWith('pl')) {
+      window.location.replace("./pl/index.html");
+    } else if (lang.startsWith('da')) {
+      window.location.replace("./da/index.html");
+    } else {
+      window.location.replace("./en/index.html");
+    }
+  })();
+</script>
+
+Wniosek:
+- Kod języka i ścieżka dla duńskiej wersji są konsekwentnie ustawione jako "da"
+- W projekcie nie ma aktywnych ścieżek /dk/ ani hreflang="dk"
+
+5. ATRYBUTY HREFLANG
+
+Tagi hreflang są obecne w sekcji <head> każdej wersji:
+
+<link rel="alternate" hreflang="pl" href="https://ha-expert.com/pl/" />
+<link rel="alternate" hreflang="da" href="https://ha-expert.com/da/" />
+<link rel="alternate" hreflang="en" href="https://ha-expert.com/en/" />
+<link rel="alternate" hreflang="x-default" href="https://ha-expert.com/" />
+
+Wniosek:
+- Google otrzymuje poprawne mapowanie wersji PL / DA / EN
+- Root działa jako x-default
+- W sitemap.xml zachowana jest ta sama logika hreflang
+
+6. JSON-LD / DANE STRUKTURALNE
+
+PL
+Service name:
+Ekspercka diagnostyka i konfiguracja Home Assistant
+Service description:
+Profesjonalna pomoc i diagnostyka Home Assistant. Rozwiązuję problemy z automatyzacją, integracjami i sterowaniem. Twój inteligentny dom w rękach eksperta.
+serviceType:
+Smart Home Automation and Diagnostics
+
+EN
+Service name:
+Expert Home Assistant diagnostics and configuration
+Service description:
+Professional Home Assistant help and diagnostics. I solve problems with automations, integrations, and control. Your smart home managed by an expert.
+serviceType:
+Smart Home Automation and Diagnostics
+
+DA
+Service name:
+Ekspert Home Assistant diagnostik og konfiguration
+Service description:
+Professionel hjælp og diagnostik til Home Assistant. Jeg løser problemer med automatisering, integrationer og styring. Dit smart home i eksperthænder.
+serviceType:
+Smart Home Automation og Diagnostik
+
+Wniosek:
+JSON-LD zostało zsynchronizowane z aktualnymi meta opisami i realnym zakresem usług.
+
+7. ATRYBUTY ALT
+
+Potwierdzenie:
+Wszystkie główne grafiki treściowe mają opisowe atrybuty alt.
+
+PL:
+- heating-control.png -> "Panel sterowania ogrzewaniem i buforem"
+- heating-status.png -> "Panel ze statusami i temperaturami instalacji"
+- blinds-control.png -> "Panel rolet i codziennego sterowania"
+- zigbee-map.png -> "Mapa sieci Zigbee2MQTT"
+
+EN:
+- heating-control.png -> "Heating and buffer control panel"
+- heating-status.png -> "Installation status and temperature panel"
+- blinds-control.png -> "Blinds and everyday control panel"
+- zigbee-map.png -> "Zigbee2MQTT network map"
+
+DA:
+- heating-control.png -> "Panel til styring af varme og buffertank"
+- heating-status.png -> "Panel med status og temperaturer i installationen"
+- blinds-control.png -> "Panel til rullegardiner og daglig styring"
+- zigbee-map.png -> "Kort over Zigbee2MQTT-netværket"
+
+Wniosek:
+Alty są opisowe, sensowne i spójne z treścią.
+
+8. SITEMAP I ROBOTS
+
+robots.txt:
+- wskazuje wyłącznie na sitemap.xml
+
+sitemap.xml:
+- zawiera: /, /pl/, /da/, /en/, /demo/
+- nie zawiera już nieistniejącej strony /pl/zaawansowane-wsparcie/
+- zawiera hreflang dla /, /pl/, /da/, /en/
+
+9. PODSUMOWANIE KOŃCOWE
+
+Stan obecny:
+- osobne wersje językowe PL / DA / EN
+- spójne title, description, keywords i JSON-LD
+- poprawne canonicale i hreflang
+- jeden H1 na stronę
+- logiczna hierarchia H2
+- opisowe alty obrazów
+- rootowy redirect językowy działa na bazie navigator.language
+- sitemap i robots są zgodne z aktualną strukturą strony
+
+Wniosek końcowy:
+Warstwa SEO technicznego i podstawowej spójności treści jest obecnie uporządkowana i gotowa jako baza pod dalszy content polishing oraz publikację.

@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="robots" content="index,follow" />
+  <meta name="author" content="Tomasz Furdal" />
+  <meta name="theme-color" content="#0f172a" />
+  <link rel="canonical" href="https://ha-expert.com/pl/zaawansowane-wsparcie/" />
+  <title>Zaawansowane wsparcie Home Assistant | Zigbee2MQTT, ZHA, bufory – Tomasz Furdal</title>
+  <meta name="description" content="Zaawansowane wsparcie Home Assistant: Zigbee2MQTT, ZHA, bufory, diagnostyka ogrzewania, routing Zigbee i poprawa logiki automatyzacji." />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Zaawansowane wsparcie Home Assistant | Zigbee2MQTT, ZHA, bufory – Tomasz Furdal" />
+  <meta property="og:description" content="Zaawansowane wsparcie Home Assistant: Zigbee2MQTT, ZHA, bufory, diagnostyka ogrzewania, routing Zigbee i poprawa logiki automatyzacji." />
+  <meta property="og:locale" content="pl_PL" />
+  <link rel="stylesheet" href="../../styles.css" />
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <div class="logo">
+        <div class="logo-mark">HA</div>
+        <div>TOMASZ Furdal<br />HOME ASSISTANT EXPERT</div>
+      </div>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="../index.html#services">Usługi</a></li>
+          <li><a href="../index.html#examples">Przykłady</a></li>
+          <li><a href="../index.html#process">Proces</a></li>
+          <li><a href="#contact">Kontakt</a></li>
+        </ul>
+      </nav>
+      <div class="lang-switch" aria-label="Language switch">
+        <a class="lang-btn active" href="../../pl/index.html" aria-label="Polski" aria-current="page">🇵🇱</a>
+        <a class="lang-btn" href="../../da/index.html" aria-label="Dansk">🇩🇰</a>
+        <a class="lang-btn" href="../../en/index.html" aria-label="English">🇬🇧</a>
+      </div>
+      <a class="nav-cta" href="#contact">Bezpłatna diagnoza</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="section hero" id="top">
+      <div class="hero-copy">
+        <div class="section-label">Zaawansowane wsparcie</div>
+        <h1>Zaawansowane wsparcie Home Assistant <span>Zigbee2MQTT · ZHA · Bufory</span></h1>
+        <p class="hero-sub">Ta podstrona jest dla osób, które potrzebują technicznej analizy istniejącej instalacji: routing Zigbee, konflikty kanałów, zależności źródeł ciepła, bufory, blokady kotła i korekty logiki automatyzacji.</p>
+        <div class="hero-actions">
+          <a class="btn-primary" href="#contact">Zgłoś problem →</a>
+          <a class="btn-ghost" href="../index.html">Wróć do strony głównej</a>
+        </div>
+      </div>
+
+      <aside class="hero-panel card">
+        <div>
+          <div class="section-label">Zakres</div>
+          <h2 class="hero-panel-title">Technicznie, konkretnie, bez zgadywania.</h2>
+        </div>
+        <div class="hero-note">
+          <ul class="hero-note-list">
+            <li>Zigbee2MQTT i ZHA: diagnostyka sieci, routing, dobór kanału, analiza słabych ogniw</li>
+            <li>Bufory, obiegi grzewcze, histerezy, blokady i priorytety źródeł ciepła</li>
+            <li>Automatyzacje z wieloma warunkami, zależnościami i scenariuszami awaryjnymi</li>
+            <li>Porządkowanie encji, dashboardów i alarmów bez rozwalania istniejącej logiki</li>
+          </ul>
+        </div>
+      </aside>
+    </section>
+
+    <section class="section" id="examples">
+      <div class="section-label">Przykłady techniczne</div>
+      <h2 class="section-title">Panele i warstwa techniczna</h2>
+      <p class="section-subtitle">Widoki poniżej pokazują obszary, w których techniczny język ma znaczenie: bufory, zależności źródeł ciepła, routing oraz stabilność Zigbee.</p>
+
+      <div class="grid-3 showcase-grid">
+        <article class="card showcase-card">
+          <div class="showcase-media">
+            <img src="../../assets/examples/heating-control.png" alt="Panel sterowania ogrzewaniem i buforem" loading="lazy" data-lightbox-src="../../assets/examples/heating-control.png" />
+          </div>
+          <div class="showcase-copy">
+            <h3>Sterowanie ogrzewaniem</h3>
+            <p>Analiza setpointów, trybów pracy, blokad, opóźnień i przejść pomiędzy stanami.</p>
+          </div>
+        </article>
+        <article class="card showcase-card">
+          <div class="showcase-media">
+            <img src="../../assets/examples/heating-status.png" alt="Panel ze statusami, buforem i temperaturami instalacji" loading="lazy" data-lightbox-src="../../assets/examples/heating-status.png" />
+          </div>
+          <div class="showcase-copy">
+            <h3>Bufor, proces i źródła ciepła</h3>
+            <p>Widok procesu ogrzewania z aktywnym buforem, blokadą kotła gazowego i zależnościami między źródłami ciepła.</p>
+          </div>
+        </article>
+        <article class="card showcase-card">
+          <div class="showcase-media">
+            <img src="../../assets/examples/zigbee-map.png" alt="Mapa sieci Zigbee2MQTT" loading="lazy" data-lightbox-src="../../assets/examples/zigbee-map.png" />
+          </div>
+          <div class="showcase-copy">
+            <h3>Mapa sieci Zigbee</h3>
+            <p>Przydatna przy diagnozie zasięgu, routerów, urządzeń końcowych, LQI oraz zachowania sieci w Zigbee2MQTT i ZHA.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <div class="lightbox" id="lightbox" hidden aria-hidden="true">
+      <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Zamknij podgląd">Zamknij</button>
+      <div class="lightbox-backdrop" id="lightboxBackdrop"></div>
+      <div class="lightbox-dialog" role="dialog" aria-modal="true" aria-label="Podgląd panelu">
+        <img id="lightboxImage" src="" alt="" />
+      </div>
+    </div>
+
+    <section class="section" id="contact">
+      <div class="section-label">Kontakt</div>
+      <h2 class="section-title">Wyślij techniczny opis problemu</h2>
+      <p class="section-subtitle">Najlepiej podaj od razu stack, np. Zigbee2MQTT lub ZHA, typ hosta, liczbę urządzeń, objawy, logi i zrzuty z paneli.</p>
+      <div class="contact-grid">
+        <div class="card contact-card">
+          <form id="contactForm" action="https://formspree.io/f/mkgdyyrv" method="POST">
+            <input type="hidden" name="lang" value="pl-tech" />
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="name">Imię<span>*</span></label>
+                <input id="name" name="name" type="text" required placeholder="Np. Michał" />
+              </div>
+              <div class="form-group">
+                <label for="email">E-mail<span>*</span></label>
+                <input id="email" name="email" type="email" required placeholder="Twój adres e-mail do kontaktu" />
+              </div>
+              <div class="form-group full">
+                <label for="message">Opis problemu<span>*</span></label>
+                <textarea id="message" name="message" required placeholder="Np.: HA OS na miniPC, Zigbee2MQTT, 48 urządzeń, routery Aqara i Sonoff, zanik raportowania temperatury, bufor 500 l, blokada kotła nie działa zgodnie z warunkami..."></textarea>
+              </div>
+            </div>
+            <button class="btn-primary" type="submit">Wyślij →</button>
+            <div id="formStatus" class="form-status" role="status" aria-live="polite"></div>
+          </form>
+        </div>
+        <div class="card contact-aside">
+          <p>Jeśli wolisz, napisz bezpośrednio na:</p>
+          <div><span class="email-pill">fc5tomasz@gmail.com</span></div>
+          <p>W wiadomości podaj: host, wersję Home Assistant, integracje radiowe, problematyczne encje, objawy oraz kroki do odtworzenia błędu.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span>© <span id="year"></span> Tomasz Furdal – Home Assistant &amp; Integrations</span>
+      <span><a href="../index.html">Powrót do strony głównej</a></span>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const form = document.getElementById("contactForm");
+    const statusEl = document.getElementById("formStatus");
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImage = document.getElementById("lightboxImage");
+    const lightboxClose = document.getElementById("lightboxClose");
+    const lightboxBackdrop = document.getElementById("lightboxBackdrop");
+
+    function openLightbox(src, alt) {
+      lightboxImage.src = src;
+      lightboxImage.alt = alt || "";
+      lightbox.hidden = false;
+      lightbox.setAttribute("aria-hidden", "false");
+      document.body.classList.add("lightbox-open");
+    }
+
+    function closeLightbox() {
+      lightbox.hidden = true;
+      lightbox.setAttribute("aria-hidden", "true");
+      lightboxImage.src = "";
+      lightboxImage.alt = "";
+      document.body.classList.remove("lightbox-open");
+    }
+
+    document.querySelectorAll("[data-lightbox-src]").forEach((img) => {
+      img.addEventListener("click", () => openLightbox(img.getAttribute("data-lightbox-src"), img.getAttribute("alt")));
+    });
+
+    lightboxClose.addEventListener("click", closeLightbox);
+    lightboxBackdrop.addEventListener("click", closeLightbox);
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && !lightbox.hidden) {
+        closeLightbox();
+      }
+    });
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      statusEl.className = "form-status";
+      statusEl.textContent = "Wysyłam…";
+
+      try {
+        const response = await fetch(form.action, {
+          method: "POST",
+          headers: { Accept: "application/json" },
+          body: new FormData(form)
+        });
+
+        if (response.ok) {
+          statusEl.className = "form-status ok";
+          statusEl.textContent = "Gotowe. Otrzymałem wiadomość, wrócę z odpowiedzią na maila.";
+          form.reset();
+        } else {
+          statusEl.className = "form-status err";
+          statusEl.textContent = "Nie wyszło. Spróbuj ponownie albo napisz na: fc5tomasz@gmail.com";
+        }
+      } catch (_) {
+        statusEl.className = "form-status err";
+        statusEl.textContent = "Nie wyszło. Spróbuj ponownie albo napisz na: fc5tomasz@gmail.com";
+      }
+    });
+  </script>
+</body>
+</html>
