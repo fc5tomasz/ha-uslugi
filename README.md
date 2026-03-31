@@ -4,7 +4,7 @@ Strona usług konfiguracji Home Assistant (PL/DA/EN) hostowana na GitHub Pages.
 
 ## Live
 - PL: https://fc5tomasz.github.io/ha-uslugi/
-- DA: https://fc5tomasz.github.io/ha-uslugi/da/
+- DK: https://fc5tomasz.github.io/ha-uslugi/dk/
 - EN: https://fc5tomasz.github.io/ha-uslugi/en/
 
 ## SEO
@@ -13,7 +13,7 @@ Strona usług konfiguracji Home Assistant (PL/DA/EN) hostowana na GitHub Pages.
 
 ## Struktura
 - `/index.html` (PL)
-- `/da/index.html` (DA)
+- `/dk/index.html` (DK)
 - `/en/index.html` (EN)
 
 Kontakt: fc5tomasz@gmail.com

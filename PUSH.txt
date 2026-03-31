@@ -1,0 +1,8 @@
+1. Sklonuj repo do katalogu tymczasowego:
+cd /tmp && rm -rf ha-uslugi-push-new && git clone https://TWÓJ_TOKEN@github.com/fc5tomasz/ha-uslugi.git ha-uslugi-push-new
+
+2. Skopiuj aktualną wersję z katalogu BEST:
+cd /home/tomasz/Dokumenty/Strona_Home_Assistant/GEMINI_SIDE && rsync -av --delete --exclude='.git' BEST/ /tmp/ha-uslugi-push-new/
+
+3. Zacommituj i wypchnij zmiany:
+cd /tmp/ha-uslugi-push-new && git add . && git commit -m "Deploy BEST language refinements for DA and EN" && git push https://TWÓJ_TOKEN@github.com/fc5tomasz/ha-uslugi.git main

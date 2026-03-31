@@ -1,6 +1,6 @@
 SEO REPORT
 Projekt: ha-expert.com
-Zakres: wersje PL (/pl/), EN (/en/), DA (/da/)
+Zakres: wersje PL (/pl/), EN (/en/), DK (/dk/)
 Data analizy: 2026-03-29
 Status: FINAL
 
@@ -107,8 +107,8 @@ Przekierowanie językowe jest zaimplementowane w rootowym pliku index.html na po
     var lang = navigator.language || navigator.userLanguage;
     if (lang.startsWith('pl')) {
       window.location.replace("./pl/index.html");
-    } else if (lang.startsWith('da')) {
-      window.location.replace("./da/index.html");
+    } else if (lang.startsWith('dk') || lang.startsWith('da')) {
+      window.location.replace("./dk/index.html");
     } else {
       window.location.replace("./en/index.html");
     }
@@ -116,15 +116,15 @@ Przekierowanie językowe jest zaimplementowane w rootowym pliku index.html na po
 </script>
 
 Wniosek:
-- Kod języka i ścieżka dla duńskiej wersji są konsekwentnie ustawione jako "da"
-- W projekcie nie ma aktywnych ścieżek /dk/ ani hreflang="dk"
+- Adres URL dla wersji duńskiej jest ustawiony jako "/dk/"
+- Tagi językowe dla robotów są ustawione oficjalnie jako "da-DK"
 
 5. ATRYBUTY HREFLANG
 
 Tagi hreflang są obecne w sekcji <head> każdej wersji:
 
 <link rel="alternate" hreflang="pl" href="https://ha-expert.com/pl/" />
-<link rel="alternate" hreflang="da" href="https://ha-expert.com/da/" />
+<link rel="alternate" hreflang="da-DK" href="https://ha-expert.com/dk/" />
 <link rel="alternate" hreflang="en" href="https://ha-expert.com/en/" />
 <link rel="alternate" hreflang="x-default" href="https://ha-expert.com/" />
 
@@ -194,9 +194,9 @@ robots.txt:
 - wskazuje wyłącznie na sitemap.xml
 
 sitemap.xml:
-- zawiera: /, /pl/, /da/, /en/, /demo/
+- zawiera: /, /pl/, /dk/, /en/, /demo/
 - nie zawiera już nieistniejącej strony /pl/zaawansowane-wsparcie/
-- zawiera hreflang dla /, /pl/, /da/, /en/
+- zawiera hreflang dla /, /pl/, /dk/, /en/
 
 9. PODSUMOWANIE KOŃCOWE
 

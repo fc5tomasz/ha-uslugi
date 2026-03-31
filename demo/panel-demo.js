@@ -63,7 +63,7 @@
       weather_clear_night_sunny: "Bezchmurna noc",
       weather_clear_night_partlycloudy: "Pogodna noc"
     },
-    da: {
+    dk: {
       title_page: "Demonstration af Home Assistants muligheder | Tomasz Furdal",
       meta_desc: "Live demonstration af et animeret Home Assistant-panel: energi, varme, vejr, ventilation og husets tilstande i én visuel præsentation.",
       kicker: "Demonstration af automationsstyring",
@@ -196,7 +196,8 @@
   function getLang() {
     const p = new URLSearchParams(window.location.search);
     const lang = (p.get("lang") || "pl").toLowerCase();
-    return DICT[lang] ? lang : "pl";
+    const normalizedLang = lang === "da" ? "dk" : lang;
+    return DICT[normalizedLang] ? normalizedLang : "pl";
   }
 
   function qs(sel) {
@@ -403,7 +404,7 @@
     });
     const back = qs("#backLink");
     if (back) {
-      back.href = lang === "pl" ? "../index.html" : lang === "da" ? "../da/index.html" : "../en/index.html";
+      back.href = lang === "pl" ? "../index.html" : lang === "dk" ? "../dk/index.html" : "../en/index.html";
     }
   }
 
