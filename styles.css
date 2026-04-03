@@ -585,6 +585,37 @@ h1 span{
   margin-bottom:14px;
 }
 
+.audience-link-row{
+  margin-top:4px;
+}
+
+.audience-link-row::before{
+  top:.62em;
+}
+
+.audience-inline-link{
+  color:var(--muted-strong);
+  transition:color .22s ease;
+}
+
+.audience-inline-link:hover{
+  color:var(--accent-2);
+}
+
+.knowledge-link{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  margin-top:18px;
+  color:var(--muted-strong);
+  font-weight:600;
+  transition:color .22s ease;
+}
+
+.knowledge-link:hover{
+  color:var(--accent-2);
+}
+
 .process-grid{
   position:relative;
 }
