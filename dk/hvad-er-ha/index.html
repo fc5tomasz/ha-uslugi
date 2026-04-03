@@ -11,9 +11,11 @@
   <link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/hvad-er-ha/" />
   <link rel="alternate" hreflang="en" href="https://ha-expert.com/en/what-is-ha/" />
   <link rel="alternate" hreflang="x-default" href="https://ha-expert.com/pl/" />
-  <title>Hvad er Home Assistant egentlig? | Tomasz Furdal</title>
-  <meta name="description" content="En kort introduktion til hvad Home Assistant egentlig er." />
+  <title>Hvad er Home Assistant? | Smart home, automatisering og integrationer</title>
+  <meta name="description" content="Hvad er Home Assistant? Se systemets muligheder: sikkerhed, overvågning, varme, AI, have, hardware og installation." />
   <meta property="og:type" content="article" />
+  <meta property="og:title" content="Hvad er Home Assistant? | Smart home, automatisering og integrationer" />
+  <meta property="og:description" content="Hvad er Home Assistant? Se systemets muligheder: sikkerhed, overvågning, varme, AI, have, hardware og installation." />
   <meta property="og:url" content="https://ha-expert.com/dk/hvad-er-ha/" />
   <link rel="stylesheet" href="../../styles.css" />
 </head>
@@ -45,7 +47,95 @@
   <main>
     <section class="section">
       <div class="section-label">Home Assistant</div>
-      <h1 class="section-title">Hvad er Home Assistant egentlig?</h1>
+      <h1 class="section-title">Hvad er Home Assistant?</h1>
+      <div class="card">
+        <p class="section-subtitle">En gratis, kraftfuld "hjerne" til dit smarte hjem. I stedet for at have 10 forskellige apps på din telefon, forbinder Home Assistant enheder fra alle producenter i ét sammenhængende system. Systemet prioriterer lokal styring – hvilket giver dig mulighed for at frigøre mange enheder (f.eks. Zigbee) fra eksterne servere, hvilket sikrer lynhurtige svartider og funktionalitet selv uden internet. Og hvis du bruger cloud-enheder, integrerer det dem og tvinger dem til at arbejde problemfrit med resten.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">Muligheder</div>
+      <h2 class="section-title">Hvad kan systemet?</h2>
+      <div class="grid-3 services-grid">
+        <article class="card service-card">
+          <div class="card-top">
+            <span class="card-kicker">Sikkerhed</span>
+            <span class="card-badge" aria-hidden="true">🛡️</span>
+          </div>
+          <h3>Sikkerhed og overvågning</h3>
+          <p>Integration af kameraer, såsom Hikvision. Systemet ved selv, hvornår du går, takket være integration med din telefon, og aktiveres automatisk. Det kan køre en tilstedeværelsessimulering, hvor det tilfældigt tænder lys og lukker persienner for at afskrække tyve. Hvis det opdager en ubuden gæst, afspiller det en stemmeadvarsel via Google-højttalere eller TTS. Når du kommer tilbage, afbrydes alarmen automatisk.</p>
+        </article>
+
+        <article class="card service-card">
+          <div class="card-top">
+            <span class="card-kicker">Omgivelser</span>
+            <span class="card-badge" aria-hidden="true">🌿</span>
+          </div>
+          <h3>Intelligent have og omgivelser</h3>
+          <p>Automatiseret udendørsbelysning og vandingssystemer, der kun starter, når vejrudsigten ikke lover regn.</p>
+        </article>
+
+        <article class="card service-card">
+          <div class="card-top">
+            <span class="card-kicker">Logik og AI</span>
+            <span class="card-badge" aria-hidden="true">🧠</span>
+          </div>
+          <h3>Varme, logik og AI</h3>
+          <p>Præcis temperaturstyring og mulighed for at integrere med lokal kunstig intelligens, så du kan tale til dit hjem på naturligt sprog.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">Fordel</div>
+      <h2 class="section-title">Hvorfor Home Assistant frem for standard-hubs?</h2>
+      <div class="grid-3 services-grid">
+        <article class="card service-card">
+          <div class="card-top">
+            <span class="card-kicker">Logik</span>
+            <span class="card-badge" aria-hidden="true">🧩</span>
+          </div>
+          <h3>Ubegrænset logik</h3>
+          <p>Du er kun begrænset af din fantasi. Producent-apps tillader sjældent betingelser som: "Tænd lyset ved solnedgang, men kun hvis der er nogen hjemme, og fjernsynet er slukket." For HA er det en smal sag.</p>
+        </article>
+
+        <article class="card service-card">
+          <div class="card-top">
+            <span class="card-kicker">Uafhængighed</span>
+            <span class="card-badge" aria-hidden="true">🔒</span>
+          </div>
+          <h3>Privatliv og uafhængighed</h3>
+          <p>Hvis producenten af din pære eller støvsuger pludselig går konkurs og lukker sine servere, holder udstyret i et traditionelt system op med at fungere. Med en korrekt konfigureret Home Assistant beholder du kontrollen.</p>
+        </article>
+
+        <article class="card service-card">
+          <div class="card-top">
+            <span class="card-kicker">Open Source</span>
+            <span class="card-badge" aria-hidden="true">🌍</span>
+          </div>
+          <h3>Open Source</h3>
+          <p>Tusindvis af entusiaster fra hele verden skaber hver dag nye integrationer. Inden en ny standard dukker op på markedet, understøtter Home Assistant den normalt allerede.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">Hardware</div>
+      <h2 class="section-title">Hvad kører det på?</h2>
+      <div class="card">
+        <p class="section-subtitle">Home Assistant kræver ikke dyre servere. Energieffektive terminaler, som Dell Wyse eller HP, NAS-servere eller bare gamle bærbare computere er gode til at starte med.</p>
+        <p class="section-subtitle">Den mest populære enhed for entusiaster er dog en mikrocomputer.</p>
+        <a class="knowledge-link" href="https://www.raspberrypi.com/" target="_blank" rel="noopener noreferrer">Officiel Raspberry Pi hjemmeside <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">Kom i gang</div>
+      <h2 class="section-title">Hvor downloader man det, og hvordan kommer man i gang?</h2>
+      <div class="card">
+        <p class="section-subtitle">Softwaren er helt gratis og Open Source. Mange enheder, især dem på Wi-Fi, kan forbindes til systemet uden ekstra hubs eller koordinatorer. Installationen er et fantastisk begynderprojekt.</p>
+        <a class="knowledge-link" href="https://www.home-assistant.io/installation/" target="_blank" rel="noopener noreferrer">Officielle Home Assistant instruktioner og installationsfiler <span aria-hidden="true">→</span></a>
+      </div>
     </section>
   </main>
 
