@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="robots" content="index,follow" />
+  <meta name="author" content="Tomasz Furdal" />
+  <meta name="theme-color" content="#0f172a" />
+  <link rel="canonical" href="https://ha-expert.com/en/stable-zigbee/" />
+  <link rel="alternate" hreflang="pl" href="https://ha-expert.com/pl/stabilne-zigbee/" />
+  <link rel="alternate" hreflang="en" href="https://ha-expert.com/en/stable-zigbee/" />
+  <link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/stabilt-zigbee/" />
+  <link rel="alternate" hreflang="x-default" href="https://ha-expert.com/en/stable-zigbee/" />
+  <title>Connection dropping? How to stabilize your Zigbee network | HA Expert</title>
+  <meta name="description" content="Why are your Zigbee sensors unresponsive? Discover the causes (Wi-Fi, USB 3.0, Mesh) and learn how to stabilize your smart home network." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://ha-expert.com/en/stable-zigbee/" />
+  <link rel="stylesheet" href="../../styles.css" />
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <div class="logo">
+        <div class="logo-mark">HA</div>
+        <div>TOMASZ Furdal<br />HOME ASSISTANT EXPERT</div>
+      </div>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="/en/#services">Services</a></li>
+          <li><a href="/en/#for">Who it’s for</a></li>
+          <li><a href="/en/#process">How I work</a></li>
+          <li><a href="/en/#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="lang-switch" aria-label="Language switch">
+        <a class="lang-btn" href="/pl/stabilne-zigbee/" aria-label="Polski">🇵🇱</a>
+        <a class="lang-btn" href="/dk/stabilt-zigbee/" aria-label="Dansk">🇩🇰</a>
+        <a class="lang-btn active" href="/en/stable-zigbee/" aria-label="English" aria-current="page">🇬🇧</a>
+      </div>
+      <a class="btn-ghost nav-demo-link" href="/demo/index.html?lang=en">Panel Demo</a>
+      <a class="nav-cta" href="/en/#contact">Free diagnosis</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="section-label">Zigbee</div>
+      <h1 class="section-title" style="white-space:nowrap;font-size:clamp(1.45rem,2vw,2rem);">Connection dropping? How to stabilize it.</h1>
+      <div class="card">
+        <p class="section-subtitle">Zigbee is a brilliant and energy-efficient protocol, but you can't cheat physics. If your devices aren't responding, have delays, or suddenly "drop off" the network, it's rarely a hardware failure. Most often, it's the result of a bad radio environment, network conflicts, or incorrect hardware setup. See what's killing your range.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">Diagnosis</div>
+      <h2 class="section-title">Why does Zigbee stop working?</h2>
+      <div class="grid-3 services-grid">
+        <article class="card service-card">
+          <div class="card-top">
+            <span class="card-kicker">Interference</span>
+            <span class="card-badge" aria-hidden="true">📶</span>
+          </div>
+          <h3>The invisible war: Zigbee vs Wi-Fi</h3>
+          <p>Your Wi-Fi router and Zigbee devices share the same 2.4 GHz airspace. Wi-Fi is a "loud concert", while Zigbee is a "quiet conversation". If they operate on overlapping channels, your home router will simply drown out the sensors. Choosing a non-overlapping channel is the absolute foundation of stability.</p>
+        </article>
+
+        <article class="card service-card">
+          <div class="card-top">
+            <span class="card-kicker">Hardware</span>
+            <span class="card-badge" aria-hidden="true">🔌</span>
+          </div>
+          <h3>The USB 3.0 trap</h3>
+          <p>Are you plugging your coordinator (e.g., Sonoff Dongle) directly into a blue USB port on your terminal or Raspberry Pi? That's a mistake that drastically cuts your range. USB 3.0 ports generate massive electromagnetic "noise". The fix is simple: use a USB 2.0 extension cable and physically move the device away from the computer.</p>
+        </article>
+
+        <article class="card service-card">
+          <div class="card-top">
+            <span class="card-kicker">Mesh</span>
+            <span class="card-badge" aria-hidden="true">🕸️</span>
+          </div>
+          <h3>Weak network backbone (Lack of routers)</h3>
+          <p>Zigbee is a mesh network. Battery-powered devices (motion sensors, thermometers) "sleep" and don't pass the signal on. For the network to have strong coverage throughout the house, you need permanently powered devices plugged into outlets (e.g., smart plugs, bulbs). They act as routers, amplifying and forwarding the signal to the furthest corners.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">Support</div>
+      <h2 class="section-title">Need an expert's eye? Let's do a professional diagnosis.</h2>
+      <div class="card">
+        <p class="section-subtitle">We can't cheat physics remotely, but you don't have to guess where the problem lies. I'll connect to your system, analyze the LQI (Link Quality Indication) map, check your coordinator settings, and find the bottlenecks. I'll show you which channel avoids your home Wi-Fi and point out exactly where you should add a signal repeater. You make the physical changes based on my recommendations, and I'll help stabilize the software (ZHA or Zigbee2MQTT).</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span>© <span id="year"></span> Tomasz Furdal – Home Assistant &amp; Integrations</span>
+      <span>Payments: bank transfer, Revolut, PayPal, MobilePay</span>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

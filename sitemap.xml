@@ -29,6 +29,33 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ha-expert.com/pl/" />
   </url>
   <url>
+    <loc>https://ha-expert.com/pl/stabilne-zigbee/</loc>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://ha-expert.com/pl/stabilne-zigbee/" />
+    <xhtml:link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/stabilt-zigbee/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://ha-expert.com/en/stable-zigbee/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ha-expert.com/en/stable-zigbee/" />
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ha-expert.com/en/stable-zigbee/</loc>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://ha-expert.com/pl/stabilne-zigbee/" />
+    <xhtml:link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/stabilt-zigbee/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://ha-expert.com/en/stable-zigbee/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ha-expert.com/en/stable-zigbee/" />
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ha-expert.com/dk/stabilt-zigbee/</loc>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://ha-expert.com/pl/stabilne-zigbee/" />
+    <xhtml:link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/stabilt-zigbee/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://ha-expert.com/en/stable-zigbee/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ha-expert.com/en/stable-zigbee/" />
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://ha-expert.com/demo/</loc>
   </url>
 </urlset>

@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="robots" content="index,follow" />
+  <meta name="author" content="Tomasz Furdal" />
+  <meta name="theme-color" content="#0f172a" />
+  <link rel="canonical" href="https://ha-expert.com/dk/stabilt-zigbee/" />
+  <link rel="alternate" hreflang="pl" href="https://ha-expert.com/pl/stabilne-zigbee/" />
+  <link rel="alternate" hreflang="en" href="https://ha-expert.com/en/stable-zigbee/" />
+  <link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/stabilt-zigbee/" />
+  <link rel="alternate" hreflang="x-default" href="https://ha-expert.com/en/stable-zigbee/" />
+  <title>Mister forbindelsen? Sådan stabiliserer du dit Zigbee netværk | HA Expert</title>
+  <meta name="description" content="Hvorfor reagerer dine Zigbee-sensorer ikke? Opdag årsagerne (Wi-Fi, USB 3.0, Mesh) og lær, hvordan du stabiliserer dit smart home-netværk." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://ha-expert.com/dk/stabilt-zigbee/" />
+  <link rel="stylesheet" href="../../styles.css" />
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <div class="logo">
+        <div class="logo-mark">HA</div>
+        <div>TOMASZ Furdal<br />HOME ASSISTANT EXPERT</div>
+      </div>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="/dk/#services">Ydelser</a></li>
+          <li><a href="/dk/#for">For hvem</a></li>
+          <li><a href="/dk/#process">Sådan arbejder jeg</a></li>
+          <li><a href="/dk/#contact">Kontakt</a></li>
+        </ul>
+      </nav>
+      <div class="lang-switch" aria-label="Language switch">
+        <a class="lang-btn" href="/pl/stabilne-zigbee/" aria-label="Polski">🇵🇱</a>
+        <a class="lang-btn active" href="/dk/stabilt-zigbee/" aria-label="Dansk" aria-current="page">🇩🇰</a>
+        <a class="lang-btn" href="/en/stable-zigbee/" aria-label="English">🇬🇧</a>
+      </div>
+      <a class="btn-ghost nav-demo-link" href="/demo/index.html?lang=dk">Panel Demo</a>
+      <a class="nav-cta" href="/dk/#contact">Gratis diagnose</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="section-label">Zigbee</div>
+      <h1 class="section-title" style="white-space:nowrap;font-size:clamp(1.45rem,2vw,2rem);">Mister forbindelsen? Sådan stabiliserer du den.</h1>
+      <div class="card">
+        <p class="section-subtitle">Zigbee er en genial og energieffektiv protokol, men man kan ikke snyde fysikken. Hvis dine enheder ikke reagerer, har forsinkelser eller pludselig "falder af" netværket, er det sjældent en hardwarefejl. Oftest skyldes det et dårligt radiomiljø, netværkskonflikter eller forkert hardwareopsætning. Se, hvad der ødelægger din rækkevidde.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">Diagnose</div>
+      <h2 class="section-title">Hvorfor holder Zigbee op med at virke?</h2>
+      <div class="grid-3 services-grid">
+        <article class="card service-card">
+          <div class="card-top">
+            <span class="card-kicker">Forstyrrelser</span>
+            <span class="card-badge" aria-hidden="true">📶</span>
+          </div>
+          <h3>Den usynlige krig: Zigbee vs Wi-Fi</h3>
+          <p>Din Wi-Fi-router og Zigbee-enheder deler det samme 2,4 GHz luftrum. Wi-Fi er en "højlydt koncert", mens Zigbee er en "stille samtale". Hvis de kører på overlappende kanaler, vil din hjemmerouter simpelthen overdøve sensorerne. At vælge en ikke-overlappende kanal er det absolutte fundament for stabilitet.</p>
+        </article>
+
+        <article class="card service-card">
+          <div class="card-top">
+            <span class="card-kicker">Hardware</span>
+            <span class="card-badge" aria-hidden="true">🔌</span>
+          </div>
+          <h3>USB 3.0 fælden</h3>
+          <p>Sætter du din koordinator (f.eks. Sonoff Dongle) direkte i en blå USB-port på din terminal eller Raspberry Pi? Det er en fejl, der drastisk reducerer din rækkevidde. USB 3.0-porte genererer massiv elektromagnetisk "støj". Løsningen er simpel: Brug et USB 2.0-forlængerkabel og flyt enheden fysisk væk fra computeren.</p>
+        </article>
+
+        <article class="card service-card">
+          <div class="card-top">
+            <span class="card-kicker">Mesh</span>
+            <span class="card-badge" aria-hidden="true">🕸️</span>
+          </div>
+          <h3>Svag netværksrygrad (Mangel på routere)</h3>
+          <p>Zigbee er et mesh-netværk. Batteridrevne enheder (bevægelsessensorer, termometre) "sover" og sender ikke signalet videre. For at netværket kan have stærk dækning i hele huset, har du brug for enheder med fast strømtilslutning (f.eks. smart plugs, pærer). De fungerer som routere, der forstærker og videresender signalet til de fjerneste afkroge.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">Support</div>
+      <h2 class="section-title">Har du brug for en eksperts øje? Lad os lave en professionel diagnose.</h2>
+      <div class="card">
+        <p class="section-subtitle">Vi kan ikke snyde fysikken på afstand, men du behøver ikke gætte, hvor problemet ligger. Jeg forbinder til dit system, analyserer LQI-kortet (Link Quality Indication), tjekker din koordinatoropsætning og finder flaskehalsene. Jeg viser dig, hvilken kanal der undgår dit hjemme-Wi-Fi, og peger præcis på, hvor du bør tilføje en signalforstærker. Du foretager de fysiske ændringer baseret på mine anbefalinger, og jeg hjælper med at stabilisere softwaren (ZHA eller Zigbee2MQTT).</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span>© <span id="year"></span> Tomasz Furdal – Home Assistant &amp; Integrations</span>
+      <span>Betaling: bankoverførsel, Revolut, PayPal, MobilePay</span>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="robots" content="index,follow" />
+  <meta name="author" content="Tomasz Furdal" />
+  <meta name="theme-color" content="#0f172a" />
+  <link rel="canonical" href="https://ha-expert.com/pl/stabilne-zigbee/" />
+  <link rel="alternate" hreflang="pl" href="https://ha-expert.com/pl/stabilne-zigbee/" />
+  <link rel="alternate" hreflang="en" href="https://ha-expert.com/en/stable-zigbee/" />
+  <link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/stabilt-zigbee/" />
+  <link rel="alternate" hreflang="x-default" href="https://ha-expert.com/en/stable-zigbee/" />
+  <title>Zrywa połączenie? Jak ustabilizować sieć Zigbee w Home Assistant | HA Expert</title>
+  <meta name="description" content="Dlaczego czujniki Zigbee nie reagują? Poznaj przyczyny problemów z zasięgiem (Wi-Fi, USB 3.0, Mesh) i dowiedz się, jak ustabilizować inteligentny dom." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://ha-expert.com/pl/stabilne-zigbee/" />
+  <link rel="stylesheet" href="../../styles.css" />
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <div class="logo">
+        <div class="logo-mark">HA</div>
+        <div>TOMASZ Furdal<br />HOME ASSISTANT EXPERT</div>
+      </div>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="/pl/#services">Usługi</a></li>
+          <li><a href="/pl/#for">Dla kogo</a></li>
+          <li><a href="/pl/#process">Jak pracuję</a></li>
+          <li><a href="/pl/#contact">Kontakt</a></li>
+        </ul>
+      </nav>
+      <div class="lang-switch" aria-label="Language switch">
+        <a class="lang-btn active" href="/pl/" aria-label="Polski" aria-current="page">🇵🇱</a>
+        <a class="lang-btn" href="/dk/stabilt-zigbee/" aria-label="Dansk">🇩🇰</a>
+        <a class="lang-btn" href="/en/stable-zigbee/" aria-label="English">🇬🇧</a>
+      </div>
+      <a class="btn-ghost nav-demo-link" href="/demo/index.html?lang=pl">Demo Panelu</a>
+      <a class="nav-cta" href="/pl/#contact">Bezpłatna diagnoza</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="section-label">Zigbee</div>
+      <h1 class="section-title" style="white-space:nowrap;font-size:clamp(1.45rem,2vw,2rem);">Zrywa połączenie? Jak je ustabilizować?</h1>
+      <div class="card">
+        <p class="section-subtitle">Zigbee to genialny i energooszczędny protokół, ale fizyki nie oszukasz. Jeśli Twoje urządzenia nie reagują, mają opóźnienia albo nagle "odpadają" od sieci, bardzo rzadko jest to wina zepsutego sprzętu. Najczęściej to efekt złego środowiska radiowego, konfliktów sieciowych lub błędnej konfiguracji sprzętowej. Zobacz, co najczęściej zabija Twój zasięg.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">Diagnoza</div>
+      <h2 class="section-title">Dlaczego Zigbee przestaje działać?</h2>
+      <div class="grid-3 services-grid">
+        <article class="card service-card">
+          <div class="card-top">
+            <span class="card-kicker">Zakłócenia</span>
+            <span class="card-badge" aria-hidden="true">📶</span>
+          </div>
+          <h3>Niewidzialna wojna: Zigbee vs Wi-Fi</h3>
+          <p>Twój router Wi-Fi i urządzenia Zigbee korzystają z tej samej przestrzeni w powietrzu na częstotliwości 2.4 GHz. Wi-Fi to "głośny koncert", a Zigbee to "cicha rozmowa". Jeśli działają na nakładających się kanałach, domowy router po prostu zagłuszy czujniki. Dobranie bezkolizyjnego kanału to absolutny fundament stabilności.</p>
+        </article>
+
+        <article class="card service-card">
+          <div class="card-top">
+            <span class="card-kicker">Sprzęt</span>
+            <span class="card-badge" aria-hidden="true">🔌</span>
+          </div>
+          <h3>Pułapka portu USB 3.0</h3>
+          <p>Wpinasz koordynator (np. Sonoff Dongle) bezpośrednio w niebieski port USB w terminalu lub Raspberry Pi? To błąd, który drastycznie ucina zasięg. Porty USB 3.0 generują ogromny "szum" elektromagnetyczny. Naprawa jest banalna: wystarczy użyć przedłużacza USB 2.0 i fizycznie odsunąć urządzenie od komputera.</p>
+        </article>
+
+        <article class="card service-card">
+          <div class="card-top">
+            <span class="card-kicker">Mesh</span>
+            <span class="card-badge" aria-hidden="true">🕸️</span>
+          </div>
+          <h3>Słaby szkielet sieci (Brak routerów)</h3>
+          <p>Zigbee to sieć typu mesh (pajęczyna). Urządzenia na baterie (czujniki ruchu, termometry) "śpią" i nie przekazują sygnału dalej. Aby sieć miała mocny zasięg w całym domu, potrzebujesz urządzeń zasilanych stale z gniazdka (np. smart gniazdka, żarówki). Pełnią one rolę routerów, które wzmacniają i przekazują sygnał do najdalszych zakątków.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">Wsparcie</div>
+      <h2 class="section-title">Potrzebujesz eksperckiego oka? Zróbmy profesjonalną diagnozę.</h2>
+      <div class="card">
+        <p class="section-subtitle">Fizyki nie oszukamy zdalnie, ale nie musisz zgadywać, gdzie leży problem. Połączę się z Twoim systemem, przeanalizuję mapę LQI (jakość połączeń), sprawdzę ustawienia koordynatora i znajdę "wąskie gardła". Pokażę Ci, jaki kanał omija Twoje domowe Wi-Fi i dokładnie wskażę, gdzie powinieneś dołożyć wzmacniacz sygnału. Ty wprowadzasz fizyczne zmiany według moich zaleceń, a ja pomagam ustabilizować oprogramowanie (ZHA lub Zigbee2MQTT).</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span>© <span id="year"></span> Tomasz Furdal – Home Assistant &amp; Integrations</span>
+      <span>Płatności: przelew bankowy, Revolut, PayPal, MobilePay</span>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
