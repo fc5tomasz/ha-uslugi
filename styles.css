@@ -19,6 +19,7 @@
   --shadow-soft:0 30px 80px rgba(0,0,0,.42);
   --shadow-card:0 18px 38px rgba(0,0,0,.28);
   --max:1180px;
+  --anchor-offset:108px;
 }
 
 *{box-sizing:border-box}
@@ -209,6 +210,14 @@ main{
   padding-top:12px;
 }
 
+#services,
+#for,
+#process,
+#examples,
+#pricing{
+  scroll-margin-top:var(--anchor-offset);
+}
+
 .section-label{
   font-size:.78rem;
   color:var(--accent-2);
@@ -326,6 +335,22 @@ h1 span{
   flex-wrap:wrap;
   gap:12px;
   align-items:center;
+}
+
+.hero-text-link{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  color:var(--muted-strong);
+  font-weight:700;
+  text-decoration:none;
+  transition:color .22s ease, transform .18s ease, text-shadow .22s ease;
+}
+
+.hero-text-link:hover{
+  color:var(--accent-2);
+  transform:translateY(-1px);
+  text-shadow:0 0 16px rgba(102,226,255,.22);
 }
 
 .btn-primary{
@@ -983,6 +1008,10 @@ html[lang="da"] nav li a,html[lang="da-DK"] nav li a{padding:10px 11px}
 }
 
 @media (max-width: 720px){
+  :root{
+    --anchor-offset:150px;
+  }
+
   .section{padding-inline:16px}
   .grid-3,
   .grid-2,
