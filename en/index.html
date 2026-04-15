@@ -7,6 +7,7 @@
   <meta name="author" content="Tomasz Furdal" />
   <meta name="theme-color" content="#0f172a" />
   <meta name="google-site-verification" content="L88MYiIC2YGzQ9Qgb5BJIqNChLdfIA77m8Tol5MGRrE" />
+  <link rel="icon" type="image/png" href="../assets/brand/ha-expert-logo-transparent.png" />
   <link rel="canonical" href="https://ha-expert.com/en/" />
   <link rel="alternate" hreflang="pl" href="https://ha-expert.com/pl/" />
   <link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/" />
@@ -55,15 +56,27 @@
   ]
 }
   </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://ha-expert.com/#organization",
+  "name": "HA Expert Tomasz Furdal",
+  "url": "https://ha-expert.com/",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://ha-expert.com/assets/brand/ha-expert-logo-transparent.png"
+  }
+}
+  </script>
   <link rel="stylesheet" href="../styles.css" />
 </head>
 <body>
   <header>
     <div class="nav">
-      <div class="logo">
-        <div class="logo-mark">HA</div>
-        <div>TOMASZ Furdal<br />HOME ASSISTANT EXPERT</div>
-      </div>
+      <a class="logo" href="#top" aria-label="Tomasz Furdal - Home Assistant Expert">
+        <img class="logo-image" src="../assets/brand/logo-wyciete.png" alt="Tomasz Furdal - Home Assistant Expert" title="Home Assistant Expert - Tomasz Furdal" />
+      </a>
       <nav aria-label="Primary">
         <ul>
           <li><a href="#services">Services</a></li>
@@ -368,6 +381,14 @@
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    const siteHeader = document.querySelector("header");
+    const syncHeaderState = () => {
+      siteHeader.classList.toggle("scrolled", window.scrollY > 24);
+    };
+
+    syncHeaderState();
+    window.addEventListener("scroll", syncHeaderState, { passive: true });
 
     const form = document.getElementById("contactForm");
     const statusEl = document.getElementById("formStatus");
