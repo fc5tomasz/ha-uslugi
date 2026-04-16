@@ -216,6 +216,9 @@ main{
 }
 
 #services,
+#o-mnie,
+#about-me,
+#om-mig,
 #for,
 #process,
 #examples,
@@ -554,6 +557,60 @@ h1 span{
 .audience-grid,
 .process-grid{
   margin-top:18px;
+}
+
+.about-grid{
+  margin-top:18px;
+  display:grid;
+  grid-template-columns:minmax(280px, .9fr) minmax(0, 1.1fr);
+  gap:20px;
+  align-items:stretch;
+}
+
+.about-photo-card,
+.about-copy-card{
+  min-height:100%;
+}
+
+.about-photo-card{
+  padding:14px;
+  overflow:hidden;
+}
+
+.about-photo{
+  display:block;
+  width:100%;
+  height:100%;
+  min-height:420px;
+  object-fit:cover;
+  border-radius:20px;
+}
+
+.about-copy-card{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap:18px;
+}
+
+.about-points{
+  display:grid;
+  gap:14px;
+}
+
+.about-point{
+  padding:16px 18px;
+  border-radius:18px;
+  background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+  border:1px solid rgba(132,156,187,.14);
+}
+
+.about-point h3{
+  margin:0 0 8px;
+}
+
+.about-point p{
+  margin:0;
 }
 
 .grid-3{
@@ -1004,6 +1061,10 @@ html[lang="da"] nav li a,html[lang="da-DK"] nav li a{padding:10px 11px}
   }
 
   .contact-grid{
+    grid-template-columns:1fr;
+  }
+
+  .about-grid{
     grid-template-columns:1fr;
   }
 }
