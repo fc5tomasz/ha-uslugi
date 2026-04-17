@@ -78,7 +78,10 @@
       <a class="logo" href="#top" aria-label="Tomasz Furdal - Home Assistant Expert">
         <img class="logo-image" src="../assets/brand/logo-wyciete.png" alt="Tomasz Furdal - Home Assistant Expert" title="Home Assistant Expert - Tomasz Furdal" />
       </a>
-      <nav aria-label="Primary">
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Open menu">
+        <span aria-hidden="true">☰</span>
+      </button>
+      <nav id="primary-nav" aria-label="Primary">
         <ul>
           <li><a href="#services">Services</a></li>
           <li><a href="#about-me">About me</a></li>
@@ -408,6 +411,7 @@
     </div>
   </footer>
 
+  <script src="../nav.js"></script>
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
