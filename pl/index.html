@@ -9,6 +9,22 @@
 
     gtag('config', 'AW-18087588380');
   </script>
+  <script>
+    // Helper function to delay opening a URL until a gtag event is sent.
+    // Call it in response to an action that should navigate to a URL.
+    function gtagSendEvent(url) {
+      var callback = function () {
+        if (typeof url === 'string') {
+          window.location = url;
+        }
+      };
+      gtag('event', 'ads_conversion_Kontakt_1', {
+        'event_callback': callback,
+        'event_timeout': 2000
+      });
+      return false;
+    }
+  </script>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="robots" content="index,follow" />
@@ -197,7 +213,7 @@
           <img class="about-photo" src="../assets/brand/o-mnie.webp" alt="Tomasz Furdal - Ekspert Home Assistant" loading="lazy" />
         </div>
         <div class="card about-copy-card">
-          <p class="section-subtitle">Cześć, nazywam się Tomasz Furdal. Wierzę, że inteligentny dom powinien ułatwiać życie, a nie być źródłem frustracji. Moja przygoda z technologią zaczęła się od pasji do Linuksa i elektroniki, która dziś pozwala mi tworzyć stabilne i niezawodne systemy, które po prostu działają.</p>
+          <p class="section-subtitle">Cześć, nazywam się Tomasz Furdal. Wierzę, że inteligentny dom powinien ułatwiać życie, a nie być źródłem frustracji. Moja przygoda z technologią zaczęła się od pasji do Linuksa i elektroniki, która dziś pozwala mi tworzyć systemy najwyższej klasy.</p>
           <div class="about-points">
             <div class="about-point">
               <h3>Fundament w Linuxie</h3>
@@ -393,7 +409,7 @@
             </div>
             <div class="form-actions">
               <button class="btn-primary" type="submit">Wyślij →</button>
-              <a class="btn-ghost contact-email-action" href="mailto:fc5tomasz@gmail.com" aria-label="Napisz e-mail">
+              <a class="btn-ghost contact-email-action" href="mailto:fc5tomasz@gmail.com" aria-label="Napisz e-mail" onclick="return gtagSendEvent('mailto:fc5tomasz@gmail.com');">
                 <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                   <path d="M4 6h16a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2Z" />
                   <path d="m22 8-8.97 5.7a2 2 0 0 1-2.06 0L2 8" />
@@ -483,6 +499,7 @@
         });
 
         if (response.ok) {
+          gtagSendEvent();
           statusEl.className = "form-status ok";
           statusEl.textContent = "Gotowe! Wiadomość wysłana. Odezwę się do Ciebie najszybciej, jak to możliwe.";
           form.reset();
