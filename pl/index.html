@@ -105,25 +105,32 @@
       <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Open menu">
         <span aria-hidden="true">☰</span>
       </button>
+      <a class="nav-mobile-link about-link" href="#o-mnie">O mnie</a>
+      <a class="nav-mobile-link contact-link" href="#contact">Kontakt</a>
       <nav id="primary-nav" aria-label="Primary">
         <ul>
           <li><a href="#services">Usługi</a></li>
-          <li><a href="#o-mnie">O mnie</a></li>
+          <li class="mobile-inline-link"><a href="#o-mnie">O mnie</a></li>
           <li><a href="#for">Dla kogo</a></li>
           <li><a href="#process">Jak pracuję</a></li>
           <li><a href="#pricing">Cennik</a></li>
-          <li><a href="#contact">Kontakt</a></li>
+          <li class="mobile-inline-link"><a href="#contact">Kontakt</a></li>
         </ul>
       </nav>
       <div class="lang-switch" aria-label="Language switch">
-        <a class="lang-btn active" href="/pl/" aria-label="Polski" aria-current="page">🇵🇱</a>
-        <a class="lang-btn" href="/dk/" aria-label="Dansk">🇩🇰</a>
-        <a class="lang-btn" href="/en/" aria-label="English">🇬🇧</a>
+        <a class="lang-btn active" href="/pl/" aria-label="Polski" aria-current="page"><img class="lang-flag" src="../assets/flags/pl.svg" alt="" aria-hidden="true" /></a>
+        <a class="lang-btn" href="/dk/" aria-label="Dansk"><img class="lang-flag" src="../assets/flags/dk.svg" alt="" aria-hidden="true" /></a>
+        <a class="lang-btn" href="/en/" aria-label="English"><img class="lang-flag" src="../assets/flags/gb.svg" alt="" aria-hidden="true" /></a>
       </div>
       <a class="btn-ghost nav-demo-link" href="../demo/index.html?lang=pl">Demo Panelu</a>
       <a class="nav-cta" href="#pricing">Bezpłatna diagnoza</a>
     </div>
   </header>
+
+  <div class="mobile-bottom-bar" aria-label="Mobile quick actions">
+    <a class="mobile-bottom-link" href="#o-mnie">O mnie</a>
+    <a class="mobile-bottom-link" href="#contact">Kontakt</a>
+  </div>
 
   <main>
     <section class="section hero" id="top">
