@@ -7,7 +7,6 @@
       title: "Demonstracja możliwości Home Assistant",
       subtitle: "To jest osobna podstrona pokazująca działający panel animowany oparty na logice instalacji Home Assistant. Widzisz wyłącznie panel demonstracyjny.",
       back_btn: "Wróć do strony głównej",
-      refresh_btn: "Odśwież panel",
       what_label: "Co pokazuje panel",
       metric1_t: "Energia i PV",
       metric1_p: "Produkcję fotowoltaiki, przepływy energii i aktywne obiegi.",
@@ -15,18 +14,15 @@
       metric2_p: "Bufor, pompy, piec, grzałki, światła i obecność jako część jednej animacji.",
       metric3_t: "Pogoda i rekuperacja",
       metric3_p: "Pogodę live, fazę dnia i pracę rekuperacji z animowanymi wirnikami.",
-      status_label: "Status połączenia",
-      status_loading: "Uruchamianie panelu demo…",
-      status_live: "Panel online",
-      status_error: "Błąd panelu demo",
-      status_note: "Panel odświeża się automatycznie i pokazuje demonstracyjny przebieg dnia.",
-      status_note_ok: "Panel działa bezpośrednio w przeglądarce i odświeża się automatycznie.",
-      status_note_err: "Odśwież stronę, aby ponownie uruchomić panel demonstracyjny.",
+      sim_button: "🎲 Symuluj nową porę dnia",
+      sim_button_mobile: "🎲 Symuluj porę dnia",
+      sim_prompt: "Kliknij przycisk, aby rozpocząć symulację...",
+      panel_online: "Panel online",
       panel_title: "Panel procesów instalacji",
       panel_subtitle: "Obecne oświetlenie",
       panel_panels: "Panele",
-      panel_inv_dom: "Inwerter dom",
-      panel_inv_taras: "Inwerter taras",
+      panel_inv_dom: "Off-grid 2",
+      panel_inv_taras: "Off-grid 1",
       panel_inv_hybrid: "Inwerter hybrydowy",
       panel_on: "Włączony",
       panel_off: "Wyłączony",
@@ -61,16 +57,25 @@
       weather_sunrise: "Wschód słońca",
       weather_sunset: "Zachód słońca",
       weather_clear_night_sunny: "Bezchmurna noc",
-      weather_clear_night_partlycloudy: "Pogodna noc"
+      weather_clear_night_partlycloudy: "Pogodna noc",
+      scenario_night:
+        "🌙 Nocne podtrzymanie: Słońce zaszło. System optymalizuje zużycie energii. Piec gazowy i światła zarządzane są dynamicznie według potrzeb.",
+      scenario_morning:
+        "⛅ Poranek: Inwerter hybrydowy zasila dom. Off-grid 2 ładuje bufor, zapewniając ciepłą wodę użytkową (CWU), a Off-grid 1 zasila grzejnik dla szybkiego komfortu. Bufor nagrzewa wodę, ale nie ma jeszcze mocy do wsparcia ogrzewania domu (CO). System rekuperacji wietrzy pomieszczenia.",
+      scenario_noon:
+        "☀️ Południe: Inteligentne zarządzanie nadprodukcją. Bufor osiągnął temperaturę docelową – Off-grid 1 wyłącza grzejnik i zasila drugą grzałkę. Off-grid 2 nadal ładuje bufor, a pompy obiegowe uruchamiają darmowe ogrzewanie domu (CO).",
+      scenario_sunset:
+        "🌇 Zachód: Inwerter hybrydowy oraz inwertery Off-grid kończą produkcję. Pompy kontynuują dystrybucję energii z bufora do ogrzewania domu (CO). Sam bufor, poprzez wbudowane wężownice, zapewnia również stały dostęp do ciepłej wody użytkowej (CWU).",
+      scenario_night_final:
+        "🌙 Noc: Inwertery są uśpione. Ogrzewanie domu (CO) zabezpiecza piec gazowy – w zależności od temperatury we wnętrzu, system decyduje, czy musi go uruchomić, czy może on pozostać wyłączony. Wężownica w buforze utrzymuje dostęp do ciepłej wody (CWU). System inteligentnie zarządza oświetleniem (symulacja obecności) oraz optymalizuje pracę rekuperacji."
     },
     dk: {
-      title_page: "Demonstration af Home Assistants muligheder | Tomasz Furdal",
-      meta_desc: "Live demonstration af et animeret Home Assistant-panel: energi, varme, vejr, ventilation og husets tilstande i én visuel præsentation.",
-      kicker: "Demonstration af automationsstyring",
-      title: "Demonstration af Home Assistants muligheder",
-      subtitle: "Dette er en separat demoside med et aktivt animeret panel baseret på logikken i en Home Assistant-installation. Du ser udelukkende demonstrationspanelet.",
+      title_page: "Demonstration af Home Assistant muligheder | Tomasz Furdal",
+      meta_desc: "Live demonstration af et animeret Home Assistant panel: energi, varme, vejr, varmegenvinding og hjemmets tilstand i én visualisering.",
+      kicker: "Demo af automatiseringsstyring",
+      title: "Demonstration af Home Assistant muligheder",
+      subtitle: "Dette er en separat underside, der viser et fungerende animeret panel baseret på logikken i en Home Assistant-installation. Du ser kun et demonstrationspanel.",
       back_btn: "Tilbage til forsiden",
-      refresh_btn: "Opdater panel",
       what_label: "Hvad panelet viser",
       metric1_t: "Energi og PV",
       metric1_p: "Solproduktion, energiflow og aktive kredse.",
@@ -78,37 +83,34 @@
       metric2_p: "Buffer, pumper, kedel, varmelegemer, lys og tilstedeværelse som en del af en samlet animation.",
       metric3_t: "Vejr og ventilation",
       metric3_p: "Live vejr, tid på dagen og varmegenvinding med animerede blæsere.",
-      status_label: "Forbindelsesstatus",
-      status_loading: "Starter demo-panelet…",
-      status_live: "Panel online",
-      status_error: "Fejl i demo-panelet",
-      status_note: "Panelet opdateres automatisk og viser et demonstrativt doegnforloeb.",
-      status_note_ok: "Panelet fungerer direkte i browseren og opdateres automatisk.",
-      status_note_err: "Opdater siden for at starte demonstrationspanelet igen.",
-      panel_title: "Installationspanel i drift",
-      panel_subtitle: "Aktuel belysning",
+      sim_button: "🎲 Simuler ny tid på dagen",
+      sim_button_mobile: "🎲 Simuler tid på dagen",
+      sim_prompt: "Klik på knappen for at starte simuleringen...",
+      panel_online: "Panel online",
+      panel_title: "Installationsprocespanel",
+      panel_subtitle: "Nuværende belysning",
       panel_panels: "Paneler",
-      panel_inv_dom: "Inverter hus",
-      panel_inv_taras: "Inverter terrasse",
-      panel_inv_hybrid: "Hybridinverter",
-      panel_on: "Aktiv",
+      panel_inv_dom: "Off-grid 2",
+      panel_inv_taras: "Off-grid 1",
+      panel_inv_hybrid: "Hybrid inverter",
+      panel_on: "TÆNDT",
       panel_off: "Slukket",
       panel_buffer: "Buffer",
       panel_heater_1: "Varmelegeme 1",
       panel_heater_2: "Varmelegeme 2",
-      panel_mix_pump: "Shuntpumpe",
+      panel_mix_pump: "Blandepumpe",
       panel_main_pump: "Cirkulationspumpe",
-      panel_house: "Hus",
+      panel_house: "Hjem",
       panel_owner_home: "Ejer hjemme",
       panel_owner_away: "Ejer ude",
-      panel_reku: "Ventilation",
+      panel_reku: "Varmegenvinding",
       panel_boiler: "Gaskedel",
       panel_radiator: "El-radiator",
       panel_wind: "Vind",
-      panel_humidity: "Fugt",
+      panel_humidity: "Luftfugt.",
       weather_sunny: "Solrigt",
-      weather_clear_night: "Klart",
-      weather_partlycloudy: "Let skyet",
+      weather_clear_night: "Skyfrit",
+      weather_partlycloudy: "Delvist overskyet",
       weather_cloudy: "Overskyet",
       weather_rainy: "Regn",
       weather_pouring: "Kraftig regn",
@@ -116,7 +118,7 @@
       weather_snowy_rainy: "Slud",
       weather_hail: "Hagl",
       weather_lightning: "Tordenvejr",
-      weather_lightning_rainy: "Torden med regn",
+      weather_lightning_rainy: "Tordenvejr med regn",
       weather_windy: "Blæsende",
       weather_windy_variant: "Blæsende",
       weather_fog: "Tåge",
@@ -124,16 +126,25 @@
       weather_sunrise: "Solopgang",
       weather_sunset: "Solnedgang",
       weather_clear_night_sunny: "Klar nat",
-      weather_clear_night_partlycloudy: "Let skyet nat"
+      weather_clear_night_partlycloudy: "Skyfri nat",
+      scenario_night:
+        "🌙 Natlig vedligeholdelse: Solen er gået ned. Systemet optimerer energiforbruget. Gaskedlen og lyset styres dynamisk efter behov.",
+      scenario_morning:
+        "⛅ Morgen: Hybridinverteren forsyner hjemmet med strøm. Off-grid 2 oplader bufferen og leverer varmt brugsvand (Brugsvand), mens Off-grid 1 forsyner el-radiatoren for hurtig komfort. Bufferen opvarmer vandet, men har endnu ikke kraft nok til at understøtte centralvarmen (Varme). Varmegenvindingssystemet ventilerer rummene.",
+      scenario_noon:
+        "☀️ Middag: Intelligent styring af overproduktion. Bufferen har nået sin måltemperatur – Off-grid 1 slukker for radiatoren og forsyner det andet varmelegeme. Off-grid 2 fortsætter med at oplade bufferen, og cirkulationspumperne starter den gratis centralvarme (Varme) til hjemmet.",
+      scenario_sunset:
+        "🌇 Solnedgang: Hybridinverteren og Off-grid inverterne afslutter produktionen. Pumperne fortsætter med at distribuere energi fra bufferen til centralvarmen (Varme). Selve bufferen sikrer, via indbyggede rørslanger, også konstant adgang til varmt brugsvand (Brugsvand).",
+      scenario_night_final:
+        "🌙 Nat: Inverterne er i dvale. Hjemmets centralvarme (Varme) understøttes af gaskedlen – afhængigt af indendørstemperaturen beslutter systemet, om den skal startes, eller om den kan forblive slukket. Rørslangen i bufferen opretholder adgangen til varmt vand (Brugsvand). Systemet styrer belysningen intelligent (tilstedeværelsessimulering) og optimerer varmegenvindingens drift."
     },
     en: {
       title_page: "Home Assistant Capabilities Demo | Tomasz Furdal",
-      meta_desc: "Live demo of an animated Home Assistant panel: energy, heating, weather, ventilation and house states in one visual dashboard.",
-      kicker: "Automation control demo",
+      meta_desc: "Live demonstration of an animated Home Assistant panel: energy, heating, weather, heat recovery, and home states in a single visualization.",
+      kicker: "Automation Control Demo",
       title: "Home Assistant Capabilities Demo",
-      subtitle: "This is a separate demo page showing a working animated panel based on the logic of a Home Assistant installation. You will only see the demonstration panel.",
-      back_btn: "Back to the main page",
-      refresh_btn: "Refresh panel",
+      subtitle: "This is a separate subpage showing a working animated panel based on the logic of a Home Assistant installation. You are viewing a demonstration panel only.",
+      back_btn: "Return to homepage",
       what_label: "What the panel shows",
       metric1_t: "Energy and PV",
       metric1_p: "Solar production, energy flows and active circuits.",
@@ -141,32 +152,29 @@
       metric2_p: "Buffer tank, pumps, boiler, heaters, lights and presence as part of one animation.",
       metric3_t: "Weather and ventilation",
       metric3_p: "Live weather, time of day, and ventilation with animated fans.",
-      status_label: "Connection status",
-      status_loading: "Starting the demo panel…",
-      status_live: "Panel online",
-      status_error: "Demo panel error",
-      status_note: "The panel refreshes automatically and shows a simulated day cycle.",
-      status_note_ok: "The panel runs directly in the browser and refreshes automatically.",
-      status_note_err: "Refresh the page to start the demonstration panel again.",
-      panel_title: "Installation process panel",
-      panel_subtitle: "Current illuminance",
+      sim_button: "🎲 Simulate a new time of day",
+      sim_button_mobile: "🎲 Simulate time of day",
+      sim_prompt: "Click the button to start the simulation...",
+      panel_online: "Panel online",
+      panel_title: "Installation Processes Panel",
+      panel_subtitle: "Current lighting",
       panel_panels: "Panels",
-      panel_inv_dom: "Home inverter",
-      panel_inv_taras: "Terrace inverter",
+      panel_inv_dom: "Off-grid 2",
+      panel_inv_taras: "Off-grid 1",
       panel_inv_hybrid: "Hybrid inverter",
-      panel_on: "On",
-      panel_off: "Off",
-      panel_buffer: "Buffer tank",
+      panel_on: "ON",
+      panel_off: "OFF",
+      panel_buffer: "Thermal buffer",
       panel_heater_1: "Heater 1",
       panel_heater_2: "Heater 2",
       panel_mix_pump: "Mixer pump",
       panel_main_pump: "Circulation pump",
-      panel_house: "House",
+      panel_house: "Home",
       panel_owner_home: "Owner at home",
       panel_owner_away: "Owner away",
-      panel_reku: "Ventilation",
+      panel_reku: "Heat recovery",
       panel_boiler: "Gas boiler",
-      panel_radiator: "Electric radiator",
+      panel_radiator: "Electric heater",
       panel_wind: "Wind",
       panel_humidity: "Humidity",
       weather_sunny: "Sunny",
@@ -187,11 +195,19 @@
       weather_sunrise: "Sunrise",
       weather_sunset: "Sunset",
       weather_clear_night_sunny: "Clear night",
-      weather_clear_night_partlycloudy: "Partly cloudy night"
+      weather_clear_night_partlycloudy: "Fair night",
+      scenario_night:
+        "🌙 Night maintenance: The sun has set. The system optimizes energy usage. The gas boiler and lights are managed dynamically according to demand.",
+      scenario_morning:
+        "⛅ Morning: The hybrid inverter powers the home. Off-grid 2 charges the thermal buffer, providing domestic hot water (DHW), while Off-grid 1 powers the electric heater for quick comfort. The buffer heats the water but does not yet have the power to support central heating (CH). The heat recovery system ventilates the rooms.",
+      scenario_noon:
+        "☀️ Noon: Smart overproduction management. The buffer has reached its target temperature – Off-grid 1 turns off the heater and powers the second heater element. Off-grid 2 continues to charge the buffer, and the circulation pumps start the free central heating (CH) for the home.",
+      scenario_sunset:
+        "🌇 Sunset: The hybrid inverter and Off-grid inverters finish production. The pumps continue to distribute energy from the buffer for central heating (CH). The buffer itself, through built-in coils, also ensures constant access to domestic hot water (DHW).",
+      scenario_night_final:
+        "🌙 Night: The inverters are asleep. The home's central heating (CH) is backed up by the gas boiler – depending on the indoor temperature, the system decides whether it needs to be turned on or can remain off. The coil in the buffer maintains access to hot water (DHW). The system intelligently manages lighting (presence simulation) and optimizes the heat recovery operation."
     }
   };
-
-  const REFRESH_MS = 7000;
 
   function getLang() {
     const p = new URLSearchParams(window.location.search);
@@ -208,186 +224,17 @@
     return Math.max(low, Math.min(high, value));
   }
 
-  function smoothstep(edge0, edge1, value) {
-    if (edge0 === edge1) {
-      return value >= edge1 ? 1 : 0;
-    }
-    const x = clamp((value - edge0) / (edge1 - edge0), 0, 1);
-    return x * x * (3 - 2 * x);
+  function randInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
-  function dayFraction(hourFloat) {
-    const sunriseStart = 6.2;
-    const sunriseEnd = 8.3;
-    const sunsetStart = 17.9;
-    const sunsetEnd = 20.2;
-    const rise = smoothstep(sunriseStart, sunriseEnd, hourFloat);
-    const fall = 1 - smoothstep(sunsetStart, sunsetEnd, hourFloat);
-    return clamp(rise * fall, 0, 1);
+  function randFloat(min, max, precision = 1) {
+    const value = min + Math.random() * (max - min);
+    return Number(value.toFixed(precision));
   }
 
-  function makeRng(seed) {
-    let t = seed >>> 0;
-    return () => {
-      t += 0x6D2B79F5;
-      let r = Math.imul(t ^ (t >>> 15), 1 | t);
-      r ^= r + Math.imul(r ^ (r >>> 7), 61 | r);
-      return ((r ^ (r >>> 14)) >>> 0) / 4294967296;
-    };
-  }
-
-  function randRange(rng, min, max) {
-    return min + ((max - min) * rng());
-  }
-
-  function randInt(rng, min, max) {
-    return Math.floor(randRange(rng, min, max + 1));
-  }
-
-  function windowOn(hourFloat, start, end) {
-    return hourFloat >= start && hourFloat < end;
-  }
-
-  function pickFrom(rng, items) {
-    return items[Math.floor(rng() * items.length)];
-  }
-
-  function simulateState(now = new Date()) {
-    const hourFloat = now.getHours() + (now.getMinutes() / 60) + (now.getSeconds() / 3600);
-    const factor = dayFraction(hourFloat);
-    const seed = Number(`${now.getFullYear()}${String(now.getMonth() + 1).padStart(2, "0")}${String(now.getDate()).padStart(2, "0")}`);
-    const rng = makeRng(seed);
-
-    let weatherPhase = "night";
-    if (hourFloat >= 6.0 && hourFloat < 8.0) {
-      weatherPhase = "sunrise";
-    } else if (hourFloat >= 18.0 && hourFloat < 20.0) {
-      weatherPhase = "sunset";
-    } else if (factor > 0.10) {
-      weatherPhase = "day";
-    }
-
-    let weatherState = "clear-night";
-    let baseTemp = 4.0;
-    let baseWind = 8.0;
-    let baseHumidity = 92.0;
-
-    if (weatherPhase === "night") {
-      weatherState = "clear-night";
-      baseTemp = 4.0;
-      baseWind = 8.0;
-      baseHumidity = 92.0;
-    } else if (weatherPhase === "sunrise") {
-      const blockRng = makeRng(seed + 601);
-      weatherState = pickFrom(blockRng, ["sunny", "partlycloudy", "partlycloudy", "cloudy"]);
-      baseTemp = 7.5;
-      baseWind = 10.0;
-      baseHumidity = 80.0;
-    } else if (weatherPhase === "sunset") {
-      const blockRng = makeRng(seed + 901);
-      weatherState = pickFrom(blockRng, ["partlycloudy", "cloudy", "cloudy"]);
-      baseTemp = 9.0;
-      baseWind = 13.0;
-      baseHumidity = 72.0;
-    } else {
-      const dayBlocks = [
-        { start: 8, end: 11, choices: ["sunny", "sunny", "partlycloudy", "cloudy"], temp: 10.5, wind: 11.0, humidity: 72.0 },
-        { start: 11, end: 14, choices: ["sunny", "sunny", "partlycloudy", "partlycloudy"], temp: 13.0, wind: 14.0, humidity: 60.0 },
-        { start: 14, end: 17, choices: ["sunny", "partlycloudy", "partlycloudy", "cloudy", "rainy"], temp: 12.0, wind: 16.0, humidity: 62.0 },
-        { start: 17, end: 18, choices: ["partlycloudy", "cloudy", "cloudy"], temp: 10.0, wind: 15.0, humidity: 70.0 }
-      ];
-      const block = dayBlocks.find((item) => hourFloat >= item.start && hourFloat < item.end) || dayBlocks[dayBlocks.length - 1];
-      const blockSeed = seed + (block.start * 100);
-      const blockRng = makeRng(blockSeed);
-      weatherState = pickFrom(blockRng, block.choices);
-      baseTemp = block.temp;
-      baseWind = block.wind;
-      baseHumidity = block.humidity;
-    }
-
-    const sunActive = factor > 0.08;
-    const luxPeak = 18500 + randInt(rng, -1800, 1800);
-    const cloudPenalty = {
-      sunny: 1.0,
-      partlycloudy: 0.76,
-      cloudy: 0.48,
-      rainy: 0.34,
-      pouring: 0.22,
-      "clear-night": 0.02
-    }[weatherState] ?? 0.65;
-    const lux = weatherPhase === "night"
-      ? 0
-      : Math.round(Math.max(0, luxPeak * factor * cloudPenalty));
-
-    const pvStopPending = weatherPhase === "sunset";
-    const inverterDomProducing = sunActive && !pvStopPending;
-    const inverterTarasProducing = sunActive && !pvStopPending;
-    const inverterHybridProducing = inverterDomProducing || inverterTarasProducing;
-
-    const morningScene = windowOn(hourFloat, 7.3, 12.9);
-    const noonScene = windowOn(hourFloat, 13.0, 16.7);
-    const lateDayScene = windowOn(hourFloat, 16.7, 18.2);
-
-    const heaterDomActive = sunActive;
-    let tarasSwitchL2On = morningScene;
-    const pumpMainOn = noonScene || lateDayScene;
-    let pumpMixOn = noonScene;
-
-    if (lateDayScene) {
-      tarasSwitchL2On = rng() > 0.45;
-      pumpMixOn = !tarasSwitchL2On;
-    }
-
-    let rekuProfile = 38;
-    if (hourFloat >= 6.5 && hourFloat < 9.0) {
-      rekuProfile = 52;
-    } else if (hourFloat >= 9.0 && hourFloat < 13.0) {
-      rekuProfile = 44;
-    } else if (hourFloat >= 13.0 && hourFloat < 18.0) {
-      rekuProfile = 63;
-    } else if (hourFloat >= 18.0 && hourFloat < 23.0) {
-      rekuProfile = 56;
-    } else {
-      rekuProfile = 32;
-    }
-    const rekuPercentage = clamp(rekuProfile + randInt(rng, -6, 6), 25, 72);
-    const rekuOn = rekuPercentage >= 28;
-
-    const boilerOn = weatherPhase === "night" && rng() > 0.35;
-    let salonLightOn = (hourFloat >= 19.2 || hourFloat < 0.4) && rng() > 0.28;
-    let kitchenLightOn = (hourFloat >= 20.0 || hourFloat < 0.2) && rng() > 0.44;
-    if (hourFloat >= 6.3 && hourFloat < 7.2) {
-      kitchenLightOn = rng() > 0.42;
-    }
-    if (hourFloat >= 7.2 && hourFloat < 8.0) {
-      salonLightOn = rng() > 0.72;
-    }
-
-    return {
-      mode: "simulation",
-      lux,
-      sunActive,
-      pvStopPending,
-      weatherPhase,
-      inverterDomProducing,
-      inverterTarasProducing,
-      inverterHybridProducing,
-      heaterDomActive,
-      tarasSwitchL2On,
-      pumpMixOn,
-      pumpMainOn,
-      rekuOn,
-      rekuPercentage,
-      boilerOn,
-      kitchenLightOn,
-      salonLightOn,
-      phoneHome: true,
-      weatherState,
-      weatherTemperature: Number((baseTemp + (factor * 6.2) + randRange(rng, -0.7, 0.7)).toFixed(1)),
-      weatherWind: Number((baseWind + randRange(rng, -1.6, 1.6)).toFixed(1)),
-      weatherHumidity: Math.round(clamp(baseHumidity - (factor * 18.0) + randRange(rng, -3.0, 3.0), 35, 98)),
-      updatedAt: Math.floor(Date.now() / 1000)
-    };
+  function pickFrom(items) {
+    return items[Math.floor(Math.random() * items.length)];
   }
 
   function applyI18n(lang) {
@@ -405,6 +252,18 @@
     const back = qs("#backLink");
     if (back) {
       back.href = lang === "pl" ? "../index.html" : lang === "dk" ? "../dk/index.html" : "../en/index.html";
+    }
+    const buttonFull = qs("#btn-simulate .sim-label-full");
+    const buttonMobile = qs("#btn-simulate .sim-label-mobile");
+    if (buttonFull) {
+      buttonFull.textContent = dict.sim_button;
+    }
+    if (buttonMobile) {
+      buttonMobile.textContent = dict.sim_button_mobile || dict.sim_button;
+    }
+    const status = qs("#simulation-status");
+    if (status) {
+      status.textContent = dict.sim_prompt;
     }
   }
 
@@ -511,7 +370,7 @@
       const moon = `
         <g transform="translate(${x} ${y})">
           <circle cx="0" cy="0" r="19" fill="#dce8ff"/>
-          <circle cx="8" cy="-5" r="17" fill="rgba(19,26,36,0.96)"/>
+          <circle cx="8" cy="-5" r="17" fill="rgba(19,26,36,.96)"/>
           <circle cx="-16" cy="-12" r="2.4" fill="#dce8ff"/>
           <circle cx="-8" cy="-22" r="1.8" fill="#dce8ff"/>
           <circle cx="-20" cy="-2" r="1.6" fill="#dce8ff"/>
@@ -532,22 +391,11 @@
           <line x1="16" y1="24" x2="10" y2="36"/>
         </g>
       `;
-      const snow = `
-        <g transform="translate(${x} ${y})" stroke="#e8f7ff" stroke-width="3" stroke-linecap="round">
-          <line x1="-14" y1="28" x2="-14" y2="40"/><line x1="-20" y1="34" x2="-8" y2="34"/>
-          <line x1="6" y1="28" x2="6" y2="40"/><line x1="0" y1="34" x2="12" y2="34"/>
-        </g>
-      `;
       const wind = `
         <g transform="translate(${x} ${y})" fill="none" stroke="#9fe3ff" stroke-width="4" stroke-linecap="round">
           <path d="M -30 -4 H 8 C 20 -4 22 -18 12 -22" />
           <path d="M -16 10 H 24 C 34 10 36 0 30 -4" />
           <path d="M -26 24 H 2 C 12 24 16 16 12 10" />
-        </g>
-      `;
-      const bolt = `
-        <g transform="translate(${x} ${y})">
-          <polygon points="4,12 -8,12 2,-8 -6,-8 12,-30 4,-12 14,-12" fill="#ffd45f"/>
         </g>
       `;
 
@@ -558,9 +406,7 @@
       if (state === "partlycloudy") return phase === "night" ? `${moon}${cloud}` : `${sun}${cloud}`;
       if (state === "cloudy" || state === "fog") return cloud;
       if (state === "rainy" || state === "pouring") return `${cloud}${rain}`;
-      if (state === "snowy" || state === "snowy-rainy" || state === "hail") return `${cloud}${snow}`;
       if (state === "windy" || state === "windy-variant") return wind;
-      if (state === "lightning" || state === "lightning-rainy") return `${cloud}${bolt}`;
       return cloud;
     }
 
@@ -586,14 +432,17 @@
       const sunRadius = state.sunActive ? 38 : 28;
       const sunOpacity = state.sunActive ? 1 : 0.25;
       const rayOpacity = state.sunActive ? 1 : 0.18;
-      const domToHeater = state.inverterDomProducing && state.heaterDomActive;
-      const tarasToRadiator = state.inverterTarasProducing && state.tarasSwitchL2On;
-      const tarasToHeater = state.inverterTarasProducing && !state.tarasSwitchL2On;
-      const bulb = (x, y, on) => `
+      const hybridToHouse = Boolean(state.hybridToHouse);
+      const offgrid2ToHeater1 = Boolean(state.offgrid2ToHeater1);
+      const offgrid1ToRadiator = Boolean(state.offgrid1ToRadiator);
+      const offgrid1ToHeater2 = Boolean(state.offgrid1ToHeater2);
+      const on = (v) => (v ? "active" : "");
+      const stateBox = (active, warm = false) => active ? (warm ? "box box-warm" : "box box-on") : "box";
+      const bulb = (x, y, onState) => `
         <g transform="translate(${x} ${y})">
-          <circle cx="0" cy="-4" r="9" fill="${on ? "rgba(255,214,94,0.95)" : "rgba(164,184,205,0.18)"}" stroke="${on ? "#ffd85f" : "rgba(164,184,205,0.42)"}" stroke-width="2"/>
-          <rect x="-4" y="4" width="8" height="6" rx="2" fill="${on ? "#ffd85f" : "rgba(164,184,205,0.35)"}"/>
-          <line x1="-4" y1="12" x2="4" y2="12" stroke="${on ? "#ffd85f" : "rgba(164,184,205,0.35)"}" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="0" cy="-4" r="9" fill="${onState ? "rgba(255,214,94,0.95)" : "rgba(164,184,205,0.18)"}" stroke="${onState ? "#ffd85f" : "rgba(164,184,205,0.42)"}" stroke-width="2"/>
+          <rect x="-4" y="4" width="8" height="6" rx="2" fill="${onState ? "#ffd85f" : "rgba(164,184,205,0.35)"}"/>
+          <line x1="-4" y1="12" x2="4" y2="12" stroke="${onState ? "#ffd85f" : "rgba(164,184,205,0.35)"}" stroke-width="2" stroke-linecap="round"/>
         </g>
       `;
       const haLogo = `
@@ -607,11 +456,13 @@
           <path d="M -14 12 C -14 -2, 14 -2, 14 12 L 14 20 L -14 20 Z" fill="${state.phoneHome ? "rgba(91,221,148,0.16)" : "rgba(164,184,205,0.10)"}" stroke="${state.phoneHome ? "#5bdd94" : "rgba(164,184,205,0.34)"}" stroke-width="2.2" stroke-linejoin="round"/>
         </g>
       `;
-      const on = (v) => (v ? "active" : "");
-      const stateBox = (active, warm = false) => active ? (warm ? "box box-warm" : "box box-on") : "box";
 
       this.root.innerHTML = `
         <div class="panel-card">
+          <div class="panel-online-indicator">
+            <span class="panel-online-dot"></span>
+            <span>${this.dict.panel_online}</span>
+          </div>
           <div class="panel-wrap">
             <svg class="panel-svg" viewBox="0 0 1440 860" xmlns="http://www.w3.org/2000/svg">
               <defs>
@@ -675,9 +526,9 @@
 
               <rect x="${pos.buffer.x}" y="${pos.buffer.y}" rx="24" ry="24" width="${pos.buffer.w}" height="${pos.buffer.h}" class="${stateBox(true, true)}"/>
               <text x="${pos.buffer.x + 42}" y="${pos.buffer.y + 34}" class="label">${this.dict.panel_buffer}</text>
-              <rect x="${heater1.x}" y="${heater1.y}" rx="10" ry="10" width="${heater1.w}" height="${heater1.h}" class="${stateBox(domToHeater, true)}"/>
+              <rect x="${heater1.x}" y="${heater1.y}" rx="10" ry="10" width="${heater1.w}" height="${heater1.h}" class="${stateBox(offgrid2ToHeater1, true)}"/>
               <text x="${heater1.x + 18}" y="${heater1.y + 17}" class="tiny">${this.dict.panel_heater_1}</text>
-              <rect x="${heater2.x}" y="${heater2.y}" rx="10" ry="10" width="${heater2.w}" height="${heater2.h}" class="${stateBox(tarasToHeater, true)}"/>
+              <rect x="${heater2.x}" y="${heater2.y}" rx="10" ry="10" width="${heater2.w}" height="${heater2.h}" class="${stateBox(offgrid1ToHeater2, true)}"/>
               <text x="${heater2.x + 18}" y="${heater2.y + 17}" class="tiny">${this.dict.panel_heater_2}</text>
 
               <circle cx="${pos.mixPump.x + pos.mixPump.w/2}" cy="${pos.mixPump.y + pos.mixPump.h/2}" r="25" class="${stateBox(state.pumpMixOn)}"/>
@@ -719,9 +570,9 @@
                 <path d="M -1 8 C -8 3, -6 -6, 0 -10 C 6 -6, 8 3, 1 8 Z" class="${state.boilerOn ? "boiler-flame boiler-flame-active" : "boiler-flame"}" fill="${state.boilerOn ? "#ff9d5c" : "rgba(160,176,196,0.28)"}"></path>
               </g>
 
-              <rect x="${pos.radiator.x}" y="${pos.radiator.y}" rx="16" ry="16" width="${pos.radiator.w}" height="${pos.radiator.h}" class="${stateBox(tarasToRadiator, true)}"/>
+              <rect x="${pos.radiator.x}" y="${pos.radiator.y}" rx="16" ry="16" width="${pos.radiator.w}" height="${pos.radiator.h}" class="${stateBox(offgrid1ToRadiator, true)}"/>
               <text x="${pos.radiator.x + 12}" y="${pos.radiator.y + 23}" class="label">${this.dict.panel_radiator}</text>
-              <g stroke="${tarasToRadiator ? "#ff9a60" : "rgba(255,255,255,0.22)"}" stroke-width="6" stroke-linecap="round">
+              <g stroke="${offgrid1ToRadiator ? "#ff9a60" : "rgba(255,255,255,0.22)"}" stroke-width="6" stroke-linecap="round">
                 <line x1="${pos.radiator.x + 38}" y1="${pos.radiator.y + 36}" x2="${pos.radiator.x + 38}" y2="${pos.radiator.y + 56}" />
                 <line x1="${pos.radiator.x + 60}" y1="${pos.radiator.y + 36}" x2="${pos.radiator.x + 60}" y2="${pos.radiator.y + 56}" />
                 <line x1="${pos.radiator.x + 82}" y1="${pos.radiator.y + 36}" x2="${pos.radiator.x + 82}" y2="${pos.radiator.y + 56}" />
@@ -737,17 +588,17 @@
               <path d="M ${pos.panels.x + pos.panels.w} ${pos.invHybrid.y + 36} L ${pos.invHybrid.x} ${pos.invHybrid.y + 36}" class="flow power ${on(state.inverterHybridProducing)}"/>
 
               <path d="M ${pos.invDom.x + pos.invDom.w} ${pos.invDom.y + 36} L ${heater1.x} ${pos.invDom.y + 36}" class="pipe"/>
-              <path d="M ${pos.invDom.x + pos.invDom.w} ${pos.invDom.y + 36} L ${heater1.x} ${pos.invDom.y + 36}" class="flow power ${on(domToHeater)}"/>
+              <path d="M ${pos.invDom.x + pos.invDom.w} ${pos.invDom.y + 36} L ${heater1.x} ${pos.invDom.y + 36}" class="flow power ${on(offgrid2ToHeater1)}"/>
 
               <path d="M ${pos.invTaras.x + pos.invTaras.w} ${pos.invTaras.y + 36} L ${splitX} ${pos.invTaras.y + 36} L ${splitX} ${splitY}" class="pipe"/>
               <path d="M ${pos.invTaras.x + pos.invTaras.w} ${pos.invTaras.y + 36} L ${splitX} ${pos.invTaras.y + 36} L ${splitX} ${splitY}" class="flow power ${on(state.inverterTarasProducing)}"/>
               <path d="M ${splitX} ${splitY} L ${splitX} ${heater2.y + heater2.h}" class="pipe"/>
-              <path d="M ${splitX} ${splitY} L ${splitX} ${heater2.y + heater2.h}" class="flow power ${on(tarasToHeater)}"/>
+              <path d="M ${splitX} ${splitY} L ${splitX} ${heater2.y + heater2.h}" class="flow power ${on(offgrid1ToHeater2)}"/>
               <path d="M ${splitX} ${splitY} L ${pos.radiator.x + pos.radiator.w/2} ${splitY} L ${pos.radiator.x + pos.radiator.w/2} ${pos.radiator.y + pos.radiator.h}" class="pipe"/>
-              <path d="M ${splitX} ${splitY} L ${pos.radiator.x + pos.radiator.w/2} ${splitY} L ${pos.radiator.x + pos.radiator.w/2} ${pos.radiator.y + pos.radiator.h}" class="flow power ${on(tarasToRadiator)}"/>
+              <path d="M ${splitX} ${splitY} L ${pos.radiator.x + pos.radiator.w/2} ${splitY} L ${pos.radiator.x + pos.radiator.w/2} ${pos.radiator.y + pos.radiator.h}" class="flow power ${on(offgrid1ToRadiator)}"/>
 
               <path d="M ${pos.invHybrid.x + pos.invHybrid.w} ${pos.invHybrid.y + 36} L ${pos.mainPump.x + pos.mainPump.w/2} ${pos.invHybrid.y + 36} L ${pos.mainPump.x + pos.mainPump.w/2} ${pos.house.y + 92} L ${pos.house.x} ${pos.house.y + 92}" class="pipe"/>
-              <path d="M ${pos.invHybrid.x + pos.invHybrid.w} ${pos.invHybrid.y + 36} L ${pos.mainPump.x + pos.mainPump.w/2} ${pos.invHybrid.y + 36} L ${pos.mainPump.x + pos.mainPump.w/2} ${pos.house.y + 92} L ${pos.house.x} ${pos.house.y + 92}" class="flow power ${on(state.inverterHybridProducing)}"/>
+              <path d="M ${pos.invHybrid.x + pos.invHybrid.w} ${pos.invHybrid.y + 36} L ${pos.mainPump.x + pos.mainPump.w/2} ${pos.invHybrid.y + 36} L ${pos.mainPump.x + pos.mainPump.w/2} ${pos.house.y + 92} L ${pos.house.x} ${pos.house.y + 92}" class="flow power ${on(hybridToHouse)}"/>
 
               <path d="M ${pos.buffer.x} ${pos.buffer.y + 76} L ${pos.mixPump.x + pos.mixPump.w/2} ${pos.buffer.y + 76} L ${pos.mixPump.x + pos.mixPump.w/2} ${pos.mixPump.y}" class="pipe"/>
               <path d="M ${pos.buffer.x} ${pos.buffer.y + 76} L ${pos.mixPump.x + pos.mixPump.w/2} ${pos.buffer.y + 76} L ${pos.mixPump.x + pos.mixPump.w/2} ${pos.mixPump.y}" class="flow heat ${on(state.pumpMixOn)}"/>
@@ -762,7 +613,7 @@
               <path d="M ${pos.boiler.x} ${pos.boiler.y + pos.boiler.h/2} L ${pos.house.x + pos.house.w} ${pos.boiler.y + pos.boiler.h/2}" class="pipe"/>
               <path d="M ${pos.boiler.x} ${pos.boiler.y + pos.boiler.h/2} L ${pos.house.x + pos.house.w} ${pos.boiler.y + pos.boiler.h/2}" class="flow heat ${on(state.boilerOn)}"/>
               <path d="M ${pos.radiator.x} ${pos.radiator.y + pos.radiator.h/2} L ${pos.house.x + pos.house.w} ${pos.radiator.y + pos.radiator.h/2}" class="pipe"/>
-              <path d="M ${pos.radiator.x} ${pos.radiator.y + pos.radiator.h/2} L ${pos.house.x + pos.house.w} ${pos.radiator.y + pos.radiator.h/2}" class="flow heat ${on(tarasToRadiator)}"/>
+              <path d="M ${pos.radiator.x} ${pos.radiator.y + pos.radiator.h/2} L ${pos.house.x + pos.house.w} ${pos.radiator.y + pos.radiator.h/2}" class="flow heat ${on(offgrid1ToRadiator)}"/>
             </svg>
           </div>
         </div>
@@ -770,15 +621,154 @@
     }
   }
 
-  function setStatus(kind, text, note) {
-    const pill = qs("#demoStatus");
-    const textEl = qs("#demoStatusText");
-    const noteEl = qs("#demoStatusNote");
-    if (pill) {
-      pill.className = `demo-status-pill ${kind}`;
-    }
-    if (textEl) textEl.textContent = text;
-    if (noteEl) noteEl.textContent = note;
+  function createRandomPresenceAndReku() {
+    const rekuOn = Math.random() > 0.28;
+    return {
+      phoneHome: Math.random() > 0.5,
+      rekuOn,
+      rekuPercentage: rekuOn ? randInt(24, 78) : 0
+    };
+  }
+
+  function createNightScenario(dict) {
+    const randomLayer = createRandomPresenceAndReku();
+    return {
+      statusIcon: "🌙",
+      lux: 0,
+      sunActive: false,
+      weatherPhase: "night",
+      weatherState: "clear-night",
+      weatherTemperature: randFloat(8, 14),
+      weatherWind: randFloat(3, 10),
+      weatherHumidity: randInt(68, 90),
+      inverterDomProducing: false,
+      inverterTarasProducing: false,
+      inverterHybridProducing: false,
+      hybridToHouse: false,
+      offgrid2ToHeater1: false,
+      offgrid1ToRadiator: false,
+      offgrid1ToHeater2: false,
+      pumpMixOn: false,
+      pumpMainOn: false,
+      boilerOn: Math.random() > 0.5,
+      kitchenLightOn: Math.random() > 0.5,
+      salonLightOn: Math.random() > 0.5,
+      ...randomLayer,
+      message: dict.scenario_night_final
+    };
+  }
+
+  function createMorningScenario(dict) {
+    const randomLayer = createRandomPresenceAndReku();
+    return {
+      statusIcon: "⛅",
+      lux: randInt(1000, 3000),
+      sunActive: true,
+      weatherPhase: "sunrise",
+      weatherState: "partlycloudy",
+      weatherTemperature: randFloat(12, 16),
+      weatherWind: randFloat(5, 13),
+      weatherHumidity: randInt(44, 62),
+      inverterDomProducing: true,
+      inverterTarasProducing: true,
+      inverterHybridProducing: true,
+      hybridToHouse: true,
+      offgrid2ToHeater1: true,
+      offgrid1ToRadiator: true,
+      offgrid1ToHeater2: false,
+      pumpMixOn: false,
+      pumpMainOn: false,
+      boilerOn: false,
+      kitchenLightOn: false,
+      salonLightOn: false,
+      ...randomLayer,
+      message: dict.scenario_morning
+    };
+  }
+
+  function createNoonScenario(dict) {
+    const randomLayer = createRandomPresenceAndReku();
+    return {
+      statusIcon: "☀️",
+      lux: randInt(8000, 16000),
+      sunActive: true,
+      weatherPhase: "day",
+      weatherState: "sunny",
+      weatherTemperature: randFloat(20, 26),
+      weatherWind: randFloat(7, 16),
+      weatherHumidity: randInt(30, 48),
+      inverterDomProducing: true,
+      inverterTarasProducing: true,
+      inverterHybridProducing: true,
+      hybridToHouse: true,
+      offgrid2ToHeater1: true,
+      offgrid1ToRadiator: false,
+      offgrid1ToHeater2: true,
+      pumpMixOn: true,
+      pumpMainOn: true,
+      boilerOn: false,
+      kitchenLightOn: false,
+      salonLightOn: false,
+      ...randomLayer,
+      message: dict.scenario_noon
+    };
+  }
+
+  function createSunsetScenario(dict) {
+    const randomLayer = createRandomPresenceAndReku();
+    return {
+      statusIcon: "sunset",
+      lux: randInt(100, 500),
+      sunActive: false,
+      weatherPhase: "sunset",
+      weatherState: pickFrom(["partlycloudy", "cloudy"]),
+      weatherTemperature: randFloat(11, 17),
+      weatherWind: randFloat(4, 12),
+      weatherHumidity: randInt(48, 70),
+      inverterDomProducing: false,
+      inverterTarasProducing: false,
+      inverterHybridProducing: false,
+      hybridToHouse: false,
+      offgrid2ToHeater1: false,
+      offgrid1ToRadiator: false,
+      offgrid1ToHeater2: false,
+      pumpMixOn: true,
+      pumpMainOn: true,
+      boilerOn: false,
+      kitchenLightOn: false,
+      salonLightOn: false,
+      ...randomLayer,
+      message: dict.scenario_sunset
+    };
+  }
+
+  function createInitialState() {
+    return {
+      statusIcon: "",
+      lux: 1840,
+      sunActive: true,
+      weatherPhase: "day",
+      weatherState: "partlycloudy",
+      weatherTemperature: 15.2,
+      weatherWind: 11.3,
+      weatherHumidity: 54,
+      inverterDomProducing: true,
+      inverterTarasProducing: true,
+      inverterHybridProducing: true,
+      hybridToHouse: true,
+      offgrid2ToHeater1: true,
+      offgrid1ToRadiator: true,
+      offgrid1ToHeater2: false,
+      pumpMixOn: false,
+      pumpMainOn: false,
+      rekuOn: true,
+      rekuPercentage: 52,
+      boilerOn: false,
+      kitchenLightOn: false,
+      salonLightOn: false,
+      phoneHome: true,
+      message: ""
+    };
   }
 
   const lang = getLang();
@@ -786,24 +776,58 @@
   const dict = DICT[lang];
   const renderer = new PanelDemoRenderer(qs("#panelMount"), dict);
 
-  let hasLoadedOnce = false;
+  renderer.render(createInitialState());
 
-  async function load() {
-    try {
-      if (!hasLoadedOnce) {
-        setStatus("", dict.status_loading, dict.status_note);
-      }
-      const state = simulateState();
-      renderer.render(state);
-      hasLoadedOnce = true;
-      setStatus("ok", dict.status_live, dict.status_note_ok);
-    } catch (err) {
-      setStatus("err", dict.status_error, dict.status_note_err);
-      console.error(err);
+  const simulationStatus = qs("#simulation-status");
+  const btnSimulate = qs("#btn-simulate");
+  const scenarioSequence = [
+    () => createMorningScenario(dict),
+    () => createNoonScenario(dict),
+    () => createSunsetScenario(dict),
+    () => createNightScenario(dict)
+  ];
+  let scenarioIndex = -1;
+  let touchHandled = false;
+
+  const renderSimulationStatus = (scenario) => {
+    if (!simulationStatus) {
+      return;
     }
-  }
 
-  qs("#refreshBtn")?.addEventListener("click", load);
-  load();
-  window.setInterval(load, REFRESH_MS);
+    if (!scenario || !scenario.message) {
+      simulationStatus.textContent = dict.sim_prompt;
+      return;
+    }
+
+    const iconMarkup = scenario.statusIcon === "sunset"
+      ? '<span class="sim-status-icon sim-status-icon--sunset" aria-hidden="true"></span>'
+      : `<span class="sim-status-icon" aria-hidden="true">${scenario.statusIcon || ""}</span>`;
+
+    const message = scenario.message.replace(/^[^\s]+\s/, "");
+    simulationStatus.innerHTML = `<span class="sim-status-content">${iconMarkup}<span>${message}</span></span>`;
+  };
+
+  const runNextScenario = () => {
+    scenarioIndex = (scenarioIndex + 1) % scenarioSequence.length;
+    const scenarioFactory = scenarioSequence[scenarioIndex];
+    const scenario = scenarioFactory();
+    renderer.render(scenario);
+    renderSimulationStatus(scenario);
+  };
+
+  if (btnSimulate) {
+    btnSimulate.addEventListener("click", () => {
+      if (touchHandled) {
+        touchHandled = false;
+        return;
+      }
+      runNextScenario();
+    });
+
+    btnSimulate.addEventListener("touchend", (event) => {
+      touchHandled = true;
+      event.preventDefault();
+      runNextScenario();
+    });
+  }
 })();
