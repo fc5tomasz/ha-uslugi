@@ -273,14 +273,28 @@ main{
 }
 
 #services,
+#uslugi,
+#ydelser,
 #o-mnie,
 #about-me,
 #om-mig,
 #for,
+#who-its-for,
+#for-hvem,
+#dla-kogo,
 #process,
+#how-i-work,
+#saadan-arbejder-jeg,
+#jak-pracuje,
 #examples,
+#sample-dashboards,
+#eksempler,
+#przyklady,
 #pricing,
-#contact{
+#priser,
+#cennik,
+#contact,
+#kontakt{
   scroll-margin-top:var(--anchor-offset);
 }
 
