@@ -654,6 +654,16 @@ h1 span{
   gap:18px;
 }
 
+@media (min-width: 821px){
+  .about-photo-card{
+    padding:0;
+  }
+
+  .about-photo{
+    border-radius:0;
+  }
+}
+
 .about-points{
   display:grid;
   gap:14px;
@@ -1135,6 +1145,37 @@ html[lang="da"] nav li a,html[lang="da-DK"] nav li a{padding:10px 11px}
     --anchor-offset:84px;
   }
 
+  .grid-3,
+  .grid-2{
+    grid-template-columns:1fr;
+  }
+
+  .service-card,
+  .audience-card,
+  .process-card,
+  .contact-card,
+  .about-photo-card,
+  .about-copy-card{
+    min-height:auto;
+  }
+
+  .about-photo-card{
+    padding:0;
+  }
+
+  .about-photo{
+    display:block;
+    width:100%;
+    height:auto;
+    min-height:0;
+    border-radius:0;
+  }
+
+  .about-copy-card{
+    justify-content:flex-start;
+    gap:14px;
+  }
+
   .knowledge-link{
     display:inline;
     color:#ffffff;
@@ -1326,6 +1367,16 @@ html[lang="da"] nav li a,html[lang="da-DK"] nav li a{padding:10px 11px}
   .hero-panel,
   .card{
     padding:22px;
+  }
+
+  .about-photo-card{
+    padding:0;
+  }
+
+  .about-photo{
+    display:block;
+    width:100%;
+    border-radius:var(--radius-lg) var(--radius-lg) 0 0;
   }
 
   .hero-actions{
