@@ -1135,6 +1135,22 @@ html[lang="da"] nav li a,html[lang="da-DK"] nav li a{padding:10px 11px}
     --anchor-offset:84px;
   }
 
+  .knowledge-link{
+    display:inline;
+    color:#ffffff;
+    font-weight:700;
+  }
+
+  .knowledge-link:visited,
+  .knowledge-link:hover,
+  .knowledge-link:active{
+    color:#ffffff;
+  }
+
+  .knowledge-link span{
+    display:none;
+  }
+
   #top{
     scroll-margin-top:76px;
   }

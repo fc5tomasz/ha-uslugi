@@ -65,7 +65,7 @@
       <div class="section-label">Zigbee</div>
       <h1 class="section-title" style="white-space:nowrap;font-size:clamp(1.45rem,2vw,2rem);">Zrywa połączenie? Jak je ustabilizować?</h1>
       <div class="card">
-        <p class="section-subtitle">Zigbee to genialny i energooszczędny protokół, ale fizyki nie oszukasz. Jeśli Twoje urządzenia nie reagują, mają opóźnienia albo nagle "odpadają" od sieci, bardzo rzadko jest to wina zepsutego sprzętu. Najczęściej to efekt złego środowiska radiowego, konfliktów sieciowych lub błędnej konfiguracji sprzętowej. Zobacz, co najczęściej zabija Twój zasięg.</p>
+        <p class="section-subtitle">Zigbee jest wygodny i energooszczędny, ale jego stabilność mocno zależy od warunków radiowych i poprawnej konfiguracji. Jeśli Twoje urządzenia nie reagują, mają opóźnienia albo nagle „odpadają” od sieci, bardzo często nie wynika to z uszkodzonego sprzętu, tylko ze złego środowiska radiowego, konfliktów sieciowych albo błędnej konfiguracji. Zobacz, co najczęściej pogarsza zasięg i stabilność sieci Zigbee.</p>
       </div>
     </section>
 
@@ -78,8 +78,8 @@
             <span class="card-kicker">Zakłócenia</span>
             <span class="card-badge" aria-hidden="true">📶</span>
           </div>
-          <h3>Niewidzialna wojna: Zigbee vs Wi-Fi</h3>
-          <p>Twój router Wi-Fi i urządzenia Zigbee korzystają z tej samej przestrzeni w powietrzu na częstotliwości 2.4 GHz. Wi-Fi to "głośny koncert", a Zigbee to "cicha rozmowa". Jeśli działają na nakładających się kanałach, domowy router po prostu zagłuszy czujniki. Dobranie bezkolizyjnego kanału to absolutny fundament stabilności.</p>
+          <h3>📶 Konflikt Zigbee i Wi-Fi na 2.4 GHz</h3>
+          <p>Router Wi-Fi i urządzenia Zigbee korzystają z tego samego pasma 2.4 GHz. Jeśli pracują na nakładających się kanałach, silny sygnał Wi-Fi może pogarszać stabilność sieci Zigbee. Dobranie możliwie bezkolizyjnego kanału to jeden z podstawowych kroków do poprawy działania.</p>
         </article>
 
         <article class="card service-card">
@@ -87,8 +87,8 @@
             <span class="card-kicker">Sprzęt</span>
             <span class="card-badge" aria-hidden="true">🔌</span>
           </div>
-          <h3>Pułapka portu USB 3.0</h3>
-          <p>Wpinasz koordynator (np. Sonoff Dongle) bezpośrednio w niebieski port USB w terminalu lub Raspberry Pi? To błąd, który drastycznie ucina zasięg. Porty USB 3.0 generują ogromny "szum" elektromagnetyczny. Naprawa jest banalna: wystarczy użyć przedłużacza USB 2.0 i fizycznie odsunąć urządzenie od komputera.</p>
+          <h3>🔌 Pułapka portu USB 3.0</h3>
+          <p>Jeśli koordynator Zigbee jest wpięty bezpośrednio do portu USB 3.0 w terminalu, komputerze lub Raspberry Pi, może to powodować zakłócenia i pogarszać zasięg. To częsta przyczyna niestabilności. Często wystarczy użyć przedłużacza USB 2.0 i odsunąć koordynator od urządzenia.</p>
         </article>
 
         <article class="card service-card">
@@ -96,18 +96,20 @@
             <span class="card-kicker">Mesh</span>
             <span class="card-badge" aria-hidden="true">🕸️</span>
           </div>
-          <h3>Słaby szkielet sieci (Brak routerów)</h3>
-          <p>Zigbee to sieć typu mesh (pajęczyna). Urządzenia na baterie (czujniki ruchu, termometry) "śpią" i nie przekazują sygnału dalej. Aby sieć miała mocny zasięg w całym domu, potrzebujesz urządzeń zasilanych stale z gniazdka (np. smart gniazdka, żarówki). Pełnią one rolę routerów, które wzmacniają i przekazują sygnał do najdalszych zakątków.</p>
+          <h3>🕸️ Słaby szkielet sieci</h3>
+          <p>Zigbee działa jako sieć mesh. Urządzenia na baterie, takie jak czujniki ruchu czy termometry, zwykle nie przekazują sygnału dalej. Dlatego do stabilnej pracy w całym domu potrzebne są także urządzenia zasilane stale z prądu, na przykład smart gniazdka lub niektóre żarówki. To one pomagają przekazywać sygnał dalej i poprawiają zasięg sieci.</p>
         </article>
       </div>
     </section>
 
     <section class="section">
       <div class="section-label">Wsparcie</div>
-      <h2 class="section-title">Potrzebujesz eksperckiego oka? Zróbmy profesjonalną diagnozę.</h2>
+      <h2 class="section-title">Pomoc zdalna</h2>
       <div class="card">
-        <p class="section-subtitle">Fizyki nie oszukamy zdalnie, ale nie musisz zgadywać, gdzie leży problem. W ramach <strong>bezpłatnej diagnozy</strong> połączę się z Twoim systemem, przeanalizuję mapę LQI i zlokalizuję źródło zakłóceń.</p>
-        <p class="section-subtitle">Gdy ustalimy przyczynę, będziesz mógł zdecydować o dalszych krokach. W ramach płatnej usługi zajmę się bezpieczną rekonfiguracją i stabilizacją oprogramowania (zmiana kanałów, optymalizacja ZHA/Zigbee2MQTT), a Ty według moich zaleceń wprowadzisz ewentualne poprawki sprzętowe.</p>
+        <p class="section-subtitle">Masz problem ze stabilnością Zigbee? Mogę pomóc to zdiagnozować.</p>
+        <p class="section-subtitle">Zdalnie sprawdzę konfigurację ZHA lub Zigbee2MQTT, mapę sieci, jakość połączeń i najczęstsze przyczyny problemów po stronie systemu.</p>
+        <p class="section-subtitle">Jeśli będzie potrzeba, poproszę Cię też o proste dodatkowe pomiary po Twojej stronie, na przykład z telefonu lub laptopa z Wi-Fi, żeby lepiej ocenić kanały, zakłócenia i otoczenie radiowe.</p>
+        <p class="section-subtitle">Nie każdy problem da się usunąć online, ale po analizie będziesz wiedzieć, co dokładnie poprawić. Jeśli będzie trzeba, pomogę też z bezpieczną rekonfiguracją systemu, a zmiany sprzętowe wykonasz u siebie według konkretnych wskazówek.</p>
       </div>
     </section>
   </main>

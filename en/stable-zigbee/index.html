@@ -55,9 +55,9 @@
   <main>
     <section class="section">
       <div class="section-label">Zigbee</div>
-      <h1 class="section-title" style="white-space:nowrap;font-size:clamp(1.45rem,2vw,2rem);">Connection dropping? How to stabilize it.</h1>
+      <h1 class="section-title" style="white-space:nowrap;font-size:clamp(1.45rem,2vw,2rem);">Dropping connection? How to stabilize it?</h1>
       <div class="card">
-        <p class="section-subtitle">Zigbee is a brilliant and energy-efficient protocol, but you can't cheat physics. If your devices aren't responding, have delays, or suddenly "drop off" the network, it's rarely a hardware failure. Most often, it's the result of a bad radio environment, network conflicts, or incorrect hardware setup. See what's killing your range.</p>
+        <p class="section-subtitle">Zigbee is convenient and energy-efficient, but its stability heavily depends on radio conditions and correct configuration. If your devices don't respond, have delays, or suddenly "drop" from the network, it is very often not due to faulty hardware, but a bad radio environment, network conflicts, or incorrect configuration. See what most often degrades the range and stability of a Zigbee network.</p>
       </div>
     </section>
 
@@ -70,8 +70,8 @@
             <span class="card-kicker">Interference</span>
             <span class="card-badge" aria-hidden="true">📶</span>
           </div>
-          <h3>The invisible war: Zigbee vs Wi-Fi</h3>
-          <p>Your Wi-Fi router and Zigbee devices share the same 2.4 GHz airspace. Wi-Fi is a "loud concert", while Zigbee is a "quiet conversation". If they operate on overlapping channels, your home router will simply drown out the sensors. Choosing a non-overlapping channel is the absolute foundation of stability.</p>
+          <h3>📶 Zigbee and Wi-Fi conflict on 2.4 GHz</h3>
+          <p>Wi-Fi routers and Zigbee devices use the same 2.4 GHz band. If they operate on overlapping channels, a strong Wi-Fi signal can degrade the stability of the Zigbee network. Choosing a possibly collision-free channel is one of the basic steps to improve performance.</p>
         </article>
 
         <article class="card service-card">
@@ -79,8 +79,8 @@
             <span class="card-kicker">Hardware</span>
             <span class="card-badge" aria-hidden="true">🔌</span>
           </div>
-          <h3>The USB 3.0 trap</h3>
-          <p>Are you plugging your coordinator (e.g., Sonoff Dongle) directly into a blue USB port on your terminal or Raspberry Pi? That's a mistake that drastically cuts your range. USB 3.0 ports generate massive electromagnetic "noise". The fix is simple: use a USB 2.0 extension cable and physically move the device away from the computer.</p>
+          <h3>🔌 The USB 3.0 port trap</h3>
+          <p>If the Zigbee coordinator is plugged directly into a USB 3.0 port on a terminal, computer, or Raspberry Pi, it can cause interference and degrade the range. This is a common cause of instability. Often, it's enough to use a USB 2.0 extension cable and move the coordinator away from the device.</p>
         </article>
 
         <article class="card service-card">
@@ -88,18 +88,20 @@
             <span class="card-kicker">Mesh</span>
             <span class="card-badge" aria-hidden="true">🕸️</span>
           </div>
-          <h3>Weak network backbone (Lack of routers)</h3>
-          <p>Zigbee is a mesh network. Battery-powered devices (motion sensors, thermometers) "sleep" and don't pass the signal on. For the network to have strong coverage throughout the house, you need permanently powered devices plugged into outlets (e.g., smart plugs, bulbs). They act as routers, amplifying and forwarding the signal to the furthest corners.</p>
+          <h3>🕸️ Weak network backbone</h3>
+          <p>Zigbee operates as a mesh network. Battery-powered devices, such as motion sensors or thermometers, usually do not forward the signal. Therefore, for stable operation throughout the house, you also need permanently powered devices, such as smart plugs or some light bulbs. They help pass the signal further and improve the network range.</p>
         </article>
       </div>
     </section>
 
     <section class="section">
       <div class="section-label">Support</div>
-      <h2 class="section-title">Need an expert's eye? Let's do a professional diagnosis.</h2>
+      <h2 class="section-title">Remote support</h2>
       <div class="card">
-        <p class="section-subtitle">We can't cheat physics remotely, but you don't have to guess where the problem lies. As part of a <strong>free diagnosis</strong>, I will connect to your system, analyze the LQI map, and locate the source of interference.</p>
-        <p class="section-subtitle">Once we determine the cause, you can decide on the next steps. As part of a paid service, I will handle the safe reconfiguration and stabilization of the software (changing channels, optimizing ZHA/Zigbee2MQTT), and you can make any necessary hardware adjustments based on my recommendations.</p>
+        <p class="section-subtitle">Having issues with Zigbee stability? I can help diagnose it.</p>
+        <p class="section-subtitle">I will remotely check your ZHA or Zigbee2MQTT configuration, network map, connection quality, and common causes of problems on the system side.</p>
+        <p class="section-subtitle">If necessary, I will also ask you to do simple additional measurements on your end, for example using a phone or laptop with Wi-Fi, to better assess channels, interference, and the radio environment.</p>
+        <p class="section-subtitle">Not every problem can be solved online, but after the analysis, you will know exactly what to improve. If needed, I will also help with a safe system reconfiguration, and you will make the hardware changes yourself following specific instructions.</p>
       </div>
     </section>
   </main>

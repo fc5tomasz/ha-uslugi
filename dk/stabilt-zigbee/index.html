@@ -57,7 +57,7 @@
       <div class="section-label">Zigbee</div>
       <h1 class="section-title" style="white-space:nowrap;font-size:clamp(1.45rem,2vw,2rem);">Mister forbindelsen? Sådan stabiliserer du den.</h1>
       <div class="card">
-        <p class="section-subtitle">Zigbee er en genial og energieffektiv protokol, men man kan ikke snyde fysikken. Hvis dine enheder ikke reagerer, har forsinkelser eller pludselig "falder af" netværket, er det sjældent en hardwarefejl. Oftest skyldes det et dårligt radiomiljø, netværkskonflikter eller forkert hardwareopsætning. Se, hvad der ødelægger din rækkevidde.</p>
+        <p class="section-subtitle">Zigbee er praktisk og energieffektivt, men stabiliteten afhænger stærkt af radioforhold og korrekt konfiguration. Hvis dine enheder ikke reagerer, har forsinkelser eller pludselig "falder af" netværket, skyldes det meget ofte ikke defekt hardware, men et dårligt radiomiljø, netværkskonflikter eller forkert konfiguration. Se, hvad der oftest forringer rækkevidden og stabiliteten i et Zigbee-netværk.</p>
       </div>
     </section>
 
@@ -67,11 +67,11 @@
       <div class="grid-3 services-grid">
         <article class="card service-card">
           <div class="card-top">
-            <span class="card-kicker">Forstyrrelser</span>
+            <span class="card-kicker">Interferens</span>
             <span class="card-badge" aria-hidden="true">📶</span>
           </div>
-          <h3>Den usynlige krig: Zigbee vs Wi-Fi</h3>
-          <p>Din Wi-Fi-router og Zigbee-enheder deler det samme 2,4 GHz luftrum. Wi-Fi er en "højlydt koncert", mens Zigbee er en "stille samtale". Hvis de kører på overlappende kanaler, vil din hjemmerouter simpelthen overdøve sensorerne. At vælge en ikke-overlappende kanal er det absolutte fundament for stabilitet.</p>
+          <h3>📶 Zigbee og Wi-Fi-konflikt på 2.4 GHz</h3>
+          <p>Wi-Fi-routere og Zigbee-enheder bruger det samme 2.4 GHz-bånd. Hvis de fungerer på overlappende kanaler, kan et stærkt Wi-Fi-signal forringe Zigbee-netværkets stabilitet. At vælge en kanal med færrest mulige kollisioner er et af de grundlæggende trin for at forbedre ydeevnen.</p>
         </article>
 
         <article class="card service-card">
@@ -79,8 +79,8 @@
             <span class="card-kicker">Hardware</span>
             <span class="card-badge" aria-hidden="true">🔌</span>
           </div>
-          <h3>USB 3.0 fælden</h3>
-          <p>Sætter du din koordinator (f.eks. Sonoff Dongle) direkte i en blå USB-port på din terminal eller Raspberry Pi? Det er en fejl, der drastisk reducerer din rækkevidde. USB 3.0-porte genererer massiv elektromagnetisk "støj". Løsningen er simpel: Brug et USB 2.0-forlængerkabel og flyt enheden fysisk væk fra computeren.</p>
+          <h3>🔌 USB 3.0-port fælden</h3>
+          <p>Hvis Zigbee-koordinatoren er sat direkte i en USB 3.0-port på en terminal, computer eller Raspberry Pi, kan det forårsage interferens og forringe rækkevidden. Dette er en hyppig årsag til ustabilitet. Ofte er det nok at bruge et USB 2.0-forlængerkabel og flytte koordinatoren væk fra enheden.</p>
         </article>
 
         <article class="card service-card">
@@ -88,18 +88,20 @@
             <span class="card-kicker">Mesh</span>
             <span class="card-badge" aria-hidden="true">🕸️</span>
           </div>
-          <h3>Svag netværksrygrad (Mangel på routere)</h3>
-          <p>Zigbee er et mesh-netværk. Batteridrevne enheder (bevægelsessensorer, termometre) "sover" og sender ikke signalet videre. For at netværket kan have stærk dækning i hele huset, har du brug for enheder med fast strømtilslutning (f.eks. smart plugs, pærer). De fungerer som routere, der forstærker og videresender signalet til de fjerneste afkroge.</p>
+          <h3>🕸️ Svag netværksrygrad</h3>
+          <p>Zigbee fungerer som et mesh-netværk. Batteridrevne enheder, såsom bevægelsessensorer eller termometre, videresender normalt ikke signalet. Derfor har du til stabil drift i hele huset også brug for enheder, der er permanent tilsluttet strøm, for eksempel smarte stikkontakter eller visse pærer. De hjælper med at sende signalet videre og forbedrer netværkets rækkevidde.</p>
         </article>
       </div>
     </section>
 
     <section class="section">
       <div class="section-label">Support</div>
-      <h2 class="section-title">Har du brug for en eksperts øje? Lad os lave en professionel diagnose.</h2>
+      <h2 class="section-title">Fjernsupport</h2>
       <div class="card">
-        <p class="section-subtitle">Vi kan ikke snyde fysikken på afstand, men du behøver ikke gætte, hvor problemet ligger. Som en del af en <strong>gratis diagnose</strong> forbinder jeg til dit system, analyserer LQI-kortet og lokaliserer kilden til forstyrrelserne.</p>
-        <p class="section-subtitle">Når vi har fundet årsagen, kan du beslutte de næste skridt. Som en del af en betalt service tager jeg mig af den sikre rekonfiguration og stabilisering af softwaren (ændring af kanaler, optimering af ZHA/Zigbee2MQTT), og du kan foretage eventuelle hardwarejusteringer baseret på mine anbefalinger.</p>
+        <p class="section-subtitle">Har du problemer med Zigbee-stabiliteten? Jeg kan hjælpe med at diagnosticere det.</p>
+        <p class="section-subtitle">Jeg tjekker din ZHA- eller Zigbee2MQTT-konfiguration, netværkskort, forbindelseskvalitet og de mest almindelige årsager til problemer på systemsiden via fjernadgang.</p>
+        <p class="section-subtitle">Hvis det er nødvendigt, beder jeg dig også om at foretage enkle yderligere målinger på din side, for eksempel med en telefon eller bærbar computer med Wi-Fi, for bedre at kunne vurdere kanaler, interferens og radiomiljøet.</p>
+        <p class="section-subtitle">Ikke alle problemer kan løses online, men efter analysen ved du præcis, hvad der skal forbedres. Hvis det bliver nødvendigt, hjælper jeg også med en sikker omkonfigurering af systemet, og du kan selv foretage hardwareændringerne ud fra specifikke instruktioner.</p>
       </div>
     </section>
   </main>
