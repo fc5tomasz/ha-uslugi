@@ -1159,6 +1159,60 @@ html[lang="da"] nav li a,html[lang="da-DK"] nav li a{padding:10px 11px}
     --anchor-offset:84px;
   }
 
+  .tech-block{
+    display:flex;
+    flex-direction:column;
+    gap:0;
+    background:linear-gradient(180deg, rgba(15,27,46,.92), rgba(10,20,35,.9));
+    border-radius:var(--radius-lg);
+    border:1px solid var(--border);
+    box-shadow:var(--shadow-card);
+    overflow:hidden;
+    position:relative;
+  }
+
+  .tech-block::before{
+    content:"";
+    position:absolute;
+    inset:0 auto auto 0;
+    width:100%;
+    height:1px;
+    background:linear-gradient(90deg, rgba(102,226,255,.42), rgba(18,200,132,.16), transparent 80%);
+    z-index:1;
+  }
+
+  .tech-block > .card{
+    background:transparent;
+    border:0;
+    border-radius:0;
+    box-shadow:none;
+    padding:0;
+  }
+
+  .tech-block > .card::before{
+    display:none;
+  }
+
+  .tech-card{
+    order:-1;
+  }
+
+  .tech-card .showcase-media,
+  .tech-media{
+    width:100%;
+    border-radius:0;
+  }
+
+  .tech-copy-panel{
+    min-height:auto;
+    align-items:stretch;
+    background:none;
+  }
+
+  .tech-copy-body{
+    padding:22px;
+  }
+
   .grid-3,
   .grid-2{
     grid-template-columns:1fr;
