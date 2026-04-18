@@ -174,20 +174,11 @@ body.demo-page{
 }
 
 .demo-panel-wrap{
-  padding:16px;
+  padding:0;
 }
 
 .demo-panel-frame{
   min-height:420px;
-}
-
-.panel-card{
-  position:relative;
-  overflow:hidden;
-  border-radius:26px;
-  background:rgba(19,26,36,.96);
-  border:1px solid rgba(255,255,255,0.06);
-  box-shadow:0 20px 48px rgba(0,0,0,0.38);
 }
 
 .panel-online-indicator{
@@ -217,6 +208,11 @@ body.demo-page{
 }
 
 .panel-wrap{
+  position:relative;
+  overflow:hidden;
+  border-radius:26px;
+  border:1px solid rgba(255,255,255,0.06);
+  box-shadow:0 20px 48px rgba(0,0,0,0.38);
   background:
     radial-gradient(circle at 13% 10%, rgba(255,195,94,0.08), transparent 18%),
     linear-gradient(180deg, #0a1018 0%, #111a25 100%);
@@ -316,7 +312,7 @@ body.demo-page{
   }
 
   .demo-panel-wrap{
-    padding:10px;
+    padding:0;
   }
 
   .demo-panel-frame{

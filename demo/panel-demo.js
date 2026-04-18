@@ -458,13 +458,12 @@
       `;
 
       this.root.innerHTML = `
-        <div class="panel-card">
+        <div class="panel-wrap">
           <div class="panel-online-indicator">
             <span class="panel-online-dot"></span>
             <span>${this.dict.panel_online}</span>
           </div>
-          <div class="panel-wrap">
-            <svg class="panel-svg" viewBox="0 0 1440 860" xmlns="http://www.w3.org/2000/svg">
+          <svg class="panel-svg" viewBox="0 0 1440 860" xmlns="http://www.w3.org/2000/svg">
               <defs>
                 <linearGradient id="sunFill" x1="0" y1="0" x2="1" y2="1">
                   <stop offset="0%" stop-color="#ffe27a"/>
@@ -614,8 +613,7 @@
               <path d="M ${pos.boiler.x} ${pos.boiler.y + pos.boiler.h/2} L ${pos.house.x + pos.house.w} ${pos.boiler.y + pos.boiler.h/2}" class="flow heat ${on(state.boilerOn)}"/>
               <path d="M ${pos.radiator.x} ${pos.radiator.y + pos.radiator.h/2} L ${pos.house.x + pos.house.w} ${pos.radiator.y + pos.radiator.h/2}" class="pipe"/>
               <path d="M ${pos.radiator.x} ${pos.radiator.y + pos.radiator.h/2} L ${pos.house.x + pos.house.w} ${pos.radiator.y + pos.radiator.h/2}" class="flow heat ${on(offgrid1ToRadiator)}"/>
-            </svg>
-          </div>
+          </svg>
         </div>
       `;
     }
