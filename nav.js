@@ -137,6 +137,9 @@ document.querySelectorAll(".nav").forEach((nav) => {
     toggle.setAttribute("aria-expanded", "false");
     toggle.setAttribute("aria-label", "Open menu");
     toggle.innerHTML = '<span aria-hidden="true">☰</span>';
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => toggle.blur());
+    });
   };
 
   const openMenu = () => {
