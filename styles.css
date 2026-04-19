@@ -763,6 +763,11 @@ h1 span{
   margin-bottom:14px;
 }
 
+.services-grid-primary .card-top{
+  justify-content:flex-start;
+  margin-bottom:12px;
+}
+
 .card-kicker{
   font-size:.75rem;
   text-transform:uppercase;
@@ -770,9 +775,11 @@ h1 span{
   color:var(--accent-2);
 }
 
-.card-badge{
-  width:38px;
+.card-badge,
+.process-index{
+  min-width:38px;
   height:38px;
+  padding:0 10px;
   border-radius:14px;
   display:inline-flex;
   align-items:center;
@@ -782,6 +789,12 @@ h1 span{
   color:#f8fcff;
   font-size:.88rem;
   font-weight:800;
+  line-height:1;
+  box-sizing:border-box;
+}
+
+.card-badge{
+  width:38px;
 }
 
 .service-card:nth-child(2) .card-badge{
@@ -1001,24 +1014,7 @@ h1 span{
 }
 
 .process-card{
-  padding-top:22px;
-}
-
-.process-index{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  width:44px;
-  height:44px;
-  border-radius:14px;
-  margin-bottom:14px;
-  font-weight:800;
-  color:#04141a;
-  background:linear-gradient(135deg, var(--accent-2), #c6fbff);
-}
-
-.process-card:last-child .process-index{
-  background:linear-gradient(135deg, var(--accent), #b9f6dd);
+  padding-top:24px;
 }
 
 .contact-grid{
