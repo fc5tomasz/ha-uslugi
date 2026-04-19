@@ -1162,8 +1162,6 @@ footer{
 }
 
 html[lang="da"] .logo [data-i18n="logo_text"],html[lang="da-DK"] .logo [data-i18n="logo_text"]{white-space:nowrap}
-html[lang="da"] nav ul,html[lang="da-DK"] nav ul{gap:8px;font-size:.84rem}
-html[lang="da"] nav li a,html[lang="da-DK"] nav li a{padding:10px 11px}
 
 @media (max-width: 1024px){
   .hero{
