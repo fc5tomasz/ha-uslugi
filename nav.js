@@ -1,7 +1,108 @@
 const navStates = [];
 
+if ("scrollRestoration" in window.history) {
+  window.history.scrollRestoration = "manual";
+}
+
 const closeAllMobileMenus = () => {
   navStates.forEach(({ closeMenu }) => closeMenu());
+};
+
+const syncHeaderState = () => {
+  const header = document.querySelector("header");
+  if (!header) {
+    return;
+  }
+
+  header.classList.toggle("scrolled", window.scrollY > 24);
+};
+
+const normalizePathname = (pathname) => {
+  if (!pathname) {
+    return "/";
+  }
+
+  const normalized = pathname
+    .replace(/\/index\.html$/, "/")
+    .replace(/\/{2,}/g, "/");
+
+  if (normalized === "") {
+    return "/";
+  }
+
+  if (normalized !== "/" && normalized.endsWith("/")) {
+    return normalized.slice(0, -1);
+  }
+
+  return normalized;
+};
+
+const getAnchorTarget = (link) => {
+  const href = link.getAttribute("href");
+  if (!href) {
+    return null;
+  }
+
+  const targetUrl = new URL(href, window.location.href);
+  const currentPath = normalizePathname(window.location.pathname);
+  const targetPath = normalizePathname(targetUrl.pathname);
+  const samePageAnchor =
+    targetUrl.origin === window.location.origin &&
+    targetPath === currentPath &&
+    targetUrl.hash;
+
+  if (!samePageAnchor) {
+    return null;
+  }
+
+  return document.querySelector(targetUrl.hash);
+};
+
+const scrollToAnchorTarget = (target, behavior = "smooth") => {
+  if (target.id === "top") {
+    if (behavior === "smooth") {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    } else {
+      window.scrollTo(0, 0);
+    }
+    return;
+  }
+
+  target.scrollIntoView({
+    behavior,
+    block: "start",
+  });
+};
+
+const runAfterLayoutSettles = (callback) => {
+  window.requestAnimationFrame(() => {
+    window.requestAnimationFrame(() => {
+      callback();
+      window.setTimeout(callback, 140);
+    });
+  });
+};
+
+const stabilizeInitialMobileView = () => {
+  if (window.innerWidth > 820) {
+    syncHeaderState();
+    return;
+  }
+
+  const hash = window.location.hash;
+  const target = hash ? document.querySelector(hash) : null;
+
+  runAfterLayoutSettles(() => {
+    if (target) {
+      scrollToAnchorTarget(target, "auto");
+    } else {
+      window.scrollTo(0, 0);
+    }
+    syncHeaderState();
+  });
 };
 
 const handleMobileNavigation = (event, link) => {
@@ -9,24 +110,7 @@ const handleMobileNavigation = (event, link) => {
     return;
   }
 
-  const href = link.getAttribute("href");
-  if (!href) {
-    closeAllMobileMenus();
-    return;
-  }
-
-  const targetUrl = new URL(href, window.location.href);
-  const samePageAnchor =
-    targetUrl.origin === window.location.origin &&
-    targetUrl.pathname === window.location.pathname &&
-    targetUrl.hash;
-
-  if (!samePageAnchor) {
-    closeAllMobileMenus();
-    return;
-  }
-
-  const target = document.querySelector(targetUrl.hash);
+  const target = getAnchorTarget(link);
   if (!target) {
     closeAllMobileMenus();
     return;
@@ -35,8 +119,10 @@ const handleMobileNavigation = (event, link) => {
   event.preventDefault();
   closeAllMobileMenus();
 
-  window.requestAnimationFrame(() => {
-    target.scrollIntoView({ behavior: "smooth", block: "start" });
+  runAfterLayoutSettles(() => {
+    scrollToAnchorTarget(target);
+    window.history.replaceState(null, "", `#${target.id}`);
+    syncHeaderState();
   });
 };
 
@@ -71,12 +157,6 @@ document.querySelectorAll(".nav").forEach((nav) => {
     }
   });
 
-  nav.querySelectorAll("nav a, .lang-switch a, .nav-demo-link, .nav-cta").forEach((link) => {
-    link.addEventListener("click", (event) => {
-      handleMobileNavigation(event, link);
-    });
-  });
-
   window.addEventListener("resize", () => {
     if (window.innerWidth > 820) {
       closeMenu();
@@ -86,7 +166,7 @@ document.querySelectorAll(".nav").forEach((nav) => {
   closeMenu();
 });
 
-document.querySelectorAll(".mobile-bottom-link").forEach((link) => {
+document.querySelectorAll("a[href*='#']").forEach((link) => {
   link.addEventListener("click", (event) => {
     handleMobileNavigation(event, link);
   });
@@ -108,3 +188,5 @@ const refreshMobileBottomBar = () => {
 window.addEventListener("load", refreshMobileBottomBar);
 window.addEventListener("pageshow", refreshMobileBottomBar);
 window.addEventListener("resize", refreshMobileBottomBar);
+window.addEventListener("load", stabilizeInitialMobileView);
+window.addEventListener("pageshow", stabilizeInitialMobileView);
