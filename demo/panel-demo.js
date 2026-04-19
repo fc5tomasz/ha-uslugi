@@ -17,6 +17,17 @@
       sim_button: "🎲 Symuluj nową porę dnia",
       sim_button_mobile: "🎲 Symuluj porę dnia",
       sim_prompt: "Kliknij przycisk, aby rozpocząć symulację...",
+      mobile_intro:
+        "Interaktywny panel demonstracyjny. Kliknij schemat, aby zmienić porę dnia i zobaczyć reakcję instalacji.",
+      nav_services: "Usługi",
+      nav_who: "Dla kogo",
+      nav_process: "Jak pracuję",
+      nav_pricing: "Cennik",
+      nav_about: "O mnie",
+      nav_contact: "Kontakt",
+      nav_cta: "Bezpłatna diagnoza",
+      scenario_initial:
+        "Tryb dzienny: instalacja produkuje energię, zasila dom i pokazuje aktualne warunki pogodowe. Dotknij panelu, aby przejść do kolejnej pory dnia.",
       panel_online: "Panel online",
       panel_title: "Panel procesów instalacji",
       panel_subtitle: "Obecne oświetlenie",
@@ -72,7 +83,7 @@
     dk: {
       title_page: "Demonstration af Home Assistant muligheder | Tomasz Furdal",
       meta_desc: "Live demonstration af et animeret Home Assistant panel: energi, varme, vejr, varmegenvinding og hjemmets tilstand i én visualisering.",
-      kicker: "Demo af automatiseringsstyring",
+      kicker: "Demo af automatikstyring",
       title: "Demonstration af Home Assistant muligheder",
       subtitle: "Dette er en separat underside, der viser et fungerende animeret panel baseret på logikken i en Home Assistant-installation. Du ser kun et demonstrationspanel.",
       back_btn: "Tilbage til forsiden",
@@ -86,6 +97,17 @@
       sim_button: "🎲 Simuler ny tid på dagen",
       sim_button_mobile: "🎲 Simuler tid på dagen",
       sim_prompt: "Klik på knappen for at starte simuleringen...",
+      mobile_intro:
+        "Interaktivt demopanel. Klik på diagrammet for at ændre tidspunktet på dagen og se installationens reaktion.",
+      nav_services: "Ydelser",
+      nav_who: "For hvem",
+      nav_process: "Sådan arbejder jeg",
+      nav_pricing: "Priser",
+      nav_about: "Om mig",
+      nav_contact: "Kontakt",
+      nav_cta: "Gratis diagnose",
+      scenario_initial:
+        "Dagtilstand: installationen producerer energi, forsyner hjemmet og viser de aktuelle vejrforhold. Tryk på panelet for at gå videre til næste tidspunkt på dagen.",
       panel_online: "Panel online",
       panel_title: "Installationsprocespanel",
       panel_subtitle: "Nuværende belysning",
@@ -155,6 +177,17 @@
       sim_button: "🎲 Simulate a new time of day",
       sim_button_mobile: "🎲 Simulate time of day",
       sim_prompt: "Click the button to start the simulation...",
+      mobile_intro:
+        "Interactive demo panel. Click the diagram to change the time of day and see the installation's reaction.",
+      nav_services: "Services",
+      nav_who: "Who it’s for",
+      nav_process: "How I work",
+      nav_pricing: "Pricing",
+      nav_about: "About me",
+      nav_contact: "Contact",
+      nav_cta: "Free diagnosis",
+      scenario_initial:
+        "Day mode: the installation is producing energy, powering the home and showing current weather conditions. Tap the panel to move to the next time of day.",
       panel_online: "Panel online",
       panel_title: "Installation Processes Panel",
       panel_subtitle: "Current lighting",
@@ -239,7 +272,10 @@
 
   function applyI18n(lang) {
     const dict = DICT[lang];
-    document.documentElement.lang = lang;
+    document.documentElement.lang = lang === "dk" ? "da" : lang;
+    if (document.body) {
+      document.body.dataset.demoLang = lang;
+    }
     document.title = dict.title_page;
     const desc = document.querySelector('meta[name="description"]');
     if (desc && dict.meta_desc) {
@@ -261,10 +297,72 @@
     if (buttonMobile) {
       buttonMobile.textContent = dict.sim_button_mobile || dict.sim_button;
     }
-    const status = qs("#simulation-status");
-    if (status) {
+    document.querySelectorAll(".js-simulation-status").forEach((status) => {
       status.textContent = dict.sim_prompt;
+    });
+    const panelTrigger = qs("#demo-panel-trigger");
+    if (panelTrigger) {
+      panelTrigger.setAttribute("aria-label", dict.sim_button_mobile || dict.sim_button);
     }
+    const linkMap = {
+      pl: {
+        home: "../pl/index.html#top",
+        services: "../pl/index.html#uslugi",
+        who: "../pl/index.html#dla-kogo",
+        process: "../pl/index.html#jak-pracuje",
+        pricing: "../pl/index.html#cennik",
+        about: "../pl/index.html#o-mnie",
+        contact: "../pl/index.html#kontakt",
+        cta: "../pl/index.html#cennik"
+      },
+      en: {
+        home: "../en/index.html#top",
+        services: "../en/index.html#services",
+        who: "../en/index.html#who-its-for",
+        process: "../en/index.html#how-i-work",
+        pricing: "../en/index.html#pricing",
+        about: "../en/index.html#about-me",
+        contact: "../en/index.html#contact",
+        cta: "../en/index.html#pricing"
+      },
+      dk: {
+        home: "../dk/index.html#top",
+        services: "../dk/index.html#ydelser",
+        who: "../dk/index.html#for-hvem",
+        process: "../dk/index.html#saadan-arbejder-jeg",
+        pricing: "../dk/index.html#priser",
+        about: "../dk/index.html#om-mig",
+        contact: "../dk/index.html#kontakt",
+        cta: "../dk/index.html#priser"
+      }
+    };
+    const links = linkMap[lang] || linkMap.pl;
+    const navHrefMap = {
+      "#demo-home-link": links.home,
+      "#demo-nav-services": links.services,
+      "#demo-nav-who": links.who,
+      "#demo-nav-process": links.process,
+      "#demo-nav-pricing": links.pricing,
+      "#demo-nav-about": links.about,
+      "#demo-nav-contact": links.contact,
+      "#demo-nav-cta": links.cta
+    };
+    Object.entries(navHrefMap).forEach(([selector, href]) => {
+      const element = qs(selector);
+      if (element) {
+        element.setAttribute("href", href);
+      }
+    });
+    document.querySelectorAll(".lang-btn").forEach((btn) => {
+      const btnLang = new URL(btn.href, window.location.href).searchParams.get("lang") || "pl";
+      const isActive = btnLang === lang;
+      btn.classList.toggle("active", isActive);
+      if (isActive) {
+        btn.setAttribute("aria-current", "page");
+      } else {
+        btn.removeAttribute("aria-current");
+      }
+    });
   }
 
   class PanelDemoRenderer {
@@ -740,9 +838,9 @@
     };
   }
 
-  function createInitialState() {
+  function createInitialState(dict) {
     return {
-      statusIcon: "",
+      statusIcon: "☀️",
       lux: 1840,
       sunActive: true,
       weatherPhase: "day",
@@ -765,18 +863,20 @@
       kitchenLightOn: false,
       salonLightOn: false,
       phoneHome: true,
-      message: ""
+      message: dict.scenario_initial || ""
     };
   }
 
   const lang = getLang();
   applyI18n(lang);
   const dict = DICT[lang];
+  const panelTrigger = qs("#demo-panel-trigger");
+  const initialState = createInitialState(dict);
   const renderer = new PanelDemoRenderer(qs("#panelMount"), dict);
 
-  renderer.render(createInitialState());
+  renderer.render(initialState);
 
-  const simulationStatus = qs("#simulation-status");
+  const simulationStatusTargets = Array.from(document.querySelectorAll(".js-simulation-status"));
   const btnSimulate = qs("#btn-simulate");
   const scenarioSequence = [
     () => createMorningScenario(dict),
@@ -787,13 +887,12 @@
   let scenarioIndex = -1;
   let touchHandled = false;
 
-  const renderSimulationStatus = (scenario) => {
-    if (!simulationStatus) {
+  const renderSingleSimulationStatus = (target, scenario) => {
+    if (!target) {
       return;
     }
-
     if (!scenario || !scenario.message) {
-      simulationStatus.textContent = dict.sim_prompt;
+      target.textContent = dict.sim_prompt;
       return;
     }
 
@@ -801,8 +900,14 @@
       ? '<span class="sim-status-icon sim-status-icon--sunset" aria-hidden="true"></span>'
       : `<span class="sim-status-icon" aria-hidden="true">${scenario.statusIcon || ""}</span>`;
 
-    const message = scenario.message.replace(/^[^\s]+\s/, "");
-    simulationStatus.innerHTML = `<span class="sim-status-content">${iconMarkup}<span>${message}</span></span>`;
+    const message = scenario.message.replace(/^(🌙|⛅|☀️|🌇)\s*/u, "");
+    target.innerHTML = `<span class="sim-status-content">${iconMarkup}<span>${message}</span></span>`;
+  };
+
+  const renderSimulationStatus = (scenario) => {
+    simulationStatusTargets.forEach((target) => {
+      renderSingleSimulationStatus(target, scenario);
+    });
   };
 
   const runNextScenario = () => {
@@ -812,6 +917,8 @@
     renderer.render(scenario);
     renderSimulationStatus(scenario);
   };
+
+  const canUsePanelTrigger = () => true;
 
   if (btnSimulate) {
     btnSimulate.addEventListener("click", () => {
@@ -828,4 +935,15 @@
       runNextScenario();
     });
   }
+
+  if (panelTrigger) {
+    panelTrigger.addEventListener("click", () => {
+      if (!canUsePanelTrigger()) {
+        return;
+      }
+      runNextScenario();
+    });
+  }
+
+  renderSimulationStatus(initialState);
 })();

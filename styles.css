@@ -1558,6 +1558,10 @@ html[lang="da"] nav li a,html[lang="da-DK"] nav li a{padding:10px 11px}
     padding-top:14px;
   }
 
+  .knowledge-page main > .section:first-of-type{
+    padding-top:4px;
+  }
+
   .grid-3,
   .grid-2,
   .hero-stat-grid,
