@@ -429,12 +429,21 @@ h1{
   max-width:11.5ch;
 }
 
-h1 span{
+.hero-topics{
   display:block;
   margin-top:10px;
   color:var(--accent-2);
   font-size:clamp(1.15rem, 2vw, 1.65rem);
   letter-spacing:-.025em;
+}
+
+.hero-topic{
+  display:inline;
+}
+
+.hero-topic-separator{
+  display:inline;
+  margin:0 .28em;
 }
 
 .hero-sub{
@@ -1609,9 +1618,21 @@ html[lang="da"] .logo [data-i18n="logo_text"],html[lang="da-DK"] .logo [data-i18
     max-width:none;
   }
 
-  .hero-copy h1 span{
+  .hero-copy h1 .hero-topics{
     font-size:clamp(.92rem, 4vw, 1.02rem);
     line-height:1.12;
+  }
+
+  .hero-copy h1 .hero-topic{
+    display:block;
+  }
+
+  .hero-copy h1 .hero-topic + .hero-topic{
+    margin-top:2px;
+  }
+
+  .hero-copy h1 .hero-topic-separator{
+    display:none;
   }
 
   .hero-panel-title{
