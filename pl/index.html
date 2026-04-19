@@ -78,7 +78,7 @@
   }
 }
   </script>
-  <link rel="stylesheet" href="../styles.css?v=20260419-headings-16" />
+  <link rel="stylesheet" href="../styles.css?v=20260419-headings-18" />
 </head>
 <body>
   <header>
@@ -106,7 +106,7 @@
         <a class="lang-btn" href="../dk/index.html" aria-label="Dansk"><img class="lang-flag" src="../assets/flags/dk.svg" alt="" aria-hidden="true" /></a>
         <a class="lang-btn" href="../en/index.html" aria-label="English"><img class="lang-flag" src="../assets/flags/gb.svg" alt="" aria-hidden="true" /></a>
       </div>
-      <a class="btn-ghost nav-demo-link" href="../demo/index.html%3Flang=pl.html">Demo Panelu</a>
+      <a class="btn-ghost nav-demo-link" href="../demo/index.html?lang=pl">Demo Panelu</a>
       <a class="nav-cta" href="index.html#cennik">Bezpłatna diagnoza</a>
     </div>
   </header>
@@ -466,17 +466,17 @@
     </div>
   </footer>
 
-  <script src="../nav.js?v=20260419-nav-4"></script>
+  <script src="../nav.js?v=20260419-nav-5"></script>
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
     const siteHeader = document.querySelector("header");
-    const syncHeaderState = () => {
+    const syncPlHeaderState = () => {
       siteHeader.classList.toggle("scrolled", window.scrollY > 24);
     };
 
-    syncHeaderState();
-    window.addEventListener("scroll", syncHeaderState, { passive: true });
+    syncPlHeaderState();
+    window.addEventListener("scroll", syncPlHeaderState, { passive: true });
 
     const form = document.getElementById("contactForm");
     const statusEl = document.getElementById("formStatus");
@@ -486,6 +486,7 @@
     const lightboxClose = document.getElementById("lightboxClose");
     const lightboxBackdrop = document.getElementById("lightboxBackdrop");
     let statusResetTimer = null;
+    let isSubmitting = false;
 
     function openLightbox(src, alt) {
       lightboxImage.src = src;
@@ -517,6 +518,10 @@
 
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
+      if (isSubmitting) {
+        return;
+      }
+      isSubmitting = true;
       if (statusResetTimer) {
         clearTimeout(statusResetTimer);
         statusResetTimer = null;
@@ -554,6 +559,8 @@
         console.error("Form submit failed:", error);
         statusEl.className = "form-status err";
         statusEl.textContent = "Coś poszło nie tak. Użyj przycisku E-mail obok.";
+      } finally {
+        isSubmitting = false;
       }
     });
   </script>
