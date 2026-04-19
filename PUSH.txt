@@ -1,8 +1,110 @@
-1. Sklonuj repo do katalogu tymczasowego:
-cd /tmp && rm -rf ha-uslugi-push-new && git clone https://TWÓJ_TOKEN@github.com/fc5tomasz/ha-uslugi.git ha-uslugi-push-new
+AKTUALNY PROCES PUSH STRONY HA EXPERT
 
-2. Skopiuj aktualną wersję z katalogu BEST:
-cd /home/tomasz/Dokumenty/Strona_Home_Assistant/GEMINI_SIDE && rsync -av --delete --exclude='.git' BEST/ /tmp/ha-uslugi-push-new/
+Źródłem deployu jest zawsze aktywny katalog roboczy z bieżącej sesji.
+Nie przepisywać zmian automatycznie do `Wersja_Serwer` tylko po to, żeby zrobić push.
 
-3. Zacommituj i wypchnij zmiany:
-cd /tmp/ha-uslugi-push-new && git add . && git commit -m "Deploy BEST language refinements for DA and EN" && git push https://TWÓJ_TOKEN@github.com/fc5tomasz/ha-uslugi.git main
+Przykładowe aktywne katalogi robocze:
+
+- /home/tomasz/Dokumenty/Strona_Home_Assistant/GEMINI_SIDE/Wersja_Serwer
+- /home/tomasz/Dokumenty/Strona_Home_Assistant/GEMINI_SIDE/Strona Testowa
+- /home/tomasz/Dokumenty/Strona_Home_Assistant/GEMINI_SIDE/KOPIA _Serwera
+
+Token:
+/home/tomasz/Dokumenty/Strona_Home_Assistant/Token.txt
+
+Repo produkcyjne:
+https://github.com/fc5tomasz/ha-uslugi.git
+
+WAŻNE:
+- publikujemy komplet z katalogu, w którym aktualnie pracujemy
+- przed pushem trzeba zabezpieczyć pliki pomocnicze repo
+- po rsync trzeba przywrócić `CNAME`
+- przed commit i push trzeba sprawdzić `git status --short`
+- `Token.txt` ma być zwykłym plikiem tekstowym bez BOM
+- nie zapisywać tokenu przez Worda
+
+BEZPIECZNY PROCES PUSH
+
+1. Ustaw katalog źródłowy:
+
+WORKDIR="/ścieżka/do/aktywnego/katalogu/roboczego"
+
+2. Wczytaj token:
+
+TOKEN=$(tr -d '\r\n' </home/tomasz/Dokumenty/Strona_Home_Assistant/Token.txt)
+
+3. Sklonuj repo do katalogu tymczasowego:
+
+rm -rf /tmp/ha-uslugi-push-new
+git clone https://github.com/fc5tomasz/ha-uslugi.git /tmp/ha-uslugi-push-new
+
+4. Zachowaj pliki repo, których nie wolno przypadkiem usunąć:
+
+mkdir -p /tmp/ha-uslugi-preserve/pl/zaawansowane-wsparcie
+
+for f in README.md README.txt PUSH.txt SEO_REPORT.txt CNAME; do
+  if [ -f "/tmp/ha-uslugi-push-new/$f" ]; then
+    cp "/tmp/ha-uslugi-push-new/$f" "/tmp/ha-uslugi-preserve/$f"
+  fi
+done
+
+if [ -f /tmp/ha-uslugi-push-new/pl/zaawansowane-wsparcie/index.html ]; then
+  cp /tmp/ha-uslugi-push-new/pl/zaawansowane-wsparcie/index.html /tmp/ha-uslugi-preserve/pl/zaawansowane-wsparcie/index.html
+fi
+
+5. Zsynchronizuj aktywny katalog roboczy:
+
+rsync -av --delete --exclude='.git' "$WORKDIR"/ /tmp/ha-uslugi-push-new/
+
+6. Przywróć pliki pomocnicze repo:
+
+for f in README.md README.txt PUSH.txt SEO_REPORT.txt CNAME; do
+  if [ -f "/tmp/ha-uslugi-preserve/$f" ]; then
+    cp "/tmp/ha-uslugi-preserve/$f" "/tmp/ha-uslugi-push-new/$f"
+  fi
+done
+
+if [ -f /tmp/ha-uslugi-preserve/pl/zaawansowane-wsparcie/index.html ]; then
+  mkdir -p /tmp/ha-uslugi-push-new/pl/zaawansowane-wsparcie
+  cp /tmp/ha-uslugi-preserve/pl/zaawansowane-wsparcie/index.html /tmp/ha-uslugi-push-new/pl/zaawansowane-wsparcie/index.html
+fi
+
+7. Przywróć CNAME z katalogu projektu:
+
+cp /home/tomasz/Dokumenty/Strona_Home_Assistant/GEMINI_SIDE/CNAME /tmp/ha-uslugi-push-new/CNAME
+
+8. Usuń lokalne pliki robocze, które nie powinny trafiać do repo:
+
+rm -f /tmp/ha-uslugi-push-new/NOWE_DEMO.txt
+rm -f /tmp/ha-uslugi-push-new/O_mnie.png
+rm -f /tmp/ha-uslugi-push-new/assets/brand/o-mnie.png
+
+9. Sprawdź zakres zmian:
+
+git -C /tmp/ha-uslugi-push-new status --short
+
+10. Commit:
+
+git -C /tmp/ha-uslugi-push-new add .
+git -C /tmp/ha-uslugi-push-new commit -m "Opis zmian"
+
+11. Push:
+
+git -C /tmp/ha-uslugi-push-new push https://fc5tomasz:$TOKEN@github.com/fc5tomasz/ha-uslugi.git main
+
+OPCJONALNA SYNCHRONIZACJA DO WERSJA_SERWER
+
+Tylko jeśli użytkownik wyraźnie o to poprosi.
+Nie mieszać plików ręcznie.
+Robić pełne zastąpienie:
+
+rsync -av --delete "$WORKDIR"/ /home/tomasz/Dokumenty/Strona_Home_Assistant/GEMINI_SIDE/Wersja_Serwer/
+
+NIE USUWAĆ:
+- /home/tomasz/Dokumenty/Strona_Home_Assistant/Token.txt
+- /home/tomasz/Dokumenty/Strona_Home_Assistant/GEMINI_SIDE/CNAME
+- /home/tomasz/Dokumenty/Strona_Home_Assistant/GEMINI_SIDE/PUSH.txt
+- /home/tomasz/Dokumenty/Strona_Home_Assistant/GEMINI_SIDE/README.md
+- /home/tomasz/Dokumenty/Strona_Home_Assistant/GEMINI_SIDE/README.txt
+- /home/tomasz/Dokumenty/Strona_Home_Assistant/GEMINI_SIDE/SEO_REPORT.txt
+- /home/tomasz/Dokumenty/Strona_Home_Assistant/GEMINI_SIDE/SESSION_CONTEXT.md

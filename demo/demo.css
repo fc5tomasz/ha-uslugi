@@ -36,6 +36,10 @@ body.demo-page{
   line-height:1;
 }
 
+.demo-title-mobile-match{
+  max-width:none;
+}
+
 .demo-subtitle{
   margin:0;
   max-width:58rem;
@@ -277,6 +281,13 @@ body.demo-page{
 @media (max-width: 720px){
   .demo-shell{
     padding-inline:16px;
+  }
+
+  .demo-title-mobile-match{
+    font-size:clamp(1.14rem, 4.8vw, 1.3rem) !important;
+    line-height:1.16 !important;
+    letter-spacing:-.03em !important;
+    max-width:none !important;
   }
 
   .demo-head{
