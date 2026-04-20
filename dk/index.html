@@ -70,7 +70,7 @@
   }
 }
   </script>
-  <link rel="stylesheet" href="../styles.css?v=20260420-headings-35" />
+  <link rel="stylesheet" href="../styles.css?v=20260420-headings-37" />
   <script src="../consent.js?v=20260420-consent-1"></script>
 </head>
 <body>
@@ -275,6 +275,7 @@
       <div class="section-label">EKSEMPLER</div>
       <h2 class="section-title mobile-match-title">Eksempler på dashboards</h2>
       <p class="section-subtitle">Udvalgte visninger viser både overskuelig styring og installationens driftslogik.</p>
+      <p class="showcase-interaction-hint">Klik eller tryk på panelet for at forstørre det.</p>
       <div class="grid-3 showcase-grid">
         <article class="card showcase-card">
           <div class="showcase-media">
@@ -459,12 +460,12 @@
     document.getElementById("year").textContent = new Date().getFullYear();
 
     const siteHeader = document.querySelector("header");
-    const syncHeaderState = () => {
+    const syncDkHeaderState = () => {
       siteHeader.classList.toggle("scrolled", window.scrollY > 24);
     };
 
-    syncHeaderState();
-    window.addEventListener("scroll", syncHeaderState, { passive: true });
+    syncDkHeaderState();
+    window.addEventListener("scroll", syncDkHeaderState, { passive: true });
 
     const form = document.getElementById("contactForm");
     const statusEl = document.getElementById("formStatus");
@@ -491,8 +492,15 @@
       document.body.classList.remove("lightbox-open");
     }
 
+    const canOpenLightbox = () => window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
     document.querySelectorAll("[data-lightbox-src]").forEach((img) => {
-      img.addEventListener("click", () => openLightbox(img.getAttribute("data-lightbox-src"), img.getAttribute("alt")));
+      img.addEventListener("click", () => {
+        if (!canOpenLightbox()) {
+          return;
+        }
+        openLightbox(img.getAttribute("data-lightbox-src"), img.getAttribute("alt"));
+      });
     });
 
     lightboxClose.addEventListener("click", closeLightbox);

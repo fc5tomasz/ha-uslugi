@@ -87,7 +87,7 @@
   }
 }
   </script>
-  <link rel="stylesheet" href="../styles.css?v=20260420-headings-35" />
+  <link rel="stylesheet" href="../styles.css?v=20260420-headings-37" />
 </head>
 <body>
   <header>
@@ -286,6 +286,7 @@
       <div class="section-label">PRZYKŁADY</div>
       <h2 class="section-title mobile-match-title">Przykładowe panele</h2>
       <p class="section-subtitle">Wybrane widoki pokazują zarówno czytelne sterowanie, jak i logikę działania instalacji.</p>
+      <p class="showcase-interaction-hint">Kliknij lub dotknij panel, aby powiększyć.</p>
       <div class="grid-3 showcase-grid">
         <article class="card showcase-card">
           <div class="showcase-media">
@@ -503,8 +504,15 @@
       document.body.classList.remove("lightbox-open");
     }
 
+    const canOpenLightbox = () => window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
     document.querySelectorAll("[data-lightbox-src]").forEach((img) => {
-      img.addEventListener("click", () => openLightbox(img.getAttribute("data-lightbox-src"), img.getAttribute("alt")));
+      img.addEventListener("click", () => {
+        if (!canOpenLightbox()) {
+          return;
+        }
+        openLightbox(img.getAttribute("data-lightbox-src"), img.getAttribute("alt"));
+      });
     });
 
     lightboxClose.addEventListener("click", closeLightbox);
