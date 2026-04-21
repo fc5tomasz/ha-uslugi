@@ -1323,7 +1323,13 @@ html[lang="da"] .logo [data-i18n="logo_text"],html[lang="da-DK"] .logo [data-i18
   .tech-card .showcase-media,
   .tech-media{
     width:100%;
-    border-radius:0;
+    border-radius:20px;
+    overflow:hidden;
+  }
+
+  .tech-card .showcase-media img,
+  .tech-media img{
+    border-radius:20px;
   }
 
   .tech-copy-panel{
@@ -1721,6 +1727,38 @@ html[lang="da"] .logo [data-i18n="logo_text"],html[lang="da-DK"] .logo [data-i18
     font-size:clamp(1.14rem, 4.8vw, 1.3rem);
     line-height:1.16;
     letter-spacing:-.03em;
+  }
+
+  .showcase-grid .showcase-card{
+    background:none;
+    border:0;
+    box-shadow:none;
+    padding:0;
+    overflow:visible;
+  }
+
+  .showcase-grid .showcase-card::before{
+    display:none;
+  }
+
+  .showcase-grid .showcase-media{
+    border-bottom:0;
+    border-radius:20px;
+    background:none;
+    overflow:hidden;
+  }
+
+  .showcase-grid .showcase-media img{
+    border-radius:20px;
+  }
+
+  .showcase-grid .showcase-copy{
+    margin-top:14px;
+    padding:22px;
+    border-radius:var(--radius-lg);
+    border:1px solid var(--border);
+    background:linear-gradient(180deg, rgba(15,27,46,.92), rgba(10,20,35,.9));
+    box-shadow:var(--shadow-card);
   }
 
   .about-photo-card{
