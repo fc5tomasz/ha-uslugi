@@ -339,7 +339,7 @@
     }
     const linkMap = {
       pl: {
-        home: "/pl/#top",
+        home: "/pl/",
         services: "/pl/#uslugi",
         who: "/pl/#dla-kogo",
         process: "/pl/#jak-pracuje",
@@ -349,7 +349,7 @@
         cta: "/pl/#cennik"
       },
       en: {
-        home: "/en/#top",
+        home: "/en/",
         services: "/en/#services",
         who: "/en/#who-its-for",
         process: "/en/#how-i-work",
@@ -359,7 +359,7 @@
         cta: "/en/#pricing"
       },
       dk: {
-        home: "/dk/#top",
+        home: "/dk/",
         services: "/dk/#ydelser",
         who: "/dk/#for-hvem",
         process: "/dk/#saadan-arbejder-jeg",
