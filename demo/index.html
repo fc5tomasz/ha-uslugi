@@ -1,75 +1,63 @@
 <!doctype html>
-<html lang="pl">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="robots" content="index,follow" />
-  <title>Demonstracja możliwości Home Assistant | Tomasz Furdal</title>
-  <meta name="description" content="Live demonstracja animowanego panelu Home Assistant: energia, ogrzewanie, pogoda, rekuperacja i stany domu w jednej wizualizacji." />
+  <meta name="author" content="Tomasz Furdal" />
+  <meta name="theme-color" content="#0f172a" />
+  <title>Home Assistant demo | Tomasz Furdal</title>
+  <meta name="description" content="Language selector for the Home Assistant live demo by Tomasz Furdal." />
   <link rel="canonical" href="https://ha-expert.com/demo/" />
-  <link rel="alternate" hreflang="pl" href="https://ha-expert.com/demo/?lang=pl" />
-  <link rel="alternate" hreflang="en" href="https://ha-expert.com/demo/?lang=en" />
-  <link rel="alternate" hreflang="da" href="https://ha-expert.com/demo/?lang=dk" />
+  <link rel="alternate" hreflang="pl" href="https://ha-expert.com/pl/demo/" />
+  <link rel="alternate" hreflang="en" href="https://ha-expert.com/en/demo/" />
+  <link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/demo/" />
   <link rel="alternate" hreflang="x-default" href="https://ha-expert.com/demo/" />
-  <link rel="stylesheet" href="../styles.css?v=20260420-headings-35" />
-  <link rel="stylesheet" href="demo.css?v=20260419-demo-12" />
-  <script src="../consent.js?v=20260420-consent-1"></script>
+  <script>
+    (function() {
+      function normalizeLang(lang) {
+        lang = (lang || "").toLowerCase();
+        if (lang.indexOf("pl") === 0) return "pl";
+        if (lang.indexOf("dk") === 0 || lang.indexOf("da") === 0) return "dk";
+        if (lang.indexOf("en") === 0) return "en";
+        return "";
+      }
+
+      function targetFor(lang) {
+        if (lang === "pl") return "/pl/demo/";
+        if (lang === "dk") return "/dk/demo/";
+        if (lang === "en") return "/en/demo/";
+        return "";
+      }
+
+      var params = new URLSearchParams(window.location.search);
+      var requested = normalizeLang(params.get("lang"));
+      var target = targetFor(requested);
+
+      if (!target) {
+        var browserLangs = navigator.languages && navigator.languages.length
+          ? navigator.languages
+          : [navigator.language || navigator.userLanguage || ""];
+
+        for (var i = 0; i < browserLangs.length; i += 1) {
+          target = targetFor(normalizeLang(browserLangs[i]));
+          if (target) break;
+        }
+      }
+
+      window.location.replace((target || "/en/demo/") + window.location.hash);
+    })();
+  </script>
 </head>
-<body class="demo-page" data-demo-lang="pl">
-  <header class="demo-mobile-header">
-    <div class="nav">
-      <a class="logo" id="demo-home-link" href="../pl/index.html#top" aria-label="Tomasz Furdal - Home Assistant Expert">
-        <img class="logo-image" src="../assets/brand/logo-wyciete.png" alt="Tomasz Furdal - Home Assistant Expert" title="Home Assistant Expert - Tomasz Furdal" width="871" height="334" />
-      </a>
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Open menu">
-        <span aria-hidden="true">☰</span>
-      </button>
-      <nav id="demo-primary-nav" aria-label="Primary">
-        <ul>
-          <li><a id="demo-nav-services" href="../pl/index.html#uslugi" data-i18n="nav_services">Usługi</a></li>
-          <li><a id="demo-nav-who" href="../pl/index.html#dla-kogo" data-i18n="nav_who">Dla kogo</a></li>
-          <li><a id="demo-nav-process" href="../pl/index.html#jak-pracuje" data-i18n="nav_process">Jak pracuję</a></li>
-          <li><a id="demo-nav-pricing" href="../pl/index.html#cennik" data-i18n="nav_pricing">Cennik</a></li>
-          <li><a id="demo-nav-about" href="../pl/index.html#o-mnie" data-i18n="nav_about">O mnie</a></li>
-          <li><a id="demo-nav-contact" href="../pl/index.html#kontakt" data-i18n="nav_contact">Kontakt</a></li>
-        </ul>
-      </nav>
-      <div class="lang-switch" aria-label="Language switch">
-        <a class="lang-btn active" href="index.html?lang=pl" aria-label="Polski" aria-current="page"><img class="lang-flag" src="../assets/flags/pl.svg" alt="" aria-hidden="true" /></a>
-        <a class="lang-btn" href="index.html?lang=dk" aria-label="Dansk"><img class="lang-flag" src="../assets/flags/dk.svg" alt="" aria-hidden="true" /></a>
-        <a class="lang-btn" href="index.html?lang=en" aria-label="English"><img class="lang-flag" src="../assets/flags/gb.svg" alt="" aria-hidden="true" /></a>
-      </div>
-      <a class="nav-cta" id="demo-nav-cta" href="../pl/index.html#cennik" data-i18n="nav_cta">Bezpłatna diagnoza</a>
-    </div>
-  </header>
-  <main class="demo-shell">
-    <section class="demo-head">
-      <div>
-        <span class="demo-kicker" data-i18n="kicker">Live demo</span>
-        <h1 class="demo-title demo-title-mobile-match mobile-match-title" data-i18n="title">Demonstracja możliwości Home Assistant</h1>
-        <p class="demo-subtitle" data-i18n="subtitle">To jest osobna podstrona pokazująca działający panel animowany oparty na logice instalacji Home Assistant. Widzisz wyłącznie panel demonstracyjny.</p>
-        <p class="demo-context-line">Schemat prezentuje przepływy energii, logikę ogrzewania oraz aktualne parametry pogodowe.</p>
-        <p class="demo-mobile-intro" data-i18n="mobile_intro">Interaktywny panel demonstracyjny. Kliknij schemat, aby zmienić porę dnia i zobaczyć reakcję instalacji.</p>
-      </div>
-    </section>
-
-    <section class="demo-control-bar" aria-label="Sterowanie symulacją">
-      <button class="demo-sim-button" id="btn-simulate" type="button">
-        <span class="sim-label-full">🎲 Symuluj nową porę dnia</span>
-        <span class="sim-label-mobile">🎲 Symuluj porę dnia</span>
-      </button>
-      <div class="demo-sim-status js-simulation-status" id="simulation-status-desktop">Kliknij przycisk, aby rozpocząć symulację...</div>
-    </section>
-
-    <section class="demo-panel-wrap">
-      <button class="demo-panel-trigger" id="demo-panel-trigger" type="button" aria-label="Symuluj zmianę pory dnia">
-        <div id="panelMount" class="demo-panel-frame"></div>
-        <div class="demo-panel-status js-simulation-status" id="simulation-status-mobile">Kliknij przycisk, aby rozpocząć symulację...</div>
-      </button>
-    </section>
+<body>
+  <main>
+    <h1>Home Assistant demo</h1>
+    <p>Choose your language:</p>
+    <ul>
+      <li><a href="/pl/demo/">Polski</a></li>
+      <li><a href="/en/demo/">English</a></li>
+      <li><a href="/dk/demo/">Dansk</a></li>
+    </ul>
   </main>
-
-  <script src="../nav.js?v=20260419-nav-7"></script>
-  <script src="panel-demo.js?v=20260419-demo-12"></script>
 </body>
 </html>

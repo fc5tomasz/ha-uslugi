@@ -242,11 +242,44 @@
     }
   };
 
+  function normalizeDemoLang(lang) {
+    const value = (lang || "").toLowerCase();
+    if (value === "dk" || value.startsWith("dk-") || value === "da" || value.startsWith("da-")) {
+      return "dk";
+    }
+    if (value === "pl" || value.startsWith("pl-")) {
+      return "pl";
+    }
+    if (value === "en" || value.startsWith("en-")) {
+      return "en";
+    }
+    return "";
+  }
+
+  function getLangFromPath(pathname) {
+    const path = (pathname || "").toLowerCase();
+    if (/\/pl\/demo\/?$/.test(path) || /\/pl\/demo\/index\.html$/.test(path)) {
+      return "pl";
+    }
+    if (/\/en\/demo\/?$/.test(path) || /\/en\/demo\/index\.html$/.test(path)) {
+      return "en";
+    }
+    if (/\/dk\/demo\/?$/.test(path) || /\/dk\/demo\/index\.html$/.test(path)) {
+      return "dk";
+    }
+    return "";
+  }
+
+  function getLangFromHref(href) {
+    const url = new URL(href, window.location.href);
+    return getLangFromPath(url.pathname) || normalizeDemoLang(url.searchParams.get("lang"));
+  }
+
   function getLang() {
-    const p = new URLSearchParams(window.location.search);
-    const lang = (p.get("lang") || "pl").toLowerCase();
-    const normalizedLang = lang === "da" ? "dk" : lang;
-    return DICT[normalizedLang] ? normalizedLang : "pl";
+    const bodyLang = document.body ? normalizeDemoLang(document.body.dataset.demoLang) : "";
+    const pathLang = getLangFromPath(window.location.pathname);
+    const htmlLang = normalizeDemoLang(document.documentElement.getAttribute("lang"));
+    return bodyLang || pathLang || htmlLang || "pl";
   }
 
   function qs(sel) {
@@ -287,7 +320,7 @@
     });
     const back = qs("#backLink");
     if (back) {
-      back.href = lang === "pl" ? "../index.html" : lang === "dk" ? "../dk/index.html" : "../en/index.html";
+      back.href = lang === "pl" ? "/pl/" : lang === "dk" ? "/dk/" : "/en/";
     }
     const buttonFull = qs("#btn-simulate .sim-label-full");
     const buttonMobile = qs("#btn-simulate .sim-label-mobile");
@@ -306,34 +339,34 @@
     }
     const linkMap = {
       pl: {
-        home: "../pl/index.html#top",
-        services: "../pl/index.html#uslugi",
-        who: "../pl/index.html#dla-kogo",
-        process: "../pl/index.html#jak-pracuje",
-        pricing: "../pl/index.html#cennik",
-        about: "../pl/index.html#o-mnie",
-        contact: "../pl/index.html#kontakt",
-        cta: "../pl/index.html#cennik"
+        home: "/pl/#top",
+        services: "/pl/#uslugi",
+        who: "/pl/#dla-kogo",
+        process: "/pl/#jak-pracuje",
+        pricing: "/pl/#cennik",
+        about: "/pl/#o-mnie",
+        contact: "/pl/#kontakt",
+        cta: "/pl/#cennik"
       },
       en: {
-        home: "../en/index.html#top",
-        services: "../en/index.html#services",
-        who: "../en/index.html#who-its-for",
-        process: "../en/index.html#how-i-work",
-        pricing: "../en/index.html#pricing",
-        about: "../en/index.html#about-me",
-        contact: "../en/index.html#contact",
-        cta: "../en/index.html#pricing"
+        home: "/en/#top",
+        services: "/en/#services",
+        who: "/en/#who-its-for",
+        process: "/en/#how-i-work",
+        pricing: "/en/#pricing",
+        about: "/en/#about-me",
+        contact: "/en/#contact",
+        cta: "/en/#pricing"
       },
       dk: {
-        home: "../dk/index.html#top",
-        services: "../dk/index.html#ydelser",
-        who: "../dk/index.html#for-hvem",
-        process: "../dk/index.html#saadan-arbejder-jeg",
-        pricing: "../dk/index.html#priser",
-        about: "../dk/index.html#om-mig",
-        contact: "../dk/index.html#kontakt",
-        cta: "../dk/index.html#priser"
+        home: "/dk/#top",
+        services: "/dk/#ydelser",
+        who: "/dk/#for-hvem",
+        process: "/dk/#saadan-arbejder-jeg",
+        pricing: "/dk/#priser",
+        about: "/dk/#om-mig",
+        contact: "/dk/#kontakt",
+        cta: "/dk/#priser"
       }
     };
     const links = linkMap[lang] || linkMap.pl;
@@ -354,7 +387,7 @@
       }
     });
     document.querySelectorAll(".lang-btn").forEach((btn) => {
-      const btnLang = new URL(btn.href, window.location.href).searchParams.get("lang") || "pl";
+      const btnLang = getLangFromHref(btn.href) || "pl";
       const isActive = btnLang === lang;
       btn.classList.toggle("active", isActive);
       if (isActive) {

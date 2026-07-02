@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="robots" content="index,follow" />
+  <title>Home Assistant Capabilities Demo | Tomasz Furdal</title>
+  <meta name="description" content="Live demonstration of an animated Home Assistant panel: energy, heating, weather, heat recovery, and home states in a single visualization." />
+  <link rel="canonical" href="https://ha-expert.com/en/demo/" />
+  <link rel="alternate" hreflang="pl" href="https://ha-expert.com/pl/demo/" />
+  <link rel="alternate" hreflang="en" href="https://ha-expert.com/en/demo/" />
+  <link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/demo/" />
+  <link rel="alternate" hreflang="x-default" href="https://ha-expert.com/demo/" />
+  <link rel="stylesheet" href="/styles.css?v=20260420-headings-35" />
+  <link rel="stylesheet" href="/demo/demo.css?v=20260419-demo-12" />
+  <script src="/consent.js?v=20260420-consent-1"></script>
+</head>
+<body class="demo-page" data-demo-lang="en">
+  <header class="demo-mobile-header">
+    <div class="nav">
+      <a class="logo" id="demo-home-link" href="/en/#top" aria-label="Tomasz Furdal - Home Assistant Expert">
+        <img class="logo-image" src="/assets/brand/logo-wyciete.png" alt="Tomasz Furdal - Home Assistant Expert" title="Home Assistant Expert - Tomasz Furdal" width="871" height="334" />
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Open menu">
+        <span aria-hidden="true">☰</span>
+      </button>
+      <nav id="demo-primary-nav" aria-label="Primary">
+        <ul>
+          <li><a id="demo-nav-services" href="/en/#services" data-i18n="nav_services">Services</a></li>
+          <li><a id="demo-nav-who" href="/en/#who-its-for" data-i18n="nav_who">Who it’s for</a></li>
+          <li><a id="demo-nav-process" href="/en/#how-i-work" data-i18n="nav_process">How I work</a></li>
+          <li><a id="demo-nav-pricing" href="/en/#pricing" data-i18n="nav_pricing">Pricing</a></li>
+          <li><a id="demo-nav-about" href="/en/#about-me" data-i18n="nav_about">About me</a></li>
+          <li><a id="demo-nav-contact" href="/en/#contact" data-i18n="nav_contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="lang-switch" aria-label="Language switch">
+        <a class="lang-btn" href="/pl/demo/" aria-label="Polski"><img class="lang-flag" src="/assets/flags/pl.svg" alt="" aria-hidden="true" /></a>
+        <a class="lang-btn" href="/dk/demo/" aria-label="Dansk"><img class="lang-flag" src="/assets/flags/dk.svg" alt="" aria-hidden="true" /></a>
+        <a class="lang-btn active" href="/en/demo/" aria-label="English" aria-current="page"><img class="lang-flag" src="/assets/flags/gb.svg" alt="" aria-hidden="true" /></a>
+      </div>
+      <a class="nav-cta" id="demo-nav-cta" href="/en/#pricing" data-i18n="nav_cta">Free diagnosis</a>
+    </div>
+  </header>
+  <main class="demo-shell">
+    <section class="demo-head">
+      <div>
+        <span class="demo-kicker" data-i18n="kicker">Automation Control Demo</span>
+        <h1 class="demo-title demo-title-mobile-match mobile-match-title" data-i18n="title">Home Assistant Capabilities Demo</h1>
+        <p class="demo-subtitle" data-i18n="subtitle">This is a separate subpage showing a working animated panel based on the logic of a Home Assistant installation. You are viewing a demonstration panel only.</p>
+        <p class="demo-context-line">The diagram presents energy flows, heating logic and current weather parameters.</p>
+        <p class="demo-mobile-intro" data-i18n="mobile_intro">Interactive demo panel. Click the diagram to change the time of day and see the installation's reaction.</p>
+      </div>
+    </section>
+
+    <section class="demo-control-bar" aria-label="Simulation controls">
+      <button class="demo-sim-button" id="btn-simulate" type="button">
+        <span class="sim-label-full">🎲 Simulate a new time of day</span>
+        <span class="sim-label-mobile">🎲 Simulate time of day</span>
+      </button>
+      <div class="demo-sim-status js-simulation-status" id="simulation-status-desktop">Click the button to start the simulation...</div>
+    </section>
+
+    <section class="demo-panel-wrap">
+      <button class="demo-panel-trigger" id="demo-panel-trigger" type="button" aria-label="Simulate time of day">
+        <div id="panelMount" class="demo-panel-frame"></div>
+        <div class="demo-panel-status js-simulation-status" id="simulation-status-mobile">Click the button to start the simulation...</div>
+      </button>
+    </section>
+  </main>
+
+  <script src="/nav.js?v=20260419-nav-7"></script>
+  <script src="/demo/panel-demo.js?v=20260419-demo-12"></script>
+</body>
+</html>
