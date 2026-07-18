@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -10,11 +10,15 @@
   <link rel="icon" type="image/png" href="assets/brand/ha-expert-logo-transparent.png" />
   <link rel="canonical" href="https://ha-expert.com/" />
   <link rel="alternate" hreflang="pl" href="https://ha-expert.com/pl/" />
-  <link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/" />
   <link rel="alternate" hreflang="en" href="https://ha-expert.com/en/" />
+  <link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/" />
   <link rel="alternate" hreflang="x-default" href="https://ha-expert.com/" />
-  <title>HA Expert</title>
-  <meta name="description" content="HA Expert language redirector." />
+  <title>HA Expert &ndash; Choose language | Home Assistant Help</title>
+  <meta name="description" content="Choose Polish, English or Danish to access professional Home Assistant help, diagnostics, integrations and automation services." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://ha-expert.com/" />
+  <meta property="og:title" content="HA Expert - Choose language | Home Assistant Help" />
+  <meta property="og:description" content="Choose Polish, English or Danish to access professional Home Assistant help, diagnostics, integrations and automation services." />
   <meta property="og:image" content="https://ha-expert.com/assets/brand/o-mnie.webp" />
   <script type="application/ld+json">
 {
@@ -29,18 +33,322 @@
   }
 }
   </script>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0f172a;
+      --panel: #111d33;
+      --panel-strong: #16243d;
+      --text: #f8fafc;
+      --muted: #cbd5e1;
+      --soft: #94a3b8;
+      --line: rgba(148, 163, 184, 0.26);
+      --accent: #38bdf8;
+      --accent-strong: #0ea5e9;
+      --focus: #facc15;
+      --shadow: 0 24px 80px rgba(2, 6, 23, 0.42);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      min-height: 100%;
+      background: var(--bg);
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      overflow-x: hidden;
+      background:
+        radial-gradient(circle at top left, rgba(14, 165, 233, 0.18), transparent 34rem),
+        linear-gradient(135deg, #0f172a 0%, #101a2e 48%, #13213a 100%);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.5;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .page {
+      width: min(100%, 1120px);
+      min-height: 100vh;
+      margin: 0 auto;
+      padding: clamp(1.25rem, 4vw, 3.5rem);
+      display: grid;
+      align-content: center;
+      gap: clamp(2rem, 5vw, 3.5rem);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      text-decoration: none;
+    }
+
+    .brand img {
+      width: clamp(168px, 24vw, 258px);
+      height: auto;
+      display: block;
+    }
+
+    .selector {
+      display: grid;
+      grid-template-columns: minmax(0, 0.94fr) minmax(320px, 1.06fr);
+      gap: clamp(2rem, 6vw, 4.5rem);
+      align-items: center;
+    }
+
+    .copy {
+      max-width: 560px;
+    }
+
+    .eyebrow {
+      margin: 0 0 0.9rem;
+      color: var(--accent);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 11ch;
+      font-size: clamp(2.35rem, 7vw, 5rem);
+      line-height: 0.98;
+      letter-spacing: 0;
+    }
+
+    .translations {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem 0.8rem;
+      margin: 1.25rem 0 0;
+      color: var(--soft);
+      font-size: clamp(0.96rem, 2vw, 1.08rem);
+    }
+
+    .translations span + span::before {
+      content: "/";
+      margin-right: 0.8rem;
+      color: rgba(203, 213, 225, 0.5);
+    }
+
+    .lead {
+      margin: 1.5rem 0 0;
+      max-width: 32rem;
+      color: var(--muted);
+      font-size: clamp(1.06rem, 2.2vw, 1.25rem);
+    }
+
+    .language-list {
+      display: grid;
+      gap: 0.9rem;
+      margin: 0;
+      padding: clamp(0.9rem, 2vw, 1.1rem);
+      list-style: none;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(15, 23, 42, 0.58);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+    }
+
+    .language-card {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 1rem;
+      min-height: 5rem;
+      padding: 1.15rem 1.2rem;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--panel), var(--panel-strong));
+      text-decoration: none;
+      transition: border-color 160ms ease, transform 160ms ease, background 160ms ease;
+    }
+
+    .language-card:hover,
+    .language-card:focus-visible {
+      border-color: rgba(56, 189, 248, 0.78);
+      background: linear-gradient(135deg, #16243d, #18304d);
+      transform: translateY(-1px);
+    }
+
+    .language-card:focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 3px;
+    }
+
+    .language-card.suggested {
+      border-color: rgba(56, 189, 248, 0.92);
+      box-shadow: inset 0 0 0 1px rgba(56, 189, 248, 0.24);
+    }
+
+    .language-name {
+      display: block;
+      color: var(--text);
+      font-size: clamp(1.2rem, 3vw, 1.48rem);
+      font-weight: 800;
+      letter-spacing: 0;
+    }
+
+    .language-note {
+      display: block;
+      margin-top: 0.18rem;
+      color: var(--soft);
+      font-size: 0.94rem;
+    }
+
+    .recommendation {
+      display: none;
+      justify-self: end;
+      padding: 0.32rem 0.55rem;
+      border-radius: 999px;
+      background: rgba(56, 189, 248, 0.16);
+      color: #bae6fd;
+      font-size: 0.76rem;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .language-card.suggested .recommendation {
+      display: inline-flex;
+    }
+
+    .arrow {
+      color: var(--accent);
+      font-size: 1.45rem;
+      line-height: 1;
+    }
+
+    .language-card.suggested .arrow {
+      display: none;
+    }
+
+    @media (max-width: 760px) {
+      .page {
+        align-content: start;
+        padding: 1.35rem;
+      }
+
+      .selector {
+        grid-template-columns: 1fr;
+        gap: 1.8rem;
+      }
+
+      .brand img {
+        width: min(66vw, 220px);
+      }
+
+      h1 {
+        max-width: 9ch;
+      }
+
+      .translations {
+        display: grid;
+        gap: 0.18rem;
+      }
+
+      .translations span + span::before {
+        content: "";
+        margin: 0;
+      }
+
+      .language-list {
+        padding: 0.65rem;
+      }
+
+      .language-card {
+        min-height: 4.75rem;
+        padding: 1rem;
+      }
+
+      .recommendation {
+        font-size: 0.7rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page" aria-labelledby="language-title">
+    <a class="brand" href="/" aria-label="HA Expert">
+      <img src="assets/brand/logo-wyciete.png" alt="HA Expert" width="871" height="334" />
+    </a>
+
+    <section class="selector">
+      <div class="copy">
+        <p class="eyebrow">HA Expert</p>
+        <h1 id="language-title">Choose your language</h1>
+        <p class="translations" aria-label="Translations">
+          <span>Wybierz j&#281;zyk</span>
+          <span>Choose your language</span>
+          <span>V&aelig;lg sprog</span>
+        </p>
+        <p class="lead">Home Assistant help, diagnostics and automation services.</p>
+      </div>
+
+      <nav aria-label="Language selection">
+        <ul class="language-list">
+          <li>
+            <a class="language-card" data-lang="pl" href="/pl/">
+              <span>
+                <span class="language-name">Polski</span>
+                <span class="language-note">Pomoc Home Assistant</span>
+              </span>
+              <span class="recommendation" aria-hidden="true">Sugerowany</span>
+              <span class="arrow" aria-hidden="true">-&gt;</span>
+            </a>
+          </li>
+          <li>
+            <a class="language-card" data-lang="en" href="/en/">
+              <span>
+                <span class="language-name">English</span>
+                <span class="language-note">Home Assistant help</span>
+              </span>
+              <span class="recommendation" aria-hidden="true">Recommended</span>
+              <span class="arrow" aria-hidden="true">-&gt;</span>
+            </a>
+          </li>
+          <li>
+            <a class="language-card" data-lang="dk" href="/dk/">
+              <span>
+                <span class="language-name">Dansk</span>
+                <span class="language-note">Home Assistant hj&aelig;lp</span>
+              </span>
+              <span class="recommendation" aria-hidden="true">Anbefalet</span>
+              <span class="arrow" aria-hidden="true">-&gt;</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </section>
+  </main>
+
   <script>
     (function() {
-      var lang = navigator.language || navigator.userLanguage;
-      if (lang.startsWith('pl')) {
-        window.location.replace("./pl/");
-      } else if (lang.startsWith('dk') || lang.startsWith('da')) {
-        window.location.replace("./dk/");
-      } else {
-        window.location.replace("./en/");
+      var preferred = (navigator.languages && navigator.languages.length ? navigator.languages[0] : navigator.language || navigator.userLanguage || "").toLowerCase();
+      var suggested = "en";
+
+      if (preferred.indexOf("pl") === 0) {
+        suggested = "pl";
+      } else if (preferred.indexOf("da") === 0 || preferred.indexOf("dk") === 0) {
+        suggested = "dk";
+      }
+
+      var link = document.querySelector('[data-lang="' + suggested + '"]');
+      if (link) {
+        link.classList.add("suggested");
+        link.setAttribute("data-suggested", "true");
       }
     })();
   </script>
-</head>
-<body></body>
+</body>
 </html>
