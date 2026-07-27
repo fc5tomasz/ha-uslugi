@@ -11,8 +11,8 @@
   <link rel="alternate" hreflang="en" href="https://ha-expert.com/en/stable-zigbee/" />
   <link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/stabilt-zigbee/" />
   <link rel="alternate" hreflang="x-default" href="https://ha-expert.com/en/stable-zigbee/" />
-  <title>Connection dropping? How to stabilize your Zigbee network | HA Expert</title>
-  <meta name="description" content="Why are your Zigbee sensors unresponsive? Discover the causes (Wi-Fi, USB 3.0, Mesh) and learn how to stabilize your smart home network." />
+  <title>Zigbee connection dropping? Diagnosis and solutions | HA Expert</title>
+  <meta name="description" content="Zigbee devices losing connection or not responding? Check Wi-Fi 2.4 GHz, USB 3.0, mesh, coordinator power, ZHA, Zigbee2MQTT and hardware." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://ha-expert.com/en/stable-zigbee/" />
   <link rel="stylesheet" href="../../styles.css?v=20260420-headings-35" />
@@ -56,9 +56,10 @@
   <main>
     <section class="section">
       <div class="section-label">Zigbee</div>
-      <h1 class="section-title zigbee-mobile-title"><span class="zigbee-title-line zigbee-title-line--keep">Dropping connection? How to</span><br class="zigbee-mobile-break"><span class="zigbee-title-line">stabilize it?</span></h1>
+      <h1 class="section-title zigbee-mobile-title">Zigbee connection dropping? Check the causes and possible solutions</h1>
       <div class="card">
-        <p class="section-subtitle">Zigbee is convenient and energy-efficient, but its stability heavily depends on radio conditions and correct configuration. If your devices don't respond, have delays, or suddenly "drop" from the network, it is very often not due to faulty hardware, but a bad radio environment, network conflicts, or incorrect configuration. See what most often degrades the range and stability of a Zigbee network.</p>
+        <p class="section-subtitle">Zigbee is convenient and energy-efficient, but its stability depends on radio conditions, coordinator placement, mesh structure, configuration, and the quality of individual devices. If devices do not respond, react with delays, or drop from the network, the first step is to determine whether the issue affects the whole network or a single sensor, router, or module.</p>
+        <p class="section-subtitle">There is no single setting that always fixes Zigbee. Sometimes moving the coordinator or adjusting channels is enough, and sometimes only a review of the specific installation shows that the problem is a weak Zigbee router, incorrect pairing, or a device that is not worth reconfiguring further.</p>
       </div>
     </section>
 
@@ -72,7 +73,7 @@
             <span class="card-badge" aria-hidden="true">📶</span>
           </div>
           <h3>📶 Zigbee and Wi-Fi conflict on 2.4 GHz</h3>
-          <p>Wi-Fi routers and Zigbee devices use the same 2.4 GHz band. If they operate on overlapping channels, a strong Wi-Fi signal can degrade the stability of the Zigbee network. Choosing a possibly collision-free channel is one of the basic steps to improve performance.</p>
+          <p>Wi-Fi routers and Zigbee devices use the same 2.4 GHz band. If they operate on overlapping channels, a strong Wi-Fi signal can degrade Zigbee stability. Before changing settings, it is worth checking which nearby networks are active and whether the channels overlap in the worst possible place.</p>
         </article>
 
         <article class="card service-card">
@@ -80,8 +81,8 @@
             <span class="card-kicker">Hardware</span>
             <span class="card-badge" aria-hidden="true">🔌</span>
           </div>
-          <h3>🔌 The USB 3.0 port trap</h3>
-          <p>If the Zigbee coordinator is plugged directly into a USB 3.0 port on a terminal, computer, or Raspberry Pi, it can cause interference and degrade the range. This is a common cause of instability. Often, it's enough to use a USB 2.0 extension cable and move the coordinator away from the device.</p>
+          <h3>🔌 USB 3.0 and coordinator placement</h3>
+          <p>If the Zigbee coordinator is plugged directly into a USB 3.0 port on a computer, terminal, or Raspberry Pi, it can cause interference and reduce range. A USB 2.0 extension cable often helps, especially when the coordinator is moved away from the case, drives, Wi-Fi router, and other sources of interference.</p>
         </article>
 
         <article class="card service-card">
@@ -89,20 +90,84 @@
             <span class="card-kicker">Mesh</span>
             <span class="card-badge" aria-hidden="true">🕸️</span>
           </div>
-          <h3>🕸️ Weak network backbone</h3>
-          <p>Zigbee operates as a mesh network. Battery-powered devices, such as motion sensors or thermometers, usually do not forward the signal. Therefore, for stable operation throughout the house, you also need permanently powered devices, such as smart plugs or some light bulbs. They help pass the signal further and improve the network range.</p>
+          <h3>🕸️ Weak mesh backbone</h3>
+          <p>Zigbee operates as a mesh network. Battery-powered devices, such as motion sensors or thermometers, usually do not forward the signal. For stable operation throughout the home, you need permanently powered devices, such as smart plugs or selected bulbs. Too few Zigbee routers can create dead zones and random connection drops.</p>
         </article>
       </div>
     </section>
 
     <section class="section">
-      <div class="section-label">Support</div>
-      <h2 class="section-title mobile-match-title">Remote support</h2>
+      <div class="section-label">Coordinator</div>
+      <h2 class="section-title mobile-match-title">Coordinator power — more is not always better</h2>
       <div class="card">
-        <p class="section-subtitle">Having issues with Zigbee stability? I can help diagnose it.</p>
-        <p class="section-subtitle">I will remotely check your ZHA or Zigbee2MQTT configuration, network map, connection quality, and common causes of problems on the system side.</p>
-        <p class="section-subtitle">If necessary, I will also ask you to do simple additional measurements on your end, for example using a phone or laptop with Wi-Fi, to better assess channels, interference, and the radio environment.</p>
-        <p class="section-subtitle">Not every problem can be solved online, but after the analysis, you will know exactly what to improve. If needed, I will also help with a safe system reconfiguration, and you will make the hardware changes yourself following specific instructions.</p>
+        <p class="section-subtitle">📡 Maximum coordinator power does not always improve stability. The coordinator may be heard clearly by a distant device, while that device may not have enough power to answer reliably. This creates an asymmetric link: range appears to be good, but communication can still be unstable.</p>
+        <p class="section-subtitle">Power should be matched to the radio environment, the specific coordinator, device placement, and mesh structure. That is why I do not recommend one universal power value for every installation.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">Scope</div>
+      <h2 class="section-title mobile-match-title">The whole network or one device?</h2>
+      <div class="grid-2">
+        <article class="card service-card">
+          <div class="card-top">
+            <span class="card-kicker">Network</span>
+            <span class="card-badge" aria-hidden="true">🔍</span>
+          </div>
+          <h3>When many devices are affected</h3>
+          <p>The first checks should cover the coordinator, power supply, interference, channels, ZHA or Zigbee2MQTT, and the mesh structure. The network map and LQI values are useful, but they do not always give a clear answer without the context of the whole installation.</p>
+        </article>
+
+        <article class="card service-card">
+          <div class="card-top">
+            <span class="card-kicker">Device</span>
+            <span class="card-badge" aria-hidden="true">🔍</span>
+          </div>
+          <h3>When one sensor or module is affected</h3>
+          <p>Then it makes sense to check the battery or power supply, pairing, the route through Zigbee routers, compatibility, firmware, and the quality of the device itself. Sometimes the network is healthy, while one specific component is the real issue.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">Channels</div>
+      <h2 class="section-title mobile-match-title">Change channels after analysis, not by guessing</h2>
+      <div class="card">
+        <p class="section-subtitle">📶 Wi-Fi and Zigbee channels can interfere with each other, but changing the Zigbee channel without analysis can create new problems. First, you need to assess the local radio environment, the 2.4 GHz Wi-Fi channels, and how devices are placed in the home.</p>
+        <p class="section-subtitle">Changing the Zigbee channel may require some devices to be paired again, and not every device performs equally well on every channel. There is no single channel that is always best for every installation.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">Hardware</div>
+      <h2 class="section-title mobile-match-title">Not every device can be saved by configuration</h2>
+      <div class="card">
+        <p class="section-subtitle">⚠️ Some devices have a weak radio module, faulty firmware, or limited compatibility with a given gateway, coordinator, ZHA, or Zigbee2MQTT. The issue can also be a Zigbee router that forwards traffic poorly, or a coordinator that is unstable in a specific environment.</p>
+        <p class="section-subtitle">Further reconfiguration is not always worth it. Sometimes replacing one device, Zigbee router, or coordinator is more reasonable than trying to fix it at any cost. Honest diagnostics should show what is worth improving and what is no longer worth fighting with.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">Diagnosis</div>
+      <h2 class="section-title mobile-match-title">What the diagnosis covers</h2>
+      <div class="card">
+        <p class="section-subtitle">When Zigbee is unstable, several areas may need to be analysed: whether the issue affects the whole network or a single device; battery condition, power supply and pairing; coordinator placement and USB 3.0 interference; overlap between Wi-Fi and Zigbee channels; mesh structure and Zigbee routers; coordinator transmit power; and the configuration and logs of ZHA or Zigbee2MQTT.</p>
+        <p class="section-subtitle">Only after gathering this information is it reasonable to decide whether the next step should be a configuration adjustment, an improvement to the network structure, an on-site test or replacement of a specific device.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">Support</div>
+      <h2 class="section-title mobile-match-title">Remote help</h2>
+      <div class="card">
+        <p class="section-subtitle">Not sure whether the problem is caused by interference, the mesh, the coordinator or a single device?</p>
+        <p class="section-subtitle">I can remotely review the ZHA or Zigbee2MQTT configuration, logs, network map and the available information about link quality and device behaviour.</p>
+        <p class="section-subtitle">I will not guess at factors that cannot be assessed reliably from Home Assistant alone, such as the physical placement of the coordinator, local radio interference or power quality. If needed, I will suggest a simple test or measurement that can be carried out on site.</p>
+        <p class="section-subtitle">The analysis will help narrow down the likely cause, avoid random changes and define the next steps. If the issue is a weak, faulty or incompatible device, I will say clearly whether replacing it is the more sensible option.</p>
+        <div class="hero-actions">
+          <a class="btn-primary" href="/en/#contact">Describe the problem</a>
+          <a class="btn-ghost" href="/en/#pricing">See pricing</a>
+        </div>
       </div>
     </section>
   </main>

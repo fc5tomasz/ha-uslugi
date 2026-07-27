@@ -11,8 +11,8 @@
   <link rel="alternate" hreflang="en" href="https://ha-expert.com/en/stable-zigbee/" />
   <link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/stabilt-zigbee/" />
   <link rel="alternate" hreflang="x-default" href="https://ha-expert.com/en/stable-zigbee/" />
-  <title>Mister forbindelsen? Sådan stabiliserer du dit Zigbee netværk | HA Expert</title>
-  <meta name="description" content="Hvorfor reagerer dine Zigbee-sensorer ikke? Opdag årsagerne (Wi-Fi, USB 3.0, Mesh) og lær, hvordan du stabiliserer dit smart home-netværk." />
+  <title>Mister Zigbee forbindelsen? Fejlsøgning og løsninger | HA Expert</title>
+  <meta name="description" content="Mister Zigbee-enheder forbindelsen eller reagerer de ikke? Tjek Wi-Fi 2,4 GHz, USB 3.0, mesh, koordinatorens sendeeffekt, ZHA, Zigbee2MQTT og udstyr." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://ha-expert.com/dk/stabilt-zigbee/" />
   <link rel="stylesheet" href="../../styles.css?v=20260420-headings-35" />
@@ -56,9 +56,10 @@
   <main>
     <section class="section">
       <div class="section-label">Zigbee</div>
-      <h1 class="section-title zigbee-mobile-title"><span class="zigbee-title-line zigbee-title-line--keep">Mister forbindelsen? Sådan</span><br class="zigbee-mobile-break"><span class="zigbee-title-line">stabiliserer du den.</span></h1>
+      <h1 class="section-title zigbee-mobile-title">Mister Zigbee forbindelsen? Se årsager og mulige løsninger</h1>
       <div class="card">
-        <p class="section-subtitle">Zigbee er praktisk og energieffektivt, men stabiliteten afhænger stærkt af radioforhold og korrekt konfiguration. Hvis dine enheder ikke reagerer, har forsinkelser eller pludselig "falder af" netværket, skyldes det meget ofte ikke defekt hardware, men et dårligt radiomiljø, netværkskonflikter eller forkert konfiguration. Se, hvad der oftest forringer rækkevidden og stabiliteten i et Zigbee-netværk.</p>
+        <p class="section-subtitle">Zigbee er praktisk og energieffektivt, men stabiliteten afhænger af radioforhold, placeringen af koordinatoren, mesh-strukturen, konfigurationen og kvaliteten af de enkelte enheder. Hvis enheder ikke reagerer, reagerer langsomt eller falder af netværket, skal man først finde ud af, om problemet rammer hele netværket eller én bestemt sensor, router eller modul.</p>
+        <p class="section-subtitle">Der findes ikke én indstilling, der altid reparerer Zigbee. Nogle gange er det nok at flytte koordinatoren eller justere kanalerne, og andre gange viser en analyse af den konkrete installation, at problemet er en svag Zigbee-router, forkert parring eller en enhed, som det ikke kan betale sig at konfigurere videre på.</p>
       </div>
     </section>
 
@@ -71,8 +72,8 @@
             <span class="card-kicker">Interferens</span>
             <span class="card-badge" aria-hidden="true">📶</span>
           </div>
-          <h3>📶 Zigbee og Wi-Fi-konflikt på 2.4 GHz</h3>
-          <p>Wi-Fi-routere og Zigbee-enheder bruger det samme 2.4 GHz-bånd. Hvis de fungerer på overlappende kanaler, kan et stærkt Wi-Fi-signal forringe Zigbee-netværkets stabilitet. At vælge en kanal med færrest mulige kollisioner er et af de grundlæggende trin for at forbedre ydeevnen.</p>
+          <h3>📶 Zigbee og Wi-Fi-konflikt på 2,4 GHz</h3>
+          <p>Wi-Fi-routere og Zigbee-enheder bruger det samme 2,4 GHz-bånd. Hvis de kører på overlappende kanaler, kan et stærkt Wi-Fi-signal forringe Zigbee-netværkets stabilitet. Før du ændrer indstillinger, bør du se på, hvilke netværk der findes i nærheden, og om kanalerne overlapper et uheldigt sted.</p>
         </article>
 
         <article class="card service-card">
@@ -80,8 +81,8 @@
             <span class="card-kicker">Hardware</span>
             <span class="card-badge" aria-hidden="true">🔌</span>
           </div>
-          <h3>🔌 USB 3.0-port fælden</h3>
-          <p>Hvis Zigbee-koordinatoren er sat direkte i en USB 3.0-port på en terminal, computer eller Raspberry Pi, kan det forårsage interferens og forringe rækkevidden. Dette er en hyppig årsag til ustabilitet. Ofte er det nok at bruge et USB 2.0-forlængerkabel og flytte koordinatoren væk fra enheden.</p>
+          <h3>🔌 USB 3.0 og placering af koordinatoren</h3>
+          <p>Hvis Zigbee-koordinatoren sidder direkte i en USB 3.0-port på en computer, terminal eller Raspberry Pi, kan det skabe interferens og forringe rækkevidden. Et USB 2.0-forlængerkabel hjælper ofte, især når koordinatoren flyttes væk fra kabinettet, diske, Wi-Fi-routeren og andre støjkilder.</p>
         </article>
 
         <article class="card service-card">
@@ -89,20 +90,84 @@
             <span class="card-kicker">Mesh</span>
             <span class="card-badge" aria-hidden="true">🕸️</span>
           </div>
-          <h3>🕸️ Svag netværksrygrad</h3>
-          <p>Zigbee fungerer som et mesh-netværk. Batteridrevne enheder, såsom bevægelsessensorer eller termometre, videresender normalt ikke signalet. Derfor har du til stabil drift i hele huset også brug for enheder, der er permanent tilsluttet strøm, for eksempel smarte stikkontakter eller visse pærer. De hjælper med at sende signalet videre og forbedrer netværkets rækkevidde.</p>
+          <h3>🕸️ Svag mesh-struktur</h3>
+          <p>Zigbee fungerer som et mesh-netværk. Batteridrevne enheder, såsom bevægelsessensorer eller termometre, videresender normalt ikke signalet. For stabil drift i hele hjemmet skal der også være enheder med fast strøm, for eksempel smarte stikkontakter eller udvalgte pærer. For få Zigbee-routere kan give døde zoner og tilfældige udfald.</p>
         </article>
       </div>
     </section>
 
     <section class="section">
-      <div class="section-label">Support</div>
-      <h2 class="section-title mobile-match-title">Fjernsupport</h2>
+      <div class="section-label">Koordinator</div>
+      <h2 class="section-title mobile-match-title">Koordinatorens sendeeffekt — mere er ikke altid bedre</h2>
       <div class="card">
-        <p class="section-subtitle">Har du problemer med Zigbee-stabiliteten? Jeg kan hjælpe med at diagnosticere det.</p>
-        <p class="section-subtitle">Jeg tjekker din ZHA- eller Zigbee2MQTT-konfiguration, netværkskort, forbindelseskvalitet og de mest almindelige årsager til problemer på systemsiden via fjernadgang.</p>
-        <p class="section-subtitle">Hvis det er nødvendigt, beder jeg dig også om at foretage enkle yderligere målinger på din side, for eksempel med en telefon eller bærbar computer med Wi-Fi, for bedre at kunne vurdere kanaler, interferens og radiomiljøet.</p>
-        <p class="section-subtitle">Ikke alle problemer kan løses online, men efter analysen ved du præcis, hvad der skal forbedres. Hvis det bliver nødvendigt, hjælper jeg også med en sikker omkonfigurering af systemet, og du kan selv foretage hardwareændringerne ud fra specifikke instruktioner.</p>
+        <p class="section-subtitle">📡 Maksimal sendeeffekt på koordinatoren giver ikke altid bedre stabilitet. Koordinatoren kan høres tydeligt af en fjern enhed, mens enheden ikke selv har nok effekt til at svare stabilt tilbage. Så opstår der en asymmetrisk forbindelse: rækkevidden ser god ud, men kommunikationen kan stadig være ustabil.</p>
+        <p class="section-subtitle">Sendeeffekten bør tilpasses radiomiljøet, den konkrete koordinator, placeringen af enhederne og mesh-strukturen. Derfor anbefaler jeg ikke én universel værdi for alle installationer.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">Omfang</div>
+      <h2 class="section-title mobile-match-title">Hele netværket eller én enhed?</h2>
+      <div class="grid-2">
+        <article class="card service-card">
+          <div class="card-top">
+            <span class="card-kicker">Netværk</span>
+            <span class="card-badge" aria-hidden="true">🔍</span>
+          </div>
+          <h3>Når mange enheder er påvirket</h3>
+          <p>Først bør man kontrollere koordinatoren, strømforsyningen, interferens, kanaler, ZHA eller Zigbee2MQTT samt mesh-strukturen. Netværkskortet og LQI-værdier kan hjælpe, men de giver ikke altid et entydigt svar uden konteksten fra hele installationen.</p>
+        </article>
+
+        <article class="card service-card">
+          <div class="card-top">
+            <span class="card-kicker">Enhed</span>
+            <span class="card-badge" aria-hidden="true">🔍</span>
+          </div>
+          <h3>Når én sensor eller ét modul driller</h3>
+          <p>Så giver det mening at kontrollere batteri eller strømforsyning, parring, ruten gennem Zigbee-routere, kompatibilitet, firmware og kvaliteten af selve enheden. Nogle gange er netværket sundt, mens problemet ligger i én bestemt komponent.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">Kanaler</div>
+      <h2 class="section-title mobile-match-title">Skift kanaler efter analyse, ikke på gæt</h2>
+      <div class="card">
+        <p class="section-subtitle">📶 Wi-Fi- og Zigbee-kanaler kan forstyrre hinanden, men et kanalskift i Zigbee uden analyse kan skabe nye problemer. Først bør man vurdere det lokale radiomiljø, Wi-Fi-kanalerne på 2,4 GHz og hvordan enhederne er placeret i hjemmet.</p>
+        <p class="section-subtitle">Et skift af Zigbee-kanal kan kræve, at nogle enheder parres igen, og ikke alle enheder fungerer lige godt på alle kanaler. Der findes ikke én kanal, der altid er bedst i alle installationer.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">Udstyr</div>
+      <h2 class="section-title mobile-match-title">Ikke alt udstyr kan reddes med konfiguration</h2>
+      <div class="card">
+        <p class="section-subtitle">⚠️ Nogle enheder har et svagt radiomodul, fejlbehæftet firmware eller begrænset kompatibilitet med en bestemt gateway, koordinator, ZHA eller Zigbee2MQTT. Problemet kan også være en Zigbee-router, der videresender trafik dårligt, eller en koordinator, der er ustabil i det konkrete miljø.</p>
+        <p class="section-subtitle">Yderligere omkonfiguration giver ikke altid mening. Nogle gange er det mere fornuftigt at udskifte én enhed, en Zigbee-router eller koordinatoren end at forsøge at reparere for enhver pris. Ærlig diagnostik skal vise, hvad der er værd at forbedre, og hvad der ikke længere kan betale sig at kæmpe med.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">Diagnosticering</div>
+      <h2 class="section-title mobile-match-title">Hvad diagnosticeringen omfatter</h2>
+      <div class="card">
+        <p class="section-subtitle">Ved ustabil Zigbee-drift kan det være nødvendigt at analysere flere områder: om problemet rammer hele netværket eller én enhed; batteri, strømforsyning og parring; koordinatorens placering og påvirkning fra USB 3.0; overlap mellem Wi-Fi- og Zigbee-kanaler; mesh-strukturen og Zigbee-routerne; koordinatorens sendeeffekt samt konfiguration og logfiler i ZHA eller Zigbee2MQTT.</p>
+        <p class="section-subtitle">Først når disse oplysninger er samlet, kan man fornuftigt vurdere, om der er behov for en ændring i konfigurationen, en forbedring af netværksstrukturen, en test på stedet eller udskiftning af en bestemt enhed.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">Support</div>
+      <h2 class="section-title mobile-match-title">Fjernhjælp</h2>
+      <div class="card">
+        <p class="section-subtitle">Er du i tvivl om, hvorvidt problemet skyldes forstyrrelser, mesh-netværket, koordinatoren eller én bestemt enhed?</p>
+        <p class="section-subtitle">Jeg kan fjernanalysere konfigurationen i ZHA eller Zigbee2MQTT, logfilerne, netværkskortet og de tilgængelige oplysninger om forbindelseskvalitet og enhedernes adfærd.</p>
+        <p class="section-subtitle">Jeg gætter ikke på forhold, der ikke kan vurderes pålideligt ud fra Home Assistant alene, for eksempel koordinatorens fysiske placering, lokale radioforstyrrelser eller kvaliteten af strømforsyningen. Hvis det er nødvendigt, foreslår jeg en enkel test eller måling, som kan udføres på stedet.</p>
+        <p class="section-subtitle">Analysen hjælper med at afgrænse den sandsynlige årsag, undgå tilfældige ændringer og fastlægge de næste skridt. Hvis problemet skyldes en svag, defekt eller inkompatibel enhed, siger jeg klart, om udskiftning er den mest fornuftige løsning.</p>
+        <div class="hero-actions">
+          <a class="btn-primary" href="/dk/#kontakt">Beskriv problemet</a>
+          <a class="btn-ghost" href="/dk/#priser">Se priser</a>
+        </div>
       </div>
     </section>
   </main>

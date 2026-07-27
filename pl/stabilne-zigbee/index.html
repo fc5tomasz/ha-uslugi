@@ -28,8 +28,8 @@
   <link rel="alternate" hreflang="en" href="https://ha-expert.com/en/stable-zigbee/" />
   <link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/stabilt-zigbee/" />
   <link rel="alternate" hreflang="x-default" href="https://ha-expert.com/en/stable-zigbee/" />
-  <title>Zrywa połączenie? Jak ustabilizować sieć Zigbee w Home Assistant | HA Expert</title>
-  <meta name="description" content="Dlaczego czujniki Zigbee nie reagują? Poznaj przyczyny problemów z zasięgiem (Wi-Fi, USB 3.0, Mesh) i dowiedz się, jak ustabilizować inteligentny dom." />
+  <title>Zigbee zrywa połączenie? Diagnostyka i rozwiązania | HA Expert</title>
+  <meta name="description" content="Urządzenia Zigbee tracą połączenie lub nie reagują? Sprawdź Wi-Fi 2.4 GHz, USB 3.0, mesh, moc koordynatora, ZHA, Zigbee2MQTT i sprzęt." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://ha-expert.com/pl/stabilne-zigbee/" />
   <link rel="stylesheet" href="../../styles.css?v=20260420-headings-35" />
@@ -72,9 +72,10 @@
   <main>
     <section class="section">
       <div class="section-label">Zigbee</div>
-      <h1 class="section-title zigbee-mobile-title"><span class="zigbee-title-line zigbee-title-line--keep">Zrywa połączenie? Jak je</span><br class="zigbee-mobile-break"><span class="zigbee-title-line">ustabilizować?</span></h1>
+      <h1 class="section-title zigbee-mobile-title">Zigbee zrywa połączenie? Sprawdź przyczyny i możliwe rozwiązania</h1>
       <div class="card">
-        <p class="section-subtitle">Zigbee jest wygodny i energooszczędny, ale jego stabilność mocno zależy od warunków radiowych i poprawnej konfiguracji. Jeśli Twoje urządzenia nie reagują, mają opóźnienia albo nagle „odpadają” od sieci, bardzo często nie wynika to z uszkodzonego sprzętu, tylko ze złego środowiska radiowego, konfliktów sieciowych albo błędnej konfiguracji. Zobacz, co najczęściej pogarsza zasięg i stabilność sieci Zigbee.</p>
+        <p class="section-subtitle">Zigbee jest wygodny i energooszczędny, ale na jego stabilność wpływają warunki radiowe, położenie koordynatora, struktura mesh, konfiguracja oraz jakość konkretnych urządzeń. Jeśli urządzenia nie reagują, mają opóźnienia lub odpadają od sieci, najpierw trzeba ustalić, czy problem dotyczy całej sieci, czy jednego czujnika, routera lub modułu.</p>
+        <p class="section-subtitle">Nie ma jednego ustawienia, które zawsze naprawia Zigbee. Czasem wystarczy poprawić położenie koordynatora lub kanały, a czasem dopiero analiza konkretnej instalacji pokazuje, że problemem jest słaby router Zigbee, błędne parowanie albo urządzenie, którego nie opłaca się dalej rekonfigurować.</p>
       </div>
     </section>
 
@@ -88,7 +89,7 @@
             <span class="card-badge" aria-hidden="true">📶</span>
           </div>
           <h3>📶 Konflikt Zigbee i Wi-Fi na 2.4 GHz</h3>
-          <p>Router Wi-Fi i urządzenia Zigbee korzystają z tego samego pasma 2.4 GHz. Jeśli pracują na nakładających się kanałach, silny sygnał Wi-Fi może pogarszać stabilność sieci Zigbee. Dobranie możliwie bezkolizyjnego kanału to jeden z podstawowych kroków do poprawy działania.</p>
+          <p>Router Wi-Fi i urządzenia Zigbee korzystają z tego samego pasma 2.4 GHz. Jeśli pracują na nakładających się kanałach, silny sygnał Wi-Fi może pogarszać stabilność sieci Zigbee. Dlatego przed zmianami warto sprawdzić, jakie sieci działają w pobliżu i czy kanały nie nakładają się w najgorszym możliwym miejscu.</p>
         </article>
 
         <article class="card service-card">
@@ -96,8 +97,8 @@
             <span class="card-kicker">Sprzęt</span>
             <span class="card-badge" aria-hidden="true">🔌</span>
           </div>
-          <h3>🔌 Pułapka portu USB 3.0</h3>
-          <p>Jeśli koordynator Zigbee jest wpięty bezpośrednio do portu USB 3.0 w terminalu, komputerze lub Raspberry Pi, może to powodować zakłócenia i pogarszać zasięg. To częsta przyczyna niestabilności. Często wystarczy użyć przedłużacza USB 2.0 i odsunąć koordynator od urządzenia.</p>
+          <h3>🔌 USB 3.0 i położenie koordynatora</h3>
+          <p>Jeśli koordynator Zigbee jest wpięty bezpośrednio do portu USB 3.0 w komputerze, terminalu lub Raspberry Pi, może to powodować zakłócenia i pogarszać zasięg. Często pomaga przedłużacz USB 2.0, odsunięcie koordynatora od obudowy, dysków, routera Wi-Fi i innych źródeł zakłóceń.</p>
         </article>
 
         <article class="card service-card">
@@ -105,9 +106,69 @@
             <span class="card-kicker">Mesh</span>
             <span class="card-badge" aria-hidden="true">🕸️</span>
           </div>
-          <h3>🕸️ Słaby szkielet sieci</h3>
-          <p>Zigbee działa jako sieć mesh. Urządzenia na baterie, takie jak czujniki ruchu czy termometry, zwykle nie przekazują sygnału dalej. Dlatego do stabilnej pracy w całym domu potrzebne są także urządzenia zasilane stale z prądu, na przykład smart gniazdka lub niektóre żarówki. To one pomagają przekazywać sygnał dalej i poprawiają zasięg sieci.</p>
+          <h3>🕸️ Słaby szkielet sieci mesh</h3>
+          <p>Zigbee działa jako sieć mesh. Urządzenia na baterie, takie jak czujniki ruchu czy termometry, zwykle nie przekazują sygnału dalej. Do stabilnej pracy w całym domu potrzebne są urządzenia zasilane stale z prądu, na przykład smart gniazdka lub wybrane żarówki. Zbyt mała liczba routerów Zigbee może powodować martwe strefy i losowe zaniki połączenia.</p>
         </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">Koordynator</div>
+      <h2 class="section-title mobile-match-title">Moc koordynatora — więcej nie zawsze znaczy lepiej</h2>
+      <div class="card">
+        <p class="section-subtitle">📡 Maksymalna moc koordynatora nie zawsze poprawia stabilność. Koordynator może być dobrze słyszany przez odległe urządzenie, ale to urządzenie nie zawsze ma wystarczającą moc, żeby pewnie odpowiedzieć. Wtedy powstaje połączenie niesymetryczne: wygląda, jakby zasięg był dobry, ale komunikacja nadal bywa niestabilna.</p>
+        <p class="section-subtitle">Moc trzeba dobrać do warunków radiowych, konkretnego koordynatora, rozmieszczenia urządzeń i struktury mesh. Dlatego nie podaję jednej uniwersalnej wartości mocy dla wszystkich instalacji.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">Zakres problemu</div>
+      <h2 class="section-title mobile-match-title">Cała sieć czy jedno urządzenie?</h2>
+      <div class="grid-2">
+        <article class="card service-card">
+          <div class="card-top">
+            <span class="card-kicker">Sieć</span>
+            <span class="card-badge" aria-hidden="true">🔍</span>
+          </div>
+          <h3>Gdy problem dotyczy wielu urządzeń</h3>
+          <p>W pierwszej kolejności warto sprawdzić koordynator, zasilanie, zakłócenia, kanały, system ZHA lub Zigbee2MQTT oraz strukturę mesh. Mapa sieci i LQI pomagają w diagnostyce, ale nie zawsze dają jednoznaczną odpowiedź bez kontekstu całej instalacji.</p>
+        </article>
+
+        <article class="card service-card">
+          <div class="card-top">
+            <span class="card-kicker">Urządzenie</span>
+            <span class="card-badge" aria-hidden="true">🔍</span>
+          </div>
+          <h3>Gdy problem dotyczy jednego czujnika lub modułu</h3>
+          <p>Wtedy trzeba sprawdzić baterię lub zasilanie, sposób parowania, trasę przez routery Zigbee, kompatybilność, firmware i jakość samego urządzenia. Czasem sieć działa poprawnie, a problem leży w jednym konkretnym elemencie.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">Kanały</div>
+      <h2 class="section-title mobile-match-title">Kanały zmieniaj po analizie, nie na chybił trafił</h2>
+      <div class="card">
+        <p class="section-subtitle">📶 Kanały Wi-Fi i Zigbee mogą się zakłócać, ale zmiana kanału Zigbee bez analizy potrafi stworzyć nowe problemy. Najpierw trzeba ocenić lokalne otoczenie radiowe, kanały Wi-Fi 2.4 GHz i to, jak rozmieszczone są urządzenia w domu.</p>
+        <p class="section-subtitle">Zmiana kanału Zigbee może wymagać ponownego połączenia części urządzeń, a nie każde urządzenie działa równie dobrze na każdym kanale. Nie ma jednego kanału, który zawsze jest najlepszy dla każdej instalacji.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">Sprzęt</div>
+      <h2 class="section-title mobile-match-title">Nie każdy sprzęt da się uratować konfiguracją</h2>
+      <div class="card">
+        <p class="section-subtitle">⚠️ Niektóre urządzenia mają słaby moduł radiowy, wadliwy firmware albo ograniczoną kompatybilność z daną bramką, koordynatorem, ZHA lub Zigbee2MQTT. Problemem może być też router Zigbee, który słabo przekazuje ruch, albo koordynator pracujący niestabilnie w konkretnym środowisku.</p>
+        <p class="section-subtitle">Dalsza rekonfiguracja nie zawsze ma sens. Czasem rozsądniejsza jest wymiana jednego urządzenia, routera Zigbee albo koordynatora niż kolejne próby naprawy za wszelką cenę. Uczciwa diagnostyka powinna pokazać, co warto poprawić, a czego nie opłaca się już męczyć.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">Diagnostyka</div>
+      <h2 class="section-title mobile-match-title">Obszary diagnostyki</h2>
+      <div class="card">
+        <p class="section-subtitle">Przy problemach z Zigbee warto przeanalizować kilka obszarów: czy problem dotyczy całej sieci, czy jednego urządzenia; stan baterii, zasilanie i sposób parowania; położenie koordynatora oraz wpływ USB 3.0; nakładanie się kanałów Wi-Fi i Zigbee; strukturę mesh i działanie routerów Zigbee; moc koordynatora, a także konfigurację i logi ZHA lub Zigbee2MQTT.</p>
+        <p class="section-subtitle">Dopiero po zebraniu tych informacji można rozsądnie ocenić, czy potrzebna jest korekta konfiguracji, poprawa struktury sieci, dodatkowe testy na miejscu czy wymiana konkretnego urządzenia.</p>
       </div>
     </section>
 
@@ -115,10 +176,14 @@
       <div class="section-label">Wsparcie</div>
       <h2 class="section-title mobile-match-title">Pomoc zdalna</h2>
       <div class="card">
-        <p class="section-subtitle">Masz problem ze stabilnością Zigbee? Mogę pomóc to zdiagnozować.</p>
-        <p class="section-subtitle">Zdalnie sprawdzę konfigurację ZHA lub Zigbee2MQTT, mapę sieci, jakość połączeń i najczęstsze przyczyny problemów po stronie systemu.</p>
-        <p class="section-subtitle">Jeśli będzie potrzeba, poproszę Cię też o proste dodatkowe pomiary po Twojej stronie, na przykład z telefonu lub laptopa z Wi-Fi, żeby lepiej ocenić kanały, zakłócenia i otoczenie radiowe.</p>
-        <p class="section-subtitle">Nie każdy problem da się usunąć online, ale po analizie będziesz wiedzieć, co dokładnie poprawić. Jeśli będzie trzeba, pomogę też z bezpieczną rekonfiguracją systemu, a zmiany sprzętowe wykonasz u siebie według konkretnych wskazówek.</p>
+        <p class="section-subtitle">Nie wiesz, czy problem leży w zakłóceniach, mesh, koordynatorze czy jednym urządzeniu?</p>
+        <p class="section-subtitle">Mogę zdalnie sprawdzić konfigurację ZHA lub Zigbee2MQTT, logi, mapę sieci oraz dostępne informacje o jakości połączeń i działaniu urządzeń.</p>
+        <p class="section-subtitle">Elementów, których nie da się wiarygodnie ocenić z samego Home Assistant — takich jak położenie koordynatora, lokalne zakłócenia radiowe czy jakość zasilania — nie będę zgadywał. W razie potrzeby wskażę prosty test lub pomiar, który można wykonać na miejscu.</p>
+        <p class="section-subtitle">Analiza pozwoli zawęzić przyczynę, uniknąć przypadkowych zmian i ustalić konkretne następne kroki. Jeśli problemem okaże się słabe, wadliwe lub niekompatybilne urządzenie, powiem wprost, czy rozsądniejsza będzie jego wymiana.</p>
+        <div class="hero-actions">
+          <a class="btn-primary" href="/pl/#kontakt">Opisz problem</a>
+          <a class="btn-ghost" href="/pl/#cennik">Zobacz cennik</a>
+        </div>
       </div>
     </section>
   </main>
