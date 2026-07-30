@@ -390,6 +390,22 @@ nav li a:hover{
 }
 
 @media (min-width: 821px){
+  body.pl-home-bg-test .logo.is-section-active{
+    position:relative;
+  }
+
+  body.pl-home-bg-test .logo.is-section-active::after{
+    content:"";
+    position:absolute;
+    right:13px;
+    bottom:4px;
+    left:13px;
+    height:2px;
+    border-radius:999px;
+    background:linear-gradient(90deg, var(--accent-2), var(--accent));
+    box-shadow:0 0 12px rgba(39,227,157,.38);
+  }
+
   body.pl-home-bg-test nav > ul > li > a{
     display:inline-flex;
     align-items:center;

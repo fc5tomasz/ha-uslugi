@@ -172,6 +172,7 @@ const initDesktopSectionNavigation = () => {
     return;
   }
 
+  const homeLogo = document.querySelector(".nav > .logo");
   const currentPath = normalizePathname(window.location.pathname);
   const sectionLinks = Array.from(
     primaryNav.querySelectorAll(
@@ -197,7 +198,7 @@ const initDesktopSectionNavigation = () => {
 
   let frameRequested = false;
 
-  const setActiveLink = (activeLink = null) => {
+  const setActiveLink = (activeLink = null, activateLogo = false) => {
     sectionLinks.forEach(({ link }) => {
       const isActive = link === activeLink;
       link.classList.toggle("is-section-active", isActive);
@@ -208,6 +209,16 @@ const initDesktopSectionNavigation = () => {
         link.removeAttribute("aria-current");
       }
     });
+
+    if (homeLogo) {
+      homeLogo.classList.toggle("is-section-active", activateLogo);
+
+      if (activateLogo) {
+        homeLogo.setAttribute("aria-current", "location");
+      } else if (homeLogo.getAttribute("aria-current") === "location") {
+        homeLogo.removeAttribute("aria-current");
+      }
+    }
   };
 
   const syncActiveSection = () => {
@@ -235,7 +246,7 @@ const initDesktopSectionNavigation = () => {
       null,
     );
 
-    setActiveLink(activeSection?.link || null);
+    setActiveLink(activeSection?.link || null, !activeSection);
   };
 
   const requestSectionSync = () => {
