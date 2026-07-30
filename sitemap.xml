@@ -32,6 +32,30 @@
     <lastmod>2026-04-18</lastmod>
   </url>
   <url>
+    <loc>https://ha-expert.com/pl/projekty/</loc>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://ha-expert.com/pl/projekty/" />
+    <xhtml:link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/projekter/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://ha-expert.com/en/projects/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ha-expert.com/en/projects/" />
+    <lastmod>2026-07-29</lastmod>
+  </url>
+  <url>
+    <loc>https://ha-expert.com/en/projects/</loc>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://ha-expert.com/pl/projekty/" />
+    <xhtml:link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/projekter/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://ha-expert.com/en/projects/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ha-expert.com/en/projects/" />
+    <lastmod>2026-07-29</lastmod>
+  </url>
+  <url>
+    <loc>https://ha-expert.com/dk/projekter/</loc>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://ha-expert.com/pl/projekty/" />
+    <xhtml:link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/projekter/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://ha-expert.com/en/projects/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ha-expert.com/en/projects/" />
+    <lastmod>2026-07-29</lastmod>
+  </url>
+  <url>
     <loc>https://ha-expert.com/pl/stabilne-zigbee/</loc>
     <xhtml:link rel="alternate" hreflang="pl" href="https://ha-expert.com/pl/stabilne-zigbee/" />
     <xhtml:link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/stabilt-zigbee/" />

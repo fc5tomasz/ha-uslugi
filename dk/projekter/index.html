@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18087588380"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'analytics_storage': 'denied'
+    });
+  </script>
+  <script src="../../consent.js?v=20260420-consent-1"></script>
+  <script>
+    gtag('js', new Date());
+
+    gtag('config', 'AW-18087588380');
+  </script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="robots" content="index,follow" />
+  <meta name="author" content="Tomasz Furdal" />
+  <meta name="theme-color" content="#0f172a" />
+  <meta name="google-site-verification" content="L88MYiIC2YGzQ9Qgb5BJIqNChLdfIA77m8Tol5MGRrE" />
+  <link rel="icon" type="image/png" href="../../assets/brand/ha-expert-logo-transparent.png" />
+  <link rel="canonical" href="https://ha-expert.com/dk/projekter/" />
+  <link rel="alternate" hreflang="pl" href="https://ha-expert.com/pl/projekty/" />
+  <link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/projekter/" />
+  <link rel="alternate" hreflang="en" href="https://ha-expert.com/en/projects/" />
+  <link rel="alternate" hreflang="x-default" href="https://ha-expert.com/en/projects/" />
+  <title>Home Assistant-projekter og eksempler på dashboards | HA Expert</title>
+  <meta name="description" content="Se eksempler på Home Assistant-projekter, kontrolpaneler og diagnosticering af Zigbee-netværk." />
+  <meta name="keywords" content="Home Assistant-projekter, eksempler på dashboards, Zigbee-diagnosticering, smart home-automatisering, varmestyring" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://ha-expert.com/dk/projekter/" />
+  <meta property="og:title" content="Home Assistant-projekter og eksempler på dashboards | HA Expert" />
+  <meta property="og:description" content="Se eksempler på Home Assistant-projekter, kontrolpaneler og diagnosticering af Zigbee-netværk." />
+  <meta property="og:image" content="https://ha-expert.com/assets/brand/o-mnie.webp" />
+  <meta property="og:locale" content="da_DK" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Home Assistant-projekter og eksempler på dashboards | HA Expert" />
+  <meta name="twitter:description" content="Se eksempler på Home Assistant-projekter, kontrolpaneler og diagnosticering af Zigbee-netværk." />
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://ha-expert.com/#person",
+      "name": "Tomasz Furdal",
+      "url": "https://ha-expert.com/dk/",
+      "email": "mailto:fc5tomasz@gmail.com",
+      "areaServed": [
+        { "@type": "Country", "name": "Poland" },
+        { "@type": "Country", "name": "Denmark" }
+      ],
+      "availableLanguage": ["pl", "da-DK", "en"]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://ha-expert.com/#service",
+      "url": "https://ha-expert.com/dk/",
+      "name": "Professionel diagnosticering og konfiguration af Home Assistant",
+      "description": "Professionel hjælp og diagnosticering af Home Assistant med automatiseringer, integrationer og styring.",
+      "provider": { "@id": "https://ha-expert.com/#person" },
+      "areaServed": [
+        { "@type": "Country", "name": "Poland" },
+        { "@type": "Country", "name": "Denmark" }
+      ],
+      "serviceType": "Smart Home Automation and Diagnostics"
+    }
+  ]
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://ha-expert.com/#organization",
+  "name": "HA Expert Tomasz Furdal",
+  "url": "https://ha-expert.com/",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://ha-expert.com/assets/brand/ha-expert-logo-transparent.png"
+  }
+}
+  </script>
+  <link rel="stylesheet" href="../../styles.css?v=20260730-mobile-46" />
+</head>
+<body class="pl-home-bg-test pl-projects-page">
+  <header>
+    <div class="nav">
+      <a class="logo" href="/dk/" aria-label="Tomasz Furdal - Home Assistant Expert">
+        <img class="logo-image" src="../../assets/brand/logo-wyciete.png" alt="Tomasz Furdal - Home Assistant Expert" title="Home Assistant Expert - Tomasz Furdal" width="871" height="334" />
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Open menu">
+        <span aria-hidden="true">☰</span>
+      </button>
+      <a class="nav-mobile-link about-link" href="/dk/#om-mig">Om mig</a>
+      <a class="nav-mobile-link contact-link" href="/dk/#kontakt">Kontakt</a>
+      <nav id="primary-nav" aria-label="Primary">
+        <ul>
+          <li><a href="/dk/#ydelser">Ydelser</a></li>
+          <li><a href="/dk/#om-mig">Om mig</a></li>
+          <li><a href="/dk/#for-hvem">For hvem</a></li>
+          <li><a href="/dk/#saadan-arbejder-jeg">Sådan arbejder jeg</a></li>
+          <li><a href="/dk/#priser">Priser</a></li>
+          <li><a href="/dk/#kontakt">Kontakt</a></li>
+          <li class="nav-secondary-start"><a href="/dk/projekter/" aria-current="page">Projekter</a></li>
+          <li class="nav-guides">
+            <button class="nav-guides-toggle" type="button" aria-expanded="false" aria-haspopup="true">
+              <span>Vejledninger</span><span class="nav-guides-chevron" aria-hidden="true">▾</span>
+            </button>
+            <ul class="nav-guides-dropdown">
+              <li><a href="/dk/hvad-er-ha/">Hvad er Home Assistant?</a></li>
+              <li><a href="/dk/stabilt-zigbee/">Mister Zigbee forbindelsen?</a></li>
+            </ul>
+          </li>
+          <li><a href="/dk/demo/">Demo-panel</a></li>
+        </ul>
+      </nav>
+      <div class="lang-switch" aria-label="Language switch">
+        <a class="lang-btn" href="/pl/projekty/" aria-label="Polski"><img class="lang-flag" src="../../assets/flags/pl.svg" alt="" aria-hidden="true" /></a>
+        <a class="lang-btn active" href="/dk/projekter/" aria-label="Dansk" aria-current="page"><img class="lang-flag" src="../../assets/flags/dk.svg" alt="" aria-hidden="true" /></a>
+        <a class="lang-btn" href="/en/projects/" aria-label="English"><img class="lang-flag" src="../../assets/flags/gb.svg" alt="" aria-hidden="true" /></a>
+      </div>
+      <a class="nav-cta" href="/dk/#kontakt">Gratis diagnose</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="section" id="projekter">
+      <div class="section-label">PROJEKTER</div>
+      <h1 class="section-title mobile-match-title">Projekter og eksempler på dashboards</h1>
+      <p class="showcase-interaction-hint">Klik eller tryk på et panel for at forstørre det.</p>
+      <div class="grid-3 showcase-grid">
+        <article class="card showcase-card">
+          <div class="showcase-media">
+            <img src="../../assets/examples/heating-control.png" alt="Panel til styring af opvarmning og buffertank" loading="lazy" width="1920" height="1080" data-lightbox-src="../../assets/examples/heating-control.png" />
+          </div>
+          <div class="showcase-copy">
+            <h3>Varmestyring</h3>
+            <p>Panelet gør det muligt at styre opvarmningen fra flere kilder, såsom off-grid solceller med en buffertank og et gasfyr. Det giver mulighed for at ændre driftstilstande, temperaturer og grænseværdier for nattesænkning, samt automatiserer energibesparelser, når huset er tomt, eller når ferietilstand er aktiv. Det hele overvåger også systemets logik, så varmekilderne ikke kører samtidigt på en ukorrekt måde.</p>
+          </div>
+        </article>
+
+        <article class="card showcase-card">
+          <div class="showcase-media">
+            <img src="../../assets/examples/heating-status.png" alt="Panel med status og temperaturer i installationen" loading="lazy" width="1920" height="1080" data-lightbox-src="../../assets/examples/heating-status.png" />
+          </div>
+          <div class="showcase-copy">
+            <h3>Buffer, proces og varmekilders afhængigheder</h3>
+            <p>Visningen viser bufferens status og driftslogikken for hele varmesystemet. Det gør det nemt at vurdere temperaturen i den øvre og nedre del af bufferen, informerer om energien bruges til centralvarme, og om vandet har den rette temperatur til varmt brugsvand.</p>
+          </div>
+        </article>
+
+        <article class="card showcase-card">
+          <div class="showcase-media">
+            <img src="../../assets/examples/blinds-control.png" alt="Panel til rullegardiner og daglig styring" loading="lazy" width="1920" height="1080" data-lightbox-src="../../assets/examples/blinds-control.png" />
+          </div>
+          <div class="showcase-copy">
+            <h3>Rulleskodder, grupper og scener</h3>
+            <p>Panelet gør det muligt at styre individuelle rulleskodder, grupper af rulleskodder og hjemmescener. Det gør det også nemmere at administrere hele hjemmet og kombinerer manuel styring med automatisering baseret på tidspunkt, tilstedeværelse og udvalgte hændelser i systemet.</p>
+          </div>
+        </article>
+
+        <article class="card showcase-card">
+          <div class="showcase-media">
+            <img src="../../assets/examples/roborock.png" alt="Panel til enhedsintegrationer og styring af robotstøvsuger" loading="lazy" width="1920" height="1080" data-lightbox-src="../../assets/examples/roborock.png" />
+          </div>
+          <div class="showcase-copy">
+            <h3>Enhedsintegrationer</h3>
+            <p>Panelet giver nem styring af robotstøvsugeren: start rengøring af hele huset eller kun udvalgte zoner, sæt arbejdet på pause, og send enheden tilbage til ladestationen. Det viser også støvsugerens status og lader dig justere rengøringsstyrken.</p>
+          </div>
+        </article>
+
+        <article class="card showcase-card">
+          <div class="showcase-media">
+            <img src="../../assets/examples/rekuperacja.png" alt="Panel til varmegenvinding og ventilation" loading="lazy" width="1920" height="1080" data-lightbox-src="../../assets/examples/rekuperacja.png" />
+          </div>
+          <div class="showcase-copy">
+            <h3>Varmegenvinding og ventilation</h3>
+            <p>Visningen giver mulighed for at skifte mellem manuel tilstand og tids- eller tilstandsbaseret automatisering. Det lader dig styre genvindingshastigheden, udluftning og driftslogikken uden at skulle ind i systemindstillingerne.</p>
+          </div>
+        </article>
+
+        <article class="card showcase-card">
+          <div class="showcase-media">
+            <img src="../../assets/examples/panele.png" alt="Panel til belysning og glaspaneler" loading="lazy" width="1920" height="1080" data-lightbox-src="../../assets/examples/panele.png" />
+          </div>
+          <div class="showcase-copy">
+            <h3>Belysning og glaspaneler</h3>
+            <p>Panelet genskaber de fysiske glaskontakter i hjemmet og viser den aktuelle belysningsstatus i de enkelte rum. Det gør det nemt at styre lyset hurtigt, organiserer ruminddelingen og giver et tydeligt overblik over, hvad der aktuelt er tændt.</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="tech-block">
+        <div class="card tech-copy tech-copy-panel">
+          <div class="tech-copy-body">
+            <div class="section-label">Netværksstabilitet</div>
+            <h3 class="section-title section-title-small">Zigbee-topologi og forbindelsesdiagnostik</h3>
+            <p class="section-subtitle">Panelet viser, hvordan Zigbee-netværket er opbygget: hvilke enheder der forbinder direkte til koordinatoren, hvilke der fungerer via routere, og hvordan forbindelseskvaliteten ser ud i hele topologien.</p>
+            <ul class="hero-note-list tech-note-list">
+              <li>netværkstopologi og routing-stier</li>
+              <li>forbindelseskvalitet og LQI-værdier</li>
+              <li>relationer mellem koordinator, routere og slutenheder</li>
+            </ul>
+          </div>
+        </div>
+        <article class="card showcase-card tech-card">
+          <div class="showcase-media tech-media">
+            <img src="../../assets/examples/zigbee-map.png" alt="Kort over Zigbee2MQTT-netværket" loading="lazy" width="1920" height="1080" data-lightbox-src="../../assets/examples/zigbee-map.png" />
+          </div>
+        </article>
+      </div>
+
+    </section>
+
+    <div class="lightbox" id="lightbox" hidden aria-hidden="true">
+      <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Luk forhåndsvisning">Luk</button>
+      <div class="lightbox-backdrop" id="lightboxBackdrop"></div>
+      <div class="lightbox-dialog" role="dialog" aria-modal="true" aria-label="Forhåndsvisning af panel">
+        <img id="lightboxImage" src="index.html" alt="" />
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span>© <span id="year"></span> Tomasz Furdal – Home Assistant &amp; Integrations</span>
+      <span>Betaling: bankoverførsel, Revolut, PayPal, MobilePay</span>
+    </div>
+  </footer>
+
+  <script src="../../nav.js?v=20260730-mobile-nav-10"></script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const siteHeader = document.querySelector("header");
+    const syncDkHeaderState = () => {
+      siteHeader.classList.toggle("scrolled", window.scrollY > 24);
+    };
+
+    syncDkHeaderState();
+    window.addEventListener("scroll", syncDkHeaderState, { passive: true });
+
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImage = document.getElementById("lightboxImage");
+    const lightboxClose = document.getElementById("lightboxClose");
+    const lightboxBackdrop = document.getElementById("lightboxBackdrop");
+
+    function openLightbox(src, alt) {
+      lightboxImage.src = src;
+      lightboxImage.alt = alt || "";
+      lightbox.hidden = false;
+      lightbox.setAttribute("aria-hidden", "false");
+      document.body.classList.add("lightbox-open");
+    }
+
+    function closeLightbox() {
+      lightbox.hidden = true;
+      lightbox.setAttribute("aria-hidden", "true");
+      lightboxImage.src = "";
+      lightboxImage.alt = "";
+      document.body.classList.remove("lightbox-open");
+    }
+
+    const canOpenLightbox = () => true;
+
+    document.querySelectorAll("[data-lightbox-src]").forEach((img) => {
+      img.addEventListener("click", () => {
+        if (!canOpenLightbox()) {
+          return;
+        }
+        openLightbox(img.getAttribute("data-lightbox-src"), img.getAttribute("alt"));
+      });
+    });
+
+    lightboxClose.addEventListener("click", closeLightbox);
+    lightboxBackdrop.addEventListener("click", closeLightbox);
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && !lightbox.hidden) {
+        closeLightbox();
+      }
+    });
+  </script>
+</body>
+</html>

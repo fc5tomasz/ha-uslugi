@@ -17,10 +17,10 @@
   <meta property="og:title" content="What is Home Assistant? | Smart home, automation and integrations" />
   <meta property="og:description" content="What is Home Assistant? Discover system capabilities: security, monitoring, heating, AI, garden control, hardware and installation." />
   <meta property="og:url" content="https://ha-expert.com/en/what-is-ha/" />
-  <link rel="stylesheet" href="../../styles.css?v=20260420-headings-35" />
+  <link rel="stylesheet" href="../../styles.css?v=20260730-mobile-46" />
   <script src="../../consent.js?v=20260420-consent-1"></script>
 </head>
-<body class="knowledge-page">
+<body class="knowledge-page pl-home-bg-test">
   <header class="scrolled">
     <div class="nav">
       <a class="logo" href="/en/" aria-label="Tomasz Furdal - Home Assistant Expert">
@@ -34,10 +34,22 @@
       <nav id="primary-nav" aria-label="Primary">
         <ul>
           <li><a href="/en/#services">Services</a></li>
+          <li><a href="/en/#about-me">About me</a></li>
           <li><a href="/en/#who-its-for">Who it’s for</a></li>
           <li><a href="/en/#how-i-work">How I work</a></li>
           <li><a href="/en/#pricing">Pricing</a></li>
-          <li class="mobile-inline-link"><a href="/en/#contact">Contact</a></li>
+          <li><a href="/en/#contact">Contact</a></li>
+          <li class="nav-secondary-start"><a href="/en/projects/">Projects</a></li>
+          <li class="nav-guides">
+            <button class="nav-guides-toggle" type="button" aria-expanded="false" aria-haspopup="true">
+              <span>Guides</span><span class="nav-guides-chevron" aria-hidden="true">▾</span>
+            </button>
+            <ul class="nav-guides-dropdown">
+              <li><a href="/en/what-is-ha/" aria-current="page">What is Home Assistant?</a></li>
+              <li><a href="/en/stable-zigbee/">Zigbee connection dropping?</a></li>
+            </ul>
+          </li>
+          <li><a href="/en/demo/">Demo panel</a></li>
         </ul>
       </nav>
       <div class="lang-switch" aria-label="Language switch">
@@ -45,8 +57,7 @@
         <a class="lang-btn" href="/dk/hvad-er-ha/" aria-label="Dansk"><img class="lang-flag" src="../../assets/flags/dk.svg" alt="" aria-hidden="true" /></a>
         <a class="lang-btn active" href="/en/what-is-ha/" aria-label="English" aria-current="page"><img class="lang-flag" src="../../assets/flags/gb.svg" alt="" aria-hidden="true" /></a>
       </div>
-      <a class="btn-ghost nav-demo-link" href="/en/demo/">Panel Demo</a>
-      <a class="nav-cta" href="/en/#pricing">Free diagnosis</a>
+      <a class="nav-cta" href="/en/#contact">Free diagnosis</a>
     </div>
   </header>
 
@@ -158,7 +169,7 @@
     </div>
   </footer>
 
-  <script src="../../nav.js"></script>
+  <script src="../../nav.js?v=20260730-mobile-nav-10"></script>
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>

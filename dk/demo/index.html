@@ -11,11 +11,11 @@
   <link rel="alternate" hreflang="en" href="https://ha-expert.com/en/demo/" />
   <link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/demo/" />
   <link rel="alternate" hreflang="x-default" href="https://ha-expert.com/demo/" />
-  <link rel="stylesheet" href="/styles.css?v=20260420-headings-35" />
-  <link rel="stylesheet" href="/demo/demo.css?v=20260419-demo-12" />
+  <link rel="stylesheet" href="/styles.css?v=20260730-mobile-46" />
+  <link rel="stylesheet" href="/demo/demo.css?v=20260729-mobile-13" />
   <script src="/consent.js?v=20260420-consent-1"></script>
 </head>
-<body class="demo-page" data-demo-lang="dk">
+<body class="demo-page pl-home-bg-test" data-demo-lang="dk">
   <header class="demo-mobile-header">
     <div class="nav">
       <a class="logo" id="demo-home-link" href="/dk/" aria-label="Tomasz Furdal - Home Assistant Expert">
@@ -27,11 +27,22 @@
       <nav id="demo-primary-nav" aria-label="Primary">
         <ul>
           <li><a id="demo-nav-services" href="/dk/#ydelser" data-i18n="nav_services">Ydelser</a></li>
+          <li><a id="demo-nav-about" href="/dk/#om-mig" data-i18n="nav_about">Om mig</a></li>
           <li><a id="demo-nav-who" href="/dk/#for-hvem" data-i18n="nav_who">For hvem</a></li>
           <li><a id="demo-nav-process" href="/dk/#saadan-arbejder-jeg" data-i18n="nav_process">Sådan arbejder jeg</a></li>
           <li><a id="demo-nav-pricing" href="/dk/#priser" data-i18n="nav_pricing">Priser</a></li>
-          <li><a id="demo-nav-about" href="/dk/#om-mig" data-i18n="nav_about">Om mig</a></li>
           <li><a id="demo-nav-contact" href="/dk/#kontakt" data-i18n="nav_contact">Kontakt</a></li>
+          <li class="nav-secondary-start"><a href="/dk/projekter/">Projekter</a></li>
+          <li class="nav-guides">
+            <button class="nav-guides-toggle" type="button" aria-expanded="false" aria-haspopup="true">
+              <span>Vejledninger</span><span class="nav-guides-chevron" aria-hidden="true">▾</span>
+            </button>
+            <ul class="nav-guides-dropdown">
+              <li><a href="/dk/hvad-er-ha/">Hvad er Home Assistant?</a></li>
+              <li><a href="/dk/stabilt-zigbee/">Mister Zigbee forbindelsen?</a></li>
+            </ul>
+          </li>
+          <li><a href="/dk/demo/" aria-current="page">Demo-panel</a></li>
         </ul>
       </nav>
       <div class="lang-switch" aria-label="Language switch">
@@ -39,7 +50,7 @@
         <a class="lang-btn active" href="/dk/demo/" aria-label="Dansk" aria-current="page"><img class="lang-flag" src="/assets/flags/dk.svg" alt="" aria-hidden="true" /></a>
         <a class="lang-btn" href="/en/demo/" aria-label="English"><img class="lang-flag" src="/assets/flags/gb.svg" alt="" aria-hidden="true" /></a>
       </div>
-      <a class="nav-cta" id="demo-nav-cta" href="/dk/#priser" data-i18n="nav_cta">Gratis diagnose</a>
+      <a class="nav-cta" id="demo-nav-cta" href="/dk/#kontakt" data-i18n="nav_cta">Gratis diagnose</a>
     </div>
   </header>
   <main class="demo-shell">
@@ -49,7 +60,6 @@
         <h1 class="demo-title demo-title-mobile-match mobile-match-title" data-i18n="title">Demonstration af Home Assistant muligheder</h1>
         <p class="demo-subtitle" data-i18n="subtitle">Dette er en separat underside, der viser et fungerende animeret panel baseret på logikken i en Home Assistant-installation. Du ser kun et demonstrationspanel.</p>
         <p class="demo-context-line">Diagrammet viser energiflow, varmelogik og aktuelle vejrparametre.</p>
-        <p class="demo-mobile-intro" data-i18n="mobile_intro">Interaktivt demopanel. Klik på diagrammet for at ændre tidspunktet på dagen og se installationens reaktion.</p>
       </div>
     </section>
 
@@ -61,6 +71,8 @@
       <div class="demo-sim-status js-simulation-status" id="simulation-status-desktop">Klik på knappen for at starte simuleringen...</div>
     </section>
 
+    <p class="demo-mobile-intro demo-panel-instruction"><button class="demo-panel-instruction-button" id="demo-instruction-trigger" type="button" data-i18n="mobile_intro_action">Klik på diagrammet</button><span data-i18n="mobile_intro_detail"> for at ændre tidspunktet på dagen og se installationens reaktion.</span></p>
+
     <section class="demo-panel-wrap">
       <button class="demo-panel-trigger" id="demo-panel-trigger" type="button" aria-label="Simuler tid på dagen">
         <div id="panelMount" class="demo-panel-frame"></div>
@@ -69,7 +81,7 @@
     </section>
   </main>
 
-  <script src="/nav.js?v=20260419-nav-7"></script>
-  <script src="/demo/panel-demo.js?v=20260419-demo-12"></script>
+  <script src="/nav.js?v=20260730-mobile-nav-10"></script>
+  <script src="/demo/panel-demo.js?v=20260730-contact-14"></script>
 </body>
 </html>

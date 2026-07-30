@@ -2,6 +2,21 @@ body.demo-page{
   min-height:100vh;
 }
 
+body.demo-page.pl-home-bg-test{
+  background:
+    radial-gradient(circle at 12% 18%, rgba(102,226,255,.21), transparent 24%),
+    radial-gradient(circle at 82% 12%, rgba(18,200,132,.42), transparent 25%),
+    linear-gradient(180deg, rgba(20,86,64,.98) 0%, rgba(17,70,52,.96) 42%, rgba(12,50,38,.98) 100%);
+}
+
+body.demo-page.pl-home-bg-test .panel-wrap{
+  background:
+    radial-gradient(circle at 14% 12%, rgba(18,200,132,.13), transparent 24%),
+    radial-gradient(circle at 82% 18%, rgba(102,226,255,.09), transparent 22%),
+    linear-gradient(180deg, rgba(8,27,23,.98) 0%, rgba(7,20,18,.98) 100%);
+  border-color:rgba(18,200,132,.16);
+}
+
 .demo-mobile-header{
   display:none;
 }
@@ -238,6 +253,34 @@ body.demo-page .demo-mobile-intro{
   max-width:52rem;
 }
 
+body.demo-page .demo-panel-instruction{
+  margin:0 0 12px;
+  max-width:none;
+  white-space:nowrap;
+}
+
+body.demo-page .demo-panel-instruction-button{
+  appearance:none;
+  margin:0;
+  padding:0;
+  border:0;
+  background:transparent;
+  color:var(--accent);
+  font:inherit;
+  font-weight:800;
+  cursor:pointer;
+}
+
+body.demo-page .demo-panel-instruction-button:hover{
+  text-decoration:underline;
+  text-underline-offset:3px;
+}
+
+body.demo-page .demo-panel-instruction-button:focus-visible{
+  outline:2px solid var(--accent-2);
+  outline-offset:3px;
+}
+
 body.demo-page .demo-control-bar{
   display:none;
 }
@@ -361,9 +404,9 @@ body.demo-page .demo-panel-status{
   }
 
   .demo-title-mobile-match{
-    font-size:clamp(1.14rem, 4.8vw, 1.3rem) !important;
-    line-height:1.16 !important;
-    letter-spacing:-.03em !important;
+    font-size:1.35rem !important;
+    line-height:1.22 !important;
+    letter-spacing:0 !important;
     max-width:none !important;
   }
 
@@ -393,6 +436,11 @@ body.demo-page .demo-panel-status{
     margin:10px 0 0;
     color:var(--muted-strong);
     line-height:1.55;
+  }
+
+  body.demo-page .demo-panel-instruction{
+    margin:0 0 12px;
+    white-space:normal;
   }
 
   body.demo-page .demo-control-bar{

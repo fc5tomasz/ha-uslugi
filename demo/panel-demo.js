@@ -18,7 +18,9 @@
       sim_button_mobile: "🎲 Symuluj porę dnia",
       sim_prompt: "Kliknij przycisk, aby rozpocząć symulację...",
       mobile_intro:
-        "Interaktywny panel demonstracyjny. Kliknij schemat, aby zmienić porę dnia i zobaczyć reakcję instalacji.",
+        "Kliknij schemat, aby zmienić porę dnia i zobaczyć reakcję instalacji.",
+      mobile_intro_action: "Kliknij schemat",
+      mobile_intro_detail: ", aby zmienić porę dnia i zobaczyć reakcję instalacji.",
       nav_services: "Usługi",
       nav_who: "Dla kogo",
       nav_process: "Jak pracuję",
@@ -98,7 +100,9 @@
       sim_button_mobile: "🎲 Simuler tid på dagen",
       sim_prompt: "Klik på knappen for at starte simuleringen...",
       mobile_intro:
-        "Interaktivt demopanel. Klik på diagrammet for at ændre tidspunktet på dagen og se installationens reaktion.",
+        "Klik på diagrammet for at ændre tidspunktet på dagen og se installationens reaktion.",
+      mobile_intro_action: "Klik på diagrammet",
+      mobile_intro_detail: " for at ændre tidspunktet på dagen og se installationens reaktion.",
       nav_services: "Ydelser",
       nav_who: "For hvem",
       nav_process: "Sådan arbejder jeg",
@@ -178,7 +182,9 @@
       sim_button_mobile: "🎲 Simulate time of day",
       sim_prompt: "Click the button to start the simulation...",
       mobile_intro:
-        "Interactive demo panel. Click the diagram to change the time of day and see the installation's reaction.",
+        "Click the diagram to change the time of day and see the installation's reaction.",
+      mobile_intro_action: "Click the diagram",
+      mobile_intro_detail: " to change the time of day and see the installation's reaction.",
       nav_services: "Services",
       nav_who: "Who it’s for",
       nav_process: "How I work",
@@ -346,7 +352,7 @@
         pricing: "/pl/#cennik",
         about: "/pl/#o-mnie",
         contact: "/pl/#kontakt",
-        cta: "/pl/#cennik"
+        cta: "/pl/#kontakt"
       },
       en: {
         home: "/en/",
@@ -356,7 +362,7 @@
         pricing: "/en/#pricing",
         about: "/en/#about-me",
         contact: "/en/#contact",
-        cta: "/en/#pricing"
+        cta: "/en/#contact"
       },
       dk: {
         home: "/dk/",
@@ -366,7 +372,7 @@
         pricing: "/dk/#priser",
         about: "/dk/#om-mig",
         contact: "/dk/#kontakt",
-        cta: "/dk/#priser"
+        cta: "/dk/#kontakt"
       }
     };
     const links = linkMap[lang] || linkMap.pl;
@@ -515,6 +521,19 @@
           <rect x="-24" y="0" width="62" height="20" rx="10" fill="#d7e4f0"/>
         </g>
       `;
+      const partlyCloudy = `
+        <g transform="translate(${x} ${y})">
+          <circle cx="-13" cy="-12" r="8" fill="#f7c948"/>
+          <g fill="none" stroke="#f7c948" stroke-width="2.5" stroke-linecap="round">
+            <line x1="-13" y1="-25" x2="-13" y2="-21"/>
+            <line x1="-26" y1="-12" x2="-22" y2="-12"/>
+            <line x1="-22" y1="-21" x2="-19" y2="-18"/>
+            <line x1="-4" y1="-21" x2="-7" y2="-18"/>
+          </g>
+          <path d="M -18 18 C -24 18 -28 14 -28 9 C -28 4 -24 0 -19 -1 C -18 -9 -12 -14 -4 -14 C 3 -14 9 -10 11 -3 C 14 -5 17 -6 20 -6 C 26 -6 31 -1 31 5 C 31 12 26 18 19 18 Z"
+            fill="#dce5ec" stroke="#f4f7fa" stroke-width="2.5" stroke-linejoin="round"/>
+        </g>
+      `;
       const rain = `
         <g transform="translate(${x} ${y})" stroke="#6fd5ff" stroke-width="4" stroke-linecap="round">
           <line x1="-16" y1="24" x2="-22" y2="36"/>
@@ -534,7 +553,7 @@
       if (phase === "sunset") return `${horizon}${sunsetSun}`;
       if (state === "clear-night") return moon;
       if (state === "sunny") return phase === "night" ? moon : sun;
-      if (state === "partlycloudy") return phase === "night" ? `${moon}${cloud}` : `${sun}${cloud}`;
+      if (state === "partlycloudy") return phase === "night" ? `${moon}${cloud}` : partlyCloudy;
       if (state === "cloudy" || state === "fog") return cloud;
       if (state === "rainy" || state === "pouring") return `${cloud}${rain}`;
       if (state === "windy" || state === "windy-variant") return wind;
@@ -904,6 +923,7 @@
   applyI18n(lang);
   const dict = DICT[lang];
   const panelTrigger = qs("#demo-panel-trigger");
+  const instructionTrigger = qs("#demo-instruction-trigger");
   const initialState = createInitialState(dict);
   const renderer = new PanelDemoRenderer(qs("#panelMount"), dict);
 
@@ -976,6 +996,10 @@
       }
       runNextScenario();
     });
+  }
+
+  if (instructionTrigger) {
+    instructionTrigger.addEventListener("click", runNextScenario);
   }
 
   renderSimulationStatus(initialState);

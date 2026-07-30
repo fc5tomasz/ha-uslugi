@@ -70,10 +70,10 @@
   }
 }
   </script>
-  <link rel="stylesheet" href="../styles.css?v=20260421-headings-42" />
+  <link rel="stylesheet" href="../styles.css?v=20260730-mobile-46" />
   <script src="../consent.js?v=20260420-consent-1"></script>
 </head>
-<body>
+<body class="pl-home-bg-test">
   <header>
     <div class="nav">
       <a class="logo" href="/dk/" aria-label="Tomasz Furdal - Home Assistant Expert">
@@ -87,12 +87,22 @@
       <nav id="primary-nav" aria-label="Primary">
         <ul>
           <li><a href="/dk/#ydelser">Ydelser</a></li>
+          <li><a href="/dk/#om-mig">Om mig</a></li>
           <li><a href="/dk/#for-hvem">For hvem</a></li>
           <li><a href="/dk/#saadan-arbejder-jeg">Sådan arbejder jeg</a></li>
           <li><a href="/dk/#priser">Priser</a></li>
-          <li><a href="/dk/#om-mig">Om mig</a></li>
           <li><a href="/dk/#kontakt">Kontakt</a></li>
-          <li><a href="/dk/demo/">Demo Panel</a></li>
+          <li class="nav-secondary-start"><a href="/dk/projekter/">Projekter</a></li>
+          <li class="nav-guides">
+            <button class="nav-guides-toggle" type="button" aria-expanded="false" aria-haspopup="true">
+              <span>Vejledninger</span><span class="nav-guides-chevron" aria-hidden="true">▾</span>
+            </button>
+            <ul class="nav-guides-dropdown">
+              <li><a href="/dk/hvad-er-ha/">Hvad er Home Assistant?</a></li>
+              <li><a href="/dk/stabilt-zigbee/">Mister Zigbee forbindelsen?</a></li>
+            </ul>
+          </li>
+          <li><a href="/dk/demo/">Demo-panel</a></li>
         </ul>
       </nav>
       <div class="lang-switch" aria-label="Language switch">
@@ -100,7 +110,7 @@
         <a class="lang-btn active" href="/dk/" aria-label="Dansk" aria-current="page"><img class="lang-flag" src="../assets/flags/dk.svg" alt="" aria-hidden="true" /></a>
         <a class="lang-btn" href="/en/" aria-label="English"><img class="lang-flag" src="../assets/flags/gb.svg" alt="" aria-hidden="true" /></a>
       </div>
-      <a class="nav-cta" href="/dk/#priser">Gratis diagnose</a>
+      <a class="nav-cta" href="/dk/#kontakt">Gratis diagnose</a>
     </div>
   </header>
 
@@ -112,41 +122,20 @@
   <main>
     <section class="section hero" id="top">
       <div class="hero-copy">
-        <h1>Eksperthjælp til Home Assistant <span class="hero-topics"><span class="hero-topic">Automatiseringer</span><span class="hero-topic-separator" aria-hidden="true">·</span><span class="hero-topic">Varme</span><span class="hero-topic-separator" aria-hidden="true">·</span><span class="hero-topic">Paneler</span></span></h1>
+        <h1>Professionel hjælp til Home Assistant</h1>
         <p class="hero-sub">
-          Jeg genopretter stabiliteten i dit intelligente hjem. Jeg løser logikfejl, organiserer entiteter og designer overskuelige kontrolflader. Du bruger systemet bekvemt, mens jeg tager mig af det tekniske kaos.
+          Jeg installerer, reparerer, rydder op i og udbygger Home Assistant-systemer, så de fungerer stabilt, overskueligt og praktisk i hverdagen. Jeg hjælper 100 % på afstand — fra diagnosticering af problemet til implementering af de aftalte ændringer.
         </p>
-        <div class="hero-actions">
-          <a class="hero-text-link" href="/dk/#eksempler">Se eksempler på kontrolpaneler <span aria-hidden="true">→</span></a>
-        </div>
+        <a class="hero-text-link hero-contact-link" href="/dk/#kontakt"><span class="hero-link-main">Har du brug for hjælp til Home Assistant?</span> <strong>Kontakt mig for en gratis og uforpligtende diagnosticering</strong> <span class="hero-link-arrow" aria-hidden="true">→</span> <span class="hero-link-cta">klik her</span></a>
       </div>
-
-      <aside class="hero-panel card">
-        <div>
-          <div class="section-label">Samarbejde</div>
-          <h2 class="hero-panel-title">Jeg hjælper dér, hvor Home Assistant begynder at give problemer.</h2>
-        </div>
-        <div class="hero-note">
-          <ul class="hero-note-list">
-            <li>ustabile automatiseringer og logikfejl</li>
-            <li>varme, solceller, energistyring og kontrolpaneler</li>
-            <li>rod i entiteter, dashboards og integrationer</li>
-            <li>eksisterende installationer, der kræver orden, udvidelse eller stabilisering</li>
-          </ul>
-        </div>
-      </aside>
     </section>
 
     <section class="section" id="ydelser">
-      <div class="section-label">Ydelser</div>
-      <h2 class="section-title mobile-match-title">Professionel Home Assistant Hjælp & Ydelser</h2>
-      <p class="section-subtitle">Jeg løser problemer i tre nøgleområder. Jeg arbejder 100 % remote, så din placering er underordnet.</p>
+      <div class="section-label">Omfang af hjælpen</div>
+      <h2 class="section-title mobile-match-title">Home Assistant-ydelser</h2>
 
       <div class="grid-3 services-grid services-grid-primary">
         <div class="card service-card">
-          <div class="card-top">
-            <span class="card-kicker">Fundament</span>
-          </div>
           <h3>Opstart og oprydning i systemet</h3>
           <ul>
             <li>Installation</li>
@@ -159,23 +148,17 @@
         </div>
 
         <div class="card service-card">
-          <div class="card-top">
-            <span class="card-kicker">Stabilitet</span>
-          </div>
-          <h3>Zigbee Netværk og Integrationer</h3>
+          <h3>Zigbee-netværk og integrationer</h3>
           <ul>
             <li>ZHA eller Zigbee2MQTT</li>
             <li>Tilføj integrationer</li>
-            <li>Integration af Tuya-enheder (lokalt og via cloud)</li>
+            <li>Lokale og cloudbaserede integrationer</li>
             <li>Forbedring af netværksrækkevidde (routing)</li>
-            <li>Valg af kanal uden konflikt med Wi-Fi 2.4 GHz</li>
+            <li>Valg af kanal, så konflikt med Wi-Fi på 2,4 GHz undgås</li>
           </ul>
         </div>
 
         <div class="card service-card">
-          <div class="card-top">
-            <span class="card-kicker">Logik</span>
-          </div>
           <h3>Automatiseringer</h3>
           <ul>
             <li>Klar logik uden kaos</li>
@@ -190,7 +173,7 @@
 
     <section class="section" id="om-mig">
       <div class="section-label">Om mig</div>
-      <h2 class="section-title mobile-match-title">Lidenskab, der blev til en profession.</h2>
+      <h2 class="section-title mobile-match-title">Lidenskab, der blev til en profession</h2>
       <div class="about-grid">
         <div class="card about-photo-card">
           <img class="about-photo" src="../assets/brand/o-mnie.webp" alt="Tomasz Furdal - Home Assistant Ekspert" loading="lazy" width="1536" height="1024" />
@@ -218,38 +201,25 @@
     <section class="section" id="for-hvem">
       <div class="section-label">Hvem jeg hjælper</div>
       <h2 class="section-title mobile-match-title">Hvilken situation står du i nu?</h2>
-      <p class="section-subtitle">Du behøver ikke at være programmør for at få et stabilt og problemfrit smart home.</p>
       <div class="grid-2 audience-grid">
         <div class="card audience-card">
-          <div class="card-top">
-            <span class="card-kicker">Du har systemet</span>
-            <span class="card-badge">A</span>
-          </div>
-          <h3>Du har allerede Home Assistant</h3>
-          <p>Ikke alt fungerer som det skal, eller systemet er ved at blive svært at bruge i hverdagen.</p>
+          <h3>Du har allerede Home Assistant, men systemet fungerer ikke, som det skal</h3>
           <ul>
             <li>Zigbee reagerer nogle gange ikke</li>
             <li>Automatiseringer virker on and off</li>
             <li>Mangel på orden og kontrol</li>
             <li>Du vil tilføje integrationer og have praktisk styring</li>
             <li>Du ønsker æstetiske, læselige dashboards</li>
-            <li class="audience-link-row"><a class="audience-inline-link" href="/dk/#kontakt">Kontakt mig <span aria-hidden="true">→</span></a></li>
           </ul>
         </div>
         <div class="card audience-card">
-          <div class="card-top">
-            <span class="card-kicker">Start fra nul</span>
-            <span class="card-badge">B</span>
-          </div>
-          <h3>Du vil starte fra bunden</h3>
-          <p>Du foretrækker en hurtig start med en, der har praktisk erfaring.</p>
+          <h3>Du er lige begyndt med Home Assistant og har brug for en struktureret start</h3>
           <ul>
-            <li>Jeg hjælper med at vælge enheder, der giver mening i hverdagen</li>
-            <li>Jeg opbygger praktisk styring, dashboards og enkel betjening</li>
-            <li>Jeg konfigurerer scener, automatiseringer og grundlæggende logik</li>
-            <li>Jeg strukturerer systemet, så det er nemt at udvide</li>
-            <li>Jeg hjælper dig i gang uden kaos og dårlige beslutninger</li>
-            <li class="audience-link-row"><a class="audience-inline-link" href="/dk/#saadan-arbejder-jeg">Hvordan foregår samarbejdet? <span aria-hidden="true">→</span></a></li>
+            <li>Du ved ikke, hvilke enheder du skal begynde med</li>
+            <li>Du vil undgå tilfældige køb</li>
+            <li>Du har brug for enkel styring og overskuelige dashboards</li>
+            <li>Du vil organisere automatiseringer og logik fra begyndelsen</li>
+            <li>Du ønsker et system, der nemt kan udbygges senere</li>
           </ul>
         </div>
       </div>
@@ -257,154 +227,55 @@
 
     <section class="section" id="saadan-arbejder-jeg">
       <div class="section-label">Proces</div>
-      <h2 class="section-title mobile-match-title">Hvordan ser samarbejdet ud?</h2>
-      <p class="section-subtitle">Kort fortalt: først diagnose, derefter arbejde, til sidst test.</p>
+      <h2 class="section-title mobile-match-title">Hvordan foregår samarbejdet?</h2>
       <div class="grid-2 process-grid">
         <div class="card process-card">
-          <h3>1) Gratis diagnose og pris</h3>
-          <p>Du beskriver fejlen eller det mål, du vil opnå. Sammen finder vi årsagen og beslutter omfanget af arbejdet (fast pris for en konkret opgave eller projekt fra bunden).</p>
+          <h3>1) Henvendelse, diagnosticering og tilbud</h3>
+          <p>Du beskriver problemet eller målet. Jeg vurderer, om jeg kan hjælpe, og præsenterer derefter det foreslåede omfang og prisen for arbejdet.</p>
         </div>
         <div class="card process-card">
-          <h3>2) Sikkert arbejde og fuld kontrol</h3>
-          <p>Du giver mig midlertidig adgang til dit system (f.eks. ved at oprette en dedikeret servicekonto). Det giver mig mulighed for hurtigt at diagnosticere problemet og rette fejlene "under motorhjelmen" i dit hjem. Vi tjekker resultatet sammen, og når arbejdet er færdigt, sletter du bare min konto. Du har nøglerne til dit hjem – jeg hjælper bare med at fikse det.</p>
+          <h3>2) Udførelse, test og afslutning</h3>
+          <p>Hvis Home Assistant allerede kører, opretter du en separat servicekonto til den periode, arbejdet varer. Ved en ny installation starter vi først systemet, hvorefter du opretter din egen administratorkonto og derefter en separat servicekonto til den videre konfiguration. Hvis det er nødvendigt, installerer jeg med dit samtykke et hjælpeværktøj. Jeg foretager kun de aftalte ændringer, vi tester resultatet sammen, og når arbejdet er afsluttet, sletter du servicekontoen.</p>
         </div>
       </div>
     </section>
-
-    <section class="section" id="eksempler">
-      <div class="section-label">EKSEMPLER</div>
-      <h2 class="section-title mobile-match-title">Eksempler på dashboards</h2>
-      <p class="section-subtitle">Udvalgte visninger viser både overskuelig styring og installationens driftslogik.</p>
-      <p class="showcase-interaction-hint">Klik eller tryk på panelet for at forstørre det.</p>
-      <div class="grid-3 showcase-grid">
-        <article class="card showcase-card">
-          <div class="showcase-media">
-            <img src="../assets/examples/heating-control.png" alt="Panel til styring af opvarmning og buffertank" loading="lazy" width="1920" height="1080" data-lightbox-src="../assets/examples/heating-control.png" />
-          </div>
-          <div class="showcase-copy">
-            <h3>Varmestyring</h3>
-            <p>Panelet gør det muligt at styre opvarmningen fra flere kilder, såsom off-grid solceller med en buffertank og et gasfyr. Det giver mulighed for at ændre driftstilstande, temperaturer og grænseværdier for nattesænkning, samt automatiserer energibesparelser, når huset er tomt, eller når ferietilstand er aktiv. Det hele overvåger også systemets logik, så varmekilderne ikke kører samtidigt på en ukorrekt måde.</p>
-          </div>
-        </article>
-
-        <article class="card showcase-card">
-          <div class="showcase-media">
-            <img src="../assets/examples/heating-status.png" alt="Panel med status og temperaturer i installationen" loading="lazy" width="1920" height="1080" data-lightbox-src="../assets/examples/heating-status.png" />
-          </div>
-          <div class="showcase-copy">
-            <h3>Buffer, proces og varmekilders afhængigheder</h3>
-            <p>Visningen viser bufferens status og driftslogikken for hele varmesystemet. Det gør det nemt at vurdere temperaturen i den øvre og nedre del af bufferen, informerer om energien bruges til centralvarme, og om vandet har den rette temperatur til varmt brugsvand.</p>
-          </div>
-        </article>
-
-        <article class="card showcase-card">
-          <div class="showcase-media">
-            <img src="../assets/examples/blinds-control.png" alt="Panel til rullegardiner og daglig styring" loading="lazy" width="1920" height="1080" data-lightbox-src="../assets/examples/blinds-control.png" />
-          </div>
-          <div class="showcase-copy">
-            <h3>Rulleskodder, grupper og scener</h3>
-            <p>Panelet gør det muligt at styre individuelle rulleskodder, grupper af rulleskodder og hjemmescener. Det gør det også nemmere at administrere hele hjemmet og kombinerer manuel styring med automatisering baseret på tidspunkt, tilstedeværelse og udvalgte hændelser i systemet.</p>
-          </div>
-        </article>
-
-        <article class="card showcase-card">
-          <div class="showcase-media">
-            <img src="../assets/examples/roborock.png" alt="Panel til enhedsintegrationer og styring af robotstøvsuger" loading="lazy" width="1920" height="1080" data-lightbox-src="../assets/examples/roborock.png" />
-          </div>
-          <div class="showcase-copy">
-            <h3>Enhedsintegrationer</h3>
-            <p>Panelet giver nem styring af robotstøvsugeren: start rengøring af hele huset eller kun udvalgte zoner, sæt arbejdet på pause, og send enheden tilbage til ladestationen. Det viser også støvsugerens status og lader dig justere rengøringsstyrken.</p>
-          </div>
-        </article>
-
-        <article class="card showcase-card">
-          <div class="showcase-media">
-            <img src="../assets/examples/rekuperacja.png" alt="Panel til varmegenvinding og ventilation" loading="lazy" width="1920" height="1080" data-lightbox-src="../assets/examples/rekuperacja.png" />
-          </div>
-          <div class="showcase-copy">
-            <h3>Varmegenvinding og ventilation</h3>
-            <p>Visningen giver mulighed for at skifte mellem manuel tilstand og tids- eller tilstandsbaseret automatisering. Det lader dig styre genvindingshastigheden, udluftning og driftslogikken uden at skulle ind i systemindstillingerne.</p>
-          </div>
-        </article>
-
-        <article class="card showcase-card">
-          <div class="showcase-media">
-            <img src="../assets/examples/panele.png" alt="Panel til belysning og glaspaneler" loading="lazy" width="1920" height="1080" data-lightbox-src="../assets/examples/panele.png" />
-          </div>
-          <div class="showcase-copy">
-            <h3>Belysning og glaspaneler</h3>
-            <p>Panelet genskaber de fysiske glaskontakter i hjemmet og viser den aktuelle belysningsstatus i de enkelte rum. Det gør det nemt at styre lyset hurtigt, organiserer ruminddelingen og giver et tydeligt overblik over, hvad der aktuelt er tændt.</p>
-          </div>
-        </article>
-      </div>
-
-      <div class="tech-block">
-        <div class="card tech-copy tech-copy-panel">
-          <div class="tech-copy-body">
-            <div class="section-label">Netværksstabilitet</div>
-            <h3 class="section-title section-title-small">Zigbee-topologi og forbindelsesdiagnostik</h3>
-            <p class="section-subtitle">Panelet viser, hvordan Zigbee-netværket er opbygget: hvilke enheder der forbinder direkte til koordinatoren, hvilke der fungerer via routere, og hvordan forbindelseskvaliteten ser ud i hele topologien.</p>
-            <ul class="hero-note-list tech-note-list">
-              <li>netværkstopologi og routing-stier</li>
-              <li>forbindelseskvalitet og LQI-værdier</li>
-              <li>relationer mellem koordinator, routere og slutenheder</li>
-            </ul>
-          </div>
-        </div>
-        <article class="card showcase-card tech-card">
-          <div class="showcase-media tech-media">
-            <img src="../assets/examples/zigbee-map.png" alt="Kort over Zigbee2MQTT-netværket" loading="lazy" width="1920" height="1080" data-lightbox-src="../assets/examples/zigbee-map.png" />
-          </div>
-        </article>
-      </div>
-
-      <div class="tech-copy-body knowledge-card">
-        <div class="section-label">Værd at læse</div>
-        <p class="section-subtitle">Hvis du vil forstå Home Assistant og typiske Zigbee-problemer bedre, kan du tage et kig her:</p>
-        <div><a class="knowledge-link" href="stabilt-zigbee/index.html">Mister dine Zigbee-enheder forbindelsen? Se årsager og løsninger <span aria-hidden="true">→</span></a></div>
-        <div><a class="knowledge-link" href="hvad-er-ha/index.html">Hvad er Home Assistant? <span aria-hidden="true">→</span></a></div>
-      </div>
-    </section>
-
-    <div class="lightbox" id="lightbox" hidden aria-hidden="true">
-      <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Luk forhåndsvisning">Luk</button>
-      <div class="lightbox-backdrop" id="lightboxBackdrop"></div>
-      <div class="lightbox-dialog" role="dialog" aria-modal="true" aria-label="Forhåndsvisning af panel">
-        <img id="lightboxImage" src="index.html" alt="" />
-      </div>
-    </div>
 
     <section class="section" id="priser">
-      <div class="section-label">PRISTLISTE</div>
-      <h2 class="section-title mobile-match-title">Hvad koster det?</h2>
-      <p class="section-subtitle">Først en diagnose, derefter et klart defineret omfang og pris for arbejdet.</p>
+      <div class="section-label">PRISER</div>
+      <h2 class="section-title mobile-match-title">Den indledende vurdering af henvendelsen og udarbejdelsen af et tilbud er gratis.</h2>
 
       <div class="grid-3 services-grid">
         <div class="card service-card">
-          <div class="card-top">
-            <span class="card-kicker">Start</span>
-            <span class="card-badge">01</span>
-          </div>
-          <h3>Gratis diagnose</h3>
-          <p>Jeg undersøger, om jeg reelt kan hjælpe, og foreslår en handlingsplan. Helt uforpligtende.</p>
+          <h3>Skriftlig rådgivning</h3>
+          <div class="pricing-price">Fra 150 kr.</div>
+          <p>Analyse af et problem, valg af enheder eller en planlagt udbygning. Du modtager konkrete anbefalinger, som du selv kan implementere.</p>
+          <ul>
+            <li>svar udarbejdet via e-mail</li>
+            <li>omfang aftalt før arbejdet påbegyndes</li>
+            <li>uden ændringer i systemet</li>
+          </ul>
         </div>
 
         <div class="card service-card">
-          <div class="card-top">
-            <span class="card-kicker">Reparation</span>
-            <span class="card-badge">02</span>
-          </div>
-          <h3>Reparation og optimering (fra 250 kr.)</h3>
-          <p>Jeg hjælper med automatiseringer, Zigbee, integrationer, logik og kontrolpaneler. Vi aftaler omfang og pris for den konkrete opgave på forhånd.</p>
+          <h3>Reparationer og optimering</h3>
+          <div class="pricing-price">Fra 200 kr. pr. opgave</div>
+          <p>Prisen afhænger af det konkrete problem og omfanget af det nødvendige arbejde.</p>
+          <ul>
+            <li>omfang og pris bekræftes før arbejdet påbegyndes</li>
+            <li>kun aftalte ændringer implementeres</li>
+            <li>ekstra arbejde kræver forhåndsgodkendelse</li>
+          </ul>
         </div>
 
         <div class="card service-card">
-          <div class="card-top">
-            <span class="card-kicker">Projekt</span>
-            <span class="card-badge">03</span>
-          </div>
-          <h3>Smart Home Projekter (individuel pris)</h3>
-          <p>Jeg hjælper med at opbygge et system fra bunden, strukturere forudsætningerne og designe praktisk styring, paneler og driftslogik.</p>
+          <h3>Smart Home-projekt</h3>
+          <div class="pricing-price">Individuelt tilbud</div>
+          <p>Større implementeringer og udbygninger prissættes efter en analyse af behovene og den eksisterende installation.</p>
+          <ul>
+            <li>projektet kan opdeles i etaper</li>
+            <li>omfang aftalt før arbejdet påbegyndes</li>
+            <li>prisen afhænger af projektets størrelse</li>
+          </ul>
         </div>
       </div>
     </section>
@@ -419,15 +290,15 @@
             <div class="form-grid">
               <div class="form-group">
                 <label for="name">Navn<span>*</span></label>
-                <input id="name" name="name" type="text" required placeholder="Fx Jørgen" />
+                <input id="name" name="name" type="text" required />
               </div>
               <div class="form-group">
                 <label for="email">E-mail<span>*</span></label>
-                <input id="email" name="email" type="email" required autocomplete="off" placeholder="Din e-mail" />
+                <input id="email" name="email" type="email" required autocomplete="off" />
               </div>
               <div class="form-group full">
                 <label for="message">Beskriv problemet<span>*</span></label>
-                <textarea id="message" name="message" required placeholder="Beskriv kort problemet: hvad virker ikke, hvilke integrationer drejer det sig om, og hvilken hardware kører din Home Assistant på."></textarea>
+                <textarea id="message" name="message" required></textarea>
               </div>
             </div>
             <div class="form-actions">
@@ -455,7 +326,7 @@
     </div>
   </footer>
 
-  <script src="../nav.js?v=20260419-nav-7"></script>
+  <script src="../nav.js?v=20260730-mobile-nav-10"></script>
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
@@ -470,49 +341,15 @@
     const form = document.getElementById("contactForm");
     const statusEl = document.getElementById("formStatus");
     const nameInput = document.getElementById("name");
-    const lightbox = document.getElementById("lightbox");
-    const lightboxImage = document.getElementById("lightboxImage");
-    const lightboxClose = document.getElementById("lightboxClose");
-    const lightboxBackdrop = document.getElementById("lightboxBackdrop");
     let statusResetTimer = null;
-
-    function openLightbox(src, alt) {
-      lightboxImage.src = src;
-      lightboxImage.alt = alt || "";
-      lightbox.hidden = false;
-      lightbox.setAttribute("aria-hidden", "false");
-      document.body.classList.add("lightbox-open");
-    }
-
-    function closeLightbox() {
-      lightbox.hidden = true;
-      lightbox.setAttribute("aria-hidden", "true");
-      lightboxImage.src = "";
-      lightboxImage.alt = "";
-      document.body.classList.remove("lightbox-open");
-    }
-
-    const canOpenLightbox = () => window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-
-    document.querySelectorAll("[data-lightbox-src]").forEach((img) => {
-      img.addEventListener("click", () => {
-        if (!canOpenLightbox()) {
-          return;
-        }
-        openLightbox(img.getAttribute("data-lightbox-src"), img.getAttribute("alt"));
-      });
-    });
-
-    lightboxClose.addEventListener("click", closeLightbox);
-    lightboxBackdrop.addEventListener("click", closeLightbox);
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape" && !lightbox.hidden) {
-        closeLightbox();
-      }
-    });
+    let isSubmitting = false;
 
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
+      if (isSubmitting) {
+        return;
+      }
+      isSubmitting = true;
       if (statusResetTimer) {
         clearTimeout(statusResetTimer);
         statusResetTimer = null;
@@ -547,6 +384,8 @@
         console.error("Form submit failed:", error);
         statusEl.className = "form-status err";
         statusEl.textContent = "Noget gik galt. Brug E-mail-knappen ved siden af.";
+      } finally {
+        isSubmitting = false;
       }
     });
   </script>

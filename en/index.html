@@ -70,10 +70,10 @@
   }
 }
   </script>
-  <link rel="stylesheet" href="../styles.css?v=20260421-headings-42" />
+  <link rel="stylesheet" href="../styles.css?v=20260730-mobile-46" />
   <script src="../consent.js?v=20260420-consent-1"></script>
 </head>
-<body>
+<body class="pl-home-bg-test">
   <header>
     <div class="nav">
       <a class="logo" href="/en/" aria-label="Tomasz Furdal - Home Assistant Expert">
@@ -87,12 +87,22 @@
       <nav id="primary-nav" aria-label="Primary">
         <ul>
           <li><a href="/en/#services">Services</a></li>
+          <li><a href="/en/#about-me">About me</a></li>
           <li><a href="/en/#who-its-for">Who it’s for</a></li>
           <li><a href="/en/#how-i-work">How I work</a></li>
           <li><a href="/en/#pricing">Pricing</a></li>
-          <li><a href="/en/#about-me">About me</a></li>
           <li><a href="/en/#contact">Contact</a></li>
-          <li><a href="/en/demo/">Panel Demo</a></li>
+          <li class="nav-secondary-start"><a href="/en/projects/">Projects</a></li>
+          <li class="nav-guides">
+            <button class="nav-guides-toggle" type="button" aria-expanded="false" aria-haspopup="true">
+              <span>Guides</span><span class="nav-guides-chevron" aria-hidden="true">▾</span>
+            </button>
+            <ul class="nav-guides-dropdown">
+              <li><a href="/en/what-is-ha/">What is Home Assistant?</a></li>
+              <li><a href="/en/stable-zigbee/">Zigbee connection dropping?</a></li>
+            </ul>
+          </li>
+          <li><a href="/en/demo/">Demo panel</a></li>
         </ul>
       </nav>
       <div class="lang-switch" aria-label="Language switch">
@@ -100,7 +110,7 @@
         <a class="lang-btn" href="/dk/" aria-label="Dansk"><img class="lang-flag" src="../assets/flags/dk.svg" alt="" aria-hidden="true" /></a>
         <a class="lang-btn active" href="/en/" aria-label="English" aria-current="page"><img class="lang-flag" src="../assets/flags/gb.svg" alt="" aria-hidden="true" /></a>
       </div>
-      <a class="nav-cta" href="/en/#pricing">Free diagnosis</a>
+      <a class="nav-cta" href="/en/#contact">Free diagnosis</a>
     </div>
   </header>
 
@@ -112,41 +122,20 @@
   <main>
     <section class="section hero" id="top">
       <div class="hero-copy">
-        <h1>Expert help for Home Assistant <span class="hero-topics"><span class="hero-topic">Automations</span><span class="hero-topic-separator" aria-hidden="true">·</span><span class="hero-topic">Heating</span><span class="hero-topic-separator" aria-hidden="true">·</span><span class="hero-topic">Panels</span></span></h1>
+        <h1>Professional Home Assistant help</h1>
         <p class="hero-sub">
-          I restore stability to your smart home. I solve logic errors, organize entities, and design clear control interfaces. You enjoy the system's comfort while I handle the technical chaos.
+          I install, repair, organize, and expand Home Assistant systems so they remain stable, clear, and convenient in everyday use. I work 100% remotely — from diagnosing the problem to implementing the agreed changes.
         </p>
-        <div class="hero-actions">
-          <a class="hero-text-link" href="/en/#sample-dashboards">See sample dashboards <span aria-hidden="true">→</span></a>
-        </div>
+        <a class="hero-text-link hero-contact-link" href="/en/#contact"><span class="hero-link-main">Need help with Home Assistant?</span> <strong>Contact me for a free, no-obligation diagnosis</strong> <span class="hero-link-arrow" aria-hidden="true">→</span> <span class="hero-link-cta">click here</span></a>
       </div>
-
-      <aside class="hero-panel card">
-        <div>
-          <div class="section-label">Collaboration</div>
-          <h2 class="hero-panel-title">I help where Home Assistant starts causing problems.</h2>
-        </div>
-        <div class="hero-note">
-          <ul class="hero-note-list">
-            <li>unstable automations and logic errors</li>
-            <li>heating, photovoltaics, energy management, and control panels</li>
-            <li>messy entities, dashboards, and integrations</li>
-            <li>existing installations requiring organization, expansion, or stabilization</li>
-          </ul>
-        </div>
-      </aside>
     </section>
 
     <section class="section" id="services">
-      <div class="section-label">Services</div>
-      <h2 class="section-title mobile-match-title">Professional Home Assistant Services & Help</h2>
-      <p class="section-subtitle">I solve problems in three key areas. I work 100% remotely, so your location does not matter.</p>
+      <div class="section-label">Scope of help</div>
+      <h2 class="section-title mobile-match-title">Home Assistant services</h2>
 
       <div class="grid-3 services-grid services-grid-primary">
         <div class="card service-card">
-          <div class="card-top">
-            <span class="card-kicker">Foundation</span>
-          </div>
           <h3>System setup and cleanup</h3>
           <ul>
             <li>Installation</li>
@@ -159,23 +148,17 @@
         </div>
 
         <div class="card service-card">
-          <div class="card-top">
-            <span class="card-kicker">Stability</span>
-          </div>
-          <h3>Zigbee Networks and Integrations</h3>
+          <h3>Zigbee networks and integrations</h3>
           <ul>
             <li>ZHA or Zigbee2MQTT</li>
             <li>Add integrations</li>
-            <li>Integrate Tuya devices (local and cloud)</li>
-            <li>Improve network range and routing</li>
-            <li>Choose channels that avoid Wi-Fi 2.4 GHz conflicts</li>
+            <li>Local and cloud integrations</li>
+            <li>Improve network range (routing)</li>
+            <li>Choose a channel that avoids conflicts with Wi-Fi 2.4 GHz</li>
           </ul>
         </div>
 
         <div class="card service-card">
-          <div class="card-top">
-            <span class="card-kicker">Logic</span>
-          </div>
           <h3>Automations</h3>
           <ul>
             <li>Clear logic without chaos</li>
@@ -190,7 +173,7 @@
 
     <section class="section" id="about-me">
       <div class="section-label">About Me</div>
-      <h2 class="section-title mobile-match-title">Passion that became a profession.</h2>
+      <h2 class="section-title mobile-match-title">Passion that became a profession</h2>
       <div class="about-grid">
         <div class="card about-photo-card">
           <img class="about-photo" src="../assets/brand/o-mnie.webp" alt="Tomasz Furdal - Home Assistant Expert" loading="lazy" width="1536" height="1024" />
@@ -218,38 +201,25 @@
     <section class="section" id="who-its-for">
       <div class="section-label">Who I help</div>
       <h2 class="section-title mobile-match-title">What is your current situation?</h2>
-      <p class="section-subtitle">You don't need to be a programmer to have a stable and hassle-free smart home.</p>
       <div class="grid-2 audience-grid">
         <div class="card audience-card">
-          <div class="card-top">
-            <span class="card-kicker">You already run HA</span>
-            <span class="card-badge">A</span>
-          </div>
-          <h3>You already have Home Assistant</h3>
-          <p>Not everything works as it should, or the system is becoming difficult to use daily.</p>
+          <h3>You already have Home Assistant, but the system does not work as it should</h3>
           <ul>
             <li>Zigbee sometimes doesn't respond</li>
             <li>Automations are inconsistent</li>
             <li>Lack of order and control</li>
             <li>You want to add integrations and have convenient control</li>
             <li>You want aesthetic, readable dashboards</li>
-            <li class="audience-link-row"><a class="audience-inline-link" href="/en/#contact">Contact me <span aria-hidden="true">→</span></a></li>
           </ul>
         </div>
         <div class="card audience-card">
-          <div class="card-top">
-            <span class="card-kicker">Starting from scratch</span>
-            <span class="card-badge">B</span>
-          </div>
-          <h3>You want to start from scratch</h3>
-          <p>You prefer a quick start with someone who has practical experience.</p>
+          <h3>You are just getting started with Home Assistant and need a structured start</h3>
           <ul>
-            <li>I will help select devices that make sense for daily use</li>
-            <li>I will build convenient controls, dashboards, and simple operation</li>
-            <li>I will configure scenes, automations, and basic logic</li>
-            <li>I will structure the system so it's easy to expand</li>
-            <li>I will help you start without chaos and bad decisions</li>
-            <li class="audience-link-row"><a class="audience-inline-link" href="/en/#how-i-work">How does the cooperation look? <span aria-hidden="true">→</span></a></li>
+            <li>You do not know which devices to start with</li>
+            <li>You want to avoid random purchases</li>
+            <li>You need simple controls and clear dashboards</li>
+            <li>You want to organize automations and logic from the beginning</li>
+            <li>You want a system that can be expanded easily later</li>
           </ul>
         </div>
       </div>
@@ -257,154 +227,55 @@
 
     <section class="section" id="how-i-work">
       <div class="section-label">Process</div>
-      <h2 class="section-title mobile-match-title">How does the cooperation look?</h2>
-      <p class="section-subtitle">In short: first diagnosis, then work, finally testing.</p>
+      <h2 class="section-title mobile-match-title">How does the collaboration work?</h2>
       <div class="grid-2 process-grid">
         <div class="card process-card">
-          <h3>1) Free diagnosis and quote</h3>
-          <p>You describe the issue or what you want to achieve. Together we identify the cause and decide on the scope of work (fixed price for a specific task or project from scratch).</p>
+          <h3>1) Request, diagnosis, and quote</h3>
+          <p>You describe the problem or goal. I check whether I can help, then present the proposed scope and cost of the work.</p>
         </div>
         <div class="card process-card">
-          <h3>2) Secure work and full control</h3>
-          <p>You provide me with temporary access to your system (e.g., by creating a dedicated service account). This allows me to efficiently diagnose the issue and make fixes "under the hood" of your home. We check the results together, and once the work is done, you simply delete my account. You hold the keys to your home – I'm just here to help fix it.</p>
+          <h3>2) Implementation, testing, and completion</h3>
+          <p>If Home Assistant is already running, you create a separate service account for the duration of the work. For a new installation, we first start the system and you create your own administrator account, followed by a separate service account for further configuration. If needed, and with your consent, I install a supporting tool. I only make the agreed changes, we test the results together, and you delete the service account when the work is complete.</p>
         </div>
       </div>
     </section>
-
-    <section class="section" id="sample-dashboards">
-      <div class="section-label">EXAMPLES</div>
-      <h2 class="section-title mobile-match-title">Sample dashboards</h2>
-      <p class="section-subtitle">Selected views show both clear control interfaces and the operating logic of the installation.</p>
-      <p class="showcase-interaction-hint">Click or tap a panel to enlarge it.</p>
-      <div class="grid-3 showcase-grid">
-        <article class="card showcase-card">
-          <div class="showcase-media">
-            <img src="../assets/examples/heating-control.png" alt="Heating and buffer control panel" loading="lazy" width="1920" height="1080" data-lightbox-src="../assets/examples/heating-control.png" />
-          </div>
-          <div class="showcase-copy">
-            <h3>Heating control</h3>
-            <p>The dashboard allows managing heating from multiple sources, such as off-grid photovoltaics with a buffer tank and a gas boiler. It enables changing operating modes, temperatures, and setback thresholds, and automates energy savings when the house is empty or in vacation mode. The entire setup also monitors the system's logic so that heat sources do not operate simultaneously in an incorrect manner.</p>
-          </div>
-        </article>
-
-        <article class="card showcase-card">
-          <div class="showcase-media">
-            <img src="../assets/examples/heating-status.png" alt="Installation status and temperature panel" loading="lazy" width="1920" height="1080" data-lightbox-src="../assets/examples/heating-status.png" />
-          </div>
-          <div class="showcase-copy">
-            <h3>Buffer, process, and heat source dependencies</h3>
-            <p>The view shows the buffer status and the operating logic of the entire heating system. It makes it easy to assess the temperature in the upper and lower parts of the buffer, informs whether energy is being used for central heating, and whether the water is at the right temperature for domestic hot water.</p>
-          </div>
-        </article>
-
-        <article class="card showcase-card">
-          <div class="showcase-media">
-            <img src="../assets/examples/blinds-control.png" alt="Blinds and everyday control panel" loading="lazy" width="1920" height="1080" data-lightbox-src="../assets/examples/blinds-control.png" />
-          </div>
-          <div class="showcase-copy">
-            <h3>Blinds, groups, and scenes</h3>
-            <p>The dashboard allows you to control individual blinds, groups of blinds, and home scenes. It also facilitates managing the entire home and combines manual control with automation based on the time of day, presence, and selected events in the system.</p>
-          </div>
-        </article>
-
-        <article class="card showcase-card">
-          <div class="showcase-media">
-            <img src="../assets/examples/roborock.png" alt="Device integrations and robot vacuum control panel" loading="lazy" width="1920" height="1080" data-lightbox-src="../assets/examples/roborock.png" />
-          </div>
-          <div class="showcase-copy">
-            <h3>Device integrations</h3>
-            <p>The dashboard allows convenient control of the robot vacuum: starting a full house clean or just selected zones, pausing work, and sending the device back to the dock. It also shows the vacuum's status and lets you adjust the cleaning power.</p>
-          </div>
-        </article>
-
-        <article class="card showcase-card">
-          <div class="showcase-media">
-            <img src="../assets/examples/rekuperacja.png" alt="Heat recovery and ventilation panel" loading="lazy" width="1920" height="1080" data-lightbox-src="../assets/examples/rekuperacja.png" />
-          </div>
-          <div class="showcase-copy">
-            <h3>Heat recovery and ventilation</h3>
-            <p>The view allows switching between manual mode and time-based or condition-based automation. It lets you control the recovery speed, airing out, and operating logic without needing to access system settings.</p>
-          </div>
-        </article>
-
-        <article class="card showcase-card">
-          <div class="showcase-media">
-            <img src="../assets/examples/panele.png" alt="Lighting and glass panels dashboard" loading="lazy" width="1920" height="1080" data-lightbox-src="../assets/examples/panele.png" />
-          </div>
-          <div class="showcase-copy">
-            <h3>Lighting and glass panels</h3>
-            <p>The dashboard replicates the physical glass switches in the home and shows the current lighting status in individual rooms. It facilitates quick light control, organizes the room layout, and provides a clear overview of what is currently turned on.</p>
-          </div>
-        </article>
-      </div>
-
-      <div class="tech-block">
-        <div class="card tech-copy tech-copy-panel">
-          <div class="tech-copy-body">
-            <div class="section-label">Network stability</div>
-            <h3 class="section-title section-title-small">Zigbee topology and connection diagnostics</h3>
-            <p class="section-subtitle">The dashboard shows how the Zigbee network is built: which devices connect directly to the coordinator, which work through routers, and the connection quality across the entire topology.</p>
-            <ul class="hero-note-list tech-note-list">
-              <li>network topology and routing paths</li>
-              <li>connection quality and LQI values</li>
-              <li>relationships between the coordinator, routers, and end devices</li>
-            </ul>
-          </div>
-        </div>
-        <article class="card showcase-card tech-card">
-          <div class="showcase-media tech-media">
-            <img src="../assets/examples/zigbee-map.png" alt="Zigbee2MQTT network map" loading="lazy" width="1920" height="1080" data-lightbox-src="../assets/examples/zigbee-map.png" />
-          </div>
-        </article>
-      </div>
-
-      <div class="tech-copy-body knowledge-card">
-        <div class="section-label">Worth reading</div>
-        <p class="section-subtitle">If you want to better understand Home Assistant and typical Zigbee issues, take a look here:</p>
-        <div><a class="knowledge-link" href="stable-zigbee/index.html">Zigbee connection dropping? Check the causes and solutions <span aria-hidden="true">→</span></a></div>
-        <div><a class="knowledge-link" href="what-is-ha/index.html">What is Home Assistant? <span aria-hidden="true">→</span></a></div>
-      </div>
-    </section>
-
-    <div class="lightbox" id="lightbox" hidden aria-hidden="true">
-      <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Close preview">Close</button>
-      <div class="lightbox-backdrop" id="lightboxBackdrop"></div>
-      <div class="lightbox-dialog" role="dialog" aria-modal="true" aria-label="Panel preview">
-        <img id="lightboxImage" src="index.html" alt="" />
-      </div>
-    </div>
 
     <section class="section" id="pricing">
       <div class="section-label">PRICING</div>
-      <h2 class="section-title mobile-match-title">How much does it cost?</h2>
-      <p class="section-subtitle">First a diagnosis, then a clearly defined scope and cost of work.</p>
+      <h2 class="section-title mobile-match-title">The initial assessment and preparation of a quote are free.</h2>
 
       <div class="grid-3 services-grid">
         <div class="card service-card">
-          <div class="card-top">
-            <span class="card-kicker">Start</span>
-            <span class="card-badge">01</span>
-          </div>
-          <h3>Free Diagnosis</h3>
-          <p>I check if I can realistically help and propose an action plan. No obligations.</p>
+          <h3>Written advice</h3>
+          <div class="pricing-price">From €20</div>
+          <p>Analysis of a problem, device selection, or a planned expansion. You receive specific recommendations to implement yourself.</p>
+          <ul>
+            <li>response prepared by email</li>
+            <li>scope agreed before work begins</li>
+            <li>no changes made to the system</li>
+          </ul>
         </div>
 
         <div class="card service-card">
-          <div class="card-top">
-            <span class="card-kicker">Repair</span>
-            <span class="card-badge">02</span>
-          </div>
-          <h3>Repairs and Optimization (from 30 €)</h3>
-          <p>I help with automations, Zigbee, integrations, logic, and control panels. Scope and price are agreed upon upfront for each specific task.</p>
+          <h3>Repairs and optimization</h3>
+          <div class="pricing-price">From €25 per task</div>
+          <p>The price depends on the specific problem and the scope of work required.</p>
+          <ul>
+            <li>scope and cost confirmed before work begins</li>
+            <li>only agreed changes are implemented</li>
+            <li>additional work requires prior approval</li>
+          </ul>
         </div>
 
         <div class="card service-card">
-          <div class="card-top">
-            <span class="card-kicker">Project</span>
-            <span class="card-badge">03</span>
-          </div>
-          <h3>Smart Home Projects (individual quote)</h3>
-          <p>I help create a system from scratch, organize requirements, and design intuitive controls, dashboards, and operating logic.</p>
+          <h3>Smart Home project</h3>
+          <div class="pricing-price">Individual quote</div>
+          <p>Larger implementations and expansions are quoted after analysing your needs and the existing installation.</p>
+          <ul>
+            <li>the project can be divided into stages</li>
+            <li>scope agreed before work begins</li>
+            <li>cost depends on the size of the project</li>
+          </ul>
         </div>
       </div>
     </section>
@@ -419,15 +290,15 @@
             <div class="form-grid">
               <div class="form-group">
                 <label for="name">Name<span>*</span></label>
-                <input id="name" name="name" type="text" required placeholder="e.g. John" />
+                <input id="name" name="name" type="text" required />
               </div>
               <div class="form-group">
                 <label for="email">E-mail<span>*</span></label>
-                <input id="email" name="email" type="email" required autocomplete="off" placeholder="Your e-mail" />
+                <input id="email" name="email" type="email" required autocomplete="off" />
               </div>
               <div class="form-group full">
                 <label for="message">Describe the problem<span>*</span></label>
-                <textarea id="message" name="message" required placeholder="Briefly describe the problem: what’s not working, which integrations are affected, and what hardware your Home Assistant runs on."></textarea>
+                <textarea id="message" name="message" required></textarea>
               </div>
             </div>
             <div class="form-actions">
@@ -455,7 +326,7 @@
     </div>
   </footer>
 
-  <script src="../nav.js?v=20260419-nav-7"></script>
+  <script src="../nav.js?v=20260730-mobile-nav-10"></script>
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
@@ -470,49 +341,15 @@
     const form = document.getElementById("contactForm");
     const statusEl = document.getElementById("formStatus");
     const nameInput = document.getElementById("name");
-    const lightbox = document.getElementById("lightbox");
-    const lightboxImage = document.getElementById("lightboxImage");
-    const lightboxClose = document.getElementById("lightboxClose");
-    const lightboxBackdrop = document.getElementById("lightboxBackdrop");
     let statusResetTimer = null;
-
-    function openLightbox(src, alt) {
-      lightboxImage.src = src;
-      lightboxImage.alt = alt || "";
-      lightbox.hidden = false;
-      lightbox.setAttribute("aria-hidden", "false");
-      document.body.classList.add("lightbox-open");
-    }
-
-    function closeLightbox() {
-      lightbox.hidden = true;
-      lightbox.setAttribute("aria-hidden", "true");
-      lightboxImage.src = "";
-      lightboxImage.alt = "";
-      document.body.classList.remove("lightbox-open");
-    }
-
-    const canOpenLightbox = () => window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-
-    document.querySelectorAll("[data-lightbox-src]").forEach((img) => {
-      img.addEventListener("click", () => {
-        if (!canOpenLightbox()) {
-          return;
-        }
-        openLightbox(img.getAttribute("data-lightbox-src"), img.getAttribute("alt"));
-      });
-    });
-
-    lightboxClose.addEventListener("click", closeLightbox);
-    lightboxBackdrop.addEventListener("click", closeLightbox);
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape" && !lightbox.hidden) {
-        closeLightbox();
-      }
-    });
+    let isSubmitting = false;
 
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
+      if (isSubmitting) {
+        return;
+      }
+      isSubmitting = true;
       if (statusResetTimer) {
         clearTimeout(statusResetTimer);
         statusResetTimer = null;
@@ -547,6 +384,8 @@
         console.error("Form submit failed:", error);
         statusEl.className = "form-status err";
         statusEl.textContent = "Something went wrong. Use the E-mail button next to it.";
+      } finally {
+        isSubmitting = false;
       }
     });
   </script>

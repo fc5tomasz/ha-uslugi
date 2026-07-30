@@ -87,9 +87,9 @@
   }
 }
   </script>
-  <link rel="stylesheet" href="../styles.css?v=20260421-headings-42" />
+  <link rel="stylesheet" href="../styles.css?v=20260730-mobile-46" />
 </head>
-<body>
+<body class="pl-home-bg-test">
   <header>
     <div class="nav">
       <a class="logo" href="/pl/" aria-label="Tomasz Furdal - Home Assistant Expert">
@@ -103,11 +103,21 @@
       <nav id="primary-nav" aria-label="Primary">
         <ul>
           <li><a href="/pl/#uslugi">Usługi</a></li>
+          <li><a href="/pl/#o-mnie">O mnie</a></li>
           <li><a href="/pl/#dla-kogo">Dla kogo</a></li>
           <li><a href="/pl/#jak-pracuje">Jak pracuję</a></li>
           <li><a href="/pl/#cennik">Cennik</a></li>
-          <li><a href="/pl/#o-mnie">O mnie</a></li>
           <li><a href="/pl/#kontakt">Kontakt</a></li>
+          <li class="nav-secondary-start"><a href="/pl/projekty/">Projekty</a></li>
+          <li class="nav-guides">
+            <button class="nav-guides-toggle" type="button" aria-expanded="false" aria-haspopup="true">
+              <span>Poradniki</span><span class="nav-guides-chevron" aria-hidden="true">▾</span>
+            </button>
+            <ul class="nav-guides-dropdown">
+              <li><a href="/pl/co-to-jest-ha/">Czym jest Home Assistant?</a></li>
+              <li><a href="/pl/stabilne-zigbee/">Zigbee zrywa połączenie?</a></li>
+            </ul>
+          </li>
           <li><a href="/pl/demo/">Demo panelu</a></li>
         </ul>
       </nav>
@@ -116,48 +126,27 @@
         <a class="lang-btn" href="/dk/" aria-label="Dansk"><img class="lang-flag" src="../assets/flags/dk.svg" alt="" aria-hidden="true" /></a>
         <a class="lang-btn" href="/en/" aria-label="English"><img class="lang-flag" src="../assets/flags/gb.svg" alt="" aria-hidden="true" /></a>
       </div>
-      <a class="nav-cta" href="/pl/#cennik">Bezpłatna diagnoza</a>
+      <a class="nav-cta" href="/pl/#kontakt">Bezpłatna diagnoza</a>
     </div>
   </header>
 
   <main>
     <section class="section hero" id="top">
       <div class="hero-copy">
-        <h1>Ekspercka pomoc przy Home Assistant <span class="hero-topics"><span class="hero-topic">Automatyzacje</span><span class="hero-topic-separator" aria-hidden="true">·</span><span class="hero-topic">Ogrzewanie</span><span class="hero-topic-separator" aria-hidden="true">·</span><span class="hero-topic">Panele</span></span></h1>
+        <h1>Profesjonalna pomoc przy Home Assistant</h1>
         <p class="hero-sub">
-          Przywracam stabilność Twojego inteligentnego domu. Rozwiązuję błędy w logice, porządkuję encje i projektuję przejrzyste interfejsy sterowania. Ty korzystasz z systemu wygodnie, a ja zajmuję się technicznym chaosem.
+          Uruchamiam, naprawiam, porządkuję i rozwijam systemy Home Assistant, aby działały stabilnie, czytelnie i wygodnie w codziennym użyciu. Pomagam w 100% zdalnie — od diagnozy problemu po wdrożenie zmian.
         </p>
-        <div class="hero-actions">
-          <a class="hero-text-link" href="/pl/#przyklady">Zobacz przykładowe panele sterowania <span aria-hidden="true">→</span></a>
-        </div>
+        <a class="hero-text-link hero-contact-link" href="/pl/#kontakt"><span class="hero-link-main">Potrzebujesz pomocy z Home Assistant?</span> <strong>Skontaktuj się ze mną na bezpłatną diagnozę, bez zobowiązań</strong> <span class="hero-link-arrow" aria-hidden="true">→</span> <span class="hero-link-cta">kliknij tutaj</span></a>
       </div>
-
-      <aside class="hero-panel card">
-        <div>
-          <div class="section-label">Współpraca</div>
-          <h2 class="hero-panel-title">Pomagam tam, gdzie Home Assistant zaczyna sprawiać problemy.</h2>
-        </div>
-        <div class="hero-note">
-          <ul class="hero-note-list">
-            <li>niestabilnych automatyzacjach i błędach logiki</li>
-            <li>ogrzewaniu, fotowoltaice, zarządzaniu energią i panelach sterowania</li>
-            <li>bałaganie w encjach, dashboardach i integracjach</li>
-            <li>istniejących instalacjach, które wymagają porządku, rozbudowy lub stabilizacji</li>
-          </ul>
-        </div>
-      </aside>
     </section>
 
     <section class="section" id="uslugi">
-      <div class="section-label">Usługi</div>
-      <h2 class="section-title mobile-match-title">Profesjonalne usługi i pomoc Home Assistant</h2>
-      <p class="section-subtitle">Rozwiązuję problemy w trzech kluczowych obszarach. Pracuję w 100% zdalnie, więc Twoja lokalizacja nie ma znaczenia.</p>
+      <div class="section-label">Zakres pomocy</div>
+      <h2 class="section-title mobile-match-title">Usługi Home Assistant</h2>
 
       <div class="grid-3 services-grid services-grid-primary">
         <div class="card service-card">
-          <div class="card-top">
-            <span class="card-kicker">Fundament</span>
-          </div>
           <h3>Start i porządki w systemie</h3>
           <ul>
             <li>Instalacja</li>
@@ -170,23 +159,17 @@
         </div>
 
         <div class="card service-card">
-          <div class="card-top">
-            <span class="card-kicker">Stabilność</span>
-          </div>
-          <h3>Sieci Zigbee i Integracje</h3>
+          <h3>Sieci Zigbee i integracje</h3>
           <ul>
             <li>ZHA lub Zigbee2MQTT</li>
             <li>Dodanie integracji</li>
-            <li>Integracja urządzeń Tuya (lokalnie i chmurowo)</li>
+            <li>Integracje lokalne i chmurowe</li>
             <li>Poprawa zasięgu sieci (routing)</li>
             <li>Dobranie kanału, żeby nie było konfliktu z siecią Wi-Fi 2.4 GHz</li>
           </ul>
         </div>
 
         <div class="card service-card">
-          <div class="card-top">
-            <span class="card-kicker">Logika</span>
-          </div>
           <h3>Automatyzacje</h3>
           <ul>
             <li>Jasna logika bez chaosu</li>
@@ -201,7 +184,7 @@
 
     <section class="section" id="o-mnie">
       <div class="section-label">O mnie</div>
-      <h2 class="section-title mobile-match-title">Pasja, która stała się profesją.</h2>
+      <h2 class="section-title mobile-match-title">Pasja, która stała się profesją</h2>
       <div class="about-grid">
         <div class="card about-photo-card">
           <img class="about-photo" src="../assets/brand/o-mnie.webp" alt="Tomasz Furdal - Ekspert Home Assistant" loading="lazy" width="1536" height="1024" />
@@ -229,38 +212,25 @@
     <section class="section" id="dla-kogo">
       <div class="section-label">Komu pomagam</div>
       <h2 class="section-title mobile-match-title">W jakiej jesteś teraz sytuacji?</h2>
-      <p class="section-subtitle">Nie musisz być programistą, żeby mieć stabilny i bezproblemowy inteligentny dom.</p>
       <div class="grid-2 audience-grid">
         <div class="card audience-card">
-          <div class="card-top">
-            <span class="card-kicker">Masz system</span>
-            <span class="card-badge">A</span>
-          </div>
-          <h3>Masz już Home Assistanta</h3>
-          <p>Nie wszystko działa tak, jak powinno, albo system zaczyna robić się trudny w codziennym użyciu.</p>
+          <h3>Masz już Home Assistanta, ale system nie działa tak, jak powinien</h3>
           <ul>
             <li>Zigbee czasem nie reaguje</li>
             <li>Automatyzacje raz działają, raz nie</li>
             <li>Brak porządku i kontroli</li>
             <li>Chcesz dodać integracje i mieć wygodne sterowanie</li>
             <li>Chcesz mieć estetyczne, czytelne panele</li>
-            <li class="audience-link-row"><a class="audience-inline-link" href="/pl/#kontakt">Skontaktuj się <span aria-hidden="true">→</span></a></li>
           </ul>
         </div>
         <div class="card audience-card">
-          <div class="card-top">
-            <span class="card-kicker">Start od zera</span>
-            <span class="card-badge">B</span>
-          </div>
-          <h3>Chcesz dopiero zacząć</h3>
-          <p>Wolisz szybki start z kimś, kto ma doświadczenie i działa praktycznie.</p>
+          <h3>Dopiero zaczynasz z Home Assistantem i potrzebujesz uporządkowanego startu</h3>
           <ul>
-            <li>Pomogę dobrać urządzenia, które mają sens w codziennym użyciu</li>
-            <li>Zbuduję wygodne sterowanie, panele i prostą obsługę</li>
-            <li>Skonfiguruję sceny, automatyzacje i podstawową logikę działania</li>
-            <li>Ułożę system tak, by można go było łatwo rozbudowywać</li>
-            <li>Pomogę wystartować bez chaosu i nietrafionych decyzji</li>
-            <li class="audience-link-row"><a class="audience-inline-link" href="/pl/#jak-pracuje">Jak wygląda współpraca? <span aria-hidden="true">→</span></a></li>
+            <li>Nie wiesz, od jakich urządzeń zacząć</li>
+            <li>Chcesz uniknąć przypadkowych zakupów</li>
+            <li>Potrzebujesz prostego sterowania i czytelnych paneli</li>
+            <li>Chcesz od początku uporządkować automatyzacje i logikę</li>
+            <li>Zależy Ci na systemie, który można później łatwo rozbudować</li>
           </ul>
         </div>
       </div>
@@ -269,153 +239,54 @@
     <section class="section" id="jak-pracuje">
       <div class="section-label">Proces</div>
       <h2 class="section-title mobile-match-title">Jak wygląda współpraca?</h2>
-      <p class="section-subtitle">Krótko: najpierw diagnoza, następnie działanie, na końcu testy.</p>
       <div class="grid-2 process-grid">
         <div class="card process-card">
-          <h3>1) Bezpłatna diagnoza i wycena</h3>
-          <p>Opisujesz usterkę lub to, co chcesz osiągnąć. Wspólnie ustalamy przyczynę i decydujemy o zakresie prac (wycena za konkretne zadanie naprawcze lub projekt od podstaw).</p>
+          <h3>1) Zgłoszenie, diagnoza i wycena</h3>
+          <p>Opisujesz problem lub cel. Sprawdzam, czy mogę pomóc, a następnie przedstawiam proponowany zakres oraz koszt prac.</p>
         </div>
         <div class="card process-card">
-          <h3>2) Bezpieczna praca i pełna kontrola</h3>
-          <p>Przekazujesz mi tymczasowy dostęp do swojego systemu (np. poprzez utworzenie dedykowanego konta serwisowego). Dzięki temu mogę sprawnie zdiagnozować usterkę i wprowadzić poprawki „pod maską” Twojego domu. Wspólnie sprawdzamy efekty, a po zakończeniu prac po prostu usuwasz moje konto. Ty masz klucze do swojego domu – ja tylko pomagam go naprawić.</p>
+          <h3>2) Realizacja, testy i zakończenie</h3>
+          <p>Jeśli Home Assistant już działa, tworzysz osobne konto serwisowe na czas prac. Przy instalacji od zera najpierw uruchamiamy system i zakładasz własne konto administratora, a następnie osobne konto serwisowe do dalszej konfiguracji. Jeśli jest to potrzebne, za Twoją zgodą instaluję narzędzie pomocnicze. Wprowadzam tylko uzgodnione zmiany, wspólnie testujemy efekty, a po zakończeniu usuwasz konto serwisowe.</p>
         </div>
       </div>
     </section>
-
-    <section class="section" id="przyklady">
-      <div class="section-label">PRZYKŁADY</div>
-      <h2 class="section-title mobile-match-title">Przykładowe panele</h2>
-      <p class="section-subtitle">Wybrane widoki pokazują zarówno czytelne sterowanie, jak i logikę działania instalacji.</p>
-      <p class="showcase-interaction-hint">Kliknij lub dotknij panel, aby powiększyć.</p>
-      <div class="grid-3 showcase-grid">
-        <article class="card showcase-card">
-          <div class="showcase-media">
-            <img src="../assets/examples/heating-control.png" alt="Panel sterowania ogrzewaniem i buforem" loading="lazy" width="1920" height="1080" data-lightbox-src="../assets/examples/heating-control.png" />
-          </div>
-          <div class="showcase-copy">
-            <h3>Sterowanie ogrzewaniem</h3>
-            <p>Panel pozwala zarządzać ogrzewaniem z kilku źródeł, takich jak fotowoltaika off-grid z buforem i piec gazowy. Umożliwia zmianę trybów pracy, temperatur i progów obniżenia, a także automatyzuje oszczędzanie energii, gdy dom jest pusty lub działa tryb wakacyjny. Całość pilnuje też logiki systemu, tak aby źródła ciepła nie pracowały jednocześnie w nieprawidłowy sposób.</p>
-          </div>
-        </article>
-
-        <article class="card showcase-card">
-          <div class="showcase-media">
-            <img src="../assets/examples/heating-status.png" alt="Panel ze statusami i temperaturami instalacji" loading="lazy" width="1920" height="1080" data-lightbox-src="../assets/examples/heating-status.png" />
-          </div>
-          <div class="showcase-copy">
-            <h3>Bufor, proces i zależności źródeł ciepła</h3>
-            <p>Widok pokazuje stan bufora i logikę pracy całego układu grzewczego. Ułatwia ocenę temperatury w górnej i dolnej części bufora, informuje, czy energia jest wykorzystywana na potrzeby CO oraz czy woda ma odpowiednią temperaturę do CWU.</p>
-          </div>
-        </article>
-
-        <article class="card showcase-card">
-          <div class="showcase-media">
-            <img src="../assets/examples/blinds-control.png" alt="Panel rolet i codziennego sterowania" loading="lazy" width="1920" height="1080" data-lightbox-src="../assets/examples/blinds-control.png" />
-          </div>
-          <div class="showcase-copy">
-            <h3>Rolety, grupy i sceny</h3>
-            <p>Panel pozwala sterować pojedynczymi roletami, grupami rolet oraz scenami domowymi. Ułatwia także zarządzanie całym domem i łączy ręczne sterowanie z automatyką zależną od pory dnia, obecności oraz wybranych zdarzeń w systemie.</p>
-          </div>
-        </article>
-
-        <article class="card showcase-card">
-          <div class="showcase-media">
-            <img src="../assets/examples/roborock.png" alt="Panel integracji urządzeń i sterowania robotem sprzątającym" loading="lazy" width="1920" height="1080" data-lightbox-src="../assets/examples/roborock.png" />
-          </div>
-          <div class="showcase-copy">
-            <h3>Integracje urządzeń</h3>
-            <p>Panel pozwala wygodnie sterować robotem sprzątającym: uruchamiać sprzątanie całego domu albo tylko wybranych stref, wstrzymywać pracę i odsyłać urządzenie do stacji dokującej. Pokazuje też status odkurzacza i pozwala zmieniać moc sprzątania.</p>
-          </div>
-        </article>
-
-        <article class="card showcase-card">
-          <div class="showcase-media">
-            <img src="../assets/examples/rekuperacja.png" alt="Panel rekuperacji i wentylacji" loading="lazy" width="1920" height="1080" data-lightbox-src="../assets/examples/rekuperacja.png" />
-          </div>
-          <div class="showcase-copy">
-            <h3>Rekuperacja i wentylacja</h3>
-            <p>Widok umożliwia przełączanie między trybem ręcznym a automatyką czasową lub zależną od warunków w domu. Pozwala sterować prędkością rekuperacji, przewietrzaniem i logiką pracy bez potrzeby wchodzenia w ustawienia systemowe.</p>
-          </div>
-        </article>
-
-        <article class="card showcase-card">
-          <div class="showcase-media">
-            <img src="../assets/examples/panele.png" alt="Panel oświetlenia i szklanych paneli" loading="lazy" width="1920" height="1080" data-lightbox-src="../assets/examples/panele.png" />
-          </div>
-          <div class="showcase-copy">
-            <h3>Oświetlenie i panele szklane</h3>
-            <p>Panel odwzorowuje fizyczne szklane włączniki w domu i pokazuje aktualny stan oświetlenia w poszczególnych pomieszczeniach. Ułatwia szybkie sterowanie światłem, porządkuje układ pomieszczeń i daje czytelny podgląd tego, co jest aktualnie włączone.</p>
-          </div>
-        </article>
-      </div>
-
-      <div class="tech-block">
-        <div class="card tech-copy tech-copy-panel">
-          <div class="tech-copy-body">
-            <div class="section-label">Stabilność sieci</div>
-            <h3 class="section-title section-title-small">Topologia Zigbee i diagnostyka połączeń</h3>
-            <p class="section-subtitle">Panel pokazuje, jak zbudowana jest sieć Zigbee: które urządzenia łączą się bezpośrednio z koordynatorem, które działają przez routery i jak wygląda jakość połączeń w całej topologii.</p>
-            <ul class="hero-note-list tech-note-list">
-              <li>topologia sieci i ścieżki routingu</li>
-              <li>jakość połączeń i wartości LQI</li>
-              <li>relacje między koordynatorem, routerami i urządzeniami końcowymi</li>
-            </ul>
-          </div>
-        </div>
-        <article class="card showcase-card tech-card">
-          <div class="showcase-media tech-media">
-            <img src="../assets/examples/zigbee-map.png" alt="Mapa sieci Zigbee2MQTT" loading="lazy" width="1920" height="1080" data-lightbox-src="../assets/examples/zigbee-map.png" />
-          </div>
-        </article>
-      </div>
-
-      <div class="tech-copy-body knowledge-card">
-        <div class="section-label">Warto przeczytać</div>
-        <p class="section-subtitle">Jeśli chcesz lepiej zrozumieć Home Assistanta i typowe problemy z Zigbee, zajrzyj tutaj:</p>
-        <div><a class="knowledge-link" href="stabilne-zigbee/index.html">Zigbee zrywa połączenie? Sprawdź przyczyny i rozwiązania <span aria-hidden="true">→</span></a></div>
-        <div><a class="knowledge-link" href="co-to-jest-ha/index.html">Czym jest Home Assistant? <span aria-hidden="true">→</span></a></div>
-      </div>
-    </section>
-
-    <div class="lightbox" id="lightbox" hidden aria-hidden="true">
-      <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Zamknij podgląd">Zamknij</button>
-      <div class="lightbox-backdrop" id="lightboxBackdrop"></div>
-      <div class="lightbox-dialog" role="dialog" aria-modal="true" aria-label="Podgląd panelu">
-        <img id="lightboxImage" src="index.html" alt="" />
-      </div>
-    </div>
 
     <section class="section" id="cennik">
       <div class="section-label">CENNIK</div>
-      <h2 class="section-title mobile-match-title">Ile to kosztuje?</h2>
-      <p class="section-subtitle">Najpierw diagnoza, potem jasno ustalony zakres i koszt prac.</p>
+      <h2 class="section-title mobile-match-title">Wstępna ocena zgłoszenia i przygotowanie wyceny są bezpłatne.</h2>
 
       <div class="grid-3 services-grid">
         <div class="card service-card">
-          <div class="card-top">
-            <span class="card-kicker">Start</span>
-            <span class="card-badge">01</span>
-          </div>
-          <h3>Bezpłatna diagnoza</h3>
-          <p>Sprawdzam, czy mogę realnie pomóc i proponuję plan działania. Bez zobowiązań.</p>
+          <h3>Doradztwo pisemne</h3>
+          <div class="pricing-price">Od 80 zł</div>
+          <p>Analiza problemu, doboru urządzeń lub planowanej rozbudowy. Otrzymujesz konkretne zalecenia do samodzielnego wdrożenia.</p>
+          <ul>
+            <li>odpowiedź przygotowana mailowo</li>
+            <li>zakres ustalony przed rozpoczęciem</li>
+            <li>bez wprowadzania zmian w systemie</li>
+          </ul>
         </div>
 
         <div class="card service-card">
-          <div class="card-top">
-            <span class="card-kicker">Naprawa</span>
-            <span class="card-badge">02</span>
-          </div>
-          <h3>Naprawy i optymalizacja (od 100 zł)</h3>
-          <p>Pomagam przy automatyzacjach, Zigbee, integracjach, logice i panelach sterowania. Z góry ustalamy zakres i kwotę za konkretne zadanie.</p>
+          <h3>Naprawy i optymalizacja</h3>
+          <div class="pricing-price">Od 100 zł za zadanie</div>
+          <p>Cena zależy od konkretnego problemu i zakresu potrzebnych prac.</p>
+          <ul>
+            <li>zakres i koszt potwierdzane przed rozpoczęciem</li>
+            <li>wdrażane są tylko uzgodnione zmiany</li>
+            <li>dodatkowe prace wymagają wcześniejszej zgody</li>
+          </ul>
         </div>
 
         <div class="card service-card">
-          <div class="card-top">
-            <span class="card-kicker">Projekt</span>
-            <span class="card-badge">03</span>
-          </div>
-          <h3>Projekty Smart Home (wycena indywidualna)</h3>
-          <p>Pomagam stworzyć system od zera, uporządkować założenia i zaprojektować wygodne sterowanie, panele oraz logikę działania.</p>
+          <h3>Projekt Smart Home</h3>
+          <div class="pricing-price">Wycena indywidualna</div>
+          <p>Większe wdrożenia i rozbudowy są wyceniane po analizie potrzeb oraz obecnej instalacji.</p>
+          <ul>
+            <li>możliwość podziału realizacji na etapy</li>
+            <li>zakres ustalany przed rozpoczęciem</li>
+            <li>koszt zależny od wielkości projektu</li>
+          </ul>
         </div>
       </div>
     </section>
@@ -430,15 +301,15 @@
             <div class="form-grid">
               <div class="form-group">
                 <label for="name">Imię<span>*</span></label>
-                <input id="name" name="name" type="text" required placeholder="Np. Michał" />
+                <input id="name" name="name" type="text" required />
               </div>
               <div class="form-group">
                 <label for="email">E-mail<span>*</span></label>
-                <input id="email" name="email" type="email" required autocomplete="off" placeholder="Twój adres e-mail do kontaktu" />
+                <input id="email" name="email" type="email" required autocomplete="off" />
               </div>
               <div class="form-group full">
                 <label for="message">Opis problemu<span>*</span></label>
-                <textarea id="message" name="message" required placeholder="Krótko opisz problem: co nie działa, jakich integracji dotyczy i na czym działa Twój Home Assistant."></textarea>
+                <textarea id="message" name="message" required></textarea>
               </div>
             </div>
             <div class="form-actions">
@@ -466,7 +337,7 @@
     </div>
   </footer>
 
-  <script src="../nav.js?v=20260419-nav-7"></script>
+  <script src="../nav.js?v=20260730-mobile-nav-10"></script>
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
@@ -481,48 +352,6 @@
     const form = document.getElementById("contactForm");
     const statusEl = document.getElementById("formStatus");
     const nameInput = document.getElementById("name");
-    const lightbox = document.getElementById("lightbox");
-    const lightboxImage = document.getElementById("lightboxImage");
-    const lightboxClose = document.getElementById("lightboxClose");
-    const lightboxBackdrop = document.getElementById("lightboxBackdrop");
-    let statusResetTimer = null;
-    let isSubmitting = false;
-
-    function openLightbox(src, alt) {
-      lightboxImage.src = src;
-      lightboxImage.alt = alt || "";
-      lightbox.hidden = false;
-      lightbox.setAttribute("aria-hidden", "false");
-      document.body.classList.add("lightbox-open");
-    }
-
-    function closeLightbox() {
-      lightbox.hidden = true;
-      lightbox.setAttribute("aria-hidden", "true");
-      lightboxImage.src = "";
-      lightboxImage.alt = "";
-      document.body.classList.remove("lightbox-open");
-    }
-
-    const canOpenLightbox = () => window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-
-    document.querySelectorAll("[data-lightbox-src]").forEach((img) => {
-      img.addEventListener("click", () => {
-        if (!canOpenLightbox()) {
-          return;
-        }
-        openLightbox(img.getAttribute("data-lightbox-src"), img.getAttribute("alt"));
-      });
-    });
-
-    lightboxClose.addEventListener("click", closeLightbox);
-    lightboxBackdrop.addEventListener("click", closeLightbox);
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape" && !lightbox.hidden) {
-        closeLightbox();
-      }
-    });
-
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
       if (isSubmitting) {
