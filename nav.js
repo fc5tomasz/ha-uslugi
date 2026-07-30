@@ -174,7 +174,9 @@ const initDesktopSectionNavigation = () => {
 
   const currentPath = normalizePathname(window.location.pathname);
   const sectionLinks = Array.from(
-    primaryNav.querySelectorAll(":scope > ul > li > a[href*='#']"),
+    primaryNav.querySelectorAll(
+      ":scope > ul > li:not(.nav-mobile-cta-item) > a[href*='#']",
+    ),
   )
     .map((link) => {
       const targetUrl = new URL(link.href, window.location.href);
