@@ -1242,6 +1242,31 @@ h1{
   color:var(--accent-2);
 }
 
+.knowledge-help-link{
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  margin-top:18px;
+  color:#ffffff;
+  font-weight:700;
+  transition:transform .18s ease, text-shadow .22s ease;
+}
+
+.knowledge-help-link:visited,
+.knowledge-help-link:hover,
+.knowledge-help-link:active{
+  color:#ffffff;
+}
+
+.knowledge-help-link:hover{
+  transform:translateY(-1px);
+  text-shadow:0 0 16px rgba(102,226,255,.22);
+}
+
+.knowledge-help-accent{
+  color:var(--accent-2);
+}
+
 .process-grid{
   position:relative;
 }
