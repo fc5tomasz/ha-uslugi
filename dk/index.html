@@ -340,21 +340,30 @@
     const form = document.getElementById("contactForm");
     const statusEl = document.getElementById("formStatus");
     const nameInput = document.getElementById("name");
+    const submitButton = form.querySelector('button[type="submit"]');
+    const idleButtonText = submitButton.textContent;
     let statusResetTimer = null;
     let isSubmitting = false;
 
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
       if (isSubmitting) {
         return;
       }
       isSubmitting = true;
+      submitButton.disabled = true;
+      submitButton.textContent = "Sender...";
+      form.setAttribute("aria-busy", "true");
       if (statusResetTimer) {
         clearTimeout(statusResetTimer);
         statusResetTimer = null;
       }
       statusEl.className = "form-status";
-      statusEl.textContent = "Sender…";
+      statusEl.textContent = "Sender...";
 
       try {
         const formData = new FormData(form);
@@ -364,10 +373,14 @@
           headers: { Accept: "application/json" },
           body: formData
         });
+        const result = await response.json().catch(() => null);
 
-        if (response.ok) {
+        if (response.ok && result && result.ok === true) {
+          if (typeof gtag === "function") {
+            gtag('event', 'conversion', {'send_to': 'AW-18087588380/ej4vcOfps54cEJzk6rBD'});
+          }
           statusEl.className = "form-status ok";
-          statusEl.textContent = "Færdig! Beskeden er sendt. Jeg vender tilbage til dig så hurtigt som muligt.";
+          statusEl.textContent = "Din besked er sendt. Jeg svarer så hurtigt som muligt.";
           form.reset();
           nameInput.focus();
           statusResetTimer = window.setTimeout(() => {
@@ -376,15 +389,17 @@
             statusResetTimer = null;
           }, 10000);
         } else {
-          statusEl.className = "form-status err";
-          statusEl.textContent = "Noget gik galt. Brug E-mail-knappen ved siden af.";
+          throw new Error(`Formspree rejected the submission (${response.status})`);
         }
       } catch (error) {
         console.error("Form submit failed:", error);
         statusEl.className = "form-status err";
-        statusEl.textContent = "Noget gik galt. Brug E-mail-knappen ved siden af.";
+        statusEl.textContent = "Beskeden kunne ikke sendes. Prøv igen, eller brug muligheden for at sende en e-mail.";
       } finally {
         isSubmitting = false;
+        submitButton.disabled = false;
+        submitButton.textContent = idleButtonText;
+        form.removeAttribute("aria-busy");
       }
     });
   </script>

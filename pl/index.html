@@ -351,18 +351,30 @@
     const form = document.getElementById("contactForm");
     const statusEl = document.getElementById("formStatus");
     const nameInput = document.getElementById("name");
+    const submitButton = form.querySelector('button[type="submit"]');
+    const idleButtonText = submitButton.textContent;
+    let statusResetTimer = null;
+    let isSubmitting = false;
+
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
       if (isSubmitting) {
         return;
       }
       isSubmitting = true;
+      submitButton.disabled = true;
+      submitButton.textContent = "Wysyłanie...";
+      form.setAttribute("aria-busy", "true");
       if (statusResetTimer) {
         clearTimeout(statusResetTimer);
         statusResetTimer = null;
       }
       statusEl.className = "form-status";
-      statusEl.textContent = "Wysyłam…";
+      statusEl.textContent = "Wysyłanie...";
 
       try {
         const formData = new FormData(form);
@@ -372,13 +384,14 @@
           headers: { Accept: "application/json" },
           body: formData
         });
+        const result = await response.json().catch(() => null);
 
-        if (response.ok) {
+        if (response.ok && result && result.ok === true) {
           if (typeof gtag === "function") {
             gtag('event', 'conversion', {'send_to': 'AW-18087588380/ej4vcOfps54cEJzk6rBD'});
           }
           statusEl.className = "form-status ok";
-          statusEl.textContent = "Gotowe! Wiadomość wysłana. Odezwę się do Ciebie najszybciej, jak to możliwe.";
+          statusEl.textContent = "Wiadomość została wysłana. Odpowiem najszybciej, jak będzie to możliwe.";
           form.reset();
           nameInput.focus();
           statusResetTimer = window.setTimeout(() => {
@@ -387,15 +400,17 @@
             statusResetTimer = null;
           }, 10000);
         } else {
-          statusEl.className = "form-status err";
-          statusEl.textContent = "Coś poszło nie tak. Użyj przycisku E-mail obok.";
+          throw new Error(`Formspree rejected the submission (${response.status})`);
         }
       } catch (error) {
         console.error("Form submit failed:", error);
         statusEl.className = "form-status err";
-        statusEl.textContent = "Coś poszło nie tak. Użyj przycisku E-mail obok.";
+        statusEl.textContent = "Nie udało się wysłać wiadomości. Spróbuj ponownie lub skorzystaj z opcji „Napisz e-mail”.";
       } finally {
         isSubmitting = false;
+        submitButton.disabled = false;
+        submitButton.textContent = idleButtonText;
+        form.removeAttribute("aria-busy");
       }
     });
   </script>
