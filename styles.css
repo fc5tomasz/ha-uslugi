@@ -1272,6 +1272,20 @@ h1{
   color:var(--accent-2);
 }
 
+@media (max-width: 820px){
+  html[lang="pl"] .knowledge-help-link{
+    display:block;
+    width:100%;
+    text-align:left;
+    white-space:normal;
+  }
+
+  html[lang="pl"] .knowledge-help-accent{
+    display:inline-block;
+    white-space:nowrap;
+  }
+}
+
 .process-grid{
   position:relative;
 }
