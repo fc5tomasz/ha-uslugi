@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="robots" content="index,follow" />
+  <meta name="author" content="Tomasz Furdal" />
+  <meta name="theme-color" content="#0f172a" />
+  <link rel="canonical" href="https://ha-expert.com/dk/home-assistant-automatiseringer/" />
+  <link rel="alternate" hreflang="pl" href="https://ha-expert.com/pl/automatyzacje-home-assistant/" />
+  <link rel="alternate" hreflang="en" href="https://ha-expert.com/en/home-assistant-automations/" />
+  <link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/home-assistant-automatiseringer/" />
+  <link rel="alternate" hreflang="x-default" href="https://ha-expert.com/en/home-assistant-automations/" />
+  <title>Home Assistant-automatiseringer – guide og fejlfinding | HA Expert</title>
+  <meta name="description" content="Læs hvordan Home Assistant-automatiseringer fungerer med udløsere, betingelser, handlinger, scripts, scener, kørselstilstande og Trace." />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Home Assistant-automatiseringer – guide og fejlfinding | HA Expert" />
+  <meta property="og:description" content="Læs hvordan Home Assistant-automatiseringer fungerer med udløsere, betingelser, handlinger, scripts, scener, kørselstilstande og Trace." />
+  <meta property="og:url" content="https://ha-expert.com/dk/home-assistant-automatiseringer/" />
+  <link rel="stylesheet" href="../../styles.css?v=20260809-automations-mobile-49" />
+  <script src="../../consent.js?v=20260420-consent-1"></script>
+</head>
+<body class="knowledge-page pl-home-bg-test">
+  <header class="scrolled">
+    <div class="nav">
+      <a class="logo" href="/dk/" aria-label="Tomasz Furdal - Home Assistant Expert">
+        <img class="logo-image" src="../../assets/brand/logo-wyciete.png" alt="Tomasz Furdal - Home Assistant Expert" title="Home Assistant Expert - Tomasz Furdal" />
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Åbn menu"><span aria-hidden="true">☰</span></button>
+      <a class="nav-mobile-link about-link" href="/dk/#om-mig">Om mig</a>
+      <a class="nav-mobile-link contact-link" href="/dk/#kontakt">Kontakt</a>
+      <nav id="primary-nav" aria-label="Primær navigation">
+        <ul>
+          <li><a href="/dk/#ydelser">Ydelser</a></li>
+          <li><a href="/dk/#om-mig">Om mig</a></li>
+          <li><a href="/dk/#for-hvem">For hvem</a></li>
+          <li><a href="/dk/#saadan-arbejder-jeg">Sådan arbejder jeg</a></li>
+          <li><a href="/dk/#priser">Priser</a></li>
+          <li><a href="/dk/#kontakt">Kontakt</a></li>
+          <li class="nav-secondary-start"><a href="/dk/projekter/">Projekter</a></li>
+          <li class="nav-guides">
+            <button class="nav-guides-toggle" type="button" aria-expanded="false" aria-haspopup="true"><span>Vejledninger</span><span class="nav-guides-chevron" aria-hidden="true">▾</span></button>
+            <ul class="nav-guides-dropdown">
+              <li><a href="/dk/hvad-er-ha/">Hvad er Home Assistant?</a></li>
+              <li><a href="/dk/home-assistant-integrationer/">Home Assistant-integrationer</a></li>
+              <li><a href="/dk/home-assistant-automatiseringer/" aria-current="page">Home Assistant-automatiseringer</a></li>
+              <li><a href="/dk/stabilt-zigbee/">Mister Zigbee forbindelsen?</a></li>
+            </ul>
+          </li>
+          <li><a href="/dk/demo/">Demo-panel</a></li>
+        </ul>
+      </nav>
+      <div class="lang-switch" aria-label="Sprogvalg">
+        <a class="lang-btn" href="/pl/automatyzacje-home-assistant/" aria-label="Polski"><img class="lang-flag" src="../../assets/flags/pl.svg" alt="" aria-hidden="true" /></a>
+        <a class="lang-btn active" href="/dk/home-assistant-automatiseringer/" aria-label="Dansk" aria-current="page"><img class="lang-flag" src="../../assets/flags/dk.svg" alt="" aria-hidden="true" /></a>
+        <a class="lang-btn" href="/en/home-assistant-automations/" aria-label="English"><img class="lang-flag" src="../../assets/flags/gb.svg" alt="" aria-hidden="true" /></a>
+      </div>
+      <a class="nav-cta" href="/dk/#kontakt">Gratis diagnose</a>
+    </div>
+  </header>
+
+  <div class="mobile-bottom-bar" aria-label="Hurtige mobilhandlinger">
+    <a class="mobile-bottom-link" href="/dk/#om-mig">Om mig</a>
+    <a class="mobile-bottom-link" href="/dk/#kontakt">Kontakt</a>
+  </div>
+
+  <main>
+    <section class="section">
+      <div class="section-label">AUTOMATISERINGER</div>
+      <h1 class="section-title mobile-match-title">Home Assistant-automatiseringer – sådan fungerer de, og sådan fejlsøger du dem</h1>
+      <div class="card">
+        <p class="section-subtitle">Automatiseringer gør det muligt for Home Assistant at reagere på det, der sker i hjemmet, uden at hver enkelt handling skal udføres manuelt. Systemet kan reagere på en ændring i en enheds tilstand, et bestemt tidspunkt, temperaturen, om nogen er hjemme, eller en anden hændelse og udføre handlinger, der er fastlagt på forhånd.</p>
+        <p class="section-subtitle">Antallet af automatiseringer siger dog ikke i sig selv noget om systemets kvalitet. Det er vigtigere, om deres logik er forståelig, forudsigelig og mulig at fejlfinde senere.</p>
+        <p class="section-subtitle">I denne guide forklarer jeg, hvad en Home Assistant-automatisering består af, hvordan udløsere, betingelser og handlinger adskiller sig fra hinanden, hvordan scripts og scener fungerer, og hvad man bør kontrollere, når en automatisering virker den ene gang, men ikke den næste.</p>
+        <p class="section-subtitle">Hvis du først er ved at lære hele systemet at kende, kan du fortsætte med guiden nedenfor.</p>
+        <a class="knowledge-link" href="/dk/hvad-er-ha/">Hvad er Home Assistant? <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">GRUNDLAG</div>
+      <h2 class="section-title mobile-match-title">Hvad er en automatisering i Home Assistant?</h2>
+      <div class="card">
+        <p class="section-subtitle">En automatisering beskriver, hvornår Home Assistant skal reagere, hvilke betingelser der på det tidspunkt skal være opfyldt, og hvad systemet skal gøre.</p>
+        <p class="section-subtitle">Et enkelt eksempel kan se sådan ud: En sensor registrerer bevægelse, Home Assistant kontrollerer, om det allerede er mørkt, og tænder derefter lyset.</p>
+        <p class="section-subtitle">I praksis kan automatiseringer være langt mere avancerede. Én regel kan omfatte flere udløsere, ekstra betingelser, forsinkelser, venten på en tilstandsændring og forskellige handlingsforløb afhængigt af situationen.</p>
+        <p class="section-subtitle">Det betyder dog ikke, at alle automatiseringer bør være komplicerede. Jo enklere og mere overskuelig den nødvendige logik er, desto lettere er det senere at forstå dens adfærd og finde årsagen til et eventuelt problem.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">LOGIK</div>
+      <h2 class="section-title mobile-match-title">Udløser, betingelse og handling – hvad er forskellen?</h2>
+      <div class="card">
+        <p class="section-subtitle">Disse tre elementer har forskellige roller.</p>
+        <p class="section-subtitle">En udløser bestemmer, hvad der starter kontrollen af automatiseringen. Det kan for eksempel være registreret bevægelse, en temperaturændring, et bestemt tidspunkt eller en ændring i en enheds tilstand.</p>
+        <p class="section-subtitle">En betingelse starter ikke automatiseringen. Den kontrolleres, efter at udløseren er aktiveret, og afgør, om automatiseringen kan fortsætte.</p>
+        <p class="section-subtitle">En handling bestemmer, hvad Home Assistant skal gøre, hvis automatiseringen er startet, og de nødvendige betingelser er opfyldt.</p>
+        <p class="section-subtitle">Hvis et lys skal tænde, når der registreres bevægelse, men kun om aftenen, kan bevægelsen være udløseren, tidspunktet være betingelsen og det at tænde lyset være handlingen.</p>
+        <p class="section-subtitle">Det er også vigtigt at skelne mellem disse elementer ved fejlfinding. En automatisering kan undlade at udføre en handling, ikke fordi den “ikke virkede”, men fordi udløseren blev aktiveret korrekt, mens en af betingelserne ikke var opfyldt.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">UDLØSERE</div>
+      <h2 class="section-title mobile-match-title">Hvad kan starte en automatisering?</h2>
+      <div class="card">
+        <p class="section-subtitle">En automatisering behøver ikke kun at reagere på et tryk på en knap eller en ændring i en sensors tilstand.</p>
+        <p class="section-subtitle">En udløser kan blandt andet være:</p>
+        <ul>
+          <li>en ændring i en entitets tilstand,</li>
+          <li>overskridelse af en bestemt værdi,</li>
+          <li>et bestemt tidspunkt,</li>
+          <li>solopgang eller solnedgang,</li>
+          <li>en hændelse i systemet,</li>
+          <li>en webhook,</li>
+          <li>en ændring knyttet til en enhed eller tjeneste.</li>
+        </ul>
+        <p class="section-subtitle">Det gør det muligt at starte den samme logik ud fra forskellige oplysninger, der er tilgængelige i Home Assistant.</p>
+        <p class="section-subtitle">Det er dog vigtigt at huske, at en automatisering modtager oplysninger fra andre dele af systemet. Hvis en sensor holder op med at opdatere sin tilstand, eller en integration mister forbindelsen til en enhed, opstår den forventede udløser måske slet ikke.</p>
+        <p class="section-subtitle">I så fald behøver problemet ikke at ligge i automatiseringens logik.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">EKSEMPEL</div>
+      <h2 class="section-title mobile-match-title">En enkel automatisering med lys som eksempel</h2>
+      <div class="card">
+        <p class="section-subtitle">Antag, at lyset i gangen skal tænde, når der registreres bevægelse, men kun når det er mørkt.</p>
+        <p class="section-subtitle">Logikken kan beskrives enkelt:</p>
+        <p class="section-subtitle"><strong>Udløser:</strong> Bevægelsessensoren skifter til tilstanden registreret bevægelse.</p>
+        <p class="section-subtitle"><strong>Betingelse:</strong> Det er efter solnedgang, eller lysniveauet er under en fastlagt værdi.</p>
+        <p class="section-subtitle"><strong>Handling:</strong> Tænd lyset.</p>
+        <p class="section-subtitle">Derefter kan man tilføje en yderligere funktion, for eksempel at slukke lyset efter et bestemt tidsrum uden bevægelse.</p>
+        <p class="section-subtitle">Selv i dette enkle eksempel skal man beslutte, hvad der skal ske, hvis der registreres bevægelse igen, mens tiden tælles ned. Skal nedtællingen begynde forfra? Skal den tidligere kørsel stoppes? Skal den næste aktivering ignoreres?</p>
+        <p class="section-subtitle">Det er i sådanne situationer, at automatiseringens kørselstilstand får betydning.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">STRUKTUR</div>
+      <h2 class="section-title mobile-match-title">Hvorfor bliver automatiseringer svære at vedligeholde?</h2>
+      <div class="card">
+        <p class="section-subtitle">Problemet viser sig ofte ikke ved de første få automatiseringer. Det bliver synligt, når systemet gradvist udbygges.</p>
+        <p class="section-subtitle">Lignende logik kan blive kopieret til flere forskellige steder, én automatisering begynder at afhænge af en anden, og navne, der blev oprettet flere måneder tidligere, fortæller ikke længere tydeligt, hvad de styrer.</p>
+        <p class="section-subtitle">Samtidig ændrer enheder, entiteter, tidsplaner og den måde, hjemmet bruges på, sig med tiden.</p>
+        <p class="section-subtitle">Resultatet kan være, at brugeren ved, at “noget et sted styrer lyset”, men ikke længere kan huske, hvilken automatisering der er ansvarlig for den konkrete reaktion.</p>
+        <p class="section-subtitle">I et større system er det derfor værd at bruge tydelige navne, bevare en logisk opdeling og undgå at kopiere den samme handlingssekvens flere steder, hvis den med fordel kan udskilles.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">VÆRKTØJER</div>
+      <h2 class="section-title mobile-match-title">Automatisering, script og scene – hvornår bruger man hvad?</h2>
+      <div class="card">
+        <p class="section-subtitle">Disse elementer hænger sammen, men de har ikke helt den samme funktion.</p>
+        <p class="section-subtitle">En automatisering reagerer på en bestemt situation og starter handlinger i overensstemmelse med den fastlagte logik.</p>
+        <p class="section-subtitle">Et script er en sekvens af handlinger, som kan kaldes fra en automatisering, et betjeningspanel eller et andet sted i Home Assistant. Det er især nyttigt, når det samme sæt handlinger skal bruges flere gange.</p>
+        <p class="section-subtitle">I stedet for at definere en sekvens til at slukke lys, køre rullegardiner ned og indstille varmen separat i flere automatiseringer kan man for eksempel oprette et passende script og kalde det de steder, hvor det er nødvendigt.</p>
+        <p class="section-subtitle">En scene bruges til at indstille enheder til bestemte tilstande. Den kan for eksempel indstille flere lys til en valgt lysstyrke og farve eller forberede enheder til en bestemt brugstilstand.</p>
+        <p class="section-subtitle">Man behøver ikke vælge én af disse løsninger til hele systemet. Automatiseringer, scripts og scener kan arbejde sammen, og en fornuftig opdeling gør ofte den senere konfiguration enklere.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">UDFØRELSE</div>
+      <h2 class="section-title mobile-match-title">Hvad sker der, hvis en automatisering udløses igen, før den er færdig?</h2>
+      <div class="card">
+        <p class="section-subtitle">Ikke alle automatiseringer afsluttes med det samme. De kan indeholde en forsinkelse, vente på en tilstandsændring eller udføre en længere sekvens af handlinger.</p>
+        <p class="section-subtitle">Hvis udløseren aktiveres igen imens, skal Home Assistant vide, hvad der skal ske med den næste kørsel.</p>
+        <p class="section-subtitle">Det styres af kørselstilstandene:</p>
+        <ul>
+          <li><strong>single</strong> – hvis automatiseringen allerede kører, starter en ny aktivering ikke endnu en kørsel,</li>
+          <li><strong>restart</strong> – den tidligere kørsel stoppes, og automatiseringen starter forfra,</li>
+          <li><strong>queued</strong> – efterfølgende kørsler placeres i en kø,</li>
+          <li><strong>parallel</strong> – flere kørsler kan køre samtidigt.</li>
+        </ul>
+        <p class="section-subtitle">Standardtilstanden er <strong>single</strong>.</p>
+        <p class="section-subtitle">Der findes ikke én tilstand, der er bedst til alle automatiseringer. Valget afhænger af, hvordan den konkrete logik skal fungere i praksis.</p>
+        <p class="section-subtitle">Ved et bevægelsesstyret lys kan en ny registrering af tilstedeværelse for eksempel kræve, at nedtællingen starter forfra, mens en kø kan være mere passende ved udførelse af bestemte kommandoer til en enhed.</p>
+        <p class="section-subtitle">At ændre tilstanden uden at forstå logikken bør ikke betragtes som en universel løsning på problemet.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">FEJLFINDING</div>
+      <h2 class="section-title mobile-match-title">Hvorfor virker en automatisering nogle gange og andre gange ikke?</h2>
+      <div class="card">
+        <p class="section-subtitle">Det er en almindelig oplevelse i mere omfattende systemer, men årsagen kan ligge flere forskellige steder.</p>
+        <p class="section-subtitle">Kontrollér i rækkefølge:</p>
+        <ul>
+          <li>om udløseren faktisk blev aktiveret,</li>
+          <li>om alle nødvendige betingelser var opfyldt,</li>
+          <li>hvilken tilstand de anvendte entiteter havde,</li>
+          <li>om en af dem midlertidigt var unavailable eller havde en anden værdi end forventet,</li>
+          <li>om integrationen leverede aktuelle data,</li>
+          <li>om enheden reagerede på den sendte handling,</li>
+          <li>om en tidligere kørsel af automatiseringen stadig var i gang,</li>
+          <li>hvilken kørselstilstand der var valgt,</li>
+          <li>om fejlen først opstod under en af de efterfølgende handlinger.</li>
+        </ul>
+        <p class="section-subtitle">Hvis automatiseringen bruger en Zigbee-enhed, og problemet er manglende opdatering af tilstanden eller en mistet forbindelse, ændrer redigering af selve automatiseringen muligvis ikke noget.</p>
+        <a class="knowledge-link" href="/dk/home-assistant-integrationer/">Home Assistant-integrationer <span aria-hidden="true">→</span></a><br />
+        <a class="knowledge-link" href="/dk/stabilt-zigbee/">Mister Zigbee forbindelsen? <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">TRACE</div>
+      <h2 class="section-title mobile-match-title">Trace – gennemgå forløbet i stedet for at gætte</h2>
+      <div class="card">
+        <p class="section-subtitle">Home Assistant har værktøjet Trace, som registrerer en automatiserings forløb trin for trin.</p>
+        <p class="section-subtitle">Det gør det muligt at se, hvad der udløste automatiseringen, hvilke betingelser der blev kontrolleret, hvilken vej logikken fulgte, og på hvilket trin problemet opstod.</p>
+        <p class="section-subtitle">Hvis automatiseringen blev startet, men ikke udførte den forventede handling, kan Trace vise, om den stoppede ved en betingelse, valgte en anden gren eller stødte på et problem under udførelsen af en handling.</p>
+        <p class="section-subtitle">Det er et langt bedre udgangspunkt end at ændre flere indstillinger tilfældigt på samme tid.</p>
+        <p class="section-subtitle">Ved fejlfinding bør man først fastslå præcist, hvor automatiseringens forløb afviger fra den forventede adfærd, og først derefter foretage en ændring.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">TEST</div>
+      <h2 class="section-title mobile-match-title">Sådan tester du en automatisering uden at vente på en rigtig hændelse</h2>
+      <div class="card">
+        <p class="section-subtitle">Home Assistant-editoren gør det muligt at teste udvalgte dele af en automatisering uden at vente på en rigtig hændelse.</p>
+        <p class="section-subtitle">Man kan for eksempel kontrollere en betingelses tilstand eller køre en valgt handling og se, om enheden reagerer som forventet.</p>
+        <p class="section-subtitle">Det er dog vigtigt at skelne mellem en test af et enkelt element og en test af hele automatiseringen.</p>
+        <p class="section-subtitle">Hvis en manuelt startet handling tænder lyset korrekt, bekræfter det, at denne konkrete handling kan udføres. Det betyder endnu ikke, at udløseren, betingelserne og hele automatiseringens forløb er konfigureret korrekt.</p>
+        <p class="section-subtitle">Ved problemer er det derfor en god idé at kombinere manuelle test af de enkelte dele med en analyse af Trace fra en faktisk kørsel.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">EDITOR</div>
+      <h2 class="section-title mobile-match-title">Skal man kende YAML for at lave automatiseringer?</h2>
+      <div class="card">
+        <p class="section-subtitle">Nej. Typiske automatiseringer kan oprettes og redigeres direkte i Home Assistants grafiske editor uden at skrive YAML-konfiguration manuelt.</p>
+        <p class="section-subtitle">Editoren gør det muligt at vælge udløsere, betingelser og handlinger samt at opbygge mere avanceret logik.</p>
+        <p class="section-subtitle">Kendskab til YAML kan være nyttigt ved analyse af en konfiguration, kopiering af mere tekniske eksempler eller løsninger, der kræver manuel redigering, men det er ikke en forudsætning for at komme i gang med automatiseringer.</p>
+        <p class="section-subtitle">Det er vigtigere at forstå logikken end den måde, konfigurationen er gemt på. En automatisering, der er bygget i brugerfladen, kan være lige så uoverskuelig som dårligt organiseret YAML, hvis den har en tilfældig struktur og uklare afhængigheder.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">GOD PRAKSIS</div>
+      <h2 class="section-title mobile-match-title">Sådan holder du automatiseringerne overskuelige</h2>
+      <div class="card">
+        <p class="section-subtitle">Navne på automatiseringer bør tydeligt beskrive, hvad de handler om. Ved et større antal regler forklarer navnet “Lys 2” meget lidt, mens en beskrivelse, der henviser til rummet og funktionsmåden, gør det hurtigere at finde det rigtige element.</p>
+        <p class="section-subtitle">Det er også værd at:</p>
+        <ul>
+          <li>undgå at kopiere den samme logik til mange steder uden behov,</li>
+          <li>udskille gentagne sekvenser i scripts, når det faktisk gør konfigurationen enklere,</li>
+          <li>bevare en overskuelig opdeling af betingelser og handlinger,</li>
+          <li>teste en ændring efter den er foretaget,</li>
+          <li>kontrollere Trace ved usædvanlig adfærd,</li>
+          <li>undgå at ændre flere forskellige elementer samtidig, før årsagen er fundet,</li>
+          <li>huske, at problemet kan ligge uden for selve automatiseringen.</li>
+        </ul>
+        <p class="section-subtitle">En god automatisering behøver ikke være kort for enhver pris. Den bør først og fremmest have en logisk struktur og opføre sig på en måde, som senere kan forstås og kontrolleres.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">OPSUMMERING</div>
+      <h2 class="section-title mobile-match-title">En automatisering skal være forudsigelig, ikke kompliceret</h2>
+      <div class="card">
+        <p class="section-subtitle">Home Assistant-automatiseringer kan kombinere data fra mange enheder og reagere på meget forskellige situationer, men grundprincippet er det samme: Noget starter logikken, betingelserne afgør, om den skal fortsætte, og handlingerne udfører de fastlagte opgaver.</p>
+        <p class="section-subtitle">Når systemet vokser, bliver tydelige navne, en passende opdeling af logikken, de rigtige kørselstilstande og muligheden for at følge det, der faktisk skete under automatiseringens kørsel, stadig vigtigere.</p>
+        <p class="section-subtitle">Hvis en automatisering opfører sig anderledes end forventet, skal man først fastslå, om problemet ligger i udløseren, betingelsen, udførelsen af handlingen, integrationen eller kommunikationen med enheden. Først derefter bør man foretage en ændring.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">HJÆLP</div>
+      <h2 class="section-title mobile-match-title">Har du brug for hjælp til Home Assistant-automatiseringer?</h2>
+      <div class="card">
+        <p class="section-subtitle">Hvis dine automatiseringer fungerer ustabilt, kører på det forkerte tidspunkt, eller du vil have bedre struktur i logikken, kan jeg hjælpe med at gennemgå den nuværende konfiguration, undersøge mulige årsager til problemet og implementere de aftalte ændringer.</p>
+        <a class="knowledge-help-link knowledge-help-link--mobile-flow" href="/dk/#kontakt"><span class="knowledge-help-main">Kontakt mig</span> <span class="knowledge-help-accent">→ klik her</span></a>
+      </div>
+    </section>
+  </main>
+
+
+  <footer>
+    <div class="footer-inner">
+      <span>© <span id="year"></span> Tomasz Furdal – Home Assistant &amp; Integrations</span>
+      <span>Betaling: bankoverførsel, Revolut, PayPal, MobilePay</span>
+    </div>
+  </footer>
+
+  <script src="../../nav.js?v=20260730-mobile-nav-12"></script>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>

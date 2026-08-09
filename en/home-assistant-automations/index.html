@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="robots" content="index,follow" />
+  <meta name="author" content="Tomasz Furdal" />
+  <meta name="theme-color" content="#0f172a" />
+  <link rel="canonical" href="https://ha-expert.com/en/home-assistant-automations/" />
+  <link rel="alternate" hreflang="pl" href="https://ha-expert.com/pl/automatyzacje-home-assistant/" />
+  <link rel="alternate" hreflang="en" href="https://ha-expert.com/en/home-assistant-automations/" />
+  <link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/home-assistant-automatiseringer/" />
+  <link rel="alternate" hreflang="x-default" href="https://ha-expert.com/en/home-assistant-automations/" />
+  <title>Home Assistant automations – guide and troubleshooting | HA Expert</title>
+  <meta name="description" content="Learn how Home Assistant automations work: triggers, conditions, actions, scripts, scenes, run modes and troubleshooting with Trace." />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Home Assistant automations – guide and troubleshooting | HA Expert" />
+  <meta property="og:description" content="Learn how Home Assistant automations work: triggers, conditions, actions, scripts, scenes, run modes and troubleshooting with Trace." />
+  <meta property="og:url" content="https://ha-expert.com/en/home-assistant-automations/" />
+  <link rel="stylesheet" href="../../styles.css?v=20260809-automations-mobile-49" />
+  <script src="../../consent.js?v=20260420-consent-1"></script>
+</head>
+<body class="knowledge-page pl-home-bg-test">
+  <header class="scrolled">
+    <div class="nav">
+      <a class="logo" href="/en/" aria-label="Tomasz Furdal - Home Assistant Expert">
+        <img class="logo-image" src="../../assets/brand/logo-wyciete.png" alt="Tomasz Furdal - Home Assistant Expert" title="Home Assistant Expert - Tomasz Furdal" />
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Open menu"><span aria-hidden="true">☰</span></button>
+      <a class="nav-mobile-link about-link" href="/en/#about-me">About me</a>
+      <a class="nav-mobile-link contact-link" href="/en/#contact">Contact</a>
+      <nav id="primary-nav" aria-label="Primary">
+        <ul>
+          <li><a href="/en/#services">Services</a></li>
+          <li><a href="/en/#about-me">About me</a></li>
+          <li><a href="/en/#who-its-for">Who it’s for</a></li>
+          <li><a href="/en/#how-i-work">How I work</a></li>
+          <li><a href="/en/#pricing">Pricing</a></li>
+          <li><a href="/en/#contact">Contact</a></li>
+          <li class="nav-secondary-start"><a href="/en/projects/">Projects</a></li>
+          <li class="nav-guides">
+            <button class="nav-guides-toggle" type="button" aria-expanded="false" aria-haspopup="true"><span>Guides</span><span class="nav-guides-chevron" aria-hidden="true">▾</span></button>
+            <ul class="nav-guides-dropdown">
+              <li><a href="/en/what-is-ha/">What is Home Assistant?</a></li>
+              <li><a href="/en/home-assistant-integrations/">Home Assistant integrations</a></li>
+              <li><a href="/en/home-assistant-automations/" aria-current="page">Home Assistant automations</a></li>
+              <li><a href="/en/stable-zigbee/">Zigbee keeps disconnecting?</a></li>
+            </ul>
+          </li>
+          <li><a href="/en/demo/">Demo panel</a></li>
+        </ul>
+      </nav>
+      <div class="lang-switch" aria-label="Language switch">
+        <a class="lang-btn" href="/pl/automatyzacje-home-assistant/" aria-label="Polski"><img class="lang-flag" src="../../assets/flags/pl.svg" alt="" aria-hidden="true" /></a>
+        <a class="lang-btn" href="/dk/home-assistant-automatiseringer/" aria-label="Dansk"><img class="lang-flag" src="../../assets/flags/dk.svg" alt="" aria-hidden="true" /></a>
+        <a class="lang-btn active" href="/en/home-assistant-automations/" aria-label="English" aria-current="page"><img class="lang-flag" src="../../assets/flags/gb.svg" alt="" aria-hidden="true" /></a>
+      </div>
+      <a class="nav-cta" href="/en/#contact">Free diagnosis</a>
+    </div>
+  </header>
+
+  <div class="mobile-bottom-bar" aria-label="Mobile quick actions">
+    <a class="mobile-bottom-link" href="/en/#about-me">About me</a>
+    <a class="mobile-bottom-link" href="/en/#contact">Contact</a>
+  </div>
+
+  <main>
+    <section class="section">
+      <div class="section-label">AUTOMATIONS</div>
+      <h1 class="section-title mobile-match-title">Home Assistant automations – how they work and how to troubleshoot them</h1>
+      <div class="card">
+        <p class="section-subtitle">Automations allow Home Assistant to respond to what is happening in your home without requiring you to perform every task manually. The system can react to a change in a device state, a specific time, temperature, household presence, or another event and carry out predefined actions.</p>
+        <p class="section-subtitle">However, the number of automations alone does not indicate the quality of a system. What matters more is whether their logic is understandable, predictable, and possible to troubleshoot later.</p>
+        <p class="section-subtitle">This guide explains what a Home Assistant automation consists of, how triggers, conditions, and actions differ, how scripts and scenes work, and what to check when an automation works sometimes but not at other times.</p>
+        <p class="section-subtitle">If you are just getting to know the system as a whole, continue with the guide below.</p>
+        <a class="knowledge-link" href="/en/what-is-ha/">What is Home Assistant? <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">BASICS</div>
+      <h2 class="section-title mobile-match-title">What is a Home Assistant automation?</h2>
+      <div class="card">
+        <p class="section-subtitle">An automation describes when Home Assistant should respond, which conditions should be met at that time, and what the system should do.</p>
+        <p class="section-subtitle">A simple example might work like this: a sensor detects motion, Home Assistant checks whether it is already dark, and then turns on a light.</p>
+        <p class="section-subtitle">In practice, automations can be much more advanced. A single rule can include several triggers, additional conditions, delays, waits for a state change, and different action paths depending on the situation.</p>
+        <p class="section-subtitle">This does not mean that every automation should be complicated. The simpler and clearer the logic needed to achieve the goal, the easier it is to understand its behaviour later and find the cause of a potential problem.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">LOGIC</div>
+      <h2 class="section-title mobile-match-title">Trigger, condition and action – what is the difference?</h2>
+      <div class="card">
+        <p class="section-subtitle">These three elements have different roles.</p>
+        <p class="section-subtitle">A trigger defines what starts the automation evaluation. It can be motion being detected, a temperature change, a specific time, or a change in a device state.</p>
+        <p class="section-subtitle">A condition does not trigger an automation. It is checked after a trigger occurs and determines whether the automation can continue.</p>
+        <p class="section-subtitle">An action defines what Home Assistant should do if the automation has been triggered and the required conditions are met.</p>
+        <p class="section-subtitle">If a light should turn on when motion is detected, but only in the evening, motion detection can be the trigger, the time of day can be the condition, and turning on the light can be the action.</p>
+        <p class="section-subtitle">Distinguishing between these elements is also important when troubleshooting. An automation may not perform an action not because it “failed to run”, but because the trigger occurred correctly while one of the conditions was not met.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">TRIGGERS</div>
+      <h2 class="section-title mobile-match-title">What can trigger an automation?</h2>
+      <div class="card">
+        <p class="section-subtitle">An automation does not have to respond only to a button press or a change in a sensor state.</p>
+        <p class="section-subtitle">A trigger can include:</p>
+        <ul>
+          <li>a change in an entity state,</li>
+          <li>crossing a specified value,</li>
+          <li>a specific time,</li>
+          <li>sunrise or sunset,</li>
+          <li>an event in the system,</li>
+          <li>a webhook,</li>
+          <li>a change related to a device or service.</li>
+        </ul>
+        <p class="section-subtitle">This allows the same logic to be started using different information available in Home Assistant.</p>
+        <p class="section-subtitle">It is important to remember that an automation receives information from other parts of the system. If a sensor stops updating its state or an integration loses communication with a device, the expected trigger may not occur at all.</p>
+        <p class="section-subtitle">In that case, the problem may not be in the automation logic.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">EXAMPLE</div>
+      <h2 class="section-title mobile-match-title">A simple automation using a light as an example</h2>
+      <div class="card">
+        <p class="section-subtitle">Suppose a hallway light should turn on when motion is detected, but only when it is dark.</p>
+        <p class="section-subtitle">The logic can be presented simply:</p>
+        <p class="section-subtitle"><strong>Trigger:</strong> the motion sensor changes its state to motion detected.</p>
+        <p class="section-subtitle"><strong>Condition:</strong> it is after sunset or the light level is below a defined value.</p>
+        <p class="section-subtitle"><strong>Action:</strong> turn on the light.</p>
+        <p class="section-subtitle">You can then add another behaviour, such as turning the light off after a defined period without motion.</p>
+        <p class="section-subtitle">Even this simple example requires a decision about what should happen if motion is detected again while the timer is running. Should the countdown start again? Should the previous run be stopped? Should the next trigger be ignored?</p>
+        <p class="section-subtitle">This is where the automation run mode starts to matter.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">ORGANISATION</div>
+      <h2 class="section-title mobile-match-title">Why do automations become difficult to maintain?</h2>
+      <div class="card">
+        <p class="section-subtitle">The problem often does not appear with the first few automations. It becomes visible when the system is gradually expanded.</p>
+        <p class="section-subtitle">Similar logic may be copied into several places, one automation starts depending on another, and names created several months earlier no longer make it clear what they control.</p>
+        <p class="section-subtitle">Devices, entities, schedules, and the way the household operates also change over time.</p>
+        <p class="section-subtitle">The result may be a situation where the user knows that “something somewhere controls the light” but no longer remembers which automation is responsible for the particular response.</p>
+        <p class="section-subtitle">For a larger system, it is therefore worth using clear names, maintaining a logical structure, and avoiding duplicating the same action sequence in many places when it can sensibly be separated.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">TOOLS</div>
+      <h2 class="section-title mobile-match-title">Automation, script and scene – when should you use each?</h2>
+      <div class="card">
+        <p class="section-subtitle">These elements are related, but they do not serve exactly the same purpose.</p>
+        <p class="section-subtitle">An automation responds to a specific situation and starts actions according to its defined logic.</p>
+        <p class="section-subtitle">A script is a sequence of actions that can be called from an automation, a dashboard, or another place in Home Assistant. It is particularly useful when the same set of tasks needs to be reused.</p>
+        <p class="section-subtitle">For example, instead of separately defining a sequence for turning off lights, closing blinds, and adjusting heating in several automations, you can create a suitable script and call it wherever it is needed.</p>
+        <p class="section-subtitle">A scene sets devices to specified states. For example, it can set several lights to selected brightness and colour values or prepare devices for a particular mode of use.</p>
+        <p class="section-subtitle">You do not need to choose only one of these solutions for the entire system. Automations, scripts, and scenes can work together, and a sensible division often makes the configuration easier to manage later.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">EXECUTION</div>
+      <h2 class="section-title mobile-match-title">What happens if an automation is triggered again before it finishes?</h2>
+      <div class="card">
+        <p class="section-subtitle">Not every automation finishes immediately. It may contain a delay, wait for a state change, or perform a longer sequence of actions.</p>
+        <p class="section-subtitle">If its trigger occurs again during that time, Home Assistant needs to know what to do with the next run.</p>
+        <p class="section-subtitle">Run modes define this behaviour:</p>
+        <ul>
+          <li><strong>single</strong> – if the automation is already running, a new trigger does not start another run,</li>
+          <li><strong>restart</strong> – the previous run is stopped and the automation starts again,</li>
+          <li><strong>queued</strong> – subsequent runs are placed in a queue,</li>
+          <li><strong>parallel</strong> – several runs can operate at the same time.</li>
+        </ul>
+        <p class="section-subtitle">The default mode is <strong>single</strong>.</p>
+        <p class="section-subtitle">There is no single mode that is best for every automation. The choice depends on how the logic should behave in the real situation.</p>
+        <p class="section-subtitle">For example, with a motion-controlled light, detecting presence again may need to restart the countdown, while a queue may be more appropriate when sending a defined series of commands to a device.</p>
+        <p class="section-subtitle">Changing the mode without understanding the logic should not be treated as a universal fix.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">TROUBLESHOOTING</div>
+      <h2 class="section-title mobile-match-title">Why does an automation work sometimes and fail at other times?</h2>
+      <div class="card">
+        <p class="section-subtitle">This is a common impression with more complex systems, but the cause can be in several different places.</p>
+        <p class="section-subtitle">Check the following in order:</p>
+        <ul>
+          <li>whether the trigger actually occurred,</li>
+          <li>whether all required conditions were met,</li>
+          <li>what states the entities being used had,</li>
+          <li>whether any entity was temporarily unavailable or had a different value than expected,</li>
+          <li>whether the integration provided current data,</li>
+          <li>whether the device responded to the action,</li>
+          <li>whether a previous automation run was still active,</li>
+          <li>which run mode was configured,</li>
+          <li>whether the error occurred only during one of the later actions.</li>
+        </ul>
+        <p class="section-subtitle">If the automation uses a Zigbee device and the problem is a missing state update or a lost connection, editing the automation itself may not change anything.</p>
+        <a class="knowledge-link" href="/en/home-assistant-integrations/">Home Assistant integrations <span aria-hidden="true">→</span></a><br />
+        <a class="knowledge-link" href="/en/stable-zigbee/">Zigbee keeps disconnecting? <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">TRACE</div>
+      <h2 class="section-title mobile-match-title">Trace – inspect the execution instead of guessing</h2>
+      <div class="card">
+        <p class="section-subtitle">Home Assistant includes the Trace tool, which records an automation run step by step.</p>
+        <p class="section-subtitle">It allows you to see what triggered the automation, which conditions were checked, which path the logic followed, and at which stage a problem appeared.</p>
+        <p class="section-subtitle">If an automation was triggered but did not perform the expected action, Trace can show whether it stopped at a condition, selected a different branch, or encountered a problem while carrying out an action.</p>
+        <p class="section-subtitle">This is a much better starting point than changing several settings at random.</p>
+        <p class="section-subtitle">When troubleshooting, first determine exactly where the automation run differs from the expected behaviour, and only then make a change.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">TESTING</div>
+      <h2 class="section-title mobile-match-title">How to test an automation without waiting for a real event</h2>
+      <div class="card">
+        <p class="section-subtitle">The Home Assistant editor allows you to test selected parts of an automation without waiting for a real event.</p>
+        <p class="section-subtitle">For example, you can verify the state of a condition or run a selected action and check whether the device responds as expected.</p>
+        <p class="section-subtitle">However, it is important to distinguish between testing a single element and testing the entire automation.</p>
+        <p class="section-subtitle">If a manually executed action turns on the light correctly, this confirms that the specific action can be performed. It does not yet mean that the trigger, conditions, and complete automation flow are configured correctly.</p>
+        <p class="section-subtitle">When investigating problems, it is therefore worth combining manual tests of individual parts with an analysis of the Trace from an actual run.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">EDITOR</div>
+      <h2 class="section-title mobile-match-title">Do you need to know YAML to create automations?</h2>
+      <div class="card">
+        <p class="section-subtitle">No. Typical automations can be created and edited directly in the graphical Home Assistant editor without writing YAML configuration manually.</p>
+        <p class="section-subtitle">The editor lets you select triggers, conditions, and actions and also build more advanced logic.</p>
+        <p class="section-subtitle">Knowing YAML can be helpful when analysing a configuration, copying more technical examples, or working with solutions that require manual editing, but it is not required to begin working with automations.</p>
+        <p class="section-subtitle">Understanding the logic is more important than the format used to store the configuration. An automation built in the interface can be just as difficult to understand as poorly organised YAML if it has a random structure and unclear dependencies.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">BEST PRACTICES</div>
+      <h2 class="section-title mobile-match-title">How to keep automations maintainable</h2>
+      <div class="card">
+        <p class="section-subtitle">Automation names should clearly describe what they control. With a larger number of rules, a name such as “Light 2” explains very little, while a description that refers to the room and the behaviour helps you find the correct item more quickly.</p>
+        <p class="section-subtitle">It is also worth:</p>
+        <ul>
+          <li>not copying the same logic into many places without a reason,</li>
+          <li>moving repeated sequences into scripts when this genuinely simplifies the configuration,</li>
+          <li>keeping conditions and actions clearly organised,</li>
+          <li>testing a change after making it,</li>
+          <li>checking Trace when behaviour is unusual,</li>
+          <li>not changing several different elements at once before identifying the cause,</li>
+          <li>remembering that the problem may be outside the automation itself.</li>
+        </ul>
+        <p class="section-subtitle">A good automation does not need to be short at all costs. Above all, it should have a logical structure and behave in a way that can later be understood and verified.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">SUMMARY</div>
+      <h2 class="section-title mobile-match-title">An automation should be predictable, not complicated</h2>
+      <div class="card">
+        <p class="section-subtitle">Home Assistant automations can combine data from many devices and respond to many different situations, but the basic principle remains the same: something starts the logic, conditions determine whether it should continue, and actions carry out the defined tasks.</p>
+        <p class="section-subtitle">As the system grows, clear names, an appropriate division of logic, suitable run modes, and the ability to trace what actually happened during an automation run become increasingly important.</p>
+        <p class="section-subtitle">If an automation behaves differently than expected, first determine whether the problem is in the trigger, condition, action execution, integration, or communication with the device. Only then make a change.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">HELP</div>
+      <h2 class="section-title mobile-match-title">Need help with Home Assistant automations?</h2>
+      <div class="card">
+        <p class="section-subtitle">If your automations behave inconsistently, run at the wrong time, or you want to organise their logic, I can help review the current configuration, check possible causes of the problem, and implement agreed changes.</p>
+        <a class="knowledge-help-link knowledge-help-link--mobile-flow" href="/en/#contact"><span class="knowledge-help-main">Contact me</span> <span class="knowledge-help-accent">→ click here</span></a>
+      </div>
+    </section>
+  </main>
+
+
+  <footer>
+    <div class="footer-inner">
+      <span>© <span id="year"></span> Tomasz Furdal – Home Assistant &amp; Integrations</span>
+      <span>Payments: bank transfer, Revolut, PayPal, MobilePay</span>
+    </div>
+  </footer>
+
+  <script src="../../nav.js?v=20260730-mobile-nav-12"></script>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>
