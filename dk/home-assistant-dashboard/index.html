@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="robots" content="index,follow" />
+  <meta name="author" content="Tomasz Furdal" />
+  <meta name="theme-color" content="#0f172a" />
+  <link rel="canonical" href="https://ha-expert.com/dk/home-assistant-dashboard/" />
+  <link rel="alternate" hreflang="pl" href="https://ha-expert.com/pl/dashboard-home-assistant/" />
+  <link rel="alternate" hreflang="en" href="https://ha-expert.com/en/home-assistant-dashboard/" />
+  <link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/home-assistant-dashboard/" />
+  <link rel="alternate" hreflang="x-default" href="https://ha-expert.com/en/home-assistant-dashboard/" />
+  <title>Home Assistant-dashboard – opsætning, kort og visninger | HA Expert</title>
+  <meta name="description" content="Læs hvordan du bygger et Home Assistant-dashboard fra bunden med visninger, kort, Webpage dashboard, YAML, HACS samt layout til mobil og tablet." />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Home Assistant-dashboard – opsætning, kort og visninger | HA Expert" />
+  <meta property="og:description" content="Læs hvordan du bygger et Home Assistant-dashboard fra bunden med visninger, kort, Webpage dashboard, YAML, HACS samt layout til mobil og tablet." />
+  <meta property="og:url" content="https://ha-expert.com/dk/home-assistant-dashboard/" />
+  <link rel="stylesheet" href="../../styles.css?v=20260809-dashboard-50" />
+  <script src="../../consent.js?v=20260420-consent-1"></script>
+</head>
+<body class="knowledge-page pl-home-bg-test">
+  <header class="scrolled">
+    <div class="nav">
+      <a class="logo" href="/dk/" aria-label="Tomasz Furdal - Home Assistant Expert">
+        <img class="logo-image" src="../../assets/brand/logo-wyciete.png" alt="Tomasz Furdal - Home Assistant Expert" title="Home Assistant Expert - Tomasz Furdal" />
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Åbn menu"><span aria-hidden="true">☰</span></button>
+      <a class="nav-mobile-link about-link" href="/dk/#om-mig">Om mig</a>
+      <a class="nav-mobile-link contact-link" href="/dk/#kontakt">Kontakt</a>
+      <nav id="primary-nav" aria-label="Primær navigation">
+        <ul>
+          <li><a href="/dk/#ydelser">Ydelser</a></li>
+          <li><a href="/dk/#om-mig">Om mig</a></li>
+          <li><a href="/dk/#for-hvem">For hvem</a></li>
+          <li><a href="/dk/#saadan-arbejder-jeg">Sådan arbejder jeg</a></li>
+          <li><a href="/dk/#priser">Priser</a></li>
+          <li><a href="/dk/#kontakt">Kontakt</a></li>
+          <li class="nav-secondary-start"><a href="/dk/projekter/">Projekter</a></li>
+          <li class="nav-guides">
+            <button class="nav-guides-toggle" type="button" aria-expanded="false" aria-haspopup="true"><span>Vejledninger</span><span class="nav-guides-chevron" aria-hidden="true">▾</span></button>
+            <ul class="nav-guides-dropdown">
+              <li><a href="/dk/hvad-er-ha/">Hvad er Home Assistant?</a></li>
+              <li><a href="/dk/home-assistant-integrationer/">Home Assistant-integrationer</a></li>
+              <li><a href="/dk/home-assistant-automatiseringer/">Home Assistant-automatiseringer</a></li>
+              <li><a href="/dk/home-assistant-dashboard/" aria-current="page">Home Assistant-dashboard</a></li>
+              <li><a href="/dk/stabilt-zigbee/">Mister Zigbee forbindelsen?</a></li>
+            </ul>
+          </li>
+          <li><a href="/dk/demo/">Demo-panel</a></li>
+        </ul>
+      </nav>
+      <div class="lang-switch" aria-label="Sprogvalg">
+        <a class="lang-btn" href="/pl/dashboard-home-assistant/" aria-label="Polski"><img class="lang-flag" src="../../assets/flags/pl.svg" alt="" aria-hidden="true" /></a>
+        <a class="lang-btn active" href="/dk/home-assistant-dashboard/" aria-label="Dansk" aria-current="page"><img class="lang-flag" src="../../assets/flags/dk.svg" alt="" aria-hidden="true" /></a>
+        <a class="lang-btn" href="/en/home-assistant-dashboard/" aria-label="English"><img class="lang-flag" src="../../assets/flags/gb.svg" alt="" aria-hidden="true" /></a>
+      </div>
+      <a class="nav-cta" href="/dk/#kontakt">Gratis diagnose</a>
+    </div>
+  </header>
+
+  <div class="mobile-bottom-bar" aria-label="Hurtige mobilhandlinger">
+    <a class="mobile-bottom-link" href="/dk/#om-mig">Om mig</a>
+    <a class="mobile-bottom-link" href="/dk/#kontakt">Kontakt</a>
+  </div>
+
+  <main>
+    <section class="section">
+      <div class="section-label">DASHBOARD</div>
+      <h1 class="section-title mobile-match-title">Home Assistant-dashboard – sådan bygger du et overskueligt kontrolpanel</h1>
+      <div class="card">
+        <p class="section-subtitle">Dashboardet er den del af Home Assistant, som brugeren oftest har kontakt med. Det viser boligens status, gør det muligt at styre enheder, starte bestemte handlinger og hurtigt finde de oplysninger, der er brug for i øjeblikket.</p>
+        <p class="section-subtitle">Home Assistant kan automatisk oprette et grundlæggende panel, men et selvbygget dashboard giver langt større kontrol over, hvad der vises, i hvilken rækkefølge det vises, og hvordan brugeren kan styre systemet.</p>
+        <p class="section-subtitle">Et enkelt panel kan oprettes uden at skrive kode. Når der tilføjes forskellige visninger, mobiltelefon, vægtablet, betinget synlige elementer, egen navigation, tilpassede kort eller mere avancerede handlinger, bliver konfigurationen dog hurtigt mere omfattende.</p>
+        <p class="section-subtitle">I denne guide forklarer jeg, hvordan et Home Assistant-dashboard er opbygget, hvordan du opretter dit eget panel fra bunden, og hvilke muligheder der kan bruges i mere avancerede layouts.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">START</div>
+      <h2 class="section-title mobile-match-title">Færdigt dashboard eller dit eget panel fra bunden?</h2>
+      <div class="card">
+        <p class="section-subtitle">Home Assistant har indbyggede dashboards, som automatisk kan vise enheder og oplysninger, der er tilgængelige i systemet.</p>
+        <p class="section-subtitle">Hvis du har brug for dit eget layout, er det bedre at oprette et separat dashboard end at ombygge standardvisningen alene for at tilpasse den til en bestemt telefon, tablet eller måde at bruge boligen på.</p>
+        <p class="section-subtitle">Et nyt dashboard kan oprettes via:</p>
+        <p class="section-subtitle"><strong>Indstillinger → Dashboards → Tilføj dashboard</strong></p>
+        <p class="section-subtitle">Hvis panelet skal bygges helt fra bunden, skal du vælge:</p>
+        <p class="section-subtitle"><strong>New dashboard from scratch</strong></p>
+        <p class="section-subtitle">altså oprette et tomt dashboard.</p>
+        <p class="section-subtitle">Under oprettelsen kan du give det et navn og et ikon og vælge, om det skal vises i Home Assistants sidepanel.</p>
+        <p class="section-subtitle">Der findes også varianter med allerede klargjorte elementer. Til et panel, der bygges til en bestemt brugssituation, giver et tomt dashboard dog størst kontrol over det senere layout. Home Assistant gør det officielt muligt at oprette flere separate dashboards og anbefaler ved mere individuelle opsætninger at oprette et nyt i stedet for at ændre standardpanelet.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">STRUKTUR</div>
+      <h2 class="section-title mobile-match-title">Dashboard, visning og kort – tre forskellige niveauer</h2>
+      <div class="card">
+        <p class="section-subtitle">Det er let at blande disse begreber sammen.</p>
+        <p class="section-subtitle">Et dashboard er hele kontrolpanelet.</p>
+        <p class="section-subtitle">En visning er en fane inde i dashboardet. Et dashboard kan for eksempel have separate visninger til stueetagen, førstesalen, varme, energi eller medier.</p>
+        <p class="section-subtitle">Et kort er et konkret element placeret i en visning. Det kan vise lys, temperatur, en termostat, en graf, vejret, en knap, en liste over entiteter eller andre oplysninger.</p>
+        <p class="section-subtitle">En eksempelstruktur kan se sådan ud:</p>
+        <p class="section-subtitle"><strong>Dashboard „Hjem” → visning „Stue” → lyskort, temperaturkort og mediekort.</strong></p>
+        <p class="section-subtitle">Med denne opdeling behøver alle enheder og oplysninger ikke at ligge på den samme skærm.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">VISNINGER</div>
+      <h2 class="section-title mobile-match-title">Sections, Masonry, Panel og Sidebar – hvilket layout skal du vælge?</h2>
+      <div class="card">
+        <p class="section-subtitle">Home Assistant tilbyder fire grundlæggende typer visninger:</p>
+        <p class="section-subtitle"><strong>Sections</strong> – er i øjeblikket standardtypen. Den gør det muligt at opdele dashboardet i sektioner og placere kort i et gitter. Den passer godt til paneler, som skal bevare et overskueligt layout ved forskellige skærmbredder.</p>
+        <p class="section-subtitle"><strong>Masonry</strong> – placerer kort i kolonner afhængigt af deres størrelse. Den kan være praktisk til paneler med kort i forskellige højder.</p>
+        <p class="section-subtitle"><strong>Panel</strong> – bruger stort set hele visningen til ét kort. Det er for eksempel nyttigt til et stort kort, et billede eller et andet element, der skal fylde hele den tilgængelige bredde.</p>
+        <p class="section-subtitle"><strong>Sidebar</strong> – opretter et layout med to kolonner: et bredt hovedområde og et smallere sideområde.</p>
+        <p class="section-subtitle">Visningstypen påvirker ikke kun udseendet, men også hvordan kortene senere opfører sig på forskellige skærme. Det er ikke nødvendigt at bruge den samme visningstype i alle dele af dashboardet.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">SEKTIONER</div>
+      <h2 class="section-title mobile-match-title">Sådan bygger du et panel med Sections</h2>
+      <div class="card">
+        <p class="section-subtitle">I en Sections-visning kan kort grupperes i logiske sektioner.</p>
+        <p class="section-subtitle">Et dashboard kan for eksempel indeholde:</p>
+        <ul>
+          <li>en sektion til belysning,</li>
+          <li>en sektion til temperatur og varme,</li>
+          <li>en sektion til rullegardiner,</li>
+          <li>en sektion til sikkerhed,</li>
+          <li>en sektion til medier.</li>
+        </ul>
+        <p class="section-subtitle">Det betyder ikke, at hver kategori skal have sin egen blok. Opdelingen bør følge den måde, panelet bruges på.</p>
+        <p class="section-subtitle">I Sections kan størrelsen på kortene i gitteret også ændres. Et vigtigere element kan dermed optage mere plads, mens en enkel status eller knap kan fylde mindre.</p>
+        <p class="section-subtitle">Det er dog ikke en fordel at bruge al tilgængelig plads, bare fordi det er muligt. Dashboardet skal først og fremmest gøre det hurtigt at finde en oplysning eller funktion.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">KORT</div>
+      <h2 class="section-title mobile-match-title">Sådan tilføjer du en enhed eller information til et dashboard</h2>
+      <div class="card">
+        <p class="section-subtitle">Når dashboardet er i redigeringstilstand, kan et kort tilføjes på to grundlæggende måder.</p>
+        <p class="section-subtitle">Den første er at vælge en entitet. Du angiver den entitet, der skal vises, og Home Assistant foreslår en passende præsentation.</p>
+        <p class="section-subtitle">Den anden er at vælge korttypen. Først vælger du elementets type og derefter de entiteter eller data, som skal indgå.</p>
+        <p class="section-subtitle">Afhængigt af behovet kan der blandt andet bruges kort til:</p>
+        <ul>
+          <li>styring af lys,</li>
+          <li>visning af sensorer,</li>
+          <li>betjening af en termostat,</li>
+          <li>visning af vejret,</li>
+          <li>visning af grafer,</li>
+          <li>gruppering af entiteter,</li>
+          <li>oprettelse af knapper,</li>
+          <li>visning af billeder,</li>
+          <li>visning af websider.</li>
+        </ul>
+        <p class="section-subtitle">Home Assistant gør det også muligt at tilføje et kort direkte fra enhedens oplysninger og vælge det dashboard og den visning, som det skal placeres i.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">HIERARKI</div>
+      <h2 class="section-title mobile-match-title">Ikke alle entiteter hører hjemme på dashboardet</h2>
+      <div class="card">
+        <p class="section-subtitle">Integrationen af én enhed kan oprette mange entiteter. Det betyder ikke, at alle skal vises på hoveddashboardet.</p>
+        <p class="section-subtitle">På en skærm, der bruges til daglig, bør først og fremmest de oplysninger og funktioner vises, som faktisk bruges regelmæssigt.</p>
+        <p class="section-subtitle">Hovedpanelet kan for eksempel vise rummets temperatur og varmestyring, mens enhedens tekniske diagnosesensorer ikke behøver at optage plads ved siden af.</p>
+        <p class="section-subtitle">På samme måde kan mange entiteter med batteriniveauer placeres i en separat teknisk visning i stedet for at blive blandet med den daglige styring af lys og rullegardiner.</p>
+        <p class="section-subtitle">Flere data på skærmen betyder ikke altid et bedre dashboard. Hvis de vigtigste oplysninger forsvinder mellem elementer, der bruges en gang hvert par måneder, opfylder panelet ikke længere sin grundlæggende funktion.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">HANDLINGER</div>
+      <h2 class="section-title mobile-match-title">Et kort kan mere end blot at tænde og slukke en enhed</h2>
+      <div class="card">
+        <p class="section-subtitle">På mange kort kan det bestemmes, hvad der skal ske, når brugeren interagerer med dem.</p>
+        <p class="section-subtitle">Home Assistant skelner blandt andet mellem:</p>
+        <ul>
+          <li><strong>tap</strong> – et almindeligt tryk eller klik,</li>
+          <li><strong>hold</strong> – et langt tryk,</li>
+          <li><strong>double tap</strong> – et dobbelt tryk.</li>
+        </ul>
+        <p class="section-subtitle">Afhængigt af konfigurationen kan man for eksempel:</p>
+        <ul>
+          <li>skifte en enheds tilstand,</li>
+          <li>åbne detaljerede oplysninger,</li>
+          <li>udføre en bestemt handling,</li>
+          <li>gå til en anden dashboardvisning,</li>
+          <li>åbne en URL,</li>
+          <li>starte Assist.</li>
+        </ul>
+        <p class="section-subtitle">Et kort kan dermed fungere både som en enkel knap og som navigation eller adgang til mere detaljeret styring.</p>
+        <p class="section-subtitle">Der bør dog ikke tilknyttes mange skjulte handlinger uden et tydeligt behov. Hvis brugeren ikke ved, at et langt tryk udfører noget andet end et almindeligt tryk, kan panelet blive mindre intuitivt i stedet for mere funktionelt.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">SYNLIGHED</div>
+      <h2 class="section-title mobile-match-title">Ikke alle kort behøver at være synlige hele tiden</h2>
+      <div class="card">
+        <p class="section-subtitle">Home Assistant gør det muligt at angive betingelser for kortenes synlighed.</p>
+        <p class="section-subtitle">En oplysning om et åbent vindue kan for eksempel vises, når vinduet faktisk er åbent, og et element om bilopladning kan kun være synligt, mens opladeren er i brug.</p>
+        <p class="section-subtitle">Det er også muligt at begrænse elementers synlighed til bestemte brugere.</p>
+        <p class="section-subtitle">På den måde kan mængden af information på skærmen reduceres, og visse elementer kan først vises, når de bliver relevante.</p>
+        <p class="section-subtitle">Betinget synlighed bør dog ikke erstatte automatiseringer. At en oplysning vises på skærmen, betyder ikke nødvendigvis, at brugeren hver gang manuelt skal reagere på situationen.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">WEBPAGE</div>
+      <h2 class="section-title mobile-match-title">Dashboard fra bunden eller Webpage dashboard?</h2>
+      <div class="card">
+        <p class="section-subtitle">Home Assistant har også et Webpage dashboard.</p>
+        <p class="section-subtitle">Det er ikke en anden måde at bygge det samme panel med Home Assistant-kort på. Formålet er at indlejre en webside i Home Assistant-brugerfladen.</p>
+        <p class="section-subtitle">Det kan for eksempel være:</p>
+        <ul>
+          <li>en side på internettet,</li>
+          <li>et panel til en enhed i det lokale netværk,</li>
+          <li>brugerfladen til en NAS eller router,</li>
+          <li>en egen lokal webside,</li>
+          <li>en anden brugerflade, som kan indlejres korrekt.</li>
+        </ul>
+        <p class="section-subtitle">Et Webpage dashboard bruger et Webpage card.</p>
+        <p class="section-subtitle">Ikke alle sider tillader dog indlejring. Nogle tjenester blokerer visning i en ramme af sikkerhedshensyn. Desuden kan Home Assistant, når det bruges via HTTPS, ikke på denne måde indlejre en side, der kun er tilgængelig via HTTP.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">IFRAME</div>
+      <h2 class="section-title mobile-match-title">Webpage card og Webpage dashboard er ikke det samme</h2>
+      <div class="card">
+        <p class="section-subtitle">Et Webpage dashboard er et helt dashboard beregnet til at vise en webside.</p>
+        <p class="section-subtitle">Et Webpage card er derimod et kort, som kan bruges som et element i et dashboard.</p>
+        <p class="section-subtitle">Det gør det muligt at indlejre siden på et valgt sted i brugerfladen i stedet for at bruge et helt separat panel til den.</p>
+        <p class="section-subtitle">Et Webpage card kan også vise filer, der ligger lokalt i Home Assistants www-mappe og er tilgængelige via stien /local/.</p>
+        <p class="section-subtitle">Browserens sikkerhedsbegrænsninger gælder stadig ved denne løsning. At en side åbner normalt i en separat browserfane, betyder ikke nødvendigvis, at den kan indlejres i dashboardet.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">ENHEDER</div>
+      <h2 class="section-title mobile-match-title">Mobil, computer og vægtablet behøver ikke det samme dashboard</h2>
+      <div class="card">
+        <p class="section-subtitle">Et dashboard, der er praktisk på en stor skærm, er ikke altid praktisk på en mobiltelefon.</p>
+        <p class="section-subtitle">På mobilen er det vigtigt hurtigt at kunne nå de mest brugte funktioner, at kortene har en passende bredde, og at antallet af elementer, der kræver vandret rulning, begrænses.</p>
+        <p class="section-subtitle">En vægtablet giver mere plads og kan samtidig vise boligens status, lysstyring, vejret, alarmen eller temperaturen.</p>
+        <p class="section-subtitle">Home Assistant gør det muligt at oprette flere dashboards. Man kan derfor lave et separat panel til tabletten i stedet for at forsøge at samle alle anvendelser i ét layout.</p>
+        <p class="section-subtitle">Hvis vægtabletten skal bruge et andet standarddashboard end brugerens telefon, kan der også oprettes en separat brugerprofil til tabletten, som får tildelt det relevante dashboard.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">BRUGERE</div>
+      <h2 class="section-title mobile-match-title">Husstandens medlemmer behøver ikke altid samme visning som administratoren</h2>
+      <div class="card">
+        <p class="section-subtitle">Den person, der konfigurerer Home Assistant, kan have brug for at se tekniske tilstande, diagnostik, batteriniveauer, netværksoplysninger og ekstra sensorer.</p>
+        <p class="section-subtitle">Andre medlemmer af husstanden kan først og fremmest have brug for enkel styring af lys, rullegardiner, temperatur, alarm eller medier.</p>
+        <p class="section-subtitle">Der er ingen grund til at samle disse to måder at bruge systemet på den samme skærm.</p>
+        <p class="section-subtitle">En adskillelse mellem det daglige panel og den tekniske visning gør ofte betjeningen enklere og mindsker risikoen for ved et uheld at aktivere funktioner, som ikke er nødvendige i hverdagen.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">AUTOMATISERINGER</div>
+      <h2 class="section-title mobile-match-title">Et dashboard bør ikke erstatte automatiseringer</h2>
+      <div class="card">
+        <p class="section-subtitle">Et godt dashboard giver mulighed for at styre systemet og korrigere dets funktion manuelt.</p>
+        <p class="section-subtitle">Hvis brugeren hver aften manuelt skal slukke flere lys, køre rullegardiner ned, ændre temperaturen og skifte flere enheder, bør problemet dog ikke altid løses ved at tilføje flere knapper på panelet.</p>
+        <p class="section-subtitle">Nogle af disse handlinger passer måske bedre til en automatisering eller et script.</p>
+        <p class="section-subtitle">Dashboardet kan så indeholde én passende funktion eller blot vise resultatet af systemets arbejde.</p>
+        <a class="knowledge-link" href="/dk/home-assistant-automatiseringer/">Home Assistant-automatiseringer <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">HACS</div>
+      <h2 class="section-title mobile-match-title">Hvad hvis standardkortene ikke er nok?</h2>
+      <div class="card">
+        <p class="section-subtitle">Home Assistant har mange indbyggede kort, og de er tilstrækkelige til en stor del af alle paneler.</p>
+        <p class="section-subtitle">Der findes også tilpassede elementer skabt af fællesskabet. De kan udvide dashboardets udseende, tilføje andre måder at vise data på eller gøre løsninger mulige, som ikke findes i standardkortene.</p>
+        <p class="section-subtitle">HACS bruges ofte til at hente og opdatere sådanne elementer. HACS understøtter dashboardelementer fra fællesskabet, herunder egne kort og andre komponenter til brugerfladen.</p>
+        <p class="section-subtitle">Det betyder ikke, at alle dashboards bør bygges med tilpassede kort.</p>
+        <p class="section-subtitle">Hvert ekstra fællesskabselement er endnu en afhængighed, som senere skal opdateres og kontrolleres for kompatibilitet med nye versioner af Home Assistant.</p>
+        <p class="section-subtitle">Det er derfor bedst først at undersøge, om det ønskede resultat kan opnås med standardfunktionerne.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">YAML</div>
+      <h2 class="section-title mobile-match-title">Skal man bruge YAML for at bygge et dashboard?</h2>
+      <div class="card">
+        <p class="section-subtitle">Nej. Et almindeligt dashboard kan bygges i Home Assistants grafiske brugerflade.</p>
+        <p class="section-subtitle">Du kan tilføje visninger, kort og entiteter, ændre deres størrelser og konfigurere mange funktioner uden manuelt at oprette hele YAML-konfigurationen.</p>
+        <p class="section-subtitle">YAML kan stadig være nyttigt til mere tekniske løsninger, manuel redigering af kortkonfiguration eller når dashboardet skal administreres i konfigurationsfiler.</p>
+        <p class="section-subtitle">Home Assistant gør det også muligt at definere separate YAML-dashboards. Det er en mere avanceret måde at administrere panelet på og er ikke nødvendig for at komme i gang med dashboards.</p>
+        <p class="section-subtitle">YAML skal ikke fremstilles som en bedre løsning. Det er et ekstra niveau af kontrol, som giver mening i bestemte konfigurationer.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">EKSEMPEL</div>
+      <h2 class="section-title mobile-match-title">Sådan bygger du et enkelt dashboard trin for trin</h2>
+      <div class="card">
+        <p class="section-subtitle">Et eksempelpanel kan begynde med oprettelsen af et nyt, tomt dashboard.</p>
+        <p class="section-subtitle">Derefter kan du:</p>
+        <ul>
+          <li>oprette den første visning af typen Sections,</li>
+          <li>opdele den i flere logiske sektioner,</li>
+          <li>tilføje de vigtigste entiteter, der bruges til daglig,</li>
+          <li>vælge kort, der passer til den måde, enhederne skal styres på,</li>
+          <li>indstille størrelsen på de vigtigste elementer,</li>
+          <li>fjerne tekniske oplysninger fra hovedvisningen, hvis de ikke er nødvendige i hverdagen,</li>
+          <li>oprette en ny visning i stedet for at overfylde den første, hvis der er brug for flere oplysninger,</li>
+          <li>konfigurere korthandlinger kun dér, hvor de reelt gør betjeningen nemmere,</li>
+          <li>bruge betinget synlighed til oplysninger, der kun er nødvendige i bestemte situationer,</li>
+          <li>kontrollere panelet både på computer og mobil.</li>
+        </ul>
+        <p class="section-subtitle">Først når der er bygget et overskueligt grundlag, er det værd at overveje ekstra fællesskabskort, egen YAML eller mere omfattende navigation.</p>
+        <p class="section-subtitle">Hvis panelet skal køre på en fast tablet, bør det også testes direkte på denne enhed. Et layout, der ser korrekt ud i et browservindue på computeren, opfører sig ikke nødvendigvis ens på en skærm med andre proportioner.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">ORDEN</div>
+      <h2 class="section-title mobile-match-title">Det mest almindelige problem: dashboardet begynder at vise alt</h2>
+      <div class="card">
+        <p class="section-subtitle">I begyndelsen indeholder dashboardet ofte nogle få lys, temperatur og rullegardiner.</p>
+        <p class="section-subtitle">Efterhånden som systemet udvides, kommer der flere sensorer, enheder, grafer, medier, alarm, energi, batterier og diagnostiske elementer til.</p>
+        <p class="section-subtitle">Hvis hvert nyt element placeres på samme skærm, begynder det efter nogen tid at tage længere tid at finde en bestemt funktion end at bruge den.</p>
+        <p class="section-subtitle">I stedet for at tilføje flere kort til én visning er det værd at fastlægge et hierarki:</p>
+        <ul>
+          <li>de vigtigste oplysninger først,</li>
+          <li>daglig styring på let tilgængelige steder,</li>
+          <li>sjældnere brugte funktioner i separate visninger,</li>
+          <li>diagnostik uden for hovedskærmen.</li>
+        </ul>
+        <p class="section-subtitle">Panelet bør ikke være et katalog over alle Home Assistant-entiteter. Det bør være en brugerflade, der er forberedt til en bestemt måde at bruge systemet på.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">UDVIDELSE</div>
+      <h2 class="section-title mobile-match-title">Hvornår bliver et enkelt dashboard mere avanceret?</h2>
+      <div class="card">
+        <p class="section-subtitle">Et grundlæggende panel med nogle få kort kan oprettes forholdsvis hurtigt.</p>
+        <p class="section-subtitle">Der kræves mere planlægning, når panelet skal:</p>
+        <ul>
+          <li>fungere godt på flere forskellige skærme,</li>
+          <li>have separate visninger til forskellige brugere,</li>
+          <li>skjule og vise elementer afhængigt af systemets tilstand,</li>
+          <li>føre mellem mange visninger,</li>
+          <li>bruge egne handlinger ved tryk og langt tryk,</li>
+          <li>vise eksterne websider eller lokale brugerflader,</li>
+          <li>bruge tilpassede kort,</li>
+          <li>kombinere styring med automatiseringer og scripts,</li>
+          <li>bevare et ensartet udseende trods et stort antal enheder.</li>
+        </ul>
+        <p class="section-subtitle">I denne situation er dashboardet ikke længere blot en samling knapper. Det bliver en selvstændig brugerflade, hvis layout skal planlægges på samme måde som logikken i resten af systemet.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">DEMO</div>
+      <h2 class="section-title mobile-match-title">Se, hvordan et mere avanceret dashboard kan se ud</h2>
+      <div class="card">
+        <p class="section-subtitle">Hvis du vil se et eksempel på et mere avanceret Home Assistant-panel, kan du åbne den forberedte demo.</p>
+        <a class="knowledge-link" href="/dk/demo/">Se demoen af panelet <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">OPSAMLING</div>
+      <h2 class="section-title mobile-match-title">Et godt dashboard skal gøre systemet lettere at bruge</h2>
+      <div class="card">
+        <p class="section-subtitle">Et Home Assistant-dashboard kan være en enkel skærm med nogle få vigtige funktioner eller en omfattende brugerflade til mobil, tablet og forskellige brugere.</p>
+        <p class="section-subtitle">Det vigtigste er dog ikke, hvor mange kort der kan placeres på skærmen, men om den nødvendige information eller funktion hurtigt kan findes og forstås.</p>
+        <p class="section-subtitle">Det er en god idé at begynde med et enkelt layout, opdele panelet i logiske visninger og sektioner og først derefter tilføje betinget synlighed, ekstra handlinger, HACS, Webpage dashboard eller YAML-konfiguration.</p>
+        <p class="section-subtitle">Hvis dashboardet bliver sværere at bruge for hvert nyt kort, er det bedre at organisere strukturen end fortsat at tilføje flere elementer.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">HJÆLP</div>
+      <h2 class="section-title mobile-match-title">Har du brug for hjælp til dit Home Assistant-dashboard?</h2>
+      <div class="card">
+        <p class="section-subtitle">Hvis du vil bygge et panel fra bunden, skabe bedre struktur i dit nuværende dashboard, lave et praktisk layout til mobil eller tablet eller konfigurere en mere avanceret løsning, kan jeg hjælpe med at planlægge strukturen og konfigurere den efter den måde, systemet skal bruges på.</p>
+        <a class="knowledge-help-link knowledge-help-link--mobile-flow" href="/dk/#kontakt"><span class="knowledge-help-main">Kontakt mig</span> <span class="knowledge-help-accent">→ klik her</span></a>
+      </div>
+    </section>
+  </main>
+
+
+  <footer>
+    <div class="footer-inner">
+      <span>© <span id="year"></span> Tomasz Furdal – Home Assistant &amp; Integrations</span>
+      <span>Betaling: bankoverførsel, Revolut, PayPal, MobilePay</span>
+    </div>
+  </footer>
+
+  <script src="../../nav.js?v=20260730-mobile-nav-12"></script>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>

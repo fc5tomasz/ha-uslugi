@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="robots" content="index,follow" />
+  <meta name="author" content="Tomasz Furdal" />
+  <meta name="theme-color" content="#0f172a" />
+  <link rel="canonical" href="https://ha-expert.com/en/home-assistant-dashboard/" />
+  <link rel="alternate" hreflang="pl" href="https://ha-expert.com/pl/dashboard-home-assistant/" />
+  <link rel="alternate" hreflang="en" href="https://ha-expert.com/en/home-assistant-dashboard/" />
+  <link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/home-assistant-dashboard/" />
+  <link rel="alternate" hreflang="x-default" href="https://ha-expert.com/en/home-assistant-dashboard/" />
+  <title>Home Assistant dashboard – setup, cards and views | HA Expert</title>
+  <meta name="description" content="Learn how to build a Home Assistant dashboard from scratch using views, cards, Webpage dashboards, YAML, HACS and layouts for phones and tablets." />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Home Assistant dashboard – setup, cards and views | HA Expert" />
+  <meta property="og:description" content="Learn how to build a Home Assistant dashboard from scratch using views, cards, Webpage dashboards, YAML, HACS and layouts for phones and tablets." />
+  <meta property="og:url" content="https://ha-expert.com/en/home-assistant-dashboard/" />
+  <link rel="stylesheet" href="../../styles.css?v=20260809-dashboard-50" />
+  <script src="../../consent.js?v=20260420-consent-1"></script>
+</head>
+<body class="knowledge-page pl-home-bg-test">
+  <header class="scrolled">
+    <div class="nav">
+      <a class="logo" href="/en/" aria-label="Tomasz Furdal - Home Assistant Expert">
+        <img class="logo-image" src="../../assets/brand/logo-wyciete.png" alt="Tomasz Furdal - Home Assistant Expert" title="Home Assistant Expert - Tomasz Furdal" />
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Open menu"><span aria-hidden="true">☰</span></button>
+      <a class="nav-mobile-link about-link" href="/en/#about-me">About me</a>
+      <a class="nav-mobile-link contact-link" href="/en/#contact">Contact</a>
+      <nav id="primary-nav" aria-label="Primary">
+        <ul>
+          <li><a href="/en/#services">Services</a></li>
+          <li><a href="/en/#about-me">About me</a></li>
+          <li><a href="/en/#who-its-for">Who it’s for</a></li>
+          <li><a href="/en/#how-i-work">How I work</a></li>
+          <li><a href="/en/#pricing">Pricing</a></li>
+          <li><a href="/en/#contact">Contact</a></li>
+          <li class="nav-secondary-start"><a href="/en/projects/">Projects</a></li>
+          <li class="nav-guides">
+            <button class="nav-guides-toggle" type="button" aria-expanded="false" aria-haspopup="true"><span>Guides</span><span class="nav-guides-chevron" aria-hidden="true">▾</span></button>
+            <ul class="nav-guides-dropdown">
+              <li><a href="/en/what-is-ha/">What is Home Assistant?</a></li>
+              <li><a href="/en/home-assistant-integrations/">Home Assistant integrations</a></li>
+              <li><a href="/en/home-assistant-automations/">Home Assistant automations</a></li>
+              <li><a href="/en/home-assistant-dashboard/" aria-current="page">Home Assistant dashboard</a></li>
+              <li><a href="/en/stable-zigbee/">Zigbee keeps disconnecting?</a></li>
+            </ul>
+          </li>
+          <li><a href="/en/demo/">Demo panel</a></li>
+        </ul>
+      </nav>
+      <div class="lang-switch" aria-label="Language switch">
+        <a class="lang-btn" href="/pl/dashboard-home-assistant/" aria-label="Polski"><img class="lang-flag" src="../../assets/flags/pl.svg" alt="" aria-hidden="true" /></a>
+        <a class="lang-btn" href="/dk/home-assistant-dashboard/" aria-label="Dansk"><img class="lang-flag" src="../../assets/flags/dk.svg" alt="" aria-hidden="true" /></a>
+        <a class="lang-btn active" href="/en/home-assistant-dashboard/" aria-label="English" aria-current="page"><img class="lang-flag" src="../../assets/flags/gb.svg" alt="" aria-hidden="true" /></a>
+      </div>
+      <a class="nav-cta" href="/en/#contact">Free diagnosis</a>
+    </div>
+  </header>
+
+  <div class="mobile-bottom-bar" aria-label="Mobile quick actions">
+    <a class="mobile-bottom-link" href="/en/#about-me">About me</a>
+    <a class="mobile-bottom-link" href="/en/#contact">Contact</a>
+  </div>
+
+  <main>
+    <section class="section">
+      <div class="section-label">DASHBOARD</div>
+      <h1 class="section-title mobile-match-title">Home Assistant dashboard – how to build a clear control panel</h1>
+      <div class="card">
+        <p class="section-subtitle">The dashboard is the part of Home Assistant that users interact with most often. It shows the state of the home, lets you control devices, run specific actions, and quickly reach the information needed at a given moment.</p>
+        <p class="section-subtitle">Home Assistant can prepare a basic panel automatically, but a custom dashboard gives you much more control over what is visible, in what order, and how users can control the system.</p>
+        <p class="section-subtitle">A simple panel can be prepared without writing code. However, when you add different views, a phone, a wall-mounted tablet, conditionally displayed elements, custom navigation, non-standard cards, or more advanced actions, the configuration quickly becomes more extensive.</p>
+        <p class="section-subtitle">This guide explains how a Home Assistant dashboard is structured, how to create your own panel from scratch, and which options can be used in more advanced layouts.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">START</div>
+      <h2 class="section-title mobile-match-title">Ready-made dashboard or your own panel from scratch?</h2>
+      <div class="card">
+        <p class="section-subtitle">Home Assistant includes built-in dashboards that can automatically present devices and information available in the system.</p>
+        <p class="section-subtitle">If you need your own layout, creating a separate dashboard is a better solution than rebuilding the basic view solely to adapt it to a particular phone, tablet, or way of using the home.</p>
+        <p class="section-subtitle">You can create a new dashboard through:</p>
+        <p class="section-subtitle"><strong>Settings → Dashboards → Add dashboard</strong></p>
+        <p class="section-subtitle">If the panel is to be completely custom, choose:</p>
+        <p class="section-subtitle"><strong>New dashboard from scratch</strong></p>
+        <p class="section-subtitle">which creates an empty dashboard.</p>
+        <p class="section-subtitle">During creation, you can give it a name and icon and decide whether it should be visible in the Home Assistant sidebar.</p>
+        <p class="section-subtitle">Options with preconfigured elements are also available. For a custom panel built around a specific way of using the system, an empty dashboard gives the greatest control over the later layout. Home Assistant officially supports multiple separate dashboards and recommends creating a new one for a more individual configuration instead of modifying the basic panel.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">STRUCTURE</div>
+      <h2 class="section-title mobile-match-title">Dashboard, view and card – three different levels</h2>
+      <div class="card">
+        <p class="section-subtitle">These terms are easy to confuse.</p>
+        <p class="section-subtitle">A dashboard is the entire control panel.</p>
+        <p class="section-subtitle">A view is a tab inside a dashboard. One dashboard can, for example, have separate views for the ground floor, upper floor, heating, energy, or media.</p>
+        <p class="section-subtitle">A card is a specific element placed in a view. It can represent a light, temperature, thermostat, graph, weather, button, entity list, or other information.</p>
+        <p class="section-subtitle">An example structure could look like this:</p>
+        <p class="section-subtitle"><strong>Dashboard “Home” → view “Living room” → light card, temperature card, and media card.</strong></p>
+        <p class="section-subtitle">This division means that you do not need to place every device and piece of information on one screen.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">VIEWS</div>
+      <h2 class="section-title mobile-match-title">Sections, Masonry, Panel and Sidebar – which layout should you choose?</h2>
+      <div class="card">
+        <p class="section-subtitle">Home Assistant provides four basic view types:</p>
+        <p class="section-subtitle"><strong>Sections</strong> – currently the default view type. It divides a dashboard into sections and arranges cards in a grid. It works well for panels that should retain an orderly layout across different screen widths.</p>
+        <p class="section-subtitle"><strong>Masonry</strong> – arranges cards in columns according to their size. It can be convenient for panels made up of cards with different heights.</p>
+        <p class="section-subtitle"><strong>Panel</strong> – assigns practically the entire view to a single card. It is useful, for example, for a large map, image, or another element intended to occupy all available width.</p>
+        <p class="section-subtitle"><strong>Sidebar</strong> – creates a two-column layout with a wide main area and a narrower area at the side.</p>
+        <p class="section-subtitle">The view type affects not only appearance but also how cards later behave on different screens. There is no need to use the same view type in every part of a dashboard.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">SECTIONS</div>
+      <h2 class="section-title mobile-match-title">How to build a panel using Sections</h2>
+      <div class="card">
+        <p class="section-subtitle">In a Sections view, cards can be grouped into logical sections.</p>
+        <p class="section-subtitle">For example, a dashboard can contain:</p>
+        <ul>
+          <li>a lighting section,</li>
+          <li>a temperature and heating section,</li>
+          <li>a blinds section,</li>
+          <li>a security section,</li>
+          <li>a media section.</li>
+        </ul>
+        <p class="section-subtitle">This does not mean that every category needs its own block. The division should follow the way the panel is used.</p>
+        <p class="section-subtitle">In Sections, you can also change the size of cards in the grid. A more important element can therefore occupy more space, while a simple status or button takes less.</p>
+        <p class="section-subtitle">However, it is not worth filling all available space simply because it is possible. A dashboard should primarily make it quick to find information or a function.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">CARDS</div>
+      <h2 class="section-title mobile-match-title">How to add a device or information to a dashboard</h2>
+      <div class="card">
+        <p class="section-subtitle">After entering dashboard edit mode, you can add a card in two basic ways.</p>
+        <p class="section-subtitle">The first method is to select an entity. You indicate the entity you want to show, and Home Assistant suggests a suitable way to present it.</p>
+        <p class="section-subtitle">The second method is to select the card type. First choose the kind of element, then specify which entities or data it should contain.</p>
+        <p class="section-subtitle">Depending on your needs, you can use cards for, among other things:</p>
+        <ul>
+          <li>controlling lights,</li>
+          <li>presenting sensors,</li>
+          <li>operating a thermostat,</li>
+          <li>displaying weather,</li>
+          <li>showing graphs,</li>
+          <li>grouping entities,</li>
+          <li>creating buttons,</li>
+          <li>displaying images,</li>
+          <li>presenting webpages.</li>
+        </ul>
+        <p class="section-subtitle">Home Assistant also lets you add a card directly from device information and choose the dashboard and view where it should be placed.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">HIERARCHY</div>
+      <h2 class="section-title mobile-match-title">Not every entity belongs on the dashboard</h2>
+      <div class="card">
+        <p class="section-subtitle">The integration of a single device can create many entities. This does not mean that every one of them should be shown on the main dashboard.</p>
+        <p class="section-subtitle">A screen used every day should primarily contain information and functions that are genuinely needed on a regular basis.</p>
+        <p class="section-subtitle">For example, the main panel can show room temperature and heating controls, while technical diagnostic sensors for the device do not need to occupy space next to them.</p>
+        <p class="section-subtitle">Likewise, dozens of battery-level entities can be placed in a separate technical view instead of being mixed with everyday lighting and blinds controls.</p>
+        <p class="section-subtitle">More data on the screen does not always mean a better dashboard. If the most important information is lost among elements used once every few months, the panel no longer fulfils its basic purpose.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">ACTIONS</div>
+      <h2 class="section-title mobile-match-title">A card can do more than just switch a device</h2>
+      <div class="card">
+        <p class="section-subtitle">On many cards, you can define what should happen after a user interaction.</p>
+        <p class="section-subtitle">Home Assistant distinguishes, among others:</p>
+        <ul>
+          <li><strong>tap</strong> – a normal tap or click,</li>
+          <li><strong>hold</strong> – pressing and holding,</li>
+          <li><strong>double tap</strong> – tapping twice.</li>
+        </ul>
+        <p class="section-subtitle">Depending on the configuration, you can, for example:</p>
+        <ul>
+          <li>toggle a device state,</li>
+          <li>open detailed information,</li>
+          <li>perform a specific action,</li>
+          <li>navigate to another dashboard view,</li>
+          <li>open a URL,</li>
+          <li>start Assist.</li>
+        </ul>
+        <p class="section-subtitle">A single card can therefore serve not only as a simple button but also as a navigation element or an entry point to more detailed controls.</p>
+        <p class="section-subtitle">However, avoid assigning many hidden actions without a clear need. If a user does not know that holding a button performs a different operation from tapping it, the panel can become less intuitive rather than more functional.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">VISIBILITY</div>
+      <h2 class="section-title mobile-match-title">Not every card needs to be visible all the time</h2>
+      <div class="card">
+        <p class="section-subtitle">Home Assistant lets you define card visibility conditions.</p>
+        <p class="section-subtitle">For example, information about an open window can appear only while the window is actually open, and an element related to charging a car can be visible only while the charger is in use.</p>
+        <p class="section-subtitle">You can also restrict the visibility of elements to specific users.</p>
+        <p class="section-subtitle">This reduces the amount of information displayed at once and allows some elements to appear only when they become relevant.</p>
+        <p class="section-subtitle">Conditional visibility should not replace automation. The fact that information appears on the screen does not mean that the user should have to react manually every time.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">WEBPAGE</div>
+      <h2 class="section-title mobile-match-title">Dashboard from scratch or Webpage dashboard?</h2>
+      <div class="card">
+        <p class="section-subtitle">Home Assistant also provides a Webpage dashboard.</p>
+        <p class="section-subtitle">It is not another way to build the same panel from Home Assistant cards. Its purpose is to embed a webpage inside the Home Assistant interface.</p>
+        <p class="section-subtitle">This can be, for example:</p>
+        <ul>
+          <li>a page available on the internet,</li>
+          <li>the panel of a device on the local network,</li>
+          <li>a NAS or router interface,</li>
+          <li>your own local webpage,</li>
+          <li>another interface that can be embedded correctly.</li>
+        </ul>
+        <p class="section-subtitle">The Webpage dashboard uses the Webpage card.</p>
+        <p class="section-subtitle">Not every website allows embedding. Some services block operation in a frame for security reasons. In addition, Home Assistant accessed through HTTPS cannot embed a page that is available only through HTTP in this way.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">IFRAME</div>
+      <h2 class="section-title mobile-match-title">Webpage card and Webpage dashboard are not the same</h2>
+      <div class="card">
+        <p class="section-subtitle">A Webpage dashboard is an entire dashboard intended to present a webpage.</p>
+        <p class="section-subtitle">A Webpage card is a card that can be used as an element of a dashboard.</p>
+        <p class="section-subtitle">This lets you embed a page in a selected place in the interface instead of dedicating an entire separate panel to it.</p>
+        <p class="section-subtitle">A Webpage card can also display files stored locally in the Home Assistant www directory and exposed through the /local/ path.</p>
+        <p class="section-subtitle">Browser security restrictions still apply. The fact that a page opens normally in a separate browser tab does not mean that it can also be embedded in a dashboard.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">DEVICES</div>
+      <h2 class="section-title mobile-match-title">Phone, computer and wall tablet do not need the same dashboard</h2>
+      <div class="card">
+        <p class="section-subtitle">A dashboard that is convenient on a large monitor will not always be convenient on a phone.</p>
+        <p class="section-subtitle">On a phone, quick access to the most frequently used functions, suitable card widths, and avoiding elements that require horizontal scrolling are important.</p>
+        <p class="section-subtitle">A wall-mounted tablet provides more room and can show the state of the home, lighting controls, weather, alarm, and temperature at the same time.</p>
+        <p class="section-subtitle">Home Assistant supports multiple dashboards, so you can prepare a separate panel for a tablet instead of trying to fit every use case into one layout.</p>
+        <p class="section-subtitle">If the wall tablet should use a different default dashboard from the user’s phone, you can also create a separate user profile for the tablet and assign the appropriate dashboard to it.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">USERS</div>
+      <h2 class="section-title mobile-match-title">Household members do not always need the same view as the administrator</h2>
+      <div class="card">
+        <p class="section-subtitle">The person configuring Home Assistant may want to see technical states, diagnostics, battery levels, network information, and additional sensors.</p>
+        <p class="section-subtitle">Other household members may primarily need simple controls for lights, blinds, temperature, the alarm, or media.</p>
+        <p class="section-subtitle">There is no need to place these two ways of using the system on one screen.</p>
+        <p class="section-subtitle">Separating the everyday panel from the technical view often simplifies operation and reduces the risk of accidentally activating functions that are not needed in daily use.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">AUTOMATIONS</div>
+      <h2 class="section-title mobile-match-title">A dashboard should not replace automations</h2>
+      <div class="card">
+        <p class="section-subtitle">A good dashboard makes it possible to control the system and manually correct its operation.</p>
+        <p class="section-subtitle">However, if every evening a user has to turn off several lights, lower the blinds, change the temperature, and switch several devices manually, the problem should not always be solved by adding more buttons to the panel.</p>
+        <p class="section-subtitle">Some of these tasks may be better suited to an automation or a script.</p>
+        <p class="section-subtitle">The dashboard can then contain one appropriate function or simply show the result of the system’s operation.</p>
+        <a class="knowledge-link" href="/en/home-assistant-automations/">Home Assistant automations <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">HACS</div>
+      <h2 class="section-title mobile-match-title">What if the standard cards are not enough?</h2>
+      <div class="card">
+        <p class="section-subtitle">Home Assistant has many built-in cards, and they are sufficient for a large proportion of panels.</p>
+        <p class="section-subtitle">There are also custom elements created by the community. They can extend the dashboard’s appearance, add other ways to present data, or enable solutions that are not available in standard cards.</p>
+        <p class="section-subtitle">HACS is often used to download and update such elements. HACS supports community-created dashboard elements, including custom cards and other interface components.</p>
+        <p class="section-subtitle">This does not mean that every dashboard should be built from custom cards.</p>
+        <p class="section-subtitle">Every additional community element is another dependency that later needs to be updated and checked for compatibility with new Home Assistant versions.</p>
+        <p class="section-subtitle">It is therefore worth first checking whether the required result can be achieved using the standard features.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">YAML</div>
+      <h2 class="section-title mobile-match-title">Do you need YAML to build a dashboard?</h2>
+      <div class="card">
+        <p class="section-subtitle">No. A typical dashboard can be built through the graphical Home Assistant interface.</p>
+        <p class="section-subtitle">You can add views, cards, and entities, resize them, and configure many behaviours without manually creating the entire YAML configuration.</p>
+        <p class="section-subtitle">YAML can still be useful for more technical solutions, manual editing of card configurations, or when the dashboard is to be managed in configuration files.</p>
+        <p class="section-subtitle">Home Assistant also allows separate YAML dashboards to be defined. This is a more advanced way to manage a panel and is not required to start working with dashboards.</p>
+        <p class="section-subtitle">YAML is not a “better” solution. It is an additional level of control that makes sense in particular configurations.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">EXAMPLE</div>
+      <h2 class="section-title mobile-match-title">How to build a simple dashboard step by step</h2>
+      <div class="card">
+        <p class="section-subtitle">You can start an example panel by creating a new, empty dashboard.</p>
+        <p class="section-subtitle">Then:</p>
+        <ul>
+          <li>create the first Sections view,</li>
+          <li>divide it into several logical sections,</li>
+          <li>add the most important entities used every day,</li>
+          <li>choose cards that suit the way the devices are controlled,</li>
+          <li>set the sizes of the most important elements,</li>
+          <li>remove technical information that is not needed every day from the main view,</li>
+          <li>if you need more information, create another view instead of overloading the first one,</li>
+          <li>configure card actions only where they genuinely make operation easier,</li>
+          <li>use conditional visibility for information needed only in specific situations,</li>
+          <li>check the panel on both a computer and a phone.</li>
+        </ul>
+        <p class="section-subtitle">Only after building a clear foundation is it worth considering additional community cards, your own YAML, or more extensive navigation.</p>
+        <p class="section-subtitle">If the panel will run on a fixed tablet, test it directly on that device as well. A layout that looks correct in a desktop browser window may not behave identically on a screen with different proportions.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">ORDER</div>
+      <h2 class="section-title mobile-match-title">The most common problem: the dashboard starts showing everything</h2>
+      <div class="card">
+        <p class="section-subtitle">At first, a dashboard often contains a few lights, temperature, and blinds.</p>
+        <p class="section-subtitle">As the system grows, more sensors, devices, graphs, media, alarm information, energy data, batteries, and diagnostic elements are added.</p>
+        <p class="section-subtitle">If every new element is placed on the same screen, finding a particular function eventually starts taking longer than using it.</p>
+        <p class="section-subtitle">Instead of adding more cards to one view, it is worth defining a hierarchy:</p>
+        <ul>
+          <li>the most important information first,</li>
+          <li>everyday controls in easily accessible places,</li>
+          <li>less frequently used functions in separate views,</li>
+          <li>diagnostics away from the main screen.</li>
+        </ul>
+        <p class="section-subtitle">The panel should not be a catalogue of every Home Assistant entity. It should be an interface prepared for a specific way of using the system.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">EXPANSION</div>
+      <h2 class="section-title mobile-match-title">When does a simple dashboard become more advanced?</h2>
+      <div class="card">
+        <p class="section-subtitle">A basic panel with a few cards can be prepared relatively quickly.</p>
+        <p class="section-subtitle">More planning is required when the panel should:</p>
+        <ul>
+          <li>work well on several different screens,</li>
+          <li>provide separate views for different users,</li>
+          <li>hide and show elements according to the system state,</li>
+          <li>navigate between many views,</li>
+          <li>use custom actions for tapping and holding,</li>
+          <li>present external webpages or local interfaces,</li>
+          <li>use custom cards,</li>
+          <li>combine controls with automations and scripts,</li>
+          <li>retain a consistent appearance despite a large number of devices.</li>
+        </ul>
+        <p class="section-subtitle">In this situation, the dashboard stops being just a collection of buttons. It becomes a separate user interface whose layout needs to be planned in much the same way as the logic of the rest of the system.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">DEMO</div>
+      <h2 class="section-title mobile-match-title">See what a more advanced dashboard can look like</h2>
+      <div class="card">
+        <p class="section-subtitle">If you want to see an example of a more advanced Home Assistant panel, you can open the prepared demo.</p>
+        <a class="knowledge-link" href="/en/demo/">View the dashboard demo <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">SUMMARY</div>
+      <h2 class="section-title mobile-match-title">A good dashboard should make the system easier to use</h2>
+      <div class="card">
+        <p class="section-subtitle">A Home Assistant dashboard can be a simple screen with a few essential functions or an extensive interface prepared for a phone, tablet, and different users.</p>
+        <p class="section-subtitle">What matters most is not how many cards can be placed on the screen, but whether the required information or function can be found and understood quickly.</p>
+        <p class="section-subtitle">It is worth starting with a simple layout, dividing the panel into logical views and sections, and only then adding conditional visibility, additional actions, HACS, a Webpage dashboard, or YAML configuration.</p>
+        <p class="section-subtitle">If the dashboard becomes harder to use with every additional card, reorganising its structure is a better solution than continuing to add more elements.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">HELP</div>
+      <h2 class="section-title mobile-match-title">Need help with your Home Assistant dashboard?</h2>
+      <div class="card">
+        <p class="section-subtitle">If you want to build a panel from scratch, organise your current dashboard, prepare a convenient layout for a phone or tablet, or implement a more advanced setup, I can help plan the structure and configure a solution suited to how you use the system.</p>
+        <a class="knowledge-help-link knowledge-help-link--mobile-flow" href="/en/#contact"><span class="knowledge-help-main">Contact me</span> <span class="knowledge-help-accent">→ click here</span></a>
+      </div>
+    </section>
+  </main>
+
+
+  <footer>
+    <div class="footer-inner">
+      <span>© <span id="year"></span> Tomasz Furdal – Home Assistant &amp; Integrations</span>
+      <span>Payments: bank transfer, Revolut, PayPal, MobilePay</span>
+    </div>
+  </footer>
+
+  <script src="../../nav.js?v=20260730-mobile-nav-12"></script>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>
