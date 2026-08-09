@@ -705,6 +705,28 @@ main{
   letter-spacing:-.02em;
 }
 
+.article-author{
+  margin:0 0 16px;
+  color:var(--muted);
+  font-size:.875rem;
+  line-height:1.5;
+  text-align:left;
+}
+
+.article-author a{
+  color:var(--muted-strong);
+  font-weight:600;
+  overflow-wrap:anywhere;
+  transition:color .22s ease;
+}
+
+.article-author a:hover,
+.article-author a:focus-visible{
+  color:var(--accent-2);
+  text-decoration:underline;
+  text-underline-offset:3px;
+}
+
 .mobile-match-title{
   max-width:none;
 }
