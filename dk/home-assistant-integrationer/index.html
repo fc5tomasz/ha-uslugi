@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="robots" content="index,follow" />
+  <meta name="author" content="Tomasz Furdal" />
+  <meta name="theme-color" content="#0f172a" />
+  <link rel="canonical" href="https://ha-expert.com/dk/home-assistant-integrationer/" />
+  <link rel="alternate" hreflang="pl" href="https://ha-expert.com/pl/integracje-home-assistant/" />
+  <link rel="alternate" hreflang="en" href="https://ha-expert.com/en/home-assistant-integrations/" />
+  <link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/home-assistant-integrationer/" />
+  <link rel="alternate" hreflang="x-default" href="https://ha-expert.com/en/home-assistant-integrations/" />
+  <title>Home Assistant-integrationer – MQTT, ADB og HACS | HA Expert</title>
+  <meta name="description" content="Læs hvordan Home Assistant-integrationer fungerer, forskellen på Zigbee, Wi-Fi og Matter, og hvornår MQTT, HACS eller ADB kan bruges." />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Home Assistant-integrationer – MQTT, ADB og HACS | HA Expert" />
+  <meta property="og:description" content="Læs hvordan Home Assistant-integrationer fungerer, forskellen på Zigbee, Wi-Fi og Matter, og hvornår MQTT, HACS eller ADB kan bruges." />
+  <meta property="og:url" content="https://ha-expert.com/dk/home-assistant-integrationer/" />
+  <link rel="stylesheet" href="../../styles.css?v=20260730-mobile-47" />
+  <script src="../../consent.js?v=20260420-consent-1"></script>
+</head>
+<body class="knowledge-page pl-home-bg-test">
+  <header class="scrolled">
+    <div class="nav">
+      <a class="logo" href="/dk/" aria-label="Tomasz Furdal - Home Assistant Expert">
+        <img class="logo-image" src="../../assets/brand/logo-wyciete.png" alt="Tomasz Furdal - Home Assistant Expert" title="Home Assistant Expert - Tomasz Furdal" />
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Åbn menu"><span aria-hidden="true">☰</span></button>
+      <a class="nav-mobile-link about-link" href="/dk/#om-mig">Om mig</a>
+      <a class="nav-mobile-link contact-link" href="/dk/#kontakt">Kontakt</a>
+      <nav id="primary-nav" aria-label="Primær navigation">
+        <ul>
+          <li><a href="/dk/#ydelser">Ydelser</a></li>
+          <li><a href="/dk/#om-mig">Om mig</a></li>
+          <li><a href="/dk/#for-hvem">For hvem</a></li>
+          <li><a href="/dk/#saadan-arbejder-jeg">Sådan arbejder jeg</a></li>
+          <li><a href="/dk/#priser">Priser</a></li>
+          <li><a href="/dk/#kontakt">Kontakt</a></li>
+          <li class="nav-secondary-start"><a href="/dk/projekter/">Projekter</a></li>
+          <li class="nav-guides">
+            <button class="nav-guides-toggle" type="button" aria-expanded="false" aria-haspopup="true"><span>Vejledninger</span><span class="nav-guides-chevron" aria-hidden="true">▾</span></button>
+            <ul class="nav-guides-dropdown">
+              <li><a href="/dk/hvad-er-ha/">Hvad er Home Assistant?</a></li>
+              <li><a href="/dk/home-assistant-integrationer/" aria-current="page">Home Assistant-integrationer</a></li>
+              <li><a href="/dk/stabilt-zigbee/">Mister Zigbee forbindelsen?</a></li>
+            </ul>
+          </li>
+          <li><a href="/dk/demo/">Demo-panel</a></li>
+        </ul>
+      </nav>
+      <div class="lang-switch" aria-label="Sprogvalg">
+        <a class="lang-btn" href="/pl/integracje-home-assistant/" aria-label="Polski"><img class="lang-flag" src="../../assets/flags/pl.svg" alt="" aria-hidden="true" /></a>
+        <a class="lang-btn active" href="/dk/home-assistant-integrationer/" aria-label="Dansk" aria-current="page"><img class="lang-flag" src="../../assets/flags/dk.svg" alt="" aria-hidden="true" /></a>
+        <a class="lang-btn" href="/en/home-assistant-integrations/" aria-label="English"><img class="lang-flag" src="../../assets/flags/gb.svg" alt="" aria-hidden="true" /></a>
+      </div>
+      <a class="nav-cta" href="/dk/#kontakt">Gratis diagnose</a>
+    </div>
+  </header>
+
+  <div class="mobile-bottom-bar" aria-label="Hurtige mobilhandlinger">
+    <a class="mobile-bottom-link" href="/dk/#om-mig">Om mig</a>
+    <a class="mobile-bottom-link" href="/dk/#kontakt">Kontakt</a>
+  </div>
+
+  <main>
+    <section class="section">
+      <div class="section-label">INTEGRATIONER</div>
+      <h1 class="section-title mobile-match-title">Home Assistant-integrationer – sådan forbinder du enheder og systemer</h1>
+      <div class="card">
+        <p class="section-subtitle">Home Assistant kan samle enheder og tjenester fra forskellige producenter i ét system, men ikke alle forbindelser fungerer på samme måde. Nogle gange er det nok at tilføje en færdig integration, mens der andre gange er brug for producentens gateway, en forbindelse til en cloudtjeneste, en MQTT-broker eller en mere teknisk kommunikationsmetode som ADB.</p>
+        <p class="section-subtitle">I denne vejledning forklarer jeg, hvad Home Assistant-integrationer er, hvordan enheder kan kommunikere med systemet, hvordan en integration adskiller sig fra en protokol som Zigbee eller Wi-Fi, og hvad man kan forvente, når bestemt udstyr tilsluttes.</p>
+        <p class="section-subtitle">Hvis du først lige er begyndt at lære Home Assistant at kende og gerne vil forstå hele systemet, kan du gå til vejledningen nedenfor.</p>
+        <a class="knowledge-link" href="/dk/hvad-er-ha/">Hvad er Home Assistant? <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">GRUNDLAG</div>
+      <h2 class="section-title mobile-match-title">Hvad betyder en integration i Home Assistant?</h2>
+      <div class="card">
+        <p class="section-subtitle">En integration er den måde, Home Assistant kommunikerer med en enhed, en tjeneste eller et andet system på. Den kan stå for at læse data, sende kommandoer, finde enheder og gøre deres funktioner tilgængelige i Home Assistant.</p>
+        <p class="section-subtitle">En termostat kan for eksempel vise temperaturen, den aktuelle driftstilstand og muligheden for at ændre indstillingen. Et tv kan blive vist som en medieafspiller, mens en sensor kan levere flere separate entiteter med temperatur, luftfugtighed eller batteriniveau.</p>
+        <p class="section-subtitle">Det betyder dog ikke, at alle funktioner i producentens app automatisk også bliver tilgængelige i Home Assistant. Omfanget afhænger af den konkrete enhed, kommunikationsmetoden og de oplysninger, som enheden eller producentens tjeneste stiller til rådighed for integrationen.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">PROTOKOLLER</div>
+      <h2 class="section-title mobile-match-title">En integration er ikke det samme som Zigbee, Wi-Fi eller Matter</h2>
+      <div class="card">
+        <p class="section-subtitle">Zigbee, Wi-Fi, Matter, Bluetooth og Ethernet beskriver, hvordan en enhed kommunikerer. En integration bestemmer derimod, hvordan Home Assistant genkender enheden, læser dens data og gør det muligt at styre den.</p>
+        <p class="section-subtitle">Derfor kan to enheder, der begge bruger Wi-Fi, blive håndteret af helt forskellige integrationer. De kan bruge forskellige protokoller, forskellige former for godkendelse eller helt forskellige tjenester fra producenten.</p>
+        <p class="section-subtitle">På samme måde kommer en Zigbee-enhed ikke ind i Home Assistant alene, fordi den bruger Zigbee. Der kræves en passende koordinator og en løsning, der håndterer Zigbee-netværket.</p>
+        <p class="section-subtitle">I Home Assistant kan det for eksempel være ZHA. En anden løsning er Zigbee2MQTT, som håndterer Zigbee-enheder og sender oplysninger til Home Assistant via MQTT.</p>
+        <p class="section-subtitle">Hvis problemet handler om stabiliteten i selve Zigbee-netværket, kan du bruge den særskilte vejledning.</p>
+        <a class="knowledge-link" href="/dk/stabilt-zigbee/">Mister Zigbee forbindelsen? <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">FORBINDELSE</div>
+      <h2 class="section-title mobile-match-title">Lokal forbindelse, cloud eller producentens gateway</h2>
+      <div class="card">
+        <p class="section-subtitle">Nogle integrationer kommunikerer direkte med enhederne på det lokale netværk. Home Assistant og enheden udveksler så data i hjemmets netværk, uden at hver kommando skal sendes gennem eksterne servere.</p>
+        <p class="section-subtitle">Andre enheder bruger producentens cloudtjeneste. Home Assistant kommunikerer så med producentens server, hvorefter tjenesten sender oplysninger videre til enheden eller henter data fra den.</p>
+        <p class="section-subtitle">En cloudforbindelse er ikke nødvendigvis en dårlig løsning i sig selv. For nogle enheder er det den eneste tilgængelige integrationsmetode. Man skal dog være opmærksom på den ekstra afhængighed af internetforbindelsen, tilgængeligheden af producentens servere og den måde, producentens API fungerer på.</p>
+        <p class="section-subtitle">Der findes også enheder, som kræver deres egen gateway. Home Assistant kommunikerer så med gatewayen, der står for kontakten til slutenhederne.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">NETVÆRK</div>
+      <h2 class="section-title mobile-match-title">Fast IP-adresse ved lokale integrationer</h2>
+      <div class="card">
+        <p class="section-subtitle">For enheder, der kommunikerer lokalt via netværket, især gennem Wi-Fi eller Ethernet, kan en stabil IP-adresse have stor betydning.</p>
+        <p class="section-subtitle">Hvis en integration er konfigureret med en bestemt IP-adresse, og routeren tildeler enheden en anden adresse efter en genstart, kan Home Assistant miste forbindelsen til den.</p>
+        <p class="section-subtitle">I sådanne tilfælde er det en god idé at give enheden en fast adresse på netværket. Det gøres normalt bedst med en DHCP-reservation i routeren, så enheden altid får den samme IP-adresse.</p>
+        <p class="section-subtitle">Ikke alle integrationer kræver en fast IP-adresse. Nogle bruger automatisk registrering, værtsnavne eller andre metoder til at finde enheden. Hvis konfigurationen af en lokal integration henviser direkte til en IP-adresse, er det dog en god idé at holde adressen stabil.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">UDVIDELSER</div>
+      <h2 class="section-title mobile-match-title">Indbyggede integrationer og løsninger fra fællesskabet</h2>
+      <div class="card">
+        <p class="section-subtitle">Home Assistant har et stort antal integrationer, som er tilgængelige direkte i systemet. I mange tilfælde bliver enheden fundet automatisk, eller det er nok at vælge den relevante integration og gennemføre konfigurationen.</p>
+        <p class="section-subtitle">Der findes også integrationer, som udvikles uafhængigt af fællesskabet. De er ikke en del af en standardinstallation af Home Assistant, men kan tilføje understøttelse af enheder og tjenester, som ikke har en passende indbygget løsning.</p>
+        <p class="section-subtitle">HACS bruges ofte til at installere og opdatere sådanne udvidelser.</p>
+        <p class="section-subtitle">HACS giver adgang til yderligere projekter fra fællesskabet, men det, at en integration findes i HACS, betyder ikke, at den vedligeholdes og testes på samme måde som en integration, der er en del af Home Assistant. Det er en god idé at kontrollere projektets dokumentation, opdateringer og kompatibilitet med den version af Home Assistant, der bruges.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">MQTT</div>
+      <h2 class="section-title mobile-match-title">MQTT – en fleksibel måde at udveksle data på</h2>
+      <div class="card">
+        <p class="section-subtitle">MQTT bruges ofte, når en enhed eller et andet system kan levere data, men ikke nødvendigvis har en typisk integration, der kan tilføjes med ét klik.</p>
+        <p class="section-subtitle">Kommunikationen foregår gennem en MQTT-broker. Enheden eller anden software kan publicere oplysninger som temperatur, indgangsstatus, batteriniveau eller den aktuelle driftstilstand. Home Assistant kan modtage oplysningerne og vise dem som passende entiteter.</p>
+        <p class="section-subtitle">Kommunikationen kan også fungere i den anden retning. Home Assistant kan sende en kommando via MQTT, som modtages af enheden eller et mellemliggende system.</p>
+        <p class="section-subtitle">Derfor egner MQTT sig godt til egne enheder, mikrocontrollere, specialbyggede styringer, DIY-løsninger og systemer, hvor man selv skal definere, hvordan data udveksles.</p>
+        <p class="section-subtitle">MQTT er dog ikke en universel metode til at tilslutte vilkårligt udstyr. Enheden eller den mellemliggende software skal reelt kunne bruge MQTT, eller der skal udvikles et passende kommunikationslag.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">ADB</div>
+      <h2 class="section-title mobile-match-title">ADB – utraditionel kommunikation med Android TV og Google TV</h2>
+      <div class="card">
+        <p class="section-subtitle">Et andet eksempel på en mere teknisk kommunikationsmetode er ADB, altså Android Debug Bridge.</p>
+        <p class="section-subtitle">ADB kan bruges til at kommunikere med enheder, der kører Android TV eller Google TV, hvis enheden giver adgang til ADB og er konfigureret korrekt.</p>
+        <p class="section-subtitle">Et eksempel er NVIDIA Shield. Med ADB kan man sende bestemte kommandoer, starte apps, læse udvalgte oplysninger om enhedens tilstand og senere bruge dem i automatiseringer i Home Assistant.</p>
+        <p class="section-subtitle">ADB kan også indgå i en egen løsning, hvor de modtagne oplysninger bruges til at oprette yderligere scripts, automatiseringer eller hjælpeentiteter.</p>
+        <p class="section-subtitle">Det er ikke en standardmetode til at oprette entiteter, men en utraditionel kommunikationsmetode, der kan bruges til at bygge ekstra logik i Home Assistant.</p>
+        <p class="section-subtitle">En almindelig Chromecast understøttes normalt gennem Google Cast. ADB kan bruges på enheder med Android TV eller Google TV, for eksempel NVIDIA Shield eller en Chromecast med Google TV, hvis ADB-adgang er tilgængelig og aktiveret på enheden.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">KØB</div>
+      <h2 class="section-title mobile-match-title">Hvad kan man undersøge, før man køber en enhed?</h2>
+      <div class="card">
+        <p class="section-subtitle">Før et køb er det en god idé at undersøge, om der findes en Home Assistant-integration til producenten, enhedsfamilien eller den konkrete model, og hvordan den fungerer.</p>
+        <p class="section-subtitle">Man kan blandt andet undersøge, om enheden kommunikerer lokalt, bruger producentens cloud, kræver en ekstra gateway eller har brug for bestemt mellemliggende udstyr.</p>
+        <p class="section-subtitle">Det er dog ikke altid muligt på forhånd at fastslå præcist, hvilke entiteter og funktioner der vises, når enheden tilføjes i Home Assistant.</p>
+        <p class="section-subtitle">Producenten beskriver normalt enhedens muligheder i sin egen app, men det betyder ikke automatisk, at alle funktionerne også er tilgængelige gennem Home Assistant-integrationen.</p>
+        <p class="section-subtitle">Omfanget kan afhænge af den konkrete model, hardwareversion, firmware, region, kommunikationsmetode og de oplysninger, som enheden eller producentens tjeneste stiller til rådighed.</p>
+        <p class="section-subtitle">At kontrollere integrationen før købet kan derfor mindske risikoen for et forkert valg, men det bør ikke fremstilles som en garanti for et bestemt sæt entiteter og funktioner.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">BEGRÆNSNINGER</div>
+      <h2 class="section-title mobile-match-title">“Understøttet” betyder ikke altid fuld understøttelse</h2>
+      <div class="card">
+        <p class="section-subtitle">En enhed kan blive registreret korrekt af Home Assistant, men kun stille en del af sine funktioner til rådighed.</p>
+        <p class="section-subtitle">En sensor kan for eksempel levere temperatur og batteriniveau, selv om producentens app også viser yderligere oplysninger.</p>
+        <p class="section-subtitle">Et tv kan give mulighed for at styre afspilning og starte apps, men ikke give adgang til alle de indstillinger, der findes på den originale fjernbetjening.</p>
+        <p class="section-subtitle">Lignende begrænsninger kan gælde for aircondition, varmesystemer, invertere, robotstøvsugere og mange andre enheder.</p>
+        <p class="section-subtitle">Oplysningen om, at en enhed understøttes af Home Assistant, bør derfor ikke betragtes som en garanti for adgang til alle dens funktioner.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">FEJLFINDING</div>
+      <h2 class="section-title mobile-match-title">Hvorfor kan en fungerende integration senere holde op med at virke?</h2>
+      <div class="card">
+        <p class="section-subtitle">Årsagen til problemet findes ikke altid i selve Home Assistant.</p>
+        <p class="section-subtitle">En integration, der bruger cloud, kan holde op med at virke, efter at producenten ændrer sit API, loginmetoden eller godkendelsen.</p>
+        <p class="section-subtitle">En lokal enhed kan få en anden IP-adresse, holde op med at svare på grund af et Wi-Fi-problem eller ændre adfærd efter en firmwareopdatering.</p>
+        <p class="section-subtitle">For integrationer fra fællesskabet kan kompatibilitet med en ny version af Home Assistant have betydning.</p>
+        <p class="section-subtitle">Ved MQTT kan problemet ligge i brokeren, enheden der publicerer data, konfigurationen af topics eller netværkskommunikationen.</p>
+        <p class="section-subtitle">Fejlfinding af en integration bør derfor omfatte hele kommunikationsvejen mellem enheden og Home Assistant og ikke kun kontrollere, om selve integrationen er synlig i systemet.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">VALG</div>
+      <h2 class="section-title mobile-match-title">Hvordan vælger man enheder fornuftigt til Home Assistant?</h2>
+      <div class="card">
+        <p class="section-subtitle">Før man vælger udstyr, er det en god idé at undersøge kommunikationsmetoden, om en passende integration er tilgængelig, hvilket mellemliggende udstyr der kræves, og om løsningen fungerer lokalt eller gennem en cloudtjeneste.</p>
+        <p class="section-subtitle">Hvis dokumentationen eller erfaringer fra brugere af en bestemt model gør det muligt at fastslå omfanget af tilgængelige funktioner, er det også værd at tage med i vurderingen. Det er dog ikke altid muligt at forudsige det præcise sæt entiteter, før enheden kører i ens eget system.</p>
+        <p class="section-subtitle">For enheder, der fungerer lokalt via Wi-Fi eller Ethernet, er det også en god idé at undersøge, om konfigurationen kræver en stabil IP-adresse, og om nødvendigt oprette en DHCP-reservation.</p>
+        <p class="section-subtitle">Det vigtigste er bevidst at vælge en integrationsmetode, der passer til ens eget system, i stedet for at antage, at en kompatibilitetsangivelse giver adgang til alle enhedens muligheder.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">OPSAMLING</div>
+      <h2 class="section-title mobile-match-title">Integrationer forbinder enheder og tjenester i ét system</h2>
+      <div class="card">
+        <p class="section-subtitle">Integrationer er en af de vigtigste dele af Home Assistant, fordi de gør det muligt for enheder og tjenester fra forskellige producenter at fungere i ét system.</p>
+        <p class="section-subtitle">Integrationsmetoden kan være meget enkel, men nogle gange kræves producentens gateway, kommunikation via MQTT, en løsning fra fællesskabet eller en mere teknisk metode som ADB.</p>
+        <p class="section-subtitle">Ikke alle integrationer giver adgang til alle enhedens funktioner, og ikke alle problemer betyder, at fejlen ligger i Home Assistant. Begrænsningen kan være kommunikationsmetoden, det lokale netværk, firmware, producentens cloud eller mulighederne i det konkrete udstyr.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">HJÆLP</div>
+      <h2 class="section-title mobile-match-title">Har du brug for hjælp til en Home Assistant-integration?</h2>
+      <div class="card">
+        <p class="section-subtitle">Hvis du vil tilslutte en enhed, konfigurere en mere utraditionel integration eller bruge MQTT, ADB eller en anden tilgængelig kommunikationsmetode, kan jeg hjælpe med at undersøge mulighederne og konfigurere en passende løsning.</p>
+        <a class="knowledge-help-link" href="/dk/#kontakt"><span class="knowledge-help-main">Kontakt mig</span> <span class="knowledge-help-accent">→ klik her</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span>© <span id="year"></span> Tomasz Furdal – Home Assistant &amp; Integrations</span>
+      <span>Betaling: bankoverførsel, Revolut, PayPal, MobilePay</span>
+    </div>
+  </footer>
+
+  <script src="../../nav.js?v=20260730-mobile-nav-12"></script>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>

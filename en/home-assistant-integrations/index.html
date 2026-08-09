@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="robots" content="index,follow" />
+  <meta name="author" content="Tomasz Furdal" />
+  <meta name="theme-color" content="#0f172a" />
+  <link rel="canonical" href="https://ha-expert.com/en/home-assistant-integrations/" />
+  <link rel="alternate" hreflang="pl" href="https://ha-expert.com/pl/integracje-home-assistant/" />
+  <link rel="alternate" hreflang="en" href="https://ha-expert.com/en/home-assistant-integrations/" />
+  <link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/home-assistant-integrationer/" />
+  <link rel="alternate" hreflang="x-default" href="https://ha-expert.com/en/home-assistant-integrations/" />
+  <title>Home Assistant integrations – MQTT, ADB and HACS | HA Expert</title>
+  <meta name="description" content="Learn how Home Assistant integrations work, how they differ from Zigbee, Wi-Fi and Matter, and when MQTT, HACS or ADB can be useful." />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Home Assistant integrations – MQTT, ADB and HACS | HA Expert" />
+  <meta property="og:description" content="Learn how Home Assistant integrations work, how they differ from Zigbee, Wi-Fi and Matter, and when MQTT, HACS or ADB can be useful." />
+  <meta property="og:url" content="https://ha-expert.com/en/home-assistant-integrations/" />
+  <link rel="stylesheet" href="../../styles.css?v=20260730-mobile-47" />
+  <script src="../../consent.js?v=20260420-consent-1"></script>
+</head>
+<body class="knowledge-page pl-home-bg-test">
+  <header class="scrolled">
+    <div class="nav">
+      <a class="logo" href="/en/" aria-label="Tomasz Furdal - Home Assistant Expert">
+        <img class="logo-image" src="../../assets/brand/logo-wyciete.png" alt="Tomasz Furdal - Home Assistant Expert" title="Home Assistant Expert - Tomasz Furdal" />
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Open menu"><span aria-hidden="true">☰</span></button>
+      <a class="nav-mobile-link about-link" href="/en/#about-me">About me</a>
+      <a class="nav-mobile-link contact-link" href="/en/#contact">Contact</a>
+      <nav id="primary-nav" aria-label="Primary">
+        <ul>
+          <li><a href="/en/#services">Services</a></li>
+          <li><a href="/en/#about-me">About me</a></li>
+          <li><a href="/en/#who-its-for">Who it’s for</a></li>
+          <li><a href="/en/#how-i-work">How I work</a></li>
+          <li><a href="/en/#pricing">Pricing</a></li>
+          <li><a href="/en/#contact">Contact</a></li>
+          <li class="nav-secondary-start"><a href="/en/projects/">Projects</a></li>
+          <li class="nav-guides">
+            <button class="nav-guides-toggle" type="button" aria-expanded="false" aria-haspopup="true"><span>Guides</span><span class="nav-guides-chevron" aria-hidden="true">▾</span></button>
+            <ul class="nav-guides-dropdown">
+              <li><a href="/en/what-is-ha/">What is Home Assistant?</a></li>
+              <li><a href="/en/home-assistant-integrations/" aria-current="page">Home Assistant integrations</a></li>
+              <li><a href="/en/stable-zigbee/">Zigbee keeps disconnecting?</a></li>
+            </ul>
+          </li>
+          <li><a href="/en/demo/">Demo panel</a></li>
+        </ul>
+      </nav>
+      <div class="lang-switch" aria-label="Language switch">
+        <a class="lang-btn" href="/pl/integracje-home-assistant/" aria-label="Polski"><img class="lang-flag" src="../../assets/flags/pl.svg" alt="" aria-hidden="true" /></a>
+        <a class="lang-btn" href="/dk/home-assistant-integrationer/" aria-label="Dansk"><img class="lang-flag" src="../../assets/flags/dk.svg" alt="" aria-hidden="true" /></a>
+        <a class="lang-btn active" href="/en/home-assistant-integrations/" aria-label="English" aria-current="page"><img class="lang-flag" src="../../assets/flags/gb.svg" alt="" aria-hidden="true" /></a>
+      </div>
+      <a class="nav-cta" href="/en/#contact">Free diagnosis</a>
+    </div>
+  </header>
+
+  <div class="mobile-bottom-bar" aria-label="Mobile quick actions">
+    <a class="mobile-bottom-link" href="/en/#about-me">About me</a>
+    <a class="mobile-bottom-link" href="/en/#contact">Contact</a>
+  </div>
+
+  <main>
+    <section class="section">
+      <div class="section-label">INTEGRATIONS</div>
+      <h1 class="section-title mobile-match-title">Home Assistant integrations – how to connect devices and systems</h1>
+      <div class="card">
+        <p class="section-subtitle">Home Assistant can bring devices and services from different manufacturers together in one system, but not every connection works in the same way. Sometimes adding a ready-made integration is enough; in other cases, you may need the manufacturer’s gateway, a connection to a cloud service, an MQTT broker, or a more technical communication method such as ADB.</p>
+        <p class="section-subtitle">This guide explains what Home Assistant integrations are, how devices can communicate with the system, how an integration differs from a protocol such as Zigbee or Wi-Fi, and what you can expect after connecting a particular device.</p>
+        <p class="section-subtitle">If you are just getting to know Home Assistant and first want to understand what the overall system is, go to the guide below.</p>
+        <a class="knowledge-link" href="/en/what-is-ha/">What is Home Assistant? <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">BASICS</div>
+      <h2 class="section-title mobile-match-title">What does an integration mean in Home Assistant?</h2>
+      <div class="card">
+        <p class="section-subtitle">An integration is the way Home Assistant communicates with a device, service, or another system. It may be responsible for reading data, sending commands, discovering devices, and making their capabilities available in Home Assistant.</p>
+        <p class="section-subtitle">For example, a thermostat may expose the temperature, its current operating mode, and the option to change the setpoint. A television may be represented as a media player, while a sensor may provide several separate entities for temperature, humidity, or battery level.</p>
+        <p class="section-subtitle">However, this does not mean that every function available in the manufacturer’s app will automatically appear in Home Assistant. The available capabilities depend on the specific device, the communication method, and the information that the device or manufacturer’s service makes available to the integration.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">PROTOCOLS</div>
+      <h2 class="section-title mobile-match-title">An integration is not the same as Zigbee, Wi-Fi or Matter</h2>
+      <div class="card">
+        <p class="section-subtitle">Zigbee, Wi-Fi, Matter, Bluetooth, and Ethernet describe how a device communicates. An integration determines how Home Assistant recognises the device, reads its data, and allows you to control it.</p>
+        <p class="section-subtitle">This is why two devices using Wi-Fi may be handled by completely different integrations. They may use different protocols, authentication methods, or entirely different manufacturer services.</p>
+        <p class="section-subtitle">Likewise, a Zigbee device does not appear in Home Assistant simply because it uses Zigbee. You need a suitable coordinator and a solution that manages the Zigbee network.</p>
+        <p class="section-subtitle">In Home Assistant, this may be ZHA, for example. Another option is Zigbee2MQTT, which manages Zigbee devices and passes information to Home Assistant through MQTT.</p>
+        <p class="section-subtitle">If the problem concerns the stability of the Zigbee network itself, use the separate guide.</p>
+        <a class="knowledge-link" href="/en/stable-zigbee/">Zigbee keeps disconnecting? <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">CONNECTION</div>
+      <h2 class="section-title mobile-match-title">Local connection, cloud, or manufacturer gateway</h2>
+      <div class="card">
+        <p class="section-subtitle">Some integrations communicate with devices directly over the local network. Home Assistant and the device then exchange data within the home network, without having to send every command through external servers.</p>
+        <p class="section-subtitle">Other devices use the manufacturer’s cloud service. Home Assistant communicates with the manufacturer’s server, and that service then passes information to the device or retrieves data from it.</p>
+        <p class="section-subtitle">A cloud connection is not necessarily a bad solution in itself. For some devices, it is the only available integration method. However, you should remember the additional dependence on the internet, the availability of the manufacturer’s servers, and the way its API works.</p>
+        <p class="section-subtitle">Some devices also require their own gateway. Home Assistant then communicates with the gateway, which is responsible for contacting the end devices.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">NETWORK</div>
+      <h2 class="section-title mobile-match-title">A fixed IP address for local integrations</h2>
+      <div class="card">
+        <p class="section-subtitle">For devices that communicate locally over the network, especially through Wi-Fi or Ethernet, a stable IP address can be very important.</p>
+        <p class="section-subtitle">If an integration was configured with a specific IP address and the router assigns the device a different address after a restart, Home Assistant may lose its connection to the device.</p>
+        <p class="section-subtitle">In such cases, it is worth giving the device a fixed address on the network. The best approach is usually a DHCP reservation in the router, so that the device always receives the same IP address.</p>
+        <p class="section-subtitle">Not every integration requires a fixed IP address. Some use automatic discovery, hostnames, or other mechanisms to find the device. However, if a local integration refers directly to an IP address, it is worth keeping that address stable.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">EXTENSIONS</div>
+      <h2 class="section-title mobile-match-title">Built-in integrations and community solutions</h2>
+      <div class="card">
+        <p class="section-subtitle">Home Assistant includes a large number of integrations available directly in the system. In many cases, the device is discovered automatically, or you only need to select the appropriate integration and complete its setup.</p>
+        <p class="section-subtitle">There are also integrations developed independently by the community. They are not part of a standard Home Assistant installation, but they can add support for devices and services that do not have a suitable built-in solution.</p>
+        <p class="section-subtitle">HACS is often used to install and update these extensions.</p>
+        <p class="section-subtitle">HACS provides access to additional community projects, but the presence of an integration in HACS does not mean that it is maintained and tested in the same way as an integration included in Home Assistant. It is worth checking the project documentation, its updates, and compatibility with the Home Assistant version you use.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">MQTT</div>
+      <h2 class="section-title mobile-match-title">MQTT – a flexible way to exchange data</h2>
+      <div class="card">
+        <p class="section-subtitle">MQTT is often used when a device or another system can provide data but does not necessarily have a typical integration that can be added with one click.</p>
+        <p class="section-subtitle">Communication takes place through an MQTT broker. A device or other software can publish information such as temperature, input state, battery level, or current operating mode. Home Assistant can receive this information and represent it as the appropriate entities.</p>
+        <p class="section-subtitle">Communication can also work in the other direction. Home Assistant can send a command through MQTT, which is then received by the device or an intermediary system.</p>
+        <p class="section-subtitle">This makes MQTT well suited to custom devices, microcontrollers, non-standard controllers, DIY solutions, and systems in which you need to define the method of data exchange yourself.</p>
+        <p class="section-subtitle">However, MQTT is not a universal way to connect any piece of hardware. The device or intermediary software must actually support MQTT, or a suitable communication layer must be prepared.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">ADB</div>
+      <h2 class="section-title mobile-match-title">ADB – non-standard communication with Android TV and Google TV</h2>
+      <div class="card">
+        <p class="section-subtitle">Another example of a more technical communication method is ADB, or Android Debug Bridge.</p>
+        <p class="section-subtitle">ADB can be used to communicate with devices running Android TV or Google TV if the device provides ADB access and has been configured correctly.</p>
+        <p class="section-subtitle">One example is NVIDIA Shield. ADB can be used to send specific commands, launch applications, read selected information about the device’s state, and later use that information in Home Assistant automations.</p>
+        <p class="section-subtitle">ADB can also be part of a custom solution in which the received information is used to create additional scripts, automations, or helper entities.</p>
+        <p class="section-subtitle">It is not a standard way to create entities, but a non-standard communication method that can be used to build additional logic in Home Assistant.</p>
+        <p class="section-subtitle">A standard Chromecast is normally supported through Google Cast. ADB may be useful with devices running Android TV or Google TV, such as NVIDIA Shield or a Chromecast with Google TV, if ADB access is available and enabled on that device.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">PURCHASE</div>
+      <h2 class="section-title mobile-match-title">What can you check before buying a device?</h2>
+      <div class="card">
+        <p class="section-subtitle">Before buying a device, it is worth checking whether a Home Assistant integration exists for the manufacturer, device family, or specific model, and how it works.</p>
+        <p class="section-subtitle">You can check whether the device communicates locally, uses the manufacturer’s cloud, requires an additional gateway, or needs specific intermediary hardware.</p>
+        <p class="section-subtitle">However, it is not always possible to determine exactly which entities and functions will appear after adding the device to Home Assistant before you buy it.</p>
+        <p class="section-subtitle">The manufacturer usually describes the device’s capabilities in its own app, but this does not automatically mean that all of those functions will also be available through the Home Assistant integration.</p>
+        <p class="section-subtitle">The available scope may depend on the specific model, hardware version, firmware, region, communication method, and the information exposed by the device or the manufacturer’s service.</p>
+        <p class="section-subtitle">Checking the integration before purchase therefore reduces the risk of making the wrong choice, but it should not be treated as a guarantee of obtaining a particular set of entities and functions.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">LIMITATIONS</div>
+      <h2 class="section-title mobile-match-title">“Supported” does not always mean fully supported</h2>
+      <div class="card">
+        <p class="section-subtitle">A device may be detected correctly by Home Assistant but expose only some of its capabilities.</p>
+        <p class="section-subtitle">For example, a sensor may provide temperature and battery level even though the manufacturer’s app also shows additional information.</p>
+        <p class="section-subtitle">A television may allow playback control and application launching but not expose every setting available from the original remote control.</p>
+        <p class="section-subtitle">Similar limitations may apply to air conditioning, heating systems, inverters, robot vacuum cleaners, and many other devices.</p>
+        <p class="section-subtitle">Information that a device is supported by Home Assistant should therefore not be treated as a guarantee of access to every one of its functions.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">TROUBLESHOOTING</div>
+      <h2 class="section-title mobile-match-title">Why can a working integration stop working later?</h2>
+      <div class="card">
+        <p class="section-subtitle">The cause of a problem is not always within Home Assistant itself.</p>
+        <p class="section-subtitle">A cloud-based integration may stop working after the manufacturer changes its API, login method, or authorisation process.</p>
+        <p class="section-subtitle">A local device may receive a different IP address, stop responding because of a Wi-Fi problem, or change its behaviour after a firmware update.</p>
+        <p class="section-subtitle">For community integrations, compatibility with a new Home Assistant version may be important.</p>
+        <p class="section-subtitle">With MQTT, the problem may be in the broker, the device publishing the data, the topic configuration, or network communication.</p>
+        <p class="section-subtitle">Troubleshooting an integration should therefore cover the entire communication path between the device and Home Assistant, rather than only checking whether the integration itself is visible in the system.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">SELECTION</div>
+      <h2 class="section-title mobile-match-title">How should you choose devices for Home Assistant?</h2>
+      <div class="card">
+        <p class="section-subtitle">Before choosing hardware, it is worth checking how it communicates, whether a suitable integration is available, which intermediary devices are required, and whether the solution works locally or through a cloud service.</p>
+        <p class="section-subtitle">If the documentation or the experiences of users of a specific model make it possible to determine the available functions, this is also worth considering. However, it is not always possible to predict the exact set of entities before running the device in your own system.</p>
+        <p class="section-subtitle">For devices that work locally through Wi-Fi or Ethernet, it is also worth checking whether the configuration requires a stable IP address and preparing a DHCP reservation if necessary.</p>
+        <p class="section-subtitle">The most important thing is to choose the integration method consciously for your own system instead of assuming that a compatibility label guarantees access to every capability of the device.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">SUMMARY</div>
+      <h2 class="section-title mobile-match-title">Integrations connect devices and services in one system</h2>
+      <div class="card">
+        <p class="section-subtitle">Integrations are one of the most important parts of Home Assistant because they allow devices and services from different manufacturers to work in one system.</p>
+        <p class="section-subtitle">The integration method may be very simple, but sometimes a manufacturer gateway, MQTT communication, a community solution, or a more technical method such as ADB is required.</p>
+        <p class="section-subtitle">Not every integration provides access to all device functions, and not every problem means that Home Assistant itself is at fault. The limitation may be the communication method, the local network, firmware, the manufacturer’s cloud, or the capabilities of the particular hardware.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">HELP</div>
+      <h2 class="section-title mobile-match-title">Need help with a Home Assistant integration?</h2>
+      <div class="card">
+        <p class="section-subtitle">If you want to connect a device, set up a non-standard integration, or use MQTT, ADB or another available communication method, I can help check the available options and configure a suitable solution.</p>
+        <a class="knowledge-help-link" href="/en/#contact"><span class="knowledge-help-main">Contact me</span> <span class="knowledge-help-accent">→ click here</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span>© <span id="year"></span> Tomasz Furdal – Home Assistant &amp; Integrations</span>
+      <span>Payments: bank transfer, Revolut, PayPal, MobilePay</span>
+    </div>
+  </footer>
+
+  <script src="../../nav.js?v=20260730-mobile-nav-12"></script>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>
