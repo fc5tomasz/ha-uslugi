@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="robots" content="index,follow" />
+  <meta name="author" content="Tomasz Furdal" />
+  <meta name="theme-color" content="#0f172a" />
+  <link rel="canonical" href="https://ha-expert.com/en/ai-home-assistant/" />
+  <link rel="alternate" hreflang="pl" href="https://ha-expert.com/pl/ai-home-assistant/" />
+  <link rel="alternate" hreflang="en" href="https://ha-expert.com/en/ai-home-assistant/" />
+  <link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/ai-home-assistant/" />
+  <link rel="alternate" hreflang="x-default" href="https://ha-expert.com/en/ai-home-assistant/" />
+  <title>AI in Home Assistant – artificial intelligence for the smart home | HA Expert</title>
+  <meta name="description" content="Explore practical uses of AI in Home Assistant: natural conversation, energy, heating, image analysis, MCP and a safe scope of control." />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="AI in Home Assistant – artificial intelligence for the smart home | HA Expert" />
+  <meta property="og:description" content="Explore practical uses of AI in Home Assistant: natural conversation, energy, heating, image analysis, MCP and a safe scope of control." />
+  <meta property="og:url" content="https://ha-expert.com/en/ai-home-assistant/" />
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "AI in Home Assistant – when your home can analyse situations and respond",
+  "description": "Explore practical uses of AI in Home Assistant: natural conversation, energy, heating, image analysis, MCP and a safe scope of control.",
+  "author": {
+    "@type": "Person",
+    "@id": "https://ha-expert.com/#person",
+    "name": "Tomasz Furdal"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://ha-expert.com/#organization",
+    "name": "HA Expert Tomasz Furdal",
+    "url": "https://ha-expert.com/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://ha-expert.com/assets/brand/ha-expert-logo-transparent.png"
+    }
+  },
+  "datePublished": "2026-08-10",
+  "dateModified": "2026-08-10",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://ha-expert.com/en/ai-home-assistant/"
+  },
+  "url": "https://ha-expert.com/en/ai-home-assistant/",
+  "inLanguage": "en"
+}
+  </script>
+  <link rel="stylesheet" href="../../styles.css?v=20260810-ai-guide-52" />
+  <script src="../../consent.js?v=20260420-consent-1"></script>
+</head>
+<body class="knowledge-page pl-home-bg-test">
+  <header class="scrolled">
+    <div class="nav">
+      <a class="logo" href="/en/" aria-label="Tomasz Furdal - Home Assistant Expert">
+        <img class="logo-image" src="../../assets/brand/logo-wyciete.png" alt="Tomasz Furdal - Home Assistant Expert" title="Home Assistant Expert - Tomasz Furdal" />
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Open menu"><span aria-hidden="true">☰</span></button>
+      <a class="nav-mobile-link about-link" href="/en/#about-me">About me</a>
+      <a class="nav-mobile-link contact-link" href="/en/#contact">Contact</a>
+      <nav id="primary-nav" aria-label="Primary">
+        <ul>
+          <li><a href="/en/#services">Services</a></li>
+          <li><a href="/en/#about-me">About me</a></li>
+          <li><a href="/en/#who-its-for">Who it’s for</a></li>
+          <li><a href="/en/#how-i-work">How I work</a></li>
+          <li><a href="/en/#pricing">Pricing</a></li>
+          <li><a href="/en/#contact">Contact</a></li>
+          <li class="nav-secondary-start"><a href="/en/projects/">Projects</a></li>
+          <li class="nav-guides">
+            <button class="nav-guides-toggle" type="button" aria-expanded="false" aria-haspopup="true"><span>Guides</span><span class="nav-guides-chevron" aria-hidden="true">▾</span></button>
+            <ul class="nav-guides-dropdown">
+              <li><a href="/en/what-is-ha/">What is Home Assistant?</a></li>
+              <li><a href="/en/home-assistant-integrations/">Home Assistant integrations</a></li>
+              <li><a href="/en/home-assistant-automations/">Home Assistant automations</a></li>
+              <li><a href="/en/home-assistant-dashboard/">Home Assistant dashboard</a></li>
+              <li><a href="/en/home-assistant-database/">Home Assistant database</a></li>
+              <li><a href="/en/ai-home-assistant/" aria-current="page">AI in Home Assistant</a></li>
+              <li><a href="/en/stable-zigbee/">Zigbee keeps disconnecting?</a></li>
+            </ul>
+          </li>
+          <li><a href="/en/demo/">Demo panel</a></li>
+        </ul>
+      </nav>
+      <div class="lang-switch" aria-label="Language switch">
+        <a class="lang-btn" href="/pl/ai-home-assistant/" aria-label="Polski"><img class="lang-flag" src="../../assets/flags/pl.svg" alt="" aria-hidden="true" /></a>
+        <a class="lang-btn" href="/dk/ai-home-assistant/" aria-label="Dansk"><img class="lang-flag" src="../../assets/flags/dk.svg" alt="" aria-hidden="true" /></a>
+        <a class="lang-btn active" href="/en/ai-home-assistant/" aria-label="English" aria-current="page"><img class="lang-flag" src="../../assets/flags/gb.svg" alt="" aria-hidden="true" /></a>
+      </div>
+      <a class="nav-cta" href="/en/#contact">Free diagnosis</a>
+    </div>
+  </header>
+
+  <div class="mobile-bottom-bar" aria-label="Mobile quick actions">
+    <a class="mobile-bottom-link" href="/en/#about-me">About me</a>
+    <a class="mobile-bottom-link" href="/en/#contact">Contact</a>
+  </div>
+
+  <main>
+    <section class="section">
+      <div class="section-label">ARTIFICIAL INTELLIGENCE</div>
+      <h1 class="section-title mobile-match-title">AI in Home Assistant – when your home can analyse situations and respond</h1>
+      <p class="article-author">Author: <a href="/en/#about-me">Tomasz Furdal · HA Expert</a></p>
+      <div class="card">
+        <p class="section-subtitle">A conventional smart home is built mainly around predefined logic: if event X occurs and condition Y is true, perform action Z. These automations are fast and predictable, and they remain the foundation of a reliable system.</p>
+        <p class="section-subtitle">AI can add another layer. Instead of evaluating only one state or threshold, it can receive selected information, relevant context, a defined objective and a limited set of available actions. It can then describe the situation or choose the most suitable response from options prepared as part of the system design.</p>
+        <p class="section-subtitle">This does not mean replacing conventional automations or giving a model unrestricted control of the home. The greatest value appears when Home Assistant provides predictable execution and safeguards, while AI helps interpret more complex context or supports more natural conversation.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">COMPARISON</div>
+      <h2 class="section-title mobile-match-title">How is AI different from a conventional automation?</h2>
+      <div class="card">
+        <p class="section-subtitle">A conventional automation follows explicit rules. If solar production exceeds a defined threshold, the system can start a particular appliance. The same inputs should produce the same response every time.</p>
+        <p class="section-subtitle">A more complex situation may involve solar production, current household demand, battery charge, temperature, time of day, occupancy and expected demand later on. A properly designed solution can provide AI with only the relevant information and ask it to assess which permitted action best supports a defined objective.</p>
+        <p class="section-subtitle">AI does not replace rules that must remain strictly predictable. It can be useful where several responses are acceptable and the best choice depends on broader context.</p>
+        <a class="knowledge-link" href="/en/home-assistant-automations/">Home Assistant automations <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">FLOW</div>
+      <h2 class="section-title mobile-match-title">How can AI work with Home Assistant?</h2>
+      <div class="card">
+        <p class="section-subtitle">An AI model does not need to monitor the entire home continuously. Home Assistant or another prepared process invokes an analysis when it is needed and supplies a defined set of data. The result can be a description, an assessment or the selection of one available function.</p>
+        <div class="ai-flow" aria-label="Data flow between the home, AI and Home Assistant">
+          <span>Home data</span><b aria-hidden="true">→</b><span>Context and objective</span><b aria-hidden="true">→</b><span>AI analysis</span><b aria-hidden="true">→</b><span>Permitted action</span><b aria-hidden="true">→</b><span>Home Assistant executes</span>
+        </div>
+        <p class="section-subtitle">The scope of information and actions depends on the design. AI can therefore support a specific scenario without receiving access to every device and function in the system.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">CONVERSATION</div>
+      <h2 class="section-title mobile-match-title">A more natural conversation with your home</h2>
+      <div class="card">
+        <p class="section-subtitle">Assist supports natural-language interaction with Home Assistant. When connected to a suitable conversation agent, it can provide a more contextual exchange than a list of short, rigid commands.</p>
+        <p class="section-subtitle">A user might say: “I feel a little cold”, “Have I forgotten anything before leaving home?”, “Prepare the living room for the evening” or “Why are we using more energy than usual right now?”.</p>
+        <p class="section-subtitle">A useful response depends on the data available in the system and the prepared control options. Feeling cold might be considered alongside room temperature and heating status, while a question before leaving could be compared with open windows, active appliances or the alarm state.</p>
+        <p class="section-subtitle">This still requires a carefully designed data model, names, permissions and actions. The model does not know the home unless the system provides the right context.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">ENERGY</div>
+      <h2 class="section-title mobile-match-title">Energy and heating – decisions based on the wider picture</h2>
+      <div class="card">
+        <p class="section-subtitle">An extensive installation may include solar panels, measurements of energy import and export, battery storage, room and buffer temperatures, heating, and an immersion heater or other controllable loads.</p>
+        <p class="section-subtitle">Instead of basing every decision on a single threshold, the system can have a defined objective: make better use of surplus energy, maintain a suitable battery reserve, preserve thermal comfort and avoid unnecessary grid consumption. AI can assess the supplied information and select one of the permitted actions.</p>
+        <p class="section-subtitle">Home Assistant remains the layer that collects data and performs prepared actions. The model should not control the installation freely beyond the scope defined by the design.</p>
+        <p class="section-subtitle">Maximum temperatures, device protections, installation safeguards and other critical conditions must remain hard, independent limits. They must not rely solely on a discretionary AI decision.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">CONTEXT</div>
+      <h2 class="section-title mobile-match-title">A home that responds to context</h2>
+      <div class="card">
+        <p class="section-subtitle">Home Assistant can combine information about occupancy, time of day, weather, temperature, air quality, energy use, device states and open windows or doors.</p>
+        <p class="section-subtitle">The appropriate response can vary with the situation. An empty home may call for lower consumption and secured rooms, an evening for comfortable conditions, and high energy production for making controlled use of a surplus.</p>
+        <p class="section-subtitle">AI can help assess that information and choose from options made available in advance. It cannot create capabilities the system does not have, and it should not bypass defined safety conditions.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">COMPUTER</div>
+      <h2 class="section-title mobile-match-title">Control and communication from a computer</h2>
+      <div class="card">
+        <p class="section-subtitle">Home Assistant can also communicate with a supported AI client running on a computer or laptop. Model Context Protocol, or MCP, is one technology that can provide such a connection.</p>
+        <p class="section-subtitle">Home Assistant includes an MCP server mechanism through which a suitable client can access selected Assist API tools. The available capabilities come from the configuration and exposed functions, not merely from connecting an AI model.</p>
+        <p class="section-subtitle">This can provide a convenient additional interface for communicating with the home. It still requires correct authentication, secure access and a deliberate decision about what the client may read or perform.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">VISION</div>
+      <h2 class="section-title mobile-match-title">Image analysis and camera events</h2>
+      <div class="card">
+        <p class="section-subtitle">Selected images or sequences associated with an event can be sent to a model that supports visual analysis. This can produce a more descriptive notification than a simple motion alert.</p>
+        <p class="section-subtitle">The system may, for example, describe what happened outside the house, summarise a selected event or distinguish particular situations when the model, image quality and solution design allow it.</p>
+        <p class="section-subtitle">An AI analysis can be incorrect or incomplete. This is not a certified alarm system and should not replace sensors, recording, access control or other safeguards designed to protect the home.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">MODELS</div>
+      <h2 class="section-title mobile-match-title">Local AI or a cloud service?</h2>
+      <div class="card">
+        <p class="section-subtitle">Models used with Home Assistant can run locally or in a cloud service. OpenAI is an example of a cloud approach, while models served through Ollama illustrate a local approach.</p>
+        <p class="section-subtitle">A local solution can provide greater control over data flow and reduce dependence on external services. It requires suitable hardware, however, and its speed and capability depend on the model and available resources.</p>
+        <p class="section-subtitle">A cloud service generally provides access to larger models and broader capabilities, but depends on internet access and an external provider. API or subscription costs may apply, and it is important to understand which data leaves the home network.</p>
+        <p class="section-subtitle">The choice is therefore not a simple matter of declaring one approach better. It should follow from the objective, privacy requirements, hardware, cost and expected quality.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">SECURITY</div>
+      <h2 class="section-title mobile-match-title">The scope of access matters more than simply connecting a model</h2>
+      <div class="card">
+        <p class="section-subtitle">AI should not receive unrestricted access to all information and devices. A well-designed system states clearly which data the model receives, which functions it may call, what it must not do and which safeguards remain completely independent.</p>
+        <p class="section-subtitle">Home Assistant lets you control which entities are exposed to Assist. Its built-in Assist API for models is not intended for administrative tasks, and the available tools should reflect only the real needs of the scenario.</p>
+        <p class="section-subtitle">Assessment and execution should also be separated. AI may select a permitted response, but Home Assistant should enforce hard conditions, limits and interlocks before carrying it out.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">SCENARIO</div>
+      <h2 class="section-title mobile-match-title">A whole-home example</h2>
+      <div class="card">
+        <p class="section-subtitle">It is a sunny afternoon. The solar system is producing more energy than the home currently uses. The battery has a known state of charge, the buffer temperature still allows more energy to be stored, the household will return later, and evening demand is expected to be higher.</p>
+        <p class="section-subtitle">The system does not have to consider only one production threshold. It can gather a prepared set of information and request an analysis with a clearly defined objective. AI can then assess whether, among the permitted options, it is better to use some of the surplus, retain energy in the battery, start a prepared process or leave the system unchanged for now.</p>
+        <p class="section-subtitle">This is not magical prediction. The assessment is based on data that was actually provided, and the choice is limited to actions prepared in advance. Temperature limits, a minimum reserve and installation protections continue to operate independently.</p>
+        <p class="section-subtitle">The value comes from considering several pieces of information at the same time while retaining Home Assistant as a predictable execution layer.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">CHOICE</div>
+      <h2 class="section-title mobile-match-title">When does AI make sense, and when is conventional logic better?</h2>
+      <div class="card">
+        <p class="section-subtitle">AI can be useful when several pieces of information need to be assessed together, changing context matters, natural communication is required, several responses could be valid, or a description or summary is needed.</p>
+        <p class="section-subtitle">A conventional automation is better when the action must always be identical, hard limits apply, a very fast and predictable response is required, or the function provides a fundamental installation safeguard.</p>
+        <p class="section-subtitle">In practice, the best result often comes from combining both approaches. AI interprets context within a defined scope, while Home Assistant executes prepared logic and enforces the limits.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">SUMMARY</div>
+      <h2 class="section-title mobile-match-title">AI as another layer of the smart home</h2>
+      <div class="card">
+        <p class="section-subtitle">The greatest value of AI in Home Assistant is not replacing every existing automation. It is adding a layer that can assess wider context, support more natural conversation and choose between safely prepared options.</p>
+        <p class="section-subtitle">Predictable logic should continue to handle fast reactions, hard limits and safeguards. AI can support it where interpretation is useful, but the scope of data, decisions and access must be designed deliberately.</p>
+        <p class="section-subtitle">A well-built connection does not make the model “manage the entire home”. It allows Home Assistant to use additional analysis exactly where it provides real value.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">HELP</div>
+      <h2 class="section-title mobile-match-title">Would you like to use AI in your Home Assistant installation?</h2>
+      <div class="card">
+        <p class="section-subtitle">The available options depend on your devices, data and the objective the system should achieve. I can help design and implement a solution suited to your existing installation and define a safe scope for AI.</p>
+        <a class="knowledge-help-link knowledge-help-link--mobile-flow" href="/en/#contact"><span class="knowledge-help-main">Contact me</span> <span class="knowledge-help-accent">→ click here</span></a>
+      </div>
+    </section>
+  </main>
+
+
+  <footer>
+    <div class="footer-inner">
+      <span>© <span id="year"></span> Tomasz Furdal – Home Assistant &amp; Integrations</span>
+      <span>Payments: bank transfer, Revolut, PayPal, MobilePay</span>
+    </div>
+  </footer>
+
+  <script src="../../nav.js?v=20260730-mobile-nav-12"></script>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>
+

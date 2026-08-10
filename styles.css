@@ -727,6 +727,46 @@ main{
   text-underline-offset:3px;
 }
 
+.ai-flow{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin:20px 0;
+}
+
+.ai-flow span{
+  flex:1 1 0;
+  min-width:0;
+  padding:12px 10px;
+  border:1px solid var(--border);
+  border-radius:12px;
+  background:rgba(15,23,42,.45);
+  color:var(--text);
+  font-size:.9rem;
+  font-weight:600;
+  line-height:1.35;
+  text-align:center;
+  overflow-wrap:anywhere;
+}
+
+.ai-flow b{
+  flex:0 0 auto;
+  color:var(--accent-2);
+  font-size:1.05rem;
+}
+
+@media (max-width: 620px){
+  .ai-flow{
+    flex-direction:column;
+    align-items:stretch;
+  }
+
+  .ai-flow b{
+    align-self:center;
+    transform:rotate(90deg);
+  }
+}
+
 .mobile-match-title{
   max-width:none;
 }
