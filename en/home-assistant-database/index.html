@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="robots" content="index,follow" />
+  <meta name="author" content="Tomasz Furdal" />
+  <meta name="theme-color" content="#0f172a" />
+  <link rel="canonical" href="https://ha-expert.com/en/home-assistant-database/" />
+  <link rel="alternate" hreflang="pl" href="https://ha-expert.com/pl/baza-danych-home-assistant/" />
+  <link rel="alternate" hreflang="en" href="https://ha-expert.com/en/home-assistant-database/" />
+  <link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/home-assistant-database/" />
+  <link rel="alternate" hreflang="x-default" href="https://ha-expert.com/en/home-assistant-database/" />
+  <title>Home Assistant database – SQLite and MariaDB | HA Expert</title>
+  <meta name="description" content="Learn how Home Assistant Recorder works, why the database grows, when SQLite is enough and when MariaDB or Recorder optimisation may be worth considering." />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Home Assistant database – SQLite and MariaDB | HA Expert" />
+  <meta property="og:description" content="Learn how Home Assistant Recorder works, why the database grows, when SQLite is enough and when MariaDB or Recorder optimisation may be worth considering." />
+  <meta property="og:url" content="https://ha-expert.com/en/home-assistant-database/" />
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Home Assistant database – Recorder, SQLite and MariaDB",
+  "description": "Learn how Home Assistant Recorder works, why the database grows, when SQLite is enough and when MariaDB or Recorder optimisation may be worth considering.",
+  "author": {
+    "@type": "Person",
+    "@id": "https://ha-expert.com/#person",
+    "name": "Tomasz Furdal"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://ha-expert.com/#organization",
+    "name": "HA Expert Tomasz Furdal",
+    "url": "https://ha-expert.com/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://ha-expert.com/assets/brand/ha-expert-logo-transparent.png"
+    }
+  },
+  "datePublished": "2026-08-10",
+  "dateModified": "2026-08-10",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://ha-expert.com/en/home-assistant-database/"
+  },
+  "url": "https://ha-expert.com/en/home-assistant-database/",
+  "inLanguage": "en"
+}
+  </script>
+  <link rel="stylesheet" href="../../styles.css?v=20260810-article-author-51" />
+  <script src="../../consent.js?v=20260420-consent-1"></script>
+</head>
+<body class="knowledge-page pl-home-bg-test">
+  <header class="scrolled">
+    <div class="nav">
+      <a class="logo" href="/en/" aria-label="Tomasz Furdal - Home Assistant Expert">
+        <img class="logo-image" src="../../assets/brand/logo-wyciete.png" alt="Tomasz Furdal - Home Assistant Expert" title="Home Assistant Expert - Tomasz Furdal" />
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Open menu"><span aria-hidden="true">☰</span></button>
+      <a class="nav-mobile-link about-link" href="/en/#about-me">About me</a>
+      <a class="nav-mobile-link contact-link" href="/en/#contact">Contact</a>
+      <nav id="primary-nav" aria-label="Primary">
+        <ul>
+          <li><a href="/en/#services">Services</a></li>
+          <li><a href="/en/#about-me">About me</a></li>
+          <li><a href="/en/#who-its-for">Who it’s for</a></li>
+          <li><a href="/en/#how-i-work">How I work</a></li>
+          <li><a href="/en/#pricing">Pricing</a></li>
+          <li><a href="/en/#contact">Contact</a></li>
+          <li class="nav-secondary-start"><a href="/en/projects/">Projects</a></li>
+          <li class="nav-guides">
+            <button class="nav-guides-toggle" type="button" aria-expanded="false" aria-haspopup="true"><span>Guides</span><span class="nav-guides-chevron" aria-hidden="true">▾</span></button>
+            <ul class="nav-guides-dropdown">
+              <li><a href="/en/what-is-ha/">What is Home Assistant?</a></li>
+              <li><a href="/en/home-assistant-integrations/">Home Assistant integrations</a></li>
+              <li><a href="/en/home-assistant-automations/">Home Assistant automations</a></li>
+              <li><a href="/en/home-assistant-dashboard/">Home Assistant dashboard</a></li>
+              <li><a href="/en/home-assistant-database/" aria-current="page">Home Assistant database</a></li>
+              <li><a href="/en/stable-zigbee/">Zigbee keeps disconnecting?</a></li>
+            </ul>
+          </li>
+          <li><a href="/en/demo/">Demo panel</a></li>
+        </ul>
+      </nav>
+      <div class="lang-switch" aria-label="Language switch">
+        <a class="lang-btn" href="/pl/baza-danych-home-assistant/" aria-label="Polski"><img class="lang-flag" src="../../assets/flags/pl.svg" alt="" aria-hidden="true" /></a>
+        <a class="lang-btn" href="/dk/home-assistant-database/" aria-label="Dansk"><img class="lang-flag" src="../../assets/flags/dk.svg" alt="" aria-hidden="true" /></a>
+        <a class="lang-btn active" href="/en/home-assistant-database/" aria-label="English" aria-current="page"><img class="lang-flag" src="../../assets/flags/gb.svg" alt="" aria-hidden="true" /></a>
+      </div>
+      <a class="nav-cta" href="/en/#contact">Free diagnosis</a>
+    </div>
+  </header>
+
+  <div class="mobile-bottom-bar" aria-label="Mobile quick actions">
+    <a class="mobile-bottom-link" href="/en/#about-me">About me</a>
+    <a class="mobile-bottom-link" href="/en/#contact">Contact</a>
+  </div>
+
+  <main>
+    <section class="section">
+      <div class="section-label">DATABASE</div>
+      <h1 class="section-title mobile-match-title">Home Assistant database – Recorder, SQLite and MariaDB</h1>
+      <p class="article-author">Author: <a href="/en/#about-me">Tomasz Furdal · HA Expert</a></p>
+      <div class="card">
+        <p class="section-subtitle">Home Assistant does more than show the current state of devices. It also records a history of changes, allowing you to review earlier entity states, temperatures, device operation and data presented on graphs.</p>
+        <p class="section-subtitle">Recorder is primarily responsible for this part of the system. In a small installation, the database may remain something the user hardly needs to think about for a long time. As the system expands, however, the number of records can increase significantly.</p>
+        <p class="section-subtitle">This is not determined only by the number of devices. A few sensors that update very frequently can generate more records than many devices whose state changes only a few times a day.</p>
+        <p class="section-subtitle">This guide explains what Recorder is, how the default SQLite database works, what affects the amount of data being stored and when moving to MariaDB may be worth considering.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">RECORDER</div>
+      <h2 class="section-title mobile-match-title">What is Recorder in Home Assistant?</h2>
+      <div class="card">
+        <p class="section-subtitle">Recorder is the part of Home Assistant responsible for saving entity states and events to a database.</p>
+        <p class="section-subtitle">When a device or integration reports a new state, Recorder can save that information. The data in the database is used by History, Activity, dashboard graphs and statistics, among other features.</p>
+        <p class="section-subtitle">For example, a temperature sensor may change its value from 21.4°C to 21.5°C. For the user this is a small change, but for Recorder it is another state that may be stored.</p>
+        <p class="section-subtitle">If there are many similar entities or they update very frequently, the number of write operations increases.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">LOAD</div>
+      <h2 class="section-title mobile-match-title">The number of devices is not everything</h2>
+      <div class="card">
+        <p class="section-subtitle">A large number of devices can increase the amount of data, but there is no single threshold beyond which the database automatically becomes a problem.</p>
+        <p class="section-subtitle">The frequency of changes is particularly important.</p>
+        <p class="section-subtitle">Large amounts of data can be generated by, for example:</p>
+        <ul>
+          <li>energy and instantaneous power sensors,</li>
+          <li>frequently updated temperature and humidity measurements,</li>
+          <li>technical and diagnostic sensors,</li>
+          <li>network data,</li>
+          <li>devices that report their state very frequently,</li>
+          <li>integrations that provide many dynamic entities.</li>
+        </ul>
+        <p class="section-subtitle">One hundred entities that change state occasionally may therefore generate fewer records than a much smaller number of sensors that update very frequently.</p>
+        <p class="section-subtitle">When analysing Recorder load, it is worth looking not only at the number of devices, but also at which entities save new data most often.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">SQLITE</div>
+      <h2 class="section-title mobile-match-title">SQLite – the default Home Assistant database</h2>
+      <div class="card">
+        <p class="section-subtitle">Home Assistant uses SQLite by default. It does not require a separate server or additional configuration. The standard database is stored in the Home Assistant configuration directory in a file named <strong>home-assistant_v2.db</strong>.</p>
+        <p class="section-subtitle">SQLite is currently the default and recommended Recorder database engine. Home Assistant also describes it as the most thoroughly tested option, and newer versions of the system are highly optimised for it.</p>
+        <p class="section-subtitle">If Recorder is working correctly, history is complete and the database is not causing problems, there is no need to replace SQLite simply because MariaDB is available.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">SYMPTOMS</div>
+      <h2 class="section-title mobile-match-title">When should you investigate the database?</h2>
+      <div class="card">
+        <p class="section-subtitle">Not every Home Assistant stability problem is related to the database.</p>
+        <p class="section-subtitle">However, Recorder is worth checking when you see:</p>
+        <ul>
+          <li>Recorder errors in the logs,</li>
+          <li>missing sections of history,</li>
+          <li>problems saving states,</li>
+          <li>problems when using history,</li>
+          <li>a rapidly growing database,</li>
+          <li>little free storage space,</li>
+          <li>errors related to the SQLite file.</li>
+        </ul>
+        <p class="section-subtitle">With SQLite, the storage medium itself can also matter. Home Assistant lists failing flash storage, an inadequate power supply and an unclean system shutdown as possible causes of database corruption.</p>
+        <p class="section-subtitle">When these symptoms occur, it is therefore worth determining whether the problem is actually in the database or whether its source is the storage medium, power supply, lack of space or another part of the installation.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">EXPERIENCE</div>
+      <h2 class="section-title mobile-match-title">An example from my own system</h2>
+      <div class="card">
+        <p class="section-subtitle">In my case, the problems became clearly visible as I expanded Home Assistant and increased the number of devices and the amount of stored data.</p>
+        <p class="section-subtitle">Home Assistant appeared to be working, but there were occasional interruptions and Recorder did not operate correctly. It did not look like a single problem with one automation or a particular device.</p>
+        <p class="section-subtitle">After moving from SQLite to MariaDB, the problems disappeared. Since then, MariaDB has been running stably in my system for about a year, including through many Home Assistant updates.</p>
+        <p class="section-subtitle">This does not mean that MariaDB will solve every stability problem. It is an experience from one specific, extensive installation. Similar symptoms in another system may have a different cause.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">FILTERING</div>
+      <h2 class="section-title mobile-match-title">Recorder does not have to store everything</h2>
+      <div class="card">
+        <p class="section-subtitle">Home Assistant lets you specify which entities, domains and events should be stored by Recorder.</p>
+        <p class="section-subtitle">The <strong>include</strong> and <strong>exclude</strong> settings are used for this. Excluding data whose history is not needed can reduce the number of records and limit database size.</p>
+        <p class="section-subtitle">This is especially relevant for technical entities that change state frequently but whose earlier values are never reviewed by the user.</p>
+        <p class="section-subtitle">If a sensor updates very frequently, it is worth asking whether the full history of that particular entity is actually needed.</p>
+        <p class="section-subtitle">Before excluding it, however, check whether the data is later used by history, diagnostics or other system functions.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">HISTORY</div>
+      <h2 class="section-title mobile-match-title">History and long-term statistics are not exactly the same</h2>
+      <div class="card">
+        <p class="section-subtitle"><strong>purge_keep_days</strong> applies to the detailed history kept by Recorder. Its current default value is 10 days.</p>
+        <p class="section-subtitle">Home Assistant also maintains long-term statistics for suitable sensors. Short-term data is stored in greater detail, while long-term statistics retain hourly summaries and are not automatically removed in the same way as detailed states.</p>
+        <p class="section-subtitle">Therefore, setting history to 10 days does not automatically mean that all older data will disappear from every graph after ten days. For sensors that support long-term statistics, Home Assistant can use the collected aggregated data.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">RETENTION</div>
+      <h2 class="section-title mobile-match-title">How long does Recorder keep detailed history?</h2>
+      <div class="card">
+        <p class="section-subtitle">The <strong>purge_keep_days</strong> parameter specifies how many days of detailed history remain in the database after a purge.</p>
+        <p class="section-subtitle">The default value is 10 days. <strong>auto_purge</strong> is enabled by default, and Recorder periodically removes older data. The current configuration also includes <strong>auto_repack</strong>, which periodically helps reclaim space previously occupied by deleted records.</p>
+        <p class="section-subtitle">Longer retention means more detailed data has to be stored.</p>
+        <p class="section-subtitle">Keeping the full history of every entity for a very long time is not always useful. Retention should match the data that will actually be needed later.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">WRITES</div>
+      <h2 class="section-title mobile-match-title">How often is data committed to the database?</h2>
+      <div class="card">
+        <p class="section-subtitle">Recorder uses the <strong>commit_interval</strong> parameter.</p>
+        <p class="section-subtitle">Its current default value is 5 seconds. Increasing it reduces the frequency of disk write operations, but also introduces a longer delay before data is physically committed to the database. Home Assistant mentions this option particularly for installations using flash storage and SD cards.</p>
+        <p class="section-subtitle">There is no need to change <strong>commit_interval</strong> unless you are addressing a specific problem. It is a Recorder parameter, not a universal method for speeding up the whole of Home Assistant.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">STORAGE</div>
+      <h2 class="section-title mobile-match-title">The storage medium matters</h2>
+      <div class="card">
+        <p class="section-subtitle">Recorder performs regular write operations.</p>
+        <p class="section-subtitle">If Home Assistant is running on slow or worn storage, the database may become one of the factors affecting the system. The official documentation draws particular attention to SD cards because intensive writes can affect both system response time and storage life.</p>
+        <p class="section-subtitle">When investigating problems, check:</p>
+        <ul>
+          <li>the amount of free space,</li>
+          <li>the condition of the storage medium,</li>
+          <li>possible file-system errors,</li>
+          <li>power supply stability,</li>
+          <li>whether the system is regularly powered off without a clean shutdown.</li>
+        </ul>
+        <p class="section-subtitle">Changing the database will not replace fixing a disk, power supply or free-space problem.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">MARIADB</div>
+      <h2 class="section-title mobile-match-title">What is MariaDB in Home Assistant?</h2>
+      <div class="card">
+        <p class="section-subtitle">MariaDB is one of the database engines supported by Recorder, alongside SQLite, MySQL and PostgreSQL.</p>
+        <p class="section-subtitle">Home Assistant OS provides an official MariaDB app. It can be installed through <strong>Settings → Apps → Install app</strong>. You then prepare a database and user and configure Recorder to store data in MariaDB instead of the default SQLite file.</p>
+        <p class="section-subtitle">MariaDB then runs as a separate database service to which Recorder connects.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">PRACTICE</div>
+      <h2 class="section-title mobile-match-title">MariaDB in everyday operation</h2>
+      <div class="card">
+        <p class="section-subtitle">After correct configuration, MariaDB can simply run in the background alongside Home Assistant.</p>
+        <p class="section-subtitle">It has been working this way in my system for about a year. During that time Home Assistant has been updated many times, and the database itself has not required ongoing attention from me.</p>
+        <p class="section-subtitle">In practice, once it was running, I continued using Home Assistant normally and did not need to deal with the database after every system update.</p>
+        <p class="section-subtitle">It should be included in backups, just like the other important parts of the installation.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">CHOICE</div>
+      <h2 class="section-title mobile-match-title">When might MariaDB be worth considering?</h2>
+      <div class="card">
+        <p class="section-subtitle">There is no single number of devices after which SQLite should be replaced with MariaDB.</p>
+        <p class="section-subtitle">MariaDB may be considered when there is a specific reason arising from the behaviour of a particular installation—for example, Recorder-related problems appear, history does not work correctly or the system generates a very large number of records.</p>
+        <p class="section-subtitle">Before making a change, check:</p>
+        <ul>
+          <li>Recorder logs,</li>
+          <li>the amount of free space,</li>
+          <li>the condition of the storage medium,</li>
+          <li>the size and behaviour of the current database,</li>
+          <li>entities that update frequently,</li>
+          <li>the <strong>include</strong> and <strong>exclude</strong> configuration,</li>
+          <li>the retention period for detailed history.</li>
+        </ul>
+        <p class="section-subtitle">SQLite remains the default and recommended Home Assistant database. MariaDB is an additional supported option that may suit a particular installation.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">INSTALLATION</div>
+      <h2 class="section-title mobile-match-title">What does moving to MariaDB involve?</h2>
+      <div class="card">
+        <p class="section-subtitle">In Home Assistant OS, the basic process is as follows:</p>
+        <ol>
+          <li>create a current Home Assistant backup;</li>
+          <li>go to <strong>Settings → Apps → Install app</strong>;</li>
+          <li>install the official MariaDB app;</li>
+          <li>prepare the database, user and a strong password;</li>
+          <li>start MariaDB and check its log;</li>
+          <li>configure Recorder in Home Assistant to use the prepared MariaDB database;</li>
+          <li>restart Home Assistant;</li>
+          <li>check the Recorder logs;</li>
+          <li>check that new states appear in History;</li>
+          <li>check graphs and other elements that use recorded data.</li>
+        </ol>
+        <p class="section-subtitle">The official MariaDB app supports configuring the database, users and permissions, and the documentation shows how to connect it to Recorder through <strong>db_url</strong>.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">DATABASE CHANGE</div>
+      <h2 class="section-title mobile-match-title">What happens to the old history?</h2>
+      <div class="card">
+        <p class="section-subtitle">This is important to understand before making the change.</p>
+        <p class="section-subtitle">Home Assistant officially warns that changing the database used by Recorder may result in the loss of existing history. Migrating existing data between database engines is not officially supported.</p>
+        <p class="section-subtitle">Before changing the database, create a backup and assume that the new database may begin recording history from the moment Recorder is switched over.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">TROUBLESHOOTING</div>
+      <h2 class="section-title mobile-match-title">The database or a completely different problem?</h2>
+      <div class="card">
+        <p class="section-subtitle">If Home Assistant behaves inconsistently, first determine the nature of the problem.</p>
+        <p class="section-subtitle">If devices lose communication, the source may be Zigbee, Wi-Fi or a particular integration.</p>
+        <p class="section-subtitle">If an automation does not perform an action, the problem may be in the trigger, condition, action or device.</p>
+        <p class="section-subtitle">If Recorder errors, gaps in history, problems saving states, rapid database growth or storage problems appear, the database is one of the elements worth checking.</p>
+        <a class="knowledge-link" href="/en/home-assistant-integrations/">Home Assistant integrations <span aria-hidden="true">→</span></a>
+        <a class="knowledge-link" href="/en/home-assistant-automations/">Home Assistant automations <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">DECISION</div>
+      <h2 class="section-title mobile-match-title">SQLite or MariaDB – which should you choose?</h2>
+      <div class="card">
+        <p class="section-subtitle">If Home Assistant works correctly with SQLite, there is no need to change the database simply because MariaDB is available.</p>
+        <p class="section-subtitle">If an extensive system develops problems related to Recorder, history or a high volume of writes, first determine their source. Sometimes limiting unnecessary data or improving the hardware layer is enough, while in other cases moving to MariaDB may be a reasonable solution.</p>
+        <p class="section-subtitle">In my system, moving to MariaDB resolved the problems that had occurred with SQLite, and this configuration has been stable for about a year.</p>
+        <p class="section-subtitle">This does not mean the same result will occur in every installation. The important thing is to establish what is actually happening in the particular system and choose a solution on that basis.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">SUMMARY</div>
+      <h2 class="section-title mobile-match-title">The database works in the background until it starts to matter</h2>
+      <div class="card">
+        <p class="section-subtitle">In many installations, Home Assistant can run on the default SQLite database for years without requiring any attention to the database.</p>
+        <p class="section-subtitle">In a more extensive system, however, it is useful to understand what Recorder is, which entities generate many records, how long detailed history is retained and which storage medium holds the data.</p>
+        <p class="section-subtitle">SQLite remains the default and recommended Home Assistant solution. MariaDB is a supported alternative that may be considered when the behaviour of a particular system provides a reason to do so.</p>
+        <p class="section-subtitle">In my case, moving to MariaDB resolved Recorder problems, and the database has remained stable for about a year, including after subsequent Home Assistant updates.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">HELP</div>
+      <h2 class="section-title mobile-match-title">Need help with your Home Assistant database?</h2>
+      <div class="card">
+        <p class="section-subtitle">If Recorder is not working correctly, your history has gaps, the database is growing quickly, or you are considering moving from SQLite to MariaDB, I can help review the current configuration, identify possible causes and choose an appropriate solution.</p>
+        <a class="knowledge-help-link knowledge-help-link--mobile-flow" href="/en/#contact"><span class="knowledge-help-main">Contact me</span> <span class="knowledge-help-accent">→ click here</span></a>
+      </div>
+    </section>
+  </main>
+
+
+  <footer>
+    <div class="footer-inner">
+      <span>© <span id="year"></span> Tomasz Furdal – Home Assistant &amp; Integrations</span>
+      <span>Payments: bank transfer, Revolut, PayPal, MobilePay</span>
+    </div>
+  </footer>
+
+  <script src="../../nav.js?v=20260730-mobile-nav-12"></script>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>

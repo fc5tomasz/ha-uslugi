@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="robots" content="index,follow" />
+  <meta name="author" content="Tomasz Furdal" />
+  <meta name="theme-color" content="#0f172a" />
+  <link rel="canonical" href="https://ha-expert.com/dk/home-assistant-database/" />
+  <link rel="alternate" hreflang="pl" href="https://ha-expert.com/pl/baza-danych-home-assistant/" />
+  <link rel="alternate" hreflang="en" href="https://ha-expert.com/en/home-assistant-database/" />
+  <link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/home-assistant-database/" />
+  <link rel="alternate" hreflang="x-default" href="https://ha-expert.com/en/home-assistant-database/" />
+  <title>Home Assistant-database – SQLite og MariaDB | HA Expert</title>
+  <meta name="description" content="Læs hvordan Recorder i Home Assistant fungerer, hvorfor databasen vokser, hvornår SQLite er tilstrækkelig, og hvornår MariaDB eller optimering kan overvejes." />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Home Assistant-database – SQLite og MariaDB | HA Expert" />
+  <meta property="og:description" content="Læs hvordan Recorder i Home Assistant fungerer, hvorfor databasen vokser, hvornår SQLite er tilstrækkelig, og hvornår MariaDB eller optimering kan overvejes." />
+  <meta property="og:url" content="https://ha-expert.com/dk/home-assistant-database/" />
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Home Assistant-database – Recorder, SQLite og MariaDB",
+  "description": "Læs hvordan Recorder i Home Assistant fungerer, hvorfor databasen vokser, hvornår SQLite er tilstrækkelig, og hvornår MariaDB eller optimering kan overvejes.",
+  "author": {
+    "@type": "Person",
+    "@id": "https://ha-expert.com/#person",
+    "name": "Tomasz Furdal"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://ha-expert.com/#organization",
+    "name": "HA Expert Tomasz Furdal",
+    "url": "https://ha-expert.com/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://ha-expert.com/assets/brand/ha-expert-logo-transparent.png"
+    }
+  },
+  "datePublished": "2026-08-10",
+  "dateModified": "2026-08-10",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://ha-expert.com/dk/home-assistant-database/"
+  },
+  "url": "https://ha-expert.com/dk/home-assistant-database/",
+  "inLanguage": "da"
+}
+  </script>
+  <link rel="stylesheet" href="../../styles.css?v=20260810-article-author-51" />
+  <script src="../../consent.js?v=20260420-consent-1"></script>
+</head>
+<body class="knowledge-page pl-home-bg-test">
+  <header class="scrolled">
+    <div class="nav">
+      <a class="logo" href="/dk/" aria-label="Tomasz Furdal - Home Assistant Expert">
+        <img class="logo-image" src="../../assets/brand/logo-wyciete.png" alt="Tomasz Furdal - Home Assistant Expert" title="Home Assistant Expert - Tomasz Furdal" />
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Åbn menu"><span aria-hidden="true">☰</span></button>
+      <a class="nav-mobile-link about-link" href="/dk/#om-mig">Om mig</a>
+      <a class="nav-mobile-link contact-link" href="/dk/#kontakt">Kontakt</a>
+      <nav id="primary-nav" aria-label="Primær navigation">
+        <ul>
+          <li><a href="/dk/#ydelser">Ydelser</a></li>
+          <li><a href="/dk/#om-mig">Om mig</a></li>
+          <li><a href="/dk/#for-hvem">For hvem</a></li>
+          <li><a href="/dk/#saadan-arbejder-jeg">Sådan arbejder jeg</a></li>
+          <li><a href="/dk/#priser">Priser</a></li>
+          <li><a href="/dk/#kontakt">Kontakt</a></li>
+          <li class="nav-secondary-start"><a href="/dk/projekter/">Projekter</a></li>
+          <li class="nav-guides">
+            <button class="nav-guides-toggle" type="button" aria-expanded="false" aria-haspopup="true"><span>Vejledninger</span><span class="nav-guides-chevron" aria-hidden="true">▾</span></button>
+            <ul class="nav-guides-dropdown">
+              <li><a href="/dk/hvad-er-ha/">Hvad er Home Assistant?</a></li>
+              <li><a href="/dk/home-assistant-integrationer/">Home Assistant-integrationer</a></li>
+              <li><a href="/dk/home-assistant-automatiseringer/">Home Assistant-automatiseringer</a></li>
+              <li><a href="/dk/home-assistant-dashboard/">Home Assistant-dashboard</a></li>
+              <li><a href="/dk/home-assistant-database/" aria-current="page">Home Assistant-database</a></li>
+              <li><a href="/dk/stabilt-zigbee/">Mister Zigbee forbindelsen?</a></li>
+            </ul>
+          </li>
+          <li><a href="/dk/demo/">Demo-panel</a></li>
+        </ul>
+      </nav>
+      <div class="lang-switch" aria-label="Sprogvalg">
+        <a class="lang-btn" href="/pl/baza-danych-home-assistant/" aria-label="Polski"><img class="lang-flag" src="../../assets/flags/pl.svg" alt="" aria-hidden="true" /></a>
+        <a class="lang-btn active" href="/dk/home-assistant-database/" aria-label="Dansk" aria-current="page"><img class="lang-flag" src="../../assets/flags/dk.svg" alt="" aria-hidden="true" /></a>
+        <a class="lang-btn" href="/en/home-assistant-database/" aria-label="English"><img class="lang-flag" src="../../assets/flags/gb.svg" alt="" aria-hidden="true" /></a>
+      </div>
+      <a class="nav-cta" href="/dk/#kontakt">Gratis diagnose</a>
+    </div>
+  </header>
+
+  <div class="mobile-bottom-bar" aria-label="Hurtige mobilhandlinger">
+    <a class="mobile-bottom-link" href="/dk/#om-mig">Om mig</a>
+    <a class="mobile-bottom-link" href="/dk/#kontakt">Kontakt</a>
+  </div>
+
+  <main>
+    <section class="section">
+      <div class="section-label">DATABASE</div>
+      <h1 class="section-title mobile-match-title">Home Assistant-database – Recorder, SQLite og MariaDB</h1>
+      <p class="article-author">Forfatter: <a href="/dk/#om-mig">Tomasz Furdal · HA Expert</a></p>
+      <div class="card">
+        <p class="section-subtitle">Home Assistant viser ikke kun enhedernes aktuelle tilstand. Systemet gemmer også en historik over ændringer, så man senere kan kontrollere tidligere tilstande for entiteter, temperaturer, enheders drift og data, der vises i grafer.</p>
+        <p class="section-subtitle">Recorder er den del af systemet, der primært står for dette. I en mindre installation kan databasen i lang tid være noget, brugeren næsten ikke behøver at tænke på. Efterhånden som systemet udvides, kan antallet af registreringer dog stige markant.</p>
+        <p class="section-subtitle">Det handler ikke kun om antallet af enheder. Nogle få sensorer, der opdateres meget ofte, kan generere flere registreringer end mange enheder, hvis tilstand kun ændres nogle få gange om dagen.</p>
+        <p class="section-subtitle">I denne guide forklarer jeg, hvad Recorder er, hvordan standarddatabasen SQLite fungerer, hvad der påvirker mængden af gemte data, og hvornår det kan være relevant at overveje at skifte til MariaDB.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">RECORDER</div>
+      <h2 class="section-title mobile-match-title">Hvad er Recorder i Home Assistant?</h2>
+      <div class="card">
+        <p class="section-subtitle">Recorder er den del af Home Assistant, der gemmer entiteters tilstande og hændelser i en database.</p>
+        <p class="section-subtitle">Når en enhed eller integration sender en ny tilstand, kan Recorder gemme informationen. Dataene i databasen bruges blandt andet af Historik, Aktivitet, grafer på dashboards og statistik.</p>
+        <p class="section-subtitle">En temperatursensor kan for eksempel ændre værdien fra 21,4°C til 21,5°C. For brugeren er det en lille ændring, men for Recorder er det endnu en tilstand, der kan blive gemt.</p>
+        <p class="section-subtitle">Hvis der er mange lignende entiteter, eller hvis de opdateres meget ofte, stiger antallet af skriveoperationer.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">BELASTNING</div>
+      <h2 class="section-title mobile-match-title">Antallet af enheder er ikke det eneste, der betyder noget</h2>
+      <div class="card">
+        <p class="section-subtitle">Et stort antal enheder kan øge datamængden, men der findes ikke én bestemt grænse, hvor databasen automatisk bliver et problem.</p>
+        <p class="section-subtitle">Det er især hyppigheden af ændringer, der har betydning.</p>
+        <p class="section-subtitle">Store datamængder kan for eksempel komme fra:</p>
+        <ul>
+          <li>sensorer for energi og aktuelt effektforbrug,</li>
+          <li>hyppigt opdaterede målinger af temperatur og luftfugtighed,</li>
+          <li>tekniske sensorer og diagnosesensorer,</li>
+          <li>netværksdata,</li>
+          <li>enheder, der rapporterer deres tilstand meget ofte,</li>
+          <li>integrationer, der opretter mange dynamiske entiteter.</li>
+        </ul>
+        <p class="section-subtitle">Hundrede entiteter, der kun sjældent ændrer tilstand, kan derfor generere færre registreringer end et langt mindre antal sensorer, der opdateres meget ofte.</p>
+        <p class="section-subtitle">Når Recorders belastning analyseres, er det værd at se både på antallet af enheder og på, hvilke entiteter der oftest gemmer nye data.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">SQLITE</div>
+      <h2 class="section-title mobile-match-title">SQLite – standarddatabasen i Home Assistant</h2>
+      <div class="card">
+        <p class="section-subtitle">Home Assistant bruger SQLite som standard. Den kræver ikke en separat server eller yderligere konfiguration. Standarddatabasen ligger i Home Assistants konfigurationsmappe og gemmes i filen <strong>home-assistant_v2.db</strong>.</p>
+        <p class="section-subtitle">SQLite er i øjeblikket den standarddatabase og anbefalede databasemotor for Recorder. Home Assistant beskriver den også som den bedst testede løsning, som nyere versioner af systemet er stærkt optimeret til.</p>
+        <p class="section-subtitle">Hvis Recorder fungerer korrekt, historikken er komplet, og databasen ikke giver problemer, er der ingen grund til at skifte SQLite ud, blot fordi MariaDB findes.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">SYMPTOMER</div>
+      <h2 class="section-title mobile-match-title">Hvornår bør man undersøge databasen?</h2>
+      <div class="card">
+        <p class="section-subtitle">Ikke alle stabilitetsproblemer i Home Assistant har forbindelse til databasen.</p>
+        <p class="section-subtitle">Recorder bør dog undersøges, hvis der opstår:</p>
+        <ul>
+          <li>fejl fra Recorder i loggen,</li>
+          <li>manglende perioder i historikken,</li>
+          <li>problemer med at gemme tilstande,</li>
+          <li>problemer ved brug af historikken,</li>
+          <li>en database, der vokser hurtigt,</li>
+          <li>meget lidt ledig lagerplads,</li>
+          <li>fejl relateret til SQLite-filen.</li>
+        </ul>
+        <p class="section-subtitle">Ved SQLite kan selve lagermediet også have betydning. Home Assistant nævner defekt flashlager, utilstrækkelig strømforsyning og ukorrekt nedlukning af systemet som mulige årsager til en beskadiget database.</p>
+        <p class="section-subtitle">Ved sådanne symptomer bør man derfor fastslå, om problemet faktisk ligger i databasen, eller om årsagen er lagermediet, strømforsyningen, manglende plads eller en anden del af installationen.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">ERFARING</div>
+      <h2 class="section-title mobile-match-title">Et eksempel fra mit eget system</h2>
+      <div class="card">
+        <p class="section-subtitle">I mit tilfælde blev problemerne tydelige, efterhånden som jeg udvidede Home Assistant og øgede antallet af enheder og mængden af gemte data.</p>
+        <p class="section-subtitle">Home Assistant så ud til at fungere, men der opstod afbrydelser, og Recorder arbejdede ikke korrekt. Det lignede ikke et enkelt problem med én automatisering eller en bestemt enhed.</p>
+        <p class="section-subtitle">Efter skiftet fra SQLite til MariaDB forsvandt problemerne. Siden da har MariaDB kørt stabilt i mit system i omkring et år, også efter mange opdateringer af Home Assistant.</p>
+        <p class="section-subtitle">Det betyder ikke, at MariaDB løser alle stabilitetsproblemer. Det er min erfaring fra én konkret og omfattende installation. Lignende symptomer i et andet system kan have en anden årsag.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">FILTRERING</div>
+      <h2 class="section-title mobile-match-title">Recorder behøver ikke at gemme alt</h2>
+      <div class="card">
+        <p class="section-subtitle">Home Assistant gør det muligt at angive, hvilke entiteter, domæner og hændelser Recorder skal gemme.</p>
+        <p class="section-subtitle">Det styres med indstillingerne <strong>include</strong> og <strong>exclude</strong>. Hvis data, hvis historik ikke er nødvendig, udelukkes på en passende måde, kan antallet af registreringer og databasens størrelse reduceres.</p>
+        <p class="section-subtitle">Det er især relevant for tekniske entiteter, som ofte ændrer tilstand, men hvis tidligere værdier brugeren aldrig undersøger.</p>
+        <p class="section-subtitle">Hvis en sensor opdateres meget ofte, er det værd at overveje, om den fulde historik for netop denne entitet virkelig er nødvendig.</p>
+        <p class="section-subtitle">Før den udelukkes, skal man dog kontrollere, om dataene senere bruges af historik, diagnostik eller andre funktioner i systemet.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">HISTORIK</div>
+      <h2 class="section-title mobile-match-title">Historik og langtidsstatistik er ikke helt det samme</h2>
+      <div class="card">
+        <p class="section-subtitle"><strong>purge_keep_days</strong> gælder den detaljerede historik, som Recorder gemmer. Standardværdien er i øjeblikket 10 dage.</p>
+        <p class="section-subtitle">Home Assistant har dog også langtidsstatistik for relevante sensorer. Korttidsdata gemmes mere detaljeret, mens langtidsstatistik gemmer opsummeringer pr. time og ikke automatisk slettes på samme måde som de detaljerede tilstande.</p>
+        <p class="section-subtitle">En indstilling på 10 dages historik betyder derfor ikke automatisk, at alle ældre data forsvinder fra alle grafer efter ti dage. For sensorer, der understøtter langtidsstatistik, kan Home Assistant bruge de indsamlede, aggregerede data.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">OPBEVARING</div>
+      <h2 class="section-title mobile-match-title">Hvor længe gemmer Recorder den detaljerede historik?</h2>
+      <div class="card">
+        <p class="section-subtitle">Parameteren <strong>purge_keep_days</strong> angiver, hvor mange dages detaljeret historik der efter en oprydning skal blive i databasen.</p>
+        <p class="section-subtitle">Standardværdien er 10 dage. <strong>auto_purge</strong> er aktiveret som standard, og Recorder fjerner regelmæssigt ældre data. Den nuværende konfiguration har også mekanismen <strong>auto_repack</strong>, der med jævne mellemrum hjælper med at frigøre plads, som tidligere blev brugt af slettede poster.</p>
+        <p class="section-subtitle">Længere opbevaring betyder, at en større mængde detaljerede data skal gemmes.</p>
+        <p class="section-subtitle">Det giver ikke altid mening at gemme den fulde historik for alle entiteter i meget lang tid. Perioden bør tilpasses de data, der faktisk bliver brug for senere.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">SKRIVNING</div>
+      <h2 class="section-title mobile-match-title">Hvor ofte bliver data skrevet permanent til databasen?</h2>
+      <div class="card">
+        <p class="section-subtitle">Recorder bruger parameteren <strong>commit_interval</strong>.</p>
+        <p class="section-subtitle">Standardværdien er i øjeblikket 5 sekunder. Hvis den øges, reduceres antallet af skriveoperationer på disken, men der opstår også en længere forsinkelse, før data fysisk skrives til databasen. Home Assistant nævner især denne mulighed i forbindelse med installationer, der bruger flashlager og SD-kort.</p>
+        <p class="section-subtitle">Der er dog ingen grund til at ændre <strong>commit_interval</strong>, medmindre man forsøger at løse et konkret problem. Det er en Recorder-parameter og ikke en universel metode til at gøre hele Home Assistant hurtigere.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">LAGRINGSMEDIE</div>
+      <h2 class="section-title mobile-match-title">Lagermediet har betydning</h2>
+      <div class="card">
+        <p class="section-subtitle">Recorder udfører regelmæssige skriveoperationer.</p>
+        <p class="section-subtitle">Hvis Home Assistant kører på et langsomt eller slidt lagermedie, kan databasen blive en af de faktorer, der påvirker systemets drift. Den officielle dokumentation fremhæver især SD-kort, fordi intensive skriveoperationer kan påvirke både systemets reaktionstid og lagermediets levetid.</p>
+        <p class="section-subtitle">Ved problemer bør man kontrollere:</p>
+        <ul>
+          <li>mængden af ledig plads,</li>
+          <li>lagermediets tilstand,</li>
+          <li>eventuelle fejl i filsystemet,</li>
+          <li>strømforsyningens stabilitet,</li>
+          <li>om systemet regelmæssigt slukkes uden korrekt nedlukning.</li>
+        </ul>
+        <p class="section-subtitle">Et databaseskift erstatter ikke en løsning på problemer med disk, strømforsyning eller manglende plads.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">MARIADB</div>
+      <h2 class="section-title mobile-match-title">Hvad er MariaDB i Home Assistant?</h2>
+      <div class="card">
+        <p class="section-subtitle">MariaDB er en af de databasemotorer, som Recorder understøtter, sammen med SQLite, MySQL og PostgreSQL.</p>
+        <p class="section-subtitle">I Home Assistant OS findes der en officiel MariaDB-app. Den kan installeres via <strong>Settings → Apps → Install app</strong>. Derefter oprettes en database og en bruger, og Recorder konfigureres til at gemme data i MariaDB i stedet for i standardfilen fra SQLite.</p>
+        <p class="section-subtitle">MariaDB kører derefter som en separat databasetjeneste, som Recorder opretter forbindelse til.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">PRAKSIS</div>
+      <h2 class="section-title mobile-match-title">MariaDB i den daglige drift</h2>
+      <div class="card">
+        <p class="section-subtitle">Efter korrekt konfiguration kan MariaDB blot køre i baggrunden sammen med Home Assistant.</p>
+        <p class="section-subtitle">I mit system har den fungeret på denne måde i omkring et år. I den periode er Home Assistant blevet opdateret mange gange, og selve databasen har ikke krævet løbende vedligeholdelse fra min side.</p>
+        <p class="section-subtitle">I praksis bruger jeg Home Assistant normalt efter opsætningen og behøver ikke at arbejde med databasen ved hver opdatering af systemet.</p>
+        <p class="section-subtitle">Den bør medtages i sikkerhedskopier på samme måde som installationens øvrige vigtige dele.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">VALG</div>
+      <h2 class="section-title mobile-match-title">Hvornår kan MariaDB overvejes?</h2>
+      <div class="card">
+        <p class="section-subtitle">Der findes ikke ét bestemt antal enheder, hvor SQLite bør udskiftes med MariaDB.</p>
+        <p class="section-subtitle">MariaDB kan overvejes, når der er en konkret grund, som viser sig i den pågældende installation—for eksempel problemer med Recorder, en historik der ikke fungerer korrekt, eller et system der genererer et meget stort antal registreringer.</p>
+        <p class="section-subtitle">Før et skift bør man kontrollere:</p>
+        <ul>
+          <li>Recorder-loggen,</li>
+          <li>mængden af ledig plads,</li>
+          <li>lagermediets tilstand,</li>
+          <li>den nuværende databases størrelse og funktion,</li>
+          <li>entiteter der opdateres ofte,</li>
+          <li>konfigurationen af <strong>include</strong> og <strong>exclude</strong>,</li>
+          <li>opbevaringsperioden for den detaljerede historik.</li>
+        </ul>
+        <p class="section-subtitle">SQLite er fortsat Home Assistants standarddatabase og anbefalede database. MariaDB er en ekstra understøttet mulighed, der kan passe godt til en bestemt installation.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">INSTALLATION</div>
+      <h2 class="section-title mobile-match-title">Hvordan foregår et skift til MariaDB?</h2>
+      <div class="card">
+        <p class="section-subtitle">I Home Assistant OS ser den grundlæggende proces sådan ud:</p>
+        <ol>
+          <li>opret en aktuel sikkerhedskopi af Home Assistant;</li>
+          <li>gå til <strong>Settings → Apps → Install app</strong>;</li>
+          <li>installer den officielle MariaDB-app;</li>
+          <li>opret databasen, brugeren og en stærk adgangskode;</li>
+          <li>start MariaDB, og kontroller dens log;</li>
+          <li>konfigurer Recorder i Home Assistant til at bruge den oprettede MariaDB-database;</li>
+          <li>genstart Home Assistant;</li>
+          <li>kontroller Recorder-loggen;</li>
+          <li>kontroller, at nye tilstande vises i Historik;</li>
+          <li>kontroller grafer og andre elementer, der bruger de gemte data.</li>
+        </ol>
+        <p class="section-subtitle">Den officielle MariaDB-app understøtter konfiguration af database, brugere og rettigheder, og dokumentationen viser forbindelsen til Recorder via <strong>db_url</strong>.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">DATABASESKIFT</div>
+      <h2 class="section-title mobile-match-title">Hvad sker der med den gamle historik?</h2>
+      <div class="card">
+        <p class="section-subtitle">Det er vigtigt at forstå før et skift.</p>
+        <p class="section-subtitle">Home Assistant advarer officielt om, at et skift af den database, Recorder bruger, kan medføre tab af den eksisterende historik. Migrering af eksisterende data mellem forskellige databasemotorer understøttes ikke officielt.</p>
+        <p class="section-subtitle">Før skiftet bør man derfor oprette en sikkerhedskopi og regne med, at den nye database kan begynde at gemme historik fra det tidspunkt, hvor Recorder skifter database.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">FEJLFINDING</div>
+      <h2 class="section-title mobile-match-title">Er det databasen eller et helt andet problem?</h2>
+      <div class="card">
+        <p class="section-subtitle">Hvis Home Assistant fungerer ustabilt, bør man først fastslå problemets karakter.</p>
+        <p class="section-subtitle">Hvis enheder mister forbindelsen, kan årsagen være Zigbee, Wi-Fi eller en bestemt integration.</p>
+        <p class="section-subtitle">Hvis en automatisering ikke udfører en handling, kan problemet ligge i udløseren, betingelsen, handlingen eller enheden.</p>
+        <p class="section-subtitle">Hvis der derimod opstår Recorder-fejl, huller i historikken, problemer med at gemme tilstande, hurtig vækst i databasen eller problemer med lagermediet, er databasen et af de elementer, der bør undersøges.</p>
+        <a class="knowledge-link" href="/dk/home-assistant-integrationer/">Home Assistant-integrationer <span aria-hidden="true">→</span></a>
+        <a class="knowledge-link" href="/dk/home-assistant-automatiseringer/">Home Assistant-automatiseringer <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">BESLUTNING</div>
+      <h2 class="section-title mobile-match-title">SQLite eller MariaDB – hvad skal man vælge?</h2>
+      <div class="card">
+        <p class="section-subtitle">Hvis Home Assistant fungerer korrekt med SQLite, er der ingen grund til at ændre databasen, blot fordi MariaDB er tilgængelig.</p>
+        <p class="section-subtitle">Hvis der i et omfattende system opstår problemer med Recorder, historikken eller et stort antal skriveoperationer, bør årsagen først fastslås. Nogle gange er det tilstrækkeligt at begrænse unødvendige data eller forbedre hardwaren, mens et skift til MariaDB i andre tilfælde kan være en fornuftig løsning.</p>
+        <p class="section-subtitle">I mit system løste skiftet til MariaDB de problemer, der tidligere opstod med SQLite, og denne konfiguration har fungeret stabilt i omkring et år.</p>
+        <p class="section-subtitle">Det betyder ikke, at resultatet bliver det samme i alle installationer. Det vigtigste er at finde ud af, hvad der faktisk sker i det konkrete system, og først derefter vælge en løsning.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">OPSUMMERING</div>
+      <h2 class="section-title mobile-match-title">Databasen arbejder i baggrunden, indtil den begynder at få betydning</h2>
+      <div class="card">
+        <p class="section-subtitle">I mange installationer kan Home Assistant køre på standarddatabasen SQLite i årevis, uden at databasen kræver opmærksomhed.</p>
+        <p class="section-subtitle">I et mere omfattende system er det dog nyttigt at vide, hvad Recorder er, hvilke entiteter der genererer mange registreringer, hvor længe den detaljerede historik opbevares, og hvilket lagermedie dataene ligger på.</p>
+        <p class="section-subtitle">SQLite er fortsat Home Assistants standardløsning og anbefalede løsning. MariaDB er et understøttet alternativ, som kan overvejes, når det konkrete systems funktion giver en grund til det.</p>
+        <p class="section-subtitle">I mit tilfælde løste skiftet til MariaDB problemerne med Recorder, og databasen har fungeret stabilt i omkring et år, også efter senere opdateringer af Home Assistant.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">HJÆLP</div>
+      <h2 class="section-title mobile-match-title">Har du brug for hjælp til databasen i Home Assistant?</h2>
+      <div class="card">
+        <p class="section-subtitle">Hvis Recorder ikke fungerer korrekt, historikken har huller, databasen vokser hurtigt, eller du overvejer at skifte fra SQLite til MariaDB, kan jeg hjælpe med at gennemgå den nuværende konfiguration, finde mulige årsager og vælge en passende løsning.</p>
+        <a class="knowledge-help-link knowledge-help-link--mobile-flow" href="/dk/#kontakt"><span class="knowledge-help-main">Kontakt mig</span> <span class="knowledge-help-accent">→ klik her</span></a>
+      </div>
+    </section>
+  </main>
+
+
+  <footer>
+    <div class="footer-inner">
+      <span>© <span id="year"></span> Tomasz Furdal – Home Assistant &amp; Integrations</span>
+      <span>Betaling: bankoverførsel, Revolut, PayPal, MobilePay</span>
+    </div>
+  </footer>
+
+  <script src="../../nav.js?v=20260730-mobile-nav-12"></script>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>

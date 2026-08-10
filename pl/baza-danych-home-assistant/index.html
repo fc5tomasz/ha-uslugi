@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18087588380"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'analytics_storage': 'denied'
+    });
+  </script>
+  <script src="../../consent.js?v=20260420-consent-1"></script>
+  <script>
+    gtag('js', new Date());
+    gtag('config', 'AW-18087588380');
+  </script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="robots" content="index,follow" />
+  <meta name="author" content="Tomasz Furdal" />
+  <meta name="theme-color" content="#0f172a" />
+  <link rel="canonical" href="https://ha-expert.com/pl/baza-danych-home-assistant/" />
+  <link rel="alternate" hreflang="pl" href="https://ha-expert.com/pl/baza-danych-home-assistant/" />
+  <link rel="alternate" hreflang="en" href="https://ha-expert.com/en/home-assistant-database/" />
+  <link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/home-assistant-database/" />
+  <link rel="alternate" hreflang="x-default" href="https://ha-expert.com/en/home-assistant-database/" />
+  <title>Baza danych Home Assistant – SQLite i MariaDB | HA Expert</title>
+  <meta name="description" content="Jak działa Recorder w Home Assistant, dlaczego baza danych rośnie, kiedy wystarcza SQLite i kiedy warto rozważyć MariaDB oraz optymalizację zapisu." />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Baza danych Home Assistant – SQLite i MariaDB | HA Expert" />
+  <meta property="og:description" content="Jak działa Recorder w Home Assistant, dlaczego baza danych rośnie, kiedy wystarcza SQLite i kiedy warto rozważyć MariaDB oraz optymalizację zapisu." />
+  <meta property="og:url" content="https://ha-expert.com/pl/baza-danych-home-assistant/" />
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Baza danych Home Assistant – Recorder, SQLite i MariaDB",
+  "description": "Jak działa Recorder w Home Assistant, dlaczego baza danych rośnie, kiedy wystarcza SQLite i kiedy warto rozważyć MariaDB oraz optymalizację zapisu.",
+  "author": {
+    "@type": "Person",
+    "@id": "https://ha-expert.com/#person",
+    "name": "Tomasz Furdal"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://ha-expert.com/#organization",
+    "name": "HA Expert Tomasz Furdal",
+    "url": "https://ha-expert.com/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://ha-expert.com/assets/brand/ha-expert-logo-transparent.png"
+    }
+  },
+  "datePublished": "2026-08-10",
+  "dateModified": "2026-08-10",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://ha-expert.com/pl/baza-danych-home-assistant/"
+  },
+  "url": "https://ha-expert.com/pl/baza-danych-home-assistant/",
+  "inLanguage": "pl"
+}
+  </script>
+  <link rel="stylesheet" href="../../styles.css?v=20260810-article-author-51" />
+</head>
+<body class="knowledge-page pl-home-bg-test">
+  <header class="scrolled">
+    <div class="nav">
+      <a class="logo" href="/pl/" aria-label="Tomasz Furdal - Home Assistant Expert">
+        <img class="logo-image" src="../../assets/brand/logo-wyciete.png" alt="Tomasz Furdal - Home Assistant Expert" title="Home Assistant Expert - Tomasz Furdal" />
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Open menu"><span aria-hidden="true">☰</span></button>
+      <a class="nav-mobile-link about-link" href="/pl/#o-mnie">O mnie</a>
+      <a class="nav-mobile-link contact-link" href="/pl/#kontakt">Kontakt</a>
+      <nav id="primary-nav" aria-label="Primary">
+        <ul>
+          <li><a href="/pl/#uslugi">Usługi</a></li>
+          <li><a href="/pl/#o-mnie">O mnie</a></li>
+          <li><a href="/pl/#dla-kogo">Dla kogo</a></li>
+          <li><a href="/pl/#jak-pracuje">Jak pracuję</a></li>
+          <li><a href="/pl/#cennik">Cennik</a></li>
+          <li><a href="/pl/#kontakt">Kontakt</a></li>
+          <li class="nav-secondary-start"><a href="/pl/projekty/">Projekty</a></li>
+          <li class="nav-guides">
+            <button class="nav-guides-toggle" type="button" aria-expanded="false" aria-haspopup="true"><span>Poradniki</span><span class="nav-guides-chevron" aria-hidden="true">▾</span></button>
+            <ul class="nav-guides-dropdown">
+              <li><a href="/pl/co-to-jest-ha/">Czym jest Home Assistant?</a></li>
+              <li><a href="/pl/integracje-home-assistant/">Integracje Home Assistant</a></li>
+              <li><a href="/pl/automatyzacje-home-assistant/">Automatyzacje Home Assistant</a></li>
+              <li><a href="/pl/dashboard-home-assistant/">Dashboard Home Assistant</a></li>
+              <li><a href="/pl/baza-danych-home-assistant/" aria-current="page">Baza danych Home Assistant</a></li>
+              <li><a href="/pl/stabilne-zigbee/">Zigbee zrywa połączenie?</a></li>
+            </ul>
+          </li>
+          <li><a href="/pl/demo/">Demo panelu</a></li>
+        </ul>
+      </nav>
+      <div class="lang-switch" aria-label="Language switch">
+        <a class="lang-btn active" href="/pl/baza-danych-home-assistant/" aria-label="Polski" aria-current="page"><img class="lang-flag" src="../../assets/flags/pl.svg" alt="" aria-hidden="true" /></a>
+        <a class="lang-btn" href="/dk/home-assistant-database/" aria-label="Dansk"><img class="lang-flag" src="../../assets/flags/dk.svg" alt="" aria-hidden="true" /></a>
+        <a class="lang-btn" href="/en/home-assistant-database/" aria-label="English"><img class="lang-flag" src="../../assets/flags/gb.svg" alt="" aria-hidden="true" /></a>
+      </div>
+      <a class="nav-cta" href="/pl/#kontakt">Bezpłatna diagnoza</a>
+    </div>
+  </header>
+
+  <div class="mobile-bottom-bar" aria-label="Mobile quick actions">
+    <a class="mobile-bottom-link" href="/pl/#o-mnie">O mnie</a>
+    <a class="mobile-bottom-link" href="/pl/#kontakt">Kontakt</a>
+  </div>
+
+  <main>
+    <section class="section">
+      <div class="section-label">BAZA DANYCH</div>
+      <h1 class="section-title mobile-match-title">Baza danych Home Assistant – Recorder, SQLite i MariaDB</h1>
+      <p class="article-author">Autor: <a href="/pl/#o-mnie">Tomasz Furdal · HA Expert</a></p>
+      <div class="card">
+        <p class="section-subtitle">Home Assistant nie tylko pokazuje aktualny stan urządzeń. Zapisuje również historię zmian, dzięki czemu można później sprawdzić wcześniejsze stany encji, temperaturę, działanie urządzeń czy dane prezentowane na wykresach.</p>
+        <p class="section-subtitle">Za tę część systemu odpowiada przede wszystkim Recorder. W niewielkiej instalacji baza danych może przez długi czas pozostawać czymś, o czym użytkownik praktycznie nie musi myśleć. Wraz z rozbudową systemu liczba zapisów może jednak wyraźnie wzrosnąć.</p>
+        <p class="section-subtitle">Nie chodzi przy tym wyłącznie o liczbę urządzeń. Kilka bardzo często aktualizujących się sensorów może generować więcej zapisów niż wiele urządzeń, których stan zmienia się tylko kilka razy dziennie.</p>
+        <p class="section-subtitle">W tym poradniku wyjaśniam, czym jest Recorder, jak działa domyślna baza SQLite, co wpływa na ilość zapisywanych danych oraz kiedy można rozważyć przejście na MariaDB.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">RECORDER</div>
+      <h2 class="section-title mobile-match-title">Czym jest Recorder w Home Assistant?</h2>
+      <div class="card">
+        <p class="section-subtitle">Recorder jest częścią Home Assistant odpowiedzialną za zapisywanie stanów encji i zdarzeń do bazy danych.</p>
+        <p class="section-subtitle">Gdy urządzenie lub integracja przekazuje nowy stan, informacja może zostać zapisana przez Recorder. Z danych znajdujących się w bazie korzystają między innymi Historia, Aktywność, wykresy na dashboardach i statystyki.</p>
+        <p class="section-subtitle">Przykładowo czujnik temperatury może zmienić wartość z 21,4°C na 21,5°C. Dla użytkownika jest to niewielka zmiana, ale dla Recordera oznacza kolejny stan, który może zostać zapisany.</p>
+        <p class="section-subtitle">Jeżeli podobnych encji jest dużo albo aktualizują się bardzo często, liczba operacji zapisu rośnie.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">OBCIĄŻENIE</div>
+      <h2 class="section-title mobile-match-title">Liczba urządzeń to nie wszystko</h2>
+      <div class="card">
+        <p class="section-subtitle">Duża liczba urządzeń może zwiększać ilość danych, ale nie istnieje jedna granica, po której baza automatycznie staje się problemem.</p>
+        <p class="section-subtitle">Znaczenie ma przede wszystkim częstotliwość zmian.</p>
+        <p class="section-subtitle">Dużo danych mogą generować na przykład:</p>
+        <ul>
+          <li>sensory energii i chwilowego poboru mocy,</li>
+          <li>często aktualizowane pomiary temperatury i wilgotności,</li>
+          <li>sensory techniczne i diagnostyczne,</li>
+          <li>dane sieciowe,</li>
+          <li>urządzenia raportujące stan bardzo często,</li>
+          <li>integracje udostępniające wiele dynamicznych encji.</li>
+        </ul>
+        <p class="section-subtitle">Sto encji zmieniających stan sporadycznie może więc generować mniej zapisów niż znacznie mniejsza liczba sensorów aktualizujących się bardzo często.</p>
+        <p class="section-subtitle">Przy analizie obciążenia Recordera warto patrzeć nie tylko na liczbę urządzeń, lecz również na to, które encje najczęściej zapisują nowe dane.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">SQLITE</div>
+      <h2 class="section-title mobile-match-title">SQLite – domyślna baza Home Assistant</h2>
+      <div class="card">
+        <p class="section-subtitle">Home Assistant domyślnie korzysta z SQLite. Nie wymaga ona osobnego serwera ani dodatkowej konfiguracji. Standardowa baza znajduje się w katalogu konfiguracji Home Assistant i jest zapisywana w pliku <strong>home-assistant_v2.db</strong>.</p>
+        <p class="section-subtitle">SQLite jest obecnie domyślnym i rekomendowanym silnikiem bazy Recordera, a Home Assistant określa go również jako najlepiej przetestowane rozwiązanie, pod które nowsze wersje systemu są mocno zoptymalizowane.</p>
+        <p class="section-subtitle">Jeżeli Recorder działa prawidłowo, historia jest kompletna, a baza nie powoduje problemów, nie ma potrzeby zmieniać SQLite tylko dlatego, że istnieje MariaDB.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">OBJAWY</div>
+      <h2 class="section-title mobile-match-title">Kiedy warto zainteresować się bazą danych?</h2>
+      <div class="card">
+        <p class="section-subtitle">Nie każdy problem ze stabilnością Home Assistant ma związek z bazą danych.</p>
+        <p class="section-subtitle">Recorder warto jednak sprawdzić, gdy pojawiają się:</p>
+        <ul>
+          <li>błędy Recordera w logach,</li>
+          <li>brakujące fragmenty historii,</li>
+          <li>problemy z zapisywaniem stanów,</li>
+          <li>problemy podczas korzystania z historii,</li>
+          <li>szybko rosnący rozmiar bazy,</li>
+          <li>mała ilość wolnego miejsca,</li>
+          <li>błędy związane z plikiem SQLite.</li>
+        </ul>
+        <p class="section-subtitle">Przy SQLite znaczenie może mieć również sam nośnik. Home Assistant wskazuje awarię pamięci flash, nieprawidłowe zasilanie i nieczyste wyłączenie systemu jako możliwe przyczyny uszkodzeń bazy.</p>
+        <p class="section-subtitle">Przy podobnych objawach warto więc ustalić, czy problem rzeczywiście znajduje się w bazie, czy jego źródłem jest nośnik, zasilanie, brak miejsca albo inny element instalacji.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">DOŚWIADCZENIE</div>
+      <h2 class="section-title mobile-match-title">Przykład z mojego własnego systemu</h2>
+      <div class="card">
+        <p class="section-subtitle">W moim przypadku problemy zaczęły być wyraźnie widoczne wraz z rozbudową Home Assistant i zwiększeniem liczby urządzeń oraz zapisywanych danych.</p>
+        <p class="section-subtitle">Home Assistant pozornie działał, ale zdarzały się zaniki, a Recorder nie pracował prawidłowo. Nie wyglądało to jak pojedynczy problem jednej automatyzacji czy konkretnego urządzenia.</p>
+        <p class="section-subtitle">Po przejściu z SQLite na MariaDB problemy ustąpiły. Od tego czasu MariaDB działa w moim systemie stabilnie od około roku, również po wielu aktualizacjach Home Assistant.</p>
+        <p class="section-subtitle">Nie oznacza to, że MariaDB rozwiąże każdy problem z niestabilnością. To doświadczenie z konkretnej, rozbudowanej instalacji. W innym systemie podobne objawy mogą mieć inne źródło.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">FILTROWANIE</div>
+      <h2 class="section-title mobile-match-title">Recorder nie musi zapisywać wszystkiego</h2>
+      <div class="card">
+        <p class="section-subtitle">Home Assistant pozwala określić, które encje, domeny i zdarzenia mają trafiać do Recordera.</p>
+        <p class="section-subtitle">Służą do tego ustawienia <strong>include</strong> i <strong>exclude</strong>. Odpowiednie wykluczenie danych, których historia nie jest potrzebna, może zmniejszyć liczbę zapisów i ograniczyć rozmiar bazy.</p>
+        <p class="section-subtitle">Ma to szczególne znaczenie przy encjach technicznych, które często zmieniają stan, ale których wcześniejszych wartości użytkownik nigdy nie sprawdza.</p>
+        <p class="section-subtitle">Jeżeli sensor aktualizuje się bardzo często, warto zadać sobie pytanie, czy pełna historia tej konkretnej encji rzeczywiście jest potrzebna.</p>
+        <p class="section-subtitle">Przed wykluczeniem trzeba jednak sprawdzić, czy dane nie są wykorzystywane później przez historię, diagnostykę lub inne funkcje systemu.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">HISTORIA</div>
+      <h2 class="section-title mobile-match-title">Historia i statystyki długoterminowe to nie dokładnie to samo</h2>
+      <div class="card">
+        <p class="section-subtitle"><strong>purge_keep_days</strong> dotyczy szczegółowej historii przechowywanej przez Recorder. Domyślna wartość wynosi obecnie 10 dni.</p>
+        <p class="section-subtitle">Home Assistant posiada jednak również statystyki długoterminowe dla odpowiednich sensorów. Dane krótkoterminowe są zapisywane w większej szczegółowości, natomiast statystyki długoterminowe przechowują godzinowe podsumowania i nie są automatycznie usuwane w taki sam sposób jak szczegółowe stany.</p>
+        <p class="section-subtitle">Dlatego ustawienie 10 dni historii nie oznacza automatycznie, że po dziesięciu dniach znikną wszystkie starsze dane ze wszystkich wykresów. Dla sensorów obsługujących statystyki długoterminowe Home Assistant może korzystać ze zgromadzonych danych zagregowanych.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">RETENCJA</div>
+      <h2 class="section-title mobile-match-title">Jak długo Recorder przechowuje szczegółową historię?</h2>
+      <div class="card">
+        <p class="section-subtitle">Parametr <strong>purge_keep_days</strong> określa liczbę dni szczegółowej historii pozostawianej w bazie po czyszczeniu.</p>
+        <p class="section-subtitle">Domyślna wartość wynosi 10 dni. <strong>auto_purge</strong> jest domyślnie włączone, a Recorder okresowo usuwa starsze dane. Obecna konfiguracja posiada również mechanizm <strong>auto_repack</strong>, który okresowo pomaga odzyskiwać miejsce zajmowane wcześniej przez usunięte rekordy.</p>
+        <p class="section-subtitle">Dłuższa retencja oznacza większą ilość szczegółowych danych do przechowywania.</p>
+        <p class="section-subtitle">Nie zawsze ma sens przechowywanie pełnej historii każdej encji przez bardzo długi czas. Warto dopasować ją do tego, jakie dane są później faktycznie potrzebne.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">ZAPIS</div>
+      <h2 class="section-title mobile-match-title">Jak często dane są zatwierdzane w bazie?</h2>
+      <div class="card">
+        <p class="section-subtitle">Recorder korzysta z parametru <strong>commit_interval</strong>.</p>
+        <p class="section-subtitle">Domyślna wartość wynosi obecnie 5 sekund. Zwiększenie jej ogranicza częstotliwość operacji zapisu na dysku, ale powoduje również większe opóźnienie fizycznego zatwierdzenia danych w bazie. Home Assistant wskazuje tę możliwość szczególnie w kontekście instalacji korzystających z pamięci flash i kart SD.</p>
+        <p class="section-subtitle">Nie ma jednak potrzeby zmieniać <strong>commit_interval</strong>, jeżeli nie rozwiązujemy konkretnego problemu. Jest to parametr Recordera, a nie uniwersalny sposób na przyspieszenie całego Home Assistant.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">NOŚNIK</div>
+      <h2 class="section-title mobile-match-title">Nośnik danych ma znaczenie</h2>
+      <div class="card">
+        <p class="section-subtitle">Recorder wykonuje regularne operacje zapisu.</p>
+        <p class="section-subtitle">Jeżeli Home Assistant działa na wolnym albo zużytym nośniku, baza może stać się jednym z elementów wpływających na działanie systemu. Oficjalna dokumentacja zwraca szczególną uwagę na karty SD, ponieważ intensywne zapisy mogą wpływać zarówno na czas reakcji systemu, jak i żywotność nośnika.</p>
+        <p class="section-subtitle">Przy problemach warto sprawdzić:</p>
+        <ul>
+          <li>ilość wolnego miejsca,</li>
+          <li>stan nośnika,</li>
+          <li>ewentualne błędy systemu plików,</li>
+          <li>stabilność zasilania,</li>
+          <li>czy system nie jest regularnie wyłączany bez prawidłowego zamknięcia.</li>
+        </ul>
+        <p class="section-subtitle">Zmiana bazy nie zastąpi naprawy problemu z dyskiem, zasilaniem albo brakiem miejsca.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">MARIADB</div>
+      <h2 class="section-title mobile-match-title">Czym jest MariaDB w Home Assistant?</h2>
+      <div class="card">
+        <p class="section-subtitle">MariaDB jest jednym z silników baz danych obsługiwanych przez Recorder obok SQLite, MySQL i PostgreSQL.</p>
+        <p class="section-subtitle">W Home Assistant OS dostępna jest oficjalna aplikacja MariaDB. Można ją zainstalować przez <strong>Settings → Apps → Install app</strong>, przygotować bazę i użytkownika, a następnie skonfigurować Recorder tak, aby zapisywał dane w MariaDB zamiast w domyślnym pliku SQLite.</p>
+        <p class="section-subtitle">MariaDB działa wtedy jako osobna usługa bazodanowa, z którą łączy się Recorder.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">PRAKTYKA</div>
+      <h2 class="section-title mobile-match-title">MariaDB w codziennym działaniu</h2>
+      <div class="card">
+        <p class="section-subtitle">Po prawidłowej konfiguracji MariaDB może po prostu działać w tle razem z Home Assistant.</p>
+        <p class="section-subtitle">W moim systemie pracuje w ten sposób od około roku. W tym czasie Home Assistant był wielokrotnie aktualizowany, a sama baza nie wymagała ode mnie bieżącej obsługi.</p>
+        <p class="section-subtitle">W praktyce po jej uruchomieniu korzystam z Home Assistant normalnie i nie muszę zajmować się bazą przy każdej aktualizacji systemu.</p>
+        <p class="section-subtitle">Warto uwzględnić ją w kopiach zapasowych, tak jak pozostałe ważne elementy instalacji.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">WYBÓR</div>
+      <h2 class="section-title mobile-match-title">Kiedy można rozważyć MariaDB?</h2>
+      <div class="card">
+        <p class="section-subtitle">Nie ma jednej liczby urządzeń, po której należy zmienić SQLite na MariaDB.</p>
+        <p class="section-subtitle">MariaDB można rozważyć wtedy, gdy istnieje konkretny powód wynikający z zachowania danej instalacji — na przykład pojawiają się problemy związane z Recorderem, historia nie działa prawidłowo albo system generuje bardzo dużą liczbę zapisów.</p>
+        <p class="section-subtitle">Przed zmianą warto sprawdzić:</p>
+        <ul>
+          <li>logi Recordera,</li>
+          <li>ilość wolnego miejsca,</li>
+          <li>stan nośnika,</li>
+          <li>rozmiar i zachowanie obecnej bazy,</li>
+          <li>często aktualizujące się encje,</li>
+          <li>konfigurację <strong>include</strong> i <strong>exclude</strong>,</li>
+          <li>długość przechowywanej szczegółowej historii.</li>
+        </ul>
+        <p class="section-subtitle">SQLite pozostaje domyślną i rekomendowaną bazą Home Assistant. MariaDB jest dodatkową, obsługiwaną możliwością, która może dobrze pasować do konkretnej instalacji.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">INSTALACJA</div>
+      <h2 class="section-title mobile-match-title">Jak wygląda przejście na MariaDB?</h2>
+      <div class="card">
+        <p class="section-subtitle">W Home Assistant OS podstawowy proces wygląda następująco:</p>
+        <ol>
+          <li>wykonaj aktualną kopię zapasową Home Assistant;</li>
+          <li>przejdź do <strong>Settings → Apps → Install app</strong>;</li>
+          <li>zainstaluj oficjalną aplikację MariaDB;</li>
+          <li>przygotuj bazę, użytkownika i silne hasło;</li>
+          <li>uruchom MariaDB i sprawdź jej log;</li>
+          <li>skonfiguruj Recorder w Home Assistant tak, aby korzystał z przygotowanej bazy MariaDB;</li>
+          <li>uruchom ponownie Home Assistant;</li>
+          <li>sprawdź logi Recordera;</li>
+          <li>sprawdź, czy nowe stany pojawiają się w Historii;</li>
+          <li>sprawdź wykresy i pozostałe elementy korzystające z zapisanych danych.</li>
+        </ol>
+        <p class="section-subtitle">Oficjalna aplikacja MariaDB przewiduje konfigurację bazy, użytkowników i uprawnień, a dokumentacja pokazuje połączenie jej z Recorderem przez <strong>db_url</strong>.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">ZMIANA BAZY</div>
+      <h2 class="section-title mobile-match-title">Co dzieje się ze starą historią?</h2>
+      <div class="card">
+        <p class="section-subtitle">To ważna rzecz przed zmianą.</p>
+        <p class="section-subtitle">Home Assistant oficjalnie ostrzega, że zmiana bazy używanej przez Recorder może spowodować utratę istniejącej historii. Migracja dotychczasowych danych pomiędzy silnikami baz danych nie jest oficjalnie wspierana.</p>
+        <p class="section-subtitle">Dlatego przed zmianą warto wykonać kopię zapasową i zakładać, że nowa baza może rozpocząć zapisywanie historii od momentu przełączenia Recordera.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">DIAGNOSTYKA</div>
+      <h2 class="section-title mobile-match-title">Baza danych czy zupełnie inny problem?</h2>
+      <div class="card">
+        <p class="section-subtitle">Jeżeli Home Assistant zachowuje się niestabilnie, warto najpierw ustalić charakter problemu.</p>
+        <p class="section-subtitle">Jeżeli urządzenia tracą komunikację, źródłem może być Zigbee, Wi-Fi albo konkretna integracja.</p>
+        <p class="section-subtitle">Jeżeli automatyzacja nie wykonuje działania, problem może znajdować się w wyzwalaczu, warunku, akcji albo urządzeniu.</p>
+        <p class="section-subtitle">Jeżeli natomiast pojawiają się błędy Recordera, braki w historii, problemy z zapisywaniem stanów, szybko rosnąca baza albo problemy z nośnikiem, wtedy baza danych jest jednym z elementów, które warto sprawdzić.</p>
+        <a class="knowledge-link" href="/pl/integracje-home-assistant/">Integracje Home Assistant <span aria-hidden="true">→</span></a>
+        <a class="knowledge-link" href="/pl/automatyzacje-home-assistant/">Automatyzacje Home Assistant <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">DECYZJA</div>
+      <h2 class="section-title mobile-match-title">SQLite czy MariaDB – co wybrać?</h2>
+      <div class="card">
+        <p class="section-subtitle">Jeżeli Home Assistant działa prawidłowo na SQLite, nie ma potrzeby zmieniać bazy tylko dlatego, że MariaDB jest dostępna.</p>
+        <p class="section-subtitle">Jeżeli natomiast przy rozbudowanym systemie pojawiają się problemy związane z Recorderem, historią albo dużą liczbą zapisów, warto najpierw ustalić ich źródło. Czasem wystarczy ograniczenie niepotrzebnych danych lub poprawa warstwy sprzętowej, a czasem sensownym rozwiązaniem może być przejście na MariaDB.</p>
+        <p class="section-subtitle">W moim systemie przejście na MariaDB rozwiązało problemy występujące wcześniej przy SQLite i od około roku ta konfiguracja działa stabilnie.</p>
+        <p class="section-subtitle">Nie oznacza to, że identyczny efekt wystąpi w każdej instalacji. Najważniejsze jest ustalenie, co faktycznie dzieje się w konkretnym systemie i dopiero na tej podstawie dobranie rozwiązania.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">PODSUMOWANIE</div>
+      <h2 class="section-title mobile-match-title">Baza danych działa w tle, dopóki nie zaczyna mieć znaczenia</h2>
+      <div class="card">
+        <p class="section-subtitle">W wielu instalacjach Home Assistant może przez lata działać na domyślnym SQLite bez potrzeby zajmowania się bazą danych.</p>
+        <p class="section-subtitle">Przy bardziej rozbudowanym systemie warto jednak wiedzieć, czym jest Recorder, które encje generują dużo zapisów, jak długo przechowywana jest szczegółowa historia i na jakim nośniku znajdują się dane.</p>
+        <p class="section-subtitle">SQLite pozostaje domyślnym i rekomendowanym rozwiązaniem Home Assistant. MariaDB jest obsługiwaną alternatywą, którą można rozważyć wtedy, gdy przemawia za tym zachowanie konkretnego systemu.</p>
+        <p class="section-subtitle">W moim przypadku przejście na MariaDB rozwiązało problemy z Recorderem, a od około roku baza działa stabilnie również po kolejnych aktualizacjach Home Assistant.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">POMOC</div>
+      <h2 class="section-title mobile-match-title">Potrzebujesz pomocy z bazą danych Home Assistant?</h2>
+      <div class="card">
+        <p class="section-subtitle">Jeśli Recorder działa nieprawidłowo, historia ma braki, baza szybko rośnie albo zastanawiasz się nad przejściem z SQLite na MariaDB, mogę pomóc sprawdzić obecną konfigurację, znaleźć możliwe źródło problemu i dobrać odpowiednie rozwiązanie.</p>
+        <a class="knowledge-help-link knowledge-help-link--mobile-flow" href="/pl/#kontakt"><span class="knowledge-help-main">Skontaktuj się ze mną</span> <span class="knowledge-help-accent">→ kliknij tutaj</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span>© <span id="year"></span> Tomasz Furdal – Home Assistant &amp; Integrations</span>
+      <span>Płatności: przelew bankowy, Revolut, PayPal, MobilePay</span>
+    </div>
+  </footer>
+
+  <script src="../../nav.js?v=20260730-mobile-nav-12"></script>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>

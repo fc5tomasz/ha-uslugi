@@ -206,6 +206,36 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://ha-expert.com/pl/baza-danych-home-assistant/</loc>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://ha-expert.com/pl/baza-danych-home-assistant/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://ha-expert.com/en/home-assistant-database/" />
+    <xhtml:link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/home-assistant-database/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ha-expert.com/en/home-assistant-database/" />
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ha-expert.com/en/home-assistant-database/</loc>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://ha-expert.com/pl/baza-danych-home-assistant/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://ha-expert.com/en/home-assistant-database/" />
+    <xhtml:link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/home-assistant-database/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ha-expert.com/en/home-assistant-database/" />
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ha-expert.com/dk/home-assistant-database/</loc>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://ha-expert.com/pl/baza-danych-home-assistant/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://ha-expert.com/en/home-assistant-database/" />
+    <xhtml:link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/home-assistant-database/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ha-expert.com/en/home-assistant-database/" />
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://ha-expert.com/pl/demo/</loc>
     <xhtml:link rel="alternate" hreflang="pl" href="https://ha-expert.com/pl/demo/" />
     <xhtml:link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/demo/" />
