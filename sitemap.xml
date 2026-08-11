@@ -296,6 +296,30 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://ha-expert.com/pl/encja-unavailable-home-assistant/</loc>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://ha-expert.com/pl/encja-unavailable-home-assistant/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://ha-expert.com/en/home-assistant-entity-unavailable/" />
+    <xhtml:link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/home-assistant-entitet-utilgaengelig/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ha-expert.com/en/home-assistant-entity-unavailable/" />
+    <lastmod>2026-08-11</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ha-expert.com/en/home-assistant-entity-unavailable/</loc>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://ha-expert.com/pl/encja-unavailable-home-assistant/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://ha-expert.com/en/home-assistant-entity-unavailable/" />
+    <xhtml:link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/home-assistant-entitet-utilgaengelig/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ha-expert.com/en/home-assistant-entity-unavailable/" />
+    <lastmod>2026-08-11</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ha-expert.com/dk/home-assistant-entitet-utilgaengelig/</loc>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://ha-expert.com/pl/encja-unavailable-home-assistant/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://ha-expert.com/en/home-assistant-entity-unavailable/" />
+    <xhtml:link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/home-assistant-entitet-utilgaengelig/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ha-expert.com/en/home-assistant-entity-unavailable/" />
+    <lastmod>2026-08-11</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://ha-expert.com/pl/demo/</loc>
     <xhtml:link rel="alternate" hreflang="pl" href="https://ha-expert.com/pl/demo/" />
     <xhtml:link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/demo/" />

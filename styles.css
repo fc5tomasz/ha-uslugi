@@ -738,6 +738,11 @@ main{
 .guide-steps li{margin-bottom:13px;padding-left:5px}
 .guide-addresses code,.guide-faq code,.guide-steps code{overflow-wrap:anywhere;word-break:break-word}
 .guide-faq h3:not(:first-child){margin-top:28px}
+.diagnostic-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.diagnostic-table{width:100%;min-width:720px;border-collapse:collapse;text-align:left}
+.diagnostic-table th,.diagnostic-table td{padding:14px 16px;border-bottom:1px solid rgba(148,163,184,.22);vertical-align:top}
+.diagnostic-table th{color:var(--accent-2);font-size:.84rem;letter-spacing:.04em;text-transform:uppercase}
+.diagnostic-table tbody tr:last-child td{border-bottom:0}
 
 @media (max-width:700px){
   .guide-toc ol{columns:1}
