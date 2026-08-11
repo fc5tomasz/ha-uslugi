@@ -733,7 +733,7 @@ main{
 .guide-toc li{break-inside:avoid;margin:0 0 7px}
 .guide-toc a{display:inline-block;padding:5px 0;color:var(--text);font-weight:700;text-underline-offset:3px}
 .guide-notice,.guide-warning{margin-top:18px!important;padding:16px 18px;border:1px solid rgba(103,232,249,.35);border-left:4px solid var(--accent-2);border-radius:12px;background:rgba(8,145,178,.10)}
-.guide-warning{border-color:rgba(251,191,36,.38);border-left-color:#fbbf24;background:rgba(180,83,9,.12)}
+.guide-warning{border:1px solid rgba(251,191,36,.38);background:rgba(180,83,9,.12);box-shadow:none}
 .guide-steps{padding-left:1.45rem}
 .guide-steps li{margin-bottom:13px;padding-left:5px}
 .guide-addresses code,.guide-faq code,.guide-steps code{overflow-wrap:anywhere;word-break:break-word}
