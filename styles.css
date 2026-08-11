@@ -727,6 +727,31 @@ main{
   text-underline-offset:3px;
 }
 
+/* Raspberry Pi installation guide */
+.guide-toc .card{padding-top:22px;padding-bottom:22px}
+.guide-toc ol{margin:0;padding-left:1.4rem;columns:2;column-gap:40px}
+.guide-toc li{break-inside:avoid;margin:0 0 7px}
+.guide-toc a{display:inline-block;padding:5px 0;color:var(--text);font-weight:700;text-underline-offset:3px}
+.guide-notice,.guide-warning{margin-top:18px!important;padding:16px 18px;border:1px solid rgba(103,232,249,.35);border-left:4px solid var(--accent-2);border-radius:12px;background:rgba(8,145,178,.10)}
+.guide-warning{border-color:rgba(251,191,36,.38);border-left-color:#fbbf24;background:rgba(180,83,9,.12)}
+.guide-steps{padding-left:1.45rem}
+.guide-steps li{margin-bottom:13px;padding-left:5px}
+.guide-addresses code,.guide-faq code,.guide-steps code{overflow-wrap:anywhere;word-break:break-word}
+.guide-faq h3:not(:first-child){margin-top:28px}
+
+@media (max-width:700px){
+  .guide-toc ol{columns:1}
+  .guide-toc a{display:block;min-height:42px;padding:9px 0}
+  .guide-notice,.guide-warning{padding:14px}
+}
+
+@media (min-width:821px) and (max-width:1100px){
+  body.raspberry-guide #primary-nav > ul > li:nth-child(-n+6),
+  body.raspberry-guide .nav > .nav-cta{
+    display:none;
+  }
+}
+
 .ai-flow{
   display:flex;
   align-items:center;
