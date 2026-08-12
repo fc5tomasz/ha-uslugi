@@ -301,32 +301,6 @@ body.demo-page .demo-panel-status{
   line-height:1.6;
 }
 
-.panel-online-indicator{
-  position:absolute;
-  top:18px;
-  right:18px;
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
-  padding:10px 14px;
-  border-radius:999px;
-  background:rgba(8,18,33,.84);
-  border:1px solid rgba(132,156,187,.16);
-  color:#f8fbff;
-  font-size:.86rem;
-  font-weight:700;
-  z-index:2;
-}
-
-.panel-online-dot{
-  width:10px;
-  height:10px;
-  border-radius:999px;
-  background:#12c884;
-  box-shadow:0 0 0 0 rgba(18,200,132,.55);
-  animation: demoPulse 1.6s ease-out infinite;
-}
-
 .panel-wrap{
   position:relative;
   overflow:hidden;
@@ -471,25 +445,6 @@ body.demo-page .demo-panel-status{
 
   .sim-label-mobile{
     display:inline;
-  }
-
-  body.demo-page .panel-online-indicator{
-    top:6px;
-    right:16px;
-    gap:5px;
-    padding:0;
-    border:0;
-    border-radius:0;
-    background:transparent;
-    font-size:.58rem;
-    font-weight:600;
-    line-height:1;
-    box-shadow:none;
-  }
-
-  body.demo-page .panel-online-dot{
-    width:6px;
-    height:6px;
   }
 
   body.demo-page .demo-panel-frame{

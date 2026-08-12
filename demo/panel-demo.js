@@ -30,9 +30,8 @@
       nav_cta: "Bezpłatna ocena",
       scenario_initial:
         "Tryb dzienny: instalacja produkuje energię, zasila dom i pokazuje aktualne warunki pogodowe. Dotknij panelu, aby przejść do kolejnej pory dnia.",
-      panel_online: "Panel online",
-      panel_title: "Panel procesów instalacji",
-      panel_subtitle: "Obecne oświetlenie",
+      panel_title: "Stan instalacji",
+      panel_subtitle: "Natężenie oświetlenia",
       panel_panels: "Panele",
       panel_inv_dom: "Off-grid 2",
       panel_inv_taras: "Off-grid 1",
@@ -112,9 +111,8 @@
       nav_cta: "Gratis vurdering",
       scenario_initial:
         "Dagtilstand: installationen producerer energi, forsyner hjemmet og viser de aktuelle vejrforhold. Tryk på panelet for at gå videre til næste tidspunkt på dagen.",
-      panel_online: "Panel online",
-      panel_title: "Installationsprocespanel",
-      panel_subtitle: "Nuværende belysning",
+      panel_title: "Anlæggets status",
+      panel_subtitle: "Belysningsstyrke",
       panel_panels: "Paneler",
       panel_inv_dom: "Off-grid 2",
       panel_inv_taras: "Off-grid 1",
@@ -194,9 +192,8 @@
       nav_cta: "Free assessment",
       scenario_initial:
         "Day mode: the installation is producing energy, powering the home and showing current weather conditions. Tap the panel to move to the next time of day.",
-      panel_online: "Panel online",
-      panel_title: "Installation Processes Panel",
-      panel_subtitle: "Current lighting",
+      panel_title: "Installation status",
+      panel_subtitle: "Illuminance",
       panel_panels: "Panels",
       panel_inv_dom: "Off-grid 2",
       panel_inv_taras: "Off-grid 1",
@@ -609,10 +606,6 @@
 
       this.root.innerHTML = `
         <div class="panel-wrap">
-          <div class="panel-online-indicator">
-            <span class="panel-online-dot"></span>
-            <span>${this.dict.panel_online}</span>
-          </div>
           <svg class="panel-svg" viewBox="0 0 1440 860" xmlns="http://www.w3.org/2000/svg">
               <defs>
                 <linearGradient id="sunFill" x1="0" y1="0" x2="1" y2="1">
