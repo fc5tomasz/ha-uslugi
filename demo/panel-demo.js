@@ -1,10 +1,10 @@
 (() => {
   const DICT = {
     pl: {
-      title_page: "Demonstracja możliwości Home Assistant | Tomasz Furdal",
+      title_page: "Demo Home Assistant – symulacja panelu automatyki | HA Expert",
       meta_desc: "Live demonstracja animowanego panelu Home Assistant: energia, ogrzewanie, pogoda, rekuperacja i stany domu w jednej wizualizacji.",
       kicker: "Demonstracja sterowania automatyką",
-      title: "Demonstracja możliwości Home Assistant",
+      title: "Symulacja panelu automatyki Home Assistant",
       subtitle: "To jest osobna podstrona pokazująca działający panel animowany oparty na logice instalacji Home Assistant. Widzisz wyłącznie panel demonstracyjny.",
       back_btn: "Wróć do strony głównej",
       what_label: "Co pokazuje panel",
@@ -83,10 +83,10 @@
         "🌙 Noc: Inwertery są uśpione. Ogrzewanie domu (CO) zabezpiecza piec gazowy – w zależności od temperatury we wnętrzu, system decyduje, czy musi go uruchomić, czy może on pozostać wyłączony. Wężownica w buforze utrzymuje dostęp do ciepłej wody (CWU). System inteligentnie zarządza oświetleniem (symulacja obecności) oraz optymalizuje pracę rekuperacji."
     },
     dk: {
-      title_page: "Demonstration af Home Assistant muligheder | Tomasz Furdal",
+      title_page: "Home Assistant-demo – simulering af automationspanel | HA Expert",
       meta_desc: "Live demonstration af et animeret Home Assistant panel: energi, varme, vejr, varmegenvinding og hjemmets tilstand i én visualisering.",
       kicker: "Demo af automatikstyring",
-      title: "Demonstration af Home Assistant muligheder",
+      title: "Simulering af Home Assistant-automationspanel",
       subtitle: "Dette er en separat underside, der viser et fungerende animeret panel baseret på logikken i en Home Assistant-installation. Du ser kun et demonstrationspanel.",
       back_btn: "Tilbage til forsiden",
       what_label: "Hvad panelet viser",
@@ -165,10 +165,10 @@
         "🌙 Nat: Inverterne er i dvale. Hjemmets centralvarme (Varme) understøttes af gaskedlen – afhængigt af indendørstemperaturen beslutter systemet, om den skal startes, eller om den kan forblive slukket. Rørslangen i bufferen opretholder adgangen til varmt vand (Brugsvand). Systemet styrer belysningen intelligent (tilstedeværelsessimulering) og optimerer varmegenvindingens drift."
     },
     en: {
-      title_page: "Home Assistant Capabilities Demo | Tomasz Furdal",
+      title_page: "Home Assistant Demo – Automation Dashboard Simulation | HA Expert",
       meta_desc: "Live demonstration of an animated Home Assistant panel: energy, heating, weather, heat recovery, and home states in a single visualization.",
       kicker: "Automation Control Demo",
-      title: "Home Assistant Capabilities Demo",
+      title: "Home Assistant Automation Dashboard Simulation",
       subtitle: "This is a separate subpage showing a working animated panel based on the logic of a Home Assistant installation. You are viewing a demonstration panel only.",
       back_btn: "Return to homepage",
       what_label: "What the panel shows",
