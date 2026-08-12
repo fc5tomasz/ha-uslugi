@@ -730,12 +730,13 @@ main{
 /* Raspberry Pi installation guide */
 .guide-toc .card{padding-top:22px;padding-bottom:22px}
 .guide-toc ol{margin:0;padding-left:1.4rem;columns:2;column-gap:40px}
-.guide-toc li{break-inside:avoid;margin:0 0 7px}
-.guide-toc a{display:inline-block;padding:5px 0;color:var(--text);font-weight:700;text-underline-offset:3px}
+.guide-toc .card li{break-inside:avoid;margin:0 0 7px;padding-left:0}
+.guide-toc .card li::before,.card .guide-steps li::before{display:none}
+.guide-toc a{display:inline-block;max-width:100%;padding:5px 0;color:var(--text);font-weight:700;text-underline-offset:3px;white-space:normal;overflow-wrap:anywhere;word-break:normal}
 .guide-notice,.guide-warning{margin-top:18px!important;padding:16px 18px;border:1px solid rgba(103,232,249,.35);border-left:4px solid var(--accent-2);border-radius:12px;background:rgba(8,145,178,.10)}
 .guide-warning{border:1px solid rgba(251,191,36,.38);background:rgba(180,83,9,.12);box-shadow:none}
 .guide-steps{padding-left:1.45rem}
-.guide-steps li{margin-bottom:13px;padding-left:5px}
+.card .guide-steps li{margin-bottom:13px;padding-left:5px}
 .guide-addresses code,.guide-faq code,.guide-steps code{overflow-wrap:anywhere;word-break:break-word}
 .guide-faq h3:not(:first-child){margin-top:28px}
 .diagnostic-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
@@ -748,6 +749,14 @@ main{
   .guide-toc ol{columns:1}
   .guide-toc a{display:block;min-height:42px;padding:9px 0}
   .guide-notice,.guide-warning{padding:14px}
+  .diagnostic-table-wrap{overflow:visible}
+  .diagnostic-table{display:block;min-width:0}
+  .diagnostic-table thead{display:none}
+  .diagnostic-table tbody{display:grid;gap:14px}
+  .diagnostic-table tr{display:block;padding:14px;border:1px solid rgba(148,163,184,.22);border-radius:14px;background:rgba(255,255,255,.025)}
+  .diagnostic-table td{display:block;padding:3px 0;border:0;overflow-wrap:anywhere}
+  .diagnostic-table td:first-child{color:#f6fbff;font-weight:700}
+  .diagnostic-table td + td{margin-top:8px}
 }
 
 @media (min-width:821px) and (max-width:1100px){
