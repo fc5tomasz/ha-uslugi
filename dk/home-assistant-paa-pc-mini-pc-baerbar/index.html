@@ -216,7 +216,7 @@
 <li>en anden computer til at oprette USB-drevet og åbne webinterfacet,</li>
 <li>backup af alle data på målcomputeren.</li>
 </ul>
-<p class="guide-notice">
+<p>
 <strong>Kontrollér hardwaren først:</strong> tjek diskens SMART-data, køling, Ethernet og firmwareindstillingen for automatisk opstart efter strømsvigt. Hardwaren behøver ikke være ny, men den skal kunne køre stabilt døgnet rundt.</p>
 </div>
 </section>
@@ -265,7 +265,7 @@
 <div class="section-label">LÆS FØR DU FORTSÆTTER</div>
 <h2 class="section-title mobile-match-title">Direkte installation sletter operativsystemet og alle data</h2>
 <div class="card">
-<p class="guide-warning">
+<p>
 <strong>Advarsel: Når Home Assistant OS skrives, overskrives den valgte disk.</strong> Windows, Linux, gendannelsespartitioner og filer på disken bliver slettet. Frakobl andre diske, hvis det er muligt, tag backup, og kontrollér mål-diskens model og kapacitet. Brug ikke denne procedure på en disk, hvorfra du fortsat vil starte det eksisterende system.</p>
 </div>
 </section>
@@ -292,7 +292,7 @@
 <li>Vælg <strong>Try Ubuntu</strong> — ikke <strong>Install Ubuntu</strong>.</li>
 <li>Forbind live-miljøet til internettet, og åbn den officielle Generic x86-64-vejledning.</li>
 </ol>
-<p class="guide-notice">Ubuntu kører fra USB-drevet og bruges kun til at skrive HAOS-imaget på den interne disk.</p>
+<p>Ubuntu kører fra USB-drevet og bruges kun til at skrive HAOS-imaget på den interne disk.</p>
 </div>
 </section>
     <section class="section" id="skriv">
@@ -308,7 +308,7 @@
 <li>Vent, til processen er færdig. Hvis swap på måldisken er aktiv, skal partitionen afmonteres i Disks.</li>
 <li>Luk Ubuntu ned, og fjern USB-drevet, når computeren er helt slukket.</li>
 </ol>
-<p class="guide-warning">
+<p>
 <strong>Sidste kontrol:</strong> Når du vælger “Restore”, begynder hele måldisken at blive overskrevet.</p>
 </div>
 </section>
@@ -365,7 +365,7 @@
 <div class="card">
 <p class="section-subtitle">Container er en understøttet metode for personer, der selv vil vedligeholde Linux og Docker Engine. Den har ingen Supervisor eller HAOS-apps. MQTT, Zigbee2MQTT, Z-Wave JS og andre hjælpetjenester køres og opdateres som separate containere.</p>
 <p class="section-subtitle">Den aktuelle officielle vejledning kræver Docker Engine 23.0.0 eller nyere og angiver, at Docker Desktop ikke virker. Konfigurationen skal gemmes permanent i <code>/config</code>; tidszone og adgang til nødvendige enheder skal indstilles bevidst.</p>
-<p class="guide-notice">
+<p>
 <strong>Vælg Container, fordi du er klar til at administrere løsningen — ikke kun fordi Docker lyder bekendt.</strong> Du har ansvaret for værtens system, containernetværk, opdateringer, backup og USB-adgang.</p>
 </div>
 </section>
@@ -380,7 +380,7 @@
 <li>Installér HAOS på den nye computer. Vælg <strong>Upload backup</strong> på velkomstskærmen, vælg filen og gendan de ønskede dele med nøglen fra emergency kit.</li>
 <li>Opdatér ikke siden under gendannelsen. Log bagefter ind med oplysningerne fra den gamle installation.</li>
 <li>Tilslut Zigbee/Z-Wave-koordinatorer og andet USB-udstyr igen, og kontrollér enhedsstier, integrationer, netværkslagring og utilgængelige entiteter.</li>
-</ol><p class="guide-notice"><strong>Fra Raspberry Pi:</strong> en backup fra Raspberry Pi kan gendannes på x86-64 under onboarding. Hvis Zigbee-radioen også udskiftes, skal radioen migreres efter vejledningen til den anvendte integration.</p></div>
+</ol><p><strong>Fra Raspberry Pi:</strong> en backup fra Raspberry Pi kan gendannes på x86-64 under onboarding. Hvis Zigbee-radioen også udskiftes, skal radioen migreres efter vejledningen til den anvendte integration.</p></div>
 </section>
     <section class="section" id="usb">
 <div class="section-label">HARDWARE</div>

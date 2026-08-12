@@ -216,7 +216,7 @@
 <li>another computer to prepare the USB drive and access the web interface,</li>
 <li>a backup of every file on the target computer.</li>
 </ul>
-<p class="guide-notice">
+<p>
 <strong>Check the hardware first:</strong> review disk SMART data, cooling, Ethernet and the firmware option to power on after an outage. The hardware need not be new, but it must run reliably around the clock.</p>
 </div>
 </section>
@@ -265,7 +265,7 @@
 <div class="section-label">READ BEFORE CONTINUING</div>
 <h2 class="section-title mobile-match-title">A direct installation erases the operating system and all data</h2>
 <div class="card">
-<p class="guide-warning">
+<p>
 <strong>Warning: writing Home Assistant OS overwrites the selected disk.</strong> Windows, Linux, recovery partitions and files on it will be deleted. Disconnect other drives where practical, back up your data, then verify the target model and capacity. Do not use this procedure on a disk from which you still want to boot the existing system.</p>
 </div>
 </section>
@@ -292,7 +292,7 @@
 <li>On the Ubuntu screen select <strong>Try Ubuntu</strong>, not <strong>Install Ubuntu</strong>.</li>
 <li>Connect the live environment to the internet and open the official Generic x86-64 guide.</li>
 </ol>
-<p class="guide-notice">Ubuntu is running from the USB drive and is used only to write the HAOS image to the internal disk.</p>
+<p>Ubuntu is running from the USB drive and is used only to write the HAOS image to the internal disk.</p>
 </div>
 </section>
     <section class="section" id="write">
@@ -308,7 +308,7 @@
 <li>Wait until it finishes. If swap on the target disk is active, unmount that partition in Disks and retry.</li>
 <li>Shut down from Ubuntu and remove the USB drive after the computer is fully off.</li>
 </ol>
-<p class="guide-warning">
+<p>
 <strong>Final check:</strong> selecting “Restore” starts overwriting the entire target disk.</p>
 </div>
 </section>
@@ -365,7 +365,7 @@
 <div class="card">
 <p class="section-subtitle">Container is a supported route for people who want to maintain Linux and Docker Engine themselves. It has no Supervisor or HAOS apps. MQTT, Zigbee2MQTT, Z-Wave JS and other supporting services are separate containers that you maintain and update.</p>
 <p class="section-subtitle">The current official guide requires Docker Engine 23.0.0 or later and says Docker Desktop will not work. Persist the configuration at <code>/config</code>, set the time zone and expose any required host devices deliberately.</p>
-<p class="guide-notice">
+<p>
 <strong>Choose Container because you are prepared to manage it, not merely because Docker sounds familiar.</strong> You are responsible for the host OS, container networking, updates, backups and USB access.</p>
 </div>
 </section>
@@ -380,7 +380,7 @@
 <li>Install HAOS on the new computer. On the welcome screen, choose <strong>Upload backup</strong>, select the file and restore the required parts using the emergency-kit key.</li>
 <li>Do not refresh the page while restoration is running. Afterwards, sign in with the credentials from the old installation.</li>
 <li>Reconnect Zigbee/Z-Wave coordinators and other USB hardware, then verify device paths, integrations, network storage and unavailable entities.</li>
-</ol><p class="guide-notice"><strong>From Raspberry Pi:</strong> a Raspberry Pi backup can be restored to x86-64 during onboarding. If you also replace the Zigbee radio, follow the radio-migration procedure for the integration you use.</p></div>
+</ol><p><strong>From Raspberry Pi:</strong> a Raspberry Pi backup can be restored to x86-64 during onboarding. If you also replace the Zigbee radio, follow the radio-migration procedure for the integration you use.</p></div>
 </section>
     <section class="section" id="usb">
 <div class="section-label">HARDWARE</div>
