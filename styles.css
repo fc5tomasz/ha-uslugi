@@ -38,6 +38,11 @@ body{
   position:relative;
 }
 
+.knowledge-page{
+  -webkit-text-size-adjust:100%;
+  text-size-adjust:100%;
+}
+
 body::before,
 body::after{
   content:"";
@@ -2294,6 +2299,11 @@ html[lang="da"] .logo [data-i18n="logo_text"],html[lang="da-DK"] .logo [data-i18
 
   .knowledge-page main > .section:first-of-type{
     padding-top:4px;
+  }
+
+  .knowledge-page .card p,
+  .knowledge-page .card li{
+    text-wrap:pretty;
   }
 
   .grid-3,
