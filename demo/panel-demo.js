@@ -27,7 +27,7 @@
       nav_pricing: "Cennik",
       nav_about: "O mnie",
       nav_contact: "Kontakt",
-      nav_cta: "Bezpłatna diagnoza",
+      nav_cta: "Bezpłatna ocena",
       scenario_initial:
         "Tryb dzienny: instalacja produkuje energię, zasila dom i pokazuje aktualne warunki pogodowe. Dotknij panelu, aby przejść do kolejnej pory dnia.",
       panel_online: "Panel online",
@@ -109,7 +109,7 @@
       nav_pricing: "Priser",
       nav_about: "Om mig",
       nav_contact: "Kontakt",
-      nav_cta: "Gratis diagnose",
+      nav_cta: "Gratis vurdering",
       scenario_initial:
         "Dagtilstand: installationen producerer energi, forsyner hjemmet og viser de aktuelle vejrforhold. Tryk på panelet for at gå videre til næste tidspunkt på dagen.",
       panel_online: "Panel online",
@@ -191,7 +191,7 @@
       nav_pricing: "Pricing",
       nav_about: "About me",
       nav_contact: "Contact",
-      nav_cta: "Free diagnosis",
+      nav_cta: "Free assessment",
       scenario_initial:
         "Day mode: the installation is producing energy, powering the home and showing current weather conditions. Tap the panel to move to the next time of day.",
       panel_online: "Panel online",
