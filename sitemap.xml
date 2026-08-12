@@ -181,7 +181,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://ha-expert.com/en/home-assistant-dashboard/" />
     <xhtml:link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/home-assistant-dashboard/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ha-expert.com/en/home-assistant-dashboard/" />
-    <lastmod>2026-08-09</lastmod>
+    <lastmod>2026-08-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -191,7 +191,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://ha-expert.com/en/home-assistant-dashboard/" />
     <xhtml:link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/home-assistant-dashboard/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ha-expert.com/en/home-assistant-dashboard/" />
-    <lastmod>2026-08-09</lastmod>
+    <lastmod>2026-08-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -201,7 +201,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://ha-expert.com/en/home-assistant-dashboard/" />
     <xhtml:link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/home-assistant-dashboard/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ha-expert.com/en/home-assistant-dashboard/" />
-    <lastmod>2026-08-09</lastmod>
+    <lastmod>2026-08-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -325,7 +325,7 @@
     <xhtml:link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/demo/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://ha-expert.com/en/demo/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ha-expert.com/demo/" />
-    <lastmod>2026-07-02</lastmod>
+    <lastmod>2026-08-12</lastmod>
   </url>
   <url>
     <loc>https://ha-expert.com/en/demo/</loc>
@@ -333,7 +333,7 @@
     <xhtml:link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/demo/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://ha-expert.com/en/demo/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ha-expert.com/demo/" />
-    <lastmod>2026-07-02</lastmod>
+    <lastmod>2026-08-12</lastmod>
   </url>
   <url>
     <loc>https://ha-expert.com/dk/demo/</loc>
@@ -341,6 +341,6 @@
     <xhtml:link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/demo/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://ha-expert.com/en/demo/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ha-expert.com/demo/" />
-    <lastmod>2026-07-02</lastmod>
+    <lastmod>2026-08-12</lastmod>
   </url>
 </urlset>
