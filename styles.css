@@ -728,6 +728,10 @@ main{
 }
 
 /* Raspberry Pi installation guide */
+.raspberry-guide{
+  -webkit-text-size-adjust:100%;
+  text-size-adjust:100%;
+}
 .guide-toc .card{padding-top:22px;padding-bottom:22px}
 .guide-toc ol{margin:0;padding-left:1.4rem;columns:2;column-gap:40px}
 .guide-toc .card li{break-inside:avoid;margin:0 0 7px;padding-left:0}
@@ -746,6 +750,12 @@ main{
 .diagnostic-table tbody tr:last-child td{border-bottom:0}
 
 @media (max-width:700px){
+  .raspberry-guide .card p,
+  .raspberry-guide .card li{
+    font-size:18px;
+    line-height:1.75;
+  }
+  .raspberry-guide main .section[id]{scroll-margin-top:86px}
   .guide-toc ol{columns:1}
   .guide-toc a{display:block;min-height:42px;padding:9px 0}
   .guide-notice,.guide-warning{padding:14px}
