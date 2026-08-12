@@ -43,6 +43,10 @@ body{
   text-size-adjust:100%;
 }
 
+.coordinator-mobile-only{
+  display:none;
+}
+
 body::before,
 body::after{
   content:"";
@@ -2304,6 +2308,20 @@ html[lang="da"] .logo [data-i18n="logo_text"],html[lang="da-DK"] .logo [data-i18
   .knowledge-page .card p,
   .knowledge-page .card li{
     text-wrap:pretty;
+  }
+
+  .coordinator-desktop-only{
+    display:none;
+  }
+
+  .coordinator-mobile-only{
+    display:inline;
+  }
+
+  .coordinator-source-title{
+    display:block;
+    color:var(--text);
+    font-weight:700;
   }
 
   .grid-3,
