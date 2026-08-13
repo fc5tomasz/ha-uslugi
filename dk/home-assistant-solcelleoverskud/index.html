@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="da">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="robots" content="index,follow" />
+<meta name="author" content="Tomasz Furdal" />
+<meta name="theme-color" content="#0f172a" />
+<link rel="canonical" href="https://ha-expert.com/dk/home-assistant-solcelleoverskud/" />
+<link rel="alternate" hreflang="pl" href="https://ha-expert.com/pl/home-assistant-nadwyzka-pv/" />
+<link rel="alternate" hreflang="en" href="https://ha-expert.com/en/home-assistant-pv-surplus/" />
+<link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/home-assistant-solcelleoverskud/" />
+<link rel="alternate" hreflang="x-default" href="https://ha-expert.com/en/home-assistant-pv-surplus/" />
+<title>Intelligent styring af solcelleoverskud i Home Assistant | HA Expert</title>
+<meta name="description" content="Styr solcelleoverskud i Home Assistant med batteri, varmelager, elpatroner, energipriser, off-grid-grænser og prioriterede belastninger." />
+<meta property="og:type" content="article" />
+<meta property="og:locale" content="da_DK" />
+<meta property="og:title" content="Intelligent styring af solcelleoverskud i Home Assistant" />
+<meta property="og:description" content="Solcelleoverskud, batteri, varmelager, elpatroner, off-grid-drift og prioriterede belastninger i én intelligent Home Assistant-strategi." />
+<meta property="og:url" content="https://ha-expert.com/dk/home-assistant-solcelleoverskud/" />
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Intelligent styring af solcelleoverskud i Home Assistant: off-grid, varmelager, elpatroner og prioriteter","description":"Styr solcelleoverskud i Home Assistant med batteri, varmelager, elpatroner, energipriser, off-grid-grænser og prioriterede belastninger.","author":{"@type":"Person","@id":"https://ha-expert.com/#person","name":"Tomasz Furdal"},"publisher":{"@type":"Organization","@id":"https://ha-expert.com/#organization","name":"HA Expert Tomasz Furdal"},"datePublished":"2026-08-13","dateModified":"2026-08-13","mainEntityOfPage":{"@type":"WebPage","@id":"https://ha-expert.com/dk/home-assistant-solcelleoverskud/"},"url":"https://ha-expert.com/dk/home-assistant-solcelleoverskud/","inLanguage":"da"}</script>
+<link rel="stylesheet" href="../../styles.css?v=20260812-tuya-1" />
+<script src="../../consent.js?v=20260420-consent-1">
+</script>
+</head>
+<body class="knowledge-page pl-home-bg-test">
+<header class="scrolled">
+<div class="nav">
+<a class="logo" href="/dk/">
+<img class="logo-image" src="../../assets/brand/logo-wyciete.png" alt="Tomasz Furdal - Home Assistant Expert" />
+</a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-label="Åbn menu">
+<span>☰</span>
+</button>
+<a class="nav-mobile-link about-link" href="/dk/#om-mig">Om mig</a>
+<a class="nav-mobile-link contact-link" href="/dk/#kontakt">Kontakt</a>
+<nav id="primary-nav">
+<ul>
+<li>
+<a href="/dk/#ydelser">Ydelser</a>
+</li>
+<li>
+<a href="/dk/#om-mig">Om mig</a>
+</li>
+<li>
+<a href="/dk/#for-hvem">For hvem</a>
+</li>
+<li>
+<a href="/dk/#saadan-arbejder-jeg">Sådan arbejder jeg</a>
+</li>
+<li>
+<a href="/dk/#priser">Priser</a>
+</li>
+<li>
+<a href="/dk/#kontakt">Kontakt</a>
+</li>
+<li class="nav-secondary-start">
+<a href="/dk/projekter/">Projekter</a>
+</li>
+<li class="nav-guides">
+<button class="nav-guides-toggle" type="button" aria-expanded="false">
+<span>Vejledninger</span>
+<span class="nav-guides-chevron">▾</span>
+</button>
+<ul class="nav-guides-dropdown">
+<li>
+<a href="/dk/hvad-er-ha/">Hvad er Home Assistant?</a>
+</li>
+<li>
+<a href="/dk/installer-home-assistant-paa-raspberry-pi/">Installation på Raspberry Pi</a>
+</li>
+<li>
+<a href="/dk/home-assistant-paa-pc-mini-pc-baerbar/">Installation på PC og mini-PC</a>
+</li>
+<li>
+<a href="/dk/home-assistant-integrationer/">Home Assistant-integrationer</a>
+</li>
+<li>
+<a href="/dk/home-assistant-entitet-utilgaengelig/">Entitet utilgængelig</a>
+</li>
+<li>
+<a href="/dk/home-assistant-automatiseringer/">Home Assistant-automatiseringer</a>
+</li>
+<li>
+<a href="/dk/home-assistant-dashboard/">Home Assistant-dashboard</a>
+</li>
+<li>
+<a href="/dk/home-assistant-database/">Home Assistant-database</a>
+</li>
+<li>
+<a href="/dk/ai-home-assistant/">AI i Home Assistant</a>
+</li>
+<li>
+<a href="/dk/stabilt-zigbee/">Mister Zigbee forbindelsen?</a>
+</li>
+<li>
+<a href="/dk/zha-eller-zigbee2mqtt/">ZHA eller Zigbee2MQTT?</a>
+</li>
+<li>
+<a href="/dk/zigbee-koordinator-home-assistant/">Zigbee-koordinator: USB, LAN eller PoE?</a>
+</li>
+<li>
+<a href="/dk/tuya-home-assistant-lokal-eller-cloud/">Tuya: cloud eller lokalt?</a>
+</li>
+<li>
+<a href="/dk/matter-thread-home-assistant/">Matter og Thread</a>
+</li>
+<li>
+<a href="/dk/esphome-home-assistant/">ESPHome</a>
+</li>
+<li>
+<a href="/dk/home-assistant-energi/">Energi</a>
+</li>
+<li>
+<a href="/dk/home-assistant-opvarmning-energipriser/">Opvarmning og priser</a>
+</li>
+<li>
+<a href="/dk/home-assistant-solcelleoverskud/" aria-current="page">Solcelleoverskud</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/dk/demo/">Demo-panel</a>
+</li>
+</ul>
+</nav>
+<div class="lang-switch">
+<a class="lang-btn" href="/pl/home-assistant-nadwyzka-pv/">
+<img class="lang-flag" src="../../assets/flags/pl.svg" alt="Polski" />
+</a>
+<a class="lang-btn active" href="/dk/home-assistant-solcelleoverskud/" aria-current="page">
+<img class="lang-flag" src="../../assets/flags/dk.svg" alt="Dansk" />
+</a>
+<a class="lang-btn" href="/en/home-assistant-pv-surplus/">
+<img class="lang-flag" src="../../assets/flags/gb.svg" alt="English" />
+</a>
+</div>
+<a class="nav-cta" href="/dk/#kontakt">Gratis vurdering</a>
+</div>
+</header>
+<div class="mobile-bottom-bar">
+<a class="mobile-bottom-link" href="/dk/#om-mig">Om mig</a>
+<a class="mobile-bottom-link" href="/dk/#kontakt">Kontakt</a>
+</div>
+<main>
+<section class="section">
+<div class="section-label">SOLCELLER OG AUTOMATIK</div>
+<h1 class="section-title mobile-match-title">Intelligent styring af solcelleoverskud i Home Assistant: off-grid, varmelager, elpatroner og prioriteter</h1>
+<p class="article-author">Forfatter: <a href="/dk/#om-mig">Tomasz Furdal · HA Expert</a></p>
+<div class="card">
+<p class="section-subtitle">En enkel solcelleautomatik kan tænde et apparat, når produktionen eller eksporten overstiger en bestemt værdi. I et mere avanceret hjem er ét tal ofte ikke nok.</p>
+<p class="section-subtitle">Home Assistant kan kombinere den aktuelle solproduktion, husets forbrug, import og eksport, batteriniveau, temperaturen i varmelageret, energipriser og tilgængelige belastninger.</p>
+<p class="section-subtitle">Systemet kan dermed vurdere både, om der findes et overskud, hvor energien gør mest nytte, og om betingelserne for at bruge den er opfyldt.</p>
+</div>
+</section>
+<section class="section">
+<div class="section-label">REEL EFFEKTBALANCE</div>
+<h2 class="section-title mobile-match-title">Solproduktion er ikke det samme som overskud</h2>
+<div class="card">
+<p class="section-subtitle">Hvis anlægget producerer 5 kW, betyder det ikke automatisk, at 5 kW er ledig til en ekstra belastning. En del kan allerede forsyne huset, oplade batteriet eller drive andet udstyr.</p>
+<p class="section-subtitle">Den faktiske energistrøm, for eksempel eksport til nettet eller en beregnet effektbalance, kan derfor være et bedre styresignal, når dataene findes.</p>
+<p class="section-subtitle">Grundlaget for målingerne beskrives i <a href="/dk/home-assistant-energi/">Energi i Home Assistant: el, solceller, batteri og omkostninger</a>.</p>
+</div>
+</section>
+<section class="section">
+<div class="section-label">IMPORT OG EKSPORT</div>
+<h2 class="section-title mobile-match-title">Energistrømmen som et vigtigt signal</h2>
+<div class="card">
+<p class="section-subtitle">En måler ved nettilslutningen kan vise, om boligen netop importerer eller eksporterer strøm. Eksport kan være et signal om at overveje en ekstra belastning.</p>
+<p class="section-subtitle">Det bør ikke give øjeblikkelige skift ved enhver lille ændring. Tærskler, hysterese, forsinkelser og en minimumsdriftstid kan være nødvendige.</p>
+</div>
+</section>
+<section class="section">
+<div class="section-label">PRIORITETER</div>
+<h2 class="section-title mobile-match-title">Hvilken belastning skal have energien?</h2>
+<div class="card">
+<p class="section-subtitle">Ikke alle belastninger har samme værdi. Et anlæg kan prioritere husets grundforbrug, batteriopladning, varmt vand, varmelager, elbil og andre fleksible forbrugere.</p>
+<p class="section-subtitle">Rækkefølgen er ikke universel. Home Assistant kan udføre den valgte logik, når de nødvendige data og en sikker styringsmetode er tilgængelige.</p>
+</div>
+</section>
+<section class="section">
+<div class="section-label">VARMELAGER</div>
+<h2 class="section-title mobile-match-title">En buffertank kan lagre overskud som varme</h2>
+<div class="card">
+<p class="section-subtitle">I nogle anlæg kan overskydende strøm omdannes til varme og lagres i en buffertank. Det kan give mening, når tanken sikkert kan modtage mere varme, og eksporteret strøm har lav værdi.</p>
+<p class="section-subtitle">Beslutningen bør tage højde for tankens temperatur, varmebehov, andre belastninger, batteriniveau og forholdene i det konkrete anlæg.</p>
+<p class="section-subtitle">Se også <a href="/dk/home-assistant-opvarmning-energipriser/">Home Assistant og opvarmning: hvornår er el, gas eller varmepumpe billigst?</a></p>
+</div>
+</section>
+<section class="section">
+<div class="section-label">EFFEKTTRIN</div>
+<h2 class="section-title mobile-match-title">Flere elpatroner eller varmetrin</h2>
+<div class="card">
+<p class="section-subtitle">Med uafhængigt styrede varmetrin kan Home Assistant tilpasse forbruget bedre til det tilgængelige overskud. Flere trin kan aktiveres i stedet for én stor belastning, der kun er tændt eller slukket.</p>
+<p class="section-subtitle">Elprojektering, beskyttelse og tilladte belastninger skal følge anlæggets design og udstyrets dokumentation.</p>
+</div>
+</section>
+<section class="section">
+<div class="section-label">STYRING</div>
+<h2 class="section-title mobile-match-title">Shelly og andre styringsmoduler</h2>
+<div class="card">
+<p class="section-subtitle">Shelly-enheder og andre egnede moduler kan levere entiteter, som Home Assistant bruger til at skifte passende belastninger eller styresignaler.</p>
+<p class="section-subtitle">Modul, kontaktorer, beskyttelse, ledninger og styringsmetode skal passe til den reelle belastning. En kraftig elpatron må ikke tilsluttes et modul uden kontrol af specifikationer og det elektriske design.</p>
+</div>
+</section>
+<section class="section">
+<div class="section-label">OFF-GRID</div>
+<h2 class="section-title mobile-match-title">Off-grid ændrer prioriteringerne</h2>
+<div class="card">
+<p class="section-subtitle">I et off-grid-system kan energi, der hverken kan bruges eller lagres, have en anden værdi end i et nettilsluttet anlæg. Den tilgængelige effekt begrænses samtidig af inverter, batteri og installation.</p>
+<p class="section-subtitle">Automatikken bør bevare kapacitet til nødvendige belastninger, medregne det aktuelle forbrug og kunne håndtere et pludseligt fald i produktionen. Beskyttelse mod overbelastning kommer før udnyttelsen af hele overskuddet.</p>
+</div>
+</section>
+<section class="section">
+<div class="section-label">BATTERI</div>
+<h2 class="section-title mobile-match-title">Batteriniveau og energireserve</h2>
+<div class="card">
+<p class="section-subtitle">Et fuldt batteri og høj solproduktion kan tale for at starte en fleksibel belastning. Ved et lavt ladeniveau kan den samme energi være mere værd senere.</p>
+<p class="section-subtitle">Nogle anlæg kan også bevare en minimumsreserve til natten, strømsvigt eller nødvendige belastninger. Muligheden for at styre batteriet afhænger af det konkrete system.</p>
+</div>
+</section>
+<section class="section">
+<div class="section-label">LYSNIVEAU</div>
+<h2 class="section-title mobile-match-title">En luxmåler som supplerende information</h2>
+<div class="card">
+<p class="section-subtitle">En luxmåler måler ikke solcelleproduktion og bør ikke erstatte data fra inverteren eller energimåleren. Den kan dog give ekstra kontekst om de lokale forhold lige nu.</p>
+<p class="section-subtitle">Højt lysniveau om morgenen, stigende produktion og et passende batteriniveau kan pege på gode forhold fremover. Om aftenen optræder den samme buffertemperatur, mens solindstrålingen falder.</p>
+</div>
+</section>
+<section class="section">
+<div class="section-label">SOLPROGNOSE</div>
+<h2 class="section-title mobile-match-title">Aktuel lysmåling og prognose</h2>
+<div class="card">
+<p class="section-subtitle">En lysmåling beskriver forholdene på stedet nu, mens en produktionsprognose forsøger at vurdere fremtidig solproduktion. De to datakilder kan have forskellige roller.</p>
+<p class="section-subtitle">Home Assistant kan reagere på reelle målinger og bruge prognosen som ekstra kontekst ved lagring eller forbrug af energi. En prognose er ikke en garanti.</p>
+</div>
+</section>
+<section class="section">
+<div class="section-label">KONTEKST</div>
+<h2 class="section-title mobile-match-title">Hvorfor kan én tærskel være for enkel?</h2>
+<div class="card">
+<p class="section-subtitle">Det samme overskud betyder noget forskelligt, når batteriet er på 20% eller 100%, bufferen er kold eller varm, det er morgen eller aften, prisen ændrer sig, eller huset kører off-grid.</p>
+<p class="section-subtitle">En mere avanceret automatik kan vurdere flere betingelser samlet i stedet for kun at reagere på én eksporttærskel.</p>
+</div>
+</section>
+<section class="section">
+<div class="section-label">STABILITET</div>
+<h2 class="section-title mobile-match-title">Hysterese og stabil drift</h2>
+<div class="card">
+<p class="section-subtitle">En sky kan hurtigt ændre solproduktionen. En øjeblikkelig reaktion på hver måling kan få udstyret til at skifte unødigt ofte.</p>
+<p class="section-subtitle">Afhængigt af belastningen kan der være behov for hysterese, bekræftelsestid, minimumsdrift og pause, rækkefølge for trin samt en effektmargin. De konkrete værdier skal følge udstyret og installationen.</p>
+</div>
+</section>
+<section class="section">
+<div class="section-label">SIKKERHED</div>
+<h2 class="section-title mobile-match-title">Sikkerhed kommer før optimering</h2>
+<div class="card">
+<p class="section-subtitle">Energiautomatik må ikke omgå beskyttelser. Maksimumstemperaturer, sikkerhedstermostater, overstrømsbeskyttelse, invertergrænser, batteribegrænsninger og producentkrav skal fungere uafhængigt.</p>
+<p class="section-subtitle">Home Assistant bør kun styre udstyret inden for det driftsområde, det er konstrueret til.</p>
+</div>
+</section>
+<section class="section">
+<div class="section-label">BESLUTNING</div>
+<h2 class="section-title mobile-match-title">Hvad kan en god beslutning omfatte?</h2>
+<div class="card">
+<p class="section-subtitle">En god strategi kan vurdere det reelle overskud, batteriets ladebehov, buffertemperatur, energipris, udsigten til fortsat produktion, sikkert tilgængelig effekt og belastningernes aktuelle prioritet.</p>
+<p class="section-subtitle">Der findes ikke én rigtig algoritme til alle boliger. Logikken skal designes ud fra reelle data, udstyr og anlæggets begrænsninger.</p>
+</div>
+</section>
+<section class="section">
+<div class="section-label">FØRSTE SKRIDT</div>
+<h2 class="section-title mobile-match-title">Hvor skal man begynde?</h2>
+<div class="card">
+<p class="section-subtitle">Fastlæg først, hvilke oplysninger og styringsmuligheder der findes:</p>
+<ul>
+<li>solproduktion, import, eksport og husets forbrug;</li>
+<li>batteriniveau og invertergrænser;</li>
+<li>temperaturer i buffer og varmtvandsbeholder;</li>
+<li>sikre metoder til styring af belastninger;</li>
+<li>energipriser;</li>
+<li>eventuelt solprognose og måling af lysniveau.</li>
+</ul>
+<p class="section-subtitle">Først derefter bør prioriteter og betingelser for automatikken fastlægges.</p>
+</div>
+</section>
+<section class="section">
+<div class="section-label">HJÆLP</div>
+<h2 class="section-title mobile-match-title">Har du brug for hjælp til at styre solcelleoverskud?</h2>
+<div class="card">
+<p class="section-subtitle">Hvis du har solceller, batterilager, buffertank, elpatroner eller et off-grid-anlæg, kan jeg vurdere de tilgængelige data og styringsmuligheder.</p>
+<p class="section-subtitle">Jeg kan også designe Home Assistant-logik, der tager højde for solproduktion, batteri, temperaturer, belastningernes prioriteter og anlæggets reelle begrænsninger.</p>
+<a class="knowledge-help-link knowledge-help-link--mobile-flow" href="/dk/#kontakt">
+<span class="knowledge-help-main">
+<span class="knowledge-help-title">Kontakt mig.</span>
+<span class="knowledge-help-detail">Den indledende vurdering af din henvendelse er gratis og uforpligtende.</span>
+</span> <span class="knowledge-help-accent">→ klik her</span>
+</a>
+</div>
+</section>
+<section class="section">
+<div class="section-label">KILDER</div>
+<h2 class="section-title mobile-match-title">Kilder og aktualitet</h2>
+<div class="card">
+<p class="section-subtitle">Kontrolleret den 13. august 2026 mod den aktuelle dokumentation fra Home Assistant:</p>
+<ul>
+<li><a href="https://www.home-assistant.io/docs/energy/" target="_blank" rel="noopener noreferrer"><strong>Home Assistant</strong><br />Energistyring</a></li>
+<li><a href="https://www.home-assistant.io/docs/automation/condition/" target="_blank" rel="noopener noreferrer"><strong>Home Assistant</strong><br />Betingelser i automatik</a></li>
+<li><a href="https://www.home-assistant.io/docs/automation/templating/" target="_blank" rel="noopener noreferrer"><strong>Home Assistant</strong><br />Skabeloner i automatik</a></li>
+<li><a href="https://www.home-assistant.io/integrations/sensor/" target="_blank" rel="noopener noreferrer"><strong>Home Assistant</strong><br />Sensorer</a></li>
+<li><a href="https://www.home-assistant.io/integrations/statistics/" target="_blank" rel="noopener noreferrer"><strong>Home Assistant</strong><br />Statistik</a></li>
+</ul>
+</div>
+</section>
+</main>
+<footer>
+<div class="footer-inner">
+<span>© <span id="year">
+</span> Tomasz Furdal - Home Assistant &amp; Integrations</span>
+<span>Betaling: bankoverførsel, Revolut, PayPal, MobilePay</span>
+</div>
+</footer>
+<script src="../../nav.js?v=20260730-mobile-nav-12">
+</script>
+<script>document.getElementById("year").textContent=new Date().getFullYear();</script>
+</body>
+</html>

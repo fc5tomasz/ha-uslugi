@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="robots" content="index,follow" />
+<meta name="author" content="Tomasz Furdal" />
+<meta name="theme-color" content="#0f172a" />
+<link rel="canonical" href="https://ha-expert.com/en/home-assistant-pv-surplus/" />
+<link rel="alternate" hreflang="pl" href="https://ha-expert.com/pl/home-assistant-nadwyzka-pv/" />
+<link rel="alternate" hreflang="en" href="https://ha-expert.com/en/home-assistant-pv-surplus/" />
+<link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/home-assistant-solcelleoverskud/" />
+<link rel="alternate" hreflang="x-default" href="https://ha-expert.com/en/home-assistant-pv-surplus/" />
+<title>Smart PV surplus management in Home Assistant | HA Expert</title>
+<meta name="description" content="Manage PV surplus in Home Assistant using battery state, thermal storage, heaters, energy prices, off-grid limits and load priorities." />
+<meta property="og:type" content="article" />
+<meta property="og:locale" content="en_GB" />
+<meta property="og:title" content="Smart PV surplus management in Home Assistant" />
+<meta property="og:description" content="PV surplus, batteries, thermal storage, heaters, off-grid operation and load priorities in one context-aware Home Assistant strategy." />
+<meta property="og:url" content="https://ha-expert.com/en/home-assistant-pv-surplus/" />
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Smart PV surplus management in Home Assistant: off-grid, thermal storage, heaters and priorities","description":"Manage PV surplus in Home Assistant using battery state, thermal storage, heaters, energy prices, off-grid limits and load priorities.","author":{"@type":"Person","@id":"https://ha-expert.com/#person","name":"Tomasz Furdal"},"publisher":{"@type":"Organization","@id":"https://ha-expert.com/#organization","name":"HA Expert Tomasz Furdal"},"datePublished":"2026-08-13","dateModified":"2026-08-13","mainEntityOfPage":{"@type":"WebPage","@id":"https://ha-expert.com/en/home-assistant-pv-surplus/"},"url":"https://ha-expert.com/en/home-assistant-pv-surplus/","inLanguage":"en"}</script>
+<link rel="stylesheet" href="../../styles.css?v=20260812-tuya-1" />
+<script src="../../consent.js?v=20260420-consent-1">
+</script>
+</head>
+<body class="knowledge-page pl-home-bg-test">
+<header class="scrolled">
+<div class="nav">
+<a class="logo" href="/en/">
+<img class="logo-image" src="../../assets/brand/logo-wyciete.png" alt="Tomasz Furdal - Home Assistant Expert" />
+</a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-label="Open menu">
+<span>☰</span>
+</button>
+<a class="nav-mobile-link about-link" href="/en/#about-me">About me</a>
+<a class="nav-mobile-link contact-link" href="/en/#contact">Contact</a>
+<nav id="primary-nav">
+<ul>
+<li>
+<a href="/en/#services">Services</a>
+</li>
+<li>
+<a href="/en/#about-me">About me</a>
+</li>
+<li>
+<a href="/en/#who-its-for">Who it’s for</a>
+</li>
+<li>
+<a href="/en/#how-i-work">How I work</a>
+</li>
+<li>
+<a href="/en/#pricing">Pricing</a>
+</li>
+<li>
+<a href="/en/#contact">Contact</a>
+</li>
+<li class="nav-secondary-start">
+<a href="/en/projects/">Projects</a>
+</li>
+<li class="nav-guides">
+<button class="nav-guides-toggle" type="button" aria-expanded="false">
+<span>Guides</span>
+<span class="nav-guides-chevron">▾</span>
+</button>
+<ul class="nav-guides-dropdown">
+<li>
+<a href="/en/what-is-ha/">What is Home Assistant?</a>
+</li>
+<li>
+<a href="/en/install-home-assistant-on-raspberry-pi/">Install on Raspberry Pi</a>
+</li>
+<li>
+<a href="/en/home-assistant-on-pc-mini-pc-laptop/">Install on PC and mini PC</a>
+</li>
+<li>
+<a href="/en/home-assistant-integrations/">Home Assistant integrations</a>
+</li>
+<li>
+<a href="/en/home-assistant-entity-unavailable/">Entity unavailable</a>
+</li>
+<li>
+<a href="/en/home-assistant-automations/">Home Assistant automations</a>
+</li>
+<li>
+<a href="/en/home-assistant-dashboard/">Home Assistant dashboard</a>
+</li>
+<li>
+<a href="/en/home-assistant-database/">Home Assistant database</a>
+</li>
+<li>
+<a href="/en/ai-home-assistant/">AI in Home Assistant</a>
+</li>
+<li>
+<a href="/en/stable-zigbee/">Zigbee keeps disconnecting?</a>
+</li>
+<li>
+<a href="/en/zha-vs-zigbee2mqtt/">ZHA or Zigbee2MQTT?</a>
+</li>
+<li>
+<a href="/en/zigbee-coordinator-home-assistant/">Zigbee coordinator: USB, LAN or PoE?</a>
+</li>
+<li>
+<a href="/en/tuya-home-assistant-local-vs-cloud/">Tuya: cloud or local?</a>
+</li>
+<li>
+<a href="/en/matter-thread-home-assistant/">Matter and Thread</a>
+</li>
+<li>
+<a href="/en/esphome-home-assistant/">ESPHome</a>
+</li>
+<li>
+<a href="/en/home-assistant-energy/">Energy</a>
+</li>
+<li>
+<a href="/en/home-assistant-heating-energy-costs/">Heating costs</a>
+</li>
+<li>
+<a href="/en/home-assistant-pv-surplus/" aria-current="page">PV surplus</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/en/demo/">Demo panel</a>
+</li>
+</ul>
+</nav>
+<div class="lang-switch">
+<a class="lang-btn" href="/pl/home-assistant-nadwyzka-pv/">
+<img class="lang-flag" src="../../assets/flags/pl.svg" alt="Polski" />
+</a>
+<a class="lang-btn" href="/dk/home-assistant-solcelleoverskud/">
+<img class="lang-flag" src="../../assets/flags/dk.svg" alt="Dansk" />
+</a>
+<a class="lang-btn active" href="/en/home-assistant-pv-surplus/" aria-current="page">
+<img class="lang-flag" src="../../assets/flags/gb.svg" alt="English" />
+</a>
+</div>
+<a class="nav-cta" href="/en/#contact">Free assessment</a>
+</div>
+</header>
+<div class="mobile-bottom-bar">
+<a class="mobile-bottom-link" href="/en/#about-me">About me</a>
+<a class="mobile-bottom-link" href="/en/#contact">Contact</a>
+</div>
+<main>
+<section class="section">
+<div class="section-label">SOLAR AND AUTOMATION</div>
+<h1 class="section-title mobile-match-title">Smart PV surplus management in Home Assistant: off-grid, thermal storage, heaters and priorities</h1>
+<p class="article-author">Author: <a href="/en/#about-me">Tomasz Furdal · HA Expert</a></p>
+<div class="card">
+<p class="section-subtitle">A basic solar automation can switch on a device after production or export exceeds a set value. In a more advanced home, one number is often not enough.</p>
+<p class="section-subtitle">Home Assistant can combine current PV production, household demand, grid import and export, battery state, thermal-store temperature, energy prices and available loads.</p>
+<p class="section-subtitle">The system can then assess not only whether surplus exists, but where the energy is most useful and whether the conditions are right to use it.</p>
+</div>
+</section>
+<section class="section">
+<div class="section-label">REAL POWER BALANCE</div>
+<h2 class="section-title mobile-match-title">PV production is not the same as surplus</h2>
+<div class="card">
+<p class="section-subtitle">If the array produces 5 kW, this does not mean that 5 kW is available for an extra load. Part of that power may already supply the home, charge the battery or run other equipment.</p>
+<p class="section-subtitle">The actual flow, such as grid export or a calculated power balance, can therefore be a better control signal when suitable data is available.</p>
+<p class="section-subtitle">The measurement basics are explained in <a href="/en/home-assistant-energy/">Energy in Home Assistant: electricity, solar, battery and costs</a>.</p>
+</div>
+</section>
+<section class="section">
+<div class="section-label">IMPORT AND EXPORT</div>
+<h2 class="section-title mobile-match-title">Energy flow as an important signal</h2>
+<div class="card">
+<p class="section-subtitle">A meter at the grid connection can show whether the home is currently importing or exporting. Export may be a reason to consider starting an additional load.</p>
+<p class="section-subtitle">It should not cause instant switching after every small fluctuation. Thresholds, hysteresis, delays and minimum run times may be needed.</p>
+</div>
+</section>
+<section class="section">
+<div class="section-label">PRIORITIES</div>
+<h2 class="section-title mobile-match-title">Which load should receive the energy?</h2>
+<div class="card">
+<p class="section-subtitle">Not every load has the same value. A system may prioritise essential household demand, battery charging, hot water, thermal storage, EV charging and other flexible loads.</p>
+<p class="section-subtitle">There is no universal order. Home Assistant can implement the chosen priorities when it has the required data and a safe way to control the equipment.</p>
+</div>
+</section>
+<section class="section">
+<div class="section-label">THERMAL STORAGE</div>
+<h2 class="section-title mobile-match-title">A buffer tank can store surplus as heat</h2>
+<div class="card">
+<p class="section-subtitle">Some installations can convert surplus electricity into heat and retain it in a buffer tank. This may be useful when more heat can safely be stored and exported energy has little value.</p>
+<p class="section-subtitle">The decision should consider buffer temperature, heat demand, other loads, battery state and the conditions of the specific installation.</p>
+<p class="section-subtitle">For more context, see <a href="/en/home-assistant-heating-energy-costs/">Home Assistant and heating: when is electricity, gas or a heat pump cheaper?</a></p>
+</div>
+</section>
+<section class="section">
+<div class="section-label">POWER STAGES</div>
+<h2 class="section-title mobile-match-title">Several heaters or heating stages</h2>
+<div class="card">
+<p class="section-subtitle">With independently controlled heating stages, Home Assistant can match demand more closely to the available surplus. Additional stages can be enabled instead of using one large load that is only on or off.</p>
+<p class="section-subtitle">Electrical design, protection and permitted loads must follow the installation design and equipment documentation.</p>
+</div>
+</section>
+<section class="section">
+<div class="section-label">CONTROL</div>
+<h2 class="section-title mobile-match-title">Shelly and other control modules</h2>
+<div class="card">
+<p class="section-subtitle">Shelly devices and other suitable modules can expose entities that Home Assistant uses to switch appropriate loads or control signals.</p>
+<p class="section-subtitle">The module, contactors, protection, wiring and control method must suit the real load. A high-power heater must not be connected to a module without checking its ratings and the electrical design.</p>
+</div>
+</section>
+<section class="section">
+<div class="section-label">OFF-GRID</div>
+<h2 class="section-title mobile-match-title">Off-grid operation changes the priorities</h2>
+<div class="card">
+<p class="section-subtitle">In an off-grid system, energy that cannot be used or stored may have a different value than in a grid-connected installation. Available power is also limited by the inverter, battery and wiring.</p>
+<p class="section-subtitle">Automation should preserve capacity for essential loads, account for current demand and allow for a sudden drop in production. Preventing overload takes priority over consuming every surplus watt.</p>
+</div>
+</section>
+<section class="section">
+<div class="section-label">BATTERY</div>
+<h2 class="section-title mobile-match-title">Battery state and energy reserve</h2>
+<div class="card">
+<p class="section-subtitle">A full battery and strong PV production can support starting a flexible load. With a low state of charge, the same energy may be more valuable later.</p>
+<p class="section-subtitle">Some systems may also retain a minimum reserve for the night, outages or essential loads. The available battery controls depend on the particular system.</p>
+</div>
+</section>
+<section class="section">
+<div class="section-label">LIGHT LEVEL</div>
+<h2 class="section-title mobile-match-title">A lux sensor as supporting information</h2>
+<div class="card">
+<p class="section-subtitle">A lux sensor does not measure PV output and should not replace inverter or energy-meter data. It can, however, add context about current local conditions.</p>
+<p class="section-subtitle">High morning light, rising production and a suitable battery state may indicate favourable conditions ahead. In the evening, the same buffer temperature occurs while sunlight is falling.</p>
+</div>
+</section>
+<section class="section">
+<div class="section-label">PV FORECAST</div>
+<h2 class="section-title mobile-match-title">Current light measurement and forecast</h2>
+<div class="card">
+<p class="section-subtitle">A light measurement describes local conditions now, while a PV forecast attempts to estimate future production. The two sources can serve different purposes.</p>
+<p class="section-subtitle">Home Assistant can respond to real measurements and use the forecast as additional context when deciding whether to store or consume energy. A forecast is not a guarantee.</p>
+</div>
+</section>
+<section class="section">
+<div class="section-label">CONTEXT</div>
+<h2 class="section-title mobile-match-title">Why can one threshold be too simple?</h2>
+<div class="card">
+<p class="section-subtitle">The same surplus means something different when the battery is at 20% or 100%, the buffer is cold or hot, it is morning or evening, the price changes or the home operates off-grid.</p>
+<p class="section-subtitle">More advanced automation can evaluate several conditions together instead of reacting only to one export threshold.</p>
+</div>
+</section>
+<section class="section">
+<div class="section-label">STABILITY</div>
+<h2 class="section-title mobile-match-title">Hysteresis and stable equipment operation</h2>
+<div class="card">
+<p class="section-subtitle">A passing cloud can change PV output quickly. Responding immediately to every reading could switch equipment far too often.</p>
+<p class="section-subtitle">Depending on the load, the design may require hysteresis, confirmation time, minimum run and stop times, stage order and a power margin. Exact values must come from the equipment and installation.</p>
+</div>
+</section>
+<section class="section">
+<div class="section-label">SAFETY</div>
+<h2 class="section-title mobile-match-title">Safety comes before optimisation</h2>
+<div class="card">
+<p class="section-subtitle">Energy automation must not bypass protective systems. Maximum temperatures, safety thermostats, overcurrent protection, inverter limits, battery restrictions and manufacturer requirements must remain independent.</p>
+<p class="section-subtitle">Home Assistant should control equipment only within the operating range for which it was designed.</p>
+</div>
+</section>
+<section class="section">
+<div class="section-label">DECISION</div>
+<h2 class="section-title mobile-match-title">What can a good decision include?</h2>
+<div class="card">
+<p class="section-subtitle">A good strategy can assess real surplus, battery charging needs, buffer temperature, energy price, likely continued production, safely available power and the current priority of each load.</p>
+<p class="section-subtitle">There is no single correct algorithm for every home. The logic must be designed around real data, equipment and installation limits.</p>
+</div>
+</section>
+<section class="section">
+<div class="section-label">FIRST STEP</div>
+<h2 class="section-title mobile-match-title">Where should you start?</h2>
+<div class="card">
+<p class="section-subtitle">First establish which information and controls are available:</p>
+<ul>
+<li>PV production, import, export and household demand;</li>
+<li>battery state and inverter limits;</li>
+<li>buffer and hot-water temperatures;</li>
+<li>safe methods for controlling loads;</li>
+<li>energy prices;</li>
+<li>optionally a PV forecast and light-level measurement.</li>
+</ul>
+<p class="section-subtitle">Only then should priorities and automation conditions be defined.</p>
+</div>
+</section>
+<section class="section">
+<div class="section-label">HELP</div>
+<h2 class="section-title mobile-match-title">Need help managing PV surplus?</h2>
+<div class="card">
+<p class="section-subtitle">If you have solar panels, battery storage, a buffer tank, heaters or an off-grid installation, I can assess the available data and control options.</p>
+<p class="section-subtitle">I can also design Home Assistant logic around PV, batteries, temperatures, load priorities and the real limits of your installation.</p>
+<a class="knowledge-help-link knowledge-help-link--mobile-flow" href="/en/#contact">
+<span class="knowledge-help-main">
+<span class="knowledge-help-title">Contact me.</span>
+<span class="knowledge-help-detail">The initial assessment of your request is free and without obligation.</span>
+</span> <span class="knowledge-help-accent">→ click here</span>
+</a>
+</div>
+</section>
+<section class="section">
+<div class="section-label">SOURCES</div>
+<h2 class="section-title mobile-match-title">Sources and currency</h2>
+<div class="card">
+<p class="section-subtitle">Checked on 13 August 2026 against current Home Assistant documentation:</p>
+<ul>
+<li><a href="https://www.home-assistant.io/docs/energy/" target="_blank" rel="noopener noreferrer"><strong>Home Assistant</strong><br />Energy management</a></li>
+<li><a href="https://www.home-assistant.io/docs/automation/condition/" target="_blank" rel="noopener noreferrer"><strong>Home Assistant</strong><br />Automation conditions</a></li>
+<li><a href="https://www.home-assistant.io/docs/automation/templating/" target="_blank" rel="noopener noreferrer"><strong>Home Assistant</strong><br />Automation templating</a></li>
+<li><a href="https://www.home-assistant.io/integrations/sensor/" target="_blank" rel="noopener noreferrer"><strong>Home Assistant</strong><br />Sensors</a></li>
+<li><a href="https://www.home-assistant.io/integrations/statistics/" target="_blank" rel="noopener noreferrer"><strong>Home Assistant</strong><br />Statistics</a></li>
+</ul>
+</div>
+</section>
+</main>
+<footer>
+<div class="footer-inner">
+<span>© <span id="year">
+</span> Tomasz Furdal - Home Assistant &amp; Integrations</span>
+<span>Payments: bank transfer, Revolut, PayPal, MobilePay</span>
+</div>
+</footer>
+<script src="../../nav.js?v=20260730-mobile-nav-12">
+</script>
+<script>document.getElementById("year").textContent=new Date().getFullYear();</script>
+</body>
+</html>
