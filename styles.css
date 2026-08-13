@@ -513,6 +513,10 @@ nav .nav-guides-dropdown{
   z-index:50;
   display:none;
   min-width:280px;
+  max-height:calc(100dvh - 88px);
+  overflow-x:hidden;
+  overflow-y:auto;
+  overscroll-behavior:contain;
   padding:8px;
   border:1px solid rgba(132,156,187,.2);
   border-radius:14px;
@@ -2126,7 +2130,10 @@ html[lang="da"] .logo [data-i18n="logo_text"],html[lang="da-DK"] .logo [data-i18
     position:static;
     min-width:0;
     width:100%;
+    max-height:none;
     margin:2px 0 6px;
+    overflow:visible;
+    overscroll-behavior:auto;
     padding:4px 0 4px 14px;
     border:0;
     border-radius:0;
