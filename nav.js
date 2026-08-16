@@ -1,13 +1,5 @@
 const navStates = [];
-const guideMenuStates = [];
-
-const closeAllGuideMenus = (except = null, restoreFocus = false) => {
-  guideMenuStates.forEach(({ menu, closeMenu }) => {
-    if (menu !== except) {
-      closeMenu(restoreFocus);
-    }
-  });
-};
+const MOBILE_NAV_BREAKPOINT = 1328;
 
 if ("scrollRestoration" in window.history) {
   window.history.scrollRestoration = "manual";
@@ -15,7 +7,6 @@ if ("scrollRestoration" in window.history) {
 
 const closeAllMobileMenus = () => {
   navStates.forEach(({ closeMenu }) => closeMenu());
-  closeAllGuideMenus();
 };
 
 const syncHeaderState = () => {
@@ -97,7 +88,7 @@ const runAfterLayoutSettles = (callback) => {
 };
 
 const stabilizeInitialMobileView = () => {
-  if (window.innerWidth > 820) {
+  if (window.innerWidth > MOBILE_NAV_BREAKPOINT) {
     syncHeaderState();
     return;
   }
@@ -116,7 +107,7 @@ const stabilizeInitialMobileView = () => {
 };
 
 const handleMobileNavigation = (event, link) => {
-  if (window.innerWidth > 820) {
+  if (window.innerWidth > MOBILE_NAV_BREAKPOINT) {
     return;
   }
 
@@ -149,7 +140,7 @@ const stabilizeDesktopNavWidths = () => {
     link.style.minWidth = "";
   });
 
-  if (window.innerWidth <= 820) {
+  if (window.innerWidth <= MOBILE_NAV_BREAKPOINT) {
     return;
   }
 
@@ -224,7 +215,7 @@ const initDesktopSectionNavigation = () => {
   const syncActiveSection = () => {
     frameRequested = false;
 
-    if (window.innerWidth <= 820) {
+    if (window.innerWidth <= MOBILE_NAV_BREAKPOINT) {
       setActiveLink();
       return;
     }
@@ -320,7 +311,7 @@ document.querySelectorAll(".nav").forEach((nav) => {
   });
 
   window.addEventListener("resize", () => {
-    if (window.innerWidth > 820) {
+    if (window.innerWidth > MOBILE_NAV_BREAKPOINT) {
       closeMenu();
     }
   });
@@ -330,72 +321,8 @@ document.querySelectorAll(".nav").forEach((nav) => {
 
 initDesktopSectionNavigation();
 
-document.querySelectorAll(".nav-guides").forEach((menu) => {
-  const toggle = menu.querySelector(".nav-guides-toggle");
-  const dropdown = menu.querySelector(".nav-guides-dropdown");
-
-  if (!toggle || !dropdown) {
-    return;
-  }
-
-  const closeMenu = (restoreFocus = false) => {
-    menu.classList.remove("is-open");
-    toggle.setAttribute("aria-expanded", "false");
-
-    if (restoreFocus) {
-      toggle.focus();
-    }
-  };
-
-  const openMenu = () => {
-    closeAllGuideMenus(menu);
-    menu.classList.add("is-open");
-    toggle.setAttribute("aria-expanded", "true");
-  };
-
-  guideMenuStates.push({ menu, closeMenu });
-  menu.classList.toggle(
-    "has-current",
-    Boolean(dropdown.querySelector('[aria-current="page"]')),
-  );
-
-  toggle.addEventListener("click", () => {
-    if (menu.classList.contains("is-open")) {
-      closeMenu();
-    } else {
-      openMenu();
-    }
-  });
-
-  dropdown.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => closeMenu());
-  });
-
-  closeMenu();
-});
-
-document.addEventListener("click", (event) => {
-  guideMenuStates.forEach(({ menu, closeMenu }) => {
-    if (!menu.contains(event.target)) {
-      closeMenu();
-    }
-  });
-});
-
 document.addEventListener("keydown", (event) => {
-  if (event.key !== "Escape") {
-    return;
-  }
-
-  let guideWasOpen = false;
-  guideMenuStates.forEach(({ menu, closeMenu }) => {
-    if (menu.classList.contains("is-open")) {
-      guideWasOpen = true;
-      closeMenu(true);
-    }
-  });
-
-  if (!guideWasOpen) {
+  if (event.key === "Escape") {
     closeAllMobileMenus();
   }
 });

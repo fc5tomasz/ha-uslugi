@@ -34,7 +34,7 @@
   "url":"https://ha-expert.com/pl/home-assistant-na-raspberry-pi/","inLanguage":"pl"
 }
   </script>
-  <link rel="stylesheet" href="../../styles.css?v=20260811-raspberry-guide-52" />
+  <link rel="stylesheet" href="../../styles.css?v=20260816-guides-nav-1" />
 </head>
 <body class="knowledge-page pl-home-bg-test raspberry-guide">
   <header class="scrolled"><div class="nav">
@@ -44,14 +44,7 @@
     <nav id="primary-nav" aria-label="Główna nawigacja"><ul>
       <li><a href="/pl/#uslugi">Usługi</a></li><li><a href="/pl/#o-mnie">O mnie</a></li><li><a href="/pl/#dla-kogo">Dla kogo</a></li><li><a href="/pl/#jak-pracuje">Jak pracuję</a></li><li><a href="/pl/#cennik">Cennik</a></li><li><a href="/pl/#kontakt">Kontakt</a></li>
       <li class="nav-secondary-start"><a href="/pl/projekty/">Projekty</a></li>
-      <li class="nav-guides"><button class="nav-guides-toggle" type="button" aria-expanded="false" aria-haspopup="true"><span>Poradniki</span><span class="nav-guides-chevron" aria-hidden="true">▾</span></button><ul class="nav-guides-dropdown">
-        <li><a href="/pl/co-to-jest-ha/">Czym jest Home Assistant?</a></li><li><a href="/pl/home-assistant-na-raspberry-pi/" aria-current="page">Instalacja na Raspberry Pi</a></li><li><a href="/pl/home-assistant-na-pc-mini-pc-laptopie/">Instalacja na PC i mini PC</a></li><li><a href="/pl/integracje-home-assistant/">Integracje Home Assistant</a></li>
-              <li><a href="/pl/encja-unavailable-home-assistant/">Encja unavailable</a></li><li><a href="/pl/automatyzacje-home-assistant/">Automatyzacje Home Assistant</a></li><li><a href="/pl/dashboard-home-assistant/">Dashboard Home Assistant</a></li><li><a href="/pl/baza-danych-home-assistant/">Baza danych Home Assistant</a></li><li><a href="/pl/ai-home-assistant/">AI w Home Assistant</a></li><li><a href="/pl/stabilne-zigbee/">Zigbee zrywa połączenie?</a></li><li><a href="/pl/zha-czy-zigbee2mqtt/">ZHA czy Zigbee2MQTT?</a></li><li><a href="/pl/koordynator-zigbee-home-assistant/">Koordynator Zigbee: USB, LAN czy PoE?</a></li><li><a href="/pl/tuya-home-assistant-lokalnie-czy-chmura/">Tuya: chmura czy lokalnie?</a></li><li><a href="/pl/matter-thread-home-assistant/">Matter i Thread</a></li><li><a href="/pl/esphome-home-assistant/">ESPHome</a></li><li><a href="/pl/energia-home-assistant/">Energia</a></li><li><a href="/pl/home-assistant-ogrzewanie-koszty-energii/">Ogrzewanie</a></li>
-<li>
-<a href="/pl/home-assistant-nadwyzka-pv/">Nadwyżka PV</a>
-</li>
-<li><a href="/pl/rekuperacja-home-assistant/">Rekuperacja</a></li><li><a href="/pl/home-assistant-obecnosc-domownikow/">Obecność domowników</a></li><li><a href="/pl/hikvision-home-assistant/">Hikvision</a></li>
-      <li><a href="/pl/home-assistant-multimedia/">Multimedia</a></li></ul></li><li><a href="/pl/demo/">Demo panelu</a></li>
+      <li><a href="/pl/poradniki/">Poradniki</a></li><li><a href="/pl/demo/">Demo panelu</a></li>
     </ul></nav>
     <div class="lang-switch" aria-label="Wybór języka"><a class="lang-btn active" href="/pl/home-assistant-na-raspberry-pi/" aria-label="Polski" aria-current="page"><img class="lang-flag" src="../../assets/flags/pl.svg" alt="" aria-hidden="true" /></a><a class="lang-btn" href="/dk/installer-home-assistant-paa-raspberry-pi/" aria-label="Dansk"><img class="lang-flag" src="../../assets/flags/dk.svg" alt="" aria-hidden="true" /></a><a class="lang-btn" href="/en/install-home-assistant-on-raspberry-pi/" aria-label="English"><img class="lang-flag" src="../../assets/flags/gb.svg" alt="" aria-hidden="true" /></a></div>
     <a class="nav-cta" href="/pl/#kontakt">Bezpłatna ocena</a>
@@ -61,7 +54,7 @@
   <main>
     <section class="section"><div class="section-label">INSTALACJA HAOS</div><h1 class="section-title mobile-match-title">Home Assistant na Raspberry Pi 4 i 5 – instalacja krok po kroku</h1><p class="article-author">Autor: <a href="/pl/#o-mnie">Tomasz Furdal · HA Expert</a></p><div class="card">
       <p class="section-subtitle">Ten poradnik prowadzi od wyboru sprzętu i zapisania Home Assistant OS na karcie microSD aż do pierwszego logowania, zabezpieczenia instalacji i wykonania kopii zapasowej. Procedura dotyczy Raspberry Pi 4 i Raspberry Pi 5 przeznaczonego głównie do obsługi Home Assistanta.</p>
-      <p class="section-subtitle"><strong>Obraz Home Assistant OS zapisuje się bezpośrednio na karcie.</strong> Nie instaluj wcześniej Raspberry Pi OS i nie używaj poleceń <code>apt</code>. Zapis nośnika usuwa wszystkie znajdujące się na nim dane. Instrukcja dotyczy Home Assistant OS — nie instalacji w Dockerze ani na Raspberry Pi OS.</p>
+      <p class="section-subtitle"><strong>Obraz Home Assistant OS zapisuje się bezpośrednio na karcie.</strong> Nie instaluj wcześniej Raspberry Pi OS i nie używaj poleceń <code>apt</code>. Zapis nośnika usuwa wszystkie znajdujące się na nim dane. Instrukcja dotyczy Home Assistant OS, a nie instalacji w Dockerze ani na Raspberry Pi OS.</p>
     </div></section>
 
     <nav class="section guide-toc" aria-label="Spis treści"><div class="section-label">SPIS TREŚCI</div><div class="card"><ol>
@@ -75,11 +68,11 @@
 
     <section class="section" id="sprzet"><div class="section-label">LISTA SPRZĘTU</div><h2 class="section-title mobile-match-title">Co będzie potrzebne?</h2><div class="services-grid services-grid-primary">
       <article class="card"><h3>Oficjalne minimum</h3><ul><li>Raspberry Pi 4 albo Raspberry Pi 5 z co najmniej 2 GB RAM,</li><li>prawidłowy zasilacz dla konkretnego modelu,</li><li>karta microSD co najmniej 32 GB, najlepiej klasy A2,</li><li>czytnik kart microSD,</li><li>przewód Ethernet,</li><li>komputer z Windows, macOS albo Linuxem.</li></ul></article>
-      <article class="card"><h3>Praktyczna rekomendacja HA Expert</h3><ul><li>4 GB RAM jako rozsądny wybór dla typowego systemu,</li><li>markowa karta A2 lub high endurance,</li><li>obudowa i właściwe chłodzenie, szczególnie dla Pi 5,</li><li>stabilne połączenie Ethernet,</li><li>regularne kopie przechowywane także poza Raspberry Pi.</li></ul><p><strong>4 GB nie jest oficjalnym minimum</strong> — to praktyczna rekomendacja zapewniająca zapas na rozwój.</p></article>
+      <article class="card"><h3>Praktyczna rekomendacja HA Expert</h3><ul><li>4 GB RAM jako rozsądny wybór dla typowego systemu,</li><li>markowa karta A2 lub high endurance,</li><li>obudowa i właściwe chłodzenie, szczególnie dla Pi 5,</li><li>stabilne połączenie Ethernet,</li><li>regularne kopie przechowywane także poza Raspberry Pi.</li></ul><p><strong>4 GB nie jest oficjalnym minimum.</strong> To praktyczna rekomendacja zapewniająca zapas na rozwój.</p></article>
     </div></section>
 
     <section class="section" id="nosnik"><div class="section-label">NOŚNIK</div><h2 class="section-title mobile-match-title">Karta microSD czy SSD?</h2><div class="card">
-      <p class="section-subtitle">Najprostsza oficjalna ścieżka startowa wykorzystuje kartę microSD. Dobra karta A2 wystarcza, aby rozpocząć pracę. Nie da się uczciwie podać jednego czasu jej życia — wpływają na niego jakość nośnika, zasilanie i intensywność zapisów.</p>
+      <p class="section-subtitle">Najprostsza oficjalna ścieżka startowa wykorzystuje kartę microSD. Dobra karta A2 wystarcza, aby rozpocząć pracę. Nie da się uczciwie podać jednego czasu jej życia; wpływają na niego jakość nośnika, zasilanie i intensywność zapisów.</p>
       <p class="section-subtitle">Szybszy i trwalszy nośnik może mieć znaczenie w systemie działającym całą dobę i zapisującym dużo danych. SSD jest rozsądną późniejszą rozbudową, ale wymaga zgodnego adaptera i konfiguracji sprzętu. W głównej instrukcji używamy microSD, aby nie komplikować pierwszej instalacji.</p>
     </div></section>
 
@@ -90,7 +83,7 @@
 
     <section class="section" id="zapis"><div class="section-label">KROK 2</div><h2 class="section-title mobile-match-title">Zapisz Home Assistant OS na karcie</h2><div class="card">
       <ol class="guide-steps"><li>Uruchom Raspberry Pi Imager i wybierz urządzenie: Raspberry Pi 4 albo Raspberry Pi 5.</li><li>Wybierz system operacyjny i przejdź do <strong>Other specific-purpose OS → Home automation → Home Assistant</strong>.</li><li>Wskaż obraz Home Assistant OS odpowiedni dokładnie dla swojego modelu.</li><li>Wybierz kartę microSD jako nośnik. Ponownie sprawdź jej nazwę i pojemność.</li><li>Wybierz <strong>Next</strong>, następnie <strong>Write</strong> i zaakceptuj usunięcie danych.</li><li>Poczekaj, aż program zakończy zapis oraz weryfikację. Wybierz <strong>Finish</strong> i bezpiecznie wysuń kartę.</li></ol>
-      <p class="section-subtitle">Ustawienia konta Raspberry Pi OS, SSH lub personalizacji Raspberry Pi OS nie są częścią instalacji HAOS. Nie konfiguruj nieistniejącego konta systemowego. Jeżeli Imager nie działa, pobierz aktualny obraz ze <a href="https://www.home-assistant.io/installation/raspberrypi/" target="_blank" rel="noopener noreferrer">strony instalacyjnej Home Assistant</a> i zapisz go zgodnym narzędziem, na przykład Balena Etcher — bez wybierania stałego numeru wydania z przypadkowego źródła.</p>
+      <p class="section-subtitle">Ustawienia konta Raspberry Pi OS, SSH lub personalizacji Raspberry Pi OS nie są częścią instalacji HAOS. Nie konfiguruj nieistniejącego konta systemowego. Jeżeli Imager nie działa, pobierz aktualny obraz ze <a href="https://www.home-assistant.io/installation/raspberrypi/" target="_blank" rel="noopener noreferrer">strony instalacyjnej Home Assistant</a> i zapisz go zgodnym narzędziem, na przykład Balena Etcher, bez wybierania stałego numeru wydania z przypadkowego źródła.</p>
     </div></section>
 
     <section class="section" id="start"><div class="section-label">KROK 3</div><h2 class="section-title mobile-match-title">Pierwsze uruchomienie Raspberry Pi</h2><div class="card"><ol class="guide-steps">
@@ -98,7 +91,7 @@
     </ol><p class="section-subtitle">Pierwszy start wymaga przygotowania i pobrania składników. Czas zależy od modelu, karty i połączenia sieciowego, dlatego nie zakładaj sztywnego czasu i nie odłączaj zasilania tylko dlatego, że ekran przygotowania jest widoczny dłużej.</p></div></section>
 
     <section class="section" id="przegladarka"><div class="section-label">KROK 4</div><h2 class="section-title mobile-match-title">Otwórz Home Assistanta w przeglądarce</h2><div class="card">
-      <p class="section-subtitle">Na komputerze lub telefonie podłączonym do tej samej sieci otwórz kolejno:</p><ul class="guide-addresses"><li><code>http://homeassistant.local:8123</code></li><li><code>http://homeassistant:8123</code></li><li><code>http://192.168.x.x:8123</code> — po podstawieniu adresu IP Raspberry Pi.</li></ul>
+      <p class="section-subtitle">Na komputerze lub telefonie podłączonym do tej samej sieci otwórz kolejno:</p><ul class="guide-addresses"><li><code>http://homeassistant.local:8123</code></li><li><code>http://homeassistant:8123</code></li><li><code>http://192.168.x.x:8123</code>, po podstawieniu adresu IP Raspberry Pi.</li></ul>
       <p class="section-subtitle">Adres IP znajdziesz w panelu routera na liście klientów DHCP lub podłączonych urządzeń. Jest to lokalny adres przypisany Pi w Twojej sieci. Przy pierwszym uruchomieniu użyj <code>http://</code>; <code>https://</code> zadziała dopiero po osobnym skonfigurowaniu szyfrowania lub bezpiecznej usługi zdalnej.</p>
     </div></section>
 
@@ -147,6 +140,6 @@
     </ul></div></section>
   </main>
   <footer><div class="footer-inner"><span>© <span id="year"></span> Tomasz Furdal – Home Assistant &amp; Integrations</span><span>Płatności: przelew bankowy, Revolut, PayPal, MobilePay</span></div></footer>
-  <script src="../../nav.js?v=20260730-mobile-nav-12"></script><script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+  <script src="../../nav.js?v=20260816-guides-nav-1"></script><script>document.getElementById('year').textContent=new Date().getFullYear();</script>
 </body>
 </html>

@@ -13,7 +13,7 @@
     <xhtml:link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://ha-expert.com/en/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ha-expert.com/" />
-    <lastmod>2026-07-30</lastmod>
+    <lastmod>2026-08-16</lastmod>
   </url>
   <url>
     <loc>https://ha-expert.com/dk/</loc>
@@ -21,7 +21,7 @@
     <xhtml:link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://ha-expert.com/en/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ha-expert.com/" />
-    <lastmod>2026-08-12</lastmod>
+    <lastmod>2026-08-16</lastmod>
   </url>
   <url>
     <loc>https://ha-expert.com/en/</loc>
@@ -29,7 +29,67 @@
     <xhtml:link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://ha-expert.com/en/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ha-expert.com/" />
-    <lastmod>2026-07-30</lastmod>
+    <lastmod>2026-08-16</lastmod>
+  </url>
+  <url>
+    <loc>https://ha-expert.com/pl/poradniki/</loc>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://ha-expert.com/pl/poradniki/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://ha-expert.com/en/guides/" />
+    <xhtml:link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/vejledninger/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ha-expert.com/en/guides/" />
+    <lastmod>2026-08-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://ha-expert.com/en/guides/</loc>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://ha-expert.com/pl/poradniki/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://ha-expert.com/en/guides/" />
+    <xhtml:link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/vejledninger/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ha-expert.com/en/guides/" />
+    <lastmod>2026-08-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://ha-expert.com/dk/vejledninger/</loc>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://ha-expert.com/pl/poradniki/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://ha-expert.com/en/guides/" />
+    <xhtml:link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/vejledninger/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ha-expert.com/en/guides/" />
+    <lastmod>2026-08-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://ha-expert.com/pl/konserwacja-home-assistant/</loc>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://ha-expert.com/pl/konserwacja-home-assistant/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://ha-expert.com/en/home-assistant-maintenance/" />
+    <xhtml:link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/home-assistant-vedligeholdelse/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ha-expert.com/en/home-assistant-maintenance/" />
+    <lastmod>2026-08-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ha-expert.com/en/home-assistant-maintenance/</loc>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://ha-expert.com/pl/konserwacja-home-assistant/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://ha-expert.com/en/home-assistant-maintenance/" />
+    <xhtml:link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/home-assistant-vedligeholdelse/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ha-expert.com/en/home-assistant-maintenance/" />
+    <lastmod>2026-08-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ha-expert.com/dk/home-assistant-vedligeholdelse/</loc>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://ha-expert.com/pl/konserwacja-home-assistant/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://ha-expert.com/en/home-assistant-maintenance/" />
+    <xhtml:link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/home-assistant-vedligeholdelse/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ha-expert.com/en/home-assistant-maintenance/" />
+    <lastmod>2026-08-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ha-expert.com/pl/projekty/</loc>

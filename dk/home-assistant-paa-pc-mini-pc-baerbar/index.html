@@ -25,7 +25,7 @@
 <meta property="og:description" content="Vælg den rigtige metode, og installér Home Assistant OS på en x86-64-computer trin for trin." />
 <meta property="og:url" content="https://ha-expert.com/dk/home-assistant-paa-pc-mini-pc-baerbar/" />
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Home Assistant på PC, mini-PC eller bærbar – installation og opsætning fra bunden","description":"Installér Home Assistant på x86-64-hardware med HAOS, en VM eller Container, og gennemfør den første opsætning.","author":{"@type":"Person","@id":"https://ha-expert.com/#person","name":"Tomasz Furdal"},"publisher":{"@type":"Organization","@id":"https://ha-expert.com/#organization","name":"HA Expert Tomasz Furdal","url":"https://ha-expert.com/","logo":{"@type":"ImageObject","url":"https://ha-expert.com/assets/brand/ha-expert-logo-transparent.png"}},"datePublished":"2026-08-12","dateModified":"2026-08-12","mainEntityOfPage":{"@type":"WebPage","@id":"https://ha-expert.com/dk/home-assistant-paa-pc-mini-pc-baerbar/"},"url":"https://ha-expert.com/dk/home-assistant-paa-pc-mini-pc-baerbar/","inLanguage":"da"}</script>
-<link rel="stylesheet" href="../../styles.css?v=20260812-iphone-guide-54" />
+<link rel="stylesheet" href="../../styles.css?v=20260816-guides-nav-1" />
 </head>
 <body class="knowledge-page pl-home-bg-test raspberry-guide">
   <header class="scrolled">
@@ -61,46 +61,7 @@
 <li class="nav-secondary-start">
 <a href="/dk/projekter/">Projekter</a>
 </li>
-<li class="nav-guides">
-<button class="nav-guides-toggle" type="button" aria-expanded="false" aria-haspopup="true">
-<span>Guides</span>
-<span class="nav-guides-chevron" aria-hidden="true">▾</span>
-</button>
-<ul class="nav-guides-dropdown">
-<li>
-<a href="/dk/hvad-er-ha/">Hvad er Home Assistant?</a>
-</li>
-<li>
-<a href="/dk/installer-home-assistant-paa-raspberry-pi/">Installation på Raspberry Pi</a>
-</li>
-<li><a href="/dk/home-assistant-paa-pc-mini-pc-baerbar/" aria-current="page">Installation på PC og mini-PC</a></li>
-<li>
-<a href="/dk/home-assistant-integrationer/">Home Assistant-integrationer</a>
-</li>
-<li>
-<a href="/dk/home-assistant-entitet-utilgaengelig/">Entitet unavailable</a>
-</li>
-<li>
-<a href="/dk/home-assistant-automatiseringer/">Home Assistant-automatiseringer</a>
-</li>
-<li>
-<a href="/dk/home-assistant-dashboard/">Home Assistant-dashboard</a>
-</li>
-<li>
-<a href="/dk/home-assistant-database/">Home Assistant-database</a>
-</li>
-<li>
-<a href="/dk/ai-home-assistant/">AI i Home Assistant</a>
-</li>
-<li>
-<a href="/dk/stabilt-zigbee/">Afbryder Zigbee forbindelsen?</a>
-</li><li><a href="/dk/zha-eller-zigbee2mqtt/">ZHA eller Zigbee2MQTT?</a></li><li><a href="/dk/zigbee-koordinator-home-assistant/">Zigbee-koordinator: USB, LAN eller PoE?</a></li><li><a href="/dk/tuya-home-assistant-lokal-eller-cloud/">Tuya: cloud eller lokalt?</a></li><li><a href="/dk/matter-thread-home-assistant/">Matter og Thread</a></li><li><a href="/dk/esphome-home-assistant/">ESPHome</a></li><li><a href="/dk/home-assistant-energi/">Energi</a></li><li><a href="/dk/home-assistant-opvarmning-energipriser/">Opvarmning og priser</a></li>
-<li>
-<a href="/dk/home-assistant-solcelleoverskud/">Solcelleoverskud</a>
-</li>
-<li><a href="/dk/home-assistant-ventilation-varmegenvinding/">Ventilation</a></li><li><a href="/dk/home-assistant-tilstedevaerelse/">Tilstedeværelse</a></li><li><a href="/dk/hikvision-home-assistant/">Hikvision</a></li>
-<li><a href="/dk/home-assistant-multimedier/">Multimedier</a></li></ul>
-</li>
+<li><a href="/dk/vejledninger/">Vejledninger</a></li>
 <li>
 <a href="/dk/demo/">Dashboard-demo</a>
 </li>
@@ -293,7 +254,7 @@
 <ol class="guide-steps">
 <li>Hent det aktuelle <a href="https://ubuntu.com/download/desktop" target="_blank" rel="noopener noreferrer">Ubuntu Desktop-image</a>, og opret et bootbart USB-drev efter Ubuntus vejledning.</li>
 <li>Sæt det i målcomputeren, og vælg USB-drevets UEFI-post i startmenuen.</li>
-<li>Vælg <strong>Try Ubuntu</strong> — ikke <strong>Install Ubuntu</strong>.</li>
+<li>Vælg <strong>Try Ubuntu</strong>, ikke <strong>Install Ubuntu</strong>.</li>
 <li>Forbind live-miljøet til internettet, og åbn den officielle Generic x86-64-vejledning.</li>
 </ol>
 <p>Ubuntu kører fra USB-drevet og bruges kun til at skrive HAOS-imaget på den interne disk.</p>
@@ -370,7 +331,7 @@
 <p class="section-subtitle">Container er en understøttet metode for personer, der selv vil vedligeholde Linux og Docker Engine. Den har ingen Supervisor eller HAOS-apps. MQTT, Zigbee2MQTT, Z-Wave JS og andre hjælpetjenester køres og opdateres som separate containere.</p>
 <p class="section-subtitle">Den aktuelle officielle vejledning kræver Docker Engine 23.0.0 eller nyere og angiver, at Docker Desktop ikke virker. Konfigurationen skal gemmes permanent i <code>/config</code>; tidszone og adgang til nødvendige enheder skal indstilles bevidst.</p>
 <p>
-<strong>Vælg Container, fordi du er klar til at administrere løsningen — ikke kun fordi Docker lyder bekendt.</strong> Du har ansvaret for værtens system, containernetværk, opdateringer, backup og USB-adgang.</p>
+<strong>Vælg Container, fordi du er klar til at administrere løsningen, ikke kun fordi Docker lyder bekendt.</strong> Du har ansvaret for værtens system, containernetværk, opdateringer, backup og USB-adgang.</p>
 </div>
 </section>
     <section class="section" id="migrering">
@@ -476,7 +437,7 @@
 <p class="section-subtitle">Kontrolleret den 12. august 2026 mod aktuelle officielle materialer:</p>
 <ul>
 <li>
-<a href="https://www.home-assistant.io/installation/" target="_blank" rel="noopener noreferrer">Home Assistant — Installation</a>,</li>
+<a href="https://www.home-assistant.io/installation/" target="_blank" rel="noopener noreferrer">Home Assistant: Installation</a>,</li>
 <li>
 <a href="https://www.home-assistant.io/installation/generic-x86-64" target="_blank" rel="noopener noreferrer">Generic x86-64</a>,</li>
 <li>
@@ -500,7 +461,7 @@
 <span>Betaling: bankoverførsel, Revolut, PayPal, MobilePay</span>
 </div>
 </footer>
-<script src="../../nav.js?v=20260730-mobile-nav-12">
+<script src="../../nav.js?v=20260816-guides-nav-1">
 </script>
 <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
 </body>
