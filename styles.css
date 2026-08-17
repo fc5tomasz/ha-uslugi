@@ -2355,6 +2355,29 @@ html[lang="da"] .logo [data-i18n="logo_text"],html[lang="da-DK"] .logo [data-i18
     font-weight:500;
   }
 
+  body.pl-home-bg-test .hero-contact-link-pl{
+    grid-template-columns:auto 1fr;
+  }
+
+  body.pl-home-bg-test .hero-contact-link-pl .hero-link-contact{
+    grid-column:1 / -1;
+    grid-row:2;
+  }
+
+  body.pl-home-bg-test .hero-contact-link-pl .hero-link-arrow{
+    grid-column:1;
+    grid-row:3;
+  }
+
+  body.pl-home-bg-test .hero-contact-link-pl .hero-link-cta{
+    grid-column:2;
+    grid-row:3;
+  }
+
+  body.pl-home-bg-test .hero-contact-link-pl .hero-link-detail{
+    grid-row:4;
+  }
+
   .showcase-grid .showcase-card{
     background:none;
     border:0;
