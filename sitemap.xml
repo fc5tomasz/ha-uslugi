@@ -384,24 +384,24 @@
     <xhtml:link rel="alternate" hreflang="pl" href="https://ha-expert.com/pl/demo/" />
     <xhtml:link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/demo/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://ha-expert.com/en/demo/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ha-expert.com/demo/" />
-    <lastmod>2026-08-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ha-expert.com/en/demo/" />
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://ha-expert.com/en/demo/</loc>
     <xhtml:link rel="alternate" hreflang="pl" href="https://ha-expert.com/pl/demo/" />
     <xhtml:link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/demo/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://ha-expert.com/en/demo/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ha-expert.com/demo/" />
-    <lastmod>2026-08-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ha-expert.com/en/demo/" />
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://ha-expert.com/dk/demo/</loc>
     <xhtml:link rel="alternate" hreflang="pl" href="https://ha-expert.com/pl/demo/" />
     <xhtml:link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/demo/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://ha-expert.com/en/demo/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ha-expert.com/demo/" />
-    <lastmod>2026-08-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ha-expert.com/en/demo/" />
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://ha-expert.com/pl/home-assistant-na-pc-mini-pc-laptopie/</loc>
