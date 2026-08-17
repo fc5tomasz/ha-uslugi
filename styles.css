@@ -2321,6 +2321,40 @@ html[lang="da"] .logo [data-i18n="logo_text"],html[lang="da-DK"] .logo [data-i18
     display:inline;
   }
 
+  body.pl-home-bg-test .hero-contact-link-en{
+    display:grid;
+    grid-template-columns:auto auto 1fr;
+    column-gap:6px;
+    row-gap:4px;
+    align-items:baseline;
+  }
+
+  body.pl-home-bg-test .hero-contact-link-en .hero-link-main{
+    grid-column:1 / -1;
+    margin-bottom:2px;
+  }
+
+  body.pl-home-bg-test .hero-contact-link-en .hero-link-contact{
+    grid-column:1;
+    white-space:nowrap;
+  }
+
+  body.pl-home-bg-test .hero-contact-link-en .hero-link-arrow{
+    grid-column:2;
+  }
+
+  body.pl-home-bg-test .hero-contact-link-en .hero-link-cta{
+    grid-column:3;
+  }
+
+  body.pl-home-bg-test .hero-contact-link-en .hero-link-detail{
+    grid-column:1 / -1;
+    grid-row:3;
+    color:var(--muted-strong);
+    font-size:.92em;
+    font-weight:500;
+  }
+
   .showcase-grid .showcase-card{
     background:none;
     border:0;
