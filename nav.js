@@ -1,5 +1,136 @@
 const navStates = [];
 const MOBILE_NAV_BREAKPOINT = 1328;
+const NAV_FORUM_COOKIE_MAX_AGE = 60 * 60 * 24 * 365;
+const NAV_FORUM_URL = "https://forum.ha-expert.com";
+const NAV_FORUM_GA4_ID = "G-085D9ZQG66";
+const NAV_FORUM_CONSENT_KEY = "ha_consent_v1";
+
+const hasForumAnalyticsConsent = () => {
+  try {
+    return window.localStorage.getItem(NAV_FORUM_CONSENT_KEY) === "granted";
+  } catch (error) {
+    return false;
+  }
+};
+
+const configureForumAnalytics = () => {
+  if (typeof window.gtag !== "function") {
+    return;
+  }
+
+  window.gtag("config", NAV_FORUM_GA4_ID, {
+    send_page_view: false,
+  });
+};
+
+const getForumCommunityLocale = () => {
+  const locale = document.documentElement.lang.split("-")[0].toLowerCase();
+  return locale === "dk" ? "da" : locale;
+};
+
+const rememberNavForumCommunity = () => {
+  const locale = getForumCommunityLocale();
+  if (!["pl", "da", "en"].includes(locale)) {
+    return;
+  }
+
+  const domain = window.location.hostname.endsWith("ha-expert.com")
+    ? "; Domain=.ha-expert.com"
+    : "";
+  document.cookie = `ha_community=${locale}; Max-Age=${NAV_FORUM_COOKIE_MAX_AGE}; Path=/; SameSite=Lax${domain}${
+    window.location.protocol === "https:" ? "; Secure" : ""
+  }`;
+};
+
+const getForumLinkLocation = (link) => {
+  if (link.closest(".nav-mobile-only")) {
+    return "primary_navigation_mobile";
+  }
+
+  if (link.closest(".nav-desktop-only")) {
+    return "primary_navigation_desktop";
+  }
+
+  return "other";
+};
+
+const trackForumClick = (event, link) => {
+  rememberNavForumCommunity();
+
+  if (!hasForumAnalyticsConsent() || typeof window.gtag !== "function") {
+    return;
+  }
+
+  const opensInCurrentTab =
+    event.button === 0 &&
+    !event.metaKey &&
+    !event.ctrlKey &&
+    !event.shiftKey &&
+    !event.altKey &&
+    (!link.target || link.target === "_self");
+  let navigationCompleted = false;
+  const continueNavigation = () => {
+    if (!opensInCurrentTab || navigationCompleted) {
+      return;
+    }
+
+    navigationCompleted = true;
+    window.location.assign(link.href);
+  };
+
+  if (opensInCurrentTab) {
+    event.preventDefault();
+    window.setTimeout(continueNavigation, 300);
+  }
+
+  window.gtag("event", "forum_click", {
+    send_to: NAV_FORUM_GA4_ID,
+    forum_language: getForumCommunityLocale(),
+    device_type: window.innerWidth <= MOBILE_NAV_BREAKPOINT ? "mobile" : "desktop",
+    link_location: getForumLinkLocation(link),
+    source_path: window.location.pathname,
+    transport_type: "beacon",
+    event_callback: continueNavigation,
+  });
+};
+
+const bindForumLinks = () => {
+  document.querySelectorAll(".forum-community-link").forEach((link) => {
+    if (link.dataset.forumTrackingBound === "true") {
+      return;
+    }
+
+    link.dataset.forumTrackingBound = "true";
+    link.addEventListener("click", (event) => trackForumClick(event, link));
+  });
+};
+
+const ensureDesktopForumLinks = () => {
+  document.querySelectorAll(".nav > nav > ul").forEach((list) => {
+    if (list.querySelector(".forum-desktop-link")) {
+      return;
+    }
+
+    const forumItem = document.createElement("li");
+    const forumLink = document.createElement("a");
+    forumItem.className = "nav-desktop-only";
+    forumLink.className = "forum-community-link forum-desktop-link";
+    forumLink.href = NAV_FORUM_URL;
+    forumLink.setAttribute("aria-label", "Forum HA Expert");
+    forumLink.textContent = "Forum";
+    forumItem.append(forumLink);
+
+    const demoItem = Array.from(list.children).find((item) =>
+      item.querySelector("a[href*='/demo/']"),
+    );
+    list.insertBefore(forumItem, demoItem || null);
+  });
+
+  bindForumLinks();
+};
+
+configureForumAnalytics();
+ensureDesktopForumLinks();
 
 if ("scrollRestoration" in window.history) {
   window.history.scrollRestoration = "manual";
