@@ -292,15 +292,20 @@
     <section class="section" id="kontakt">
       <div class="section-label">Kontakt</div>
       <h2 class="section-title mobile-match-title">Beskriv problemet og send din henvendelse</h2>
-      <p class="section-subtitle">Beskriv kort problemet eller målet. På den baggrund vurderer jeg, om jeg kan hjælpe. Hvis jeg har brug for skærmbilleder, billeder eller yderligere oplysninger, beder jeg om dem via e-mail.</p>
+      <p class="section-subtitle">Jeg gennemgår din henvendelse for at se, om jeg kan hjælpe. Jeg svarer på e-mail. Du kan vedhæfte skærmbilleder, billeder eller dokumenter.</p>
       <div class="contact-grid contact-grid-single">
         <div class="card contact-card">
-          <form id="contactForm" action="https://formspree.io/f/mkgdyyrv" method="POST" enctype="multipart/form-data">
+          <form id="contactForm" action="https://formularz.ha-expert.com" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="lang" value="dk" />
+            <input id="submissionId" type="hidden" name="submission_id" value="" />
+            <div class="contact-honeypot" aria-hidden="true">
+              <label for="website">Websted</label>
+              <input id="website" name="website" type="text" tabindex="-1" autocomplete="off" />
+            </div>
             <div class="form-grid">
               <div class="form-group">
-                <label for="name">Navn<span>*</span></label>
-                <input id="name" name="name" type="text" required />
+                <label for="name">Fulde navn<span>*</span></label>
+                <input id="name" name="name" type="text" autocomplete="name" required />
               </div>
               <div class="form-group">
                 <label for="email">E-mail<span>*</span></label>
@@ -312,8 +317,19 @@
               </div>
             </div>
             <div class="form-actions">
-              <button class="btn-primary" type="submit">Send formular</button>
-              <a class="btn-ghost contact-email-action" href="mailto:fc5tomasz@gmail.com" aria-label="Skriv en e-mail">
+              <div class="contact-primary-actions">
+                <button class="btn-primary" type="submit">Send formular</button>
+                <div class="contact-attachment-action">
+                  <input id="attachments" name="attachments" type="file" multiple />
+                  <label class="btn-ghost contact-attachment-label" for="attachments">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                      <path d="m20.5 11.5-8.4 8.4a6 6 0 0 1-8.5-8.5l9.2-9.2a4 4 0 0 1 5.7 5.7l-9.2 9.2a2 2 0 0 1-2.8-2.8l8.5-8.5" />
+                    </svg>
+                    <span>Tilføj vedhæftninger</span>
+                  </label>
+                </div>
+              </div>
+              <a class="btn-ghost contact-email-action" href="mailto:kontakt@ha-expert.com" aria-label="Skriv en e-mail">
                 <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                   <path d="M4 6h16a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2Z" />
                   <path d="m22 8-8.97 5.7a2 2 0 0 1-2.06 0L2 8" />
@@ -321,6 +337,7 @@
                 <span>Skriv en e-mail</span>
               </a>
             </div>
+            <ul id="attachmentList" class="contact-attachment-list" aria-label="Valgte vedhæftninger" aria-live="polite" hidden></ul>
             <div id="formStatus" class="form-status" role="status" aria-live="polite"></div>
           </form>
         </div>
@@ -352,10 +369,64 @@
     const form = document.getElementById("contactForm");
     const statusEl = document.getElementById("formStatus");
     const nameInput = document.getElementById("name");
+    const attachmentsInput = document.getElementById("attachments");
+    const attachmentList = document.getElementById("attachmentList");
+    const submissionIdInput = document.getElementById("submissionId");
     const submitButton = form.querySelector('button[type="submit"]');
     const idleButtonText = submitButton.textContent;
+    const originalFormAction = form.action;
     let statusResetTimer = null;
     let isSubmitting = false;
+    const selectedAttachments = [];
+
+    const renderAttachmentList = () => {
+      attachmentList.replaceChildren();
+      attachmentList.hidden = selectedAttachments.length === 0;
+
+      selectedAttachments.forEach((file, index) => {
+        const item = document.createElement("li");
+        const fileName = document.createElement("span");
+        const removeButton = document.createElement("button");
+
+        fileName.className = "contact-attachment-name";
+        fileName.textContent = file.name;
+        removeButton.className = "contact-attachment-remove";
+        removeButton.type = "button";
+        removeButton.textContent = "×";
+        removeButton.setAttribute("aria-label", `Fjern vedhæftningen ${file.name}`);
+        removeButton.addEventListener("click", () => {
+          selectedAttachments.splice(index, 1);
+          renderAttachmentList();
+        });
+
+        item.append(fileName, removeButton);
+        attachmentList.append(item);
+      });
+    };
+
+    attachmentsInput.addEventListener("change", (event) => {
+      selectedAttachments.push(...Array.from(event.currentTarget.files || []));
+      attachmentsInput.value = "";
+      renderAttachmentList();
+    });
+
+    const getSubmissionId = () => {
+      if (submissionIdInput.value) {
+        return submissionIdInput.value;
+      }
+      submissionIdInput.value = window.crypto && typeof window.crypto.randomUUID === "function"
+        ? window.crypto.randomUUID()
+        : `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+      return submissionIdInput.value;
+    };
+
+    const getContactFormEndpoint = () => {
+      const isLocalPreview = /^(localhost|127\.0\.0\.1|192\.168\.2\.149|100\.109\.244\.70)$/.test(window.location.hostname);
+      if (isLocalPreview) {
+        return `http://${window.location.hostname}:8092/api/contact`;
+      }
+      return originalFormAction;
+    };
 
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
@@ -378,9 +449,13 @@
       statusEl.textContent = "Sender...";
 
       try {
+        getSubmissionId();
         const formData = new FormData(form);
+        selectedAttachments.forEach((file) => {
+          formData.append(attachmentsInput.name, file, file.name);
+        });
 
-        const response = await fetch(form.action, {
+        const response = await fetch(getContactFormEndpoint(), {
           method: "POST",
           headers: { Accept: "application/json" },
           body: formData
@@ -388,9 +463,16 @@
         const result = await response.json().catch(() => null);
 
         if (response.ok && result && result.ok === true) {
+          const isProductionSite = window.location.hostname === "ha-expert.com" || window.location.hostname === "www.ha-expert.com";
+          if (isProductionSite && typeof gtag === "function") {
+            gtag('event', 'conversion', {'send_to': 'AW-18087588380/ej4vCOfps54cEJzk6rBD'});
+          }
           statusEl.className = "form-status ok";
           statusEl.textContent = "Din besked er sendt. Jeg svarer så hurtigt som muligt.";
           form.reset();
+          selectedAttachments.length = 0;
+          renderAttachmentList();
+          submissionIdInput.value = "";
           nameInput.focus();
           statusResetTimer = window.setTimeout(() => {
             statusEl.className = "form-status";
@@ -398,7 +480,7 @@
             statusResetTimer = null;
           }, 10000);
         } else {
-          throw new Error(`Formspree rejected the submission (${response.status})`);
+          throw new Error(`Contact service rejected the submission (${response.status})`);
         }
       } catch (error) {
         console.error("Form submit failed:", error);

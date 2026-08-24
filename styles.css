@@ -1630,6 +1630,11 @@ h1{
   grid-template-columns:minmax(0,1fr);
 }
 
+body.pl-home-bg-test #kontakt > .section-subtitle,
+body.pl-home-bg-test #contact > .section-subtitle{
+  max-width:none;
+}
+
 .contact-card form{
   margin-top:18px;
 }
@@ -1657,6 +1662,16 @@ h1{
 
 .form-group.full{grid-column:1 / -1}
 label span{color:#f97373;margin-left:2px}
+
+.contact-honeypot{
+  position:absolute !important;
+  width:1px;
+  height:1px;
+  overflow:hidden;
+  clip:rect(0 0 0 0);
+  clip-path:inset(50%);
+  white-space:nowrap;
+}
 
 input,
 textarea{
@@ -1713,9 +1728,126 @@ textarea:focus{
 .form-actions{
   display:flex;
   align-items:center;
+  justify-content:space-between;
   gap:16px;
   margin-top:22px;
   margin-bottom:10px;
+}
+
+.contact-primary-actions,
+.contact-attachment-action{
+  display:flex;
+  align-items:center;
+}
+
+.contact-primary-actions{
+  gap:12px;
+}
+
+.contact-attachment-action{
+  gap:10px;
+}
+
+.contact-attachment-action input[type="file"]{
+  position:absolute;
+  width:1px;
+  height:1px;
+  overflow:hidden;
+  clip:rect(0 0 0 0);
+  clip-path:inset(50%);
+  white-space:nowrap;
+}
+
+.contact-attachment-label{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  min-height:46px;
+  padding:0 15px;
+  cursor:pointer;
+}
+
+.contact-attachment-label span{
+  margin-left:0;
+  color:var(--text);
+}
+
+.contact-attachment-label svg,
+.contact-email-action svg{
+  width:18px;
+  height:18px;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:1.8;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+
+.contact-attachment-action input[type="file"]:focus-visible + .contact-attachment-label{
+  border-color:rgba(18,200,132,.52);
+  box-shadow:0 0 0 3px rgba(18,200,132,.12);
+}
+
+.contact-card .contact-attachment-list{
+  display:grid;
+  gap:7px;
+  max-width:560px;
+  margin:4px 0 8px;
+  padding:0;
+  list-style:none;
+}
+
+.contact-card .contact-attachment-list[hidden]{
+  display:none;
+}
+
+.contact-card .contact-attachment-list li{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  min-height:34px;
+  padding:4px 2px;
+  line-height:1.3;
+}
+
+.contact-card .contact-attachment-list li::before{
+  display:none;
+}
+
+.contact-attachment-name{
+  min-width:0;
+  overflow:hidden;
+  color:var(--muted);
+  font-size:.84rem;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+.contact-attachment-remove{
+  display:inline-flex;
+  flex:0 0 auto;
+  align-items:center;
+  justify-content:center;
+  width:30px;
+  height:30px;
+  padding:0;
+  color:var(--muted);
+  border:0;
+  border-radius:7px;
+  background:transparent;
+  cursor:pointer;
+  font:inherit;
+  font-size:1.25rem;
+  line-height:1;
+}
+
+.contact-attachment-remove:hover,
+.contact-attachment-remove:focus-visible{
+  color:var(--text);
+  background:rgba(102,226,255,.08);
+  outline:none;
 }
 
 .form-actions .btn-primary{
@@ -1730,16 +1862,6 @@ textarea:focus{
   gap:10px;
   min-height:46px;
   padding:0 18px;
-}
-
-.contact-email-action svg{
-  width:18px;
-  height:18px;
-  fill:none;
-  stroke:currentColor;
-  stroke-width:1.8;
-  stroke-linecap:round;
-  stroke-linejoin:round;
 }
 
 .form-status{
@@ -2467,6 +2589,17 @@ html[lang="da"] .logo [data-i18n="logo_text"],html[lang="da-DK"] .logo [data-i18
     flex-direction:column;
     align-items:stretch;
     gap:12px;
+  }
+
+  .contact-primary-actions{
+    flex-direction:column;
+    align-items:stretch;
+  }
+
+  .contact-attachment-action,
+  .contact-attachment-label{
+    width:100%;
+    box-sizing:border-box;
   }
 
   .form-actions .btn-primary,
