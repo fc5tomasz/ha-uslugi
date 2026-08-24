@@ -2340,6 +2340,10 @@ html[lang="da"] .logo [data-i18n="logo_text"],html[lang="da-DK"] .logo [data-i18
     text-wrap:pretty;
   }
 
+  .knowledge-page .card{
+    font-family:"Inter","Sora","Avenir Next","Segoe UI",sans-serif;
+  }
+
   .coordinator-desktop-only{
     display:none;
   }
