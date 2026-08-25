@@ -1290,6 +1290,10 @@ h1{
   color:var(--accent-2);
 }
 
+.knowledge-page .card li > .knowledge-link{
+  margin-top:0;
+}
+
 .knowledge-help-link{
   display:inline-flex;
   align-items:center;
