@@ -141,7 +141,7 @@
 
       <div class="grid-3 services-grid services-grid-primary">
         <div class="card service-card">
-          <h3>Start i porządki w systemie</h3>
+          <h3>Uruchomienie i konfiguracja Home Assistant</h3>
           <ul>
             <li>Instalacja</li>
             <li>Konfiguracja</li>
@@ -375,6 +375,8 @@
     window.addEventListener("scroll", syncPlHeaderState, { passive: true });
 
     const form = document.getElementById("contactForm");
+    const heroContactLink = document.querySelector(".hero-contact-link");
+    const contactEmailLink = document.querySelector(".contact-email-action");
     const statusEl = document.getElementById("formStatus");
     const nameInput = document.getElementById("name");
     const attachmentsInput = document.getElementById("attachments");
@@ -385,7 +387,64 @@
     const originalFormAction = form.action;
     let statusResetTimer = null;
     let isSubmitting = false;
+    let contactFormStarted = false;
     const selectedAttachments = [];
+
+    const contactEventDestinations = {
+      contact_cta_click: "AW-18087588380/JrvTCIPa1uccEJzk6rBD",
+      contact_form_start: "AW-18087588380/DmEaCIba1uccEJzk6rBD",
+      contact_email_click: "AW-18087588380/IOIeCIna1uccEJzk6rBD"
+    };
+
+    const hasContactAnalyticsConsent = () => {
+      try {
+        return window.localStorage.getItem("ha_consent_v1") === "granted";
+      } catch (error) {
+        return false;
+      }
+    };
+
+    const trackContactEvent = (eventName) => {
+      if (!hasContactAnalyticsConsent() || typeof window.gtag !== "function") {
+        return;
+      }
+
+      window.gtag("event", eventName, {
+        send_to: "G-085D9ZQG66",
+        page_language: "pl",
+        source_path: window.location.pathname,
+        transport_type: "beacon"
+      });
+      window.gtag("event", "conversion", {
+        send_to: contactEventDestinations[eventName],
+        transport_type: "beacon"
+      });
+    };
+
+    heroContactLink.addEventListener("click", (event) => {
+      if (event.isTrusted) {
+        trackContactEvent("contact_cta_click");
+      }
+    });
+
+    contactEmailLink.addEventListener("click", (event) => {
+      if (event.isTrusted) {
+        trackContactEvent("contact_email_click");
+      }
+    });
+
+    const trackContactFormStart = (event) => {
+      if (contactFormStarted || !event.isTrusted) {
+        return;
+      }
+
+      contactFormStarted = true;
+      trackContactEvent("contact_form_start");
+    };
+
+    ["pointerdown", "focusin", "keydown", "input", "change"].forEach((eventName) => {
+      form.addEventListener(eventName, trackContactFormStart, { capture: true });
+    });
 
     const renderAttachmentList = () => {
       attachmentList.replaceChildren();
