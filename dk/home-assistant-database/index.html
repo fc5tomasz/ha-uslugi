@@ -48,10 +48,10 @@
   "inLanguage": "da"
 }
   </script>
-  <link rel="stylesheet" href="../../styles.css?v=20260816-guides-nav-1" />
+  <link rel="stylesheet" href="../../styles.css?v=20260827-privacy-draft-1" />
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18087588380"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{'ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','analytics_storage':'denied'});</script>
-<script src="../../consent.js?v=20260420-consent-1"></script>
+<script src="../../consent.js?v=20260827-privacy-draft-1"></script>
 <script>gtag('js',new Date());gtag('config','AW-18087588380');</script>
 </head>
 <body class="knowledge-page pl-home-bg-test">
@@ -326,7 +326,7 @@
       <h2 class="section-title mobile-match-title">SQLite eller MariaDB – hvad skal man vælge?</h2>
       <div class="card">
         <p class="section-subtitle">Hvis Home Assistant fungerer korrekt med SQLite, er der ingen grund til at ændre databasen, blot fordi MariaDB er tilgængelig.</p>
-        <p class="section-subtitle">Hvis der i et omfattende system opstår problemer med Recorder, historikken eller et stort antal skriveoperationer, bør årsagen først fastslås. Nogle gange er det tilstrækkeligt at begrænse unødvendige data eller forbedre hardwaren, mens et skift til MariaDB i andre tilfælde kan være en fornuftig løsning.</p>
+        <p class="section-subtitle">Hvis der i et omfattende system opstår problemer med Recorder, historikken eller et stort antal skriveoperationer, bør årsagen først fastslås. Hvis problemerne skyldes belastning af Recorder og et stort antal skriveoperationer, anbefaler jeg at skifte til MariaDB i mere omfattende installationer.</p>
         <p class="section-subtitle">I mit system løste skiftet til MariaDB de problemer, der tidligere opstod med SQLite, og denne konfiguration har fungeret stabilt i omkring et år.</p>
         <p class="section-subtitle">Det betyder ikke, at resultatet bliver det samme i alle installationer. Det vigtigste er at finde ud af, hvad der faktisk sker i det konkrete system, og først derefter vælge en løsning.</p>
       </div>
@@ -357,11 +357,11 @@
   <footer>
     <div class="footer-inner">
       <span>© <span id="year"></span> Tomasz Furdal – Home Assistant &amp; Integrations</span>
-      <span>Betaling: bankoverførsel, Revolut, PayPal, MobilePay</span>
+      <span>Betaling: bankoverførsel, Revolut, PayPal, MobilePay</span><a class="footer-privacy-link" href="/dk/privatlivspolitik/">Privatlivspolitik</a>
     </div>
   </footer>
 
-  <script src="../../nav.js?v=20260816-guides-nav-1"></script>
+  <script src="../../nav.js?v=20260826-consent-v2-local-1"></script>
   <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
 </body>
 </html>

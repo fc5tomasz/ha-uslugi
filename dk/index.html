@@ -70,10 +70,10 @@
   }
 }
   </script>
-  <link rel="stylesheet" href="../styles.css?v=20260816-guides-nav-1" />
+  <link rel="stylesheet" href="../styles.css?v=20260827-privacy-draft-1" />
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18087588380"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{'ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','analytics_storage':'denied'});</script>
-<script src="../consent.js?v=20260420-consent-1"></script>
+<script src="../consent.js?v=20260827-privacy-draft-1"></script>
 <script>gtag('js',new Date());gtag('config','AW-18087588380');</script>
 </head>
 <body class="pl-home-bg-test">
@@ -203,7 +203,7 @@
           <h3>Du har allerede Home Assistant, men systemet fungerer ikke, som det skal</h3>
           <ul>
             <li>Zigbee reagerer nogle gange ikke</li>
-            <li>Automatiseringer virker on and off</li>
+            <li>Automatiseringer fungerer ustabilt</li>
             <li>Mangel på orden og kontrol</li>
             <li>Du vil tilføje integrationer og have praktisk styring</li>
             <li>Du ønsker æstetiske, læselige dashboards</li>
@@ -349,12 +349,12 @@
   <footer>
     <div class="footer-inner">
       <span>© <span id="year"></span> Tomasz Furdal – Home Assistant &amp; Integrations</span>
-      <span>Betaling: bankoverførsel, Revolut, PayPal, MobilePay</span>
+      <span>Betaling: bankoverførsel, Revolut, PayPal, MobilePay</span><a class="footer-privacy-link" href="/dk/privatlivspolitik/">Privatlivspolitik</a>
     </div>
   </footer>
 
   <script src="../community.js?v=20260821-communities-1"></script>
-  <script src="../nav.js?v=20260816-guides-nav-1"></script>
+  <script src="../nav.js?v=20260826-consent-v2-local-1"></script>
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
@@ -464,11 +464,17 @@
 
         if (response.ok && result && result.ok === true) {
           const isProductionSite = window.location.hostname === "ha-expert.com" || window.location.hostname === "www.ha-expert.com";
+          const isDryRun = result.dry_run === true;
           if (isProductionSite && typeof gtag === "function") {
             gtag('event', 'conversion', {'send_to': 'AW-18087588380/ej4vCOfps54cEJzk6rBD'});
           }
+          if (window.HAExpertAnalytics) {
+            window.HAExpertAnalytics.track("contact_form_submit", { path: window.location.pathname, action_name: "contact_form" });
+          }
           statusEl.className = "form-status ok";
-          statusEl.textContent = "Din besked er sendt. Jeg svarer så hurtigt som muligt.";
+          statusEl.textContent = isDryRun
+            ? "Formulartesten blev gennemført. Der blev ikke sendt e-mail eller Telegram-besked."
+            : "Din besked er sendt. Jeg svarer så hurtigt som muligt.";
           form.reset();
           selectedAttachments.length = 0;
           renderAttachmentList();

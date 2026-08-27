@@ -1,23 +1,6 @@
 <!doctype html>
 <html lang="pl">
 <head>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18087588380"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('consent', 'default', {
-      'ad_storage': 'denied',
-      'ad_user_data': 'denied',
-      'ad_personalization': 'denied',
-      'analytics_storage': 'denied'
-    });
-  </script>
-  <script src="../consent.js?v=20260420-consent-1"></script>
-  <script>
-    gtag('js', new Date());
-
-    gtag('config', 'AW-18087588380');
-  </script>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="robots" content="index,follow" />
@@ -87,7 +70,24 @@
   }
 }
   </script>
-  <link rel="stylesheet" href="../styles.css?v=20260817-pl-cta-1" />
+  <link rel="stylesheet" href="../styles.css?v=20260827-privacy-draft-1" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18087588380"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'analytics_storage': 'denied'
+    });
+  </script>
+  <script src="../consent.js?v=20260827-privacy-draft-1"></script>
+  <script>
+    gtag('js', new Date());
+
+    gtag('config', 'AW-18087588380');
+  </script>
 </head>
 <body class="pl-home-bg-test">
   <header>
@@ -357,12 +357,12 @@
   <footer>
     <div class="footer-inner">
       <span>© <span id="year"></span> Tomasz Furdal – Home Assistant &amp; Integrations</span>
-      <span>Płatności: przelew bankowy, Revolut, PayPal, MobilePay</span>
+      <span>Płatności: przelew bankowy, Revolut, PayPal, MobilePay</span><a class="footer-privacy-link" href="/pl/polityka-prywatnosci/">Polityka prywatności</a>
     </div>
   </footer>
 
   <script src="../community.js?v=20260821-communities-1"></script>
-  <script src="../nav.js?v=20260816-guides-nav-1"></script>
+  <script src="../nav.js?v=20260826-consent-v2-local-1"></script>
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
@@ -397,28 +397,32 @@
     };
 
     const hasContactAnalyticsConsent = () => {
-      try {
-        return window.localStorage.getItem("ha_consent_v1") === "granted";
-      } catch (error) {
-        return false;
-      }
+      return Boolean(window.HAExpertConsent && window.HAExpertConsent.has("analytics"));
+    };
+
+    const hasContactMarketingConsent = () => {
+      return Boolean(window.HAExpertConsent && window.HAExpertConsent.has("marketing"));
     };
 
     const trackContactEvent = (eventName) => {
-      if (!hasContactAnalyticsConsent() || typeof window.gtag !== "function") {
+      if (typeof window.gtag !== "function") {
         return;
       }
 
-      window.gtag("event", eventName, {
-        send_to: "G-085D9ZQG66",
-        page_language: "pl",
-        source_path: window.location.pathname,
-        transport_type: "beacon"
-      });
-      window.gtag("event", "conversion", {
-        send_to: contactEventDestinations[eventName],
-        transport_type: "beacon"
-      });
+      if (hasContactAnalyticsConsent()) {
+        window.gtag("event", eventName, {
+          send_to: "G-085D9ZQG66",
+          page_language: "pl",
+          source_path: window.location.pathname,
+          transport_type: "beacon"
+        });
+      }
+      if (hasContactMarketingConsent()) {
+        window.gtag("event", "conversion", {
+          send_to: contactEventDestinations[eventName],
+          transport_type: "beacon"
+        });
+      }
     };
 
     heroContactLink.addEventListener("click", (event) => {
@@ -531,11 +535,17 @@
 
         if (response.ok && result && result.ok === true) {
           const isProductionSite = window.location.hostname === "ha-expert.com" || window.location.hostname === "www.ha-expert.com";
+          const isDryRun = result.dry_run === true;
           if (isProductionSite && typeof gtag === "function") {
             gtag('event', 'conversion', {'send_to': 'AW-18087588380/ej4vCOfps54cEJzk6rBD'});
           }
+          if (window.HAExpertAnalytics) {
+            window.HAExpertAnalytics.track("contact_form_submit", { path: window.location.pathname, action_name: "contact_form" });
+          }
           statusEl.className = "form-status ok";
-          statusEl.textContent = "Wiadomość została wysłana. Odpowiem najszybciej, jak będzie to możliwe.";
+          statusEl.textContent = isDryRun
+            ? "Test formularza zakończony poprawnie. E-mail i Telegram nie zostały wysłane."
+            : "Wiadomość została wysłana. Odpowiem najszybciej, jak będzie to możliwe.";
           form.reset();
           selectedAttachments.length = 0;
           renderAttachmentList();

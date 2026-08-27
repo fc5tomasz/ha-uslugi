@@ -3,14 +3,8 @@ const MOBILE_NAV_BREAKPOINT = 1328;
 const NAV_FORUM_COOKIE_MAX_AGE = 60 * 60 * 24 * 365;
 const NAV_FORUM_URL = "https://forum.ha-expert.com";
 const NAV_FORUM_GA4_ID = "G-085D9ZQG66";
-const NAV_FORUM_CONSENT_KEY = "ha_consent_v1";
-
 const hasForumAnalyticsConsent = () => {
-  try {
-    return window.localStorage.getItem(NAV_FORUM_CONSENT_KEY) === "granted";
-  } catch (error) {
-    return false;
-  }
+  return Boolean(window.HAExpertConsent && window.HAExpertConsent.has("analytics"));
 };
 
 const configureForumAnalytics = () => {

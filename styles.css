@@ -1537,7 +1537,7 @@ h1{
   padding:18px;
 }
 
-.showcase-copy h3{
+.showcase-copy h2{
   margin:0 0 10px;
   font-size:1.05rem;
   color:#f8fbff;
@@ -1893,6 +1893,38 @@ footer{
   align-items:center;
   gap:10px;
   flex-wrap:wrap;
+}
+
+.footer-privacy-link{
+  color:var(--muted-strong);
+  font-weight:650;
+  text-decoration:underline;
+  text-decoration-color:rgba(102,226,255,.38);
+  text-underline-offset:3px;
+}
+
+.footer-privacy-link:hover,
+.footer-privacy-link:focus-visible{
+  color:var(--accent-2);
+  text-decoration-color:currentColor;
+}
+
+.policy-page .policy-card p + p,
+.policy-page .policy-card ul + p,
+.policy-page .policy-card ol + p{
+  margin-top:14px;
+}
+
+.policy-page .policy-card address{
+  color:var(--muted);
+  font-style:normal;
+  font-size:.96rem;
+  line-height:1.7;
+}
+
+.policy-page .policy-draft-banner p{
+  color:#fde68a;
+  font-weight:700;
 }
 
 html[lang="da"] .logo [data-i18n="logo_text"],html[lang="da-DK"] .logo [data-i18n="logo_text"]{white-space:nowrap}
@@ -2676,10 +2708,83 @@ html[lang="da"] .logo [data-i18n="logo_text"],html[lang="da-DK"] .logo [data-i18
   line-height:1.45;
 }
 
+.consent-banner__title{
+  margin:0 0 7px;
+  color:#f5fbff;
+  font-size:1rem;
+  line-height:1.3;
+}
+
+.consent-banner__options{
+  display:grid;
+  grid-template-columns:repeat(2, minmax(0, 1fr));
+  gap:10px;
+  margin-top:12px;
+}
+
+.consent-banner__option{
+  display:grid;
+  grid-template-columns:auto minmax(0, 1fr);
+  align-items:start;
+  gap:9px;
+  padding:10px;
+  border:1px solid rgba(132,156,187,.18);
+  border-radius:14px;
+  background:rgba(255,255,255,.025);
+  cursor:pointer;
+}
+
+.consent-banner__option input{
+  width:20px;
+  height:20px;
+  margin:1px 0 0;
+  accent-color:#12c884;
+}
+
+.consent-banner__option strong,
+.consent-banner__option span span{
+  display:block;
+}
+
+.consent-banner__option strong{
+  color:#f5fbff;
+  font-size:.84rem;
+  line-height:1.25;
+}
+
+.consent-banner__option span span{
+  margin-top:3px;
+  color:var(--muted);
+  font-size:.75rem;
+  line-height:1.35;
+}
+
 .consent-banner__actions{
   display:grid;
   grid-template-columns:repeat(2, minmax(0, 1fr));
   gap:10px;
+}
+
+.consent-banner__policy-link{
+  min-height:42px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:0 10px;
+  color:#d7f7ff;
+  font-size:.8rem;
+  font-weight:700;
+  line-height:1.25;
+  text-align:center;
+  text-decoration:underline;
+  text-decoration-color:rgba(102,226,255,.42);
+  text-underline-offset:3px;
+}
+
+.consent-banner__policy-link:hover,
+.consent-banner__policy-link:focus-visible{
+  color:#fff;
+  text-decoration-color:currentColor;
 }
 
 .consent-banner__btn{
@@ -2709,6 +2814,36 @@ html[lang="da"] .logo [data-i18n="logo_text"],html[lang="da-DK"] .logo [data-i18
   border-color:rgba(132,156,187,.2);
 }
 
+.consent-banner__btn--settings{
+  background:rgba(102,226,255,.06);
+  color:#d7f7ff;
+  border-color:rgba(102,226,255,.2);
+}
+
+.consent-privacy-button{
+  position:fixed;
+  left:12px;
+  bottom:12px;
+  min-height:34px;
+  padding:6px 11px;
+  border:1px solid rgba(132,156,187,.2);
+  border-radius:999px;
+  background:rgba(7,17,31,.9);
+  color:var(--muted-strong);
+  box-shadow:0 9px 24px rgba(0,0,0,.24);
+  backdrop-filter:blur(14px);
+  font:inherit;
+  font-size:.7rem;
+  font-weight:650;
+  cursor:pointer;
+  z-index:44;
+}
+
+.consent-privacy-button:hover{
+  color:#fff;
+  border-color:rgba(102,226,255,.32);
+}
+
 .consent-banner-spacer{
   width:100%;
   flex:0 0 auto;
@@ -2725,8 +2860,16 @@ html[lang="da"] .logo [data-i18n="logo_text"],html[lang="da-DK"] .logo [data-i18
 
   .consent-banner__actions{
     width:auto;
-    grid-template-columns:repeat(2, auto);
+    grid-template-columns:repeat(4, auto);
     justify-content:end;
+  }
+
+  .consent-banner--settings{
+    grid-template-columns:minmax(0, 1fr) auto;
+  }
+
+  .consent-banner--settings .consent-banner__actions{
+    grid-template-columns:repeat(2, auto);
   }
 
   .consent-banner__btn{
@@ -2752,9 +2895,44 @@ html[lang="da"] .logo [data-i18n="logo_text"],html[lang="da-DK"] .logo [data-i18
     gap:8px;
   }
 
+  .consent-banner__options{
+    grid-template-columns:1fr;
+    gap:7px;
+  }
+
+  .consent-banner__option{
+    padding:8px 9px;
+  }
+
   .consent-banner__btn{
     min-height:44px;
     font-size:.82rem;
+  }
+
+  .consent-banner__actions{
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+  }
+
+  .consent-banner__btn--settings{
+    grid-column:1 / -1;
+  }
+
+  .consent-banner__policy-link{
+    grid-column:1 / -1;
+  }
+
+  .consent-banner--settings .consent-banner__actions{
+    grid-template-columns:1fr;
+  }
+
+  .consent-banner--settings .consent-banner__btn--accept{
+    grid-column:auto;
+  }
+
+  .consent-privacy-button{
+    left:10px;
+    min-height:32px;
+    font-size:.66rem;
   }
 }
 

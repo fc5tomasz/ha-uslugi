@@ -8,15 +8,18 @@
   <meta name="description" content="Live demonstracja animowanego panelu Home Assistant: energia, ogrzewanie, pogoda, rekuperacja i stany domu w jednej wizualizacji." />
   <link rel="canonical" href="https://ha-expert.com/pl/demo/" />
   <meta property="og:url" content="https://ha-expert.com/pl/demo/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Demo Home Assistant – symulacja panelu automatyki | HA Expert" />
+  <meta property="og:description" content="Live demonstracja animowanego panelu Home Assistant: energia, ogrzewanie, pogoda, rekuperacja i stany domu w jednej wizualizacji." />
   <link rel="alternate" hreflang="pl" href="https://ha-expert.com/pl/demo/" />
   <link rel="alternate" hreflang="en" href="https://ha-expert.com/en/demo/" />
   <link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/demo/" />
   <link rel="alternate" hreflang="x-default" href="https://ha-expert.com/en/demo/" />
-  <link rel="stylesheet" href="/styles.css?v=20260816-guides-nav-1" />
+  <link rel="stylesheet" href="/styles.css?v=20260827-privacy-draft-1" />
   <link rel="stylesheet" href="/demo/demo.css?v=20260812-installation-status-14" />
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18087588380"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{'ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','analytics_storage':'denied'});</script>
-<script src="/consent.js?v=20260420-consent-1"></script>
+<script src="/consent.js?v=20260827-privacy-draft-1"></script>
 <script>gtag('js',new Date());gtag('config','AW-18087588380');</script>
 </head>
 <body class="demo-page pl-home-bg-test" data-demo-lang="pl">
@@ -77,7 +80,16 @@
     </section>
   </main>
 
-  <script src="/nav.js?v=20260816-guides-nav-1"></script>
+  <footer>
+    <div class="footer-inner">
+      <span>© <span id="year"></span> Tomasz Furdal – Home Assistant &amp; Integrations</span>
+      <span>Płatności: przelew bankowy, Revolut, PayPal, MobilePay</span>
+      <a class="footer-privacy-link" href="/pl/polityka-prywatnosci/">Polityka prywatności</a>
+    </div>
+  </footer>
+
+  <script src="/nav.js?v=20260826-consent-v2-local-1"></script>
   <script src="/demo/panel-demo.js?v=20260812-installation-status-16"></script>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
 </body>
 </html>
