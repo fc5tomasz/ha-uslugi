@@ -2852,6 +2852,7 @@ html[lang="da"] .logo [data-i18n="logo_text"],html[lang="da-DK"] .logo [data-i18
 
 @media (min-width: 781px){
   .consent-banner{
+    width:min(1160px, calc(100% - 24px));
     grid-template-columns:minmax(0, 1fr) auto;
     align-items:center;
     gap:18px;

@@ -31,7 +31,7 @@
     },
     da: {
       ariaLabel: "Privatlivsindstillinger",
-      message: "Med dit samtykke bruger vi analyse- og annonceringsværktøjer til at måle brugen af hjemmesiden og effekten af vores annoncer.",
+      message: "Med dit samtykke bruger vi analyseværktøjer og annonceringsværktøjer til at måle brugen af hjemmesiden og effekten af vores annoncer.",
       acceptAll: "Accepter alle", rejectAll: "Afvis alle", settings: "Indstillinger",
       settingsTitle: "Privatlivsindstillinger",
       settingsIntro: "Nødvendige funktioner på siden er altid aktive. Du kan vælge de øvrige formål separat.",
