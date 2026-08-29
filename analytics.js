@@ -1,10 +1,12 @@
 (() => {
   const SESSION_KEY = "ha_analytics_session_v1";
   const SESSION_STARTED_KEY = "ha_analytics_started_v1";
+  const SESSION_LAST_EVENT_KEY = "ha_analytics_last_event_at_v1";
   const PREVIOUS_PATH_KEY = "ha_analytics_previous_path_v1";
   const FORM_START_ATTRIBUTE = "data-ha-analytics-started";
   const FLUSH_DELAY_MS = 700;
   const HEARTBEAT_MS = Math.max(1000, Number(window.HA_EXPERT_ANALYTICS_HEARTBEAT_MS) || 15000);
+  const SESSION_IDLE_TIMEOUT_MS = 30 * 60 * 1000;
   const BATCH_SIZE = 8;
   const HOME_PATHS = new Set(["/pl/", "/en/", "/dk/"]);
   let active = false;
@@ -63,11 +65,36 @@
       return "referral";
     } catch (error) { return "other"; }
   };
-  const commonPayload = () => {
-    const payload = { event_id: randomToken("evt"), session_id: getSessionId(), timestamp: new Date().toISOString(), language: language(), source: source() };
+  const commonPayload = (now = Date.now()) => {
+    const payload = { event_id: randomToken("evt"), session_id: getSessionId(), timestamp: new Date(now).toISOString(), language: language(), source: source() };
     const campaign = campaignMarkers();
     if (campaign) payload.campaign = campaign;
     return payload;
+  };
+  const enqueueEvent = (eventType, details, now) => {
+    queue.push({ ...commonPayload(now), event_type: eventType, ...details });
+    safeSessionSet(SESSION_LAST_EVENT_KEY, String(now));
+  };
+  const sessionExpired = (now) => {
+    if (!safeSessionGet(SESSION_KEY)) return false;
+    const lastEventAt = Number(safeSessionGet(SESSION_LAST_EVENT_KEY));
+    return !Number.isFinite(lastEventAt) || lastEventAt <= 0 || now - lastEventAt > SESSION_IDLE_TIMEOUT_MS;
+  };
+  const rotateExpiredSession = (now = Date.now()) => {
+    if (!sessionExpired(now)) return false;
+    const currentPath = pathOnly();
+    const previousPath = safeSessionGet(PREVIOUS_PATH_KEY);
+    safeSessionRemove(SESSION_KEY);
+    safeSessionRemove(SESSION_STARTED_KEY);
+    safeSessionRemove(SESSION_LAST_EVENT_KEY);
+    sentScroll = new Set(); sentSections = new Set();
+    document.querySelectorAll(`[${FORM_START_ATTRIBUTE}]`).forEach((form) => form.removeAttribute(FORM_START_ATTRIBUTE));
+    enqueueEvent("session_start", { path: currentPath, landing_page: currentPath, ...(previousPath ? { previous_path: previousPath } : {}) }, now);
+    safeSessionSet(SESSION_STARTED_KEY, "1");
+    enqueueEvent("page_view", { path: currentPath, ...(previousPath ? { previous_path: previousPath } : {}) }, now);
+    safeSessionSet(PREVIOUS_PATH_KEY, currentPath);
+    if (!flushTimer) flushTimer = window.setTimeout(() => flush(false), FLUSH_DELAY_MS);
+    return true;
   };
   const sendOne = async (payload, keepalive) => {
     if (!endpoint || !active) return;
@@ -90,7 +117,9 @@
   };
   const track = (eventType, details = {}, { immediate = false } = {}) => {
     if (!active || !endpoint) return false;
-    queue.push({ ...commonPayload(), event_type: eventType, ...details });
+    const now = Date.now();
+    rotateExpiredSession(now);
+    enqueueEvent(eventType, details, now);
     if (immediate || queue.length >= BATCH_SIZE) flush(immediate);
     else if (!flushTimer) flushTimer = window.setTimeout(() => flush(false), FLUSH_DELAY_MS);
     return true;
@@ -119,6 +148,7 @@
   };
   const handleScroll = () => {
     if (!active) return;
+    rotateExpiredSession();
     const scrollable = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
     const percent = Math.min(100, Math.round((window.scrollY / scrollable) * 100));
     [25, 50, 75, 90].forEach((threshold) => {
@@ -156,12 +186,14 @@
     sentScroll = new Set(); sentSections = new Set();
     const currentPath = pathOnly();
     const previousPath = safeSessionGet(PREVIOUS_PATH_KEY);
-    if (!safeSessionGet(SESSION_STARTED_KEY)) {
-      track("session_start", { path: currentPath, landing_page: currentPath, ...(previousPath ? { previous_path: previousPath } : {}) });
-      safeSessionSet(SESSION_STARTED_KEY, "1");
+    if (!rotateExpiredSession()) {
+      if (!safeSessionGet(SESSION_STARTED_KEY)) {
+        track("session_start", { path: currentPath, landing_page: currentPath, ...(previousPath ? { previous_path: previousPath } : {}) });
+        safeSessionSet(SESSION_STARTED_KEY, "1");
+      }
+      track("page_view", { path: currentPath, ...(previousPath ? { previous_path: previousPath } : {}) });
+      safeSessionSet(PREVIOUS_PATH_KEY, currentPath);
     }
-    track("page_view", { path: currentPath, ...(previousPath ? { previous_path: previousPath } : {}) });
-    safeSessionSet(PREVIOUS_PATH_KEY, currentPath);
     heartbeatStartedAt = document.visibilityState === "visible" && document.hasFocus() ? Date.now() : null;
     heartbeatTimer = window.setInterval(() => emitHeartbeat(false), HEARTBEAT_MS);
     observeSections(); handleScroll();
@@ -172,7 +204,7 @@
     if (heartbeatTimer) window.clearInterval(heartbeatTimer);
     if (observer) observer.disconnect();
     flushTimer = null; heartbeatTimer = null; observer = null; heartbeatStartedAt = null;
-    safeSessionRemove(SESSION_KEY); safeSessionRemove(SESSION_STARTED_KEY); safeSessionRemove(PREVIOUS_PATH_KEY);
+    safeSessionRemove(SESSION_KEY); safeSessionRemove(SESSION_STARTED_KEY); safeSessionRemove(SESSION_LAST_EVENT_KEY); safeSessionRemove(PREVIOUS_PATH_KEY);
     document.querySelectorAll(`[${FORM_START_ATTRIBUTE}]`).forEach((form) => form.removeAttribute(FORM_START_ATTRIBUTE));
   };
   const syncConsent = () => {
@@ -182,11 +214,21 @@
   document.addEventListener("click", handleClick, { capture: true });
   ["focusin", "input", "change", "pointerdown", "keydown"].forEach((name) => document.addEventListener(name, handleFormStart, { capture: true }));
   window.addEventListener("scroll", handleScroll, { passive: true });
-  window.addEventListener("focus", () => { if (active) heartbeatStartedAt = Date.now(); });
+  window.addEventListener("focus", () => {
+    if (!active) return;
+    const now = Date.now();
+    rotateExpiredSession(now);
+    heartbeatStartedAt = now;
+  });
   window.addEventListener("blur", () => { if (active) emitHeartbeat(true); });
   document.addEventListener("visibilitychange", () => {
     if (!active) return;
-    if (document.visibilityState === "hidden") emitHeartbeat(true); else heartbeatStartedAt = document.hasFocus() ? Date.now() : null;
+    if (document.visibilityState === "hidden") emitHeartbeat(true);
+    else {
+      const now = Date.now();
+      rotateExpiredSession(now);
+      heartbeatStartedAt = document.hasFocus() ? now : null;
+    }
   });
   window.addEventListener("pagehide", () => {
     if (!active) return;
