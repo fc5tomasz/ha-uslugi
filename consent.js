@@ -2,6 +2,16 @@
   const STORAGE_KEY = "ha_consent_v2";
   const LEGACY_STORAGE_KEY = "ha_consent_v1";
   const CONSENT_VERSION = 2;
+  const CONSENT_STATS_ENDPOINT = (() => {
+    if (typeof window.HA_EXPERT_CONSENT_STATS_ENDPOINT === "string") {
+      return window.HA_EXPERT_CONSENT_STATS_ENDPOINT;
+    }
+    const host = window.location.hostname;
+    const isLocal = host === "localhost" || host === "127.0.0.1" || /^192\.168\./.test(host) || /^100\./.test(host);
+    if (isLocal) return `http://${host}:8094/api/consent-stats`;
+    return host === "ha-expert.com" || host === "www.ha-expert.com"
+      ? "https://analytics.ha-expert.com/api/consent-stats" : null;
+  })();
   const COPY = {
     pl: {
       ariaLabel: "Ustawienia prywatności",
@@ -121,6 +131,24 @@
     window.dispatchEvent(new CustomEvent("ha:consent-changed", { detail: { ...decision } }));
   };
 
+  const sendConsentStat = (eventType) => {
+    if (!CONSENT_STATS_ENDPOINT || typeof window.fetch !== "function") return;
+    try {
+      void window.fetch(CONSENT_STATS_ENDPOINT, {
+        method: "POST",
+        mode: "cors",
+        credentials: "omit",
+        cache: "no-store",
+        referrerPolicy: "no-referrer",
+        keepalive: true,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ event_type: eventType })
+      }).catch(() => {});
+    } catch (error) {
+      // Pomiar zbiorczy nigdy nie może wpływać na działanie bannera.
+    }
+  };
+
   const applyDecision = (decision, { persist = true, close = true } = {}) => {
     const normalized = normalizeDecision(decision);
     if (!normalized) return;
@@ -230,10 +258,14 @@
       }));
     } else {
       actions.append(
-        buildButton(copy.acceptAll, "consent-banner__btn consent-banner__btn--accept", () =>
-          applyDecision({ version: CONSENT_VERSION, analytics: true, marketing: true })),
-        buildButton(copy.rejectAll, "consent-banner__btn consent-banner__btn--reject", () =>
-          applyDecision({ version: CONSENT_VERSION, analytics: false, marketing: false })),
+        buildButton(copy.acceptAll, "consent-banner__btn consent-banner__btn--accept", () => {
+          sendConsentStat("accepted");
+          applyDecision({ version: CONSENT_VERSION, analytics: true, marketing: true });
+        }),
+        buildButton(copy.rejectAll, "consent-banner__btn consent-banner__btn--reject", () => {
+          sendConsentStat("rejected");
+          applyDecision({ version: CONSENT_VERSION, analytics: false, marketing: false });
+        }),
         buildButton(copy.settings, "consent-banner__btn consent-banner__btn--settings", () => renderBanner("settings"))
       );
     }
@@ -253,6 +285,7 @@
     const mobileBottomBar = document.querySelector(".mobile-bottom-bar");
     if (mobileBottomBar) resizeObserver.observe(mobileBottomBar);
     updateBannerLayout();
+    if (mode === "initial") sendConsentStat("shown");
   };
 
   const renderPrivacyButton = () => {
