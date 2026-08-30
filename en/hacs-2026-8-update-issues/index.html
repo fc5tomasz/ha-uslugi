@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="robots" content="index,follow" />
+  <meta name="author" content="Tomasz Furdal" />
+  <meta name="theme-color" content="#0f172a" />
+  <link rel="canonical" href="https://ha-expert.com/en/hacs-2026-8-update-issues/" />
+  <link rel="alternate" hreflang="pl" href="https://ha-expert.com/pl/hacs-po-aktualizacji-2026-8/" />
+  <link rel="alternate" hreflang="en" href="https://ha-expert.com/en/hacs-2026-8-update-issues/" />
+  <link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/hacs-2026-8-opdatering/" />
+  <link rel="alternate" hreflang="x-default" href="https://ha-expert.com/en/hacs-2026-8-update-issues/" />
+  <title>HACS Not Working After the 2026.8 Update – Diagnosis | HA Expert</title>
+  <meta name="description" content="HACS or the Home Assistant 2026.8 update not working? Check the known causes: a failed update, a broken Ingress screen, a stuck companion app, and permissions." />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="HACS Not Working After the 2026.8 Update – Diagnosis | HA Expert" />
+  <meta property="og:description" content="HACS or the Home Assistant 2026.8 update not working? Check the known causes: a failed update, a broken Ingress screen, a stuck companion app, and permissions." />
+  <meta property="og:url" content="https://ha-expert.com/en/hacs-2026-8-update-issues/" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"HACS Broken After the Home Assistant 2026.8 Update? Here's What's Going On","description":"HACS or the Home Assistant 2026.8 update not working? Check the known causes: a failed update, a broken Ingress screen, a stuck companion app, and permissions.","author":{"@type":"Person","@id":"https://ha-expert.com/#person","name":"Tomasz Furdal"},"publisher":{"@type":"Organization","@id":"https://ha-expert.com/#organization","name":"HA Expert Tomasz Furdal","url":"https://ha-expert.com/","logo":{"@type":"ImageObject","url":"https://ha-expert.com/assets/brand/ha-expert-logo-transparent.png"}},"datePublished":"2026-08-30","dateModified":"2026-08-30","mainEntityOfPage":{"@type":"WebPage","@id":"https://ha-expert.com/en/hacs-2026-8-update-issues/"},"url":"https://ha-expert.com/en/hacs-2026-8-update-issues/","inLanguage":"en"}</script>
+  <link rel="stylesheet" href="../../styles.css?v=20260827-privacy-draft-1" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18087588380"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{'ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','analytics_storage':'denied'});</script>
+  <script src="../../consent.js?v=20260829-consent-stats-local-1"></script>
+  <script>gtag('js',new Date());gtag('config','AW-18087588380');</script>
+</head>
+<body class="knowledge-page pl-home-bg-test">
+  <header class="scrolled"><div class="nav">
+    <a class="logo" href="/en/" aria-label="Tomasz Furdal - Home Assistant Expert"><img class="logo-image" src="../../assets/brand/logo-wyciete.png" alt="Tomasz Furdal - Home Assistant Expert" title="Home Assistant Expert - Tomasz Furdal" /></a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Open menu"><span aria-hidden="true">☰</span></button>
+    <a class="nav-mobile-link about-link" href="/en/#about-me">About me</a><a class="nav-mobile-link contact-link" href="/en/#contact">Contact</a>
+    <nav id="primary-nav" aria-label="Primary"><ul><li><a href="/en/#services">Services</a></li><li><a href="/en/#about-me">About me</a></li><li><a href="/en/#who-its-for">Who it’s for</a></li><li><a href="/en/#how-i-work">How I work</a></li><li><a href="/en/#pricing">Pricing</a></li><li><a href="/en/#contact">Contact</a></li><li class="nav-secondary-start"><a href="/en/projects/">Projects</a></li><li><a href="/en/guides/">Guides</a></li><li><a href="/en/demo/">Demo panel</a></li></ul></nav>
+    <div class="lang-switch" aria-label="Language switch"><a class="lang-btn" href="/pl/hacs-po-aktualizacji-2026-8/" aria-label="Polski"><img class="lang-flag" src="../../assets/flags/pl.svg" alt="Polski" /></a><a class="lang-btn" href="/dk/hacs-2026-8-opdatering/" aria-label="Dansk"><img class="lang-flag" src="../../assets/flags/dk.svg" alt="Dansk" /></a><a class="lang-btn active" href="/en/hacs-2026-8-update-issues/" aria-label="English" aria-current="page"><img class="lang-flag" src="../../assets/flags/gb.svg" alt="English" /></a></div>
+    <a class="nav-cta" href="/en/#contact">Free assessment</a>
+  </div></header>
+  <div class="mobile-bottom-bar" aria-label="Mobile quick actions"><a class="mobile-bottom-link" href="/en/#about-me">About me</a><a class="mobile-bottom-link" href="/en/#contact">Contact</a></div>
+  <main>
+    <section class="section"><div class="section-label">HACS AND HOME ASSISTANT 2026.8</div><h1 class="section-title mobile-match-title">HACS Broken After the Home Assistant 2026.8 Update? Here's What's Going On</h1><p class="article-author">Author: <a href="/en/#about-me">Tomasz Furdal · HA Expert</a></p><div class="card"><p class="section-subtitle">Home Assistant 2026.8 introduced real changes that, on some installations, show up as broken HACS, a failed update, or a companion app stuck on install. This isn't a mistake in your configuration — these are known, currently reported issues with this specific version. Before you start changing things, it's worth figuring out exactly which case you're dealing with, because each one needs a different approach.</p></div></section>
+    <section class="section"><div class="section-label">DIAGNOSIS</div><h2 class="section-title mobile-match-title">Diagnosis: what's actually happening?</h2><div class="grid-2 services-grid">
+      <article class="card service-card"><div class="card-top"><span class="card-kicker">Update</span><span class="card-badge" aria-hidden="true">🔄</span></div><h3>🔄 The update itself won't finish</h3><p>Some installations trying to move from 2026.7.4 to 2026.8.0 report Home Assistant hanging or restarting mid-update. If the update got stuck halfway, further attempts without checking the logs first can make things worse instead of better.</p></article>
+      <article class="card service-card"><div class="card-top"><span class="card-kicker">Display</span><span class="card-badge" aria-hidden="true">🖥️</span></div><h3>🖥️ HACS or other screens look "broken"</h3><p>After 2026.8, some panels accessed through Ingress (for example MQTT-related views) can render at a drastically shrunk size — this is a known rendering issue with this version, not a fault on your end.</p></article>
+      <article class="card service-card"><div class="card-top"><span class="card-kicker">App</span><span class="card-badge" aria-hidden="true">📱</span></div><h3>📱 The companion app gets stuck on install</h3><p>On some iOS 26.6 devices, the companion app update gets stuck and won't finish. A device restart usually helps, but not always — sometimes the issue sits deeper, in the integration's own configuration.</p></article>
+      <article class="card service-card"><div class="card-top"><span class="card-kicker">Access</span><span class="card-badge" aria-hidden="true">🔑</span></div><h3>🔑 Permissions and limits it's easy to overlook</h3><p>Less common, but it happens: HACS fails to update because of file permissions in the <code>custom_components</code> directory, or a temporary GitHub rate limit. This needs a different check than a simple restart.</p></article>
+    </div></section>
+    <section class="section"><div class="section-label">FIRST STEP</div><h2 class="section-title mobile-match-title">One simple thing to check yourself</h2><div class="card"><p class="section-subtitle">Before digging for a deeper cause: do a <strong>full Home Assistant restart</strong> (not just an integration reload). Statistically, this is the most common, simplest cause — HACS downloads the new files, but the old code already in memory keeps running until you do a full restart.</p></div></section>
+    <section class="section"><div class="section-label">NEXT DIAGNOSIS</div><h2 class="section-title mobile-match-title">Is it something simple, or something deeper?</h2><div class="card"><p class="section-subtitle">If a restart didn't help, the next step depends on exactly which case you're dealing with — a failed update needs a different approach than a broken Ingress screen, and that's different again from a permissions issue. Without visibility into the logs and the actual configuration, it's easy to end up guessing, and random changes can add new problems on top of the existing one.</p></div></section>
+    <section class="section"><div class="section-label">SUPPORT</div><h2 class="section-title mobile-match-title">Remote help</h2><div class="card"><p class="section-subtitle">Not sure if it's a simple restart, a broken Ingress screen, a failed update, or something with permissions? I can remotely check the logs, HACS configuration, and integration state to find the exact cause instead of guessing. If the problem genuinely comes down to a known bug in this Home Assistant version, I'll say so directly — sometimes the best fix is simply waiting for a patch, and sometimes there's already a way around it.</p><div class="hero-actions"><a class="btn-primary" href="/en/#contact">Describe your problem</a><a class="btn-ghost" href="/en/#pricing">See pricing</a></div></div></section>
+  </main>
+  <footer><div class="footer-inner"><span>© <span id="year"></span> Tomasz Furdal – Home Assistant &amp; Integrations</span><span>Payments: bank transfer, Revolut, PayPal, MobilePay</span><a class="footer-privacy-link" href="/en/privacy-policy/">Privacy Policy</a></div></footer>
+  <script src="../../nav.js?v=20260826-consent-v2-local-1"></script><script>document.getElementById("year").textContent=new Date().getFullYear();</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="robots" content="index,follow" />
+  <meta name="author" content="Tomasz Furdal" />
+  <meta name="theme-color" content="#0f172a" />
+  <link rel="canonical" href="https://ha-expert.com/dk/hacs-2026-8-opdatering/" />
+  <link rel="alternate" hreflang="pl" href="https://ha-expert.com/pl/hacs-po-aktualizacji-2026-8/" />
+  <link rel="alternate" hreflang="en" href="https://ha-expert.com/en/hacs-2026-8-update-issues/" />
+  <link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/hacs-2026-8-opdatering/" />
+  <link rel="alternate" hreflang="x-default" href="https://ha-expert.com/en/hacs-2026-8-update-issues/" />
+  <title>HACS virker ikke efter 2026.8-opdateringen – diagnose | HA Expert</title>
+  <meta name="description" content="HACS eller Home Assistant 2026.8-opdateringen virker ikke? Se de kendte årsager: mislykket opdatering, ødelagt Ingress-skærm, fastlåst companion-app og rettigheder." />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="HACS virker ikke efter 2026.8-opdateringen – diagnose | HA Expert" />
+  <meta property="og:description" content="HACS eller Home Assistant 2026.8-opdateringen virker ikke? Se de kendte årsager: mislykket opdatering, ødelagt Ingress-skærm, fastlåst companion-app og rettigheder." />
+  <meta property="og:url" content="https://ha-expert.com/dk/hacs-2026-8-opdatering/" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"HACS virker ikke efter Home Assistant 2026.8-opdateringen? Se hvad der sker","description":"HACS eller Home Assistant 2026.8-opdateringen virker ikke? Se de kendte årsager: mislykket opdatering, ødelagt Ingress-skærm, fastlåst companion-app og rettigheder.","author":{"@type":"Person","@id":"https://ha-expert.com/#person","name":"Tomasz Furdal"},"publisher":{"@type":"Organization","@id":"https://ha-expert.com/#organization","name":"HA Expert Tomasz Furdal","url":"https://ha-expert.com/","logo":{"@type":"ImageObject","url":"https://ha-expert.com/assets/brand/ha-expert-logo-transparent.png"}},"datePublished":"2026-08-30","dateModified":"2026-08-30","mainEntityOfPage":{"@type":"WebPage","@id":"https://ha-expert.com/dk/hacs-2026-8-opdatering/"},"url":"https://ha-expert.com/dk/hacs-2026-8-opdatering/","inLanguage":"da"}</script>
+  <link rel="stylesheet" href="../../styles.css?v=20260827-privacy-draft-1" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18087588380"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{'ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','analytics_storage':'denied'});</script>
+  <script src="../../consent.js?v=20260829-consent-stats-local-1"></script>
+  <script>gtag('js',new Date());gtag('config','AW-18087588380');</script>
+</head>
+<body class="knowledge-page pl-home-bg-test">
+  <header class="scrolled"><div class="nav">
+    <a class="logo" href="/dk/" aria-label="Tomasz Furdal - Home Assistant Expert"><img class="logo-image" src="../../assets/brand/logo-wyciete.png" alt="Tomasz Furdal - Home Assistant Expert" title="Home Assistant Expert - Tomasz Furdal" /></a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Åbn menu"><span aria-hidden="true">☰</span></button>
+    <a class="nav-mobile-link about-link" href="/dk/#om-mig">Om mig</a><a class="nav-mobile-link contact-link" href="/dk/#kontakt">Kontakt</a>
+    <nav id="primary-nav" aria-label="Primær navigation"><ul><li><a href="/dk/#ydelser">Ydelser</a></li><li><a href="/dk/#om-mig">Om mig</a></li><li><a href="/dk/#for-hvem">For hvem</a></li><li><a href="/dk/#saadan-arbejder-jeg">Sådan arbejder jeg</a></li><li><a href="/dk/#priser">Priser</a></li><li><a href="/dk/#kontakt">Kontakt</a></li><li class="nav-secondary-start"><a href="/dk/projekter/">Projekter</a></li><li><a href="/dk/vejledninger/">Vejledninger</a></li><li><a href="/dk/demo/">Demo-panel</a></li></ul></nav>
+    <div class="lang-switch" aria-label="Sprogvalg"><a class="lang-btn" href="/pl/hacs-po-aktualizacji-2026-8/" aria-label="Polski"><img class="lang-flag" src="../../assets/flags/pl.svg" alt="Polski" /></a><a class="lang-btn active" href="/dk/hacs-2026-8-opdatering/" aria-label="Dansk" aria-current="page"><img class="lang-flag" src="../../assets/flags/dk.svg" alt="Dansk" /></a><a class="lang-btn" href="/en/hacs-2026-8-update-issues/" aria-label="English"><img class="lang-flag" src="../../assets/flags/gb.svg" alt="English" /></a></div>
+    <a class="nav-cta" href="/dk/#kontakt">Gratis vurdering</a>
+  </div></header>
+  <div class="mobile-bottom-bar" aria-label="Hurtige mobilhandlinger"><a class="mobile-bottom-link" href="/dk/#om-mig">Om mig</a><a class="mobile-bottom-link" href="/dk/#kontakt">Kontakt</a></div>
+  <main>
+    <section class="section"><div class="section-label">HACS OG HOME ASSISTANT 2026.8</div><h1 class="section-title mobile-match-title">HACS virker ikke efter Home Assistant 2026.8-opdateringen? Se hvad der sker</h1><p class="article-author">Forfatter: <a href="/dk/#om-mig">Tomasz Furdal · HA Expert</a></p><div class="card"><p class="section-subtitle">Home Assistant 2026.8 har medført reelle ændringer, som på nogle installationer viser sig som ødelagt HACS, en mislykket opdatering eller en companion-app, der sidder fast under installation. Det er ikke en fejl i din opsætning — det er kendte, aktuelt rapporterede problemer med netop denne version. Før du begynder at ændre noget, er det værd at finde ud af, hvilket af disse tilfælde du står med, for hver af dem kræver en anden løsning.</p></div></section>
+    <section class="section"><div class="section-label">DIAGNOSE</div><h2 class="section-title mobile-match-title">Diagnose: hvad sker der egentlig?</h2><div class="grid-2 services-grid">
+      <article class="card service-card"><div class="card-top"><span class="card-kicker">Opdatering</span><span class="card-badge" aria-hidden="true">🔄</span></div><h3>🔄 Selve opdateringen bliver ikke færdig</h3><p>Nogle installationer, der har forsøgt at gå fra 2026.7.4 til 2026.8.0, rapporterer at Home Assistant hænger eller genstarter midt i opdateringen. Hvis opdateringen sidder fast halvvejs, kan flere forsøg uden først at tjekke loggen gøre situationen værre i stedet for bedre.</p></article>
+      <article class="card service-card"><div class="card-top"><span class="card-kicker">Visning</span><span class="card-badge" aria-hidden="true">🖥️</span></div><h3>🖥️ HACS eller andre skærme ser "ødelagte" ud</h3><p>Efter 2026.8 kan nogle paneler, der tilgås via Ingress (f.eks. MQTT-relaterede visninger), blive vist i en drastisk formindsket størrelse — det er et kendt visningsproblem i denne version, ikke en fejl hos dig.</p></article>
+      <article class="card service-card"><div class="card-top"><span class="card-kicker">App</span><span class="card-badge" aria-hidden="true">📱</span></div><h3>📱 Companion-appen sidder fast under installation</h3><p>På nogle enheder med iOS 26.6 sidder opdateringen af companion-appen fast og vil ikke blive færdig. En genstart af enheden hjælper normalt, men ikke altid — nogle gange ligger problemet dybere, i selve integrationens konfiguration.</p></article>
+      <article class="card service-card"><div class="card-top"><span class="card-kicker">Adgang</span><span class="card-badge" aria-hidden="true">🔑</span></div><h3>🔑 Rettigheder og grænser, det er let at overse</h3><p>Sjældnere, men det sker: HACS opdaterer ikke på grund af filrettigheder i <code>custom_components</code>-mappen eller en midlertidig GitHub-grænse for forespørgsler. Det kræver et andet tjek end en almindelig genstart.</p></article>
+    </div></section>
+    <section class="section"><div class="section-label">FØRSTE SKRIDT</div><h2 class="section-title mobile-match-title">Én simpel ting, du selv kan tjekke</h2><div class="card"><p class="section-subtitle">Før du leder efter en dybere årsag: lav en <strong>fuld genstart af Home Assistant</strong> (ikke bare en genindlæsning af integrationen). Statistisk set er det den hyppigste, simpleste årsag — HACS henter de nye filer, men den gamle kode, der allerede kører i hukommelsen, fortsætter, indtil du laver en fuld genstart.</p></div></section>
+    <section class="section"><div class="section-label">VIDERE DIAGNOSE</div><h2 class="section-title mobile-match-title">Er det noget simpelt, eller noget dybere?</h2><div class="card"><p class="section-subtitle">Hvis en genstart ikke hjalp, afhænger næste skridt af, hvilket af tilfældene du står med — en mislykket opdatering kræver en anden tilgang end en ødelagt Ingress-skærm, og det er igen noget andet end et rettighedsproblem. Uden indblik i loggen og den konkrete konfiguration er det let at ende med at gætte, og tilfældige ændringer kan lægge nye problemer oven på det eksisterende.</p></div></section>
+    <section class="section"><div class="section-label">SUPPORT</div><h2 class="section-title mobile-match-title">Fjernhjælp</h2><div class="card"><p class="section-subtitle">Er du i tvivl om, hvorvidt det er en simpel genstart, en ødelagt Ingress-skærm, en mislykket opdatering eller noget med rettigheder? Jeg kan fjernkontrollere loggen, HACS-konfigurationen og integrationens status for at finde den præcise årsag i stedet for at gætte. Hvis problemet reelt skyldes en kendt fejl i denne Home Assistant-version, siger jeg det direkte — nogle gange er den bedste løsning simpelthen at vente på en rettelse, og nogle gange er der allerede en måde at komme uden om det på.</p><div class="hero-actions"><a class="btn-primary" href="/dk/#kontakt">Beskriv dit problem</a><a class="btn-ghost" href="/dk/#priser">Se priser</a></div></div></section>
+  </main>
+  <footer><div class="footer-inner"><span>© <span id="year"></span> Tomasz Furdal – Home Assistant &amp; Integrationer</span><span>Betaling: bankoverførsel, Revolut, PayPal, MobilePay</span><a class="footer-privacy-link" href="/dk/privatlivspolitik/">Privatlivspolitik</a></div></footer>
+  <script src="../../nav.js?v=20260826-consent-v2-local-1"></script><script>document.getElementById("year").textContent=new Date().getFullYear();</script>
+</body>
+</html>
