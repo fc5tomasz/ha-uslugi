@@ -4,92 +4,48 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="robots" content="index,follow" />
-  <title>Demo Home Assistant – symulacja panelu automatyki | HA Expert</title>
-  <meta name="description" content="Live demonstracja animowanego panelu Home Assistant: energia, ogrzewanie, pogoda, rekuperacja i stany domu w jednej wizualizacji." />
+  <title>Demonstracje Home Assistant – zobacz inteligentny dom | HA Expert</title>
+  <meta name="description" content="Sześć krótkich demonstracji Home Assistant: energia i ogrzewanie, oświetlenie, rolety, alarm dymu i zalania oraz zasilanie awaryjne. Zobacz, jak dom reaguje automatycznie." />
   <link rel="canonical" href="https://ha-expert.com/pl/demo/" />
-  <meta property="og:url" content="https://ha-expert.com/pl/demo/" />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Demo Home Assistant – symulacja panelu automatyki | HA Expert" />
-  <meta property="og:description" content="Live demonstracja animowanego panelu Home Assistant: energia, ogrzewanie, pogoda, rekuperacja i stany domu w jednej wizualizacji." />
+  <meta property="og:url" content="https://ha-expert.com/pl/demo/" />
+  <meta property="og:title" content="Demonstracje Home Assistant | HA Expert" />
+  <meta property="og:description" content="Zobacz na prostych przykładach, jak może działać inteligentny dom oparty na Home Assistant." />
   <link rel="alternate" hreflang="pl" href="https://ha-expert.com/pl/demo/" />
   <link rel="alternate" hreflang="en" href="https://ha-expert.com/en/demo/" />
   <link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/demo/" />
   <link rel="alternate" hreflang="x-default" href="https://ha-expert.com/en/demo/" />
-  <link rel="stylesheet" href="/styles.css?v=20260827-privacy-draft-1" />
-  <link rel="stylesheet" href="/demo/demo.css?v=20260812-installation-status-14" />
+  <link rel="stylesheet" href="/styles.css?v=20260901-mobile-lang-optical-1" />
+  <link rel="stylesheet" href="/demo/demo-catalog.css?v=20260901-demo-catalog-i18n-1" />
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18087588380"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{'ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','analytics_storage':'denied'});</script>
-<script src="/consent.js?v=20260829-consent-stats-local-1"></script>
-<script>gtag('js',new Date());gtag('config','AW-18087588380');</script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{'ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','analytics_storage':'denied'});</script>
+  <script src="/consent.js?v=20260829-consent-stats-local-1"></script>
+  <script>gtag('js',new Date());gtag('config','AW-18087588380');</script>
 </head>
-<body class="demo-page pl-home-bg-test" data-demo-lang="pl">
+<body class="demo-page demo-index-page pl-home-bg-test">
   <header class="demo-mobile-header">
     <div class="nav">
-      <a class="logo" id="demo-home-link" href="/pl/" aria-label="Tomasz Furdal - Home Assistant Expert">
-        <img class="logo-image" src="/assets/brand/logo-wyciete.png" alt="Tomasz Furdal - Home Assistant Expert" title="Home Assistant Expert - Tomasz Furdal" width="871" height="334" />
-      </a>
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Open menu">
-        <span aria-hidden="true">☰</span>
-      </button>
-      <nav id="demo-primary-nav" aria-label="Primary">
-        <ul>
-          <li><a id="demo-nav-services" href="/pl/#uslugi" data-i18n="nav_services">Usługi</a></li>
-          <li><a id="demo-nav-about" href="/pl/#o-mnie" data-i18n="nav_about">O mnie</a></li>
-          <li><a id="demo-nav-who" href="/pl/#dla-kogo" data-i18n="nav_who">Dla kogo</a></li>
-          <li><a id="demo-nav-process" href="/pl/#jak-pracuje" data-i18n="nav_process">Jak pracuję</a></li>
-          <li><a id="demo-nav-pricing" href="/pl/#cennik" data-i18n="nav_pricing">Cennik</a></li>
-          <li><a id="demo-nav-contact" href="/pl/#kontakt" data-i18n="nav_contact">Kontakt</a></li>
-          <li class="nav-secondary-start"><a href="/pl/projekty/">Projekty</a></li>
-          <li><a href="/pl/poradniki/">Poradniki</a></li>
-          <li><a href="/pl/demo/" aria-current="page">Demo panelu</a></li>
-        </ul>
-      </nav>
-      <div class="lang-switch" aria-label="Language switch">
-        <a class="lang-btn active" href="/pl/demo/" aria-label="Polski" aria-current="page"><img class="lang-flag" src="/assets/flags/pl.svg" alt="Polski" /></a>
-        <a class="lang-btn" href="/dk/demo/" aria-label="Dansk"><img class="lang-flag" src="/assets/flags/dk.svg" alt="Dansk" /></a>
-        <a class="lang-btn" href="/en/demo/" aria-label="English"><img class="lang-flag" src="/assets/flags/gb.svg" alt="English" /></a>
-      </div>
-      <a class="nav-cta" id="demo-nav-cta" href="/pl/#kontakt" data-i18n="nav_cta">Bezpłatna ocena</a>
+      <a class="logo" href="/pl/" aria-label="Tomasz Furdal - Home Assistant Expert"><img class="logo-image" src="/assets/brand/logo-wyciete.png" alt="Tomasz Furdal - Home Assistant Expert" width="871" height="334" /></a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Otwórz menu"><span aria-hidden="true">☰</span></button>
+      <nav id="primary-nav" aria-label="Główna nawigacja"><ul><li><a href="/pl/#uslugi">Usługi</a></li><li><a href="/pl/#o-mnie">O mnie</a></li><li><a href="/pl/#dla-kogo">Dla kogo</a></li><li><a href="/pl/#jak-pracuje">Jak pracuję</a></li><li><a href="/pl/#cennik">Cennik</a></li><li><a href="/pl/#kontakt">Kontakt</a></li><li class="nav-secondary-start"><a href="/pl/projekty/">Projekty</a></li><li><a href="/pl/poradniki/">Poradniki</a></li><li><a href="/pl/demo/" aria-current="page">Demo panelu</a></li></ul></nav>
+      <div class="lang-switch" aria-label="Wybór języka"><a class="lang-btn active" href="/pl/demo/" aria-label="Polski" aria-current="page"><img class="lang-flag" src="/assets/flags/pl.svg" alt="Polski" /></a><a class="lang-btn" href="/dk/demo/" aria-label="Dansk"><img class="lang-flag" src="/assets/flags/dk.svg" alt="Dansk" /></a><a class="lang-btn" href="/en/demo/" aria-label="English"><img class="lang-flag" src="/assets/flags/gb.svg" alt="English" /></a></div>
+      <a class="nav-cta" href="/pl/#kontakt">Bezpłatna ocena</a>
     </div>
   </header>
-  <main class="demo-shell">
-    <section class="demo-head">
-      <div>
-        <span class="demo-kicker" data-i18n="kicker">Demonstracja sterowania automatyką</span>
-        <h1 class="demo-title demo-title-mobile-match mobile-match-title" data-i18n="title">Symulacja panelu automatyki Home Assistant</h1>
-        <p class="demo-subtitle" data-i18n="subtitle">To jest osobna podstrona pokazująca działający panel animowany oparty na logice instalacji Home Assistant. Widzisz wyłącznie panel demonstracyjny.</p>
-        <p class="demo-context-line">Schemat prezentuje przepływy energii, logikę ogrzewania oraz aktualne parametry pogodowe.</p>
-      </div>
+  <main class="demo-catalog-shell">
+    <section class="demo-catalog-hero"><span class="demo-catalog-kicker">Demonstracje Home Assistant</span><h1>Zobacz, jak może działać Twój dom</h1><p>Wybierz panel i uruchom krótką demonstrację. Każdy przykład pokazuje codzienną sytuację oraz to, jak dom może zareagować automatycznie.</p></section>
+    <section class="demo-catalog-list" aria-labelledby="demo-catalog-title">
+      <div class="demo-catalog-heading"><span>Dostępne demonstracje</span></div>
+      <a class="demo-catalog-card demo-catalog-card--energy" href="/pl/demo/energia/" aria-label="Otwórz demonstrację 1. Energia i dom"><div class="demo-catalog-card-copy"><span class="demo-catalog-card-label">Energia, ogrzewanie i pogoda</span><h3>1. Energia i dom</h3><p>Zobacz, jak energia z paneli trafia do domu i ogrzewania oraz jak instalacja reaguje na porę dnia i warunki pogodowe.</p><ul><li>przepływ energii</li><li>ogrzewanie i rekuperacja</li><li>zmiana pory dnia</li></ul></div></a>
+      <a class="demo-catalog-card demo-catalog-card--lighting" href="/pl/demo/oswietlenie/" aria-label="Otwórz demonstrację 2. Oświetlenie domu"><div class="demo-catalog-card-copy"><span class="demo-catalog-card-label">Codzienne scenariusze</span><h3>2. Oświetlenie domu</h3><p>Zobacz, jak światło może spokojnie reagować na powrót domowników, wieczorny odpoczynek i wyjście z domu.</p><ul><li>powrót do domu</li><li>wieczorny odpoczynek</li><li>wyjście i oszczędzanie energii</li></ul></div></a>
+      <a class="demo-catalog-card demo-catalog-card--shading" href="/pl/demo/rolety/" aria-label="Otwórz demonstrację 3. Rolety i ochrona przed słońcem"><div class="demo-catalog-card-copy"><span class="demo-catalog-card-label">Komfort, cień i prywatność</span><h3>3. Rolety i ochrona przed słońcem</h3><p>Zobacz, jak rolety mogą reagować na położenie słońca, temperaturę, obecność domowników i zmianę pory dnia.</p><ul><li>ochrona przed nagrzewaniem</li><li>pozycja słońca</li><li>prywatność i tryb wyjścia</li></ul></div></a>
+      <a class="demo-catalog-card demo-catalog-card--failure" href="/pl/demo/awarie/" aria-label="Otwórz demonstrację 4. Zanik zasilania"><div class="demo-catalog-card-copy"><span class="demo-catalog-card-label">Zasilanie awaryjne</span><h3>4. Zanik zasilania</h3><p>Zobacz, jak Home Assistant przełącza dom na zasilanie awaryjne i podtrzymuje najważniejsze urządzenia.</p><ul><li>zanik sieci</li><li>przełączenie na baterię</li><li>podtrzymanie urządzeń</li></ul></div></a>
+      <a class="demo-catalog-card demo-catalog-card--failure" href="/pl/demo/dym/" aria-label="Otwórz demonstrację 5. Wykrycie dymu"><div class="demo-catalog-card-copy"><span class="demo-catalog-card-label">Bezpieczeństwo domu</span><h3>5. Wykrycie dymu</h3><p>Zobacz, jak czujnik dymu przekazuje sygnał do Home Assistant, a system uruchamia alarm i wcześniej ustalone działania.</p><ul><li>wykrycie dymu</li><li>alarm</li><li>automatyczna reakcja</li></ul></div></a>
+      <a class="demo-catalog-card demo-catalog-card--failure" href="/pl/demo/woda/" aria-label="Otwórz demonstrację 6. Wyciek wody"><div class="demo-catalog-card-copy"><span class="demo-catalog-card-label">Ochrona przed zalaniem</span><h3>6. Wyciek wody</h3><p>Zobacz, jak czujnik zalania może wykryć wyciek, a Home Assistant automatycznie zamknąć dopływ wody i ograniczyć skutki awarii.</p><ul><li>wyciek wody</li><li>zamknięcie zaworu</li><li>powiadomienie</li></ul></div></a>
     </section>
-
-    <section class="demo-control-bar" aria-label="Sterowanie symulacją">
-      <button class="demo-sim-button" id="btn-simulate" type="button">
-        <span class="sim-label-full">🎲 Symuluj nową porę dnia</span>
-        <span class="sim-label-mobile">🎲 Symuluj porę dnia</span>
-      </button>
-      <div class="demo-sim-status js-simulation-status" id="simulation-status-desktop">Kliknij przycisk, aby rozpocząć symulację...</div>
-    </section>
-
-    <p class="demo-mobile-intro demo-panel-instruction"><button class="demo-panel-instruction-button" id="demo-instruction-trigger" type="button" data-i18n="mobile_intro_action">Kliknij schemat</button><span data-i18n="mobile_intro_detail">, aby zmienić porę dnia i zobaczyć reakcję instalacji.</span></p>
-
-    <section class="demo-panel-wrap">
-      <button class="demo-panel-trigger" id="demo-panel-trigger" type="button" aria-label="Symuluj zmianę pory dnia">
-        <div id="panelMount" class="demo-panel-frame"></div>
-        <div class="demo-panel-status js-simulation-status" id="simulation-status-mobile">Kliknij przycisk, aby rozpocząć symulację...</div>
-      </button>
-    </section>
+    <section class="demo-contact-card" aria-labelledby="demo-contact-title"><div><span class="demo-contact-eyebrow">Panel dopasowany do Ciebie</span><h2 id="demo-contact-title">Podoba Ci się któryś z paneli albo chcesz mieć własny?</h2><p>Panel może zostać przygotowany pod Twój dom, urządzenia i sposób korzystania z Home Assistant.</p></div><a class="demo-contact-button" href="/pl/#kontakt">Zapraszam do kontaktu <span aria-hidden="true">→</span></a></section>
   </main>
-
-  <footer>
-    <div class="footer-inner">
-      <span>© <span id="year"></span> Tomasz Furdal – Home Assistant &amp; Integrations</span>
-      <span>Płatności: przelew bankowy, Revolut, PayPal, MobilePay</span>
-      <a class="footer-privacy-link" href="/pl/polityka-prywatnosci/">Polityka prywatności</a>
-    </div>
-  </footer>
-
-  <script src="/nav.js?v=20260826-consent-v2-local-1"></script>
-  <script src="/demo/panel-demo.js?v=20260812-installation-status-16"></script>
-  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+  <footer><div class="footer-inner"><span>© <span id="year"></span> Tomasz Furdal – Home Assistant &amp; Integrations</span><span>Płatności: przelew bankowy, Revolut, PayPal, MobilePay</span><a class="footer-privacy-link" href="/pl/polityka-prywatnosci/">Polityka prywatności</a></div></footer>
+  <script src="/nav.js?v=20260826-consent-v2-local-1"></script><script>document.getElementById("year").textContent = new Date().getFullYear();</script>
 </body>
 </html>

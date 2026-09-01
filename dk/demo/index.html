@@ -4,92 +4,48 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="robots" content="index,follow" />
-  <title>Home Assistant-demo – simulering af automationspanel | HA Expert</title>
-  <meta name="description" content="Live demonstration af et animeret Home Assistant panel: energi, varme, vejr, varmegenvinding og hjemmets tilstand i én visualisering." />
+  <title>Home Assistant-demo – se et smart home-panel i praksis | HA Expert</title>
+  <meta name="description" content="Seks korte Home Assistant-demonstrationer: energi og varme, belysning, rullegardiner, røg- og vandalarm samt nødstrøm. Se, hvordan et automatiseret hjem reagerer." />
   <link rel="canonical" href="https://ha-expert.com/dk/demo/" />
-  <meta property="og:url" content="https://ha-expert.com/dk/demo/" />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Home Assistant-demo – simulering af automationspanel | HA Expert" />
-  <meta property="og:description" content="Live demonstration af et animeret Home Assistant panel: energi, varme, vejr, varmegenvinding og hjemmets tilstand i én visualisering." />
+  <meta property="og:url" content="https://ha-expert.com/dk/demo/" />
+  <meta property="og:title" content="Home Assistant-demo – smart home-panel | HA Expert" />
+  <meta property="og:description" content="Se på enkle eksempler, hvordan et automatiseret hjem baseret på Home Assistant kan fungere." />
   <link rel="alternate" hreflang="pl" href="https://ha-expert.com/pl/demo/" />
   <link rel="alternate" hreflang="en" href="https://ha-expert.com/en/demo/" />
   <link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/demo/" />
   <link rel="alternate" hreflang="x-default" href="https://ha-expert.com/en/demo/" />
-  <link rel="stylesheet" href="/styles.css?v=20260827-privacy-draft-1" />
-  <link rel="stylesheet" href="/demo/demo.css?v=20260812-installation-status-14" />
+  <link rel="stylesheet" href="/styles.css?v=20260901-mobile-lang-optical-1" />
+  <link rel="stylesheet" href="/demo/demo-catalog.css?v=20260901-demo-catalog-i18n-1" />
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18087588380"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{'ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','analytics_storage':'denied'});</script>
-<script src="/consent.js?v=20260829-consent-stats-local-1"></script>
-<script>gtag('js',new Date());gtag('config','AW-18087588380');</script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{'ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','analytics_storage':'denied'});</script>
+  <script src="/consent.js?v=20260829-consent-stats-local-1"></script>
+  <script>gtag('js',new Date());gtag('config','AW-18087588380');</script>
 </head>
-<body class="demo-page pl-home-bg-test" data-demo-lang="dk">
+<body class="demo-page demo-index-page pl-home-bg-test">
   <header class="demo-mobile-header">
     <div class="nav">
-      <a class="logo" id="demo-home-link" href="/dk/" aria-label="Tomasz Furdal - Home Assistant Expert">
-        <img class="logo-image" src="/assets/brand/logo-wyciete.png" alt="Tomasz Furdal - Home Assistant Expert" title="Home Assistant Expert - Tomasz Furdal" width="871" height="334" />
-      </a>
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Open menu">
-        <span aria-hidden="true">☰</span>
-      </button>
-      <nav id="demo-primary-nav" aria-label="Primary">
-        <ul>
-          <li><a id="demo-nav-services" href="/dk/#ydelser" data-i18n="nav_services">Ydelser</a></li>
-          <li><a id="demo-nav-about" href="/dk/#om-mig" data-i18n="nav_about">Om mig</a></li>
-          <li><a id="demo-nav-who" href="/dk/#for-hvem" data-i18n="nav_who">For hvem</a></li>
-          <li><a id="demo-nav-process" href="/dk/#saadan-arbejder-jeg" data-i18n="nav_process">Sådan arbejder jeg</a></li>
-          <li><a id="demo-nav-pricing" href="/dk/#priser" data-i18n="nav_pricing">Priser</a></li>
-          <li><a id="demo-nav-contact" href="/dk/#kontakt" data-i18n="nav_contact">Kontakt</a></li>
-          <li class="nav-secondary-start"><a href="/dk/projekter/">Projekter</a></li>
-          <li><a href="/dk/vejledninger/">Vejledninger</a></li>
-          <li><a href="/dk/demo/" aria-current="page">Demo-panel</a></li>
-        </ul>
-      </nav>
-      <div class="lang-switch" aria-label="Language switch">
-        <a class="lang-btn" href="/pl/demo/" aria-label="Polski"><img class="lang-flag" src="/assets/flags/pl.svg" alt="Polski" /></a>
-        <a class="lang-btn active" href="/dk/demo/" aria-label="Dansk" aria-current="page"><img class="lang-flag" src="/assets/flags/dk.svg" alt="Dansk" /></a>
-        <a class="lang-btn" href="/en/demo/" aria-label="English"><img class="lang-flag" src="/assets/flags/gb.svg" alt="English" /></a>
-      </div>
-      <a class="nav-cta" id="demo-nav-cta" href="/dk/#kontakt" data-i18n="nav_cta">Gratis vurdering</a>
+      <a class="logo" href="/dk/" aria-label="Tomasz Furdal - Home Assistant Expert"><img class="logo-image" src="/assets/brand/logo-wyciete.png" alt="Tomasz Furdal - Home Assistant Expert" width="871" height="334" /></a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Åbn menu"><span aria-hidden="true">☰</span></button>
+      <nav id="primary-nav" aria-label="Primær navigation"><ul><li><a href="/dk/#ydelser">Ydelser</a></li><li><a href="/dk/#om-mig">Om mig</a></li><li><a href="/dk/#for-hvem">For hvem</a></li><li><a href="/dk/#saadan-arbejder-jeg">Sådan arbejder jeg</a></li><li><a href="/dk/#priser">Priser</a></li><li><a href="/dk/#kontakt">Kontakt</a></li><li class="nav-secondary-start"><a href="/dk/projekter/">Projekter</a></li><li><a href="/dk/vejledninger/">Vejledninger</a></li><li><a href="/dk/demo/" aria-current="page">Demo-panel</a></li></ul></nav>
+      <div class="lang-switch" aria-label="Sprogvalg"><a class="lang-btn" href="/pl/demo/" aria-label="Polski"><img class="lang-flag" src="/assets/flags/pl.svg" alt="Polski" /></a><a class="lang-btn active" href="/dk/demo/" aria-label="Dansk" aria-current="page"><img class="lang-flag" src="/assets/flags/dk.svg" alt="Dansk" /></a><a class="lang-btn" href="/en/demo/" aria-label="English"><img class="lang-flag" src="/assets/flags/gb.svg" alt="English" /></a></div>
+      <a class="nav-cta" href="/dk/#kontakt">Gratis vurdering</a>
     </div>
   </header>
-  <main class="demo-shell">
-    <section class="demo-head">
-      <div>
-        <span class="demo-kicker" data-i18n="kicker">Demo af automatikstyring</span>
-        <h1 class="demo-title demo-title-mobile-match mobile-match-title" data-i18n="title">Simulering af Home Assistant-automationspanel</h1>
-        <p class="demo-subtitle" data-i18n="subtitle">Dette er en separat underside, der viser et fungerende animeret panel baseret på logikken i en Home Assistant-installation. Du ser kun et demonstrationspanel.</p>
-        <p class="demo-context-line">Diagrammet viser energiflow, varmelogik og aktuelle vejrparametre.</p>
-      </div>
+  <main class="demo-catalog-shell">
+    <section class="demo-catalog-hero"><span class="demo-catalog-kicker">Home Assistant-demonstrationer</span><h1>Se, hvordan dit hjem kan fungere</h1><p>Vælg et panel og kør en kort demonstration. Hvert eksempel viser en hverdagssituation og hvordan hjemmet kan reagere automatisk.</p></section>
+    <section class="demo-catalog-list" aria-labelledby="demo-catalog-title">
+      <div class="demo-catalog-heading"><span>Tilgængelige demonstrationer</span></div>
+      <a class="demo-catalog-card demo-catalog-card--energy" href="/dk/demo/energi/" aria-label="Åbn demonstration 1. Energi og hjem"><div class="demo-catalog-card-copy"><span class="demo-catalog-card-label">Energi, varme og vejr</span><h3>1. Energi og hjem</h3><p>Se, hvordan energien fra panelerne når hjemmet og varmen, og hvordan anlægget reagerer på tidspunktet på dagen og vejret.</p><ul><li>energiflow</li><li>varme og varmegenvinding</li><li>skiftende tid på dagen</li></ul></div></a>
+      <a class="demo-catalog-card demo-catalog-card--lighting" href="/dk/demo/belysning/" aria-label="Åbn demonstration 2. Belysning i hjemmet"><div class="demo-catalog-card-copy"><span class="demo-catalog-card-label">Hverdagsscenarier</span><h3>2. Belysning i hjemmet</h3><p>Se, hvordan lyset roligt kan reagere, når familien kommer hjem, slapper af om aftenen eller forlader huset.</p><ul><li>hjemkomst</li><li>aftenro</li><li>afgang og energibesparelse</li></ul></div></a>
+      <a class="demo-catalog-card demo-catalog-card--shading" href="/dk/demo/solafskaermning/" aria-label="Åbn demonstration 3. Rullegardiner og solafskærmning"><div class="demo-catalog-card-copy"><span class="demo-catalog-card-label">Komfort, skygge og privatliv</span><h3>3. Rullegardiner og solafskærmning</h3><p>Se, hvordan rullegardinerne kan reagere på solens position, temperaturen, om nogen er hjemme, og tidspunktet på dagen.</p><ul><li>beskyttelse mod overophedning</li><li>solens position</li><li>privatliv og fraværstilstand</li></ul></div></a>
+      <a class="demo-catalog-card demo-catalog-card--failure" href="/dk/demo/stroem/" aria-label="Åbn demonstration 4. Strømsvigt"><div class="demo-catalog-card-copy"><span class="demo-catalog-card-label">Nødstrøm</span><h3>4. Strømsvigt</h3><p>Se, hvordan Home Assistant skifter hjemmet til nødstrøm og holder de vigtigste enheder kørende.</p><ul><li>netsvigt</li><li>skift til batteri</li><li>vigtige enheder kører videre</li></ul></div></a>
+      <a class="demo-catalog-card demo-catalog-card--failure" href="/dk/demo/roeg/" aria-label="Åbn demonstration 5. Røgdetektering"><div class="demo-catalog-card-copy"><span class="demo-catalog-card-label">Sikkerhed i hjemmet</span><h3>5. Røgdetektering</h3><p>Se, hvordan røgsensoren sender et signal til Home Assistant, og systemet udløser alarmen og de handlinger, der er aftalt på forhånd.</p><ul><li>røg registreret</li><li>alarm</li><li>automatisk reaktion</li></ul></div></a>
+      <a class="demo-catalog-card demo-catalog-card--failure" href="/dk/demo/vand/" aria-label="Åbn demonstration 6. Vandudslip"><div class="demo-catalog-card-copy"><span class="demo-catalog-card-label">Beskyttelse mod vandskade</span><h3>6. Vandudslip</h3><p>Se, hvordan lækagesensoren kan registrere et udslip, og Home Assistant automatisk kan lukke for vandtilførslen og begrænse skaderne.</p><ul><li>vandudslip</li><li>ventil lukket</li><li>notifikation</li></ul></div></a>
     </section>
-
-    <section class="demo-control-bar" aria-label="Simuleringsstyring">
-      <button class="demo-sim-button" id="btn-simulate" type="button">
-        <span class="sim-label-full">🎲 Simuler ny tid på dagen</span>
-        <span class="sim-label-mobile">🎲 Simuler tid på dagen</span>
-      </button>
-      <div class="demo-sim-status js-simulation-status" id="simulation-status-desktop">Klik på knappen for at starte simuleringen...</div>
-    </section>
-
-    <p class="demo-mobile-intro demo-panel-instruction"><button class="demo-panel-instruction-button" id="demo-instruction-trigger" type="button" data-i18n="mobile_intro_action">Klik på diagrammet</button><span data-i18n="mobile_intro_detail"> for at ændre tidspunktet på dagen og se installationens reaktion.</span></p>
-
-    <section class="demo-panel-wrap">
-      <button class="demo-panel-trigger" id="demo-panel-trigger" type="button" aria-label="Simuler tid på dagen">
-        <div id="panelMount" class="demo-panel-frame"></div>
-        <div class="demo-panel-status js-simulation-status" id="simulation-status-mobile">Klik på knappen for at starte simuleringen...</div>
-      </button>
-    </section>
+    <section class="demo-contact-card" aria-labelledby="demo-contact-title"><div><span class="demo-contact-eyebrow">Et panel tilpasset dig</span><h2 id="demo-contact-title">Kan du lide et af panelerne, eller vil du have dit eget?</h2><p>Et panel kan bygges op omkring dit hjem, dine enheder og den måde, du bruger Home Assistant på.</p></div><a class="demo-contact-button" href="/dk/#kontakt">Kontakt mig <span aria-hidden="true">→</span></a></section>
   </main>
-
-  <footer>
-    <div class="footer-inner">
-      <span>© <span id="year"></span> Tomasz Furdal – Home Assistant &amp; Integrations</span>
-      <span>Betaling: bankoverførsel, Revolut, PayPal, MobilePay</span>
-      <a class="footer-privacy-link" href="/dk/privatlivspolitik/">Privatlivspolitik</a>
-    </div>
-  </footer>
-
-  <script src="/nav.js?v=20260826-consent-v2-local-1"></script>
-  <script src="/demo/panel-demo.js?v=20260812-installation-status-16"></script>
-  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+  <footer><div class="footer-inner"><span>© <span id="year"></span> Tomasz Furdal – Home Assistant &amp; Integrations</span><span>Betaling: bankoverførsel, Revolut, PayPal, MobilePay</span><a class="footer-privacy-link" href="/dk/privatlivspolitik/">Privatlivspolitik</a></div></footer>
+  <script src="/nav.js?v=20260826-consent-v2-local-1"></script><script>document.getElementById("year").textContent = new Date().getFullYear();</script>
 </body>
 </html>

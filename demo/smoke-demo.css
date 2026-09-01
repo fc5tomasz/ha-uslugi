@@ -1,0 +1,310 @@
+.smoke-panel-instruction{
+  margin:0 0 12px;
+  color:#b9cbc5;
+  font-size:1rem;
+  line-height:1.55;
+}
+
+.smoke-panel-instruction strong{color:#12c884}
+
+.smoke-story{
+  overflow:hidden;
+  border:1px solid rgba(138,193,178,.2);
+  border-radius:30px;
+  background:rgba(4,18,18,.94);
+  box-shadow:0 30px 72px rgba(0,0,0,.34);
+}
+
+.smoke-story-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+  padding:23px 28px;
+  border-bottom:1px solid rgba(151,193,181,.13);
+  background:linear-gradient(90deg,rgba(255,255,255,.026),rgba(255,255,255,.012));
+}
+
+.smoke-story-eyebrow{
+  display:block;
+  margin-bottom:5px;
+  color:#72e8c4;
+  font-size:.7rem;
+  font-weight:800;
+  letter-spacing:.17em;
+  text-transform:uppercase;
+}
+
+.smoke-story-header h2{margin:0;color:#f3faf7;font-size:1.45rem}
+
+.smoke-story-state{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  min-width:154px;
+  padding:9px 13px;
+  border:1px solid rgba(112,231,192,.3);
+  border-radius:999px;
+  background:rgba(112,231,192,.06);
+  color:#ccebe2;
+  font-size:.75rem;
+  font-weight:750;
+  transition:border-color .75s ease,background-color .75s ease,color .75s ease;
+}
+
+.smoke-story-state-dot,
+.smoke-current-dot{
+  width:9px;
+  height:9px;
+  flex:0 0 auto;
+  border-radius:50%;
+  background:#70e7c0;
+  box-shadow:0 0 0 6px rgba(112,231,192,.08);
+  transition:background-color .75s ease,box-shadow .75s ease;
+}
+
+.smoke-story.is-smoke .smoke-story-state{border-color:rgba(255,187,103,.42);background:rgba(255,187,103,.07);color:#ffe2b9}
+.smoke-story.is-detecting .smoke-story-state,
+.smoke-story.is-alarm .smoke-story-state{border-color:rgba(255,126,101,.5);background:rgba(255,126,101,.085);color:#ffd3c9}
+.smoke-story.is-smoke .smoke-story-state-dot,
+.smoke-story.is-smoke .smoke-current-dot{background:#ffbd73;box-shadow:0 0 0 7px rgba(255,189,115,.09)}
+.smoke-story.is-detecting .smoke-story-state-dot,
+.smoke-story.is-alarm .smoke-story-state-dot,
+.smoke-story.is-detecting .smoke-current-dot,
+.smoke-story.is-alarm .smoke-current-dot{background:#ff8067;box-shadow:0 0 0 7px rgba(255,128,103,.1)}
+.smoke-story.is-alarm .smoke-story-state-dot{animation:smokeDotPulse 1.8s ease-in-out infinite}
+
+#smokeMount{cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+#smokeMount:focus-visible{outline:3px solid #77e6ff;outline-offset:-5px}
+
+.smoke-demo-grid{
+  display:grid;
+  grid-template-columns:minmax(0,1.42fr) minmax(350px,.58fr);
+  gap:22px;
+  padding:24px;
+}
+
+.smoke-visual{
+  overflow:hidden;
+  border:1px solid rgba(151,193,181,.16);
+  border-radius:24px;
+  background:#061716;
+  box-shadow:inset 0 0 70px rgba(56,198,156,.025);
+}
+
+.smoke-visual-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  padding:17px 20px;
+  border-bottom:1px solid rgba(151,193,181,.11);
+  background:rgba(4,17,17,.92);
+}
+
+.smoke-current{display:flex;align-items:center;gap:12px}
+.smoke-current small{display:block;color:#829c94}
+.smoke-current strong{display:block;margin-top:3px;color:#edf7f3;transition:color .6s ease}
+.smoke-time{color:#91aba3;font-size:.82rem}
+
+.smoke-stage{
+  position:relative;
+  overflow:hidden;
+  aspect-ratio:3 / 2;
+  background:#071312;
+  isolation:isolate;
+}
+
+.smoke-stage>img{display:block;width:100%;height:100%;object-fit:cover;object-position:center;filter:brightness(.8) saturate(.86);transition:filter 1s ease}
+.smoke-stage::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(3,11,15,.14),transparent 43%,rgba(2,10,11,.3) 100%);transition:background .9s ease}
+
+.smoke-warning-wash{
+  position:absolute;
+  inset:0;
+  z-index:2;
+  opacity:0;
+  pointer-events:none;
+  background:radial-gradient(circle at 84% 54%,rgba(255,173,94,.26),transparent 25%),radial-gradient(circle at 32% 53%,rgba(255,94,66,.22),transparent 22%),linear-gradient(180deg,rgba(255,104,73,.07),transparent 60%);
+  mix-blend-mode:screen;
+  transition:opacity 1s ease;
+}
+
+.smoke-sensor-halo{
+  position:absolute;
+  left:52.7%;
+  top:7.4%;
+  z-index:4;
+  width:6.5%;
+  aspect-ratio:1;
+  transform:translate(-50%,-50%) scale(.72);
+  border:2px solid rgba(255,126,99,.9);
+  border-radius:50%;
+  opacity:0;
+  pointer-events:none;
+  box-shadow:0 0 18px rgba(255,101,76,.6),inset 0 0 15px rgba(255,101,76,.34);
+}
+
+.smoke-plume{
+  position:absolute;
+  left:22%;
+  top:18%;
+  z-index:3;
+  width:23%;
+  height:49%;
+  opacity:0;
+  pointer-events:none;
+  filter:blur(5px);
+  mix-blend-mode:screen;
+  transition:opacity 1.1s ease;
+}
+
+.smoke-plume i{position:absolute;bottom:0;border-radius:50%;background:radial-gradient(circle,rgba(218,224,219,.62) 0%,rgba(165,177,173,.34) 43%,rgba(111,125,123,0) 74%);opacity:0}
+.smoke-plume i:nth-child(1){left:31%;width:42%;height:44%;animation-delay:0s}
+.smoke-plume i:nth-child(2){left:8%;width:48%;height:54%;animation-delay:.8s}
+.smoke-plume i:nth-child(3){right:5%;width:46%;height:50%;animation-delay:1.6s}
+.smoke-plume i:nth-child(4){left:23%;width:54%;height:63%;animation-delay:2.35s}
+
+.smoke-flame{
+  position:absolute;
+  left:33.2%;
+  top:59%;
+  z-index:4;
+  width:2.6%;
+  height:7.2%;
+  opacity:0;
+  transform:translate(-50%,-50%) scale(.55);
+  transform-origin:center bottom;
+  pointer-events:none;
+  filter:drop-shadow(0 0 10px rgba(255,98,49,.68));
+  transition:opacity .75s ease,transform .75s ease;
+}
+
+.smoke-flame i{position:absolute;left:50%;bottom:0;display:block;transform:translateX(-50%);border-radius:46% 46% 54% 54%;clip-path:polygon(50% 0,68% 22%,84% 49%,80% 72%,66% 93%,50% 100%,34% 94%,20% 74%,17% 51%,34% 29%);background:linear-gradient(180deg,#fff1a3 4%,#ffad4f 45%,#f34f2f 91%)}
+.smoke-flame i:first-child{width:100%;height:100%}
+.smoke-flame i:last-child{bottom:5%;width:43%;height:58%;background:linear-gradient(180deg,#fffbd1,#ffce61 72%)}
+
+.smoke-notification{
+  position:absolute;
+  right:3%;
+  bottom:4%;
+  z-index:6;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  max-width:250px;
+  padding:10px 13px;
+  border:1px solid rgba(112,231,192,.36);
+  border-radius:14px;
+  background:rgba(5,24,22,.88);
+  color:#dff8ef;
+  opacity:0;
+  transform:translateY(14px);
+  pointer-events:none;
+  box-shadow:0 16px 35px rgba(0,0,0,.32);
+  backdrop-filter:blur(9px);
+  transition:opacity .65s ease,transform .65s ease;
+}
+
+.smoke-notification-icon{display:grid;place-items:center;width:28px;height:28px;flex:0 0 auto;border-radius:50%;background:rgba(112,231,192,.13);color:#70e7c0;font-weight:900}
+.smoke-notification small,.smoke-notification strong{display:block}
+.smoke-notification small{color:#85a59b;font-size:.66rem}
+.smoke-notification strong{margin-top:2px;font-size:.76rem}
+
+.smoke-device-strip{
+  position:absolute;
+  left:3%;
+  bottom:4%;
+  z-index:5;
+  display:flex;
+  max-width:66%;
+  padding:9px 12px;
+  border:1px solid rgba(150,188,179,.2);
+  border-radius:14px;
+  background:rgba(4,18,18,.8);
+  box-shadow:0 14px 30px rgba(0,0,0,.25);
+  backdrop-filter:blur(9px);
+}
+
+.smoke-device-strip>span{position:relative;display:grid;grid-template-columns:8px auto;column-gap:7px;align-items:center;min-width:94px;padding:0 11px;border-right:1px solid rgba(153,190,181,.13)}
+.smoke-device-strip>span:first-child{padding-left:0}
+.smoke-device-strip>span:last-child{padding-right:0;border-right:0}
+.smoke-device-strip small,.smoke-device-strip strong{grid-column:2;display:block;white-space:nowrap}
+.smoke-device-strip small{color:#829c94;font-size:.61rem}
+.smoke-device-strip strong{margin-top:2px;color:#bfeadd;font-size:.68rem;transition:color .7s ease}
+.smoke-device-dot{grid-row:1 / span 2;width:7px;height:7px;border-radius:50%;background:#70e7c0;box-shadow:0 0 0 4px rgba(112,231,192,.07);transition:background-color .7s ease,box-shadow .7s ease}
+
+.smoke-story.is-smoke .smoke-plume{opacity:.42}
+.smoke-story.is-detecting .smoke-warning-wash{opacity:.42}
+.smoke-story.is-alarm .smoke-warning-wash{opacity:1;animation:smokeWarningGlow 2.8s ease-in-out infinite}
+.smoke-story.is-detecting .smoke-sensor-halo,.smoke-story.is-alarm .smoke-sensor-halo{opacity:1;animation:smokeSensorPulse 1.9s ease-out infinite}
+.smoke-story.is-detecting .smoke-plume{opacity:.76}
+.smoke-story.is-alarm .smoke-plume{opacity:1}
+.smoke-story.is-smoke .smoke-plume i,.smoke-story.is-detecting .smoke-plume i,.smoke-story.is-alarm .smoke-plume i{animation:smokeRise 4.2s ease-in-out infinite}
+.smoke-story.is-detecting .smoke-flame{opacity:.72;transform:translate(-50%,-50%) scale(.78)}
+.smoke-story.is-alarm .smoke-flame{opacity:1;transform:translate(-50%,-50%) scale(1);animation:smokeFlameFlicker 1.45s ease-in-out infinite}
+.smoke-story.is-alarm .smoke-notification{opacity:1;transform:translateY(0)}
+.smoke-story.is-smoke .smoke-device-strip>span:first-child .smoke-device-dot{background:#ffbd73;box-shadow:0 0 0 4px rgba(255,189,115,.08)}
+.smoke-story.is-smoke .smoke-device-strip>span:first-child strong{color:#ffd6a6}
+.smoke-story.is-detecting .smoke-device-dot,.smoke-story.is-alarm .smoke-device-dot{background:#ff8067;box-shadow:0 0 0 4px rgba(255,128,103,.08)}
+.smoke-story.is-detecting .smoke-device-strip strong,.smoke-story.is-alarm .smoke-device-strip strong{color:#ffad9a}
+
+.smoke-explanation{
+  display:flex;
+  flex-direction:column;
+  padding:25px;
+  border:1px solid rgba(151,193,181,.15);
+  border-radius:24px;
+  background:linear-gradient(160deg,rgba(7,29,25,.94),rgba(5,22,21,.86));
+  transition:border-color .8s ease,background .8s ease;
+}
+
+.smoke-story.is-smoke .smoke-explanation{border-color:rgba(255,189,115,.2);background:linear-gradient(160deg,rgba(31,28,21,.94),rgba(11,25,22,.9))}
+.smoke-story.is-detecting .smoke-explanation,
+.smoke-story.is-alarm .smoke-explanation{border-color:rgba(255,126,99,.23);background:linear-gradient(160deg,rgba(35,25,22,.94),rgba(16,23,22,.9))}
+.smoke-explanation-label{color:#70e7c0;font-size:.68rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;transition:color .7s ease}
+.smoke-story.is-smoke .smoke-explanation-label{color:#ffc27c}
+.smoke-story.is-detecting .smoke-explanation-label,.smoke-story.is-alarm .smoke-explanation-label{color:#ff9a82}
+.smoke-explanation h3{margin:8px 0 10px;color:#f4faf7;font-size:1.35rem;line-height:1.25}
+.smoke-explanation>p{margin:0 0 20px;color:#aabdb7;font-size:.92rem;line-height:1.58}
+.smoke-steps{display:grid;gap:10px;margin:0;padding:0;list-style:none}
+.smoke-steps li{display:grid;grid-template-columns:29px 1fr;gap:10px;align-items:start;min-height:48px;padding:11px 12px;border:1px solid rgba(151,193,181,.12);border-radius:14px;background:rgba(255,255,255,.025);color:#d7e3df;font-size:.84rem;line-height:1.4}
+.smoke-step-check{display:grid;place-items:center;width:22px;height:22px;margin-top:-1px;border-radius:50%;background:rgba(112,231,192,.12);color:#70e7c0;font-weight:900;transition:background-color .7s ease,color .7s ease}
+.smoke-story.is-detecting .smoke-step-check,.smoke-story.is-alarm .smoke-step-check{background:rgba(255,126,99,.13);color:#ff8d74}
+.smoke-result{margin-top:auto;padding:20px;border:1px solid rgba(112,231,192,.18);border-radius:17px;background:rgba(112,231,192,.055);transition:border-color .7s ease,background-color .7s ease}
+.smoke-story.is-detecting .smoke-result,.smoke-story.is-alarm .smoke-result{border-color:rgba(255,126,99,.25);background:rgba(255,126,99,.055)}
+.smoke-result strong{display:block;margin-bottom:6px;color:#e9faf4}
+.smoke-story.is-detecting .smoke-result strong,.smoke-story.is-alarm .smoke-result strong{color:#ffaf9c}
+.smoke-result span{display:block;color:#a9c5bb;font-size:.84rem;line-height:1.55}
+
+@keyframes smokeRise{0%{opacity:0;transform:translate3d(0,12%,0) scale(.76)}25%{opacity:.74}65%{opacity:.48}100%{opacity:0;transform:translate3d(8%,-95%,0) scale(1.38)}}
+@keyframes smokeSensorPulse{0%{opacity:.25;transform:translate(-50%,-50%) scale(.7)}48%{opacity:.95}100%{opacity:0;transform:translate(-50%,-50%) scale(1.45)}}
+@keyframes smokeWarningGlow{0%,100%{opacity:.62}50%{opacity:1}}
+@keyframes smokeDotPulse{0%,100%{box-shadow:0 0 0 6px rgba(255,128,103,.08)}50%{box-shadow:0 0 0 10px rgba(255,128,103,.02)}}
+@keyframes smokeFlameFlicker{0%,100%{transform:translate(-50%,-50%) scale(1) rotate(-1deg)}45%{transform:translate(-50%,-52%) scale(.92,1.08) rotate(2deg)}72%{transform:translate(-50%,-49%) scale(1.05,.94) rotate(-2deg)}}
+
+@media(max-width:1080px){
+  .smoke-demo-grid{grid-template-columns:1fr}
+  .smoke-result{margin-top:20px}
+}
+
+@media(max-width:620px){
+  .smoke-story{border-radius:22px}
+  .smoke-story-header{align-items:flex-start;flex-direction:column;padding:20px}
+  .smoke-story-state{min-width:0;font-size:.7rem}
+  .smoke-demo-grid{padding:14px}
+  .smoke-visual-top{padding:16px}
+  .smoke-current strong{font-size:.92rem}
+  .smoke-explanation{padding:20px}
+  .smoke-device-strip{left:2.5%;right:2.5%;bottom:3%;max-width:none;justify-content:space-between;padding:8px}
+  .smoke-device-strip>span{min-width:0;padding:0 5px;column-gap:5px}
+  .smoke-device-strip small{font-size:.49rem}
+  .smoke-device-strip strong{font-size:.54rem}
+  .smoke-notification{right:3%;bottom:26%;max-width:205px;padding:8px 10px}
+  .smoke-notification strong{font-size:.66rem}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .smoke-story *,
+  .smoke-story *::before,
+  .smoke-story *::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+}

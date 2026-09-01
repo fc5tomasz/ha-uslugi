@@ -1,0 +1,381 @@
+.water-panel-instruction{
+  margin:0 0 12px;
+  color:#b9cbc5;
+  font-size:1rem;
+  line-height:1.55;
+}
+
+.water-panel-instruction strong{color:#12c884}
+
+.water-story{
+  overflow:hidden;
+  border:1px solid rgba(138,193,178,.2);
+  border-radius:30px;
+  background:rgba(4,18,18,.94);
+  box-shadow:0 30px 72px rgba(0,0,0,.34);
+}
+
+.water-story-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+  padding:23px 28px;
+  border-bottom:1px solid rgba(151,193,181,.13);
+  background:linear-gradient(90deg,rgba(255,255,255,.026),rgba(255,255,255,.012));
+}
+
+.water-story-eyebrow{
+  display:block;
+  margin-bottom:5px;
+  color:#72e8c4;
+  font-size:.7rem;
+  font-weight:800;
+  letter-spacing:.17em;
+  text-transform:uppercase;
+}
+
+.water-story-header h2{margin:0;color:#f3faf7;font-size:1.45rem}
+
+.water-story-state{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  min-width:154px;
+  padding:9px 13px;
+  border:1px solid rgba(112,231,192,.3);
+  border-radius:999px;
+  background:rgba(112,231,192,.06);
+  color:#ccebe2;
+  font-size:.75rem;
+  font-weight:750;
+  transition:border-color .75s ease,background-color .75s ease,color .75s ease;
+}
+
+.water-story-state-dot,
+.water-current-dot{
+  width:9px;
+  height:9px;
+  flex:0 0 auto;
+  border-radius:50%;
+  background:#70e7c0;
+  box-shadow:0 0 0 6px rgba(112,231,192,.08);
+  transition:background-color .75s ease,box-shadow .75s ease;
+}
+
+.water-story.is-leak .water-story-state{border-color:rgba(102,213,255,.44);background:rgba(102,213,255,.075);color:#d2f3ff}
+.water-story.is-detecting .water-story-state,
+.water-story.is-alarm .water-story-state{border-color:rgba(255,178,103,.5);background:rgba(255,178,103,.085);color:#ffe1be}
+.water-story.is-leak .water-story-state-dot,
+.water-story.is-leak .water-current-dot{background:#68d8ff;box-shadow:0 0 0 7px rgba(104,216,255,.09)}
+.water-story.is-detecting .water-story-state-dot,
+.water-story.is-alarm .water-story-state-dot,
+.water-story.is-detecting .water-current-dot,
+.water-story.is-alarm .water-current-dot{background:#ffb06b;box-shadow:0 0 0 7px rgba(255,176,107,.1)}
+.water-story.is-alarm .water-story-state-dot{animation:waterDotPulse 1.8s ease-in-out infinite}
+
+#waterMount{cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+#waterMount:focus-visible{outline:3px solid #77e6ff;outline-offset:-5px}
+
+.water-demo-grid{
+  display:grid;
+  grid-template-columns:minmax(0,1.42fr) minmax(350px,.58fr);
+  gap:22px;
+  padding:24px;
+}
+
+.water-visual{
+  overflow:hidden;
+  border:1px solid rgba(151,193,181,.16);
+  border-radius:24px;
+  background:#061716;
+  box-shadow:inset 0 0 70px rgba(56,198,156,.025);
+}
+
+.water-visual-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  padding:17px 20px;
+  border-bottom:1px solid rgba(151,193,181,.11);
+  background:rgba(4,17,17,.92);
+}
+
+.water-current{display:flex;align-items:center;gap:12px}
+.water-current small{display:block;color:#829c94}
+.water-current strong{display:block;margin-top:3px;color:#edf7f3;transition:color .6s ease}
+.water-time{color:#91aba3;font-size:.82rem}
+
+.water-stage{
+  position:relative;
+  overflow:hidden;
+  aspect-ratio:3 / 2;
+  background:#071312;
+  isolation:isolate;
+}
+
+.water-stage>img{display:block;width:100%;height:100%;object-fit:cover;object-position:center;filter:brightness(.79) saturate(.88);transition:filter 1s ease}
+.water-stage::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(3,11,15,.12),transparent 42%,rgba(2,10,11,.3) 100%);transition:background .9s ease}
+
+.water-warning-wash{
+  position:absolute;
+  inset:0;
+  z-index:2;
+  opacity:0;
+  pointer-events:none;
+  background:radial-gradient(circle at 84% 35%,rgba(255,180,99,.2),transparent 22%),radial-gradient(ellipse at 45% 81%,rgba(88,205,255,.24),transparent 29%);
+  mix-blend-mode:screen;
+  transition:opacity 1s ease;
+}
+
+.water-leak-stream{
+  position:absolute;
+  left:40.5%;
+  top:70.8%;
+  z-index:4;
+  width:3.2%;
+  height:11%;
+  opacity:0;
+  pointer-events:none;
+  filter:drop-shadow(0 0 3px rgba(120,214,242,.32));
+  transition:opacity .7s ease;
+}
+
+.water-leak-stream::before{content:"";position:absolute;left:46%;top:0;width:3px;height:60%;border-radius:70% 40% 68% 45%;background:linear-gradient(180deg,rgba(202,237,244,.2),rgba(134,203,220,.72) 34%,rgba(89,163,181,.2));transform:rotate(2deg);filter:blur(.35px)}
+.water-leak-stream i{position:absolute;top:34%;width:3px;height:6px;border-radius:60% 60% 68% 68%;background:linear-gradient(180deg,rgba(214,243,248,.74),rgba(94,177,198,.38));opacity:0}
+.water-leak-stream i:nth-child(1){left:31%;animation-delay:0s}
+.water-leak-stream i:nth-child(2){left:51%;animation-delay:.38s}
+.water-leak-stream i:nth-child(3){left:68%;animation-delay:.76s}
+
+.water-puddle{
+  position:absolute;
+  left:44.5%;
+  top:80.5%;
+  z-index:3;
+  width:27%;
+  height:13.5%;
+  opacity:0;
+  transform:translate(-50%,-50%) scale(.08,.2);
+  transform-origin:12% 28%;
+  pointer-events:none;
+  border-radius:47% 55% 43% 62%;
+  clip-path:polygon(1% 43%,10% 21%,25% 12%,38% 22%,55% 5%,75% 18%,92% 38%,100% 63%,88% 83%,68% 91%,49% 82%,29% 96%,11% 79%);
+  background:radial-gradient(ellipse at 32% 33%,rgba(210,238,243,.3),rgba(106,171,188,.19) 38%,rgba(50,111,126,.1) 64%,rgba(26,75,86,.025) 80%);
+  box-shadow:inset 0 1px 7px rgba(222,244,248,.13),0 0 11px rgba(65,151,171,.08);
+  filter:blur(.9px) saturate(.92);
+  mix-blend-mode:screen;
+  transition:opacity 1.05s ease,transform 2.3s cubic-bezier(.18,.68,.23,1);
+}
+
+.water-puddle i{position:absolute;display:block;height:1px;border-radius:999px;background:linear-gradient(90deg,transparent,rgba(221,245,249,.34),transparent);filter:blur(.25px)}
+.water-puddle i:nth-child(1){left:16%;top:31%;width:27%;transform:rotate(-3deg)}
+.water-puddle i:nth-child(2){left:48%;top:46%;width:22%;transform:rotate(2deg)}
+.water-puddle i:nth-child(3){right:8%;top:63%;width:14%;transform:rotate(-2deg)}
+
+.water-sensor{
+  position:absolute;
+  left:50.5%;
+  top:79.5%;
+  z-index:5;
+  width:2.7%;
+  min-width:14px;
+  height:6px;
+  transform:translate(-50%,-50%);
+  border:1px solid rgba(176,194,189,.58);
+  border-radius:999px;
+  background:linear-gradient(180deg,#aab7b3,#687673);
+  box-shadow:0 2px 5px rgba(0,0,0,.34);
+  pointer-events:none;
+}
+
+.water-sensor i{position:absolute;right:18%;top:50%;width:4px;height:4px;transform:translateY(-50%);border-radius:50%;background:#70e7c0;box-shadow:0 0 5px rgba(112,231,192,.7);transition:background-color .6s ease,box-shadow .6s ease}
+
+.water-sensor-halo{
+  position:absolute;
+  left:50.5%;
+  top:79.5%;
+  z-index:4;
+  width:7%;
+  aspect-ratio:1;
+  transform:translate(-50%,-50%) scale(.7);
+  border:2px solid rgba(255,179,104,.9);
+  border-radius:50%;
+  opacity:0;
+  pointer-events:none;
+  box-shadow:0 0 18px rgba(255,177,101,.46),inset 0 0 13px rgba(255,177,101,.24);
+}
+
+.water-valve-chip{
+  position:absolute;
+  right:3%;
+  top:4%;
+  z-index:6;
+  display:flex;
+  align-items:center;
+  gap:9px;
+  padding:9px 12px;
+  border:1px solid rgba(112,231,192,.3);
+  border-radius:14px;
+  background:rgba(5,24,22,.82);
+  color:#dff8ef;
+  box-shadow:0 12px 26px rgba(0,0,0,.25);
+  backdrop-filter:blur(9px);
+  transition:border-color .65s ease,background-color .65s ease;
+}
+
+.water-valve-chip small,.water-valve-chip strong{display:block}
+.water-valve-chip small{color:#85a59b;font-size:.61rem}
+.water-valve-chip strong{margin-top:1px;color:#8ce8ca;font-size:.71rem;transition:color .65s ease}
+.water-valve-symbol{position:relative;width:27px;height:27px;flex:0 0 auto;border:1px solid rgba(112,231,192,.46);border-radius:50%;background:rgba(112,231,192,.08)}
+.water-valve-symbol::before{content:"";position:absolute;left:5px;right:5px;top:7px;height:3px;border-radius:999px;background:#73e4c2;transform-origin:center;transition:transform .75s ease,background-color .65s ease}
+.water-valve-symbol::after{content:"";position:absolute;left:11px;top:10px;width:3px;height:11px;border-radius:2px;background:#73e4c2;transition:background-color .65s ease}
+
+.water-notification{
+  position:absolute;
+  right:3%;
+  bottom:4%;
+  z-index:7;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  max-width:285px;
+  padding:10px 13px;
+  border:1px solid rgba(105,217,255,.4);
+  border-radius:14px;
+  background:rgba(5,24,27,.9);
+  color:#e3f9ff;
+  opacity:0;
+  transform:translateY(14px);
+  pointer-events:none;
+  box-shadow:0 16px 35px rgba(0,0,0,.32);
+  backdrop-filter:blur(9px);
+  transition:opacity .65s ease,transform .65s ease;
+}
+
+.water-notification-icon{display:grid;place-items:center;width:28px;height:28px;flex:0 0 auto;border-radius:50%;background:rgba(105,217,255,.13);color:#72ddff;font-weight:900}
+.water-notification small,.water-notification strong{display:block}
+.water-notification small{color:#87a7ad;font-size:.66rem}
+.water-notification strong{margin-top:2px;font-size:.74rem;line-height:1.3}
+
+.water-device-strip{
+  position:absolute;
+  left:3%;
+  bottom:4%;
+  z-index:6;
+  display:flex;
+  max-width:65%;
+  padding:9px 12px;
+  border:1px solid rgba(150,188,179,.2);
+  border-radius:14px;
+  background:rgba(4,18,18,.82);
+  box-shadow:0 14px 30px rgba(0,0,0,.25);
+  backdrop-filter:blur(9px);
+}
+
+.water-device-strip>span{position:relative;display:grid;grid-template-columns:8px auto;column-gap:7px;align-items:center;min-width:88px;padding:0 10px;border-right:1px solid rgba(153,190,181,.13)}
+.water-device-strip>span:first-child{padding-left:0}
+.water-device-strip>span:last-child{padding-right:0;border-right:0}
+.water-device-strip small,.water-device-strip strong{grid-column:2;display:block;white-space:nowrap}
+.water-device-strip small{color:#829c94;font-size:.61rem}
+.water-device-strip strong{margin-top:2px;color:#bfeadd;font-size:.68rem;transition:color .7s ease}
+.water-device-dot{grid-row:1 / span 2;width:7px;height:7px;border-radius:50%;background:#70e7c0;box-shadow:0 0 0 4px rgba(112,231,192,.07);transition:background-color .7s ease,box-shadow .7s ease}
+
+.water-story.is-leak .water-leak-stream,
+.water-story.is-detecting .water-leak-stream{opacity:1}
+.water-story.is-leak .water-leak-stream i,
+.water-story.is-detecting .water-leak-stream i{animation:waterFlow 1.1s linear infinite}
+.water-story.is-leak .water-puddle,
+.water-story.is-detecting .water-puddle,
+.water-story.is-alarm .water-puddle{opacity:.58;transform:translate(-50%,-50%) scale(1)}
+.water-story.is-alarm .water-leak-stream{opacity:0;transition-duration:.55s}
+.water-story.is-alarm .water-puddle{opacity:.54;transition-duration:.2s}
+.water-story.is-detecting .water-sensor-halo,
+.water-story.is-alarm .water-sensor-halo{opacity:1;animation:waterSensorPulse 1.9s ease-out infinite}
+.water-story.is-detecting .water-sensor i,
+.water-story.is-alarm .water-sensor i{background:#ffb06b;box-shadow:0 0 7px rgba(255,176,107,.86)}
+.water-story.is-detecting .water-warning-wash{opacity:.42}
+.water-story.is-alarm .water-warning-wash{opacity:.85}
+.water-story.is-detecting .water-valve-chip,
+.water-story.is-alarm .water-valve-chip{border-color:rgba(255,178,103,.48);background:rgba(35,26,19,.88)}
+.water-story.is-detecting .water-valve-chip strong,
+.water-story.is-alarm .water-valve-chip strong{color:#ffc488}
+.water-story.is-detecting .water-valve-symbol::before,
+.water-story.is-alarm .water-valve-symbol::before{transform:rotate(90deg);background:#ffb06b}
+.water-story.is-detecting .water-valve-symbol::after,
+.water-story.is-alarm .water-valve-symbol::after{background:#ffb06b}
+.water-story.is-alarm .water-notification{opacity:1;transform:translateY(0)}
+.water-story.is-detecting .water-device-dot,
+.water-story.is-alarm .water-device-dot{background:#ffb06b;box-shadow:0 0 0 4px rgba(255,176,107,.08)}
+.water-story.is-detecting .water-device-strip strong,
+.water-story.is-alarm .water-device-strip strong{color:#ffd0a4}
+
+.water-explanation{
+  display:flex;
+  flex-direction:column;
+  padding:25px;
+  border:1px solid rgba(151,193,181,.15);
+  border-radius:24px;
+  background:linear-gradient(160deg,rgba(7,29,25,.94),rgba(5,22,21,.86));
+  transition:border-color .8s ease,background .8s ease;
+}
+
+.water-story.is-leak .water-explanation{border-color:rgba(105,217,255,.22);background:linear-gradient(160deg,rgba(17,31,35,.94),rgba(8,24,25,.9))}
+.water-story.is-detecting .water-explanation,
+.water-story.is-alarm .water-explanation{border-color:rgba(255,178,103,.23);background:linear-gradient(160deg,rgba(34,27,21,.94),rgba(14,24,23,.9))}
+.water-explanation-label{color:#70e7c0;font-size:.68rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;transition:color .7s ease}
+.water-story.is-leak .water-explanation-label{color:#77ddff}
+.water-story.is-detecting .water-explanation-label,.water-story.is-alarm .water-explanation-label{color:#ffba79}
+.water-explanation h3{margin:8px 0 10px;color:#f4faf7;font-size:1.35rem;line-height:1.25}
+.water-explanation>p{margin:0 0 20px;color:#aabdb7;font-size:.92rem;line-height:1.58}
+.water-steps{display:grid;gap:10px;margin:0;padding:0;list-style:none}
+.water-steps li{display:grid;grid-template-columns:29px 1fr;gap:10px;align-items:start;min-height:48px;padding:11px 12px;border:1px solid rgba(151,193,181,.12);border-radius:14px;background:rgba(255,255,255,.025);color:#d7e3df;font-size:.84rem;line-height:1.4}
+.water-step-check{display:grid;place-items:center;width:22px;height:22px;margin-top:-1px;border-radius:50%;background:rgba(112,231,192,.12);color:#70e7c0;font-weight:900;transition:background-color .7s ease,color .7s ease}
+.water-story.is-leak .water-step-check{background:rgba(105,217,255,.11);color:#7cddff}
+.water-story.is-detecting .water-step-check,.water-story.is-alarm .water-step-check{background:rgba(255,178,103,.13);color:#ffbd80}
+.water-result{margin-top:auto;padding:20px;border:1px solid rgba(112,231,192,.18);border-radius:17px;background:rgba(112,231,192,.055);transition:border-color .7s ease,background-color .7s ease}
+.water-story.is-leak .water-result{border-color:rgba(105,217,255,.2);background:rgba(105,217,255,.05)}
+.water-story.is-detecting .water-result,.water-story.is-alarm .water-result{border-color:rgba(255,178,103,.25);background:rgba(255,178,103,.055)}
+.water-result strong{display:block;margin-bottom:6px;color:#e9faf4}
+.water-story.is-detecting .water-result strong,.water-story.is-alarm .water-result strong{color:#ffc38d}
+.water-result span{display:block;color:#a9c5bb;font-size:.84rem;line-height:1.55}
+
+@keyframes waterFlow{0%{transform:translateY(-15%);opacity:0}18%{opacity:.72}76%{opacity:.58}100%{transform:translateY(320%);opacity:0}}
+@keyframes waterSensorPulse{0%{opacity:.22;transform:translate(-50%,-50%) scale(.68)}48%{opacity:.9}100%{opacity:0;transform:translate(-50%,-50%) scale(1.42)}}
+@keyframes waterDotPulse{0%,100%{box-shadow:0 0 0 6px rgba(255,176,107,.08)}50%{box-shadow:0 0 0 10px rgba(255,176,107,.02)}}
+
+@media(max-width:1080px){
+  .water-demo-grid{grid-template-columns:1fr}
+  .water-result{margin-top:20px}
+}
+
+@media(max-width:620px){
+  .water-story{border-radius:22px}
+  .water-story-header{align-items:flex-start;flex-direction:column;padding:20px}
+  .water-story-state{min-width:0;font-size:.7rem}
+  .water-demo-grid{padding:14px}
+  .water-visual-top{padding:16px}
+  .water-stage{aspect-ratio:4 / 3}
+  .water-puddle{top:75.5%;width:29%;height:14%}
+  .water-sensor,.water-sensor-halo{top:75.5%}
+  .water-story.is-leak .water-puddle,.water-story.is-detecting .water-puddle{opacity:.7}
+  .water-story.is-alarm .water-puddle{opacity:.64}
+  .water-current strong{font-size:.92rem}
+  .water-explanation{padding:20px}
+  .water-device-strip{left:2.5%;right:2.5%;bottom:3%;max-width:none;justify-content:space-between;padding:5px 7px}
+  .water-device-strip>span{min-width:0;padding:0 5px;column-gap:5px}
+  .water-device-strip small{font-size:.49rem}
+  .water-device-strip strong{font-size:.54rem}
+  .water-valve-chip{right:3%;top:4%;padding:7px 9px}
+  .water-valve-symbol{width:23px;height:23px}
+  .water-valve-symbol::before{left:4px;right:4px;top:6px}
+  .water-valve-symbol::after{left:9px;top:9px}
+  .water-notification{right:3%;bottom:34%;max-width:232px;padding:8px 10px}
+  .water-notification strong{font-size:.64rem}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .water-story *,
+  .water-story *::before,
+  .water-story *::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+}

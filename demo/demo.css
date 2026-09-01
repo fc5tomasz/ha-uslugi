@@ -1,9 +1,16 @@
+html{
+  min-height:100%;
+  background-color:#09251f;
+}
+
 body.demo-page{
   min-height:100vh;
+  background-color:#09251f;
 }
 
 body.demo-page.pl-home-bg-test{
-  background:
+  background-color:#09251f;
+  background-image:
     radial-gradient(circle at 12% 18%, rgba(102,226,255,.21), transparent 24%),
     radial-gradient(circle at 82% 12%, rgba(18,200,132,.42), transparent 25%),
     linear-gradient(180deg, rgba(20,86,64,.98) 0%, rgba(17,70,52,.96) 42%, rgba(12,50,38,.98) 100%);
