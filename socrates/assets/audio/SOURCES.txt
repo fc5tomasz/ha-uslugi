@@ -1,0 +1,15 @@
+Full-length audio used only in the local Socrates interactive demo.
+
+hypnotic-ambient.mp3
+Source: "Hypnotic ambient electronic music by MusicLM.mp3"
+License: Public domain (AI-generated work)
+https://commons.wikimedia.org/wiki/File:Hypnotic_ambient_electronic_music_by_MusicLM.mp3
+
+chill-beat.mp3
+Source: "Chill Beat.ogg"
+Author: Kevin MacLeod
+License: CC0 1.0 Universal
+https://commons.wikimedia.org/wiki/File:Chill_Beat.ogg
+
+Both tracks are full length. Hypnotic Ambient uses its original MP3; Chill Beat
+is encoded as a high-quality 192 kbps stereo MP3 for reliable browser playback.
