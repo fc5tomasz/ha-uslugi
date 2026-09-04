@@ -1,0 +1,134 @@
+.demo-panel-frame .relation-line {
+  fill: none;
+  stroke: rgba(125, 203, 224, 0.24);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.demo-panel-frame .relation-line.active {
+  stroke: rgba(133, 221, 239, 0.58);
+  stroke-width: 3;
+}
+
+.demo-panel-frame .relation-bank.active {
+  stroke: rgba(105, 224, 173, 0.58);
+}
+
+.demo-panel-frame .relation-grid.active {
+  stroke: rgba(121, 201, 255, 0.58);
+}
+
+.demo-panel-frame .relation-home.active {
+  stroke: rgba(255, 211, 74, 0.54);
+}
+
+.demo-panel-frame .relation-solar.active {
+  stroke: rgba(255, 211, 74, 0.58);
+}
+
+.demo-panel-frame .relation-arrow {
+  filter: drop-shadow(0 0 4px currentColor);
+  offset-distance: 0%;
+  offset-rotate: auto;
+  animation: relationArrowMotion var(--relation-arrow-duration, 2.8s) linear infinite;
+  pointer-events: none;
+  will-change: offset-distance;
+}
+
+.demo-panel-frame .relation-arrow-charge,
+.demo-panel-frame .relation-arrow-grid-import {
+  color: #69d8ff;
+  fill: #69d8ff;
+}
+
+.demo-panel-frame .relation-arrow-discharge {
+  color: #72efab;
+  fill: #72efab;
+}
+
+.demo-panel-frame .relation-arrow-grid-export {
+  color: #a7ddff;
+  fill: #a7ddff;
+}
+
+.demo-panel-frame .relation-arrow-home {
+  color: #ffd34a;
+  fill: #ffd34a;
+}
+
+.demo-panel-frame .relation-arrow-solar {
+  color: #ffd34a;
+  fill: #ffd34a;
+}
+
+.demo-panel-frame .flow.hydraulic-return {
+  stroke: #69d8ff;
+}
+
+.demo-panel-frame .device-rotor.active {
+  animation: rotorSpin var(--device-rotor-dur, 1.5s) linear infinite;
+  transform-box: fill-box;
+  transform-origin: var(--device-rotor-origin, center);
+  will-change: transform;
+}
+
+.demo-panel-frame .object-label {
+  fill: #f4f8ff;
+  font-size: 12px;
+  paint-order: stroke;
+  stroke: rgba(7, 18, 29, 0.78);
+  stroke-width: 3px;
+  stroke-linejoin: round;
+}
+
+.demo-panel-frame .grid-aura,
+.demo-panel-frame .grid-spark {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.demo-panel-frame .grid-aura {
+  fill: rgba(105, 216, 255, 0.2);
+}
+
+.demo-panel-frame .grid-aura.active {
+  animation: gridAuraPulse 2.2s ease-in-out infinite;
+}
+
+.demo-panel-frame .grid-spark {
+  fill: #dff8ff;
+  filter: drop-shadow(0 0 5px #69d8ff);
+}
+
+.demo-panel-frame .grid-spark.active {
+  animation: gridSparkPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes gridAuraPulse {
+  0%, 100% { opacity: 0.12; transform: scale(0.86); }
+  50% { opacity: 0.42; transform: scale(1.08); }
+}
+
+@keyframes gridSparkPulse {
+  0%, 100% { opacity: 0.22; transform: scale(0.7); }
+  50% { opacity: 0.9; transform: scale(1.12); }
+}
+
+@keyframes relationArrowMotion {
+  from { offset-distance: 0%; }
+  to { offset-distance: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .demo-panel-frame .grid-aura.active,
+  .demo-panel-frame .grid-spark.active {
+    animation: none;
+    opacity: 0.5;
+  }
+
+  .demo-panel-frame .device-rotor.active {
+    animation: none;
+  }
+}

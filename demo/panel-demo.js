@@ -28,11 +28,9 @@
       nav_about: "O mnie",
       nav_contact: "Kontakt",
       nav_cta: "Bezpłatna ocena",
-      scenario_initial:
-        "Tryb dzienny: instalacja produkuje energię, zasila dom i pokazuje aktualne warunki pogodowe. Dotknij panelu, aby przejść do kolejnej pory dnia.",
       panel_title: "Stan instalacji",
       panel_subtitle: "Natężenie oświetlenia",
-      panel_panels: "Panele",
+      panel_panels: "Fotowoltaika",
       panel_inv_dom: "Off-grid 2",
       panel_inv_taras: "Off-grid 1",
       panel_inv_hybrid: "Inwerter hybrydowy",
@@ -44,11 +42,18 @@
       panel_mix_pump: "Pompa mieszacza",
       panel_main_pump: "Pompa obiegowa",
       panel_house: "Dom",
-      panel_owner_home: "Właściciel w domu",
-      panel_owner_away: "Właściciel poza domem",
       panel_reku: "Rekuperacja",
       panel_boiler: "Piec gazowy",
       panel_radiator: "Grzejnik elektryczny",
+      panel_energy_bank: "Bank energii",
+      panel_grid: "Sieć energetyczna",
+      panel_charging: "Ładowanie",
+      panel_discharging: "Oddawanie energii",
+      panel_full: "Pełny",
+      panel_importing: "Pobór z sieci",
+      panel_exporting: "Oddawanie do sieci",
+      panel_no_exchange: "Brak wymiany",
+      panel_standby: "Czuwanie",
       panel_wind: "Wiatr",
       panel_humidity: "Wilg.",
       weather_sunny: "Słonecznie",
@@ -73,13 +78,13 @@
       scenario_night:
         "🌙 Nocne podtrzymanie: Słońce zaszło. System optymalizuje zużycie energii. Piec gazowy i światła zarządzane są dynamicznie według potrzeb.",
       scenario_morning:
-        "⛅ Poranek: Inwerter hybrydowy zasila dom. Off-grid 2 ładuje bufor, zapewniając ciepłą wodę użytkową (CWU), a Off-grid 1 zasila grzejnik dla szybkiego komfortu. Bufor nagrzewa wodę, ale nie ma jeszcze mocy do wsparcia ogrzewania domu (CO). System rekuperacji wietrzy pomieszczenia.",
+        "⛅️ Poranek: Produkcja PV rozpoczyna się wraz ze wschodem słońca. Inwerter hybrydowy zasila dom i ładuje bank energii, Off-grid 2 rozpoczyna grzanie bufora, a Off-grid 1 zasila grzejnik elektryczny, zapewniając ogrzewanie do czasu nagrzania bufora.",
       scenario_noon:
-        "☀️ Południe: Inteligentne zarządzanie nadprodukcją. Bufor osiągnął temperaturę docelową – Off-grid 1 wyłącza grzejnik i zasila drugą grzałkę. Off-grid 2 nadal ładuje bufor, a pompy obiegowe uruchamiają darmowe ogrzewanie domu (CO).",
+        "☀️ Południe: Bufor osiąga temperaturę wystarczającą do ogrzewania CO, dlatego uruchamia się pompa obiegowa i ciepło trafia do instalacji grzewczej. Pompa mieszająca wyrównuje temperaturę wody w buforze, zwiększając skuteczność wymiany ciepła. Grzejnik elektryczny wyłącza się, a Off-grid 1 przełącza energię na grzałkę w buforze i wspiera Off-grid 2 w jego dalszym nagrzewaniu. Bank energii jest już naładowany, więc inwerter hybrydowy zasila dom, a nadwyżkę energii oddaje do sieci.",
       scenario_sunset:
-        "🌇 Zachód: Inwerter hybrydowy oraz inwertery Off-grid kończą produkcję. Pompy kontynuują dystrybucję energii z bufora do ogrzewania domu (CO). Sam bufor, poprzez wbudowane wężownice, zapewnia również stały dostęp do ciepłej wody użytkowej (CWU).",
+        "🌤️ Zachód: Produkcja z paneli zasilających inwertery Off-grid jest już zbyt mała do dalszego grzania, dlatego oba zostają wyłączone. Panele skierowane na zachód nadal dostarczają energię do inwertera hybrydowego, a brakującą moc dla domu uzupełnia bank energii. Nagrzany wcześniej bufor nadal dostarcza ciepło do ogrzewania CO.",
       scenario_night_final:
-        "🌙 Noc: Inwertery są uśpione. Ogrzewanie domu (CO) zabezpiecza piec gazowy – w zależności od temperatury we wnętrzu, system decyduje, czy musi go uruchomić, czy może on pozostać wyłączony. Wężownica w buforze utrzymuje dostęp do ciepłej wody (CWU). System inteligentnie zarządza oświetleniem (symulacja obecności) oraz optymalizuje pracę rekuperacji."
+        "🌙 Noc: Fotowoltaika nie produkuje energii, dlatego dom jest zasilany z banku energii przez inwerter hybrydowy. Temperatura bufora spadła poniżej poziomu wymaganego do zasilania CO, a dom nadal potrzebuje ciepła, dlatego ogrzewanie przejmuje piec gazowy. System nadal steruje oświetleniem i rekuperacją."
     },
     dk: {
       title_page: "Home Assistant-demo – simulering af automationspanel | HA Expert",
@@ -109,8 +114,6 @@
       nav_about: "Om mig",
       nav_contact: "Kontakt",
       nav_cta: "Gratis vurdering",
-      scenario_initial:
-        "Dagtilstand: installationen producerer energi, forsyner hjemmet og viser de aktuelle vejrforhold. Tryk på panelet for at gå videre til næste tidspunkt på dagen.",
       panel_title: "Anlæggets status",
       panel_subtitle: "Belysningsstyrke",
       panel_panels: "Paneler",
@@ -125,11 +128,18 @@
       panel_mix_pump: "Blandepumpe",
       panel_main_pump: "Cirkulationspumpe",
       panel_house: "Hjem",
-      panel_owner_home: "Ejer hjemme",
-      panel_owner_away: "Ejer ude",
       panel_reku: "Varmegenvinding",
       panel_boiler: "Gaskedel",
       panel_radiator: "El-radiator",
+      panel_energy_bank: "Energibank",
+      panel_grid: "Elnet",
+      panel_charging: "Opladning",
+      panel_discharging: "Afladning",
+      panel_full: "Fuld",
+      panel_importing: "Import fra nettet",
+      panel_exporting: "Eksport til nettet",
+      panel_no_exchange: "Ingen udveksling",
+      panel_standby: "Standby",
       panel_wind: "Vind",
       panel_humidity: "Luftfugt.",
       weather_sunny: "Solrigt",
@@ -154,13 +164,13 @@
       scenario_night:
         "🌙 Natlig vedligeholdelse: Solen er gået ned. Systemet optimerer energiforbruget. Gaskedlen og lyset styres dynamisk efter behov.",
       scenario_morning:
-        "⛅ Morgen: Hybridinverteren forsyner hjemmet med strøm. Off-grid 2 oplader bufferen og leverer varmt brugsvand (Brugsvand), mens Off-grid 1 forsyner el-radiatoren for hurtig komfort. Bufferen opvarmer vandet, men har endnu ikke kraft nok til at understøtte centralvarmen (Varme). Varmegenvindingssystemet ventilerer rummene.",
+        "⛅️ Morgen: PV-produktionen begynder, når solen står op. Hybridinverteren forsyner hjemmet og oplader energibanken, Off-grid 2 begynder at opvarme bufferen, og Off-grid 1 forsyner el-radiatoren og sikrer varme, indtil bufferen er varm.",
       scenario_noon:
-        "☀️ Middag: Intelligent styring af overproduktion. Bufferen har nået sin måltemperatur – Off-grid 1 slukker for radiatoren og forsyner det andet varmelegeme. Off-grid 2 fortsætter med at oplade bufferen, og cirkulationspumperne starter den gratis centralvarme (Varme) til hjemmet.",
+        "☀️ Middag: Bufferen når en temperatur, der er høj nok til centralvarme, så cirkulationspumpen starter, og varmen sendes ud i varmeanlægget. Blandepumpen udligner vandtemperaturen i bufferen og øger effektiviteten af varmeudvekslingen. El-radiatoren slukker, og Off-grid 1 flytter sin effekt over på et varmelegeme i bufferen og hjælper Off-grid 2 med at varme den yderligere op. Energibanken er nu fuld, så hybridinverteren forsyner hjemmet og sender overskuddet ud på nettet.",
       scenario_sunset:
-        "🌇 Solnedgang: Hybridinverteren og Off-grid inverterne afslutter produktionen. Pumperne fortsætter med at distribuere energi fra bufferen til centralvarmen (Varme). Selve bufferen sikrer, via indbyggede rørslanger, også konstant adgang til varmt brugsvand (Brugsvand).",
+        "🌤️ Solnedgang: Panelerne, der forsyner Off-grid inverterne, producerer ikke længere nok til yderligere opvarmning, så begge slukker. De vestvendte paneler forsyner stadig hybridinverteren, og energibanken dækker den effekt, hjemmet mangler. Bufferen, der blev varmet op tidligere, leverer fortsat varme til centralvarmen.",
       scenario_night_final:
-        "🌙 Nat: Inverterne er i dvale. Hjemmets centralvarme (Varme) understøttes af gaskedlen – afhængigt af indendørstemperaturen beslutter systemet, om den skal startes, eller om den kan forblive slukket. Rørslangen i bufferen opretholder adgangen til varmt vand (Brugsvand). Systemet styrer belysningen intelligent (tilstedeværelsessimulering) og optimerer varmegenvindingens drift."
+        "🌙 Nat: Solcellerne producerer ingen energi, så hjemmet forsynes fra energibanken via hybridinverteren. Bufferens temperatur er faldet under det niveau, der kræves for at forsyne centralvarmen, og hjemmet har stadig brug for varme, så gaskedlen overtager opvarmningen. Systemet styrer fortsat belysningen og varmegenvindingen."
     },
     en: {
       title_page: "Home Assistant Demo – Automation Dashboard Simulation | HA Expert",
@@ -190,8 +200,6 @@
       nav_about: "About me",
       nav_contact: "Contact",
       nav_cta: "Free assessment",
-      scenario_initial:
-        "Day mode: the installation is producing energy, powering the home and showing current weather conditions. Tap the panel to move to the next time of day.",
       panel_title: "Installation status",
       panel_subtitle: "Illuminance",
       panel_panels: "Panels",
@@ -206,11 +214,18 @@
       panel_mix_pump: "Mixer pump",
       panel_main_pump: "Circulation pump",
       panel_house: "Home",
-      panel_owner_home: "Owner at home",
-      panel_owner_away: "Owner away",
       panel_reku: "Heat recovery",
       panel_boiler: "Gas boiler",
       panel_radiator: "Electric heater",
+      panel_energy_bank: "Energy bank",
+      panel_grid: "Power grid",
+      panel_charging: "Charging",
+      panel_discharging: "Discharging",
+      panel_full: "Full",
+      panel_importing: "Grid import",
+      panel_exporting: "Grid export",
+      panel_no_exchange: "No grid exchange",
+      panel_standby: "Standby",
       panel_wind: "Wind",
       panel_humidity: "Humidity",
       weather_sunny: "Sunny",
@@ -235,13 +250,13 @@
       scenario_night:
         "🌙 Night maintenance: The sun has set. The system optimizes energy usage. The gas boiler and lights are managed dynamically according to demand.",
       scenario_morning:
-        "⛅ Morning: The hybrid inverter powers the home. Off-grid 2 charges the thermal buffer, providing domestic hot water (DHW), while Off-grid 1 powers the electric heater for quick comfort. The buffer heats the water but does not yet have the power to support central heating (CH). The heat recovery system ventilates the rooms.",
+        "⛅️ Morning: PV production begins as the sun rises. The hybrid inverter powers the home and charges the energy bank, Off-grid 2 starts heating the thermal buffer, and Off-grid 1 powers the electric heater, providing warmth until the buffer heats up.",
       scenario_noon:
-        "☀️ Noon: Smart overproduction management. The buffer has reached its target temperature – Off-grid 1 turns off the heater and powers the second heater element. Off-grid 2 continues to charge the buffer, and the circulation pumps start the free central heating (CH) for the home.",
+        "☀️ Noon: The buffer reaches a temperature high enough for central heating, so the circulation pump starts and heat flows into the heating system. The mixer pump evens out the water temperature in the buffer, improving the efficiency of heat exchange. The electric heater switches off, and Off-grid 1 redirects its power to a heating element in the buffer, supporting Off-grid 2 in heating it further. The energy bank is now full, so the hybrid inverter powers the home and exports the surplus to the grid.",
       scenario_sunset:
-        "🌇 Sunset: The hybrid inverter and Off-grid inverters finish production. The pumps continue to distribute energy from the buffer for central heating (CH). The buffer itself, through built-in coils, also ensures constant access to domestic hot water (DHW).",
+        "🌤️ Sunset: The panels feeding the Off-grid inverters no longer produce enough for further heating, so both switch off. The west-facing panels still supply the hybrid inverter, and the energy bank makes up the power the home is missing. The buffer, heated earlier, keeps supplying heat for central heating.",
       scenario_night_final:
-        "🌙 Night: The inverters are asleep. The home's central heating (CH) is backed up by the gas boiler – depending on the indoor temperature, the system decides whether it needs to be turned on or can remain off. The coil in the buffer maintains access to hot water (DHW). The system intelligently manages lighting (presence simulation) and optimizes the heat recovery operation."
+        "🌙 Night: The PV array produces no energy, so the home is powered from the energy bank through the hybrid inverter. The buffer temperature has dropped below the level needed to feed central heating, and the home still needs warmth, so the gas boiler takes over heating. The system keeps managing the lighting and the heat recovery."
     }
   };
 
@@ -261,13 +276,13 @@
 
   function getLangFromPath(pathname) {
     const path = (pathname || "").toLowerCase();
-    if (/\/pl\/demo\/?$/.test(path) || /\/pl\/demo\/index\.html$/.test(path)) {
+    if (/\/pl\/demo(\/|$)/.test(path)) {
       return "pl";
     }
-    if (/\/en\/demo\/?$/.test(path) || /\/en\/demo\/index\.html$/.test(path)) {
+    if (/\/en\/demo(\/|$)/.test(path)) {
       return "en";
     }
-    if (/\/dk\/demo\/?$/.test(path) || /\/dk\/demo\/index\.html$/.test(path)) {
+    if (/\/dk\/demo(\/|$)/.test(path)) {
       return "dk";
     }
     return "";
@@ -412,17 +427,10 @@
       return Number.isFinite(n) ? n : fallback;
     }
 
-    _rotor(cx, cy, color, active, dur) {
+    _movingArrow(path, active, tone = "home", duration = "2.8s") {
+      if (!active) return "";
       return `
-        <g transform="translate(${cx} ${cy})">
-          <circle cx="0" cy="0" r="16" fill="rgba(255,255,255,0.07)" />
-          <g class="rotor-blades ${active ? "rotor-active" : ""}" style="--rotor-dur:${dur};">
-            <path d="M 0 -22 C 8 -14, 8 -5, 0 0 C -8 -5, -8 -14, 0 -22 Z" fill="${color}" />
-            <path d="M 22 0 C 14 8, 5 8, 0 0 C 5 -8, 14 -8, 22 0 Z" fill="${color}" />
-            <path d="M 0 22 C -8 14, -8 5, 0 0 C 8 5, 8 14, 0 22 Z" fill="${color}" />
-            <path d="M -22 0 C -14 -8, -5 -8, 0 0 C -5 8, -14 8, -22 0 Z" fill="${color}" />
-          </g>
-        </g>
+        <path class="relation-arrow relation-arrow-${tone}" data-relation-tone="${tone}" d="M -8 -5 L 5 0 L -8 5 Z" style="--relation-arrow-duration:${duration};offset-path:path('${path}')" aria-hidden="true" />
       `;
     }
 
@@ -560,126 +568,327 @@
     render(state) {
       const pos = {
         panels: { x: 74, y: 286, w: 260, h: 138 },
-        invDom: { x: 192, y: 563, w: 136, h: 72 },
-        invTaras: { x: 192, y: 700, w: 136, h: 72 },
-        invHybrid: { x: 492, y: 296, w: 152, h: 72 },
-        mixPump: { x: 402, y: 500, w: 50, h: 50 },
-        buffer: { x: 505, y: 420, w: 142, h: 238 },
-        mainPump: { x: 710, y: 500, w: 50, h: 50 },
-        house: { x: 848, y: 334, w: 222, h: 286 },
-        weather: { x: 838, y: 164, w: 280, h: 102 },
-        reku: { x: 1162, y: 265, w: 114, h: 74 },
-        boiler: { x: 1174, y: 404, w: 162, h: 72 },
-        radiator: { x: 1174, y: 528, w: 162, h: 72 }
+        invDom: { x: 217, y: 547, w: 86, h: 108 },
+        invTaras: { x: 217, y: 705, w: 86, h: 108 },
+        invHybrid: { x: 524, y: 277, w: 88, h: 110 },
+        battery: { x: 523, y: 108, w: 90, h: 135 },
+        grid: { x: 695, y: 102, w: 80, h: 150 },
+        mixPump: { x: 393, y: 511, w: 68, h: 68 },
+        buffer: { x: 505, y: 430, w: 142, h: 238 },
+        mainPump: { x: 701, y: 491, w: 68, h: 68 },
+        house: { x: 841, y: 360, w: 236, h: 234 },
+        weather: { x: 1116, y: 28, w: 280, h: 102 },
+        reku: { x: 790, y: 318, w: 114, h: 74 },
+        boiler: { x: 1202, y: 307, w: 96, h: 134 },
+        radiator: { x: 1180, y: 524, w: 140, h: 78 }
       };
-      const heater1 = { x: pos.buffer.x + 22, y: pos.buffer.y + 166, w: 96, h: 26 };
-      const heater2 = { x: pos.buffer.x + 22, y: pos.buffer.y + 204, w: 96, h: 26 };
-      const splitY = pos.invTaras.y + 36;
-      const splitX = heater2.x + heater2.w / 2;
-      const sunRadius = state.sunActive ? 38 : 28;
-      const sunOpacity = state.sunActive ? 1 : 0.25;
-      const rayOpacity = state.sunActive ? 1 : 0.18;
+      // Głowice są osadzone na dwóch frontowych portach zapisanych w rastrze bufora.
+      // Maska poniżej pilnuje, aby część grzejna nigdy nie wyszła poza komorę zbiornika.
+      const heater1 = { x: pos.buffer.x + 29, y: pos.buffer.y + 157, w: 72, h: 24 };
+      const heater2 = { x: pos.buffer.x + 39, y: pos.buffer.y + 178, w: 72, h: 24 };
+      const splitY = pos.invTaras.y + pos.invTaras.h / 2;
+      const heater1CenterY = pos.buffer.y + 171;
+      const heater2CenterY = pos.buffer.y + 192;
+      const heater1ConnectorX = heater1.x + 2;
+      const heater2ConnectorX = heater2.x + heater2.w - 2;
+      const heater2RouteX = pos.buffer.x + pos.buffer.w + 14;
+      const splitX = heater2RouteX;
       const hybridToHouse = Boolean(state.hybridToHouse);
+      const batteryMode = state.batteryMode || "standby";
+      const gridMode = state.gridMode || "idle";
+      const batteryCharging = batteryMode === "charging";
+      const batteryDischarging = batteryMode === "discharging";
+      const gridImporting = gridMode === "importing";
+      const gridExporting = gridMode === "exporting";
+      const gridActive = gridImporting || gridExporting;
+      const inverterHybridOn = Boolean(state.inverterHybridProducing || batteryDischarging || gridImporting);
       const offgrid2ToHeater1 = Boolean(state.offgrid2ToHeater1);
       const offgrid1ToRadiator = Boolean(state.offgrid1ToRadiator);
       const offgrid1ToHeater2 = Boolean(state.offgrid1ToHeater2);
+      const bufferHot = typeof state.bufferHot === "boolean"
+        ? state.bufferHot
+        : Boolean(offgrid2ToHeater1 || offgrid1ToHeater2 || state.pumpMixOn || state.pumpMainOn);
       const on = (v) => (v ? "active" : "");
-      const stateBox = (active, warm = false) => active ? (warm ? "box box-warm" : "box box-on") : "box";
-      const bulb = (x, y, onState) => `
-        <g transform="translate(${x} ${y})">
-          <circle cx="0" cy="-4" r="9" fill="${onState ? "rgba(255,214,94,0.95)" : "rgba(164,184,205,0.18)"}" stroke="${onState ? "#ffd85f" : "rgba(164,184,205,0.42)"}" stroke-width="2"/>
-          <rect x="-4" y="4" width="8" height="6" rx="2" fill="${onState ? "#ffd85f" : "rgba(164,184,205,0.35)"}"/>
-          <line x1="-4" y1="12" x2="4" y2="12" stroke="${onState ? "#ffd85f" : "rgba(164,184,205,0.35)"}" stroke-width="2" stroke-linecap="round"/>
-        </g>
-      `;
-      const haLogo = `
-        <g transform="translate(${pos.house.x + pos.house.w / 2} ${pos.house.y + 70})">
-          <path d="M -16 14 L -16 -2 L 0 -18 L 16 -2 L 16 14 L 5 14 L 5 0 L -5 0 L -5 14 Z" fill="none" stroke="#86baf0" stroke-width="3" stroke-linejoin="round"/>
-        </g>
-      `;
-      const phoneBadge = `
-        <g transform="translate(${pos.house.x + 44} ${pos.house.y + 237})">
-          <circle cx="0" cy="-15" r="9" fill="${state.phoneHome ? "rgba(91,221,148,0.18)" : "rgba(164,184,205,0.10)"}" stroke="${state.phoneHome ? "#5bdd94" : "rgba(164,184,205,0.34)"}" stroke-width="2.2"/>
-          <path d="M -14 12 C -14 -2, 14 -2, 14 12 L 14 20 L -14 20 Z" fill="${state.phoneHome ? "rgba(91,221,148,0.16)" : "rgba(164,184,205,0.10)"}" stroke="${state.phoneHome ? "#5bdd94" : "rgba(164,184,205,0.34)"}" stroke-width="2.2" stroke-linejoin="round"/>
-        </g>
-      `;
+      const houseLeftRoofX = pos.house.x + 2;
+      const houseLeftWallX = pos.house.x + 15;
+      const houseRightX = pos.house.x + pos.house.w - 2;
+      const housePowerY = pos.house.y + 92;
+      const invDomLeftX = pos.invDom.x + 5;
+      const invDomRightX = pos.invDom.x + pos.invDom.w - 5;
+      const invDomCenterY = pos.invDom.y + pos.invDom.h / 2;
+      const invTarasLeftX = pos.invTaras.x + 5;
+      const invTarasRightX = pos.invTaras.x + pos.invTaras.w - 5;
+      const invTarasCenterY = pos.invTaras.y + pos.invTaras.h / 2;
+      const invHybridLeftX = pos.invHybrid.x + 5;
+      const invHybridRightX = pos.invHybrid.x + pos.invHybrid.w - 5;
+      const invHybridCenterY = pos.invHybrid.y + pos.invHybrid.h / 2;
+      const invHybridCenterX = pos.invHybrid.x + pos.invHybrid.w / 2;
+      const invHybridTopY = pos.invHybrid.y + 5;
+      const batteryCenterX = pos.battery.x + pos.battery.w / 2;
+      const batteryBottomY = pos.battery.y + pos.battery.h - 4;
+      const gridCenterX = pos.grid.x + pos.grid.w / 2;
+      const gridBottomY = pos.grid.y + pos.grid.h - 4;
+      const gridLinkY = invHybridCenterY - 24;
+      const relationJunctionX = pos.mainPump.x + pos.mainPump.w / 2;
+      const mixPumpCenterX = pos.mixPump.x + pos.mixPump.w / 2;
+      const mixPumpCenterY = pos.mixPump.y + pos.mixPump.h / 2;
+      const mainPumpCenterX = pos.mainPump.x + pos.mainPump.w / 2;
+      const mainPumpCenterY = pos.mainPump.y + pos.mainPump.h / 2;
+      const mixPumpRotorX = pos.mixPump.x + pos.mixPump.w * 0.5;
+      const mixPumpRotorY = pos.mixPump.y + pos.mixPump.h * 0.52;
+      const mainPumpRotorX = pos.mainPump.x + pos.mainPump.w * 0.5;
+      const mainPumpRotorY = pos.mainPump.y + pos.mainPump.h * 0.536;
+      const rekuCenterX = pos.reku.x + pos.reku.w / 2;
+      const rekuCenterY = pos.reku.y + pos.reku.h / 2;
+      const bufferLeftX = pos.buffer.x + 2;
+      const bufferRightX = pos.buffer.x + pos.buffer.w - 2;
+      const bufferUpperLeftY = pos.buffer.y + 66;
+      const bufferLowerLeftY = pos.buffer.y + 188;
+      const bufferUpperRightY = pos.buffer.y + 98;
+      const bufferLowerRightY = pos.buffer.y + 172;
+      const houseReturnY = pos.house.y + pos.house.h - 18;
+      const panelsOffgrid1RouteX = 96;
+      const panelsVisibleRightX = pos.panels.w - 5;
+      const panelsLabelX = (panelsOffgrid1RouteX + panelsVisibleRightX) / 2;
+      const panelsToHybridPath = `M ${pos.panels.x + pos.panels.w - 6} ${invHybridCenterY} L ${invHybridLeftX} ${invHybridCenterY}`;
+      const batteryRelationPath = `M ${batteryCenterX} ${batteryBottomY} L ${invHybridCenterX} ${invHybridTopY}`;
+      const inverterToBatteryPath = `M ${invHybridCenterX} ${invHybridTopY} L ${batteryCenterX} ${batteryBottomY}`;
+      const gridRelationPath = `M ${invHybridRightX} ${gridLinkY} L ${gridCenterX} ${gridLinkY} L ${gridCenterX} ${gridBottomY}`;
+      const gridToInverterPath = `M ${gridCenterX} ${gridBottomY} L ${gridCenterX} ${gridLinkY} L ${invHybridRightX} ${gridLinkY}`;
+      const inverterToHousePath = `M ${invHybridRightX} ${invHybridCenterY} L ${relationJunctionX} ${invHybridCenterY} L ${relationJunctionX} ${housePowerY} L ${houseLeftRoofX} ${housePowerY}`;
+      const panelsBottomY = pos.panels.y + pos.panels.h - 6;
+      const panelsAsset = state.weatherPhase === "night" || state.weatherPhase === "sunset"
+        ? "/assets/demo/energy/solar-panels-off.webp"
+        : state.weatherPhase === "day" && state.weatherState === "sunny"
+          ? "/assets/demo/energy/solar-panels-active.webp"
+          : "/assets/demo/energy/solar-panels-low.webp";
+      const skyAsset = state.weatherPhase === "night"
+        ? "/assets/demo/energy/sky-moon.webp"
+        : state.weatherPhase === "day" && state.weatherState === "sunny"
+          ? "/assets/demo/energy/sky-sun-bright.webp"
+          : "/assets/demo/energy/sky-sun-soft.webp";
+      const batteryAsset = batteryCharging
+        ? "/assets/demo/energy/energy-bank-charging.webp"
+        : batteryDischarging
+          ? "/assets/demo/energy/energy-bank-discharging.webp"
+          : "/assets/demo/energy/energy-bank-standby.webp";
+      const batteryStateLabel = batteryCharging
+        ? this.dict.panel_charging
+        : batteryDischarging
+          ? this.dict.panel_discharging
+          : batteryMode === "full"
+            ? this.dict.panel_full
+            : this.dict.panel_standby;
+      const gridStateLabel = gridImporting
+        ? this.dict.panel_importing
+        : gridExporting
+          ? this.dict.panel_exporting
+          : this.dict.panel_no_exchange;
 
       this.root.innerHTML = `
         <div class="panel-wrap">
           <svg class="panel-svg" viewBox="0 0 1440 860" xmlns="http://www.w3.org/2000/svg">
               <defs>
-                <linearGradient id="sunFill" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0%" stop-color="#ffe27a"/>
-                  <stop offset="100%" stop-color="#ffad48"/>
-                </linearGradient>
-                <linearGradient id="pvFill" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0%" stop-color="#244867"/>
-                  <stop offset="100%" stop-color="#2e608c"/>
-                </linearGradient>
-                <linearGradient id="houseFill" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0%" stop-color="#24374d"/>
-                  <stop offset="100%" stop-color="#182636"/>
-                </linearGradient>
+                <clipPath id="mix-pump-rotor-clip" clipPathUnits="userSpaceOnUse">
+                  <circle cx="${mixPumpRotorX}" cy="${mixPumpRotorY}" r="15" />
+                </clipPath>
+                <clipPath id="main-pump-rotor-clip" clipPathUnits="userSpaceOnUse">
+                  <circle cx="${mainPumpRotorX}" cy="${mainPumpRotorY}" r="15" />
+                </clipPath>
+                <clipPath id="reku-rotor-clip" clipPathUnits="userSpaceOnUse">
+                  <circle cx="${rekuCenterX}" cy="${rekuCenterY}" r="15" />
+                </clipPath>
+                <clipPath id="buffer-heater-chamber-clip" clipPathUnits="userSpaceOnUse">
+                  <rect x="${pos.buffer.x + 29}" y="${pos.buffer.y + 150}" width="82" height="66" rx="5" />
+                </clipPath>
               </defs>
               <text x="44" y="52" class="title">${this.dict.panel_title}</text>
               <text x="44" y="78" class="subtitle">${this.dict.panel_subtitle}: ${this._num(state.lux).toFixed(0)} lx</text>
 
-              <g transform="translate(74 108)">
-                <circle cx="72" cy="72" r="${sunRadius}" fill="url(#sunFill)" opacity="${sunOpacity}" class="${state.sunActive ? "sun-core-pulse" : ""}" />
-                <g class="${state.sunActive ? "sun-ray-spin" : ""}" opacity="${rayOpacity}">
-                  <line x1="72" y1="2" x2="72" y2="22" stroke="#ffd458" stroke-width="6" stroke-linecap="round" />
-                  <line x1="72" y1="122" x2="72" y2="142" stroke="#ffd458" stroke-width="6" stroke-linecap="round" />
-                  <line x1="2" y1="72" x2="22" y2="72" stroke="#ffd458" stroke-width="6" stroke-linecap="round" />
-                  <line x1="122" y1="72" x2="142" y2="72" stroke="#ffd458" stroke-width="6" stroke-linecap="round" />
-                  <line x1="21" y1="21" x2="37" y2="37" stroke="#ffd458" stroke-width="6" stroke-linecap="round" />
-                  <line x1="107" y1="107" x2="123" y2="123" stroke="#ffd458" stroke-width="6" stroke-linecap="round" />
-                  <line x1="107" y1="37" x2="123" y2="21" stroke="#ffd458" stroke-width="6" stroke-linecap="round" />
-                  <line x1="21" y1="123" x2="37" y2="107" stroke="#ffd458" stroke-width="6" stroke-linecap="round" />
-                </g>
-              </g>
+              <image href="${skyAsset}" x="74" y="108" width="144" height="144" preserveAspectRatio="xMidYMid meet" aria-hidden="true" />
 
               <g transform="translate(${pos.panels.x} ${pos.panels.y})">
-                <polygon points="0,${pos.panels.h} 18,0 ${pos.panels.w},0 ${pos.panels.w - 18},${pos.panels.h}" fill="url(#pvFill)" stroke="#7eb3e7" stroke-width="3"/>
-                <line x1="32" y1="8" x2="14" y2="${pos.panels.h - 8}" stroke="#9ac8f2" stroke-width="2"/>
-                <line x1="58" y1="8" x2="40" y2="${pos.panels.h - 8}" stroke="#9ac8f2" stroke-width="2"/>
-                <line x1="84" y1="8" x2="66" y2="${pos.panels.h - 8}" stroke="#9ac8f2" stroke-width="2"/>
-                <line x1="110" y1="8" x2="92" y2="${pos.panels.h - 8}" stroke="#9ac8f2" stroke-width="2"/>
-                <line x1="136" y1="8" x2="118" y2="${pos.panels.h - 8}" stroke="#9ac8f2" stroke-width="2"/>
-                <line x1="162" y1="8" x2="144" y2="${pos.panels.h - 8}" stroke="#9ac8f2" stroke-width="2"/>
-                <line x1="188" y1="8" x2="170" y2="${pos.panels.h - 8}" stroke="#9ac8f2" stroke-width="2"/>
-                <line x1="214" y1="8" x2="196" y2="${pos.panels.h - 8}" stroke="#9ac8f2" stroke-width="2"/>
-                <line x1="240" y1="8" x2="222" y2="${pos.panels.h - 8}" stroke="#9ac8f2" stroke-width="2"/>
-                <line x1="10" y1="38" x2="${pos.panels.w - 8}" y2="38" stroke="#9ac8f2" stroke-width="2"/>
-                <line x1="6" y1="76" x2="${pos.panels.w - 12}" y2="76" stroke="#9ac8f2" stroke-width="2"/>
-                <text x="116" y="${pos.panels.h + 24}" class="label">${this.dict.panel_panels}</text>
+                <image
+                  href="${panelsAsset}"
+                  x="0"
+                  y="0"
+                  width="${pos.panels.w}"
+                  height="${pos.panels.h}"
+                  preserveAspectRatio="xMidYMid meet"
+                  aria-label="${this.dict.panel_panels}"
+                />
+                <text x="${panelsLabelX}" y="${pos.panels.h + 24}" class="small object-label" text-anchor="middle">${this.dict.panel_panels}</text>
               </g>
 
-              <rect x="${pos.invDom.x}" y="${pos.invDom.y}" rx="16" ry="16" width="${pos.invDom.w}" height="${pos.invDom.h}" class="${stateBox(state.inverterDomProducing)}"/>
-              <text x="${pos.invDom.x + 14}" y="${pos.invDom.y + 27}" class="label">${this.dict.panel_inv_dom}</text>
-              <text x="${pos.invDom.x + 14}" y="${pos.invDom.y + 49}" class="small">${state.inverterDomProducing ? this.dict.panel_on : this.dict.panel_off}</text>
+              <g class="energy-bank-system">
+                <image
+                  href="${batteryAsset}"
+                  x="${pos.battery.x}"
+                  y="${pos.battery.y}"
+                  width="${pos.battery.w}"
+                  height="${pos.battery.h}"
+                  preserveAspectRatio="xMidYMid meet"
+                  aria-label="${this.dict.panel_energy_bank}: ${batteryStateLabel}, ${state.batteryLevel}%"
+                />
+                <text x="${batteryCenterX}" y="${pos.battery.y - 30}" class="small object-label" data-bank-label>${this.dict.panel_energy_bank}</text>
+                <text x="${batteryCenterX}" y="${pos.battery.y - 10}" class="small object-label" data-bank-label>${batteryStateLabel} · ${state.batteryLevel}%</text>
+              </g>
 
-              <rect x="${pos.invTaras.x}" y="${pos.invTaras.y}" rx="16" ry="16" width="${pos.invTaras.w}" height="${pos.invTaras.h}" class="${stateBox(state.inverterTarasProducing)}"/>
-              <text x="${pos.invTaras.x + 14}" y="${pos.invTaras.y + 27}" class="label">${this.dict.panel_inv_taras}</text>
-              <text x="${pos.invTaras.x + 14}" y="${pos.invTaras.y + 49}" class="small">${state.inverterTarasProducing ? this.dict.panel_on : this.dict.panel_off}</text>
+              <g class="grid-system">
+                <ellipse cx="${gridCenterX}" cy="${pos.grid.y + 58}" rx="30" ry="38" class="grid-aura ${on(gridActive)}" aria-hidden="true" />
+                <image
+                  href="/assets/demo/energy/grid-pole.webp"
+                  x="${pos.grid.x}"
+                  y="${pos.grid.y}"
+                  width="${pos.grid.w}"
+                  height="${pos.grid.h}"
+                  preserveAspectRatio="xMidYMid meet"
+                  aria-label="${this.dict.panel_grid}: ${gridStateLabel}"
+                />
+                <path d="M ${pos.grid.x + 66} ${pos.grid.y + 42} l 3 8 8 3 -8 3 -3 8 -3 -8 -8 -3 8 -3 z" class="grid-spark ${on(gridActive)}" aria-hidden="true" />
+                <text x="${gridCenterX}" y="${pos.grid.y - 10}" class="small object-label" text-anchor="middle">${this.dict.panel_grid}</text>
+              </g>
 
-              <rect x="${pos.invHybrid.x}" y="${pos.invHybrid.y}" rx="16" ry="16" width="${pos.invHybrid.w}" height="${pos.invHybrid.h}" class="${stateBox(state.inverterHybridProducing)}"/>
-              <text x="${pos.invHybrid.x + 14}" y="${pos.invHybrid.y + 27}" class="label">${this.dict.panel_inv_hybrid}</text>
-              <text x="${pos.invHybrid.x + 14}" y="${pos.invHybrid.y + 49}" class="small">${state.inverterHybridProducing ? this.dict.panel_on : this.dict.panel_off}</text>
+              <g class="inverter-system inverter-offgrid2-system">
+                <image
+                  href="${state.inverterDomProducing ? "/assets/demo/energy/inverter-offgrid-on.webp" : "/assets/demo/energy/inverter-offgrid-off.webp"}"
+                  x="${pos.invDom.x}"
+                  y="${pos.invDom.y}"
+                  width="${pos.invDom.w}"
+                  height="${pos.invDom.h}"
+                  preserveAspectRatio="xMidYMid meet"
+                  aria-label="${this.dict.panel_inv_dom}: ${state.inverterDomProducing ? this.dict.panel_on : this.dict.panel_off}"
+                />
+                <text x="${pos.invDom.x + pos.invDom.w / 2}" y="${pos.invDom.y + pos.invDom.h + 15}" class="small object-label" text-anchor="middle">${this.dict.panel_inv_dom} · ${state.inverterDomProducing ? this.dict.panel_on : this.dict.panel_off}</text>
+              </g>
 
-              <rect x="${pos.buffer.x}" y="${pos.buffer.y}" rx="24" ry="24" width="${pos.buffer.w}" height="${pos.buffer.h}" class="${stateBox(true, true)}"/>
-              <text x="${pos.buffer.x + 42}" y="${pos.buffer.y + 34}" class="label">${this.dict.panel_buffer}</text>
-              <rect x="${heater1.x}" y="${heater1.y}" rx="10" ry="10" width="${heater1.w}" height="${heater1.h}" class="${stateBox(offgrid2ToHeater1, true)}"/>
-              <text x="${heater1.x + 18}" y="${heater1.y + 17}" class="tiny">${this.dict.panel_heater_1}</text>
-              <rect x="${heater2.x}" y="${heater2.y}" rx="10" ry="10" width="${heater2.w}" height="${heater2.h}" class="${stateBox(offgrid1ToHeater2, true)}"/>
-              <text x="${heater2.x + 18}" y="${heater2.y + 17}" class="tiny">${this.dict.panel_heater_2}</text>
+              <g class="inverter-system inverter-offgrid1-system">
+                <image
+                  href="${state.inverterTarasProducing ? "/assets/demo/energy/inverter-offgrid-on.webp" : "/assets/demo/energy/inverter-offgrid-off.webp"}"
+                  x="${pos.invTaras.x}"
+                  y="${pos.invTaras.y}"
+                  width="${pos.invTaras.w}"
+                  height="${pos.invTaras.h}"
+                  preserveAspectRatio="xMidYMid meet"
+                  aria-label="${this.dict.panel_inv_taras}: ${state.inverterTarasProducing ? this.dict.panel_on : this.dict.panel_off}"
+                />
+                <text x="${pos.invTaras.x + pos.invTaras.w / 2}" y="${pos.invTaras.y + pos.invTaras.h + 15}" class="small object-label" text-anchor="middle">${this.dict.panel_inv_taras} · ${state.inverterTarasProducing ? this.dict.panel_on : this.dict.panel_off}</text>
+              </g>
 
-              <circle cx="${pos.mixPump.x + pos.mixPump.w/2}" cy="${pos.mixPump.y + pos.mixPump.h/2}" r="25" class="${stateBox(state.pumpMixOn)}"/>
-              ${this._rotor(pos.mixPump.x + pos.mixPump.w/2, pos.mixPump.y + pos.mixPump.h/2, "#72efab", state.pumpMixOn, "1.7s")}
-              <text x="${pos.mixPump.x - 26}" y="${pos.mixPump.y + pos.mixPump.h + 20}" class="small">${this.dict.panel_mix_pump}</text>
+              <g class="inverter-system inverter-hybrid-system">
+                <image
+                  href="${inverterHybridOn ? "/assets/demo/energy/inverter-hybrid-on.webp" : "/assets/demo/energy/inverter-hybrid-off.webp"}"
+                  x="${pos.invHybrid.x}"
+                  y="${pos.invHybrid.y}"
+                  width="${pos.invHybrid.w}"
+                  height="${pos.invHybrid.h}"
+                  preserveAspectRatio="xMidYMid meet"
+                  aria-label="${this.dict.panel_inv_hybrid}: ${inverterHybridOn ? this.dict.panel_on : this.dict.panel_off}"
+                />
+                <text x="${pos.invHybrid.x + pos.invHybrid.w / 2}" y="${pos.invHybrid.y + pos.invHybrid.h + 15}" class="small object-label" text-anchor="middle">${this.dict.panel_inv_hybrid}</text>
+              </g>
 
-              <circle cx="${pos.mainPump.x + pos.mainPump.w/2}" cy="${pos.mainPump.y + pos.mainPump.h/2}" r="25" class="${stateBox(state.pumpMainOn)}"/>
-              ${this._rotor(pos.mainPump.x + pos.mainPump.w/2, pos.mainPump.y + pos.mainPump.h/2, "#69d8ff", state.pumpMainOn, "1.0s")}
-              <text x="${pos.mainPump.x - 24}" y="${pos.mainPump.y + pos.mainPump.h + 20}" class="small">${this.dict.panel_main_pump}</text>
+              <g class="hydraulic-routes">
+                <path d="M ${bufferLeftX} ${bufferUpperLeftY} L ${mixPumpCenterX} ${bufferUpperLeftY} L ${mixPumpCenterX} ${pos.mixPump.y + 6}" class="pipe"/>
+                <path d="M ${bufferLeftX} ${bufferUpperLeftY} L ${mixPumpCenterX} ${bufferUpperLeftY} L ${mixPumpCenterX} ${pos.mixPump.y + 6}" class="flow heat ${on(state.pumpMixOn)}"/>
+                <path d="M ${mixPumpCenterX} ${pos.mixPump.y + pos.mixPump.h - 6} L ${mixPumpCenterX} ${bufferLowerLeftY} L ${bufferLeftX} ${bufferLowerLeftY}" class="pipe"/>
+                <path d="M ${mixPumpCenterX} ${pos.mixPump.y + pos.mixPump.h - 6} L ${mixPumpCenterX} ${bufferLowerLeftY} L ${bufferLeftX} ${bufferLowerLeftY}" class="flow heat ${on(state.pumpMixOn)}"/>
+
+                <path d="M ${bufferRightX} ${bufferUpperRightY} L ${pos.mainPump.x} ${bufferUpperRightY} L ${pos.mainPump.x} ${mainPumpCenterY}" class="pipe"/>
+                <path d="M ${bufferRightX} ${bufferUpperRightY} L ${pos.mainPump.x} ${bufferUpperRightY} L ${pos.mainPump.x} ${mainPumpCenterY}" class="flow heat ${on(state.pumpMainOn)}"/>
+                <path d="M ${pos.mainPump.x + pos.mainPump.w} ${mainPumpCenterY} L ${houseLeftWallX} ${mainPumpCenterY}" class="pipe"/>
+                <path d="M ${pos.mainPump.x + pos.mainPump.w} ${mainPumpCenterY} L ${houseLeftWallX} ${mainPumpCenterY}" class="flow heat ${on(state.pumpMainOn)}"/>
+                <path d="M ${houseLeftWallX} ${houseReturnY} L ${pos.mainPump.x + pos.mainPump.w + 28} ${houseReturnY} L ${pos.mainPump.x + pos.mainPump.w + 28} ${bufferLowerRightY} L ${bufferRightX} ${bufferLowerRightY}" class="pipe"/>
+                <path d="M ${houseLeftWallX} ${houseReturnY} L ${pos.mainPump.x + pos.mainPump.w + 28} ${houseReturnY} L ${pos.mainPump.x + pos.mainPump.w + 28} ${bufferLowerRightY} L ${bufferRightX} ${bufferLowerRightY}" class="flow hydraulic-return ${on(state.pumpMainOn)}"/>
+              </g>
+
+              <g class="buffer-system">
+                <image
+                  href="${bufferHot ? "/assets/demo/energy/buffer-hot.webp" : "/assets/demo/energy/buffer-cool.webp"}"
+                  x="${pos.buffer.x}"
+                  y="${pos.buffer.y}"
+                  width="${pos.buffer.w}"
+                  height="${pos.buffer.h}"
+                  preserveAspectRatio="xMidYMid meet"
+                  aria-label="${this.dict.panel_buffer}: ${bufferHot ? this.dict.panel_on : this.dict.panel_standby}"
+                />
+                <text x="${pos.buffer.x + pos.buffer.w / 2}" y="${pos.buffer.y + pos.buffer.h + 19}" class="small object-label" text-anchor="middle">${this.dict.panel_buffer}</text>
+              </g>
+              <g class="power-routes-to-heaters">
+                <path d="M ${invDomRightX} ${invDomCenterY} L ${heater1ConnectorX} ${heater1CenterY}" class="pipe"/>
+                <path id="heater-1-power-route" d="M ${invDomRightX} ${invDomCenterY} L ${heater1ConnectorX} ${heater1CenterY}" class="flow power ${on(offgrid2ToHeater1)}"/>
+
+                <path d="M ${invTarasRightX} ${invTarasCenterY} L ${splitX} ${splitY}" class="pipe"/>
+                <path d="M ${invTarasRightX} ${invTarasCenterY} L ${splitX} ${splitY}" class="flow power ${on(state.inverterTarasProducing)}"/>
+                <path d="M ${splitX} ${splitY} L ${splitX} ${heater2CenterY} L ${heater2ConnectorX} ${heater2CenterY}" class="pipe"/>
+                <path id="heater-2-power-route" d="M ${splitX} ${splitY} L ${splitX} ${heater2CenterY} L ${heater2ConnectorX} ${heater2CenterY}" class="flow power ${on(offgrid1ToHeater2)}"/>
+              </g>
+
+              <g class="heater-system heater-1-system">
+                <circle id="heater-1-power-port" data-qa-anchor="heater-1-power" cx="${heater1ConnectorX}" cy="${heater1CenterY}" r="1" fill="transparent" aria-hidden="true" />
+                <image
+                  href="${offgrid2ToHeater1 ? "/assets/demo/energy/buffer-heater-on.webp" : "/assets/demo/energy/buffer-heater-off.webp"}"
+                  x="${heater1.x}"
+                  y="${heater1.y}"
+                  width="${heater1.w}"
+                  height="${heater1.h}"
+                  preserveAspectRatio="xMidYMid meet"
+                  clip-path="url(#buffer-heater-chamber-clip)"
+                  aria-label="${this.dict.panel_heater_1}: ${offgrid2ToHeater1 ? this.dict.panel_on : this.dict.panel_off}"
+                />
+              </g>
+              <g class="heater-system heater-2-system">
+                <circle id="heater-2-power-port" data-qa-anchor="heater-2-power" cx="${heater2ConnectorX}" cy="${heater2CenterY}" r="1" fill="transparent" aria-hidden="true" />
+                <image
+                  href="${offgrid1ToHeater2 ? "/assets/demo/energy/buffer-heater-on.webp" : "/assets/demo/energy/buffer-heater-off.webp"}"
+                  x="${heater2.x}"
+                  y="${heater2.y}"
+                  width="${heater2.w}"
+                  height="${heater2.h}"
+                  preserveAspectRatio="xMidYMid meet"
+                  clip-path="url(#buffer-heater-chamber-clip)"
+                  transform="translate(${heater2.x * 2 + heater2.w} 0) scale(-1 1)"
+                  aria-label="${this.dict.panel_heater_2}: ${offgrid1ToHeater2 ? this.dict.panel_on : this.dict.panel_off}"
+                />
+              </g>
+
+              <g class="pump-system pump-mixing-system">
+                <g class="pump-mixing-visual" transform="rotate(-90 ${mixPumpCenterX} ${mixPumpCenterY})">
+                  <image
+                    href="${state.pumpMixOn ? "/assets/demo/energy/pump-mixing-on.webp" : "/assets/demo/energy/pump-mixing-off.webp"}"
+                    x="${pos.mixPump.x}"
+                    y="${pos.mixPump.y}"
+                    width="${pos.mixPump.w}"
+                    height="${pos.mixPump.h}"
+                    preserveAspectRatio="xMidYMid meet"
+                    aria-label="${this.dict.panel_mix_pump}: ${state.pumpMixOn ? this.dict.panel_on : this.dict.panel_off}"
+                  />
+                  ${state.pumpMixOn ? `
+                    <g clip-path="url(#mix-pump-rotor-clip)">
+                      <image href="/assets/demo/energy/pump-mixing-on.webp" x="${pos.mixPump.x}" y="${pos.mixPump.y}" width="${pos.mixPump.w}" height="${pos.mixPump.h}" preserveAspectRatio="xMidYMid meet" class="device-rotor active" style="--device-rotor-dur:1.7s;--device-rotor-origin:50% 52%" aria-hidden="true" />
+                    </g>
+                  ` : ""}
+                </g>
+                <text x="${mixPumpCenterX}" y="${bufferUpperLeftY - 12}" class="small object-label" text-anchor="middle">${this.dict.panel_mix_pump}</text>
+              </g>
+
+              <g class="pump-system pump-circulation-system">
+                <image
+                  href="${state.pumpMainOn ? "/assets/demo/energy/pump-circulation-on.webp" : "/assets/demo/energy/pump-circulation-off.webp"}"
+                  x="${pos.mainPump.x}"
+                  y="${pos.mainPump.y}"
+                  width="${pos.mainPump.w}"
+                  height="${pos.mainPump.h}"
+                  preserveAspectRatio="xMidYMid meet"
+                  aria-label="${this.dict.panel_main_pump}: ${state.pumpMainOn ? this.dict.panel_on : this.dict.panel_off}"
+                />
+                ${state.pumpMainOn ? `
+                  <g clip-path="url(#main-pump-rotor-clip)">
+                    <image href="/assets/demo/energy/pump-circulation-on.webp" x="${pos.mainPump.x}" y="${pos.mainPump.y}" width="${pos.mainPump.w}" height="${pos.mainPump.h}" preserveAspectRatio="xMidYMid meet" class="device-rotor active" style="--device-rotor-dur:1s;--device-rotor-origin:50% 53.6%" aria-hidden="true" />
+                  </g>
+                ` : ""}
+                <text x="${mainPumpCenterX}" y="${pos.mainPump.y + pos.mainPump.h + 15}" class="small object-label" text-anchor="middle">${this.dict.panel_main_pump}</text>
+              </g>
 
               <rect x="${pos.weather.x}" y="${pos.weather.y}" rx="22" ry="22" width="${pos.weather.w}" height="${pos.weather.h}" fill="rgba(255,255,255,0.04)" stroke="rgba(164,199,236,0.18)" stroke-width="2"/>
               ${this._weatherIcon(pos.weather.x + 54, pos.weather.y + 42, state.weatherState, state.weatherPhase)}
@@ -687,78 +896,112 @@
               <text x="${pos.weather.x + 108}" y="${pos.weather.y + 62}" style="font-size:28px;font-weight:700;fill:#edf4ff;">${this._num(state.weatherTemperature).toFixed(1)} C</text>
               <text x="${pos.weather.x + 108}" y="${pos.weather.y + 84}" class="small">${this.dict.panel_wind} ${this._num(state.weatherWind).toFixed(1)} km/h  |  ${this.dict.panel_humidity} ${this._num(state.weatherHumidity).toFixed(0)}%</text>
 
-              <path d="M ${pos.house.x} ${pos.house.y + 74} L ${pos.house.x + pos.house.w/2} ${pos.house.y} L ${pos.house.x + pos.house.w} ${pos.house.y + 74} L ${pos.house.x + pos.house.w} ${pos.house.y + pos.house.h} L ${pos.house.x} ${pos.house.y + pos.house.h} Z" fill="url(#houseFill)" stroke="rgba(130,175,220,0.35)" stroke-width="3"/>
-              <rect x="${pos.house.x + 88}" y="${pos.house.y + 190}" width="42" height="96" fill="rgba(255,255,255,0.1)" />
-              <rect x="${pos.house.x + 24}" y="${pos.house.y + 136}" width="44" height="42" fill="rgba(140,204,255,0.08)" />
-              <rect x="${pos.house.x + 154}" y="${pos.house.y + 136}" width="44" height="42" fill="rgba(140,204,255,0.08)" />
-              ${haLogo}
-              ${bulb(pos.house.x + 46, pos.house.y + 160, state.salonLightOn)}
-              ${bulb(pos.house.x + 176, pos.house.y + 160, state.kitchenLightOn)}
-              ${phoneBadge}
-              <text x="${pos.house.x + 92}" y="${pos.house.y + 164}" class="label">${this.dict.panel_house}</text>
-              <text x="${pos.house.x + pos.house.w/2}" y="${pos.house.y + pos.house.h + 26}" class="small" text-anchor="middle">${state.phoneHome ? this.dict.panel_owner_home : this.dict.panel_owner_away}</text>
+              <g class="house-system">
+                <image
+                  href="${state.phoneHome ? "/assets/demo/energy/house-presence.webp?v=20260904-house-source-2" : "/assets/demo/energy/house-base.webp?v=20260904-house-source-2"}"
+                  x="${pos.house.x}"
+                  y="${pos.house.y}"
+                  width="${pos.house.w}"
+                  height="${pos.house.h}"
+                  preserveAspectRatio="xMidYMid meet"
+                  aria-label="${this.dict.panel_house}"
+                />
+                ${state.kitchenLightOn ? `
+                  <image href="/assets/demo/energy/house-window-right-on.webp" x="${pos.house.x}" y="${pos.house.y}" width="${pos.house.w}" height="${pos.house.h}" preserveAspectRatio="xMidYMid meet" aria-hidden="true" />
+                ` : ""}
+                ${state.salonLightOn ? `
+                  <image href="/assets/demo/energy/house-door-open.webp" x="${pos.house.x}" y="${pos.house.y}" width="${pos.house.w}" height="${pos.house.h}" preserveAspectRatio="xMidYMid meet" aria-hidden="true" />
+                ` : ""}
+                ${(state.salonLightOn || state.kitchenLightOn) ? `
+                  <image href="/assets/demo/energy/house-entry-light-on.webp" x="${pos.house.x}" y="${pos.house.y}" width="${pos.house.w}" height="${pos.house.h}" preserveAspectRatio="xMidYMid meet" aria-hidden="true" />
+                ` : ""}
+              </g>
+              <text x="${pos.house.x + pos.house.w / 2}" y="${pos.house.y + pos.house.h + 16}" class="small object-label" text-anchor="middle">${this.dict.panel_house}</text>
 
-              <circle cx="${pos.reku.x + pos.reku.w/2}" cy="${pos.reku.y + pos.reku.h/2}" r="29" class="${stateBox(state.rekuOn)}"/>
-              ${this._rotor(pos.reku.x + pos.reku.w/2, pos.reku.y + pos.reku.h/2, "#66d9ff", state.rekuOn, this._rekuDur(this._num(state.rekuPercentage), state.rekuOn))}
-              <text x="${pos.reku.x + pos.reku.w/2}" y="${pos.reku.y + pos.reku.h + 22}" class="small" text-anchor="middle">${this.dict.panel_reku}</text>
-
-              <rect x="${pos.boiler.x}" y="${pos.boiler.y}" rx="16" ry="16" width="${pos.boiler.w}" height="${pos.boiler.h}" class="${stateBox(state.boilerOn, true)}"/>
-              <text x="${pos.boiler.x + 16}" y="${pos.boiler.y + 27}" class="label">${this.dict.panel_boiler}</text>
-              <g transform="translate(${pos.boiler.x + pos.boiler.w - 38} ${pos.boiler.y + 45})">
-                <rect x="-16" y="-18" width="30" height="38" rx="8" fill="${state.boilerOn ? "rgba(235,244,255,0.16)" : "rgba(160,176,196,0.12)"}" stroke="${state.boilerOn ? "rgba(235,244,255,0.55)" : "rgba(160,176,196,0.30)"}" stroke-width="2"/>
-                <circle cx="-6" cy="-6" r="2.3" fill="${state.boilerOn ? "#86baf0" : "rgba(160,176,196,0.4)"}"/>
-                <circle cx="5" cy="-6" r="2.3" fill="${state.boilerOn ? "#86baf0" : "rgba(160,176,196,0.4)"}"/>
-                <rect x="-8" y="2" width="14" height="10" rx="3" fill="rgba(15,23,34,0.55)" stroke="rgba(255,255,255,0.16)" stroke-width="1.5"/>
-                <path d="M -1 8 C -8 3, -6 -6, 0 -10 C 6 -6, 8 3, 1 8 Z" class="${state.boilerOn ? "boiler-flame boiler-flame-active" : "boiler-flame"}" fill="${state.boilerOn ? "#ff9d5c" : "rgba(160,176,196,0.28)"}"></path>
+              <g class="rekuperacja-system">
+                <image
+                  href="${state.rekuOn ? "/assets/demo/energy/rekuperacja-on.webp" : "/assets/demo/energy/rekuperacja-off.webp"}"
+                  x="${pos.reku.x}"
+                  y="${pos.reku.y}"
+                  width="${pos.reku.w}"
+                  height="${pos.reku.h}"
+                  preserveAspectRatio="xMidYMid meet"
+                  aria-label="${this.dict.panel_reku}: ${state.rekuOn ? `${this.dict.panel_on}, ${this._num(state.rekuPercentage).toFixed(0)}%` : this.dict.panel_off}"
+                />
+                ${state.rekuOn ? `
+                  <g clip-path="url(#reku-rotor-clip)">
+                    <image href="/assets/demo/energy/rekuperacja-on.webp" x="${pos.reku.x}" y="${pos.reku.y}" width="${pos.reku.w}" height="${pos.reku.h}" preserveAspectRatio="xMidYMid meet" class="device-rotor active" style="--device-rotor-dur:${this._rekuDur(this._num(state.rekuPercentage), state.rekuOn)}" aria-hidden="true" />
+                  </g>
+                ` : ""}
+                <text x="${pos.reku.x + pos.reku.w/2}" y="${pos.reku.y - 8}" class="small object-label" text-anchor="middle">${this.dict.panel_reku}</text>
               </g>
 
-              <rect x="${pos.radiator.x}" y="${pos.radiator.y}" rx="16" ry="16" width="${pos.radiator.w}" height="${pos.radiator.h}" class="${stateBox(offgrid1ToRadiator, true)}"/>
-              <text x="${pos.radiator.x + 12}" y="${pos.radiator.y + 23}" class="label">${this.dict.panel_radiator}</text>
-              <g stroke="${offgrid1ToRadiator ? "#ff9a60" : "rgba(255,255,255,0.22)"}" stroke-width="6" stroke-linecap="round">
-                <line x1="${pos.radiator.x + 38}" y1="${pos.radiator.y + 36}" x2="${pos.radiator.x + 38}" y2="${pos.radiator.y + 56}" />
-                <line x1="${pos.radiator.x + 60}" y1="${pos.radiator.y + 36}" x2="${pos.radiator.x + 60}" y2="${pos.radiator.y + 56}" />
-                <line x1="${pos.radiator.x + 82}" y1="${pos.radiator.y + 36}" x2="${pos.radiator.x + 82}" y2="${pos.radiator.y + 56}" />
-                <line x1="${pos.radiator.x + 104}" y1="${pos.radiator.y + 36}" x2="${pos.radiator.x + 104}" y2="${pos.radiator.y + 56}" />
-                <line x1="${pos.radiator.x + 126}" y1="${pos.radiator.y + 36}" x2="${pos.radiator.x + 126}" y2="${pos.radiator.y + 56}" />
+              <g class="boiler-system">
+                <path d="M ${pos.boiler.x + pos.boiler.w / 2} ${pos.boiler.y + pos.boiler.h - 18} L ${pos.boiler.x + pos.boiler.w / 2} ${pos.boiler.y + pos.boiler.h + 29} L ${houseRightX} ${pos.boiler.y + pos.boiler.h + 29}" class="pipe"/>
+                <path d="M ${pos.boiler.x + pos.boiler.w / 2} ${pos.boiler.y + pos.boiler.h - 18} L ${pos.boiler.x + pos.boiler.w / 2} ${pos.boiler.y + pos.boiler.h + 29} L ${houseRightX} ${pos.boiler.y + pos.boiler.h + 29}" class="flow heat ${on(state.boilerOn)}"/>
+                <image
+                  href="${state.boilerOn ? "/assets/demo/energy/gas-boiler-on.webp" : "/assets/demo/energy/gas-boiler-off.webp"}"
+                  x="${pos.boiler.x}"
+                  y="${pos.boiler.y}"
+                  width="${pos.boiler.w}"
+                  height="${pos.boiler.h}"
+                  preserveAspectRatio="xMidYMid meet"
+                  aria-label="${this.dict.panel_boiler}"
+                />
+                <text x="${pos.boiler.x + pos.boiler.w / 2}" y="${pos.boiler.y - 8}" class="small object-label" text-anchor="middle">${this.dict.panel_boiler}</text>
               </g>
 
-              <path d="M ${pos.panels.x + 72} ${pos.panels.y + pos.panels.h} L ${pos.panels.x + 72} ${pos.invDom.y + 36} L ${pos.invDom.x} ${pos.invDom.y + 36}" class="pipe"/>
-              <path d="M ${pos.panels.x + 72} ${pos.panels.y + pos.panels.h} L ${pos.panels.x + 72} ${pos.invDom.y + 36} L ${pos.invDom.x} ${pos.invDom.y + 36}" class="flow power ${on(state.inverterDomProducing)}"/>
-              <path d="M ${pos.panels.x + 96} ${pos.panels.y + pos.panels.h} L ${pos.panels.x + 96} ${pos.invTaras.y + 36} L ${pos.invTaras.x} ${pos.invTaras.y + 36}" class="pipe"/>
-              <path d="M ${pos.panels.x + 96} ${pos.panels.y + pos.panels.h} L ${pos.panels.x + 96} ${pos.invTaras.y + 36} L ${pos.invTaras.x} ${pos.invTaras.y + 36}" class="flow power ${on(state.inverterTarasProducing)}"/>
-              <path d="M ${pos.panels.x + pos.panels.w} ${pos.invHybrid.y + 36} L ${pos.invHybrid.x} ${pos.invHybrid.y + 36}" class="pipe"/>
-              <path d="M ${pos.panels.x + pos.panels.w} ${pos.invHybrid.y + 36} L ${pos.invHybrid.x} ${pos.invHybrid.y + 36}" class="flow power ${on(state.inverterHybridProducing)}"/>
+              <g class="radiator-system">
+                <path d="M ${houseRightX} ${pos.radiator.y + pos.radiator.h / 2} L ${pos.radiator.x + 10} ${pos.radiator.y + pos.radiator.h / 2}" class="pipe"/>
+                <path d="M ${pos.radiator.x + 10} ${pos.radiator.y + pos.radiator.h / 2} L ${houseRightX} ${pos.radiator.y + pos.radiator.h / 2}" class="flow heat ${on(offgrid1ToRadiator)}"/>
+                <path d="M ${splitX} ${splitY} L ${pos.radiator.x + pos.radiator.w / 2} ${splitY} L ${pos.radiator.x + pos.radiator.w / 2} ${pos.radiator.y + pos.radiator.h - 8}" class="pipe"/>
+                <path d="M ${splitX} ${splitY} L ${pos.radiator.x + pos.radiator.w / 2} ${splitY} L ${pos.radiator.x + pos.radiator.w / 2} ${pos.radiator.y + pos.radiator.h - 8}" class="flow power ${on(offgrid1ToRadiator)}"/>
+                <image
+                  href="${offgrid1ToRadiator ? "/assets/demo/energy/electric-radiator-on.webp" : "/assets/demo/energy/electric-radiator-off.webp"}"
+                  x="${pos.radiator.x}"
+                  y="${pos.radiator.y}"
+                  width="${pos.radiator.w}"
+                  height="${pos.radiator.h}"
+                  preserveAspectRatio="xMidYMid meet"
+                  aria-label="${this.dict.panel_radiator}"
+                />
+                <text x="${pos.radiator.x + pos.radiator.w / 2}" y="${pos.radiator.y - 8}" class="small object-label" text-anchor="middle">${this.dict.panel_radiator}</text>
+              </g>
 
-              <path d="M ${pos.invDom.x + pos.invDom.w} ${pos.invDom.y + 36} L ${heater1.x} ${pos.invDom.y + 36}" class="pipe"/>
-              <path d="M ${pos.invDom.x + pos.invDom.w} ${pos.invDom.y + 36} L ${heater1.x} ${pos.invDom.y + 36}" class="flow power ${on(offgrid2ToHeater1)}"/>
+              <path d="M ${pos.panels.x + 72} ${panelsBottomY} L ${pos.panels.x + 72} ${invDomCenterY} L ${invDomLeftX} ${invDomCenterY}" class="pipe"/>
+              <path d="M ${pos.panels.x + 72} ${panelsBottomY} L ${pos.panels.x + 72} ${invDomCenterY} L ${invDomLeftX} ${invDomCenterY}" class="flow power ${on(state.inverterDomProducing)}"/>
+              <path d="M ${pos.panels.x + panelsOffgrid1RouteX} ${panelsBottomY} L ${pos.panels.x + panelsOffgrid1RouteX} ${invTarasCenterY} L ${invTarasLeftX} ${invTarasCenterY}" class="pipe"/>
+              <path d="M ${pos.panels.x + panelsOffgrid1RouteX} ${panelsBottomY} L ${pos.panels.x + panelsOffgrid1RouteX} ${invTarasCenterY} L ${invTarasLeftX} ${invTarasCenterY}" class="flow power ${on(state.inverterTarasProducing)}"/>
+              <path id="panels-hybrid-route" d="${panelsToHybridPath}" class="relation-line relation-solar ${on(state.inverterHybridProducing)}"/>
+              ${this._movingArrow(panelsToHybridPath, state.inverterHybridProducing, "solar", "2.8s")}
 
-              <path d="M ${pos.invTaras.x + pos.invTaras.w} ${pos.invTaras.y + 36} L ${splitX} ${pos.invTaras.y + 36} L ${splitX} ${splitY}" class="pipe"/>
-              <path d="M ${pos.invTaras.x + pos.invTaras.w} ${pos.invTaras.y + 36} L ${splitX} ${pos.invTaras.y + 36} L ${splitX} ${splitY}" class="flow power ${on(state.inverterTarasProducing)}"/>
-              <path d="M ${splitX} ${splitY} L ${splitX} ${heater2.y + heater2.h}" class="pipe"/>
-              <path d="M ${splitX} ${splitY} L ${splitX} ${heater2.y + heater2.h}" class="flow power ${on(offgrid1ToHeater2)}"/>
-              <path d="M ${splitX} ${splitY} L ${pos.radiator.x + pos.radiator.w/2} ${splitY} L ${pos.radiator.x + pos.radiator.w/2} ${pos.radiator.y + pos.radiator.h}" class="pipe"/>
-              <path d="M ${splitX} ${splitY} L ${pos.radiator.x + pos.radiator.w/2} ${splitY} L ${pos.radiator.x + pos.radiator.w/2} ${pos.radiator.y + pos.radiator.h}" class="flow power ${on(offgrid1ToRadiator)}"/>
+              <path id="hybrid-bank-route" d="${batteryRelationPath}" class="relation-line relation-bank ${on(batteryCharging || batteryDischarging)}"/>
+              ${this._movingArrow(
+                batteryCharging ? inverterToBatteryPath : batteryRelationPath,
+                batteryCharging || batteryDischarging,
+                batteryCharging ? "charge" : "discharge",
+                "2.4s"
+              )}
 
-              <path d="M ${pos.invHybrid.x + pos.invHybrid.w} ${pos.invHybrid.y + 36} L ${pos.mainPump.x + pos.mainPump.w/2} ${pos.invHybrid.y + 36} L ${pos.mainPump.x + pos.mainPump.w/2} ${pos.house.y + 92} L ${pos.house.x} ${pos.house.y + 92}" class="pipe"/>
-              <path d="M ${pos.invHybrid.x + pos.invHybrid.w} ${pos.invHybrid.y + 36} L ${pos.mainPump.x + pos.mainPump.w/2} ${pos.invHybrid.y + 36} L ${pos.mainPump.x + pos.mainPump.w/2} ${pos.house.y + 92} L ${pos.house.x} ${pos.house.y + 92}" class="flow power ${on(hybridToHouse)}"/>
+              <path id="hybrid-grid-route" d="${gridRelationPath}" class="relation-line relation-grid ${on(gridActive)}"/>
+              ${this._movingArrow(
+                gridImporting ? gridToInverterPath : gridRelationPath,
+                gridActive,
+                gridImporting ? "grid-import" : "grid-export",
+                "3.2s"
+              )}
 
-              <path d="M ${pos.buffer.x} ${pos.buffer.y + 76} L ${pos.mixPump.x + pos.mixPump.w/2} ${pos.buffer.y + 76} L ${pos.mixPump.x + pos.mixPump.w/2} ${pos.mixPump.y}" class="pipe"/>
-              <path d="M ${pos.buffer.x} ${pos.buffer.y + 76} L ${pos.mixPump.x + pos.mixPump.w/2} ${pos.buffer.y + 76} L ${pos.mixPump.x + pos.mixPump.w/2} ${pos.mixPump.y}" class="flow heat ${on(state.pumpMixOn)}"/>
-              <path d="M ${pos.mixPump.x + pos.mixPump.w/2} ${pos.mixPump.y + pos.mixPump.h} L ${pos.mixPump.x + pos.mixPump.w/2} ${pos.buffer.y + pos.buffer.h - 24} L ${pos.buffer.x} ${pos.buffer.y + pos.buffer.h - 24}" class="pipe"/>
-              <path d="M ${pos.mixPump.x + pos.mixPump.w/2} ${pos.mixPump.y + pos.mixPump.h} L ${pos.mixPump.x + pos.mixPump.w/2} ${pos.buffer.y + pos.buffer.h - 24} L ${pos.buffer.x} ${pos.buffer.y + pos.buffer.h - 24}" class="flow heat ${on(state.pumpMixOn)}"/>
+              <path id="hybrid-house-route" d="${inverterToHousePath}" class="relation-line relation-home ${on(hybridToHouse)}"/>
+              ${this._movingArrow(inverterToHousePath, hybridToHouse, "home", "3.6s")}
 
-              <path d="M ${pos.buffer.x + pos.buffer.w} ${pos.mainPump.y + pos.mainPump.h/2} L ${pos.mainPump.x} ${pos.mainPump.y + pos.mainPump.h/2}" class="pipe"/>
-              <path d="M ${pos.buffer.x + pos.buffer.w} ${pos.mainPump.y + pos.mainPump.h/2} L ${pos.mainPump.x} ${pos.mainPump.y + pos.mainPump.h/2}" class="flow heat ${on(state.pumpMainOn)}"/>
-              <path d="M ${pos.mainPump.x + pos.mainPump.w} ${pos.mainPump.y + pos.mainPump.h/2} L ${pos.house.x} ${pos.mainPump.y + pos.mainPump.h/2}" class="pipe"/>
-              <path d="M ${pos.mainPump.x + pos.mainPump.w} ${pos.mainPump.y + pos.mainPump.h/2} L ${pos.house.x} ${pos.mainPump.y + pos.mainPump.h/2}" class="flow heat ${on(state.pumpMainOn)}"/>
-
-              <path d="M ${pos.boiler.x} ${pos.boiler.y + pos.boiler.h/2} L ${pos.house.x + pos.house.w} ${pos.boiler.y + pos.boiler.h/2}" class="pipe"/>
-              <path d="M ${pos.boiler.x} ${pos.boiler.y + pos.boiler.h/2} L ${pos.house.x + pos.house.w} ${pos.boiler.y + pos.boiler.h/2}" class="flow heat ${on(state.boilerOn)}"/>
-              <path d="M ${pos.radiator.x} ${pos.radiator.y + pos.radiator.h/2} L ${pos.house.x + pos.house.w} ${pos.radiator.y + pos.radiator.h/2}" class="pipe"/>
-              <path d="M ${pos.radiator.x} ${pos.radiator.y + pos.radiator.h/2} L ${pos.house.x + pos.house.w} ${pos.radiator.y + pos.radiator.h/2}" class="flow heat ${on(offgrid1ToRadiator)}"/>
           </svg>
         </div>
       `;
+
+      const batteryLabels = [...this.root.querySelectorAll("[data-bank-label]")];
+      const batteryLabelWidth = Math.max(...batteryLabels.map((label) => label.getComputedTextLength()));
+      const batteryLabelStartX = batteryCenterX - batteryLabelWidth / 2;
+      batteryLabels.forEach((label) => label.setAttribute("x", batteryLabelStartX.toFixed(1)));
     }
   }
 
@@ -785,13 +1028,16 @@
       inverterDomProducing: false,
       inverterTarasProducing: false,
       inverterHybridProducing: false,
-      hybridToHouse: false,
+      hybridToHouse: true,
+      batteryMode: "discharging",
+      batteryLevel: 58,
+      gridMode: "idle",
       offgrid2ToHeater1: false,
       offgrid1ToRadiator: false,
       offgrid1ToHeater2: false,
       pumpMixOn: false,
       pumpMainOn: false,
-      boilerOn: Math.random() > 0.5,
+      boilerOn: true,
       kitchenLightOn: Math.random() > 0.5,
       salonLightOn: Math.random() > 0.5,
       ...randomLayer,
@@ -802,7 +1048,7 @@
   function createMorningScenario(dict) {
     const randomLayer = createRandomPresenceAndReku();
     return {
-      statusIcon: "⛅",
+      statusIcon: "⛅️",
       lux: randInt(1000, 3000),
       sunActive: true,
       weatherPhase: "sunrise",
@@ -814,9 +1060,13 @@
       inverterTarasProducing: true,
       inverterHybridProducing: true,
       hybridToHouse: true,
+      batteryMode: "charging",
+      batteryLevel: 42,
+      gridMode: "importing",
       offgrid2ToHeater1: true,
       offgrid1ToRadiator: true,
       offgrid1ToHeater2: false,
+      bufferHot: false,
       pumpMixOn: false,
       pumpMainOn: false,
       boilerOn: false,
@@ -842,6 +1092,9 @@
       inverterTarasProducing: true,
       inverterHybridProducing: true,
       hybridToHouse: true,
+      batteryMode: "full",
+      batteryLevel: 100,
+      gridMode: "exporting",
       offgrid2ToHeater1: true,
       offgrid1ToRadiator: false,
       offgrid1ToHeater2: true,
@@ -858,7 +1111,7 @@
   function createSunsetScenario(dict) {
     const randomLayer = createRandomPresenceAndReku();
     return {
-      statusIcon: "sunset",
+      statusIcon: "🌤️",
       lux: randInt(100, 500),
       sunActive: false,
       weatherPhase: "sunset",
@@ -869,7 +1122,10 @@
       inverterDomProducing: false,
       inverterTarasProducing: false,
       inverterHybridProducing: false,
-      hybridToHouse: false,
+      hybridToHouse: true,
+      batteryMode: "discharging",
+      batteryLevel: 84,
+      gridMode: "idle",
       offgrid2ToHeater1: false,
       offgrid1ToRadiator: false,
       offgrid1ToHeater2: false,
@@ -883,41 +1139,12 @@
     };
   }
 
-  function createInitialState(dict) {
-    return {
-      statusIcon: "☀️",
-      lux: 1840,
-      sunActive: true,
-      weatherPhase: "day",
-      weatherState: "partlycloudy",
-      weatherTemperature: 15.2,
-      weatherWind: 11.3,
-      weatherHumidity: 54,
-      inverterDomProducing: true,
-      inverterTarasProducing: true,
-      inverterHybridProducing: true,
-      hybridToHouse: true,
-      offgrid2ToHeater1: true,
-      offgrid1ToRadiator: true,
-      offgrid1ToHeater2: false,
-      pumpMixOn: false,
-      pumpMainOn: false,
-      rekuOn: true,
-      rekuPercentage: 52,
-      boilerOn: false,
-      kitchenLightOn: false,
-      salonLightOn: false,
-      phoneHome: true,
-      message: dict.scenario_initial || ""
-    };
-  }
-
   const lang = getLang();
   applyI18n(lang);
   const dict = DICT[lang];
   const panelTrigger = qs("#demo-panel-trigger");
   const instructionTrigger = qs("#demo-instruction-trigger");
-  const initialState = createInitialState(dict);
+  const initialState = createMorningScenario(dict);
   const renderer = new PanelDemoRenderer(qs("#panelMount"), dict);
 
   renderer.render(initialState);
@@ -930,7 +1157,7 @@
     () => createSunsetScenario(dict),
     () => createNightScenario(dict)
   ];
-  let scenarioIndex = -1;
+  let scenarioIndex = 0;
   let touchHandled = false;
 
   const renderSingleSimulationStatus = (target, scenario) => {
@@ -946,7 +1173,7 @@
       ? '<span class="sim-status-icon sim-status-icon--sunset" aria-hidden="true"></span>'
       : `<span class="sim-status-icon" aria-hidden="true">${scenario.statusIcon || ""}</span>`;
 
-    const message = scenario.message.replace(/^(🌙|⛅|☀️|🌇)\s*/u, "");
+    const message = scenario.message.replace(/^(🌙|⛅️?|☀️?|🌤️?|🌇)\s*/u, "");
     target.innerHTML = `<span class="sim-status-content">${iconMarkup}<span>${message}</span></span>`;
   };
 
