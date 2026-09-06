@@ -1,7 +1,7 @@
 const navStates = [];
 const MOBILE_NAV_BREAKPOINT = 1328;
 const NAV_FORUM_COOKIE_MAX_AGE = 60 * 60 * 24 * 365;
-const NAV_FORUM_URL = "https://forum.ha-expert.com";
+const NAV_FORUM_BASE_URL = "https://forum.ha-expert.com/";
 const NAV_FORUM_GA4_ID = "G-085D9ZQG66";
 const hasForumAnalyticsConsent = () => {
   return Boolean(window.HAExpertConsent && window.HAExpertConsent.has("analytics"));
@@ -20,6 +20,11 @@ const configureForumAnalytics = () => {
 const getForumCommunityLocale = () => {
   const locale = document.documentElement.lang.split("-")[0].toLowerCase();
   return locale === "dk" ? "da" : locale;
+};
+
+const getForumCommunityUrl = () => {
+  const locale = getForumCommunityLocale();
+  return `${NAV_FORUM_BASE_URL}?language=${encodeURIComponent(locale)}`;
 };
 
 const rememberNavForumCommunity = () => {
@@ -90,6 +95,8 @@ const trackForumClick = (event, link) => {
 
 const bindForumLinks = () => {
   document.querySelectorAll(".forum-community-link").forEach((link) => {
+    link.href = getForumCommunityUrl();
+
     if (link.dataset.forumTrackingBound === "true") {
       return;
     }
@@ -109,7 +116,7 @@ const ensureDesktopForumLinks = () => {
     const forumLink = document.createElement("a");
     forumItem.className = "nav-desktop-only";
     forumLink.className = "forum-community-link forum-desktop-link";
-    forumLink.href = NAV_FORUM_URL;
+    forumLink.href = getForumCommunityUrl();
     forumLink.setAttribute("aria-label", "Forum HA Expert");
     forumLink.textContent = "Forum";
     forumItem.append(forumLink);

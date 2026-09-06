@@ -14,17 +14,17 @@
   <link rel="alternate" hreflang="en" href="https://ha-expert.com/en/projects/" />
   <link rel="alternate" hreflang="x-default" href="https://ha-expert.com/en/projects/" />
   <title>Projekty Home Assistant i przykładowe panele | HA Expert</title>
-  <meta name="description" content="Zobacz przykładowe projekty, panele sterowania i diagnostykę Zigbee w Home Assistant." />
-  <meta name="keywords" content="Home Assistant, ekspert, pomoc, diagnostyka Zigbee, inteligentny dom, automatyka, sterowanie ogrzewaniem, dashboard, zdalny dostęp, naprawa błędów, usługi home assistant, smart home usługi, konfiguracja, wsparcie techniczne, instalacja, home assistant usługi, home assistant fotowoltaika, ha fotowoltaika, integracja fotowoltaika, tuya home assistant, tuya ha, tuya expert, expert automatyzacja, ha expert, smart home usługi" />
+  <meta name="description" content="Zobacz przykładowe projekty Home Assistant, interaktywne panele sterowania i rozwiązania dopasowane do różnych potrzeb domu." />
+  <meta name="keywords" content="Home Assistant, ekspert, pomoc, inteligentny dom, automatyka, sterowanie ogrzewaniem, dashboard, zdalny dostęp, naprawa błędów, usługi home assistant, smart home usługi, konfiguracja, wsparcie techniczne, instalacja, home assistant usługi, home assistant fotowoltaika, ha fotowoltaika, integracja fotowoltaika, tuya home assistant, tuya ha, tuya expert, expert automatyzacja, ha expert" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://ha-expert.com/pl/projekty/" />
   <meta property="og:title" content="Projekty Home Assistant i przykładowe panele | HA Expert" />
-  <meta property="og:description" content="Zobacz przykładowe projekty, panele sterowania i diagnostykę Zigbee w Home Assistant." />
+  <meta property="og:description" content="Zobacz przykładowe projekty Home Assistant, interaktywne panele sterowania i rozwiązania dopasowane do różnych potrzeb domu." />
   <meta property="og:image" content="https://ha-expert.com/assets/brand/o-mnie.webp" />
   <meta property="og:locale" content="pl_PL" />
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Projekty Home Assistant i przykładowe panele | HA Expert" />
-  <meta name="twitter:description" content="Zobacz przykładowe projekty, panele sterowania i diagnostykę Zigbee w Home Assistant." />
+  <meta name="twitter:description" content="Zobacz przykładowe projekty Home Assistant, interaktywne panele sterowania i rozwiązania dopasowane do różnych potrzeb domu." />
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -70,7 +70,9 @@
   }
 }
   </script>
-  <link rel="stylesheet" href="../../styles.css?v=20260901-mobile-lang-optical-1" />
+  <link rel="stylesheet" href="../../styles.css?v=20260906-footer-company-1" />
+  <link rel="stylesheet" href="/demo/demo-catalog.css?v=20260905-projects-catalog-1" />
+  <link rel="stylesheet" href="/projekty-catalog.css?v=20260905-projects-catalog-1" />
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18087588380"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -110,7 +112,7 @@
           <li><a href="/pl/#kontakt">Kontakt</a></li>
           <li class="nav-secondary-start"><a href="/pl/projekty/" aria-current="page">Projekty</a></li>
           <li><a href="/pl/poradniki/">Poradniki</a></li>
-          <li><a href="/pl/demo/">Demo panelu</a></li>
+          <li><a href="/pl/demo/">Demo HA</a></li>
         </ul>
       </nav>
       <div class="lang-switch" aria-label="Language switch">
@@ -124,151 +126,66 @@
 
   <main>
     <section class="section" id="projekty">
-      <div class="section-label">PROJEKTY</div>
-      <h1 class="section-title mobile-match-title">Projekty i przykładowe panele</h1>
-      <p class="section-subtitle">Prezentowane projekty i panele pochodzą z mojego własnego, stale rozwijanego systemu Home Assistant i pokazują rozwiązania, z których korzystam na co dzień.</p>
-      <p class="showcase-interaction-hint">Kliknij lub dotknij panel, aby powiększyć.</p>
-      <div class="grid-3 showcase-grid">
-        <article class="card showcase-card">
-          <div class="showcase-media">
-            <img src="../../assets/examples/heating-control.png" alt="Panel sterowania ogrzewaniem i buforem" loading="lazy" width="1920" height="1080" data-lightbox-src="../../assets/examples/heating-control.png" />
-          </div>
-          <div class="showcase-copy">
-            <h2>Sterowanie ogrzewaniem</h2>
-            <p>Panel pozwala zarządzać ogrzewaniem z kilku źródeł, takich jak fotowoltaika off-grid z buforem i piec gazowy. Umożliwia zmianę trybów pracy, temperatur i progów obniżenia, a także automatyzuje oszczędzanie energii, gdy dom jest pusty lub działa tryb wakacyjny. Całość pilnuje też logiki systemu, tak aby źródła ciepła nie pracowały jednocześnie w nieprawidłowy sposób.</p>
-          </div>
-        </article>
+      <div class="section-label">PROJEKTY HOME ASSISTANT</div>
+      <h1 class="section-title mobile-match-title">Panele dopasowane do różnych potrzeb</h1>
+      <p class="section-subtitle">Zobacz różne sposoby prezentacji i sterowania domem: od ogrzewania i rekuperacji po rolety, pomieszczenia i bezpieczeństwo.</p>
+      <p class="showcase-interaction-hint">Wybierz projekt, aby zobaczyć panel.</p>
 
-        <article class="card showcase-card">
-          <div class="showcase-media">
-            <img src="../../assets/examples/heating-status.png" alt="Panel ze statusami i temperaturami instalacji" loading="lazy" width="1920" height="1080" data-lightbox-src="../../assets/examples/heating-status.png" />
+      <div class="projects-catalog">
+        <a class="demo-catalog-card project-tile" href="/pl/projekty/ogrzewanie/" aria-label="Otwórz panel: Sterowanie ogrzewaniem">
+          <div class="demo-catalog-card-copy">
+          <span class="project-tile-label">OGRZEWANIE</span>
+          <h2 class="project-tile-title">Sterowanie ogrzewaniem</h2>
+          <p class="project-tile-desc">Interaktywny panel: bufor ciepła, piec gazowy i grzałka z nadwyżki PV, cztery strefy i wspólne tryby pracy.</p>
           </div>
-          <div class="showcase-copy">
-            <h2>Bufor, proces i zależności źródeł ciepła</h2>
-            <p>Widok pokazuje stan bufora i logikę pracy całego układu grzewczego. Ułatwia ocenę temperatury w górnej i dolnej części bufora, informuje, czy energia jest wykorzystywana na potrzeby centralnego ogrzewania (CO) oraz czy woda ma odpowiednią temperaturę do ciepłej wody użytkowej (CWU).</p>
+        </a>
+        <a class="demo-catalog-card project-tile" href="/pl/projekty/rolety/" aria-label="Otwórz panel: Sterowanie roletami">
+          <div class="demo-catalog-card-copy">
+          <span class="project-tile-label">KOMFORT</span>
+          <h2 class="project-tile-title">Sterowanie roletami</h2>
+          <p class="project-tile-desc">Interaktywny panel: sześć okien i cały dom, sceny dnia, harmonogram oraz dziennik działań.</p>
           </div>
-        </article>
-
-        <article class="card showcase-card">
-          <div class="showcase-media">
-            <img src="../../assets/examples/blinds-control.png" alt="Panel rolet i codziennego sterowania" loading="lazy" width="1920" height="1080" data-lightbox-src="../../assets/examples/blinds-control.png" />
+        </a>
+        <a class="demo-catalog-card project-tile" href="/pl/projekty/rekuperacja/" aria-label="Otwórz panel: Rekuperacja i wentylacja">
+          <div class="demo-catalog-card-copy">
+          <span class="project-tile-label">POWIETRZE I KLIMAT</span>
+          <h2 class="project-tile-title">Rekuperacja i wentylacja</h2>
+          <p class="project-tile-desc">Interaktywny panel: cztery jednostki decentralne, tryby pracy i prędkość wentylacji.</p>
           </div>
-          <div class="showcase-copy">
-            <h2>Rolety, grupy i sceny</h2>
-            <p>Panel pozwala sterować pojedynczymi roletami, grupami rolet oraz scenami domowymi. Ułatwia także zarządzanie całym domem i łączy ręczne sterowanie z automatyką zależną od pory dnia, obecności oraz wybranych zdarzeń w systemie.</p>
+        </a>
+        <a class="demo-catalog-card project-tile" href="/pl/projekty/pomieszczenia/" aria-label="Otwórz panel: Sterowanie pomieszczeniami">
+          <div class="demo-catalog-card-copy">
+          <span class="project-tile-label">POMIESZCZENIA</span>
+          <h2 class="project-tile-title">Sterowanie pomieszczeniami</h2>
+          <p class="project-tile-desc">Interaktywny panel: salon, sypialnia i łazienka, każde z własnym światłem, scenami, roletami, klimatem i radiem, oraz wspólne sceny domowe.</p>
           </div>
-        </article>
-
-        <article class="card showcase-card">
-          <div class="showcase-media">
-            <img src="../../assets/examples/roborock.png" alt="Panel integracji urządzeń i sterowania robotem sprzątającym" loading="lazy" width="1920" height="1080" data-lightbox-src="../../assets/examples/roborock.png" />
+        </a>
+        <a class="demo-catalog-card project-tile" href="/pl/projekty/kamery-alarm/" aria-label="Otwórz panel: Kamery i alarm">
+          <div class="demo-catalog-card-copy">
+          <span class="project-tile-label">BEZPIECZEŃSTWO</span>
+          <h2 class="project-tile-title">Kamery i alarm</h2>
+          <p class="project-tile-desc">Interaktywny panel: podgląd czterech kamer, uzbrajanie stref i całego domu, czujniki, dziennik zdarzeń i symulacja wykrycia intruza.</p>
           </div>
-          <div class="showcase-copy">
-            <h2>Integracje urządzeń</h2>
-            <p>Panel pozwala wygodnie sterować robotem sprzątającym: uruchamiać sprzątanie całego domu albo tylko wybranych stref, wstrzymywać pracę i odsyłać urządzenie do stacji dokującej. Pokazuje też status odkurzacza i pozwala zmieniać moc sprzątania.</p>
-          </div>
-        </article>
-
-        <article class="card showcase-card">
-          <div class="showcase-media">
-            <img src="../../assets/examples/rekuperacja.png" alt="Panel rekuperacji i wentylacji" loading="lazy" width="1920" height="1080" data-lightbox-src="../../assets/examples/rekuperacja.png" />
-          </div>
-          <div class="showcase-copy">
-            <h2>Rekuperacja i wentylacja</h2>
-            <p>Widok umożliwia przełączanie między trybem ręcznym a automatyką czasową lub zależną od warunków w domu. Pozwala sterować prędkością rekuperacji, przewietrzaniem i logiką pracy bez potrzeby wchodzenia w ustawienia systemowe.</p>
-          </div>
-        </article>
-
-        <article class="card showcase-card">
-          <div class="showcase-media">
-            <img src="../../assets/examples/panele.png" alt="Panel oświetlenia i szklanych paneli" loading="lazy" width="1920" height="1080" data-lightbox-src="../../assets/examples/panele.png" />
-          </div>
-          <div class="showcase-copy">
-            <h2>Oświetlenie i panele szklane</h2>
-            <p>Panel odwzorowuje fizyczne szklane włączniki w domu i pokazuje aktualny stan oświetlenia w poszczególnych pomieszczeniach. Ułatwia szybkie sterowanie światłem, porządkuje układ pomieszczeń i daje czytelny podgląd tego, co jest aktualnie włączone.</p>
-          </div>
-        </article>
-
+        </a>
       </div>
 
-      <div class="tech-block">
-        <article class="card showcase-card tech-card">
-          <div class="showcase-media tech-media">
-            <img src="../../assets/examples/studio.jpg" alt="Panel Studio do sterowania multimediami i kinem domowym" loading="lazy" width="1280" height="720" data-lightbox-src="../../assets/examples/studio.jpg" />
-          </div>
-        </article>
-        <div class="card tech-copy tech-copy-panel">
-          <div class="tech-copy-body">
-            <h2 class="section-title section-title-small">Studio i multimedia</h2>
-            <p class="section-subtitle">Panel Studio łączy sterowanie amplitunerem Yamaha, NVIDIA Shield, subwooferami, telewizorem oraz aplikacjami multimedialnymi w jednym miejscu. Wybranie YouTube, Tidal lub Kodi może automatycznie uruchomić potrzebne urządzenia i włączyć subwoofery, bez wykonywania kolejnych czynności ręcznie. Z jednego panelu można sterować również głośnością, roletami i scenami kina domowego, dzięki czemu cały zestaw audio-wideo działa jako jeden spójny system.</p>
-          </div>
+      <section class="demo-contact-card" aria-labelledby="projects-cta-title">
+        <div>
+          <span class="demo-contact-eyebrow">Panel dopasowany do Ciebie</span>
+          <h2 id="projects-cta-title">Chcesz podobny panel w swoim domu?</h2>
+          <p>Projektuję panele Home Assistant dopasowane do Twoich urządzeń, pomieszczeń i sposobu korzystania z systemu.</p>
         </div>
-      </div>
-
-      <div class="tech-block">
-        <div class="card tech-copy tech-copy-panel">
-          <div class="tech-copy-body">
-            <h2 class="section-title section-title-small">Radio internetowe i sterowanie głosowe</h2>
-            <p class="section-subtitle">Panel zapewnia szybki dostęp do ulubionych stacji, ale pozwala również dodać dowolne radio internetowe. Odtwarzanie można uruchomić jednym dotknięciem, automatycznie, na przykład o wybranej porze, albo poleceniem głosowym.</p>
-          </div>
-        </div>
-        <article class="card showcase-card tech-card">
-          <div class="showcase-media tech-media">
-            <img src="../../assets/examples/radio-internetowe.jpg" alt="Panel radia internetowego w Home Assistant" loading="lazy" width="1280" height="720" data-lightbox-src="../../assets/examples/radio-internetowe.jpg" />
-          </div>
-        </article>
-      </div>
-
-      <div class="tech-block">
-        <article class="card showcase-card tech-card">
-          <div class="showcase-media tech-media">
-            <img src="../../assets/examples/monitoring-alarm-prywatnosc.png" alt="Panel monitoringu, alarmu i symulacji obecności" loading="lazy" width="1672" height="941" data-lightbox-src="../../assets/examples/monitoring-alarm-prywatnosc.png" />
-          </div>
-        </article>
-        <div class="card tech-copy tech-copy-panel">
-          <div class="tech-copy-body">
-            <h2 class="section-title section-title-small">Monitoring, alarm i symulacja obecności</h2>
-            <p class="section-subtitle">Jeden panel łączy podgląd kamer, informacje o zdarzeniach oraz uzbrajanie wybranych stref lub całego domu. System może również sterować światłem alarmowym i uruchamiać symulację obecności podczas nieobecności domowników. Obrazy z kamer zostały celowo zamazane ze względu na prywatność.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="tech-block">
-        <div class="card tech-copy tech-copy-panel">
-          <div class="tech-copy-body">
-            <div class="section-label">Stabilność sieci</div>
-            <h2 class="section-title section-title-small">Topologia Zigbee i diagnostyka połączeń</h2>
-            <p class="section-subtitle">Panel pokazuje, jak zbudowana jest sieć Zigbee: które urządzenia łączą się bezpośrednio z koordynatorem, które działają przez routery i jak wygląda jakość połączeń w całej topologii.</p>
-            <ul class="hero-note-list tech-note-list">
-              <li>topologia sieci i ścieżki routingu</li>
-              <li>jakość połączeń i wartości LQI</li>
-              <li>relacje między koordynatorem, routerami i urządzeniami końcowymi</li>
-            </ul>
-          </div>
-        </div>
-        <article class="card showcase-card tech-card">
-          <div class="showcase-media tech-media">
-            <img src="../../assets/examples/zigbee-map.png" alt="Mapa sieci Zigbee2MQTT" loading="lazy" width="1920" height="1080" data-lightbox-src="../../assets/examples/zigbee-map.png" />
-          </div>
-        </article>
-      </div>
+        <a class="demo-contact-button" href="/pl/#kontakt">Zapraszam do kontaktu <span aria-hidden="true">→</span></a>
+      </section>
 
     </section>
-
-    <div class="lightbox" id="lightbox" hidden aria-hidden="true">
-      <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Zamknij podgląd">Zamknij</button>
-      <div class="lightbox-backdrop" id="lightboxBackdrop"></div>
-      <div class="lightbox-dialog" role="dialog" aria-modal="true" aria-label="Podgląd panelu">
-        <img id="lightboxImage" alt="" />
-      </div>
-    </div>
 
   </main>
 
   <footer>
-    <div class="footer-inner">
+    <div class="footer-company"><span>HA Expert · CVR 46751205</span><span>Mosevej 2, 8620 Kjellerup</span><a href="mailto:kontakt@ha-expert.com">kontakt@ha-expert.com</a><span class="footer-company__desc">Zdalna konfiguracja, integracje i wsparcie Home Assistant.</span></div><div class="footer-inner">
       <span>© <span id="year"></span> Tomasz Furdal – Home Assistant &amp; Integrations</span>
-      <span>Płatności: przelew bankowy, Revolut, PayPal, MobilePay</span><a class="footer-privacy-link" href="/pl/polityka-prywatnosci/">Polityka prywatności</a>
+      <span>Płatności: przelew bankowy · BLIK · MobilePay · Revolut · PayPal</span><a class="footer-privacy-link" href="/pl/polityka-prywatnosci/">Polityka prywatności</a>
     </div>
   </footer>
 
@@ -284,45 +201,6 @@
     syncPlHeaderState();
     window.addEventListener("scroll", syncPlHeaderState, { passive: true });
 
-    const lightbox = document.getElementById("lightbox");
-    const lightboxImage = document.getElementById("lightboxImage");
-    const lightboxClose = document.getElementById("lightboxClose");
-    const lightboxBackdrop = document.getElementById("lightboxBackdrop");
-
-    function openLightbox(src, alt) {
-      lightboxImage.src = src;
-      lightboxImage.alt = alt || "";
-      lightbox.hidden = false;
-      lightbox.setAttribute("aria-hidden", "false");
-      document.body.classList.add("lightbox-open");
-    }
-
-    function closeLightbox() {
-      lightbox.hidden = true;
-      lightbox.setAttribute("aria-hidden", "true");
-      lightboxImage.src = "";
-      lightboxImage.alt = "";
-      document.body.classList.remove("lightbox-open");
-    }
-
-    const canOpenLightbox = () => true;
-
-    document.querySelectorAll("[data-lightbox-src]").forEach((img) => {
-      img.addEventListener("click", () => {
-        if (!canOpenLightbox()) {
-          return;
-        }
-        openLightbox(img.getAttribute("data-lightbox-src"), img.getAttribute("alt"));
-      });
-    });
-
-    lightboxClose.addEventListener("click", closeLightbox);
-    lightboxBackdrop.addEventListener("click", closeLightbox);
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape" && !lightbox.hidden) {
-        closeLightbox();
-      }
-    });
   </script>
 </body>
 </html>

@@ -1909,6 +1909,37 @@ footer{
   text-decoration-color:currentColor;
 }
 
+.footer-company{
+  max-width:var(--max);
+  margin:0 auto 14px;
+  display:flex;
+  flex-direction:column;
+  gap:3px;
+  line-height:1.55;
+  color:var(--muted);
+}
+
+.footer-company a{
+  width:fit-content;
+  color:var(--muted-strong);
+  text-decoration:none;
+}
+
+.footer-company a:hover,
+.footer-company a:focus-visible{
+  color:var(--accent-2);
+  text-decoration:underline;
+}
+
+.footer-company__desc{
+  margin-top:6px;
+}
+
+.footer-company + .footer-inner{
+  border-top:1px solid rgba(132,156,187,.12);
+  padding-top:16px;
+}
+
 .policy-page .policy-card p + p,
 .policy-page .policy-card ul + p,
 .policy-page .policy-card ol + p{

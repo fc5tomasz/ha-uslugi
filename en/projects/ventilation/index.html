@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="robots" content="noindex,nofollow" />
+  <meta name="author" content="Tomasz Furdal" />
+  <meta name="theme-color" content="#07111f" />
+  <link rel="icon" type="image/png" href="../../../assets/brand/ha-expert-logo-transparent.png" />
+  <link rel="canonical" href="https://ha-expert.com/en/projects/ventilation/" />
+  <link rel="alternate" hreflang="pl" href="https://ha-expert.com/pl/projekty/rekuperacja/" />
+  <link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/projekter/ventilation/" />
+  <link rel="alternate" hreflang="en" href="https://ha-expert.com/en/projects/ventilation/" />
+  <link rel="alternate" hreflang="x-default" href="https://ha-expert.com/en/projects/ventilation/" />
+  <title>Heat recovery and ventilation – premium Home Assistant panel | HA Expert</title>
+  <meta name="description" content="Interactive ventilation panel: four independent decentralised units, operating modes, fan speed and a room overview. A demonstration with no connection to HA." />
+  <link rel="stylesheet" href="../../../styles.css?v=20260906-footer-company-1" />
+  <link rel="stylesheet" href="/demo/demo.css?v=20260831-demo-mobile-bg-1" />
+  <link rel="stylesheet" href="/demo/demo-catalog.css?v=20260901-demo-catalog-i18n-1" />
+  <link rel="stylesheet" href="/demo/rekuperacja-panel.css?v=20260906-rekuperacja-7" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18087588380"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{'ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','analytics_storage':'denied'});</script>
+  <script src="../../../consent.js?v=20260829-consent-stats-local-1"></script>
+  <script>gtag('js',new Date());gtag('config','AW-18087588380');</script>
+</head>
+<body class="demo-page demo-detail-page pl-home-bg-test rk-page" data-demo-lang="en">
+  <header class="demo-mobile-header">
+    <div class="nav">
+      <a class="logo" href="/en/" aria-label="Tomasz Furdal - Home Assistant Expert">
+        <img class="logo-image" src="/assets/brand/logo-wyciete.png" alt="Tomasz Furdal - Home Assistant Expert" width="871" height="334" />
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Open menu"><span aria-hidden="true">☰</span></button>
+      <nav id="primary-nav" aria-label="Primary navigation">
+        <ul>
+          <li><a href="/en/#services">Services</a></li>
+          <li><a href="/en/#about-me">About me</a></li>
+          <li><a href="/en/#who-its-for">Who it’s for</a></li>
+          <li><a href="/en/#how-i-work">How I work</a></li>
+          <li><a href="/en/#pricing">Pricing</a></li>
+          <li><a href="/en/#contact">Contact</a></li>
+          <li class="nav-secondary-start"><a href="/en/projects/" aria-current="page">Projects</a></li>
+          <li><a href="/en/guides/">Guides</a></li>
+          <li><a href="/en/demo/">HA demo</a></li>
+        </ul>
+      </nav>
+      <div class="lang-switch" aria-label="Language switch">
+        <a class="lang-btn" href="/pl/projekty/rekuperacja/" aria-label="Polski"><img class="lang-flag" src="/assets/flags/pl.svg" alt="Polski" /></a>
+        <a class="lang-btn" href="/dk/projekter/ventilation/" aria-label="Dansk"><img class="lang-flag" src="/assets/flags/dk.svg" alt="Dansk" /></a>
+        <a class="lang-btn active" href="/en/projects/ventilation/" aria-label="English" aria-current="page"><img class="lang-flag" src="/assets/flags/gb.svg" alt="English" /></a>
+      </div>
+      <a class="nav-cta" href="/en/#contact">Free assessment</a>
+    </div>
+  </header>
+
+  <main class="demo-shell rk-shell">
+    <a class="demo-back-link" href="/en/projects/"><span aria-hidden="true">←</span> Projects</a>
+
+    <section class="demo-head rk-head">
+      <div>
+        <span class="demo-kicker">Project · Air &amp; climate</span>
+        <h1 class="demo-title demo-title-mobile-match">Heat recovery and ventilation</h1>
+        <p class="demo-detail-intro rk-intro">Four independent decentralised units, one per room. Change the whole-home operating mode, adjust the speed and see how each room responds. This is a demonstration: the buttons work, but the panel is not connected to Home Assistant.</p>
+      </div>
+    </section>
+
+    <div class="rk-stage" id="rkStage">
+      <div class="rk-panel" id="rkPanel">
+        <div class="rk-top">
+          <div class="rk-brandline">
+            <span class="rk-eyebrow">Air quality control</span>
+            <div class="rk-title-row">
+              <span class="rk-title-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M3 8h10a3 3 0 1 0-3-3"/><path d="M3 12h15a3 3 0 1 1-3 3"/><path d="M3 16h9a2.5 2.5 0 1 1-2.5 2.5"/></svg>
+              </span>
+              <span class="rk-panel-title">Ventilation</span>
+            </div>
+            <p class="rk-tagline">Fresh air. A healthier home. Full control.</p>
+          </div>
+
+          <div class="rk-weather" role="group" aria-label="Air conditions">
+            <div class="rk-weather-item">
+              <span class="rk-weather-ic" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M7 17a4.5 4.5 0 0 1-.5-9 6 6 0 0 1 11.5 1.5A3.75 3.75 0 0 1 17.5 17z"/><path d="M8 20l-1 2M12 20l-1 2M16 20l-1 2"/></svg>
+              </span>
+              <span class="rk-weather-body"><span class="rk-weather-label">Outside</span><span class="rk-weather-val" data-rk="outTemp">13.0°C</span></span>
+            </div>
+            <span class="rk-weather-sep" aria-hidden="true"></span>
+            <div class="rk-weather-item">
+              <span class="rk-weather-ic" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11.5 12 5l8 6.5"/><path d="M6 10.5V19h12v-8.5"/></svg>
+              </span>
+              <span class="rk-weather-body"><span class="rk-weather-label">Indoors</span><span class="rk-weather-val" data-rk="inTemp">23.5°C</span></span>
+            </div>
+          </div>
+
+          <div class="rk-brand">
+            <div class="rk-brand-row">
+              <span class="rk-demo-badge">Demonstration mode</span>
+              <img class="rk-logo" src="/assets/brand/logo-wyciete.png" alt="HA Expert Tomasz Furdal" width="871" height="334" />
+            </div>
+            <button class="rk-fs-btn" type="button" data-rk-fs aria-pressed="false">
+              <span class="rk-fs-ic" aria-hidden="true"></span>
+              <span class="rk-fs-label">Fullscreen</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="rk-rooms" id="rkRooms"></div>
+
+        <section class="rk-common" aria-labelledby="rkCommonTitle">
+          <div class="rk-common-head">
+            <span class="rk-common-eyebrow">Shared control</span>
+            <h2 id="rkCommonTitle">Whole-home operating mode</h2>
+            <span class="rk-common-note" data-rk="commonNote">Demonstration mode, no connection to HA</span>
+          </div>
+
+          <div class="rk-modes" role="group" aria-label="Whole-home operating mode">
+            <button class="rk-mode is-active" type="button" data-rk-mode="manual" aria-pressed="true">
+              <span class="rk-mode-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 8 6.5C10 5 12 5 12 3c3 2 7 5 7 10a7 7 0 0 1-8 7Z"/></svg></span>
+              <span class="rk-mode-body"><b>Manual</b><small>Constant operation</small></span>
+            </button>
+            <button class="rk-mode" type="button" data-rk-mode="humidity" aria-pressed="false">
+              <span class="rk-mode-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s6 7 6 11a6 6 0 0 1-12 0c0-4 6-11 6-11Z"/></svg></span>
+              <span class="rk-mode-body"><b>AUTO humidity</b><small>Based on readings</small></span>
+            </button>
+            <button class="rk-mode" type="button" data-rk-mode="timed" aria-pressed="false">
+              <span class="rk-mode-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="16" rx="2"/><path d="M3.5 9.5h17M8 3v4M16 3v4M12 12.5V16l2.2 1.4"/></svg></span>
+              <span class="rk-mode-body"><b>AUTO schedule</b><small>Timetable</small></span>
+            </button>
+            <button class="rk-mode" type="button" data-rk-mode="summer" aria-pressed="false">
+              <span class="rk-mode-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9 17 7M7 17l-2.1 2.1"/></svg></span>
+              <span class="rk-mode-body"><b>Summer</b><small>Seasonal profile</small></span>
+            </button>
+            <button class="rk-mode rk-mode--airing" type="button" data-rk-mode="airing" aria-pressed="false">
+              <span class="rk-mode-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h9a2.5 2.5 0 1 0-2.5-2.5"/><path d="M3 12h13a3 3 0 1 1-3 3"/><path d="M3 16h7a2 2 0 1 1-2 2"/></svg></span>
+              <span class="rk-mode-body"><b>Airing 15 min</b><small data-rk="airingSub">Maximum exchange</small></span>
+            </button>
+          </div>
+
+          <div class="rk-schedule" data-rk-schedule hidden>
+            <span class="rk-schedule-title">Daily schedule</span>
+            <div class="rk-schedule-rows" role="group" aria-label="Schedule, pick a time of day">
+              <button class="rk-schedule-row" type="button" data-rk-slot="0"><span class="rk-slot-time">06:00–16:00</span><span class="rk-slot-name">Day</span><span class="rk-slot-pct">45%</span></button>
+              <button class="rk-schedule-row" type="button" data-rk-slot="1"><span class="rk-slot-time">16:00–22:00</span><span class="rk-slot-name">Evening</span><span class="rk-slot-pct">60%</span></button>
+              <button class="rk-schedule-row" type="button" data-rk-slot="2"><span class="rk-slot-time">22:00–06:00</span><span class="rk-slot-name">Night</span><span class="rk-slot-pct">30%</span></button>
+            </div>
+            <span class="rk-schedule-hint">Tap a time of day to see how the units respond.</span>
+          </div>
+
+          <div class="rk-common-lower">
+          <div class="rk-speed">
+            <div class="rk-speed-head">
+              <label for="rkCommonSpeed">Shared speed</label>
+              <b data-rk="commonSpeedVal">50%</b>
+            </div>
+            <input type="range" id="rkCommonSpeed" class="rk-range" min="0" max="100" step="5" value="50" />
+            <div class="rk-speed-scale" aria-hidden="true"><span>Quiet</span><span>Balanced</span><span>High</span></div>
+          </div>
+
+          <div class="rk-common-actions">
+            <button class="rk-action" type="button" data-rk-action="settings">
+              <span class="rk-action-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2.4"/><circle cx="8" cy="17" r="2.4"/></svg></span>
+              <span class="rk-action-body"><b>Settings</b><small>System details</small></span>
+            </button>
+            <button class="rk-action rk-action--power" type="button" data-rk-action="off" aria-pressed="false">
+              <span class="rk-action-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 3v9"/><path d="M6.5 7a8 8 0 1 0 11 0"/></svg></span>
+              <span class="rk-action-body"><b data-rk="offLabel">Turn everything off</b><small data-rk="offSub">4 units running</small></span>
+            </button>
+          </div>
+          </div>
+        </section>
+
+        <div class="rk-foot">
+          <span class="rk-foot-note">A healthy home starts with fresh air.</span>
+          <span class="rk-foot-season" data-rk="season">Seasonal profile: Autumn</span>
+        </div>
+      </div>
+
+      <div class="rk-toast" data-rk-toast role="status" aria-live="polite" hidden></div>
+    </div>
+
+    <section class="demo-contact-card demo-contact-card--detail" aria-labelledby="rk-contact-title">
+      <div>
+        <span class="demo-contact-eyebrow">Your own panel</span>
+        <h2 id="rk-contact-title">Would you like a ventilation panel like this in your home?</h2>
+        <p>I design Home Assistant panels for central and decentralised ventilation, with operating modes, schedules and automation based on humidity, CO₂ and presence.</p>
+      </div>
+      <a class="demo-contact-button" href="/en/#contact">Get in touch <span aria-hidden="true">→</span></a>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-company"><span>HA Expert · CVR 46751205</span><span>Mosevej 2, 8620 Kjellerup</span><a href="mailto:kontakt@ha-expert.com">kontakt@ha-expert.com</a><span class="footer-company__desc">Remote configuration, integrations and support for Home Assistant.</span></div><div class="footer-inner">
+      <span>© <span id="year"></span> Tomasz Furdal – Home Assistant &amp; Integrations</span>
+      <span>Payments: bank transfer · PayPal · Revolut · MobilePay · BLIK</span><a class="footer-privacy-link" href="/en/privacy-policy/">Privacy Policy</a>
+    </div>
+  </footer>
+
+  <script src="/nav.js?v=20260826-consent-v2-local-1"></script>
+  <script src="/demo/rekuperacja-panel.js?v=20260906-rekuperacja-7"></script>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>

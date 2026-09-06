@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="robots" content="noindex,nofollow" />
+  <meta name="author" content="Tomasz Furdal" />
+  <meta name="theme-color" content="#0c0b09" />
+  <link rel="icon" type="image/png" href="../../../assets/brand/ha-expert-logo-transparent.png" />
+  <link rel="canonical" href="https://ha-expert.com/dk/projekter/kameraer-alarm/" />
+  <link rel="alternate" hreflang="pl" href="https://ha-expert.com/pl/projekty/kamery-alarm/" />
+  <link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/projekter/kameraer-alarm/" />
+  <link rel="alternate" hreflang="en" href="https://ha-expert.com/en/projects/cameras-alarm/" />
+  <link rel="alternate" hreflang="x-default" href="https://ha-expert.com/en/projects/cameras-alarm/" />
+  <title>Kameraer og alarm | Premium Home Assistant panel | HA Expert</title>
+  <meta name="description" content="Interaktivt sikkerhedspanel med fire kameravisninger, alarmtilstande, sensorer, hændelseslog og simulering af et indbrud. En demonstration uden forbindelse til Home Assistant." />
+  <link rel="stylesheet" href="../../../styles.css?v=20260906-footer-company-1" />
+  <link rel="stylesheet" href="/demo/demo.css?v=20260831-demo-mobile-bg-1" />
+  <link rel="stylesheet" href="/demo/demo-catalog.css?v=20260901-demo-catalog-i18n-1" />
+  <link rel="stylesheet" href="/demo/kamery-alarm-panel.css?v=20260906-kamery-alarm-9" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18087588380"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{'ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','analytics_storage':'denied'});</script>
+  <script src="../../../consent.js?v=20260829-consent-stats-local-1"></script>
+  <script>gtag('js',new Date());gtag('config','AW-18087588380');</script>
+</head>
+<body class="demo-page demo-detail-page pl-home-bg-test ka-page" data-demo-lang="dk">
+  <header class="demo-mobile-header">
+    <div class="nav">
+      <a class="logo" href="/dk/" aria-label="Tomasz Furdal - Home Assistant Expert">
+        <img class="logo-image" src="/assets/brand/logo-wyciete.png" alt="Tomasz Furdal - Home Assistant Expert" width="871" height="334" />
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Åbn menu"><span aria-hidden="true">☰</span></button>
+      <nav id="primary-nav" aria-label="Primær navigation">
+        <ul>
+          <li><a href="/dk/#ydelser">Ydelser</a></li>
+          <li><a href="/dk/#om-mig">Om mig</a></li>
+          <li><a href="/dk/#for-hvem">For hvem</a></li>
+          <li><a href="/dk/#saadan-arbejder-jeg">Sådan arbejder jeg</a></li>
+          <li><a href="/dk/#priser">Priser</a></li>
+          <li><a href="/dk/#kontakt">Kontakt</a></li>
+          <li class="nav-secondary-start"><a href="/dk/projekter/" aria-current="page">Projekter</a></li>
+          <li><a href="/dk/vejledninger/">Vejledninger</a></li>
+          <li><a href="/dk/demo/">HA-demo</a></li>
+        </ul>
+      </nav>
+      <div class="lang-switch" aria-label="Sprogvalg">
+        <a class="lang-btn" href="/pl/projekty/kamery-alarm/" aria-label="Polski"><img class="lang-flag" src="/assets/flags/pl.svg" alt="Polski" /></a>
+        <a class="lang-btn active" href="/dk/projekter/kameraer-alarm/" aria-label="Dansk" aria-current="page"><img class="lang-flag" src="/assets/flags/dk.svg" alt="Dansk" /></a>
+        <a class="lang-btn" href="/en/projects/cameras-alarm/" aria-label="English"><img class="lang-flag" src="/assets/flags/gb.svg" alt="English" /></a>
+      </div>
+      <a class="nav-cta" href="/dk/#kontakt">Gratis vurdering</a>
+    </div>
+  </header>
+
+  <main class="demo-shell ka-shell">
+    <a class="demo-back-link" href="/dk/projekter/"><span aria-hidden="true">←</span> Projekter</a>
+
+    <section class="demo-head ka-head">
+      <div>
+        <span class="demo-kicker">Projekt · Kameraer og alarm</span>
+        <h1 class="demo-title demo-title-mobile-match">Kameraer og alarm</h1>
+        <p class="demo-detail-intro ka-intro">Et panel samler visningen fra fire kameraer, alarmtilstande for udvalgte områder eller hele boligen, sensorstatus og hændelseslog. Hver tilstand ændrer, hvilke områder der er beskyttet. Bevægelse i et beskyttet område starter nedtællingen til frakobling og udløser derefter alarmen. Vælg “Simuler indbrud” for at se systemets reaktion på en ubuden gæst. Det er en demonstration: knapperne virker, men panelet er ikke forbundet til Home Assistant.</p>
+      </div>
+    </section>
+
+    <div class="ka-stage" id="kaStage">
+      <div class="ka-panel" id="kaPanel">
+        <div class="ka-bg" data-ka="heroBg" aria-hidden="true"></div>
+
+        <div class="ka-hero">
+          <div class="ka-hero-left">
+            <span class="ka-mark" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 5 6v6c0 4.5 3 8 7 9 4-1 7-4.5 7-9V6Z"/><path d="m9 12 2 2 4-4"/></svg>
+            </span>
+            <div class="ka-hero-copy">
+              <span class="ka-eyebrow">Projekt · Sikkerhed i hjemmet</span>
+              <h2 class="ka-panel-title">Kameraer og alarm</h2>
+              <p class="ka-panel-tag">Sikkerhed, kontrol og tryghed samlet et sted.</p>
+            </div>
+          </div>
+
+          <div class="ka-hero-right">
+            <div class="ka-context" role="group" aria-label="Vejret udenfor samt dato og klokkeslæt">
+              <div class="ka-context-item">
+                <span class="ka-context-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18a4 4 0 0 1-.5-8 6 6 0 0 1 11.5 1.5A3.5 3.5 0 0 1 17.5 18Z"/></svg></span>
+                <span class="ka-context-body"><i>Udendørs</i><b data-ka="weatherOut">16°C</b></span>
+              </div>
+              <span class="ka-context-sep" aria-hidden="true"></span>
+              <div class="ka-context-item ka-context-time">
+                <span class="ka-context-body"><i data-ka="date">tor. 4. sep.</i><b data-ka="clock">20:24</b></span>
+              </div>
+            </div>
+
+            <div class="ka-brand">
+              <div class="ka-brand-row">
+                <span class="ka-demo-badge">Demonstration</span>
+                <img class="ka-logo" src="/assets/brand/logo-wyciete.png" alt="HA Expert Tomasz Furdal" width="871" height="334" />
+              </div>
+              <button class="ka-fs-btn" type="button" data-ka-fs aria-pressed="false">
+                <span class="ka-fs-ic" aria-hidden="true"></span>
+                <span class="ka-fs-label">Fuld skærm</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="ka-body">
+          <section class="ka-cams" aria-labelledby="kaCamsTitle">
+            <div class="ka-cams-head">
+              <span class="ka-cams-title">
+                <span class="ka-cams-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5 15 6v11L3 14.5Z"/><path d="M15 10.5 21 8v8l-6-2.5Z"/></svg></span>
+                <span><b id="kaCamsTitle">Kameraovervågning</b><small>Fire områder omkring boligen med livebillede.</small></span>
+              </span>
+              <button class="ka-sim-btn" type="button" data-ka="simBtn">
+                <span aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="13" cy="4.5" r="1.8"/><path d="M10 9.5 7 8 4 11M10 9.5l4 1 1.5 4M14 10.5 12 21M14 10.5l4.5 2.5M9.5 14 6.5 21"/></svg></span>
+                Simuler indbrud
+              </button>
+            </div>
+            <div class="ka-cams-grid" data-ka="camsGrid"></div>
+          </section>
+
+          <section class="ka-side" aria-label="Alarmstyring">
+            <div class="ka-overall" data-ka="overall" data-tone="ok" role="status" aria-live="polite">
+              <span class="ka-overall-ic" data-ka="overallIc" aria-hidden="true"></span>
+              <span class="ka-overall-body">
+                <b data-ka="overallTitle">Alt er i orden</b>
+                <small data-ka="overallNote">Systemet fungerer korrekt.</small>
+              </span>
+            </div>
+
+            <div class="ka-alarm is-disarmed" data-ka="alarmCard">
+              <span class="ka-alarm-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 5 6v6c0 4.5 3 8 7 9 4-1 7-4.5 7-9V6Z"/><path d="m9 12 2 2 4-4"/></svg></span>
+              <span class="ka-alarm-body">
+                <b data-ka="alarmState">Alarmen er frakoblet</b>
+                <small data-ka="alarmSub">Boligen er sikker.</small>
+              </span>
+              <button class="ka-lock" type="button" data-ka="lock" aria-pressed="false" aria-label="Tilkobl alarmen i hele boligen">
+                <span class="ka-lock-ring" aria-hidden="true"></span>
+                <span class="ka-lock-ic" data-ka="lockIc" aria-hidden="true"></span>
+              </button>
+            </div>
+
+            <div class="ka-quick" data-ka="quickRow" role="group" aria-label="Hurtig tilkobling"></div>
+
+            <div class="ka-block ka-sensors-block">
+              <div class="ka-block-head">
+                <b>Sensorer og områder</b>
+                <button class="ka-link-btn" type="button" data-ka="sensorsToggle" aria-expanded="false">Alle områder</button>
+              </div>
+              <div class="ka-sensors-grid" data-ka="sensorsGrid"></div>
+              <ul class="ka-zones-detail" data-ka="zonesDetail" hidden></ul>
+            </div>
+
+            <div class="ka-block ka-events-block">
+              <div class="ka-block-head">
+                <b>Seneste hændelser</b>
+                <button class="ka-link-btn" type="button" data-ka="eventsToggle" aria-expanded="false">Vis hele historikken</button>
+              </div>
+              <ul class="ka-events" data-ka="eventsList"></ul>
+            </div>
+          </section>
+        </div>
+
+        <div class="ka-infobar" data-ka="infoBar" data-tone="ok" role="status" aria-live="polite"></div>
+
+        <div class="ka-foot">
+          <span class="ka-foot-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 5 6v6c0 4.5 3 8 7 9 4-1 7-4.5 7-9V6Z"/><path d="m9 12 2 2 4-4"/></svg>
+            Panelet er en demonstration. Knapperne fungerer, men styrer ikke en virkelig bolig.
+          </span>
+          <span class="ka-foot-tags">Dit hjem · Altid under kontrol</span>
+        </div>
+
+        <div class="ka-settings" data-ka="settings" role="dialog" aria-modal="false" aria-label="Systemindstillinger" hidden>
+          <div class="ka-settings-head">
+            <b>Systemindstillinger</b>
+            <button class="ka-settings-close" type="button" data-ka="settingsClose" aria-label="Luk indstillingerne">✕</button>
+          </div>
+          <div class="ka-settings-body" data-ka="settingsBody"></div>
+        </div>
+      </div>
+
+      <div class="ka-lightbox" data-ka="lightbox" hidden>
+        <div class="ka-lightbox-backdrop" aria-hidden="true"></div>
+        <div class="ka-lightbox-dialog" role="dialog" aria-modal="true" aria-label="Forstørret kameravisning">
+          <div class="ka-lightbox-img" data-ka="lightboxImg" aria-hidden="true"></div>
+          <div class="ka-lightbox-bar">
+            <span class="ka-lightbox-meta">
+              <b data-ka="lightboxName">Kamera</b>
+              <span class="ka-lightbox-state" data-ka="lightboxState">Ingen bevægelse</span>
+            </span>
+            <button class="ka-lightbox-close" type="button" data-ka="lightboxClose" aria-label="Luk den forstørrede kameravisning">✕</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <section class="demo-contact-card demo-contact-card--detail" aria-labelledby="ka-contact-title">
+      <div>
+        <span class="demo-contact-eyebrow">Dit eget panel</span>
+        <h2 id="ka-contact-title">Vil du have et sikkerhedspanel som dette i dit hjem?</h2>
+        <p>Jeg designer Home Assistant paneler, som samler kameravisning, alarmtilstande og reaktioner på hændelser et sted. Alarmlogik, tider til indgang og udgang samt beskyttelsestilstande tilpasses dit hjem og den måde, du bruger systemet på.</p>
+      </div>
+      <a class="demo-contact-button" href="/dk/#kontakt">Kontakt mig <span aria-hidden="true">→</span></a>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-company"><span>HA Expert · CVR 46751205</span><span>Mosevej 2, 8620 Kjellerup</span><a href="mailto:kontakt@ha-expert.com">kontakt@ha-expert.com</a><span class="footer-company__desc">Fjernkonfiguration, integrationer og support til Home Assistant.</span></div><div class="footer-inner">
+      <span>© <span id="year"></span> Tomasz Furdal – Home Assistant &amp; Integrations</span>
+      <span>Betaling: bankoverførsel · MobilePay · BLIK · Revolut · PayPal</span><a class="footer-privacy-link" href="/dk/privatlivspolitik/">Privatlivspolitik</a>
+    </div>
+  </footer>
+
+  <script src="/nav.js?v=20260826-consent-v2-local-1"></script>
+  <script src="/demo/kamery-alarm-panel.js?v=20260906-kamery-alarm-9"></script>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>

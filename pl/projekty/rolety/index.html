@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="robots" content="noindex,nofollow" />
+  <meta name="author" content="Tomasz Furdal" />
+  <meta name="theme-color" content="#0b1420" />
+  <link rel="icon" type="image/png" href="../../../assets/brand/ha-expert-logo-transparent.png" />
+  <link rel="canonical" href="https://ha-expert.com/pl/projekty/rolety/" />
+  <link rel="alternate" hreflang="pl" href="https://ha-expert.com/pl/projekty/rolety/" />
+  <link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/projekter/rullegardiner/" />
+  <link rel="alternate" hreflang="en" href="https://ha-expert.com/en/projects/blinds/" />
+  <link rel="alternate" hreflang="x-default" href="https://ha-expert.com/en/projects/blinds/" />
+  <title>Sterowanie roletami – panel premium Home Assistant | HA Expert</title>
+  <meta name="description" content="Interaktywny panel sterowania roletami: sześć okien, sterowanie całym domem, sceny dnia i harmonogram. Demonstracja bez połączenia z Home Assistant." />
+  <link rel="stylesheet" href="../../../styles.css?v=20260906-footer-company-1" />
+  <link rel="stylesheet" href="/demo/demo.css?v=20260831-demo-mobile-bg-1" />
+  <link rel="stylesheet" href="/demo/demo-catalog.css?v=20260901-demo-catalog-i18n-1" />
+  <link rel="stylesheet" href="/demo/rolety-panel.css?v=20260906-rolety-4" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18087588380"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{'ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','analytics_storage':'denied'});</script>
+  <script src="../../../consent.js?v=20260829-consent-stats-local-1"></script>
+  <script>gtag('js',new Date());gtag('config','AW-18087588380');</script>
+</head>
+<body class="demo-page demo-detail-page pl-home-bg-test rolety-page" data-demo-lang="pl">
+  <header class="demo-mobile-header">
+    <div class="nav">
+      <a class="logo" href="/pl/" aria-label="Tomasz Furdal - Home Assistant Expert">
+        <img class="logo-image" src="/assets/brand/logo-wyciete.png" alt="Tomasz Furdal - Home Assistant Expert" width="871" height="334" />
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Otwórz menu"><span aria-hidden="true">☰</span></button>
+      <nav id="primary-nav" aria-label="Główna nawigacja">
+        <ul>
+          <li><a href="/pl/#uslugi">Usługi</a></li>
+          <li><a href="/pl/#o-mnie">O mnie</a></li>
+          <li><a href="/pl/#dla-kogo">Dla kogo</a></li>
+          <li><a href="/pl/#jak-pracuje">Jak pracuję</a></li>
+          <li><a href="/pl/#cennik">Cennik</a></li>
+          <li><a href="/pl/#kontakt">Kontakt</a></li>
+          <li class="nav-secondary-start"><a href="/pl/projekty/" aria-current="page">Projekty</a></li>
+          <li><a href="/pl/poradniki/">Poradniki</a></li>
+          <li><a href="/pl/demo/">Demo HA</a></li>
+        </ul>
+      </nav>
+      <div class="lang-switch" aria-label="Wybór języka">
+        <a class="lang-btn active" href="/pl/projekty/rolety/" aria-label="Polski" aria-current="page"><img class="lang-flag" src="/assets/flags/pl.svg" alt="Polski" /></a>
+        <a class="lang-btn" href="/dk/projekter/rullegardiner/" aria-label="Dansk"><img class="lang-flag" src="/assets/flags/dk.svg" alt="Dansk" /></a>
+        <a class="lang-btn" href="/en/projects/blinds/" aria-label="English"><img class="lang-flag" src="/assets/flags/gb.svg" alt="English" /></a>
+      </div>
+      <a class="nav-cta" href="/pl/#kontakt">Bezpłatna ocena</a>
+    </div>
+  </header>
+
+  <main class="demo-shell rl-shell">
+    <a class="demo-back-link" href="/pl/projekty/"><span aria-hidden="true">←</span> Projekty</a>
+
+    <section class="demo-head rl-head">
+      <div>
+        <span class="demo-kicker">Projekt · Sterowanie roletami</span>
+        <h1 class="demo-title demo-title-mobile-match">Inteligentne sterowanie roletami</h1>
+        <p class="demo-detail-intro rl-intro">Przeciągnij roletę w oknie, wybierz scenę dnia albo ustaw harmonogram. Panel pokazuje, jak może wyglądać i działać sterowanie roletami w Home Assistant. To demonstracja: wszystkie przyciski działają, ale panel nie jest połączony z żadnym domem.</p>
+      </div>
+    </section>
+
+    <div class="rl-stage" id="rlStage">
+      <div class="rl-panel" id="rlPanel">
+
+        <div class="rl-hero">
+          <div class="rl-hero-left">
+            <span class="rl-mark" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="1.5"/><path d="M4 7h16M4 10h16M4 13h16M4 16h16"/><path d="M9 21v-2h6v2"/></svg>
+            </span>
+            <div class="rl-hero-copy">
+              <span class="rl-eyebrow">Projekt · Sterowanie roletami</span>
+              <h2 class="rl-panel-title">Inteligentne sterowanie roletami</h2>
+              <p class="rl-tagline">Komfort, prywatność i światło pod kontrolą, automatycznie albo jednym ruchem.</p>
+            </div>
+          </div>
+          <div class="rl-hero-right">
+            <div class="rl-hero-brand-row">
+              <span class="rl-demo-badge">Tryb demonstracyjny</span>
+              <img class="rl-logo" src="/assets/brand/logo-wyciete.png" alt="HA Expert Tomasz Furdal" width="871" height="334" />
+            </div>
+            <button class="rl-fs-btn" type="button" data-rl-fs aria-pressed="false">
+              <span class="rl-fs-ic" aria-hidden="true"></span>
+              <span class="rl-fs-label">Pełny ekran</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="rl-status" data-rl="status" role="status" aria-live="polite">
+          <span class="rl-status-ic" data-rl="statusIc" aria-hidden="true"></span>
+          <div class="rl-status-main">
+            <span class="rl-status-kicker" data-rl="statusKicker">Aktywna scena</span>
+            <b class="rl-status-title" data-rl="statusTitle">Dzień</b>
+            <span class="rl-status-desc" data-rl="statusDesc">Rolety w całym domu odsłonięte, żeby wpuścić światło.</span>
+            <span class="rl-status-sys" data-rl="statusSys"><b>System:</b> panel gotowy do sterowania.</span>
+          </div>
+          <div class="rl-status-clock">
+            <b data-rl="condClock">19:44</b>
+            <i data-rl="condDate">niedziela, 6 września</i>
+          </div>
+        </div>
+
+        <div class="rl-master">
+          <div class="rl-master-copy">
+            <span class="rl-master-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11 12 4l8 7"/><path d="M6 10v9h12v-9"/></svg></span>
+            <span class="rl-master-body">
+              <b>Wszystkie rolety</b>
+              <i><span data-rl="masterOpen">6</span> z 6 odsłoniętych, średnio <span data-rl="masterAvg">4%</span></i>
+            </span>
+          </div>
+          <div class="rl-master-ctrl">
+            <input type="range" class="rl-range rl-range--lg" data-rl-master min="0" max="100" step="1" value="0" aria-label="Pozycja wszystkich rolet" />
+            <div class="rl-presets">
+              <button class="rl-preset" type="button" data-rl-master-preset="0">Odsłoń wszystkie</button>
+              <button class="rl-preset" type="button" data-rl-master-preset="50">Połowa</button>
+              <button class="rl-preset" type="button" data-rl-master-preset="100">Zasłoń wszystkie</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="rl-zones" id="rlZones"></div>
+
+        <div class="rl-bottom">
+        <section class="rl-scenes" aria-labelledby="rlScenesTitle">
+          <div class="rl-scenes-head">
+            <span class="rl-eyebrow" id="rlScenesTitle">Sceny dnia</span>
+            <span class="rl-scenes-note">Jedno kliknięcie ustawia rolety we wszystkich oknach.</span>
+          </div>
+          <div class="rl-scene-grid" role="group" aria-label="Sceny">
+            <button class="rl-scene is-active" type="button" data-rl-mode="dzien" aria-pressed="true">
+              <span class="rl-scene-prev" data-lvl="6" aria-hidden="true"></span>
+              <span class="rl-scene-body"><b>Dzień</b><small>Otwórz i wpuść światło</small></span>
+            </button>
+            <button class="rl-scene" type="button" data-rl-mode="wieczor" aria-pressed="false">
+              <span class="rl-scene-prev" data-lvl="60" aria-hidden="true"></span>
+              <span class="rl-scene-body"><b>Wieczór</b><small>Przyćmij do wieczora</small></span>
+            </button>
+            <button class="rl-scene" type="button" data-rl-mode="prywatnosc" aria-pressed="false">
+              <span class="rl-scene-prev" data-lvl="95" aria-hidden="true"></span>
+              <span class="rl-scene-body"><b>Prywatność</b><small>Zasłoń cały dom</small></span>
+            </button>
+            <button class="rl-scene" type="button" data-rl-mode="kino" aria-pressed="false">
+              <span class="rl-scene-prev" data-lvl="100" aria-hidden="true"></span>
+              <span class="rl-scene-body"><b>Kino</b><small>Zaciemnij strefę TV</small></span>
+            </button>
+            <button class="rl-scene" type="button" data-rl-mode="nieobecnosc" aria-pressed="false">
+              <span class="rl-scene-prev" data-lvl="100" aria-hidden="true"></span>
+              <span class="rl-scene-body"><b>Nieobecność</b><small>Zamknij wszystko</small></span>
+            </button>
+          </div>
+        </section>
+
+        <section class="rl-sched" aria-labelledby="rlSchedTitle">
+          <div class="rl-sched-head">
+            <span class="rl-eyebrow" id="rlSchedTitle">Harmonogram</span>
+            <span class="rl-sched-note">Ustaw rolety tak, żeby otwierały i zamykały się same o wybranych porach.</span>
+          </div>
+
+          <form class="rl-sched-form" data-rl-sched-form>
+            <div class="rl-sched-field">
+              <span class="rl-sched-label">Które rolety</span>
+              <div class="rl-sched-chips" data-rl-sched-scope>
+                <button type="button" class="rl-sched-chip is-on" data-scope="all">Wszystkie</button>
+                <button type="button" class="rl-sched-chip" data-zone="salon">Salon</button>
+                <button type="button" class="rl-sched-chip" data-zone="kuchnia">Kuchnia</button>
+                <button type="button" class="rl-sched-chip" data-zone="sypialnia">Sypialnia</button>
+                <button type="button" class="rl-sched-chip" data-zone="gabinet">Gabinet</button>
+                <button type="button" class="rl-sched-chip" data-zone="lazienka">Łazienka</button>
+                <button type="button" class="rl-sched-chip" data-zone="kino">Kino / TV</button>
+              </div>
+            </div>
+            <div class="rl-sched-field">
+              <span class="rl-sched-label">Dni tygodnia</span>
+              <div class="rl-sched-days" data-rl-sched-days>
+                <button type="button" class="rl-sched-day is-on" data-day="1">Pn</button>
+                <button type="button" class="rl-sched-day is-on" data-day="2">Wt</button>
+                <button type="button" class="rl-sched-day is-on" data-day="3">Śr</button>
+                <button type="button" class="rl-sched-day is-on" data-day="4">Cz</button>
+                <button type="button" class="rl-sched-day is-on" data-day="5">Pt</button>
+                <button type="button" class="rl-sched-day" data-day="6">So</button>
+                <button type="button" class="rl-sched-day" data-day="0">Nd</button>
+              </div>
+            </div>
+            <div class="rl-sched-field rl-sched-times">
+              <label class="rl-sched-time"><span class="rl-sched-label">Rano odsłoń o</span><input type="time" data-rl-sched-open value="07:00" step="300"></label>
+              <label class="rl-sched-time"><span class="rl-sched-label">Wieczorem zasłoń o</span><input type="time" data-rl-sched-close value="21:30" step="300"></label>
+            </div>
+            <div class="rl-sched-actions">
+              <button type="submit" class="rl-sched-add">Dodaj do harmonogramu</button>
+            </div>
+          </form>
+
+          <ul class="rl-sched-list" data-rl-sched-list aria-label="Zaplanowane reguły"></ul>
+
+          <p class="rl-sched-demo">To tryb demonstracyjny. Reguły widać tutaj w panelu, ale nic nie zapisuje się w Home Assistant, więc rolety nie ruszą się bez Twojego udziału.</p>
+        </section>
+
+        <section class="rl-log" aria-labelledby="rlLogTitle">
+          <div class="rl-log-head">
+            <span class="rl-eyebrow" id="rlLogTitle">Ostatnie działania</span>
+            <span class="rl-log-note">Zapis tego, co robisz w panelu: sceny, pojedyncze rolety i reguły harmonogramu.</span>
+          </div>
+          <ol class="rl-log-list" data-rl="log" aria-live="polite"></ol>
+        </section>
+        </div>
+
+        <div class="rl-foot">
+          <span class="rl-foot-note">Inteligentny dom. Więcej światła wtedy, gdy go chcesz.</span>
+          <span class="rl-foot-tags">Komfort · Prywatność · Oszczędność energii · Bezpieczeństwo</span>
+        </div>
+      </div>
+
+      <div class="rl-toast" data-rl-toast role="status" aria-live="polite" hidden></div>
+    </div>
+
+    <section class="demo-contact-card demo-contact-card--detail" aria-labelledby="rl-contact-title">
+      <div>
+        <span class="demo-contact-eyebrow">Twój własny panel</span>
+        <h2 id="rl-contact-title">Chcesz takie sterowanie roletami w swoim domu?</h2>
+        <p>Projektuję panele Home Assistant do rolet i żaluzji: strefy i grupy, sceny dnia, harmonogramy oraz automatyka dopasowana do Twojego domu. Z czytelnym dziennikiem, który pokazuje, co i dlaczego się wydarzyło.</p>
+      </div>
+      <a class="demo-contact-button" href="/pl/#kontakt">Zapraszam do kontaktu <span aria-hidden="true">→</span></a>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-company"><span>HA Expert · CVR 46751205</span><span>Mosevej 2, 8620 Kjellerup</span><a href="mailto:kontakt@ha-expert.com">kontakt@ha-expert.com</a><span class="footer-company__desc">Zdalna konfiguracja, integracje i wsparcie Home Assistant.</span></div><div class="footer-inner">
+      <span>© <span id="year"></span> Tomasz Furdal – Home Assistant &amp; Integrations</span>
+      <span>Płatności: przelew bankowy · BLIK · MobilePay · Revolut · PayPal</span><a class="footer-privacy-link" href="/pl/polityka-prywatnosci/">Polityka prywatności</a>
+    </div>
+  </footer>
+
+  <script src="/nav.js?v=20260826-consent-v2-local-1"></script>
+  <script src="/demo/rolety-panel.js?v=20260906-rolety-3"></script>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>

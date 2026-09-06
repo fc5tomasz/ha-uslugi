@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="robots" content="noindex,nofollow" />
+  <meta name="author" content="Tomasz Furdal" />
+  <meta name="theme-color" content="#0b1420" />
+  <link rel="icon" type="image/png" href="../../../assets/brand/ha-expert-logo-transparent.png" />
+  <link rel="canonical" href="https://ha-expert.com/dk/projekter/rullegardiner/" />
+  <link rel="alternate" hreflang="pl" href="https://ha-expert.com/pl/projekty/rolety/" />
+  <link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/projekter/rullegardiner/" />
+  <link rel="alternate" hreflang="en" href="https://ha-expert.com/en/projects/blinds/" />
+  <link rel="alternate" hreflang="x-default" href="https://ha-expert.com/en/projects/blinds/" />
+  <title>Styring af rullegardiner – premium-panel til Home Assistant | HA Expert</title>
+  <meta name="description" content="Interaktivt panel til styring af rullegardiner: seks vinduer, styring af hele hjemmet, dagsscener og tidsplan. Demonstration uden forbindelse til Home Assistant." />
+  <link rel="stylesheet" href="../../../styles.css?v=20260906-footer-company-1" />
+  <link rel="stylesheet" href="/demo/demo.css?v=20260831-demo-mobile-bg-1" />
+  <link rel="stylesheet" href="/demo/demo-catalog.css?v=20260901-demo-catalog-i18n-1" />
+  <link rel="stylesheet" href="/demo/rolety-panel.css?v=20260906-rolety-4" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18087588380"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{'ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','analytics_storage':'denied'});</script>
+  <script src="../../../consent.js?v=20260829-consent-stats-local-1"></script>
+  <script>gtag('js',new Date());gtag('config','AW-18087588380');</script>
+</head>
+<body class="demo-page demo-detail-page pl-home-bg-test rolety-page" data-demo-lang="dk">
+  <header class="demo-mobile-header">
+    <div class="nav">
+      <a class="logo" href="/dk/" aria-label="Tomasz Furdal - Home Assistant Expert">
+        <img class="logo-image" src="/assets/brand/logo-wyciete.png" alt="Tomasz Furdal - Home Assistant Expert" width="871" height="334" />
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Åbn menu"><span aria-hidden="true">☰</span></button>
+      <nav id="primary-nav" aria-label="Primær navigation">
+        <ul>
+          <li><a href="/dk/#ydelser">Ydelser</a></li>
+          <li><a href="/dk/#om-mig">Om mig</a></li>
+          <li><a href="/dk/#for-hvem">For hvem</a></li>
+          <li><a href="/dk/#saadan-arbejder-jeg">Sådan arbejder jeg</a></li>
+          <li><a href="/dk/#priser">Priser</a></li>
+          <li><a href="/dk/#kontakt">Kontakt</a></li>
+          <li class="nav-secondary-start"><a href="/dk/projekter/" aria-current="page">Projekter</a></li>
+          <li><a href="/dk/vejledninger/">Vejledninger</a></li>
+          <li><a href="/dk/demo/">HA-demo</a></li>
+        </ul>
+      </nav>
+      <div class="lang-switch" aria-label="Sprogvalg">
+        <a class="lang-btn" href="/pl/projekty/rolety/" aria-label="Polski"><img class="lang-flag" src="/assets/flags/pl.svg" alt="Polski" /></a>
+        <a class="lang-btn active" href="/dk/projekter/rullegardiner/" aria-label="Dansk" aria-current="page"><img class="lang-flag" src="/assets/flags/dk.svg" alt="Dansk" /></a>
+        <a class="lang-btn" href="/en/projects/blinds/" aria-label="English"><img class="lang-flag" src="/assets/flags/gb.svg" alt="English" /></a>
+      </div>
+      <a class="nav-cta" href="/dk/#kontakt">Gratis vurdering</a>
+    </div>
+  </header>
+
+  <main class="demo-shell rl-shell">
+    <a class="demo-back-link" href="/dk/projekter/"><span aria-hidden="true">←</span> Projekter</a>
+
+    <section class="demo-head rl-head">
+      <div>
+        <span class="demo-kicker">Projekt · Styring af rullegardiner</span>
+        <h1 class="demo-title demo-title-mobile-match">Intelligent styring af rullegardiner</h1>
+        <p class="demo-detail-intro rl-intro">Træk rullegardinet i vinduet, vælg en dagsscene eller opsæt en tidsplan. Panelet viser, hvordan styring af rullegardiner kan se ud og fungere i Home Assistant. Det er en demonstration: alle knapper virker, men panelet er ikke forbundet til noget hjem.</p>
+      </div>
+    </section>
+
+    <div class="rl-stage" id="rlStage">
+      <div class="rl-panel" id="rlPanel">
+
+        <div class="rl-hero">
+          <div class="rl-hero-left">
+            <span class="rl-mark" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="1.5"/><path d="M4 7h16M4 10h16M4 13h16M4 16h16"/><path d="M9 21v-2h6v2"/></svg>
+            </span>
+            <div class="rl-hero-copy">
+              <span class="rl-eyebrow">Projekt · Styring af rullegardiner</span>
+              <h2 class="rl-panel-title">Intelligent styring af rullegardiner</h2>
+              <p class="rl-tagline">Komfort, privatliv og lys under kontrol, automatisk eller med et enkelt tryk.</p>
+            </div>
+          </div>
+          <div class="rl-hero-right">
+            <div class="rl-hero-brand-row">
+              <span class="rl-demo-badge">Demotilstand</span>
+              <img class="rl-logo" src="/assets/brand/logo-wyciete.png" alt="HA Expert Tomasz Furdal" width="871" height="334" />
+            </div>
+            <button class="rl-fs-btn" type="button" data-rl-fs aria-pressed="false">
+              <span class="rl-fs-ic" aria-hidden="true"></span>
+              <span class="rl-fs-label">Fuld skærm</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="rl-status" data-rl="status" role="status" aria-live="polite">
+          <span class="rl-status-ic" data-rl="statusIc" aria-hidden="true"></span>
+          <div class="rl-status-main">
+            <span class="rl-status-kicker" data-rl="statusKicker">Aktiv scene</span>
+            <b class="rl-status-title" data-rl="statusTitle">Dag</b>
+            <span class="rl-status-desc" data-rl="statusDesc">Rullegardinerne i hele hjemmet er hævet, så lyset kommer ind.</span>
+            <span class="rl-status-sys" data-rl="statusSys"><b>System:</b> panelet er klar til styring.</span>
+          </div>
+          <div class="rl-status-clock">
+            <b data-rl="condClock">19:44</b>
+            <i data-rl="condDate">søndag, 6. september</i>
+          </div>
+        </div>
+
+        <div class="rl-master">
+          <div class="rl-master-copy">
+            <span class="rl-master-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11 12 4l8 7"/><path d="M6 10v9h12v-9"/></svg></span>
+            <span class="rl-master-body">
+              <b>Alle rullegardiner</b>
+              <i><span data-rl="masterOpen">6</span> af 6 hævet, gennemsnitligt <span data-rl="masterAvg">4%</span></i>
+            </span>
+          </div>
+          <div class="rl-master-ctrl">
+            <input type="range" class="rl-range rl-range--lg" data-rl-master min="0" max="100" step="1" value="0" aria-label="Position for alle rullegardiner" />
+            <div class="rl-presets">
+              <button class="rl-preset" type="button" data-rl-master-preset="0">Hæv alle</button>
+              <button class="rl-preset" type="button" data-rl-master-preset="50">Halvt</button>
+              <button class="rl-preset" type="button" data-rl-master-preset="100">Sænk alle</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="rl-zones" id="rlZones"></div>
+
+        <div class="rl-bottom">
+        <section class="rl-scenes" aria-labelledby="rlScenesTitle">
+          <div class="rl-scenes-head">
+            <span class="rl-eyebrow" id="rlScenesTitle">Dagsscener</span>
+            <span class="rl-scenes-note">Et tryk indstiller rullegardinerne i alle vinduer.</span>
+          </div>
+          <div class="rl-scene-grid" role="group" aria-label="Scener">
+            <button class="rl-scene is-active" type="button" data-rl-mode="dzien" aria-pressed="true">
+              <span class="rl-scene-prev" data-lvl="6" aria-hidden="true"></span>
+              <span class="rl-scene-body"><b>Dag</b><small>Åbn og luk lyset ind</small></span>
+            </button>
+            <button class="rl-scene" type="button" data-rl-mode="wieczor" aria-pressed="false">
+              <span class="rl-scene-prev" data-lvl="60" aria-hidden="true"></span>
+              <span class="rl-scene-body"><b>Aften</b><small>Dæmp til aftenen</small></span>
+            </button>
+            <button class="rl-scene" type="button" data-rl-mode="prywatnosc" aria-pressed="false">
+              <span class="rl-scene-prev" data-lvl="95" aria-hidden="true"></span>
+              <span class="rl-scene-body"><b>Privatliv</b><small>Sænk i hele hjemmet</small></span>
+            </button>
+            <button class="rl-scene" type="button" data-rl-mode="kino" aria-pressed="false">
+              <span class="rl-scene-prev" data-lvl="100" aria-hidden="true"></span>
+              <span class="rl-scene-body"><b>Biograf</b><small>Mørklæg TV-zonen</small></span>
+            </button>
+            <button class="rl-scene" type="button" data-rl-mode="nieobecnosc" aria-pressed="false">
+              <span class="rl-scene-prev" data-lvl="100" aria-hidden="true"></span>
+              <span class="rl-scene-body"><b>Fravær</b><small>Luk det hele</small></span>
+            </button>
+          </div>
+        </section>
+
+        <section class="rl-sched" aria-labelledby="rlSchedTitle">
+          <div class="rl-sched-head">
+            <span class="rl-eyebrow" id="rlSchedTitle">Tidsplan</span>
+            <span class="rl-sched-note">Indstil rullegardinerne, så de åbner og lukker af sig selv på valgte tidspunkter.</span>
+          </div>
+
+          <form class="rl-sched-form" data-rl-sched-form>
+            <div class="rl-sched-field">
+              <span class="rl-sched-label">Hvilke rullegardiner</span>
+              <div class="rl-sched-chips" data-rl-sched-scope>
+                <button type="button" class="rl-sched-chip is-on" data-scope="all">Alle</button>
+                <button type="button" class="rl-sched-chip" data-zone="salon">Stue</button>
+                <button type="button" class="rl-sched-chip" data-zone="kuchnia">Køkken</button>
+                <button type="button" class="rl-sched-chip" data-zone="sypialnia">Soveværelse</button>
+                <button type="button" class="rl-sched-chip" data-zone="gabinet">Kontor</button>
+                <button type="button" class="rl-sched-chip" data-zone="lazienka">Badeværelse</button>
+                <button type="button" class="rl-sched-chip" data-zone="kino">Biograf / TV</button>
+              </div>
+            </div>
+            <div class="rl-sched-field">
+              <span class="rl-sched-label">Ugedage</span>
+              <div class="rl-sched-days" data-rl-sched-days>
+                <button type="button" class="rl-sched-day is-on" data-day="1">Man</button>
+                <button type="button" class="rl-sched-day is-on" data-day="2">Tir</button>
+                <button type="button" class="rl-sched-day is-on" data-day="3">Ons</button>
+                <button type="button" class="rl-sched-day is-on" data-day="4">Tor</button>
+                <button type="button" class="rl-sched-day is-on" data-day="5">Fre</button>
+                <button type="button" class="rl-sched-day" data-day="6">Lør</button>
+                <button type="button" class="rl-sched-day" data-day="0">Søn</button>
+              </div>
+            </div>
+            <div class="rl-sched-field rl-sched-times">
+              <label class="rl-sched-time"><span class="rl-sched-label">Hæv om morgenen kl.</span><input type="time" data-rl-sched-open value="07:00" step="300"></label>
+              <label class="rl-sched-time"><span class="rl-sched-label">Sænk om aftenen kl.</span><input type="time" data-rl-sched-close value="21:30" step="300"></label>
+            </div>
+            <div class="rl-sched-actions">
+              <button type="submit" class="rl-sched-add">Føj til tidsplan</button>
+            </div>
+          </form>
+
+          <ul class="rl-sched-list" data-rl-sched-list aria-label="Planlagte regler"></ul>
+
+          <p class="rl-sched-demo">Dette er en demonstration. Reglerne vises her i panelet, men intet gemmes i Home Assistant, så rullegardinerne bevæger sig ikke uden dig.</p>
+        </section>
+
+        <section class="rl-log" aria-labelledby="rlLogTitle">
+          <div class="rl-log-head">
+            <span class="rl-eyebrow" id="rlLogTitle">Seneste handlinger</span>
+            <span class="rl-log-note">Log over det, du gør i panelet: scener, enkelte rullegardiner og tidsplanregler.</span>
+          </div>
+          <ol class="rl-log-list" data-rl="log" aria-live="polite"></ol>
+        </section>
+        </div>
+
+        <div class="rl-foot">
+          <span class="rl-foot-note">Et intelligent hjem. Mere lys, når du vil have det.</span>
+          <span class="rl-foot-tags">Komfort · Privatliv · Energibesparelse · Sikkerhed</span>
+        </div>
+      </div>
+
+      <div class="rl-toast" data-rl-toast role="status" aria-live="polite" hidden></div>
+    </div>
+
+    <section class="demo-contact-card demo-contact-card--detail" aria-labelledby="rl-contact-title">
+      <div>
+        <span class="demo-contact-eyebrow">Dit eget panel</span>
+        <h2 id="rl-contact-title">Vil du have sådan en styring af rullegardiner i dit hjem?</h2>
+        <p>Jeg designer Home Assistant-paneler til rullegardiner og persienner: zoner og grupper, dagsscener, tidsplaner og automatik tilpasset dit hjem. Med en klar log, der viser, hvad der skete og hvorfor.</p>
+      </div>
+      <a class="demo-contact-button" href="/dk/#kontakt">Kontakt mig <span aria-hidden="true">→</span></a>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-company"><span>HA Expert · CVR 46751205</span><span>Mosevej 2, 8620 Kjellerup</span><a href="mailto:kontakt@ha-expert.com">kontakt@ha-expert.com</a><span class="footer-company__desc">Fjernkonfiguration, integrationer og support til Home Assistant.</span></div><div class="footer-inner">
+      <span>© <span id="year"></span> Tomasz Furdal – Home Assistant &amp; Integrations</span>
+      <span>Betaling: bankoverførsel · MobilePay · BLIK · Revolut · PayPal</span><a class="footer-privacy-link" href="/dk/privatlivspolitik/">Privatlivspolitik</a>
+    </div>
+  </footer>
+
+  <script src="/nav.js?v=20260826-consent-v2-local-1"></script>
+  <script src="/demo/rolety-panel.js?v=20260906-rolety-3"></script>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>

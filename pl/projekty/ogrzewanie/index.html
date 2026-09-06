@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="robots" content="noindex,nofollow" />
+  <meta name="author" content="Tomasz Furdal" />
+  <meta name="theme-color" content="#07111f" />
+  <link rel="icon" type="image/png" href="../../../assets/brand/ha-expert-logo-transparent.png" />
+  <link rel="canonical" href="https://ha-expert.com/pl/projekty/ogrzewanie/" />
+  <link rel="alternate" hreflang="pl" href="https://ha-expert.com/pl/projekty/ogrzewanie/" />
+  <link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/projekter/opvarmning/" />
+  <link rel="alternate" hreflang="en" href="https://ha-expert.com/en/projects/heating/" />
+  <link rel="alternate" hreflang="x-default" href="https://ha-expert.com/en/projects/heating/" />
+  <title>Ogrzewanie i źródła ciepła – panel premium Home Assistant | HA Expert</title>
+  <meta name="description" content="Interaktywny panel ogrzewania: bufor ciepła, piec gazowy i grzałka z nadwyżki PV, cztery strefy z temperaturą zadaną oraz wspólne tryby pracy. Demonstracja bez połączenia z HA." />
+  <link rel="stylesheet" href="../../../styles.css?v=20260906-footer-company-1" />
+  <link rel="stylesheet" href="/demo/demo.css?v=20260831-demo-mobile-bg-1" />
+  <link rel="stylesheet" href="/demo/demo-catalog.css?v=20260901-demo-catalog-i18n-1" />
+  <link rel="stylesheet" href="/demo/ogrzewanie-panel.css?v=20260906-ogrzewanie-20" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18087588380"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{'ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','analytics_storage':'denied'});</script>
+  <script src="../../../consent.js?v=20260829-consent-stats-local-1"></script>
+  <script>gtag('js',new Date());gtag('config','AW-18087588380');</script>
+</head>
+<body class="demo-page demo-detail-page pl-home-bg-test og-page" data-demo-lang="pl">
+  <header class="demo-mobile-header">
+    <div class="nav">
+      <a class="logo" href="/pl/" aria-label="Tomasz Furdal - Home Assistant Expert">
+        <img class="logo-image" src="/assets/brand/logo-wyciete.png" alt="Tomasz Furdal - Home Assistant Expert" width="871" height="334" />
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Otwórz menu"><span aria-hidden="true">☰</span></button>
+      <nav id="primary-nav" aria-label="Główna nawigacja">
+        <ul>
+          <li><a href="/pl/#uslugi">Usługi</a></li>
+          <li><a href="/pl/#o-mnie">O mnie</a></li>
+          <li><a href="/pl/#dla-kogo">Dla kogo</a></li>
+          <li><a href="/pl/#jak-pracuje">Jak pracuję</a></li>
+          <li><a href="/pl/#cennik">Cennik</a></li>
+          <li><a href="/pl/#kontakt">Kontakt</a></li>
+          <li class="nav-secondary-start"><a href="/pl/projekty/" aria-current="page">Projekty</a></li>
+          <li><a href="/pl/poradniki/">Poradniki</a></li>
+          <li><a href="/pl/demo/">Demo HA</a></li>
+        </ul>
+      </nav>
+      <div class="lang-switch" aria-label="Wybór języka">
+        <a class="lang-btn active" href="/pl/projekty/ogrzewanie/" aria-label="Polski" aria-current="page"><img class="lang-flag" src="/assets/flags/pl.svg" alt="Polski" /></a>
+        <a class="lang-btn" href="/dk/projekter/opvarmning/" aria-label="Dansk"><img class="lang-flag" src="/assets/flags/dk.svg" alt="Dansk" /></a>
+        <a class="lang-btn" href="/en/projects/heating/" aria-label="English"><img class="lang-flag" src="/assets/flags/gb.svg" alt="English" /></a>
+      </div>
+      <a class="nav-cta" href="/pl/#kontakt">Bezpłatna ocena</a>
+    </div>
+  </header>
+
+  <main class="demo-shell og-shell">
+    <a class="demo-back-link" href="/pl/projekty/"><span aria-hidden="true">←</span> Projekty</a>
+
+    <section class="demo-head og-head">
+      <div>
+        <span class="demo-kicker">Projekt · Ogrzewanie</span>
+        <h1 class="demo-title demo-title-mobile-match">Ogrzewanie i źródła ciepła</h1>
+        <p class="demo-detail-intro og-intro">Bufor ciepła, piec gazowy i grzałka z nadwyżki fotowoltaiki pracują razem, a cztery strefy trzymają swoją temperaturę zadaną. Zmień tryb całego domu, ustaw temperaturę i zobacz, jak reaguje każde źródło i każda strefa. To demonstracja: przyciski działają, ale panel nie jest połączony z Home Assistant.</p>
+      </div>
+    </section>
+
+    <div class="og-stage" id="ogStage">
+      <div class="og-panel" id="ogPanel">
+        <div class="og-panel-bg" aria-hidden="true"></div>
+
+        <div class="og-hero">
+          <div class="og-hero-left">
+            <span class="og-heatmark" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8c3-3 6 3 9 0s5-3 7-1M4 14c3-3 6 3 9 0s5-3 7-1"/></svg>
+            </span>
+            <div class="og-hero-copy">
+              <span class="og-eyebrow">Projekt · Ogrzewanie</span>
+              <h2 class="og-panel-title">Ogrzewanie i źródła ciepła</h2>
+              <p class="og-tagline">Ciepły dom. Niższe rachunki. Inteligentne wykorzystanie energii.</p>
+            </div>
+          </div>
+
+          <div class="og-hero-right">
+            <div class="og-climate" role="group" aria-label="Temperatura na zewnątrz i w domu">
+              <div class="og-climate-item">
+                <span class="og-climate-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18a4 4 0 0 1-.5-8 6 6 0 0 1 11.5 1.5A3.5 3.5 0 0 1 17.5 18Z"/></svg></span>
+                <span class="og-climate-body"><i>Na zewnątrz</i><b data-og="climateOut">3,5°C</b></span>
+              </div>
+              <span class="og-climate-sep" aria-hidden="true"></span>
+              <div class="og-climate-item">
+                <span class="og-climate-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11.5 12 5l8 6.5"/><path d="M6 10.5V19h12v-8.5"/></svg></span>
+                <span class="og-climate-body"><i>W domu</i><b data-og="climateIn">21,0°C</b></span>
+              </div>
+            </div>
+            <div class="og-hero-brand">
+              <div class="og-hero-brand-row">
+                <span class="og-demo-badge">Tryb demonstracyjny</span>
+                <img class="og-logo" src="/assets/brand/logo-wyciete.png" alt="HA Expert Tomasz Furdal" width="871" height="334" />
+              </div>
+              <button class="og-fs-btn" type="button" data-og-fs aria-pressed="false">
+                <span class="og-fs-ic" aria-hidden="true"></span>
+                <span class="og-fs-label">Pełny ekran</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <section class="og-sources" aria-labelledby="ogSourcesTitle">
+          <div class="og-sources-head">
+            <span class="og-eyebrow" id="ogSourcesTitle">Źródła ciepła</span>
+            <span class="og-sources-note">Inteligentna współpraca. Najpierw darmowa energia z fotowoltaiki, potem wsparcie gazem.</span>
+          </div>
+
+          <div class="og-flow">
+            <article class="og-flow-card og-flow-card--btn" data-og-source="pv" role="button" tabindex="0" aria-pressed="true" aria-label="Grzanie z nadwyżki fotowoltaiki, włącz lub wyłącz">
+              <div class="og-flow-fig" data-fig="pv-panel" aria-hidden="true"></div>
+              <div class="og-flow-main">
+                <span class="og-flow-tag is-on" data-og="pvTag"><span class="og-tag-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 4S9 3 5.5 10.5C3 15.7 6.5 20 6.5 20S18 20 20 8c.4-2.4 0-4 0-4Z"/><path d="M5 20c3-7 8-11 13-13"/></svg></span><span class="og-tag-txt">Dostępna nadwyżka</span></span>
+                <b class="og-flow-title">Fotowoltaika <small>off-grid</small></b>
+                <b class="og-flow-big" data-og="pvSurplus">2,8 kW</b>
+                <p>Przekazuje energię do grzałki bufora.</p>
+              </div>
+            </article>
+
+            <span class="og-flow-link" aria-hidden="true">›</span>
+
+            <article class="og-flow-card" data-node="heater">
+              <div class="og-flow-fig" data-fig="coil" aria-hidden="true"></div>
+              <div class="og-flow-main">
+                <span class="og-flow-tag is-on" data-og="heaterTag"><span class="og-tag-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4 12H2M22 12h-2M5 5 3.6 3.6M20.4 20.4 19 19M5 19l-1.4 1.4M20.4 3.6 19 5"/></svg></span><span class="og-tag-txt">Grzeje z PV</span></span>
+                <b class="og-flow-title">Grzałka w buforze</b>
+                <b class="og-flow-big" data-og="pvHeat">2,5 kW</b>
+                <p>Ładuje bufor z nadwyżki energii.</p>
+              </div>
+            </article>
+
+            <span class="og-flow-link" aria-hidden="true">›</span>
+
+            <div class="og-flow-tank">
+              <div class="og-tank-fig" data-fig="bufor" aria-hidden="true">
+                <span class="og-tank-heat" data-og="bufHeat"></span>
+              </div>
+              <div class="og-tank-info">
+                <b class="og-flow-title">Bufor ciepła</b>
+                <span><i>Góra</i><b data-og="bufTop">62°C</b></span>
+                <span><i>Dół</i><b data-og="bufBot">48°C</b></span>
+                <span><i>Naładowanie</i><b data-og="bufCharge">75%</b></span>
+              </div>
+            </div>
+
+            <span class="og-flow-link" aria-hidden="true">›</span>
+
+            <article class="og-flow-card og-flow-card--gas og-flow-card--btn" data-og-source="gas" role="button" tabindex="0" aria-pressed="false" aria-label="Piec gazowy, włącz lub wyłącz grzanie">
+              <div class="og-flow-fig" data-fig="piec" aria-hidden="true">
+                <span class="og-flame" data-og="gasFlame" aria-hidden="true"><span></span><span></span></span>
+              </div>
+              <div class="og-flow-main">
+                <span class="og-flow-tag" data-og="gasTag"><span class="og-tag-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s5 4.3 5 9a5 5 0 0 1-10 0c0-1.7.6-3.1 1.6-4.1.1 1.4.9 2.4 2 2.8C10 9.4 9.7 6.4 12 3Z"/></svg></span><span class="og-tag-txt" data-og="gasStateShort">Czuwa</span></span>
+                <b class="og-flow-title">Piec gazowy <small>Rezerwa</small></b>
+              </div>
+            </article>
+
+            <div class="og-dist">
+              <b class="og-flow-title">Dystrybucja ciepła</b>
+              <div class="og-dist-row">
+                <span class="og-dist-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="6" width="16" height="12" rx="1.5"/><path d="M8 6v12M12 6v12M16 6v12M4 9h16M4 15h16"/></svg></span>
+                <span class="og-dist-body"><b>Obieg CO</b><i>Zasilanie <span data-og="coSupply">36°C</span></i></span>
+              </div>
+              <div class="og-dist-bar"><span data-og="coBar"></span></div>
+              <div class="og-dist-row">
+                <span class="og-dist-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5s6 6.6 6 10.5a6 6 0 0 1-12 0c0-3.9 6-10.5 6-10.5Z"/></svg></span>
+                <span class="og-dist-body"><b>Ciepła woda</b><i>Zasobnik <span data-og="cwuTank">48°C</span></i></span>
+              </div>
+              <div class="og-dist-bar og-dist-bar--cool"><span data-og="cwuBar"></span></div>
+            </div>
+          </div>
+        </section>
+
+        <div class="og-zones" id="ogZones"></div>
+
+        <section class="og-common" aria-labelledby="ogCommonTitle">
+          <div class="og-common-head">
+            <span class="og-eyebrow" id="ogCommonTitle">Tryb pracy całego domu</span>
+            <span class="og-common-note-lead">Wybierz tryb, a system automatycznie dostosuje wszystkie ustawienia.</span>
+          </div>
+
+          <div class="og-modes" role="group" aria-label="Tryb pracy całego domu">
+            <button class="og-mode is-active" type="button" data-og-mode="komfort" aria-pressed="true">
+              <span class="og-mode-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11 12 4l8 7"/><path d="M6 10v9h12v-9"/></svg></span>
+              <span class="og-mode-body"><b>Komfort</b><small>Pełen komfort</small></span>
+            </button>
+            <button class="og-mode" type="button" data-og-mode="eco" aria-pressed="false">
+              <span class="og-mode-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 4S9 3 5.5 10.5C3 15.7 6.5 20 6.5 20S18 20 20 8c.4-2.4 0-4 0-4Z"/><path d="M5 20c3-7 8-11 13-13"/></svg></span>
+              <span class="og-mode-body"><b>Eco</b><small>Oszczędzanie energii</small></span>
+            </button>
+            <button class="og-mode" type="button" data-og-mode="nieobecnosc" aria-pressed="false">
+              <span class="og-mode-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg></span>
+              <span class="og-mode-body"><b>Nieobecność</b><small>Niższe zużycie</small></span>
+            </button>
+            <button class="og-mode" type="button" data-og-mode="wakacje" aria-pressed="false">
+              <span class="og-mode-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h9l4-7 2 1-2 6h7l-1 3H6Z"/><path d="M4 20h13"/></svg></span>
+              <span class="og-mode-body"><b>Wakacje</b><small>Ochrona przed zamarzaniem</small></span>
+            </button>
+            <button class="og-mode" type="button" data-og-mode="reczny" aria-pressed="false">
+              <span class="og-mode-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 12h4M12 6v4M6 6l3 3M14 8l1.5-1.5a2 2 0 1 1 3 3L17 11m-2 2 3 5a1.6 1.6 0 0 1-2.6 1.7L9 15"/></svg></span>
+              <span class="og-mode-body"><b>Ręczny</b><small>Pełna kontrola</small></span>
+            </button>
+            <button class="og-mode og-mode--action" type="button" data-og-action="settings">
+              <span class="og-mode-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 3v3M12 18v3M4.2 7.5l2.6 1.5M17.2 15l2.6 1.5M4.2 16.5l2.6-1.5M17.2 9l2.6-1.5"/></svg></span>
+              <span class="og-mode-body"><b>Ustawienia</b><small>Parametry systemu</small></span>
+              <span class="og-mode-chevron" aria-hidden="true">›</span>
+            </button>
+          </div>
+
+          <div class="og-target" data-og-target hidden>
+            <div class="og-target-head">
+              <label for="ogCommonTemp">Docelowy komfort wszystkich pokoi</label>
+              <b data-og="commonTempVal">21,0°C</b>
+            </div>
+            <input type="range" id="ogCommonTemp" class="og-range" min="16" max="24" step="0.5" value="21" />
+            <span class="og-common-note" data-og="commonNote">Tryb Ręczny. Każdy pokój możesz też ustawić osobno.</span>
+          </div>
+        </section>
+
+        <div class="og-foot">
+          <span class="og-foot-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 4S9 3 5.5 10.5C3 15.7 6.5 20 6.5 20S18 20 20 8c.4-2.4 0-4 0-4Z"/><path d="M5 20c3-7 8-11 13-13"/></svg>
+            Nowoczesne ogrzewanie. Większy komfort. Mniejszy wpływ na środowisko.
+          </span>
+          <span class="og-foot-tags">Twój inteligentny dom · Komfort · Oszczędność · Niezależność</span>
+        </div>
+      </div>
+
+      <div class="og-toast" data-og-toast role="status" aria-live="polite" hidden></div>
+    </div>
+
+    <section class="demo-contact-card demo-contact-card--detail" aria-labelledby="og-contact-title">
+      <div>
+        <span class="demo-contact-eyebrow">Twój własny panel</span>
+        <h2 id="og-contact-title">Chcesz taki panel ogrzewania w swoim domu?</h2>
+        <p>Projektuję panele Home Assistant do ogrzewania z wieloma źródłami ciepła: bufor, piec gazowy, pompa ciepła i grzałka z nadwyżki fotowoltaiki, z trybami pracy, harmonogramem i logiką, która pilnuje kolejności źródeł.</p>
+      </div>
+      <a class="demo-contact-button" href="/pl/#kontakt">Zapraszam do kontaktu <span aria-hidden="true">→</span></a>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-company"><span>HA Expert · CVR 46751205</span><span>Mosevej 2, 8620 Kjellerup</span><a href="mailto:kontakt@ha-expert.com">kontakt@ha-expert.com</a><span class="footer-company__desc">Zdalna konfiguracja, integracje i wsparcie Home Assistant.</span></div><div class="footer-inner">
+      <span>© <span id="year"></span> Tomasz Furdal – Home Assistant &amp; Integrations</span>
+      <span>Płatności: przelew bankowy · BLIK · MobilePay · Revolut · PayPal</span><a class="footer-privacy-link" href="/pl/polityka-prywatnosci/">Polityka prywatności</a>
+    </div>
+  </footer>
+
+  <script src="/nav.js?v=20260826-consent-v2-local-1"></script>
+  <script src="/demo/ogrzewanie-panel.js?v=20260906-ogrzewanie-20"></script>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>

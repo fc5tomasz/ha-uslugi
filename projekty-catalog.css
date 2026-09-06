@@ -1,0 +1,79 @@
+/* Kompaktowy spis wyboru projektów — tylko strony "Projekty" (PL/EN/DK).
+   Kafelki należą do tej samej rodziny stylistycznej co spis w Demo
+   (klasa .demo-catalog-card z /demo/demo-catalog.css), tylko niższe i z
+   krótszą treścią. Blok CTA na końcu spisu reużywa komponentu
+   .demo-contact-card z tego samego arkusza. */
+
+/* zdanie prowadzące do spisu nie oznacza już "powiększ" — bez ikony lupy */
+.pl-projects-page .showcase-interaction-hint::before{
+  display:none;
+}
+
+.pl-projects-page .projects-catalog{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:16px;
+  margin-top:18px;
+}
+
+/* kompaktowy wariant kafla Demo */
+.pl-projects-page .demo-catalog-card.project-tile{
+  min-height:0;
+  padding:20px 22px;
+  border-radius:22px;
+  box-shadow:0 18px 40px rgba(0,0,0,.22);
+}
+
+.pl-projects-page .demo-catalog-card.project-tile .demo-catalog-card-copy{
+  max-width:none;
+}
+
+.pl-projects-page .project-tile-label{
+  display:block;
+  color:#79e5cb;
+  font-size:.72rem;
+  font-weight:750;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+}
+
+.pl-projects-page .project-tile-title{
+  margin:7px 0 8px;
+  color:#f4faf7;
+  font-size:1.16rem;
+  line-height:1.3;
+  letter-spacing:-.025em;
+}
+
+.pl-projects-page .project-tile-desc{
+  margin:0;
+  color:#b4c7c0;
+  font-size:.92rem;
+  line-height:1.55;
+}
+
+/* kotwice sekcji prezentacji — odsunięcie pod sticky header */
+.pl-projects-page [id^="projekt-"]{
+  scroll-margin-top:var(--anchor-offset);
+}
+
+/* blok CTA "na końcu katalogu" — odstęp od spisu */
+.pl-projects-page .projects-catalog + .demo-contact-card{
+  margin-top:18px;
+  margin-bottom:6px;
+}
+
+@media (max-width: 1024px){
+  .pl-projects-page .projects-catalog{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+}
+
+@media (max-width: 820px){
+  .pl-projects-page .projects-catalog{
+    grid-template-columns:1fr;
+  }
+  .pl-projects-page .demo-catalog-card.project-tile{
+    padding:20px 22px;
+  }
+}

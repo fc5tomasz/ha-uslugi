@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="robots" content="noindex,nofollow" />
+  <meta name="author" content="Tomasz Furdal" />
+  <meta name="theme-color" content="#100f0d" />
+  <link rel="icon" type="image/png" href="../../../assets/brand/ha-expert-logo-transparent.png" />
+  <link rel="canonical" href="https://ha-expert.com/pl/projekty/pomieszczenia/" />
+  <link rel="alternate" hreflang="pl" href="https://ha-expert.com/pl/projekty/pomieszczenia/" />
+  <link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/projekter/rum/" />
+  <link rel="alternate" hreflang="en" href="https://ha-expert.com/en/projects/rooms/" />
+  <link rel="alternate" hreflang="x-default" href="https://ha-expert.com/en/projects/rooms/" />
+  <title>Sterowanie pomieszczeniami – panel premium Home Assistant | HA Expert</title>
+  <meta name="description" content="Interaktywny panel trzech pomieszczeń: salon, sypialnia i łazienka, każde z własnym światłem, scenami, roletami, klimatem i radiem internetowym, oraz wspólne sceny domowe. Demonstracja bez połączenia z HA." />
+  <link rel="stylesheet" href="../../../styles.css?v=20260906-footer-company-1" />
+  <link rel="stylesheet" href="/demo/demo.css?v=20260831-demo-mobile-bg-1" />
+  <link rel="stylesheet" href="/demo/demo-catalog.css?v=20260901-demo-catalog-i18n-1" />
+  <link rel="stylesheet" href="/demo/pomieszczenia-panel.css?v=20260906-pomieszczenia-5" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18087588380"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{'ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','analytics_storage':'denied'});</script>
+  <script src="../../../consent.js?v=20260829-consent-stats-local-1"></script>
+  <script>gtag('js',new Date());gtag('config','AW-18087588380');</script>
+</head>
+<body class="demo-page demo-detail-page pl-home-bg-test rm-page" data-demo-lang="pl">
+  <header class="demo-mobile-header">
+    <div class="nav">
+      <a class="logo" href="/pl/" aria-label="Tomasz Furdal - Home Assistant Expert">
+        <img class="logo-image" src="/assets/brand/logo-wyciete.png" alt="Tomasz Furdal - Home Assistant Expert" width="871" height="334" />
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Otwórz menu"><span aria-hidden="true">☰</span></button>
+      <nav id="primary-nav" aria-label="Główna nawigacja">
+        <ul>
+          <li><a href="/pl/#uslugi">Usługi</a></li>
+          <li><a href="/pl/#o-mnie">O mnie</a></li>
+          <li><a href="/pl/#dla-kogo">Dla kogo</a></li>
+          <li><a href="/pl/#jak-pracuje">Jak pracuję</a></li>
+          <li><a href="/pl/#cennik">Cennik</a></li>
+          <li><a href="/pl/#kontakt">Kontakt</a></li>
+          <li class="nav-secondary-start"><a href="/pl/projekty/" aria-current="page">Projekty</a></li>
+          <li><a href="/pl/poradniki/">Poradniki</a></li>
+          <li><a href="/pl/demo/">Demo HA</a></li>
+        </ul>
+      </nav>
+      <div class="lang-switch" aria-label="Wybór języka">
+        <a class="lang-btn active" href="/pl/projekty/pomieszczenia/" aria-label="Polski" aria-current="page"><img class="lang-flag" src="/assets/flags/pl.svg" alt="Polski" /></a>
+        <a class="lang-btn" href="/dk/projekter/rum/" aria-label="Dansk"><img class="lang-flag" src="/assets/flags/dk.svg" alt="Dansk" /></a>
+        <a class="lang-btn" href="/en/projects/rooms/" aria-label="English"><img class="lang-flag" src="/assets/flags/gb.svg" alt="English" /></a>
+      </div>
+      <a class="nav-cta" href="/pl/#kontakt">Bezpłatna ocena</a>
+    </div>
+  </header>
+
+  <main class="demo-shell rm-shell">
+    <a class="demo-back-link" href="/pl/projekty/"><span aria-hidden="true">←</span> Projekty</a>
+
+    <section class="demo-head rm-head">
+      <div>
+        <span class="demo-kicker">Projekt · Sterowanie pomieszczeniami</span>
+        <h1 class="demo-title demo-title-mobile-match">Sterowanie pomieszczeniami</h1>
+        <p class="demo-detail-intro rm-intro">Trzy równorzędne pokoje: salon, sypialnia i łazienka. Każdy ma własne światło ze scenami, rolety i zasłony, klimat oraz radio internetowe, a stan każdego pokoju jest zapamiętany osobno. Przełącznik zmienia pokój z płynnym przejściem, a pasek scen domowych na dole działa na wszystkie pokoje naraz. To demonstracja: przyciski działają, ale panel nie jest połączony z Home Assistant.</p>
+      </div>
+    </section>
+
+    <div class="rm-stage" id="rmStage">
+      <div class="rm-panel" id="rmPanel">
+        <div class="rm-bg" data-rm-bg="a" aria-hidden="true"></div>
+        <div class="rm-bg" data-rm-bg="b" aria-hidden="true"></div>
+
+        <div class="rm-hero">
+          <div class="rm-hero-left">
+            <span class="rm-mark" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg>
+            </span>
+            <div class="rm-hero-copy">
+              <span class="rm-eyebrow">Projekt · Sterowanie pomieszczeniami</span>
+              <h2 class="rm-room-name" data-rm="roomName">Salon</h2>
+              <p class="rm-room-tag" data-rm="roomTag">Miejsce, w którym dom tętni życiem.</p>
+            </div>
+          </div>
+
+          <div class="rm-hero-right">
+            <div class="rm-context" role="group" aria-label="Pogoda na zewnątrz oraz data i godzina">
+              <div class="rm-context-item">
+                <span class="rm-context-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18a4 4 0 0 1-.5-8 6 6 0 0 1 11.5 1.5A3.5 3.5 0 0 1 17.5 18Z"/></svg></span>
+                <span class="rm-context-body"><i>Na zewnątrz</i><b data-rm="weatherOut">16°C</b></span>
+              </div>
+              <span class="rm-context-sep" aria-hidden="true"></span>
+              <div class="rm-context-item rm-context-time">
+                <span class="rm-context-body"><i data-rm="date">czw. 4 wrz</i><b data-rm="clock">20:24</b></span>
+              </div>
+            </div>
+
+            <div class="rm-status" data-rm="statusCard" role="status" aria-live="polite">
+              <span class="rm-status-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h3.5l2-5 3 9 2.5-6 1.5 3H21"/></svg></span>
+              <span class="rm-status-body">
+                <b>Stan panelu</b>
+                <small data-rm="statusSummary">3 światła · 22°C · radio gra</small>
+                <small class="rm-status-last" data-rm="statusLast">Ostatnio: panel gotowy</small>
+              </span>
+            </div>
+
+            <div class="rm-brand">
+              <div class="rm-brand-row">
+                <span class="rm-demo-badge">Tryb demonstracyjny</span>
+                <img class="rm-logo" src="/assets/brand/logo-wyciete.png" alt="HA Expert Tomasz Furdal" width="871" height="334" />
+              </div>
+              <button class="rm-fs-btn" type="button" data-rm-fs aria-pressed="false">
+                <span class="rm-fs-ic" aria-hidden="true"></span>
+                <span class="rm-fs-label">Pełny ekran</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="rm-tabs" role="group" aria-label="Wybór pokoju">
+          <button class="rm-tab is-active" type="button" data-rm-room="salon" aria-pressed="true">
+            <span class="rm-tab-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3"/><path d="M3 12a2 2 0 0 1 2 2v3h14v-3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v6h-2v-2H5v2H3v-6a2 2 0 0 1 0-4Z"/></svg></span>
+            <span>Salon</span>
+          </button>
+          <button class="rm-tab" type="button" data-rm-room="sypialnia" aria-pressed="false">
+            <span class="rm-tab-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17v-5a2 2 0 0 1 2-2h11a3 3 0 0 1 3 3v4M3 13h16M3 17v3M21 14v6"/><path d="M7 10V8a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v2"/></svg></span>
+            <span>Sypialnia</span>
+          </button>
+          <button class="rm-tab" type="button" data-rm-room="lazienka" aria-pressed="false">
+            <span class="rm-tab-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16v3a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4v-3Z"/><path d="M6 12V6a2 2 0 0 1 2-2c1 0 1.7.5 2 1.4"/><path d="M6 19l-1 2M19 19l1 2"/></svg></span>
+            <span>Łazienka</span>
+          </button>
+        </div>
+
+        <div class="rm-cards" data-rm="cards">
+          <section class="rm-card rm-card--light" aria-labelledby="rmLightTitle">
+            <div class="rm-card-head">
+              <span class="rm-card-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 1 4 10.5c-.7.7-1 1.3-1 2.5H9c0-1.2-.3-1.8-1-2.5A6 6 0 0 1 12 3Z"/></svg></span>
+              <div><h3 id="rmLightTitle">Światło</h3><p>Stwórz odpowiedni nastrój.</p></div>
+            </div>
+            <span class="rm-sub">Sceny</span>
+            <div class="rm-scene-row" data-rm="sceneRow"></div>
+            <span class="rm-sub">Grupy świateł</span>
+            <div class="rm-group-rows" data-rm="groupRows"></div>
+          </section>
+
+          <section class="rm-card rm-card--blinds" aria-labelledby="rmBlindsTitle">
+            <div class="rm-card-head">
+              <span class="rm-card-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M4 8h16M4 12h16M4 16h16"/></svg></span>
+              <div><h3 id="rmBlindsTitle">Rolety i zasłony</h3><p>Kontrola światła i prywatności.</p></div>
+            </div>
+            <div class="rm-blind-rows" data-rm="blindRows"></div>
+          </section>
+
+          <section class="rm-card rm-card--climate" aria-labelledby="rmClimateTitle">
+            <div class="rm-card-head">
+              <span class="rm-card-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13.5V5a2 2 0 1 1 4 0v8.5a4 4 0 1 1-4 0Z"/><path d="M12 9v6"/></svg></span>
+              <div><h3 id="rmClimateTitle">Klimat pokoju</h3><p>Idealna temperatura przez cały rok.</p></div>
+            </div>
+            <div class="rm-climate-main">
+              <button class="rm-step" type="button" data-rm-climate="minus" aria-label="Obniż temperaturę">−</button>
+              <span class="rm-climate-read"><b data-rm="climateVal">22°C</b><small data-rm="climateNow">Aktualnie: 21,4°C</small></span>
+              <button class="rm-step" type="button" data-rm-climate="plus" aria-label="Podnieś temperaturę">+</button>
+            </div>
+            <div class="rm-cmodes" data-rm="climateModes"></div>
+            <button class="rm-power is-on" type="button" data-rm="climatePower" aria-pressed="true">
+              <span class="rm-power-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v8"/><path d="M6.3 7.3a8 8 0 1 0 11.4 0"/></svg></span>
+              <span class="rm-power-body"><b data-rm="climatePowerState">Włączony</b><small data-rm="climatePowerNote">Utrzymuje komfortową temperaturę.</small></span>
+              <span class="rm-power-led" aria-hidden="true"></span>
+            </button>
+            <div class="rm-floor" data-rm="floorBlock" hidden>
+              <div class="rm-floor-head">
+                <span class="rm-card-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8c2-2 4 2 6 0s4-2 6 0 4 2 4 2M4 14c2-2 4 2 6 0s4-2 6 0 4 2 4 2"/></svg></span>
+                <b>Ogrzewanie podłogowe</b>
+              </div>
+              <div class="rm-floor-main">
+                <button class="rm-step" type="button" data-rm-floor="minus" aria-label="Obniż temperaturę podłogi">−</button>
+                <span class="rm-floor-read"><b data-rm="floorVal">28°C</b><small data-rm="floorNow">Aktualnie: 27,3°C</small></span>
+                <button class="rm-step" type="button" data-rm-floor="plus" aria-label="Podnieś temperaturę podłogi">+</button>
+              </div>
+              <button class="rm-power is-on" type="button" data-rm="floorPower" aria-pressed="true">
+                <span class="rm-power-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v8"/><path d="M6.3 7.3a8 8 0 1 0 11.4 0"/></svg></span>
+                <span class="rm-power-body"><b data-rm-ref="floorState">Włączone</b></span>
+                <span class="rm-power-led" aria-hidden="true"></span>
+              </button>
+            </div>
+          </section>
+
+          <section class="rm-card rm-card--radio" aria-labelledby="rmRadioTitle">
+            <div class="rm-card-head">
+              <span class="rm-card-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V6l10-2v12"/><circle cx="6" cy="18" r="3"/><circle cx="16" cy="16" r="3"/></svg></span>
+              <div><h3 id="rmRadioTitle">Radio internetowe</h3><p>Twoja muzyka w każdym momencie.</p></div>
+            </div>
+            <div class="rm-radio-now">
+              <span class="rm-radio-cover" data-rm="radioCover" aria-hidden="true"></span>
+              <span class="rm-radio-meta"><b data-rm="radioStation">Radio Nova</b><small data-rm="radioKind">Radio internetowe</small></span>
+            </div>
+            <div class="rm-radio-controls">
+              <button class="rm-radio-btn" type="button" data-rm-radio="prev" aria-label="Poprzednia stacja"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 5v14l-9-7ZM7 5h2v14H7z"/></svg></button>
+              <button class="rm-radio-btn rm-radio-btn--main" type="button" data-rm-radio="toggle" aria-label="Odtwarzaj" aria-pressed="false"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7Z"/></svg></button>
+              <button class="rm-radio-btn" type="button" data-rm-radio="next" aria-label="Następna stacja"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 5v14l9-7ZM15 5h2v14h-2z"/></svg></button>
+            </div>
+            <div class="rm-radio-vol">
+              <span class="rm-radio-vol-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6h4l5 4V5L8 9Z"/><path d="M17 8a5 5 0 0 1 0 8"/></svg></span>
+              <input type="range" class="rm-range" data-rm="radioVol" min="0" max="100" step="1" value="45" aria-label="Głośność" />
+              <b data-rm="radioVolVal">45%</b>
+            </div>
+          </section>
+        </div>
+
+        <div class="rm-home">
+          <div class="rm-home-head">
+            <span class="rm-home-head-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 3 10v11h6v-6h6v6h6V10Z"/></svg></span>
+            <span class="rm-home-head-copy"><b>Sceny domowe</b> <small>Jednym kliknięciem zmień atmosferę w całym domu.</small></span>
+          </div>
+          <div class="rm-home-row" data-rm="homeRow" role="group" aria-label="Sceny domowe, działają na wszystkie pokoje"></div>
+        </div>
+
+        <div class="rm-foot">
+          <span class="rm-foot-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 3 10v11h6v-6h6v6h6V10Z"/></svg>
+            Eleganckie sterowanie pomieszczeniami. Większy komfort na co dzień.
+          </span>
+          <span class="rm-foot-tags">Twój inteligentny dom · Komfort · Nastrój · Prywatność</span>
+        </div>
+      </div>
+
+      <div class="rm-toast" data-rm-toast role="status" aria-live="polite" hidden></div>
+    </div>
+
+    <section class="demo-contact-card demo-contact-card--detail" aria-labelledby="rm-contact-title">
+      <div>
+        <span class="demo-contact-eyebrow">Twój własny panel</span>
+        <h2 id="rm-contact-title">Chcesz taki panel pomieszczeń w swoim domu?</h2>
+        <p>Projektuję panele Home Assistant, które łączą sterowanie światłem, roletami, klimatem i multimediami w każdym pokoju. Każde pomieszczenie ma swój komplet scen, a wspólne sceny domowe ustawiają cały dom jednym dotknięciem.</p>
+      </div>
+      <a class="demo-contact-button" href="/pl/#kontakt">Zapraszam do kontaktu <span aria-hidden="true">→</span></a>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-company"><span>HA Expert · CVR 46751205</span><span>Mosevej 2, 8620 Kjellerup</span><a href="mailto:kontakt@ha-expert.com">kontakt@ha-expert.com</a><span class="footer-company__desc">Zdalna konfiguracja, integracje i wsparcie Home Assistant.</span></div><div class="footer-inner">
+      <span>© <span id="year"></span> Tomasz Furdal – Home Assistant &amp; Integrations</span>
+      <span>Płatności: przelew bankowy · BLIK · MobilePay · Revolut · PayPal</span><a class="footer-privacy-link" href="/pl/polityka-prywatnosci/">Polityka prywatności</a>
+    </div>
+  </footer>
+
+  <script src="/nav.js?v=20260826-consent-v2-local-1"></script>
+  <script src="/demo/pomieszczenia-panel.js?v=20260906-pomieszczenia-5"></script>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>

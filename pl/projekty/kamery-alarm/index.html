@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="robots" content="noindex,nofollow" />
+  <meta name="author" content="Tomasz Furdal" />
+  <meta name="theme-color" content="#0c0b09" />
+  <link rel="icon" type="image/png" href="../../../assets/brand/ha-expert-logo-transparent.png" />
+  <link rel="canonical" href="https://ha-expert.com/pl/projekty/kamery-alarm/" />
+  <link rel="alternate" hreflang="pl" href="https://ha-expert.com/pl/projekty/kamery-alarm/" />
+  <link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/projekter/kameraer-alarm/" />
+  <link rel="alternate" hreflang="en" href="https://ha-expert.com/en/projects/cameras-alarm/" />
+  <link rel="alternate" hreflang="x-default" href="https://ha-expert.com/en/projects/cameras-alarm/" />
+  <title>Kamery i alarm – panel premium Home Assistant | HA Expert</title>
+  <meta name="description" content="Interaktywny panel bezpieczeństwa: podgląd czterech kamer, uzbrajanie stref, czujniki, dziennik zdarzeń i symulacja wykrycia intruza. Demonstracja bez połączenia z Home Assistant." />
+  <link rel="stylesheet" href="../../../styles.css?v=20260906-footer-company-1" />
+  <link rel="stylesheet" href="/demo/demo.css?v=20260831-demo-mobile-bg-1" />
+  <link rel="stylesheet" href="/demo/demo-catalog.css?v=20260901-demo-catalog-i18n-1" />
+  <link rel="stylesheet" href="/demo/kamery-alarm-panel.css?v=20260906-kamery-alarm-9" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18087588380"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{'ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','analytics_storage':'denied'});</script>
+  <script src="../../../consent.js?v=20260829-consent-stats-local-1"></script>
+  <script>gtag('js',new Date());gtag('config','AW-18087588380');</script>
+</head>
+<body class="demo-page demo-detail-page pl-home-bg-test ka-page" data-demo-lang="pl">
+  <header class="demo-mobile-header">
+    <div class="nav">
+      <a class="logo" href="/pl/" aria-label="Tomasz Furdal - Home Assistant Expert">
+        <img class="logo-image" src="/assets/brand/logo-wyciete.png" alt="Tomasz Furdal - Home Assistant Expert" width="871" height="334" />
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Otwórz menu"><span aria-hidden="true">☰</span></button>
+      <nav id="primary-nav" aria-label="Główna nawigacja">
+        <ul>
+          <li><a href="/pl/#uslugi">Usługi</a></li>
+          <li><a href="/pl/#o-mnie">O mnie</a></li>
+          <li><a href="/pl/#dla-kogo">Dla kogo</a></li>
+          <li><a href="/pl/#jak-pracuje">Jak pracuję</a></li>
+          <li><a href="/pl/#cennik">Cennik</a></li>
+          <li><a href="/pl/#kontakt">Kontakt</a></li>
+          <li class="nav-secondary-start"><a href="/pl/projekty/" aria-current="page">Projekty</a></li>
+          <li><a href="/pl/poradniki/">Poradniki</a></li>
+          <li><a href="/pl/demo/">Demo HA</a></li>
+        </ul>
+      </nav>
+      <div class="lang-switch" aria-label="Wybór języka">
+        <a class="lang-btn active" href="/pl/projekty/kamery-alarm/" aria-label="Polski" aria-current="page"><img class="lang-flag" src="/assets/flags/pl.svg" alt="Polski" /></a>
+        <a class="lang-btn" href="/dk/projekter/kameraer-alarm/" aria-label="Dansk"><img class="lang-flag" src="/assets/flags/dk.svg" alt="Dansk" /></a>
+        <a class="lang-btn" href="/en/projects/cameras-alarm/" aria-label="English"><img class="lang-flag" src="/assets/flags/gb.svg" alt="English" /></a>
+      </div>
+      <a class="nav-cta" href="/pl/#kontakt">Bezpłatna ocena</a>
+    </div>
+  </header>
+
+  <main class="demo-shell ka-shell">
+    <a class="demo-back-link" href="/pl/projekty/"><span aria-hidden="true">←</span> Projekty</a>
+
+    <section class="demo-head ka-head">
+      <div>
+        <span class="demo-kicker">Projekt · Kamery i alarm</span>
+        <h1 class="demo-title demo-title-mobile-match">Kamery i alarm</h1>
+        <p class="demo-detail-intro ka-intro">Jeden panel łączy podgląd czterech kamer, uzbrajanie stref i całego domu, stan czujników oraz dziennik zdarzeń. Tryby uzbrojenia realnie zmieniają, które strefy są chronione, a wejście w uzbrojoną strefę uruchamia czas na rozbrojenie i alarm. Przycisk „Symuluj włamanie” pokazuje reakcję systemu na intruza. To demonstracja: przyciski działają, ale panel nie jest połączony z Home Assistant.</p>
+      </div>
+    </section>
+
+    <div class="ka-stage" id="kaStage">
+      <div class="ka-panel" id="kaPanel">
+        <div class="ka-bg" data-ka="heroBg" aria-hidden="true"></div>
+
+        <div class="ka-hero">
+          <div class="ka-hero-left">
+            <span class="ka-mark" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 5 6v6c0 4.5 3 8 7 9 4-1 7-4.5 7-9V6Z"/><path d="m9 12 2 2 4-4"/></svg>
+            </span>
+            <div class="ka-hero-copy">
+              <span class="ka-eyebrow">Projekt · Bezpieczeństwo domu</span>
+              <h2 class="ka-panel-title">Kamery i alarm</h2>
+              <p class="ka-panel-tag">Bezpieczeństwo, kontrola i spokój w jednym miejscu.</p>
+            </div>
+          </div>
+
+          <div class="ka-hero-right">
+            <div class="ka-context" role="group" aria-label="Pogoda na zewnątrz oraz data i godzina">
+              <div class="ka-context-item">
+                <span class="ka-context-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18a4 4 0 0 1-.5-8 6 6 0 0 1 11.5 1.5A3.5 3.5 0 0 1 17.5 18Z"/></svg></span>
+                <span class="ka-context-body"><i>Na zewnątrz</i><b data-ka="weatherOut">16°C</b></span>
+              </div>
+              <span class="ka-context-sep" aria-hidden="true"></span>
+              <div class="ka-context-item ka-context-time">
+                <span class="ka-context-body"><i data-ka="date">czw. 4 wrz</i><b data-ka="clock">20:24</b></span>
+              </div>
+            </div>
+
+            <div class="ka-brand">
+              <div class="ka-brand-row">
+                <span class="ka-demo-badge">Tryb demonstracyjny</span>
+                <img class="ka-logo" src="/assets/brand/logo-wyciete.png" alt="HA Expert Tomasz Furdal" width="871" height="334" />
+              </div>
+              <button class="ka-fs-btn" type="button" data-ka-fs aria-pressed="false">
+                <span class="ka-fs-ic" aria-hidden="true"></span>
+                <span class="ka-fs-label">Pełny ekran</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="ka-body">
+          <section class="ka-cams" aria-labelledby="kaCamsTitle">
+            <div class="ka-cams-head">
+              <span class="ka-cams-title">
+                <span class="ka-cams-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5 15 6v11L3 14.5Z"/><path d="M15 10.5 21 8v8l-6-2.5Z"/></svg></span>
+                <span><b id="kaCamsTitle">Podgląd kamer</b><small>Cztery strefy posesji, obraz na żywo.</small></span>
+              </span>
+              <button class="ka-sim-btn" type="button" data-ka="simBtn">
+                <span aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="13" cy="4.5" r="1.8"/><path d="M10 9.5 7 8 4 11M10 9.5l4 1 1.5 4M14 10.5 12 21M14 10.5l4.5 2.5M9.5 14 6.5 21"/></svg></span>
+                Symuluj włamanie
+              </button>
+            </div>
+            <div class="ka-cams-grid" data-ka="camsGrid"></div>
+          </section>
+
+          <section class="ka-side" aria-label="Sterowanie alarmem">
+            <div class="ka-overall" data-ka="overall" data-tone="ok" role="status" aria-live="polite">
+              <span class="ka-overall-ic" data-ka="overallIc" aria-hidden="true"></span>
+              <span class="ka-overall-body">
+                <b data-ka="overallTitle">Wszystko w porządku</b>
+                <small data-ka="overallNote">System działa prawidłowo.</small>
+              </span>
+            </div>
+
+            <div class="ka-alarm is-disarmed" data-ka="alarmCard">
+              <span class="ka-alarm-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 5 6v6c0 4.5 3 8 7 9 4-1 7-4.5 7-9V6Z"/><path d="m9 12 2 2 4-4"/></svg></span>
+              <span class="ka-alarm-body">
+                <b data-ka="alarmState">Alarm rozbrojony</b>
+                <small data-ka="alarmSub">Dom jest bezpieczny.</small>
+              </span>
+              <button class="ka-lock" type="button" data-ka="lock" aria-pressed="false" aria-label="Uzbrój alarm (cały dom)">
+                <span class="ka-lock-ring" aria-hidden="true"></span>
+                <span class="ka-lock-ic" data-ka="lockIc" aria-hidden="true"></span>
+              </button>
+            </div>
+
+            <div class="ka-quick" data-ka="quickRow" role="group" aria-label="Szybkie uzbrojenie"></div>
+
+            <div class="ka-block ka-sensors-block">
+              <div class="ka-block-head">
+                <b>Czujniki i strefy</b>
+                <button class="ka-link-btn" type="button" data-ka="sensorsToggle" aria-expanded="false">Wszystkie strefy</button>
+              </div>
+              <div class="ka-sensors-grid" data-ka="sensorsGrid"></div>
+              <ul class="ka-zones-detail" data-ka="zonesDetail" hidden></ul>
+            </div>
+
+            <div class="ka-block ka-events-block">
+              <div class="ka-block-head">
+                <b>Ostatnie zdarzenia</b>
+                <button class="ka-link-btn" type="button" data-ka="eventsToggle" aria-expanded="false">Pełna historia</button>
+              </div>
+              <ul class="ka-events" data-ka="eventsList"></ul>
+            </div>
+          </section>
+        </div>
+
+        <div class="ka-infobar" data-ka="infoBar" data-tone="ok" role="status" aria-live="polite"></div>
+
+        <div class="ka-foot">
+          <span class="ka-foot-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 5 6v6c0 4.5 3 8 7 9 4-1 7-4.5 7-9V6Z"/><path d="m9 12 2 2 4-4"/></svg>
+            Panel jest symulacją. Przyciski działają, ale nie sterują prawdziwym domem.
+          </span>
+          <span class="ka-foot-tags">Twój dom · Zawsze pod kontrolą</span>
+        </div>
+
+        <div class="ka-settings" data-ka="settings" role="dialog" aria-modal="false" aria-label="Ustawienia systemu" hidden>
+          <div class="ka-settings-head">
+            <b>Ustawienia systemu</b>
+            <button class="ka-settings-close" type="button" data-ka="settingsClose" aria-label="Zamknij ustawienia">✕</button>
+          </div>
+          <div class="ka-settings-body" data-ka="settingsBody"></div>
+        </div>
+      </div>
+
+      <div class="ka-lightbox" data-ka="lightbox" hidden>
+        <div class="ka-lightbox-backdrop" aria-hidden="true"></div>
+        <div class="ka-lightbox-dialog" role="dialog" aria-modal="true" aria-label="Powiększony podgląd kamery">
+          <div class="ka-lightbox-img" data-ka="lightboxImg" aria-hidden="true"></div>
+          <div class="ka-lightbox-bar">
+            <span class="ka-lightbox-meta">
+              <b data-ka="lightboxName">Kamera</b>
+              <span class="ka-lightbox-state" data-ka="lightboxState">Brak ruchu</span>
+            </span>
+            <button class="ka-lightbox-close" type="button" data-ka="lightboxClose" aria-label="Zamknij powiększony podgląd">✕</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <section class="demo-contact-card demo-contact-card--detail" aria-labelledby="ka-contact-title">
+      <div>
+        <span class="demo-contact-eyebrow">Twój własny panel</span>
+        <h2 id="ka-contact-title">Chcesz taki panel bezpieczeństwa w swoim domu?</h2>
+        <p>Projektuję panele Home Assistant, które łączą podgląd kamer, uzbrajanie stref i reakcję na zdarzenia w jednym miejscu. Logika alarmu, czasy na wejście i wyjście oraz tryby ochrony są dopasowane do Twojego domu i sposobu korzystania z systemu.</p>
+      </div>
+      <a class="demo-contact-button" href="/pl/#kontakt">Zapraszam do kontaktu <span aria-hidden="true">→</span></a>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-company"><span>HA Expert · CVR 46751205</span><span>Mosevej 2, 8620 Kjellerup</span><a href="mailto:kontakt@ha-expert.com">kontakt@ha-expert.com</a><span class="footer-company__desc">Zdalna konfiguracja, integracje i wsparcie Home Assistant.</span></div><div class="footer-inner">
+      <span>© <span id="year"></span> Tomasz Furdal – Home Assistant &amp; Integrations</span>
+      <span>Płatności: przelew bankowy · BLIK · MobilePay · Revolut · PayPal</span><a class="footer-privacy-link" href="/pl/polityka-prywatnosci/">Polityka prywatności</a>
+    </div>
+  </footer>
+
+  <script src="/nav.js?v=20260826-consent-v2-local-1"></script>
+  <script src="/demo/kamery-alarm-panel.js?v=20260906-kamery-alarm-9"></script>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>

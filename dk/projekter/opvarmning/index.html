@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="robots" content="noindex,nofollow" />
+  <meta name="author" content="Tomasz Furdal" />
+  <meta name="theme-color" content="#07111f" />
+  <link rel="icon" type="image/png" href="../../../assets/brand/ha-expert-logo-transparent.png" />
+  <link rel="canonical" href="https://ha-expert.com/dk/projekter/opvarmning/" />
+  <link rel="alternate" hreflang="pl" href="https://ha-expert.com/pl/projekty/ogrzewanie/" />
+  <link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/projekter/opvarmning/" />
+  <link rel="alternate" hreflang="en" href="https://ha-expert.com/en/projects/heating/" />
+  <link rel="alternate" hreflang="x-default" href="https://ha-expert.com/en/projects/heating/" />
+  <title>Opvarmning og varmekilder – premium-panel til Home Assistant | HA Expert</title>
+  <meta name="description" content="Interaktivt varmepanel: buffertank, gaskedel og PV-overskudsvarme, fire zoner med ønsket temperatur og fælles driftstilstande. Demonstration uden forbindelse til HA." />
+  <link rel="stylesheet" href="../../../styles.css?v=20260906-footer-company-1" />
+  <link rel="stylesheet" href="/demo/demo.css?v=20260831-demo-mobile-bg-1" />
+  <link rel="stylesheet" href="/demo/demo-catalog.css?v=20260901-demo-catalog-i18n-1" />
+  <link rel="stylesheet" href="/demo/ogrzewanie-panel.css?v=20260906-ogrzewanie-20" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18087588380"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{'ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','analytics_storage':'denied'});</script>
+  <script src="../../../consent.js?v=20260829-consent-stats-local-1"></script>
+  <script>gtag('js',new Date());gtag('config','AW-18087588380');</script>
+</head>
+<body class="demo-page demo-detail-page pl-home-bg-test og-page" data-demo-lang="dk">
+  <header class="demo-mobile-header">
+    <div class="nav">
+      <a class="logo" href="/dk/" aria-label="Tomasz Furdal - Home Assistant Expert">
+        <img class="logo-image" src="/assets/brand/logo-wyciete.png" alt="Tomasz Furdal - Home Assistant Expert" width="871" height="334" />
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Åbn menu"><span aria-hidden="true">☰</span></button>
+      <nav id="primary-nav" aria-label="Primær navigation">
+        <ul>
+          <li><a href="/dk/#ydelser">Ydelser</a></li>
+          <li><a href="/dk/#om-mig">Om mig</a></li>
+          <li><a href="/dk/#for-hvem">For hvem</a></li>
+          <li><a href="/dk/#saadan-arbejder-jeg">Sådan arbejder jeg</a></li>
+          <li><a href="/dk/#priser">Priser</a></li>
+          <li><a href="/dk/#kontakt">Kontakt</a></li>
+          <li class="nav-secondary-start"><a href="/dk/projekter/" aria-current="page">Projekter</a></li>
+          <li><a href="/dk/vejledninger/">Vejledninger</a></li>
+          <li><a href="/dk/demo/">HA-demo</a></li>
+        </ul>
+      </nav>
+      <div class="lang-switch" aria-label="Sprogvalg">
+        <a class="lang-btn" href="/pl/projekty/ogrzewanie/" aria-label="Polski"><img class="lang-flag" src="/assets/flags/pl.svg" alt="Polski" /></a>
+        <a class="lang-btn active" href="/dk/projekter/opvarmning/" aria-label="Dansk" aria-current="page"><img class="lang-flag" src="/assets/flags/dk.svg" alt="Dansk" /></a>
+        <a class="lang-btn" href="/en/projects/heating/" aria-label="English"><img class="lang-flag" src="/assets/flags/gb.svg" alt="English" /></a>
+      </div>
+      <a class="nav-cta" href="/dk/#kontakt">Gratis vurdering</a>
+    </div>
+  </header>
+
+  <main class="demo-shell og-shell">
+    <a class="demo-back-link" href="/dk/projekter/"><span aria-hidden="true">←</span> Projekter</a>
+
+    <section class="demo-head og-head">
+      <div>
+        <span class="demo-kicker">Projekt · Opvarmning</span>
+        <h1 class="demo-title demo-title-mobile-match">Opvarmning og varmekilder</h1>
+        <p class="demo-detail-intro og-intro">Buffertank, gaskedel og et varmelegeme fra solcelleoverskud arbejder sammen, og fire zoner holder deres ønskede temperatur. Skift tilstand for hele hjemmet, indstil temperaturen og se, hvordan hver kilde og hver zone reagerer. Det er en demonstration: knapperne virker, men panelet er ikke forbundet til Home Assistant.</p>
+      </div>
+    </section>
+
+    <div class="og-stage" id="ogStage">
+      <div class="og-panel" id="ogPanel">
+        <div class="og-panel-bg" aria-hidden="true"></div>
+
+        <div class="og-hero">
+          <div class="og-hero-left">
+            <span class="og-heatmark" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8c3-3 6 3 9 0s5-3 7-1M4 14c3-3 6 3 9 0s5-3 7-1"/></svg>
+            </span>
+            <div class="og-hero-copy">
+              <span class="og-eyebrow">Projekt · Opvarmning</span>
+              <h2 class="og-panel-title">Opvarmning og varmekilder</h2>
+              <p class="og-tagline">Et varmt hjem. Lavere regninger. Smart brug af energi.</p>
+            </div>
+          </div>
+
+          <div class="og-hero-right">
+            <div class="og-climate" role="group" aria-label="Temperatur udenfor og indendørs">
+              <div class="og-climate-item">
+                <span class="og-climate-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18a4 4 0 0 1-.5-8 6 6 0 0 1 11.5 1.5A3.5 3.5 0 0 1 17.5 18Z"/></svg></span>
+                <span class="og-climate-body"><i>Udenfor</i><b data-og="climateOut">3,5°C</b></span>
+              </div>
+              <span class="og-climate-sep" aria-hidden="true"></span>
+              <div class="og-climate-item">
+                <span class="og-climate-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11.5 12 5l8 6.5"/><path d="M6 10.5V19h12v-8.5"/></svg></span>
+                <span class="og-climate-body"><i>Indendørs</i><b data-og="climateIn">21,0°C</b></span>
+              </div>
+            </div>
+            <div class="og-hero-brand">
+              <div class="og-hero-brand-row">
+                <span class="og-demo-badge">Demotilstand</span>
+                <img class="og-logo" src="/assets/brand/logo-wyciete.png" alt="HA Expert Tomasz Furdal" width="871" height="334" />
+              </div>
+              <button class="og-fs-btn" type="button" data-og-fs aria-pressed="false">
+                <span class="og-fs-ic" aria-hidden="true"></span>
+                <span class="og-fs-label">Fuld skærm</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <section class="og-sources" aria-labelledby="ogSourcesTitle">
+          <div class="og-sources-head">
+            <span class="og-eyebrow" id="ogSourcesTitle">Varmekilder</span>
+            <span class="og-sources-note">Smart samarbejde. Først gratis energi fra solceller, derefter støtte fra gas.</span>
+          </div>
+
+          <div class="og-flow">
+            <article class="og-flow-card og-flow-card--btn" data-og-source="pv" role="button" tabindex="0" aria-pressed="true" aria-label="Varme fra solcelleoverskud, tænd eller sluk">
+              <div class="og-flow-fig" data-fig="pv-panel" aria-hidden="true"></div>
+              <div class="og-flow-main">
+                <span class="og-flow-tag is-on" data-og="pvTag"><span class="og-tag-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 4S9 3 5.5 10.5C3 15.7 6.5 20 6.5 20S18 20 20 8c.4-2.4 0-4 0-4Z"/><path d="M5 20c3-7 8-11 13-13"/></svg></span><span class="og-tag-txt">Overskud til rådighed</span></span>
+                <b class="og-flow-title">Solceller <small>off-grid</small></b>
+                <b class="og-flow-big" data-og="pvSurplus">2,8 kW</b>
+                <p>Sender energi til buffertankens varmelegeme.</p>
+              </div>
+            </article>
+
+            <span class="og-flow-link" aria-hidden="true">›</span>
+
+            <article class="og-flow-card" data-node="heater">
+              <div class="og-flow-fig" data-fig="coil" aria-hidden="true"></div>
+              <div class="og-flow-main">
+                <span class="og-flow-tag is-on" data-og="heaterTag"><span class="og-tag-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4 12H2M22 12h-2M5 5 3.6 3.6M20.4 20.4 19 19M5 19l-1.4 1.4M20.4 3.6 19 5"/></svg></span><span class="og-tag-txt">Varmer fra PV</span></span>
+                <b class="og-flow-title">Varmelegeme i buffertank</b>
+                <b class="og-flow-big" data-og="pvHeat">2,5 kW</b>
+                <p>Lader buffertanken med overskudsenergi.</p>
+              </div>
+            </article>
+
+            <span class="og-flow-link" aria-hidden="true">›</span>
+
+            <div class="og-flow-tank">
+              <div class="og-tank-fig" data-fig="bufor" aria-hidden="true">
+                <span class="og-tank-heat" data-og="bufHeat"></span>
+              </div>
+              <div class="og-tank-info">
+                <b class="og-flow-title">Buffertank</b>
+                <span><i>Top</i><b data-og="bufTop">62°C</b></span>
+                <span><i>Bund</i><b data-og="bufBot">48°C</b></span>
+                <span><i>Opladning</i><b data-og="bufCharge">75%</b></span>
+              </div>
+            </div>
+
+            <span class="og-flow-link" aria-hidden="true">›</span>
+
+            <article class="og-flow-card og-flow-card--gas og-flow-card--btn" data-og-source="gas" role="button" tabindex="0" aria-pressed="false" aria-label="Gaskedel, tænd eller sluk for varme">
+              <div class="og-flow-fig" data-fig="piec" aria-hidden="true">
+                <span class="og-flame" data-og="gasFlame" aria-hidden="true"><span></span><span></span></span>
+              </div>
+              <div class="og-flow-main">
+                <span class="og-flow-tag" data-og="gasTag"><span class="og-tag-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s5 4.3 5 9a5 5 0 0 1-10 0c0-1.7.6-3.1 1.6-4.1.1 1.4.9 2.4 2 2.8C10 9.4 9.7 6.4 12 3Z"/></svg></span><span class="og-tag-txt" data-og="gasStateShort">Standby</span></span>
+                <b class="og-flow-title">Gaskedel <small>Reserve</small></b>
+              </div>
+            </article>
+
+            <div class="og-dist">
+              <b class="og-flow-title">Varmefordeling</b>
+              <div class="og-dist-row">
+                <span class="og-dist-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="6" width="16" height="12" rx="1.5"/><path d="M8 6v12M12 6v12M16 6v12M4 9h16M4 15h16"/></svg></span>
+                <span class="og-dist-body"><b>Varmekreds</b><i>Fremløb <span data-og="coSupply">36°C</span></i></span>
+              </div>
+              <div class="og-dist-bar"><span data-og="coBar"></span></div>
+              <div class="og-dist-row">
+                <span class="og-dist-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5s6 6.6 6 10.5a6 6 0 0 1-12 0c0-3.9 6-10.5 6-10.5Z"/></svg></span>
+                <span class="og-dist-body"><b>Varmt vand</b><i>Beholder <span data-og="cwuTank">48°C</span></i></span>
+              </div>
+              <div class="og-dist-bar og-dist-bar--cool"><span data-og="cwuBar"></span></div>
+            </div>
+          </div>
+        </section>
+
+        <div class="og-zones" id="ogZones"></div>
+
+        <section class="og-common" aria-labelledby="ogCommonTitle">
+          <div class="og-common-head">
+            <span class="og-eyebrow" id="ogCommonTitle">Driftstilstand for hele hjemmet</span>
+            <span class="og-common-note-lead">Vælg en tilstand, så justerer systemet automatisk alle indstillinger.</span>
+          </div>
+
+          <div class="og-modes" role="group" aria-label="Driftstilstand for hele hjemmet">
+            <button class="og-mode is-active" type="button" data-og-mode="komfort" aria-pressed="true">
+              <span class="og-mode-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11 12 4l8 7"/><path d="M6 10v9h12v-9"/></svg></span>
+              <span class="og-mode-body"><b>Komfort</b><small>Fuld komfort</small></span>
+            </button>
+            <button class="og-mode" type="button" data-og-mode="eco" aria-pressed="false">
+              <span class="og-mode-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 4S9 3 5.5 10.5C3 15.7 6.5 20 6.5 20S18 20 20 8c.4-2.4 0-4 0-4Z"/><path d="M5 20c3-7 8-11 13-13"/></svg></span>
+              <span class="og-mode-body"><b>Eco</b><small>Energibesparelse</small></span>
+            </button>
+            <button class="og-mode" type="button" data-og-mode="nieobecnosc" aria-pressed="false">
+              <span class="og-mode-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg></span>
+              <span class="og-mode-body"><b>Fravær</b><small>Lavere forbrug</small></span>
+            </button>
+            <button class="og-mode" type="button" data-og-mode="wakacje" aria-pressed="false">
+              <span class="og-mode-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h9l4-7 2 1-2 6h7l-1 3H6Z"/><path d="M4 20h13"/></svg></span>
+              <span class="og-mode-body"><b>Ferie</b><small>Frostsikring</small></span>
+            </button>
+            <button class="og-mode" type="button" data-og-mode="reczny" aria-pressed="false">
+              <span class="og-mode-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 12h4M12 6v4M6 6l3 3M14 8l1.5-1.5a2 2 0 1 1 3 3L17 11m-2 2 3 5a1.6 1.6 0 0 1-2.6 1.7L9 15"/></svg></span>
+              <span class="og-mode-body"><b>Manuel</b><small>Fuld kontrol</small></span>
+            </button>
+            <button class="og-mode og-mode--action" type="button" data-og-action="settings">
+              <span class="og-mode-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 3v3M12 18v3M4.2 7.5l2.6 1.5M17.2 15l2.6 1.5M4.2 16.5l2.6-1.5M17.2 9l2.6-1.5"/></svg></span>
+              <span class="og-mode-body"><b>Indstillinger</b><small>Systemparametre</small></span>
+              <span class="og-mode-chevron" aria-hidden="true">›</span>
+            </button>
+          </div>
+
+          <div class="og-target" data-og-target hidden>
+            <div class="og-target-head">
+              <label for="ogCommonTemp">Ønsket komfort for alle rum</label>
+              <b data-og="commonTempVal">21,0°C</b>
+            </div>
+            <input type="range" id="ogCommonTemp" class="og-range" min="16" max="24" step="0.5" value="21" />
+            <span class="og-common-note" data-og="commonNote">Manuel tilstand. Hvert rum kan også indstilles separat.</span>
+          </div>
+        </section>
+
+        <div class="og-foot">
+          <span class="og-foot-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 4S9 3 5.5 10.5C3 15.7 6.5 20 6.5 20S18 20 20 8c.4-2.4 0-4 0-4Z"/><path d="M5 20c3-7 8-11 13-13"/></svg>
+            Moderne opvarmning. Mere komfort. Mindre påvirkning af miljøet.
+          </span>
+          <span class="og-foot-tags">Dit smarte hjem · Komfort · Besparelse · Uafhængighed</span>
+        </div>
+      </div>
+
+      <div class="og-toast" data-og-toast role="status" aria-live="polite" hidden></div>
+    </div>
+
+    <section class="demo-contact-card demo-contact-card--detail" aria-labelledby="og-contact-title">
+      <div>
+        <span class="demo-contact-eyebrow">Dit eget panel</span>
+        <h2 id="og-contact-title">Vil du have sådan et varmepanel i dit hjem?</h2>
+        <p>Jeg designer Home Assistant-paneler til opvarmning med flere varmekilder: buffertank, gaskedel, varmepumpe og varmelegeme fra solcelleoverskud, med driftstilstande, tidsplan og en logik, der styrer rækkefølgen af kilderne.</p>
+      </div>
+      <a class="demo-contact-button" href="/dk/#kontakt">Kontakt mig <span aria-hidden="true">→</span></a>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-company"><span>HA Expert · CVR 46751205</span><span>Mosevej 2, 8620 Kjellerup</span><a href="mailto:kontakt@ha-expert.com">kontakt@ha-expert.com</a><span class="footer-company__desc">Fjernkonfiguration, integrationer og support til Home Assistant.</span></div><div class="footer-inner">
+      <span>© <span id="year"></span> Tomasz Furdal – Home Assistant &amp; Integrations</span>
+      <span>Betaling: bankoverførsel · MobilePay · BLIK · Revolut · PayPal</span><a class="footer-privacy-link" href="/dk/privatlivspolitik/">Privatlivspolitik</a>
+    </div>
+  </footer>
+
+  <script src="/nav.js?v=20260826-consent-v2-local-1"></script>
+  <script src="/demo/ogrzewanie-panel.js?v=20260906-ogrzewanie-20"></script>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>

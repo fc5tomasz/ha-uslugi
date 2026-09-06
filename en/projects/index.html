@@ -14,17 +14,17 @@
   <link rel="alternate" hreflang="en" href="https://ha-expert.com/en/projects/" />
   <link rel="alternate" hreflang="x-default" href="https://ha-expert.com/en/projects/" />
   <title>Home Assistant projects and sample dashboards | HA Expert</title>
-  <meta name="description" content="See sample Home Assistant projects, control dashboards, and Zigbee network diagnostics." />
-  <meta name="keywords" content="Home Assistant projects, sample dashboards, Zigbee diagnostics, smart home automation, heating control" />
+  <meta name="description" content="Explore Home Assistant projects, interactive control panels and solutions designed for different needs around the home." />
+  <meta name="keywords" content="Home Assistant projects, interactive dashboards, smart home automation, heating control, home security panels" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://ha-expert.com/en/projects/" />
   <meta property="og:title" content="Home Assistant projects and sample dashboards | HA Expert" />
-  <meta property="og:description" content="See sample Home Assistant projects, control dashboards, and Zigbee network diagnostics." />
+  <meta property="og:description" content="Explore Home Assistant projects, interactive control panels and solutions designed for different needs around the home." />
   <meta property="og:image" content="https://ha-expert.com/assets/brand/o-mnie.webp" />
   <meta property="og:locale" content="en_GB" />
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Home Assistant projects and sample dashboards | HA Expert" />
-  <meta name="twitter:description" content="See sample Home Assistant projects, control dashboards, and Zigbee network diagnostics." />
+  <meta name="twitter:description" content="Explore Home Assistant projects, interactive control panels and solutions designed for different needs around the home." />
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -70,7 +70,9 @@
   }
 }
   </script>
-  <link rel="stylesheet" href="../../styles.css?v=20260901-mobile-lang-optical-1" />
+  <link rel="stylesheet" href="../../styles.css?v=20260906-footer-company-1" />
+  <link rel="stylesheet" href="/demo/demo-catalog.css?v=20260905-projects-catalog-1" />
+  <link rel="stylesheet" href="/projekty-catalog.css?v=20260905-projects-catalog-1" />
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18087588380"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -110,7 +112,7 @@
           <li><a href="/en/#contact">Contact</a></li>
           <li class="nav-secondary-start"><a href="/en/projects/" aria-current="page">Projects</a></li>
           <li><a href="/en/guides/">Guides</a></li>
-          <li><a href="/en/demo/">Demo panel</a></li>
+          <li><a href="/en/demo/">HA demo</a></li>
         </ul>
       </nav>
       <div class="lang-switch" aria-label="Language switch">
@@ -124,151 +126,66 @@
 
   <main>
     <section class="section" id="projects">
-      <div class="section-label">PROJECTS</div>
-      <h1 class="section-title mobile-match-title">Projects and sample dashboards</h1>
-      <p class="section-subtitle">The projects and dashboards shown here come from my own continuously developed Home Assistant system and present solutions I use in daily life.</p>
-      <p class="showcase-interaction-hint">Click or tap a panel to enlarge it.</p>
-      <div class="grid-3 showcase-grid">
-        <article class="card showcase-card">
-          <div class="showcase-media">
-            <img src="../../assets/examples/heating-control.png" alt="Heating and buffer control panel" loading="lazy" width="1920" height="1080" data-lightbox-src="../../assets/examples/heating-control.png" />
-          </div>
-          <div class="showcase-copy">
-            <h2>Heating control</h2>
-            <p>The dashboard allows managing heating from multiple sources, such as off-grid photovoltaics with a buffer tank and a gas boiler. It enables changing operating modes, temperatures, and setback thresholds, and automates energy savings when the house is empty or in vacation mode. The entire setup also monitors the system's logic so that heat sources never end up working against each other at the same time.</p>
-          </div>
-        </article>
+      <div class="section-label">HOME ASSISTANT PROJECTS</div>
+      <h1 class="section-title mobile-match-title">Dashboards for different needs</h1>
+      <p class="section-subtitle">See different ways to present and control a home: from heating and ventilation to blinds, rooms and security.</p>
+      <p class="showcase-interaction-hint">Choose a project to view the dashboard.</p>
 
-        <article class="card showcase-card">
-          <div class="showcase-media">
-            <img src="../../assets/examples/heating-status.png" alt="Installation status and temperature panel" loading="lazy" width="1920" height="1080" data-lightbox-src="../../assets/examples/heating-status.png" />
+      <div class="projects-catalog">
+        <a class="demo-catalog-card project-tile" href="/en/projects/heating/" aria-label="Open panel: Heating control">
+          <div class="demo-catalog-card-copy">
+          <span class="project-tile-label">HEATING</span>
+          <h2 class="project-tile-title">Heating control</h2>
+          <p class="project-tile-desc">Interactive panel: buffer tank, gas boiler and PV surplus heater, four zones and shared operating modes.</p>
           </div>
-          <div class="showcase-copy">
-            <h2>Buffer, process, and heat source dependencies</h2>
-            <p>The view shows the buffer status and the operating logic of the entire heating system. It makes it easy to assess the temperature in the upper and lower parts of the buffer, informs whether energy is being used for central heating, and whether the water is at the right temperature for domestic hot water.</p>
+        </a>
+        <a class="demo-catalog-card project-tile" href="/en/projects/blinds/" aria-label="Open panel: Smart blind control">
+          <div class="demo-catalog-card-copy">
+          <span class="project-tile-label">COMFORT</span>
+          <h2 class="project-tile-title">Smart blind control</h2>
+          <p class="project-tile-desc">Interactive panel: six windows and whole-home control, day scenes, a schedule and an activity log.</p>
           </div>
-        </article>
-
-        <article class="card showcase-card">
-          <div class="showcase-media">
-            <img src="../../assets/examples/blinds-control.png" alt="Blinds and everyday control panel" loading="lazy" width="1920" height="1080" data-lightbox-src="../../assets/examples/blinds-control.png" />
+        </a>
+        <a class="demo-catalog-card project-tile" href="/en/projects/ventilation/" aria-label="Open panel: Heat recovery and ventilation">
+          <div class="demo-catalog-card-copy">
+          <span class="project-tile-label">AIR &amp; CLIMATE</span>
+          <h2 class="project-tile-title">Heat recovery and ventilation</h2>
+          <p class="project-tile-desc">Interactive panel: four decentralised units, operating modes and fan speed.</p>
           </div>
-          <div class="showcase-copy">
-            <h2>Blinds, groups, and scenes</h2>
-            <p>The dashboard allows you to control individual blinds, groups of blinds, and home scenes. It also facilitates managing the entire home and combines manual control with automation based on the time of day, presence, and selected events in the system.</p>
+        </a>
+        <a class="demo-catalog-card project-tile" href="/en/projects/rooms/" aria-label="Open panel: Room control">
+          <div class="demo-catalog-card-copy">
+          <span class="project-tile-label">ROOMS</span>
+          <h2 class="project-tile-title">Room control</h2>
+          <p class="project-tile-desc">Interactive panel: living room, bedroom and bathroom, each with its own lighting, scenes, blinds, climate and radio, plus shared home scenes.</p>
           </div>
-        </article>
-
-        <article class="card showcase-card">
-          <div class="showcase-media">
-            <img src="../../assets/examples/roborock.png" alt="Device integrations and robot vacuum control panel" loading="lazy" width="1920" height="1080" data-lightbox-src="../../assets/examples/roborock.png" />
+        </a>
+        <a class="demo-catalog-card project-tile" href="/en/projects/cameras-alarm/" aria-label="Open panel: Cameras and alarm">
+          <div class="demo-catalog-card-copy">
+          <span class="project-tile-label">SECURITY</span>
+          <h2 class="project-tile-title">Cameras and alarm</h2>
+          <p class="project-tile-desc">An interactive panel with four camera views, alarm modes, sensors, an event log and an intrusion simulation.</p>
           </div>
-          <div class="showcase-copy">
-            <h2>Device integrations</h2>
-            <p>The dashboard allows convenient control of the robot vacuum: starting a full house clean or just selected zones, pausing work, and sending the device back to the dock. It also shows the vacuum's status and lets you adjust the cleaning power.</p>
-          </div>
-        </article>
-
-        <article class="card showcase-card">
-          <div class="showcase-media">
-            <img src="../../assets/examples/rekuperacja.png" alt="Heat recovery and ventilation panel" loading="lazy" width="1920" height="1080" data-lightbox-src="../../assets/examples/rekuperacja.png" />
-          </div>
-          <div class="showcase-copy">
-            <h2>Heat recovery and ventilation</h2>
-            <p>The view allows switching between manual mode and time-based or condition-based automation. It lets you control the heat-recovery fan speed, ventilation boost, and operating logic without needing to access system settings.</p>
-          </div>
-        </article>
-
-        <article class="card showcase-card">
-          <div class="showcase-media">
-            <img src="../../assets/examples/panele.png" alt="Lighting and glass panels dashboard" loading="lazy" width="1920" height="1080" data-lightbox-src="../../assets/examples/panele.png" />
-          </div>
-          <div class="showcase-copy">
-            <h2>Lighting and glass panels</h2>
-            <p>The dashboard replicates the physical glass switches in the home and shows the current lighting status in individual rooms. It facilitates quick light control, organizes the room layout, and provides a clear overview of what is currently turned on.</p>
-          </div>
-        </article>
-
+        </a>
       </div>
 
-      <div class="tech-block">
-        <article class="card showcase-card tech-card">
-          <div class="showcase-media tech-media">
-            <img src="../../assets/examples/studio.jpg" alt="Studio dashboard for multimedia and home cinema control" loading="lazy" width="1280" height="720" data-lightbox-src="../../assets/examples/studio.jpg" />
-          </div>
-        </article>
-        <div class="card tech-copy tech-copy-panel">
-          <div class="tech-copy-body">
-            <h2 class="section-title section-title-small">Studio and multimedia</h2>
-            <p class="section-subtitle">The Studio dashboard brings Yamaha receiver control, NVIDIA Shield, subwoofers, TV and multimedia apps together in one place. Selecting YouTube, Tidal or Kodi can automatically start the required devices and switch on the subwoofers without additional manual steps. Volume, blinds and home cinema scenes can also be controlled from the same dashboard, allowing the entire audio-video setup to work as one integrated system.</p>
-          </div>
+      <section class="demo-contact-card" aria-labelledby="projects-cta-title">
+        <div>
+          <span class="demo-contact-eyebrow">A dashboard made for you</span>
+          <h2 id="projects-cta-title">Want a similar dashboard for your home?</h2>
+          <p>I design Home Assistant dashboards around your devices, rooms and the way you use your system.</p>
         </div>
-      </div>
-
-      <div class="tech-block">
-        <div class="card tech-copy tech-copy-panel">
-          <div class="tech-copy-body">
-            <h2 class="section-title section-title-small">Internet radio and voice control</h2>
-            <p class="section-subtitle">The dashboard provides quick access to favourite stations while also allowing any internet radio stream to be added. Playback can be started with one tap, automatically at a selected time, or with a voice command.</p>
-          </div>
-        </div>
-        <article class="card showcase-card tech-card">
-          <div class="showcase-media tech-media">
-            <img src="../../assets/examples/radio-internetowe.jpg" alt="Internet radio dashboard in Home Assistant" loading="lazy" width="1280" height="720" data-lightbox-src="../../assets/examples/radio-internetowe.jpg" />
-          </div>
-        </article>
-      </div>
-
-      <div class="tech-block">
-        <article class="card showcase-card tech-card">
-          <div class="showcase-media tech-media">
-            <img src="../../assets/examples/monitoring-alarm-prywatnosc.png" alt="Monitoring, alarm and presence simulation dashboard" loading="lazy" width="1672" height="941" data-lightbox-src="../../assets/examples/monitoring-alarm-prywatnosc.png" />
-          </div>
-        </article>
-        <div class="card tech-copy tech-copy-panel">
-          <div class="tech-copy-body">
-            <h2 class="section-title section-title-small">Monitoring, alarm and presence simulation</h2>
-            <p class="section-subtitle">One dashboard combines camera views, event information and arming selected zones or the entire home. The system can also control an alarm light and run presence simulation while the household is away. The camera images have been intentionally blurred for privacy.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="tech-block">
-        <div class="card tech-copy tech-copy-panel">
-          <div class="tech-copy-body">
-            <div class="section-label">Network stability</div>
-            <h2 class="section-title section-title-small">Zigbee topology and connection diagnostics</h2>
-            <p class="section-subtitle">The dashboard shows how the Zigbee network is built: which devices connect directly to the coordinator, which work through routers, and the connection quality across the entire topology.</p>
-            <ul class="hero-note-list tech-note-list">
-              <li>network topology and routing paths</li>
-              <li>connection quality and LQI values</li>
-              <li>relationships between the coordinator, routers, and end devices</li>
-            </ul>
-          </div>
-        </div>
-        <article class="card showcase-card tech-card">
-          <div class="showcase-media tech-media">
-            <img src="../../assets/examples/zigbee-map.png" alt="Zigbee2MQTT network map" loading="lazy" width="1920" height="1080" data-lightbox-src="../../assets/examples/zigbee-map.png" />
-          </div>
-        </article>
-      </div>
+        <a class="demo-contact-button" href="/en/#contact">Get in touch <span aria-hidden="true">→</span></a>
+      </section>
 
     </section>
-
-    <div class="lightbox" id="lightbox" hidden aria-hidden="true">
-      <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Close preview">Close</button>
-      <div class="lightbox-backdrop" id="lightboxBackdrop"></div>
-      <div class="lightbox-dialog" role="dialog" aria-modal="true" aria-label="Panel preview">
-        <img id="lightboxImage" alt="" />
-      </div>
-    </div>
 
   </main>
 
   <footer>
-    <div class="footer-inner">
+    <div class="footer-company"><span>HA Expert · CVR 46751205</span><span>Mosevej 2, 8620 Kjellerup</span><a href="mailto:kontakt@ha-expert.com">kontakt@ha-expert.com</a><span class="footer-company__desc">Remote configuration, integrations and support for Home Assistant.</span></div><div class="footer-inner">
       <span>© <span id="year"></span> Tomasz Furdal – Home Assistant &amp; Integrations</span>
-      <span>Payments: bank transfer, Revolut, PayPal, MobilePay</span><a class="footer-privacy-link" href="/en/privacy-policy/">Privacy Policy</a>
+      <span>Payments: bank transfer · PayPal · Revolut · MobilePay · BLIK</span><a class="footer-privacy-link" href="/en/privacy-policy/">Privacy Policy</a>
     </div>
   </footer>
 
@@ -284,45 +201,6 @@
     syncEnHeaderState();
     window.addEventListener("scroll", syncEnHeaderState, { passive: true });
 
-    const lightbox = document.getElementById("lightbox");
-    const lightboxImage = document.getElementById("lightboxImage");
-    const lightboxClose = document.getElementById("lightboxClose");
-    const lightboxBackdrop = document.getElementById("lightboxBackdrop");
-
-    function openLightbox(src, alt) {
-      lightboxImage.src = src;
-      lightboxImage.alt = alt || "";
-      lightbox.hidden = false;
-      lightbox.setAttribute("aria-hidden", "false");
-      document.body.classList.add("lightbox-open");
-    }
-
-    function closeLightbox() {
-      lightbox.hidden = true;
-      lightbox.setAttribute("aria-hidden", "true");
-      lightboxImage.src = "";
-      lightboxImage.alt = "";
-      document.body.classList.remove("lightbox-open");
-    }
-
-    const canOpenLightbox = () => true;
-
-    document.querySelectorAll("[data-lightbox-src]").forEach((img) => {
-      img.addEventListener("click", () => {
-        if (!canOpenLightbox()) {
-          return;
-        }
-        openLightbox(img.getAttribute("data-lightbox-src"), img.getAttribute("alt"));
-      });
-    });
-
-    lightboxClose.addEventListener("click", closeLightbox);
-    lightboxBackdrop.addEventListener("click", closeLightbox);
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape" && !lightbox.hidden) {
-        closeLightbox();
-      }
-    });
   </script>
 </body>
 </html>
