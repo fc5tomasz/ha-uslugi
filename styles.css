@@ -1978,6 +1978,14 @@ footer{
   line-height:1.7;
 }
 
+.policy-page .policy-card li::before{
+  top:.66em;
+  width:5px;
+  height:5px;
+  background:var(--muted-strong);
+  box-shadow:none;
+}
+
 .policy-page .policy-draft-banner p{
   color:#fde68a;
   font-weight:700;
