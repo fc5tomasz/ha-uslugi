@@ -667,6 +667,7 @@ main{
 .guide-warning{border:1px solid rgba(251,191,36,.38);background:rgba(180,83,9,.12);box-shadow:none}
 .guide-steps{padding-left:1.45rem}
 .card .guide-steps li{margin-bottom:13px;padding-left:5px}
+.card .guide-steps li::marker{color:var(--accent-2);font-weight:700}
 .guide-addresses code,.guide-faq code,.guide-steps code{overflow-wrap:anywhere;word-break:break-word}
 .guide-faq h3:not(:first-child){margin-top:28px}
 .diagnostic-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
@@ -1001,12 +1002,6 @@ h1{
   box-shadow:0 0 14px rgba(18,200,132,.35);
 }
 
-@media (min-width:821px){
-  body.guides-index-page main .grid-2 .card li::before{
-    top:calc(.62em + 18px);
-  }
-}
-
 .hero-panel{
   padding:28px;
   display:flex;
@@ -1292,6 +1287,36 @@ h1{
 
 .knowledge-page .card li > .knowledge-link{
   margin-top:0;
+}
+
+.demo-back-link{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  min-height:40px;
+  margin:4px 0 24px;
+  padding:8px 14px;
+  border:1px solid rgba(102,226,255,.42);
+  border-radius:999px;
+  background:rgba(6,25,28,.48);
+  color:#a9e8f4;
+  font-weight:700;
+  text-decoration:none;
+  box-shadow:none;
+  transition:background .18s ease,border-color .18s ease,color .18s ease,box-shadow .18s ease,transform .18s ease;
+}
+
+.demo-back-link:hover{
+  transform:translateY(-1px);
+  border-color:rgba(102,226,255,.72);
+  background:rgba(102,226,255,.09);
+  color:#e5fbff;
+  box-shadow:0 10px 24px rgba(45,197,221,.1);
+}
+
+.demo-back-link:focus-visible{
+  outline:2px solid #77e6ff;
+  outline-offset:3px;
 }
 
 .knowledge-help-link{
