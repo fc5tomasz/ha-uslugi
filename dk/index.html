@@ -312,6 +312,10 @@
           <form id="contactForm" action="https://formularz.ha-expert.com/api/contact" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="lang" value="dk" />
             <input id="submissionId" type="hidden" name="submission_id" value="" />
+            <input type="hidden" name="page_path" value="" />
+            <input type="hidden" name="landing_page" value="" />
+            <input type="hidden" name="referrer" value="" />
+            <input type="hidden" name="utm" value="" />
             <div class="contact-honeypot" aria-hidden="true">
               <label for="website">Websted</label>
               <input id="website" name="website" type="text" tabindex="-1" autocomplete="off" />
@@ -434,6 +438,25 @@
       return submissionIdInput.value;
     };
 
+    const fillLeadContext = () => {
+      let firstTouch = {};
+      try {
+        firstTouch = JSON.parse(window.sessionStorage.getItem("ha_first_touch") || "{}") || {};
+      } catch (error) {
+        firstTouch = {};
+      }
+      const setField = (fieldName, value) => {
+        const field = form.querySelector(`input[name="${fieldName}"]`);
+        if (field) {
+          field.value = String(value == null ? "" : value).slice(0, 500);
+        }
+      };
+      setField("page_path", window.location.pathname);
+      setField("landing_page", firstTouch.landing || window.location.pathname);
+      setField("referrer", firstTouch.referrer || document.referrer || "");
+      setField("utm", String(firstTouch.query || window.location.search || "").replace(/^\?/, ""));
+    };
+
     const getContactFormEndpoint = () => {
       const isLocalPreview = /^(localhost|127\.0\.0\.1|192\.168\.2\.149|100\.109\.244\.70)$/.test(window.location.hostname);
       if (isLocalPreview) {
@@ -464,6 +487,7 @@
 
       try {
         getSubmissionId();
+        fillLeadContext();
         const formData = new FormData(form);
         selectedAttachments.forEach((file) => {
           formData.append(attachmentsInput.name, file, file.name);

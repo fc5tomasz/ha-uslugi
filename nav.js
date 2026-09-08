@@ -1,3 +1,20 @@
+// First-touch context for the contact form. sessionStorage only: no cookie, no identifier,
+// nothing leaves the browser unless the visitor deliberately submits the contact form.
+try {
+  if (!window.sessionStorage.getItem("ha_first_touch")) {
+    window.sessionStorage.setItem(
+      "ha_first_touch",
+      JSON.stringify({
+        referrer: document.referrer || "",
+        landing: window.location.pathname || "/",
+        query: window.location.search || "",
+      }),
+    );
+  }
+} catch (error) {
+  // sessionStorage unavailable (private mode or disabled) — attribution simply stays empty
+}
+
 const navStates = [];
 const MOBILE_NAV_BREAKPOINT = 1328;
 const NAV_FORUM_COOKIE_MAX_AGE = 60 * 60 * 24 * 365;
