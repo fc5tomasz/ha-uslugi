@@ -308,3 +308,50 @@
   .smoke-story *::before,
   .smoke-story *::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
 }
+
+/* Mobile: jedna karta demonstracji rozbita na trzy osobne kafelki pełnej szerokości
+   (nagłówek, scena z animacją, wyjaśnienie z efektem dla domownika). */
+@media(max-width:720px){
+  .smoke-story{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    padding:0;
+    border:0;
+    border-radius:0;
+    background:none;
+    box-shadow:none;
+    overflow:visible;
+  }
+  .smoke-story-header,
+  .smoke-visual,
+  .smoke-explanation{
+    border-radius:22px;
+    box-shadow:0 18px 40px rgba(0,0,0,.26);
+  }
+  .smoke-story-header{
+    gap:16px;
+    padding:20px;
+    border:1px solid rgba(151,193,181,.18);
+    background:rgba(4,18,18,.94);
+  }
+  .smoke-demo-grid{
+    grid-template-columns:1fr;
+    gap:12px;
+    min-height:0;
+    padding:0;
+  }
+  .smoke-visual-top{
+    display:block;
+    position:relative;
+    padding:16px 20px;
+  }
+  .smoke-current{
+    width:100%;
+  }
+  .smoke-time{
+    position:absolute;
+    top:16px;
+    right:20px;
+  }
+}

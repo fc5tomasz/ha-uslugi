@@ -7,3 +7,62 @@
 @keyframes blindsLower{from{height:0}to{height:var(--closed)}}@keyframes blindsSunArrive{from{transform:translate(-28px,10px);opacity:.35}to{transform:translate(0,0);opacity:1}}
 @media(max-width:1050px){.blinds-story-header{align-items:flex-start;flex-direction:column}.blinds-scenario-tabs{flex-wrap:wrap}.blinds-demo-grid{grid-template-columns:1fr}.blinds-explanation>p{min-height:0}.blinds-result{margin-top:20px}}@media(max-width:620px){.blinds-story{border-radius:22px}.blinds-story-header{padding:20px}.blinds-scenario-tabs{display:grid;width:100%}.blinds-demo-grid{min-height:0;padding:14px}.blinds-windows{gap:7px;padding-left:10px;padding-right:10px}.blinds-house{left:4%;right:4%}.blinds-window-label{font-size:.58rem;flex-direction:column}}
 @media(prefers-reduced-motion:reduce){.blinds-sun,.blinds-cover{animation:none}}
+
+/* Mobile: jedna karta demonstracji rozbita na trzy osobne kafelki pełnej szerokości
+   (nagłówek z wyborem sytuacji, scena z animacją, wyjaśnienie z efektem dla domownika). */
+@media(max-width:720px){
+  .blinds-story{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    padding:0;
+    border:0;
+    border-radius:0;
+    background:none;
+    box-shadow:none;
+    overflow:visible;
+  }
+  .blinds-story-header,
+  .blinds-visual,
+  .blinds-explanation{
+    border:1px solid rgba(161,193,183,.18);
+    border-radius:22px;
+    box-shadow:0 18px 40px rgba(0,0,0,.26);
+  }
+  .blinds-story-header{
+    gap:16px;
+    padding:20px;
+    background:rgba(5,20,18,.9);
+  }
+  .blinds-explanation{
+    background:rgba(6,22,19,.94);
+  }
+  .blinds-demo-grid{
+    grid-template-columns:1fr;
+    gap:12px;
+    min-height:0;
+    padding:0;
+  }
+  .blinds-visual-top{
+    display:block;
+    position:relative;
+    padding:18px 20px;
+  }
+  .blinds-current{
+    width:100%;
+  }
+  .blinds-time{
+    position:absolute;
+    top:18px;
+    right:20px;
+  }
+  .blinds-current-icon{
+    width:auto;
+    min-width:0;
+    height:auto;
+    border-radius:0;
+    background:none;
+    font-size:1.5rem;
+    animation:demoIconSwap .5s ease both;
+  }
+}

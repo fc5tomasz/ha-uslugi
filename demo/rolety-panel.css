@@ -441,6 +441,66 @@
 }
 @media (max-width: 420px){ .rl-scene-grid{ grid-template-columns:1fr; } }
 
+/* ---- mobile (<=720px): panel rozbity na samodzielne kafelki-sekcje ----
+   Ten sam wzorzec co /pl/projekty/ogrzewanie/: zdejmujemy widoczny podklad
+   panelu, sekcje staja sie osobnymi kafelkami pelnej szerokosci (8 px od
+   krawedzi), badge demo na gorze, logo i przycisk pelnego ekranu ukryte.
+   Tryb pelnego ekranu (.is-rl-fullscreen / .is-rl-pseudo-fs) bez zmian. */
+@media (max-width: 720px){
+  .rolety-page .rl-stage:not(.is-rl-fullscreen):not(.is-rl-pseudo-fs){
+    margin-inline:0;
+  }
+  .rolety-page .rl-stage:not(.is-rl-fullscreen):not(.is-rl-pseudo-fs) .rl-panel{
+    padding:0;
+    border:0;
+    border-radius:0;
+    background:none;
+    box-shadow:none;
+    overflow:visible;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+  .rolety-page .rl-stage:not(.is-rl-fullscreen):not(.is-rl-pseudo-fs) .rl-bottom{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+  .rolety-page .rl-stage:not(.is-rl-fullscreen):not(.is-rl-pseudo-fs) .rl-hero,
+  .rolety-page .rl-stage:not(.is-rl-fullscreen):not(.is-rl-pseudo-fs) .rl-status,
+  .rolety-page .rl-stage:not(.is-rl-fullscreen):not(.is-rl-pseudo-fs) .rl-master,
+  .rolety-page .rl-stage:not(.is-rl-fullscreen):not(.is-rl-pseudo-fs) .rl-zone,
+  .rolety-page .rl-stage:not(.is-rl-fullscreen):not(.is-rl-pseudo-fs) .rl-scenes,
+  .rolety-page .rl-stage:not(.is-rl-fullscreen):not(.is-rl-pseudo-fs) .rl-sched,
+  .rolety-page .rl-stage:not(.is-rl-fullscreen):not(.is-rl-pseudo-fs) .rl-log{
+    margin:0;
+    border-radius:22px;
+    border:1px solid var(--rl-line);
+    box-shadow:0 18px 40px rgba(0,0,0,.26);
+    background:#1a1712;
+  }
+  .rolety-page .rl-stage:not(.is-rl-fullscreen):not(.is-rl-pseudo-fs) .rl-hero{
+    padding:16px;
+  }
+  .rolety-page .rl-stage:not(.is-rl-fullscreen):not(.is-rl-pseudo-fs) .rl-sched{
+    padding:16px 14px;
+  }
+  .rolety-page .rl-stage:not(.is-rl-fullscreen):not(.is-rl-pseudo-fs) .rl-zones{
+    margin:0;
+    gap:12px;
+  }
+  /* badge demo na gorze pierwszego kafelka, logo i FS ukryte */
+  .rolety-page .rl-stage:not(.is-rl-fullscreen):not(.is-rl-pseudo-fs) .rl-hero-right{
+    order:-1;
+    width:100%;
+  }
+  .rolety-page .rl-stage:not(.is-rl-fullscreen):not(.is-rl-pseudo-fs) .rl-hero-copy{
+    padding-right:0;
+  }
+  .rolety-page .rl-logo{ display:none; }
+  .rolety-page .rl-fs-btn{ display:none; }
+}
+
 @media (prefers-reduced-motion: reduce){
   .rl-win-glare{ transition:none; }
   .rl-log-list li{ animation:none; }

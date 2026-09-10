@@ -703,6 +703,49 @@
   .rk-fs-btn{ min-height:34px; padding:7px 8px; }
 }
 
+/* ---- mobile (<=720px): panel rozbity na samodzielne kafelki-sekcje ----
+   Ten sam wzorzec co /pl/projekty/ogrzewanie/. Karty pokoi (.rk-room) sa juz
+   hero-cardami ze zdjeciem, wiec zmieniamy tylko obudowe panelu i sekcje.
+   Tryb pelnego ekranu (.is-rk-fullscreen / .is-rk-pseudo-fs) bez zmian. */
+@media (max-width: 720px){
+  .rk-page .rk-stage:not(.is-rk-fullscreen):not(.is-rk-pseudo-fs){
+    margin-inline:0;
+  }
+  .rk-page .rk-stage:not(.is-rk-fullscreen):not(.is-rk-pseudo-fs) .rk-panel{
+    padding:0;
+    border:0;
+    border-radius:0;
+    background:none;
+    box-shadow:none;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+  .rk-page .rk-stage:not(.is-rk-fullscreen):not(.is-rk-pseudo-fs) .rk-top,
+  .rk-page .rk-stage:not(.is-rk-fullscreen):not(.is-rk-pseudo-fs) .rk-common{
+    margin:0;
+    border:1px solid var(--rk-card-line);
+    border-radius:22px;
+    box-shadow:0 18px 40px rgba(0,0,0,.26);
+    background:rgba(9,17,28,.98);
+  }
+  .rk-page .rk-stage:not(.is-rk-fullscreen):not(.is-rk-pseudo-fs) .rk-top{
+    padding:16px;
+    padding-right:16px;
+    border-bottom:1px solid var(--rk-card-line);
+  }
+  .rk-page .rk-stage:not(.is-rk-fullscreen):not(.is-rk-pseudo-fs) .rk-rooms{
+    margin:0;
+    gap:12px;
+  }
+  /* badge demo na gorze pierwszego kafelka, logo i FS ukryte */
+  .rk-page .rk-stage:not(.is-rk-fullscreen):not(.is-rk-pseudo-fs) .rk-brand{
+    order:-1;
+  }
+  .rk-page .rk-logo{ display:none; }
+  .rk-page .rk-fs-btn{ display:none; }
+}
+
 @media (prefers-reduced-motion: reduce){
   .rk-rotor,
   .rk-room-air span,

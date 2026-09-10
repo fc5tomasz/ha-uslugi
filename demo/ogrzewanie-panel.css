@@ -222,6 +222,8 @@
   border:1px solid var(--og-line);
   background:rgba(10,20,36,.5);
 }
+/* plakietka demo na górze pierwszego kafelka: tylko mobile (patrz blok <=720px) */
+.og-demo-badge--top{ display:none; }
 
 /* ---- pasek: szkielet sekcji ---- */
 .og-sources,
@@ -769,6 +771,150 @@
   .og-zone-metrics{ gap:14px; }
   .og-climate{ flex-wrap:wrap; }
   .og-climate-sep{ display:none; }
+}
+
+/* ---- mobile (<=720px): panel rozbity na samodzielne kafelki-sekcje ----
+   Zdejmujemy widoczny podkład panelu i zagnieżdżone paddingi, a sekcje
+   (nagłówek, źródła ciepła, strefy, tryb pracy całego domu) stają się
+   osobnymi kafelkami pełnej szerokości, wyrównanymi do kafelka CTA „Twój
+   własny panel" (8 px od krawędzi ekranu = padding .demo-shell); znosimy
+   margin-inline:8px, który demo.css nakłada na .og-stage dla starego układu.
+   Tryb pełnego ekranu (.is-og-fullscreen / .is-og-pseudo-fs) zostaje bez zmian. */
+@media (max-width: 720px){
+  .og-page .og-stage:not(.is-og-fullscreen):not(.is-og-pseudo-fs){
+    margin-inline:0;
+  }
+  .og-page .og-stage:not(.is-og-fullscreen):not(.is-og-pseudo-fs) .og-panel{
+    padding:0;
+    border:0;
+    border-radius:0;
+    background:none;
+    box-shadow:none;
+    overflow:visible;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+  .og-page .og-stage:not(.is-og-fullscreen):not(.is-og-pseudo-fs) .og-panel-bg{ display:none; }
+  .og-page .og-stage:not(.is-og-fullscreen):not(.is-og-pseudo-fs) .og-panel::before{ display:none; }
+
+  .og-page .og-stage:not(.is-og-fullscreen):not(.is-og-pseudo-fs) .og-hero,
+  .og-page .og-stage:not(.is-og-fullscreen):not(.is-og-pseudo-fs) .og-sources,
+  .og-page .og-stage:not(.is-og-fullscreen):not(.is-og-pseudo-fs) .og-common{
+    margin:0;
+    border-radius:22px;
+    border:1px solid var(--og-line);
+    box-shadow:0 18px 40px rgba(0,0,0,.26);
+  }
+  .og-page .og-stage:not(.is-og-fullscreen):not(.is-og-pseudo-fs) .og-hero{
+    padding:18px 16px;
+    background:#0e1b2e;
+  }
+  /* uczciwe ujawnienie na samej górze pierwszego kafelka */
+  .og-page .og-stage:not(.is-og-fullscreen):not(.is-og-pseudo-fs) .og-demo-badge--top{
+    display:inline-flex;
+    align-self:flex-start;
+    margin-bottom:4px;
+  }
+  /* logo HA Expert zbędne na mobile: sticky header strony już je pokazuje */
+  .og-page .og-stage:not(.is-og-fullscreen):not(.is-og-pseudo-fs) .og-hero-brand-row{
+    display:none;
+  }
+  /* pełny ekran nie ma sensu na telefonie (brak Fullscreen API dla elementu na
+     iOS, brak zysku miejsca) - chowamy przycisk; desktop FS zostaje bez zmian */
+  .og-page .og-fs-btn{ display:none; }
+  .og-page .og-stage:not(.is-og-fullscreen):not(.is-og-pseudo-fs) .og-sources,
+  .og-page .og-stage:not(.is-og-fullscreen):not(.is-og-pseudo-fs) .og-common{
+    padding:16px 14px;
+    background:#0b1524;
+  }
+
+  .og-page .og-stage:not(.is-og-fullscreen):not(.is-og-pseudo-fs) .og-zones{
+    margin:0;
+    gap:12px;
+  }
+  .og-page .og-stage:not(.is-og-fullscreen):not(.is-og-pseudo-fs) .og-zone{
+    border-radius:22px;
+    box-shadow:0 18px 40px rgba(0,0,0,.26);
+  }
+
+  .og-page .og-stage:not(.is-og-fullscreen):not(.is-og-pseudo-fs) .og-foot{
+    margin:0;
+    padding:2px 6px 0;
+  }
+
+  /* kafelki źródeł: „Bufor ciepła" w tym samym układzie co reszta
+     (grafika na górze, dane pod spodem) zamiast grafiki z boku */
+  .og-page .og-stage:not(.is-og-fullscreen):not(.is-og-pseudo-fs) .og-flow-tank{
+    flex-direction:column;
+    gap:12px;
+  }
+  .og-page .og-stage:not(.is-og-fullscreen):not(.is-og-pseudo-fs) .og-tank-fig{
+    width:100%;
+    height:104px;
+  }
+  .og-page .og-stage:not(.is-og-fullscreen):not(.is-og-pseudo-fs) .og-tank-fig::before{
+    inset:8px;
+    background-size:contain;
+  }
+
+  /* ===== strefa jako hero-card (wszystkie strefy) =====
+     Zdjęcie pod całym kafelkiem, nazwa pokoju na zdjęciu u góry, dane
+     (temperatury, tryb, suwak) na szklanych chipach u dołu - w pełni czytelne. */
+  .og-page .og-stage:not(.is-og-fullscreen):not(.is-og-pseudo-fs) .og-zone{
+    display:block;
+    position:relative;
+    min-height:360px;
+    overflow:hidden;
+  }
+  .og-page .og-stage:not(.is-og-fullscreen):not(.is-og-pseudo-fs) .og-zone-photo{
+    position:absolute;
+    inset:0;
+    min-height:0;
+    aspect-ratio:auto;
+  }
+  .og-page .og-stage:not(.is-og-fullscreen):not(.is-og-pseudo-fs) .og-zone-scrim{
+    background:linear-gradient(180deg, rgba(6,12,22,.12) 0%, rgba(6,12,22,.32) 40%, rgba(8,14,24,.92) 84%);
+  }
+  .og-page .og-stage:not(.is-og-fullscreen):not(.is-og-pseudo-fs) .og-zone-body{
+    position:relative;
+    z-index:2;
+    min-height:360px;
+    gap:10px;
+    padding:16px;
+    justify-content:flex-end;
+  }
+  /* badge stanu do prawego górnego rogu, nazwa pokoju sama z lewej */
+  .og-page .og-stage:not(.is-og-fullscreen):not(.is-og-pseudo-fs) .og-zone-status{
+    left:auto;
+    right:12px;
+    top:12px;
+  }
+  .og-page .og-stage:not(.is-og-fullscreen):not(.is-og-pseudo-fs) .og-zone-id{
+    margin-bottom:auto;
+    padding-right:84px;
+  }
+  .og-page .og-stage:not(.is-og-fullscreen):not(.is-og-pseudo-fs) .og-zone-id h3,
+  .og-page .og-stage:not(.is-og-fullscreen):not(.is-og-pseudo-fs) .og-zone-id p{
+    text-shadow:0 2px 14px rgba(0,0,0,.7);
+  }
+  .og-page .og-stage:not(.is-og-fullscreen):not(.is-og-pseudo-fs) .og-zone-ic{
+    filter:drop-shadow(0 2px 10px rgba(0,0,0,.7));
+  }
+  .og-page .og-stage:not(.is-og-fullscreen):not(.is-og-pseudo-fs) .og-zone-metrics,
+  .og-page .og-stage:not(.is-og-fullscreen):not(.is-og-pseudo-fs) .og-zone-mode,
+  .og-page .og-stage:not(.is-og-fullscreen):not(.is-og-pseudo-fs) .og-zone-control{
+    padding:12px;
+    border-radius:14px;
+    border:1px solid rgba(147,203,255,.16);
+    background:rgba(8,14,24,.66);
+    -webkit-backdrop-filter:blur(6px);
+    backdrop-filter:blur(6px);
+  }
+  .og-page .og-stage:not(.is-og-fullscreen):not(.is-og-pseudo-fs) .og-zone-mode{
+    margin-top:0;
+    border-top:1px solid rgba(147,203,255,.16);
+  }
 }
 
 @media (prefers-reduced-motion: reduce){

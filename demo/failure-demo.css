@@ -262,3 +262,62 @@
 @media(prefers-reduced-motion:reduce){
   .grid-path,.battery-path,.comfort-bus,.critical-bus,.is-transitioning .house-cutaway,.is-transitioning .power-change-ring{animation:none}
 }
+
+/* Mobile: jedna karta demonstracji rozbita na trzy osobne kafelki pełnej szerokości
+   (nagłówek, scena z animacją, wyjaśnienie z efektem dla domownika). */
+@media(max-width:720px){
+  .failure-story{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    padding:0;
+    border:0;
+    border-radius:0;
+    background:none;
+    box-shadow:none;
+    overflow:visible;
+  }
+  .failure-story-header,
+  .failure-visual,
+  .failure-explanation{
+    border:1px solid rgba(151,193,181,.18);
+    border-radius:22px;
+    box-shadow:0 18px 40px rgba(0,0,0,.26);
+  }
+  .failure-story-header{
+    gap:16px;
+    padding:20px;
+    background:rgba(4,18,18,.94);
+  }
+  .failure-demo-grid{
+    grid-template-columns:1fr;
+    gap:12px;
+    min-height:0;
+    padding:0;
+  }
+  .failure-visual-top{
+    display:block;
+    position:relative;
+    padding:16px 20px;
+  }
+  .failure-current{
+    width:100%;
+  }
+  .failure-time{
+    position:absolute;
+    top:16px;
+    right:20px;
+  }
+  /* Scena wypełnia kafelek bez pustych pasów: wysokość dopasowana do proporcji rysunku,
+     dzięki czemu dom, słup sieci i bateria są większe względem planszy. */
+  .premium-power-stage{
+    height:auto;
+    aspect-ratio:920 / 560;
+  }
+  /* Status źródła w scenie: bez rozstrzelonych liter, żeby „Gotowe" i „Brak zasilania" czytały się jako słowa. */
+  .source-status{
+    letter-spacing:0;
+    font-size:16px;
+    font-weight:700;
+  }
+}

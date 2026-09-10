@@ -4,3 +4,64 @@
 .lighting-rooms{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:18px}.lighting-room{position:relative;min-height:154px;padding:20px;border:1px solid rgba(154,187,176,.14);border-radius:19px;background:linear-gradient(145deg,rgba(255,255,255,.038),rgba(255,255,255,.018));overflow:hidden}.lighting-room.is-on{border-color:rgba(255,204,124,.28);background:linear-gradient(145deg,rgba(255,211,137,.13),rgba(255,185,100,.035));box-shadow:inset 0 0 40px rgba(255,196,105,.055)}.lighting-room::after{content:"";position:absolute;right:-28px;top:-34px;width:120px;height:120px;border-radius:50%;background:rgba(255,203,121,var(--glow,.02));filter:blur(5px)}.lighting-room-head{display:flex;align-items:flex-start;justify-content:space-between;gap:15px}.lighting-room h3{margin:0 0 5px;color:#edf6f2;font-size:1.02rem}.lighting-bulb{position:relative;z-index:1;color:#6d807a;font-size:1.25rem}.lighting-room.is-on .lighting-bulb{color:#ffd083;text-shadow:0 0 18px rgba(255,205,126,.38)}.lighting-level{position:absolute;left:20px;right:20px;bottom:19px}.lighting-level-label{display:flex;justify-content:space-between;margin-bottom:7px;color:#90a49e;font-size:.72rem}.lighting-level-bar{height:6px;border-radius:99px;background:rgba(255,255,255,.07);overflow:hidden}.lighting-level-bar span{display:block;width:var(--level);height:100%;border-radius:inherit;background:linear-gradient(90deg,#e9a85f,#ffe3a6);transition:width .45s ease}
 .lighting-explanation{display:flex;flex-direction:column;padding:25px;border:1px solid rgba(161,193,183,.15);border-radius:24px;background:rgba(8,27,24,.78)}.lighting-explanation-label{color:#77e6ff;font-size:.68rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase}.lighting-explanation h3{margin:8px 0 9px;color:#f4faf7;font-size:1.35rem;line-height:1.25}.lighting-explanation>p{margin:0 0 22px;color:#aabdb7;font-size:.92rem;line-height:1.55}.lighting-steps{display:grid;gap:10px;margin:0;padding:0;list-style:none}.lighting-steps li{display:grid;grid-template-columns:29px 1fr;gap:10px;align-items:start;padding:11px 12px;border:1px solid rgba(161,193,183,.12);border-radius:14px;background:rgba(255,255,255,.025);color:#d7e3df;font-size:.85rem;line-height:1.4}.lighting-step-check{display:grid;place-items:center;width:22px;height:22px;margin-top:-1px;border-radius:50%;background:rgba(18,200,132,.14);color:#62e3b0;font-weight:900}.lighting-result{margin-top:auto;padding-top:20px}.lighting-result strong{display:block;margin-bottom:5px;color:#f2f8f5}.lighting-result span{display:block;min-height:2.8em;color:#9eb2ab;font-size:.82rem;line-height:1.5}
 @media(max-width:980px){.lighting-story-header{align-items:flex-start;flex-direction:column}.lighting-scenario-tabs{flex-wrap:wrap}.lighting-demo-grid{grid-template-columns:1fr}.lighting-result{margin-top:20px}}@media(max-width:620px){.lighting-story{border-radius:22px}.lighting-story-header{padding:20px}.lighting-scenario-tabs{display:grid;width:100%}.lighting-demo-grid{padding:14px}.lighting-rooms{grid-template-columns:1fr}.lighting-room{min-height:130px}}
+
+/* Mobile: jedna karta demonstracji rozbita na trzy osobne kafelki pełnej szerokości
+   (nagłówek z wyborem sytuacji, scena z animacją, wyjaśnienie z efektem dla domownika). */
+@media(max-width:720px){
+  .lighting-story{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    padding:0;
+    border:0;
+    border-radius:0;
+    background:none;
+    box-shadow:none;
+    overflow:visible;
+  }
+  .lighting-story-header,
+  .lighting-home,
+  .lighting-explanation{
+    border:1px solid rgba(161,193,183,.18);
+    border-radius:22px;
+    box-shadow:0 18px 40px rgba(0,0,0,.26);
+  }
+  .lighting-story-header{
+    gap:16px;
+    padding:20px;
+    background:rgba(5,20,18,.9);
+  }
+  .lighting-explanation{
+    background:rgba(6,22,19,.94);
+  }
+  .lighting-demo-grid{
+    grid-template-columns:1fr;
+    gap:12px;
+    min-height:0;
+    padding:0;
+  }
+  /* Godzina w górnym wierszu, na wysokości „Aktualna sytuacja"; status dostaje pełną szerokość. */
+  .lighting-home-top{
+    display:block;
+    position:relative;
+    padding:18px 20px;
+  }
+  .lighting-home-state{
+    width:100%;
+  }
+  .lighting-home-time{
+    position:absolute;
+    top:18px;
+    right:20px;
+  }
+  /* Ikona stanu: sam znak zamiast statycznego kwadratu, z krótkim pojawieniem przy zmianie sceny. */
+  .lighting-home-icon{
+    width:auto;
+    min-width:0;
+    height:auto;
+    border-radius:0;
+    background:none;
+    font-size:1.5rem;
+    animation:demoIconSwap .5s ease both;
+  }
+}

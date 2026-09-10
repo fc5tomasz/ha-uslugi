@@ -70,6 +70,9 @@
 }
 
 @media (max-width: 820px){
+  .pl-projects-page .section{
+    padding-inline:8px;
+  }
   .pl-projects-page .projects-catalog{
     grid-template-columns:1fr;
   }

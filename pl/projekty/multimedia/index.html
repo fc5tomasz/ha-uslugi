@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="robots" content="noindex,nofollow" />
+  <meta name="author" content="Tomasz Furdal" />
+  <meta name="theme-color" content="#0c0b09" />
+  <link rel="icon" type="image/png" href="../../../assets/brand/ha-expert-logo-transparent.png" />
+  <link rel="canonical" href="https://ha-expert.com/pl/projekty/multimedia/" />
+  <link rel="alternate" hreflang="pl" href="https://ha-expert.com/pl/projekty/multimedia/" />
+  <link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/projekter/multimedia/" />
+  <link rel="alternate" hreflang="en" href="https://ha-expert.com/en/projects/multimedia/" />
+  <link rel="alternate" hreflang="x-default" href="https://ha-expert.com/en/projects/multimedia/" />
+  <title>Studio i multimedia – panel premium Home Assistant | HA Expert</title>
+  <meta name="description" content="Interaktywny panel kina domowego: scena salonu z żywym ekranem, sześć trybów, które jednym dotknięciem ustawiają telewizor, amplituner, kolumny i światło, oraz sterowanie każdym urządzeniem osobno. Demonstracja bez połączenia z Home Assistant." />
+  <link rel="stylesheet" href="../../../styles.css?v=20260907-policy-bullets-1" />
+  <link rel="stylesheet" href="/demo/demo.css?v=20260831-demo-mobile-bg-1" />
+  <link rel="stylesheet" href="/demo/demo-catalog.css?v=20260901-demo-catalog-i18n-1" />
+  <link rel="stylesheet" href="/demo/multimedia-panel.css?v=20260910-multimedia-mm-i18n-2" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18087588380"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{'ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','analytics_storage':'denied'});</script>
+  <script src="../../../consent.js?v=20260829-consent-stats-local-1"></script>
+  <script>gtag('js',new Date());gtag('config','AW-18087588380');</script>
+</head>
+<body class="demo-page demo-detail-page pl-home-bg-test multimedia-page" data-demo-lang="pl">
+  <header class="demo-mobile-header">
+    <div class="nav">
+      <a class="logo" href="/pl/" aria-label="Tomasz Furdal - Home Assistant Expert">
+        <img class="logo-image" src="/assets/brand/logo-wyciete.png" alt="Tomasz Furdal - Home Assistant Expert" width="871" height="334" />
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Otwórz menu"><span aria-hidden="true">☰</span></button>
+      <nav id="primary-nav" aria-label="Główna nawigacja">
+        <ul>
+          <li><a href="/pl/#uslugi">Usługi</a></li>
+          <li><a href="/pl/#o-mnie">O mnie</a></li>
+          <li><a href="/pl/#dla-kogo">Dla kogo</a></li>
+          <li><a href="/pl/#jak-pracuje">Jak pracuję</a></li>
+          <li><a href="/pl/#cennik">Cennik</a></li>
+          <li><a href="/pl/#kontakt">Kontakt</a></li>
+          <li class="nav-secondary-start"><a href="/pl/projekty/" aria-current="page">Projekty</a></li>
+          <li><a href="/pl/poradniki/">Poradniki</a></li>
+          <li><a href="/pl/demo/">Demo HA</a></li>
+        </ul>
+      </nav>
+      <div class="lang-switch" aria-label="Wybór języka">
+        <a class="lang-btn active" href="/pl/projekty/multimedia/" aria-label="Polski" aria-current="page"><img class="lang-flag" src="/assets/flags/pl.svg" alt="Polski" /></a>
+        <a class="lang-btn" href="/dk/projekter/multimedia/" aria-label="Dansk"><img class="lang-flag" src="/assets/flags/dk.svg" alt="Dansk" /></a>
+        <a class="lang-btn" href="/en/projects/multimedia/" aria-label="English"><img class="lang-flag" src="/assets/flags/gb.svg" alt="English" /></a>
+      </div>
+      <a class="nav-cta" href="/pl/#kontakt">Bezpłatna ocena</a>
+    </div>
+  </header>
+
+  <main class="demo-shell mm-shell">
+    <a class="demo-back-link" href="/pl/projekty/"><span aria-hidden="true">←</span> Projekty</a>
+
+    <section class="demo-head mm-head">
+      <div>
+        <span class="demo-kicker">Projekt · Studio i multimedia</span>
+        <h1 class="demo-title demo-title-mobile-match">Studio i multimedia w jednym panelu</h1>
+        <p class="demo-detail-intro mm-intro">Jedno dotknięcie trybu ustawia telewizor, amplituner, kolumny, subwoofer i światło. Każdym urządzeniem możesz też sterować osobno. To demonstracja, jak Home Assistant spina cały zestaw kina domowego: wszystkie przyciski działają, ale panel nie jest połączony z żadnym domem.</p>
+      </div>
+    </section>
+
+    <div class="mm-stage" id="mmStage">
+      <div class="mm-panel" id="mmPanel" data-mm-accent="warm">
+
+        <div class="mm-topbar">
+          <span class="mm-demo-badge mm-demo-badge--top">Tryb demonstracyjny</span>
+          <img class="mm-logo" src="/assets/brand/logo-wyciete.png" alt="HA Expert Tomasz Furdal" width="871" height="334" />
+          <span class="mm-topbar-title">Studio i multimedia</span>
+          <span class="mm-sys-pill" data-mm-ref="sysPill" hidden><span class="mm-sys-dot" aria-hidden="true"></span><span data-mm-ref="sysText">System gotowy</span></span>
+          <span class="mm-topbar-spacer"></span>
+          <span class="mm-clock" aria-hidden="true"><b data-mm="clock">21:19</b><i data-mm="date">środa, 27 listopada</i></span>
+          <button class="mm-fs-btn" type="button" data-mm-fs aria-pressed="false">
+            <span class="mm-fs-ic" aria-hidden="true"></span><span class="mm-fs-label">Pełny ekran</span>
+          </button>
+        </div>
+
+        <section class="mm-hero" data-mm-scene="muzyka" aria-label="Scena salonu">
+          <div class="mm-hero-canvas">
+          <div class="mm-hero-photo" aria-hidden="true"></div>
+          <div class="mm-hero-tint" aria-hidden="true"></div>
+          <div class="mm-hero-glow" aria-hidden="true"></div>
+
+          <div class="mm-screen" data-mm-ref="screen" data-show="music" aria-hidden="true">
+            <span class="mm-screen-tv"></span>
+            <span class="mm-screen-film"></span>
+            <span class="mm-screen-gaming"><b>GRACZ 1</b><i>HDMI 2 · Game Mode</i></span>
+            <span class="mm-screen-radio"><b data-mm-ref="screenRadio">RMF FM</b><i>NA ŻYWO</i></span>
+            <span class="mm-screen-night"><b data-mm-ref="screenClock">21:19</b></span>
+            <span class="mm-screen-eq" data-mm-ref="screenEq"></span>
+            <span class="mm-screen-tag" data-mm-ref="screenTag">Spotify · Odtwarzanie</span>
+          </div>
+          </div>
+
+          <div class="mm-hero-intro">
+            <span class="mm-eyebrow">Studio i multimedia</span>
+            <h2 class="mm-hero-title">Twoja przestrzeń rozrywki</h2>
+            <p class="mm-hero-lead">Wybierasz tryb, a Home Assistant ustawia telewizor, amplituner, kolumny i światło naraz. Pojedyncze urządzenia sterujesz dotykając ich na liście poniżej.</p>
+          </div>
+
+          <div class="mm-activities" role="group" aria-label="Tryby">
+            <button class="mm-act" type="button" data-mm-act="tv" aria-pressed="false">
+              <span class="mm-act-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></span>
+              <span class="mm-act-t">Oglądanie TV</span>
+            </button>
+            <button class="mm-act" type="button" data-mm-act="kino" aria-pressed="false">
+              <span class="mm-act-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 9h18M8 5 6 9M14 5l-2 4M20 5l-2 4"/></svg></span>
+              <span class="mm-act-t">Kino domowe</span>
+            </button>
+            <button class="mm-act is-active" type="button" data-mm-act="muzyka" aria-pressed="true">
+              <span class="mm-act-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></span>
+              <span class="mm-act-t">Muzyka</span>
+            </button>
+            <button class="mm-act" type="button" data-mm-act="gaming" aria-pressed="false">
+              <span class="mm-act-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="10" rx="5"/><path d="M7 12h3M8.5 10.5v3M15 11h.01M18 13h.01"/></svg></span>
+              <span class="mm-act-t">Gaming</span>
+            </button>
+            <button class="mm-act" type="button" data-mm-act="radio" aria-pressed="false">
+              <span class="mm-act-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h16v10H4zM8 15h.01"/><path d="m16 3-9 4"/><circle cx="16" cy="15" r="2"/></svg></span>
+              <span class="mm-act-t">Radio internetowe</span>
+            </button>
+            <button class="mm-act" type="button" data-mm-act="nocny" aria-pressed="false">
+              <span class="mm-act-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14a8 8 0 1 1-9.9-9.9 6.5 6.5 0 0 0 9.9 9.9z"/></svg></span>
+              <span class="mm-act-t">Tryb nocny</span>
+            </button>
+          </div>
+        </section>
+
+        <div class="mm-controls">
+          <section class="mm-now is-playing" aria-labelledby="mmNowTitle" data-mm-live="false">
+            <div class="mm-now-head">
+              <span class="mm-eyebrow" id="mmNowTitle">Teraz odtwarzane</span>
+              <button class="mm-heart" type="button" data-mm-heart aria-pressed="false" aria-label="Dodaj do ulubionych">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5 4.2 12.6a4.6 4.6 0 0 1 6.5-6.5l1.3 1.3 1.3-1.3a4.6 4.6 0 0 1 6.5 6.5z"/></svg>
+              </button>
+            </div>
+            <div class="mm-now-body">
+              <div class="mm-cover" data-mm-ref="cover" aria-hidden="true"></div>
+              <div class="mm-now-meta">
+                <b class="mm-track" data-mm-ref="track">Dreamer</b>
+                <span class="mm-artist" data-mm-ref="artist">Alan Walker</span>
+                <span class="mm-album" data-mm-ref="album">Walkerworld</span>
+                <span class="mm-live-badge" data-mm-ref="liveBadge">NA ŻYWO</span>
+              </div>
+            </div>
+            <div class="mm-progress" data-mm-ref="progressWrap">
+              <span class="mm-time" data-mm-ref="tCur">0:24</span>
+              <div class="mm-bar" data-mm-ref="bar"><span data-mm-ref="barFill" style="width:12.5%"></span></div>
+              <span class="mm-time" data-mm-ref="tEnd">3:12</span>
+            </div>
+            <div class="mm-transport" role="group" aria-label="Sterowanie odtwarzaniem">
+              <button class="mm-tp" type="button" data-mm-tp="shuffle" aria-pressed="false" aria-label="Losowo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h4l10 10h4M3 17h4l3-3M14 7h3M17 4l3 3-3 3M17 20l3-3-3-3"/></svg></button>
+              <button class="mm-tp" type="button" data-mm-tp="prev" aria-label="Poprzedni utwór"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6v12L8 12zM6 5v14"/></svg></button>
+              <button class="mm-tp mm-tp--play" type="button" data-mm-tp="play" aria-label="Odtwarzaj lub wstrzymaj">
+                <svg class="mm-ic-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+                <svg class="mm-ic-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg>
+              </button>
+              <button class="mm-tp" type="button" data-mm-tp="next" aria-label="Następny utwór"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6v12l10-6zM18 5v14"/></svg></button>
+              <button class="mm-tp" type="button" data-mm-tp="repeat" aria-pressed="false" aria-label="Powtarzaj"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12V9a3 3 0 0 1 3-3h11M20 12v3a3 3 0 0 1-3 3H6M8 3 5 6l3 3M16 21l3-3-3-3"/></svg></button>
+            </div>
+            <div class="mm-src-row" data-mm-ref="srcRow" role="group" aria-label="Źródło dźwięku"></div>
+            <div class="mm-stations" data-mm-ref="stations" role="group" aria-label="Ulubione stacje" hidden></div>
+            <p class="mm-now-note" data-mm-ref="nowNote">Streaming ze Spotify. Sterowanie działa w tym panelu, nic nie odtwarza się naprawdę.</p>
+          </section>
+
+          <section class="mm-vol" aria-label="Głośność">
+            <div class="mm-vol-top">
+              <span class="mm-vol-label"><span class="mm-vol-ic" aria-hidden="true"></span> Głośność</span>
+              <b class="mm-vol-val"><span data-mm-ref="volVal">42</span>%</b>
+            </div>
+            <div class="mm-vol-row">
+              <button class="mm-mute" type="button" data-mm-mute aria-pressed="false" aria-label="Wycisz"></button>
+              <input type="range" class="mm-range" data-mm-vol min="0" max="100" step="1" value="42" aria-label="Głośność" />
+            </div>
+            <span class="mm-vol-cap" data-mm-ref="volCap" hidden>Tryb nocny ogranicza głośność do 25%.</span>
+          </section>
+        </div>
+
+        <div class="mm-runbar" data-mm-ref="runbar">
+          <span class="mm-run-status" data-mm-ref="runStatus">
+            <span class="mm-run-item"><i class="mm-run-dot" aria-hidden="true"></i>TV połączony</span>
+            <span class="mm-run-item"><i class="mm-run-dot" aria-hidden="true"></i>Amplituner online</span>
+            <span class="mm-run-item"><i class="mm-run-dot" aria-hidden="true"></i>Sieć OK</span>
+            <span class="mm-run-item"><i class="mm-run-dot" aria-hidden="true"></i>System gotowy</span>
+          </span>
+        </div>
+
+        <section class="mm-devices" aria-labelledby="mmDevTitle">
+          <div class="mm-devices-bg" aria-hidden="true"></div>
+          <div class="mm-sec-head">
+            <span class="mm-eyebrow" id="mmDevTitle">Urządzenia <b data-mm-ref="devScene">· Muzyka</b></span>
+            <span class="mm-sec-note">Sprzęt używany w tym trybie. Dotknij urządzenia, aby sterować nim osobno.</span>
+          </div>
+          <div class="mm-dev-row" data-mm-ref="devRow"></div>
+        </section>
+
+        <section class="mm-log" aria-labelledby="mmLogTitle">
+          <div class="mm-sec-head">
+            <span class="mm-eyebrow" id="mmLogTitle">Ostatnie działania</span>
+            <span class="mm-sec-note">Zapis tego, co ustawiasz w panelu: tryby, urządzenia, źródła i głośność.</span>
+          </div>
+          <ol class="mm-log-list" data-mm-ref="log" aria-live="polite"></ol>
+        </section>
+
+        <div class="mm-foot">
+          <span class="mm-foot-note">Inteligentny dom. Jedno polecenie uruchamia cały zestaw.</span>
+          <span class="mm-foot-tags">Komfort · Rozrywka · Nowoczesne technologie</span>
+        </div>
+      </div>
+
+      <div class="mm-devpanel" data-mm-ref="devpanel" role="dialog" aria-modal="true" aria-labelledby="mmDpName" hidden>
+        <div class="mm-devpanel-scrim" data-mm-ref="dpScrim"></div>
+        <div class="mm-devpanel-card">
+          <button class="mm-dp-close" type="button" data-mm-ref="dpClose" aria-label="Zamknij">
+            <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+          </button>
+          <div class="mm-dp-hero" data-mm-ref="dpHero" aria-hidden="true"></div>
+          <span class="mm-eyebrow" data-mm-ref="dpKicker">Urządzenie</span>
+          <h3 class="mm-dp-name" id="mmDpName" data-mm-ref="dpName">Amplituner</h3>
+          <p class="mm-dp-state" data-mm-ref="dpState">Włączony</p>
+          <div class="mm-dp-controls" data-mm-ref="dpControls"></div>
+        </div>
+      </div>
+
+      <div class="mm-toast" data-mm-toast role="status" aria-live="polite" hidden></div>
+    </div>
+
+    <section class="demo-contact-card demo-contact-card--detail" aria-labelledby="mm-contact-title">
+      <div>
+        <span class="demo-contact-eyebrow">Twój własny panel</span>
+        <h2 id="mm-contact-title">Chcesz takie sterowanie kinem domowym w swoim domu?</h2>
+        <p>Projektuję panele Home Assistant, które jednym poleceniem ustawiają telewizor, amplituner, kolumny, subwoofer i światło. Z osobnym sterowaniem każdym urządzeniem, scenami dnia i czytelnym dziennikiem. Wszystko dopasowane do Twojego sprzętu.</p>
+      </div>
+      <a class="demo-contact-button" href="/pl/#kontakt">Zapraszam do kontaktu <span aria-hidden="true">→</span></a>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-company"><span>HA Expert · CVR 46751205</span><span>Mosevej 2, 8620 Kjellerup</span><a href="mailto:kontakt@ha-expert.com">kontakt@ha-expert.com</a><span class="footer-company__desc">Zdalna konfiguracja, integracje i wsparcie Home Assistant.</span></div><div class="footer-inner">
+      <span>© <span id="year"></span> Tomasz Furdal · Home Assistant &amp; Integracje</span>
+      <span>Płatności: przelew bankowy · BLIK · MobilePay · Revolut · PayPal</span><a class="footer-privacy-link" href="/pl/polityka-prywatnosci/">Polityka prywatności</a>
+    </div>
+  </footer>
+
+  <script src="/nav.js?v=20260826-consent-v2-local-1"></script>
+  <script src="/demo/multimedia-panel.js?v=20260910-multimedia-mm-i18n-2"></script>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>

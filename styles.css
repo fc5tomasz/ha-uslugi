@@ -2468,6 +2468,21 @@ html[lang="da"] .logo [data-i18n="logo_text"],html[lang="da-DK"] .logo [data-i18
 
   .section{padding-inline:16px}
 
+  body.pl-home-page .section,
+  body.en-home-page .section,
+  body.dk-home-page .section,
+  body.knowledge-page.pl-home-bg-test:not(.guides-index-page, .policy-page, .raspberry-guide, .unavailable-guide) .section{
+    padding-inline:8px;
+  }
+
+  body.knowledge-page.guides-index-page .section,
+  body.knowledge-page.policy-page .section,
+  body.knowledge-page.raspberry-guide .section,
+  body.knowledge-page.unavailable-guide .section,
+  body.advanced-support-page .section{
+    padding-inline:8px;
+  }
+
   .hero{
     padding-top:14px;
   }
@@ -2483,6 +2498,10 @@ html[lang="da"] .logo [data-i18n="logo_text"],html[lang="da-DK"] .logo [data-i18
 
   .knowledge-page .card{
     font-family:"Inter","Sora","Avenir Next","Segoe UI",sans-serif;
+  }
+
+  body.knowledge-page.pl-home-bg-test:not(.guides-index-page, .policy-page, .raspberry-guide, .unavailable-guide) main > .section > .card{
+    padding-inline:16px;
   }
 
   .coordinator-desktop-only{
@@ -3036,9 +3055,14 @@ html[lang="da"] .logo [data-i18n="logo_text"],html[lang="da-DK"] .logo [data-i18
   }
 
   .consent-privacy-button{
-    left:10px;
-    min-height:32px;
-    font-size:.66rem;
+    position:static;
+    display:block;
+    width:max-content;
+    max-width:calc(100% - 20px);
+    min-height:44px;
+    margin:12px auto calc(12px + env(safe-area-inset-bottom, 0));
+    padding:9px 14px;
+    font-size:.72rem;
   }
 }
 

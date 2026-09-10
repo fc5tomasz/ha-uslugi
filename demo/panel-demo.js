@@ -996,6 +996,22 @@
 
           </svg>
         </div>
+        <div class="energy-mobile-status" aria-hidden="true">
+            <strong class="energy-mobile-status-title">${this.dict.panel_title}</strong>
+            <div class="energy-mobile-status-grid">
+              <span class="energy-mobile-status-item ${on(batteryCharging || batteryDischarging || batteryMode === "full")}"><small>${this.dict.panel_energy_bank}</small><b>${batteryStateLabel} · ${state.batteryLevel}%</b></span>
+              <span class="energy-mobile-status-item ${on(gridActive)}"><small>${this.dict.panel_grid}</small><b>${gridStateLabel}</b></span>
+              <span class="energy-mobile-status-item ${on(state.inverterDomProducing)}"><small>${this.dict.panel_inv_dom}</small><b>${state.inverterDomProducing ? this.dict.panel_on : this.dict.panel_off}</b></span>
+              <span class="energy-mobile-status-item ${on(state.inverterTarasProducing)}"><small>${this.dict.panel_inv_taras}</small><b>${state.inverterTarasProducing ? this.dict.panel_on : this.dict.panel_off}</b></span>
+              <span class="energy-mobile-status-item ${on(inverterHybridOn)}"><small>${this.dict.panel_inv_hybrid}</small><b>${inverterHybridOn ? this.dict.panel_on : this.dict.panel_off}</b></span>
+              <span class="energy-mobile-status-item ${on(bufferHot)}"><small>${this.dict.panel_buffer}</small><b>${bufferHot ? this.dict.panel_on : this.dict.panel_standby}</b></span>
+              <span class="energy-mobile-status-item ${on(state.pumpMixOn)}"><small>${this.dict.panel_mix_pump}</small><b>${state.pumpMixOn ? this.dict.panel_on : this.dict.panel_off}</b></span>
+              <span class="energy-mobile-status-item ${on(state.pumpMainOn)}"><small>${this.dict.panel_main_pump}</small><b>${state.pumpMainOn ? this.dict.panel_on : this.dict.panel_off}</b></span>
+              <span class="energy-mobile-status-item ${on(state.rekuOn)}"><small>${this.dict.panel_reku}</small><b>${state.rekuOn ? `${this.dict.panel_on} · ${this._num(state.rekuPercentage).toFixed(0)}%` : this.dict.panel_off}</b></span>
+              <span class="energy-mobile-status-item ${on(state.boilerOn)}"><small>${this.dict.panel_boiler}</small><b>${state.boilerOn ? this.dict.panel_on : this.dict.panel_off}</b></span>
+              <span class="energy-mobile-status-item ${on(offgrid1ToRadiator)}"><small>${this.dict.panel_radiator}</small><b>${offgrid1ToRadiator ? this.dict.panel_on : this.dict.panel_off}</b></span>
+            </div>
+          </div>
       `;
 
       const batteryLabels = [...this.root.querySelectorAll("[data-bank-label]")];

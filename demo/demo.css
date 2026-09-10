@@ -326,6 +326,10 @@ body.demo-page .demo-panel-status{
   aspect-ratio:1440 / 860;
 }
 
+.energy-mobile-status{
+  display:none;
+}
+
 .demo-panel-frame .title { font-size: 28px; font-weight: 700; fill: #edf4ff; }
 .demo-panel-frame .subtitle { font-size: 13px; fill: #90a4b8; }
 .demo-panel-frame .label { font-size: 14px; font-weight: 600; fill: #dbe7f4; }
@@ -364,6 +368,17 @@ body.demo-page .demo-panel-status{
   100% { box-shadow:0 0 0 0 rgba(18,200,132,0); }
 }
 
+/* Podmiana ikony stanu w kafelku demonstracji (mobile): krótkie pojawienie przy zmianie sceny. */
+@keyframes demoIconSwap {
+  from { opacity:0; transform:scale(.55); }
+  to { opacity:1; transform:scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .lighting-home-icon,
+  .blinds-current-icon { animation:none !important; }
+}
+
 @media (max-width: 980px){
   .demo-control-bar{
     flex-direction:column;
@@ -381,7 +396,26 @@ body.demo-page .demo-panel-status{
   }
 
   .demo-shell{
-    padding:6px 16px 40px;
+    padding:6px 8px 40px;
+  }
+
+  /* Korzenie interaktywnych demonstracji na całą szerokość .demo-shell,
+     wyrównane do kafelka CTA poniżej (8 px od krawędzi ekranu). */
+  body.demo-detail-page .demo-panel-wrap,
+  body.demo-detail-page .lighting-story,
+  body.demo-detail-page .blinds-story,
+  body.demo-detail-page .failure-story,
+  body.demo-detail-page .smoke-story,
+  body.demo-detail-page .water-story{
+    margin-inline:0;
+  }
+
+  body.rolety-page .rl-stage,
+  body.rm-page .rm-stage,
+  body.rk-page .rk-stage,
+  body.og-page .og-stage,
+  body.ka-page .ka-stage{
+    margin-inline:8px;
   }
 
   .demo-title-mobile-match{
@@ -462,11 +496,75 @@ body.demo-page .demo-panel-status{
     padding:0;
   }
 
+  /* Demo 1: animacja i „Stan instalacji" jako dwa osobne kafelki pełnej szerokości. */
   .demo-panel-frame{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
     min-height:0;
+  }
+
+  .demo-panel-frame .panel-wrap{
+    border-radius:22px;
   }
 
   .panel-svg{
     aspect-ratio:auto;
+  }
+
+  .energy-mobile-status{
+    display:block;
+    padding:16px;
+    border:1px solid rgba(161,193,183,.18);
+    border-radius:22px;
+    background:rgba(6,22,19,.94);
+    box-shadow:0 18px 40px rgba(0,0,0,.26);
+    text-align:left;
+  }
+
+  .energy-mobile-status-title{
+    display:block;
+    margin-bottom:10px;
+    color:#edf4ff;
+    font-size:.95rem;
+    line-height:1.3;
+  }
+
+  .energy-mobile-status-grid{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:8px;
+  }
+
+  .energy-mobile-status-item{
+    min-width:0;
+    padding:9px 10px;
+    border:1px solid rgba(132,156,187,.16);
+    border-radius:12px;
+    background:rgba(9,19,35,.7);
+  }
+
+  .energy-mobile-status-item.active{
+    border-color:rgba(18,200,132,.38);
+    background:rgba(18,200,132,.08);
+  }
+
+  .energy-mobile-status-item small,
+  .energy-mobile-status-item b{
+    display:block;
+    overflow-wrap:anywhere;
+  }
+
+  .energy-mobile-status-item small{
+    color:#90a4b8;
+    font-size:.72rem;
+    line-height:1.3;
+  }
+
+  .energy-mobile-status-item b{
+    margin-top:3px;
+    color:#edf4ff;
+    font-size:.8rem;
+    line-height:1.35;
   }
 }
