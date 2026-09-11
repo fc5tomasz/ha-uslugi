@@ -579,6 +579,12 @@ main{
   padding-top:12px;
 }
 
+@media (min-width: 821px){
+  body.knowledge-page:not(.raspberry-guide, .policy-page, .unavailable-guide) .card .section-subtitle{
+    max-width:none;
+  }
+}
+
 #cennik,
 #pricing,
 #priser{
