@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="robots" content="noindex,nofollow" />
+  <meta name="author" content="Tomasz Furdal" />
+  <meta name="theme-color" content="#0c0b09" />
+  <link rel="icon" type="image/png" href="../../../assets/brand/ha-expert-logo-transparent.png" />
+  <link rel="canonical" href="https://ha-expert.com/en/projects/energy-ev/" />
+  <link rel="alternate" hreflang="pl" href="https://ha-expert.com/pl/projekty/energia-ev/" />
+  <link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/projekter/energi-elbil/" />
+  <link rel="alternate" hreflang="en" href="https://ha-expert.com/en/projects/energy-ev/" />
+  <link rel="alternate" hreflang="x-default" href="https://ha-expert.com/en/projects/energy-ev/" />
+  <title>Energy management and EV charging | Premium Home Assistant panel | HA Expert</title>
+  <meta name="description" content="Interactive energy panel with solar, a home battery, the grid, EV charging, a smart tariff and battery protection during extra cheap slots. A demonstration with simulated data." />
+  <link rel="stylesheet" href="../../../styles.css?v=20260907-policy-bullets-1" />
+  <link rel="stylesheet" href="/demo/demo.css?v=20260831-demo-mobile-bg-1" />
+  <link rel="stylesheet" href="/demo/demo-catalog.css?v=20260901-demo-catalog-i18n-1" />
+  <link rel="stylesheet" href="/demo/energia-ev-panel.css?v=20260927-energia-ev-3" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18087588380"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{'ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','analytics_storage':'denied'});</script>
+  <script src="../../../consent.js?v=20260829-consent-stats-local-1"></script>
+  <script>gtag('js',new Date());gtag('config','AW-18087588380');</script>
+</head>
+<body class="demo-page demo-detail-page pl-home-bg-test ee-page" data-demo-lang="en">
+  <header class="demo-mobile-header">
+    <div class="nav">
+      <a class="logo" href="/en/" aria-label="Tomasz Furdal - Home Assistant Expert">
+        <img class="logo-image" src="/assets/brand/logo-wyciete.png" alt="Tomasz Furdal - Home Assistant Expert" width="871" height="334" />
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Open menu"><span aria-hidden="true">☰</span></button>
+      <nav id="primary-nav" aria-label="Primary navigation">
+        <ul>
+          <li><a href="/en/#services">Services</a></li>
+          <li><a href="/en/#about-me">About me</a></li>
+          <li><a href="/en/#who-its-for">Who it’s for</a></li>
+          <li><a href="/en/#how-i-work">How I work</a></li>
+          <li><a href="/en/#pricing">Pricing</a></li>
+          <li><a href="/en/#contact">Contact</a></li>
+          <li class="nav-secondary-start"><a href="/en/projects/" aria-current="page">Projects</a></li>
+          <li><a href="/en/guides/">Guides</a></li>
+          <li><a href="/en/demo/">HA demo</a></li>
+        </ul>
+      </nav>
+      <div class="lang-switch" aria-label="Language switch">
+        <a class="lang-btn" href="/pl/projekty/energia-ev/" aria-label="Polski"><img class="lang-flag" src="/assets/flags/pl.svg" alt="Polski" /></a>
+        <a class="lang-btn" href="/dk/projekter/energi-elbil/" aria-label="Dansk"><img class="lang-flag" src="/assets/flags/dk.svg" alt="Dansk" /></a>
+        <a class="lang-btn active" href="/en/projects/energy-ev/" aria-label="English" aria-current="page"><img class="lang-flag" src="/assets/flags/gb.svg" alt="English" /></a>
+      </div>
+      <a class="nav-cta" href="/en/#contact">Free assessment</a>
+    </div>
+  </header>
+
+  <main class="demo-shell ee-shell">
+    <a class="demo-back-link" href="/en/projects/"><span aria-hidden="true">←</span> Projects</a>
+
+    <section class="demo-head ee-head">
+      <div>
+        <span class="demo-kicker">Project · Energy &amp; EV</span>
+        <h1 class="demo-title demo-title-mobile-match">Energy management and EV charging</h1>
+        <p class="demo-detail-intro ee-intro">One panel shows solar production, the home battery, the home, the grid and the EV charger, together with a smart tariff that adds an extra cheap charging slot. When the car charges in that slot, battery protection stops the home battery from supplying the car and restores the previous settings afterwards. The scenario runs through a whole day in about 90 seconds. Pick a stage, or switch protection off to see the difference. This is a demonstration with simulated data: the panel is not connected to Home Assistant. Why a battery can drain into an EV is explained in the guide <a href="/en/home-battery-draining-into-ev/">How to stop your home battery draining into your EV</a>.</p>
+      </div>
+    </section>
+
+    <div class="ee-stage" id="eeStage">
+      <div class="ee-panel" id="eePanel">
+        <div class="ee-bg" data-ee="heroBg" aria-hidden="true"></div>
+
+        <div class="ee-hero">
+          <span class="ee-demo-badge ee-demo-badge--top">Demonstration mode</span>
+          <div class="ee-hero-left">
+            <span class="ee-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M13.2 2.8 5.5 13.4h5.6l-1.1 7.8 7.7-10.6h-5.6Z"/></svg></span>
+            <div class="ee-hero-copy">
+              <span class="ee-eyebrow">Project · Energy &amp; EV</span>
+              <h2 class="ee-panel-title">Home energy</h2>
+              <p class="ee-panel-tag">Solar, battery, grid and EV charging under one control.</p>
+            </div>
+          </div>
+
+          <div class="ee-hero-right">
+            <div class="ee-context" role="group" aria-label="Weather, date and time">
+              <div class="ee-context-item">
+                <span class="ee-context-ic" data-ee="wIc" aria-hidden="true"></span>
+                <span class="ee-context-body"><i>Outside</i><b data-ee="wTemp">&nbsp;</b></span>
+              </div>
+              <span class="ee-context-sep" aria-hidden="true"></span>
+              <div class="ee-context-item">
+                <span class="ee-context-body"><i data-ee="date">&nbsp;</i><b data-ee="clock">&nbsp;</b></span>
+              </div>
+            </div>
+
+            <div class="ee-brand">
+              <div class="ee-brand-row">
+                <span class="ee-demo-badge">Demonstration mode</span>
+                <img class="ee-logo" src="/assets/brand/logo-wyciete.png" alt="HA Expert Tomasz Furdal" width="871" height="334" />
+              </div>
+              <button class="ee-fs-btn" type="button" data-ee-fs aria-pressed="false">
+                <span class="ee-fs-ic" aria-hidden="true"></span>
+                <span class="ee-fs-label">Fullscreen</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="ee-kpis" data-ee="kpis"></div>
+
+        <div class="ee-body">
+          <section class="ee-card ee-flow-card" aria-labelledby="eeFlowTitle">
+            <div class="ee-card-head">
+              <span class="ee-card-title"><span class="ee-card-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="3.8" r="1.6"/><circle cx="12" cy="20.2" r="1.6"/><circle cx="3.8" cy="12" r="1.6"/><circle cx="20.2" cy="12" r="1.6"/><path d="M12 5.4V9M12 15v3.6M5.4 12H9M15 12h3.6"/></svg></span><b id="eeFlowTitle">Power flow</b></span>
+              <span class="ee-card-note">Live direction and power</span>
+            </div>
+            <div class="ee-flow" data-ee="flow"></div>
+            <div class="ee-timeline" data-ee="timeline"></div>
+          </section>
+
+          <div class="ee-side">
+            <section class="ee-card ee-protect" data-ee="protect"></section>
+            <section class="ee-card ee-tariff" data-ee="tariff"></section>
+            <section class="ee-card ee-ev" data-ee="ev"></section>
+            <section class="ee-card ee-battery" data-ee="battery"></section>
+          </div>
+
+          <div class="ee-right">
+            <section class="ee-card ee-chart" data-ee="chart"></section>
+            <section class="ee-card ee-energy" data-ee="energy"></section>
+            <section class="ee-card ee-events-card" data-ee="events"></section>
+          </div>
+        </div>
+
+        <div class="ee-infobar" data-ee="info" role="status" aria-live="polite">
+          <span class="ee-info-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.5M12 7.8v.1"/></svg></span>
+          <span data-ee="infoText"></span>
+        </div>
+
+        <div class="ee-foot">
+          <span class="ee-foot-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 5 6v6c0 4.5 3 8 7 9 4-1 7-4.5 7-9V6Z"/><path d="m9 12 2 2 4-4"/></svg>This panel is a demonstration. All data are simulated and do not come from a real home.</span>
+          <span class="ee-foot-tags">Solar · Battery · EV · Smart tariff</span>
+        </div>
+      </div>
+    </div>
+
+    <section class="demo-contact-card demo-contact-card--detail" aria-labelledby="ee-contact-title">
+      <div>
+        <span class="demo-contact-eyebrow">Your own panel</span>
+        <h2 id="ee-contact-title">Would you like an energy panel like this?</h2>
+        <p>I design Home Assistant energy panels and the logic behind them: solar, the home battery, EV charging, smart tariffs and battery protection with a safe restore. Everything is matched to your inverter, charger and tariff.</p>
+      </div>
+      <a class="demo-contact-button" href="/en/#contact">Get in touch <span aria-hidden="true">→</span></a>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-company"><span>HA Expert · CVR 46751205</span><span>Mosevej 2, 8620 Kjellerup</span><a href="mailto:kontakt@ha-expert.com">kontakt@ha-expert.com</a><span class="footer-company__desc">Remote configuration, integrations and support for Home Assistant.</span></div><div class="footer-inner">
+      <span>© <span id="year"></span> Tomasz Furdal · Home Assistant &amp; Integrations</span>
+      <span>Payments: bank transfer · PayPal · Revolut · MobilePay · BLIK</span><a class="footer-privacy-link" href="/en/privacy-policy/">Privacy Policy</a>
+    </div>
+  </footer>
+
+  <script src="/nav.js?v=20260826-consent-v2-local-1"></script>
+  <script src="/demo/energia-ev-panel.js?v=20260927-energia-ev-1"></script>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>

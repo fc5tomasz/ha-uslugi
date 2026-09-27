@@ -80,3 +80,16 @@
     padding:20px 22px;
   }
 }
+
+/* siodmy projekt: ostatni kafelek, ktory zostalby sam w rzedzie, zajmuje cala
+   szerokosc (3 kolumny: 7. kafelek; 2 kolumny: nieparzysty ostatni) */
+.pl-projects-page .projects-catalog > .project-tile:last-child:nth-child(3n+1){
+  grid-column:1 / -1;
+}
+@media (max-width: 1024px){
+  .pl-projects-page .projects-catalog > .project-tile:last-child:nth-child(3n+1){ grid-column:auto; }
+  .pl-projects-page .projects-catalog > .project-tile:last-child:nth-child(odd){ grid-column:1 / -1; }
+}
+@media (max-width: 820px){
+  .pl-projects-page .projects-catalog > .project-tile:last-child:nth-child(odd){ grid-column:auto; }
+}
