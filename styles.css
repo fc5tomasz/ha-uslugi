@@ -3231,3 +3231,8 @@ html[lang="da"] .logo [data-i18n="logo_text"],html[lang="da-DK"] .logo [data-i18
     display:none;
   }
 }
+
+.review-card{margin:0}
+.review-card blockquote{margin:0}
+.review-card blockquote p + p{margin-top:12px}
+.review-card .review-author{margin-top:18px;color:#f6fbff;font-weight:700;font-size:.96rem}
