@@ -2489,6 +2489,24 @@ html[lang="da"] .logo [data-i18n="logo_text"],html[lang="da-DK"] .logo [data-i18
     padding-inline:8px;
   }
 
+  body.guides-index-page .services-grid > .card{
+    padding:20px 16px;
+  }
+
+  body.guides-index-page .services-grid .card ul{
+    gap:8px;
+  }
+
+  body.guides-index-page .services-grid .card li,
+  body.guides-index-page .services-grid .knowledge-link{
+    font-size:16px;
+    line-height:1.55;
+  }
+
+  body.guides-index-page .services-grid .card li::before{
+    top:calc(.775em - 4px);
+  }
+
   .hero{
     padding-top:14px;
   }
