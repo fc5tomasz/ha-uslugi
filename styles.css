@@ -2497,8 +2497,8 @@ html[lang="da"] .logo [data-i18n="logo_text"],html[lang="da-DK"] .logo [data-i18
     padding-top:4px;
   }
 
-  .knowledge-page .card p,
-  .knowledge-page .card li{
+  .policy-page .card p,
+  .policy-page .card li{
     text-wrap:pretty;
   }
 

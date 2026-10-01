@@ -105,12 +105,12 @@
   <main>
     <section class="section"><a class="demo-back-link" href="/pl/poradniki/"><span aria-hidden="true">←</span> Poradniki</a>
       <div class="section-label">AUTOMATYZACJE</div>
-      <h1 class="section-title mobile-match-title">Automatyzacje Home Assistant – jak działają i jak je diagnozować</h1>
+      <h1 class="section-title mobile-match-title">Automatyzacje Home Assistant – jak działają i&nbsp;jak je diagnozować</h1>
       <p class="article-author">Autor: <a href="/pl/#o-mnie">Tomasz Furdal · HA Expert</a></p>
       <div class="card">
-        <p class="section-subtitle">Automatyzacje pozwalają Home Assistant reagować na to, co dzieje się w domu, bez konieczności ręcznego wykonywania każdej czynności. System może zareagować na zmianę stanu urządzenia, określoną godzinę, temperaturę, obecność domowników albo inne zdarzenie i wykonać wcześniej ustalone działania.</p>
-        <p class="section-subtitle">Sama liczba automatyzacji nie świadczy jednak o jakości systemu. Ważniejsze jest to, czy ich logika jest zrozumiała, przewidywalna i możliwa do późniejszej diagnostyki.</p>
-        <p class="section-subtitle">W tym poradniku wyjaśniam, z czego składa się automatyzacja Home Assistant, czym różnią się wyzwalacze, warunki i akcje, jak działają skrypty i sceny oraz co sprawdzić, gdy automatyzacja raz działa, a innym razem nie.</p>
+        <p class="section-subtitle">Automatyzacje pozwalają Home Assistant reagować na to, co dzieje się w&nbsp;domu, bez konieczności ręcznego wykonywania każdej czynności. System może zareagować na zmianę stanu urządzenia, określoną godzinę, temperaturę, obecność domowników albo inne zdarzenie i&nbsp;wykonać wcześniej ustalone działania.</p>
+        <p class="section-subtitle">Sama liczba automatyzacji nie świadczy jednak o&nbsp;jakości systemu. Ważniejsze jest to, czy ich logika jest zrozumiała, przewidywalna i&nbsp;możliwa do późniejszej diagnostyki.</p>
+        <p class="section-subtitle">W&nbsp;tym poradniku wyjaśniam, z&nbsp;czego składa się automatyzacja Home Assistant, czym różnią się wyzwalacze, warunki i&nbsp;akcje, jak działają skrypty i&nbsp;sceny oraz co sprawdzić, gdy automatyzacja raz działa, a&nbsp;innym razem nie.</p>
         <p class="section-subtitle">Jeżeli dopiero poznajesz cały system, przejdź do poniższego poradnika.</p>
         <a class="knowledge-link" href="/pl/co-to-jest-ha/">Czym jest Home Assistant? <span aria-hidden="true">→</span></a>
       </div>
@@ -118,25 +118,25 @@
 
     <section class="section">
       <div class="section-label">PODSTAWY</div>
-      <h2 class="section-title mobile-match-title">Czym jest automatyzacja w Home Assistant?</h2>
+      <h2 class="section-title mobile-match-title">Czym jest automatyzacja w&nbsp;Home Assistant?</h2>
       <div class="card">
-        <p class="section-subtitle">Automatyzacja opisuje, kiedy Home Assistant powinien zareagować, jakie warunki powinny być wtedy spełnione i co system ma zrobić.</p>
-        <p class="section-subtitle">Najprostszy przykład może wyglądać tak: czujnik wykrywa ruch, Home Assistant sprawdza, czy jest już ciemno, a następnie włącza światło.</p>
-        <p class="section-subtitle">W praktyce automatyzacje mogą być znacznie bardziej rozbudowane. Jedna reguła może uwzględniać kilka wyzwalaczy, dodatkowe warunki, opóźnienia, oczekiwanie na zmianę stanu oraz różne ścieżki działania zależne od sytuacji.</p>
-        <p class="section-subtitle">Nie oznacza to jednak, że każda automatyzacja powinna być skomplikowana. Im prostsza i bardziej czytelna jest logika potrzebna do osiągnięcia celu, tym łatwiej później zrozumieć jej zachowanie i znaleźć przyczynę ewentualnego problemu.</p>
+        <p class="section-subtitle">Automatyzacja opisuje, kiedy Home Assistant powinien zareagować, jakie warunki powinny być wtedy spełnione i&nbsp;co system ma zrobić.</p>
+        <p class="section-subtitle">Najprostszy przykład może wyglądać tak: czujnik wykrywa ruch, Home Assistant sprawdza, czy jest już ciemno, a&nbsp;następnie włącza światło.</p>
+        <p class="section-subtitle">W&nbsp;praktyce automatyzacje mogą być znacznie bardziej rozbudowane. Jedna reguła może uwzględniać kilka wyzwalaczy, dodatkowe warunki, opóźnienia, oczekiwanie na zmianę stanu oraz różne ścieżki działania zależne od sytuacji.</p>
+        <p class="section-subtitle">Nie oznacza to jednak, że każda automatyzacja powinna być skomplikowana. Im prostsza i&nbsp;bardziej czytelna jest logika potrzebna do osiągnięcia celu, tym łatwiej później zrozumieć jej zachowanie i&nbsp;znaleźć przyczynę ewentualnego problemu.</p>
       </div>
     </section>
 
     <section class="section">
       <div class="section-label">LOGIKA</div>
-      <h2 class="section-title mobile-match-title">Wyzwalacz, warunek i akcja – czym się różnią?</h2>
+      <h2 class="section-title mobile-match-title">Wyzwalacz, warunek i&nbsp;akcja – czym się różnią?</h2>
       <div class="card">
         <p class="section-subtitle">Te trzy elementy pełnią różne role.</p>
         <p class="section-subtitle">Wyzwalacz określa, co rozpoczyna sprawdzanie automatyzacji. Może to być na przykład wykrycie ruchu, zmiana temperatury, konkretna godzina albo zmiana stanu urządzenia.</p>
-        <p class="section-subtitle">Warunek nie uruchamia automatyzacji. Jest sprawdzany po wystąpieniu wyzwalacza i decyduje, czy automatyzacja może przejść dalej.</p>
-        <p class="section-subtitle">Akcja określa, co Home Assistant ma zrobić, jeżeli automatyzacja została uruchomiona i wymagane warunki są spełnione.</p>
-        <p class="section-subtitle">Jeżeli więc światło ma włączać się po wykryciu ruchu, ale tylko wieczorem, wykrycie ruchu może być wyzwalaczem, pora dnia warunkiem, a włączenie światła akcją.</p>
-        <p class="section-subtitle">Rozróżnienie tych elementów jest ważne również przy diagnostyce. Automatyzacja może nie wykonać działania nie dlatego, że „nie zadziałała”, lecz dlatego, że wyzwalacz wystąpił prawidłowo, ale jeden z warunków nie został spełniony.</p>
+        <p class="section-subtitle">Warunek nie uruchamia automatyzacji. Jest sprawdzany po wystąpieniu wyzwalacza i&nbsp;decyduje, czy automatyzacja może przejść dalej.</p>
+        <p class="section-subtitle">Akcja określa, co Home Assistant ma zrobić, jeżeli automatyzacja została uruchomiona i&nbsp;wymagane warunki są spełnione.</p>
+        <p class="section-subtitle">Jeżeli więc światło ma włączać się po wykryciu ruchu, ale tylko wieczorem, wykrycie ruchu może być wyzwalaczem, pora dnia warunkiem, a&nbsp;włączenie światła akcją.</p>
+        <p class="section-subtitle">Rozróżnienie tych elementów jest ważne również przy diagnostyce. Automatyzacja może nie wykonać działania nie dlatego, że „nie zadziałała”, lecz dlatego, że wyzwalacz wystąpił prawidłowo, ale jeden z&nbsp;warunków nie został spełniony.</p>
       </div>
     </section>
 
@@ -151,13 +151,13 @@
           <li>przekroczenie określonej wartości,</li>
           <li>konkretna godzina,</li>
           <li>wschód lub zachód słońca,</li>
-          <li>zdarzenie w systemie,</li>
+          <li>zdarzenie w&nbsp;systemie,</li>
           <li>webhook,</li>
-          <li>zmiana związana z urządzeniem lub usługą.</li>
+          <li>zmiana związana z&nbsp;urządzeniem lub usługą.</li>
         </ul>
-        <p class="section-subtitle">Dzięki temu tę samą logikę można uruchamiać na podstawie różnych informacji dostępnych w Home Assistant.</p>
-        <p class="section-subtitle">Warto jednak pamiętać, że automatyzacja otrzymuje informacje z innych części systemu. Jeżeli czujnik przestanie aktualizować stan albo integracja utraci komunikację z urządzeniem, oczekiwany wyzwalacz może w ogóle nie wystąpić.</p>
-        <p class="section-subtitle">W takim przypadku problem nie musi znajdować się w logice automatyzacji.</p>
+        <p class="section-subtitle">Dzięki temu tę samą logikę można uruchamiać na podstawie różnych informacji dostępnych w&nbsp;Home Assistant.</p>
+        <p class="section-subtitle">Warto jednak pamiętać, że automatyzacja otrzymuje informacje z&nbsp;innych części systemu. Jeżeli czujnik przestanie aktualizować stan albo integracja utraci komunikację z&nbsp;urządzeniem, oczekiwany wyzwalacz może w&nbsp;ogóle nie wystąpić.</p>
+        <p class="section-subtitle">W&nbsp;takim przypadku problem nie musi znajdować się w&nbsp;logice automatyzacji.</p>
       </div>
     </section>
 
@@ -165,39 +165,39 @@
       <div class="section-label">PRZYKŁAD</div>
       <h2 class="section-title mobile-match-title">Prosta automatyzacja na przykładzie światła</h2>
       <div class="card">
-        <p class="section-subtitle">Załóżmy, że światło w korytarzu ma włączać się po wykryciu ruchu, ale tylko wtedy, gdy jest ciemno.</p>
-        <p class="section-subtitle">Logikę można przedstawić w prosty sposób:</p>
+        <p class="section-subtitle">Załóżmy, że światło w&nbsp;korytarzu ma włączać się po wykryciu ruchu, ale tylko wtedy, gdy jest ciemno.</p>
+        <p class="section-subtitle">Logikę można przedstawić w&nbsp;prosty sposób:</p>
         <p class="section-subtitle"><strong>Wyzwalacz:</strong> czujnik ruchu zmienia stan na wykryty ruch.</p>
         <p class="section-subtitle"><strong>Warunek:</strong> jest po zachodzie słońca albo poziom oświetlenia znajduje się poniżej ustalonej wartości.</p>
         <p class="section-subtitle"><strong>Akcja:</strong> włącz światło.</p>
         <p class="section-subtitle">Można następnie dodać kolejne zachowanie, na przykład wyłączenie światła po określonym czasie bez ruchu.</p>
         <p class="section-subtitle">Już na tym prostym przykładzie widać jednak, że trzeba zdecydować, co ma się wydarzyć, jeżeli ruch pojawi się ponownie podczas odliczania czasu. Czy odliczanie powinno zacząć się od nowa? Czy poprzednie wykonanie ma być przerwane? Czy kolejne uruchomienie powinno zostać zignorowane?</p>
-        <p class="section-subtitle">To właśnie w takich sytuacjach znaczenie zaczyna mieć sposób wykonania automatyzacji.</p>
+        <p class="section-subtitle">To właśnie w&nbsp;takich sytuacjach znaczenie zaczyna mieć sposób wykonania automatyzacji.</p>
       </div>
     </section>
 
     <section class="section">
       <div class="section-label">PORZĄDEK</div>
-      <h2 class="section-title mobile-match-title">Dlaczego automatyzacje z czasem robią się trudne w utrzymaniu?</h2>
+      <h2 class="section-title mobile-match-title">Dlaczego automatyzacje z&nbsp;czasem robią się trudne w&nbsp;utrzymaniu?</h2>
       <div class="card">
         <p class="section-subtitle">Problem często nie pojawia się przy pierwszych kilku automatyzacjach. Zaczyna być widoczny wtedy, gdy system jest stopniowo rozbudowywany.</p>
-        <p class="section-subtitle">Podobna logika może zostać skopiowana do kilku różnych miejsc, jedna automatyzacja zaczyna zależeć od kolejnej, a nazwy stworzone kilka miesięcy wcześniej przestają jasno mówić, za co odpowiadają.</p>
-        <p class="section-subtitle">Do tego dochodzą zmiany urządzeń, encji, harmonogramów i sposobu działania domu.</p>
-        <p class="section-subtitle">Efektem może być sytuacja, w której użytkownik wie, że „coś gdzieś steruje światłem”, ale nie pamięta już, która automatyzacja odpowiada za konkretną reakcję.</p>
-        <p class="section-subtitle">Dlatego przy większym systemie warto zachować czytelne nazwy, logiczny podział i nie powielać tej samej sekwencji działań w wielu miejscach, jeżeli można ją sensownie wydzielić.</p>
+        <p class="section-subtitle">Podobna logika może zostać skopiowana do kilku różnych miejsc, jedna automatyzacja zaczyna zależeć od kolejnej, a&nbsp;nazwy stworzone kilka miesięcy wcześniej przestają jasno mówić, za co odpowiadają.</p>
+        <p class="section-subtitle">Do tego dochodzą zmiany urządzeń, encji, harmonogramów i&nbsp;sposobu działania domu.</p>
+        <p class="section-subtitle">Efektem może być sytuacja, w&nbsp;której użytkownik wie, że „coś gdzieś steruje światłem”, ale nie pamięta już, która automatyzacja odpowiada za konkretną reakcję.</p>
+        <p class="section-subtitle">Dlatego przy większym systemie warto zachować czytelne nazwy, logiczny podział i&nbsp;nie powielać tej samej sekwencji działań w&nbsp;wielu miejscach, jeżeli można ją sensownie wydzielić.</p>
       </div>
     </section>
 
     <section class="section">
       <div class="section-label">NARZĘDZIA</div>
-      <h2 class="section-title mobile-match-title">Automatyzacja, skrypt i scena – kiedy czego używać?</h2>
+      <h2 class="section-title mobile-match-title">Automatyzacja, skrypt i&nbsp;scena – kiedy czego używać?</h2>
       <div class="card">
         <p class="section-subtitle">Te elementy są ze sobą powiązane, ale nie pełnią dokładnie tej samej funkcji.</p>
-        <p class="section-subtitle">Automatyzacja reaguje na określoną sytuację i uruchamia działania zgodnie z ustaloną logiką.</p>
-        <p class="section-subtitle">Skrypt jest sekwencją działań, którą można wywołać z automatyzacji, panelu albo innego miejsca w Home Assistant. Przydaje się szczególnie wtedy, gdy ten sam zestaw czynności ma być wykorzystywany wielokrotnie.</p>
-        <p class="section-subtitle">Przykładowo zamiast w kilku automatyzacjach osobno zapisywać sekwencję wyłączania świateł, opuszczania rolet i ustawiania ogrzewania, można przygotować odpowiedni skrypt i wywoływać go tam, gdzie jest potrzebny.</p>
-        <p class="section-subtitle">Scena służy do ustawienia określonych stanów urządzeń. Może na przykład ustawić kilka świateł na wybraną jasność i kolor lub przygotować urządzenia do określonego trybu użytkowania.</p>
-        <p class="section-subtitle">Nie trzeba wybierać jednego z tych rozwiązań dla całego systemu. Automatyzacje, skrypty i sceny mogą współpracować, a sensowny podział często upraszcza późniejszą konfigurację.</p>
+        <p class="section-subtitle">Automatyzacja reaguje na określoną sytuację i&nbsp;uruchamia działania zgodnie z&nbsp;ustaloną logiką.</p>
+        <p class="section-subtitle">Skrypt jest sekwencją działań, którą można wywołać z&nbsp;automatyzacji, panelu albo innego miejsca w&nbsp;Home Assistant. Przydaje się szczególnie wtedy, gdy ten sam zestaw czynności ma być wykorzystywany wielokrotnie.</p>
+        <p class="section-subtitle">Przykładowo zamiast w&nbsp;kilku automatyzacjach osobno zapisywać sekwencję wyłączania świateł, opuszczania rolet i&nbsp;ustawiania ogrzewania, można przygotować odpowiedni skrypt i&nbsp;wywoływać go tam, gdzie jest potrzebny.</p>
+        <p class="section-subtitle">Scena służy do ustawienia określonych stanów urządzeń. Może na przykład ustawić kilka świateł na wybraną jasność i&nbsp;kolor lub przygotować urządzenia do określonego trybu użytkowania.</p>
+        <p class="section-subtitle">Nie trzeba wybierać jednego z&nbsp;tych rozwiązań dla całego systemu. Automatyzacje, skrypty i&nbsp;sceny mogą współpracować, a&nbsp;sensowny podział często upraszcza późniejszą konfigurację.</p>
       </div>
     </section>
 
@@ -206,16 +206,16 @@
       <h2 class="section-title mobile-match-title">Co jeśli automatyzacja uruchomi się ponownie, zanim skończy?</h2>
       <div class="card">
         <p class="section-subtitle">Nie każda automatyzacja kończy się natychmiast. Może zawierać opóźnienie, oczekiwanie na zmianę stanu albo dłuższą sekwencję działań.</p>
-        <p class="section-subtitle">Jeżeli w tym czasie ponownie pojawi się jej wyzwalacz, Home Assistant musi wiedzieć, co zrobić z kolejnym uruchomieniem.</p>
+        <p class="section-subtitle">Jeżeli w&nbsp;tym czasie ponownie pojawi się jej wyzwalacz, Home Assistant musi wiedzieć, co zrobić z&nbsp;kolejnym uruchomieniem.</p>
         <p class="section-subtitle">Służą do tego tryby wykonania:</p>
         <ul>
           <li><strong>single</strong> – jeżeli automatyzacja już działa, nowe uruchomienie nie rozpoczyna kolejnego wykonania,</li>
-          <li><strong>restart</strong> – poprzednie wykonanie zostaje zatrzymane i automatyzacja rozpoczyna się ponownie,</li>
-          <li><strong>queued</strong> – kolejne wykonania ustawiają się w kolejce,</li>
+          <li><strong>restart</strong> – poprzednie wykonanie zostaje zatrzymane i&nbsp;automatyzacja rozpoczyna się ponownie,</li>
+          <li><strong>queued</strong> – kolejne wykonania ustawiają się w&nbsp;kolejce,</li>
           <li><strong>parallel</strong> – kilka wykonań może działać równolegle.</li>
         </ul>
         <p class="section-subtitle">Domyślnym trybem jest <strong>single</strong>.</p>
-        <p class="section-subtitle">Nie ma jednego trybu najlepszego dla wszystkich automatyzacji. Wybór zależy od tego, jak dana logika ma zachowywać się w rzeczywistej sytuacji.</p>
+        <p class="section-subtitle">Nie ma jednego trybu najlepszego dla wszystkich automatyzacji. Wybór zależy od tego, jak dana logika ma zachowywać się w&nbsp;rzeczywistej sytuacji.</p>
         <p class="section-subtitle">Przykładowo przy świetle sterowanym ruchem ponowne wykrycie obecności może wymagać rozpoczęcia odliczania od nowa, podczas gdy przy wykonywaniu określonych poleceń dla urządzenia bardziej odpowiednia może być kolejka.</p>
         <p class="section-subtitle">Zmiana trybu bez zrozumienia logiki nie powinna być traktowana jako uniwersalna naprawa problemu.</p>
       </div>
@@ -223,22 +223,22 @@
 
     <section class="section">
       <div class="section-label">DIAGNOSTYKA</div>
-      <h2 class="section-title mobile-match-title">Dlaczego automatyzacja raz działa, a raz nie?</h2>
+      <h2 class="section-title mobile-match-title">Dlaczego automatyzacja raz działa, a&nbsp;raz nie?</h2>
       <div class="card">
-        <p class="section-subtitle">To jedno z częstszych wrażeń przy rozbudowanych systemach, ale przyczyna może znajdować się w różnych miejscach.</p>
+        <p class="section-subtitle">To jedno z&nbsp;częstszych wrażeń przy rozbudowanych systemach, ale przyczyna może znajdować się w&nbsp;różnych miejscach.</p>
         <p class="section-subtitle">Warto kolejno sprawdzić:</p>
         <ul>
           <li>czy wyzwalacz rzeczywiście wystąpił,</li>
           <li>czy wszystkie wymagane warunki były spełnione,</li>
           <li>jaki stan miały używane encje,</li>
-          <li>czy któraś z nich nie była chwilowo unavailable lub nie miała innej wartości niż oczekiwana,</li>
+          <li>czy któraś z&nbsp;nich nie była chwilowo unavailable lub nie miała innej wartości niż oczekiwana,</li>
           <li>czy integracja dostarczyła aktualne dane,</li>
           <li>czy urządzenie odpowiedziało na wysłaną akcję,</li>
           <li>czy poprzednie wykonanie automatyzacji nadal trwało,</li>
           <li>jaki tryb wykonania był ustawiony,</li>
-          <li>czy błąd nie wystąpił dopiero podczas jednej z kolejnych akcji.</li>
+          <li>czy błąd nie wystąpił dopiero podczas jednej z&nbsp;kolejnych akcji.</li>
         </ul>
-        <p class="section-subtitle">Jeżeli automatyzacja korzysta z urządzenia Zigbee, a problemem jest brak aktualizacji stanu albo utrata połączenia, sama edycja automatyzacji może niczego nie zmienić.</p>
+        <p class="section-subtitle">Jeżeli automatyzacja korzysta z&nbsp;urządzenia Zigbee, a&nbsp;problemem jest brak aktualizacji stanu albo utrata połączenia, sama edycja automatyzacji może niczego nie zmienić.</p>
         <a class="knowledge-link" href="/pl/integracje-home-assistant/">Integracje Home Assistant <span aria-hidden="true">→</span></a><br />
         <a class="knowledge-link" href="/pl/stabilne-zigbee/">Zigbee zrywa połączenie? <span aria-hidden="true">→</span></a>
       </div>
@@ -249,10 +249,10 @@
       <h2 class="section-title mobile-match-title">Trace – sprawdzaj przebieg zamiast zgadywać</h2>
       <div class="card">
         <p class="section-subtitle">Home Assistant posiada narzędzie Trace, które zapisuje przebieg wykonania automatyzacji krok po kroku.</p>
-        <p class="section-subtitle">Można dzięki temu zobaczyć, co uruchomiło automatyzację, które warunki zostały sprawdzone, jaką ścieżkę wykonała logika i na którym etapie pojawił się problem.</p>
+        <p class="section-subtitle">Można dzięki temu zobaczyć, co uruchomiło automatyzację, które warunki zostały sprawdzone, jaką ścieżkę wykonała logika i&nbsp;na którym etapie pojawił się problem.</p>
         <p class="section-subtitle">Jeżeli automatyzacja została uruchomiona, ale nie wykonała oczekiwanej akcji, Trace pozwala sprawdzić, czy zatrzymała się na warunku, wybrała inną gałąź albo napotkała problem podczas wykonywania działania.</p>
         <p class="section-subtitle">To znacznie lepszy punkt wyjścia niż przypadkowe zmienianie kilku ustawień jednocześnie.</p>
-        <p class="section-subtitle">Przy diagnostyce warto najpierw ustalić, gdzie dokładnie przebieg automatyzacji różni się od oczekiwanego zachowania, a dopiero później wprowadzać zmianę.</p>
+        <p class="section-subtitle">Przy diagnostyce warto najpierw ustalić, gdzie dokładnie przebieg automatyzacji różni się od oczekiwanego zachowania, a&nbsp;dopiero później wprowadzać zmianę.</p>
       </div>
     </section>
 
@@ -261,10 +261,10 @@
       <h2 class="section-title mobile-match-title">Jak testować automatyzację bez czekania na prawdziwe zdarzenie?</h2>
       <div class="card">
         <p class="section-subtitle">Edytor Home Assistant pozwala sprawdzać wybrane elementy automatyzacji bez konieczności czekania na prawdziwe zdarzenie.</p>
-        <p class="section-subtitle">Można na przykład zweryfikować stan warunku albo uruchomić wybrane działanie i sprawdzić, czy urządzenie reaguje zgodnie z oczekiwaniem.</p>
+        <p class="section-subtitle">Można na przykład zweryfikować stan warunku albo uruchomić wybrane działanie i&nbsp;sprawdzić, czy urządzenie reaguje zgodnie z&nbsp;oczekiwaniem.</p>
         <p class="section-subtitle">Trzeba jednak rozróżnić test pojedynczego elementu od testu całej automatyzacji.</p>
         <p class="section-subtitle">Jeżeli ręcznie uruchomiona akcja poprawnie włącza światło, potwierdza to, że ta konkretna czynność może zostać wykonana. Nie oznacza jeszcze, że prawidłowo skonfigurowany jest wyzwalacz, warunki oraz cały przebieg automatyzacji.</p>
-        <p class="section-subtitle">Dlatego przy problemach warto połączyć ręczne testy poszczególnych części z analizą Trace rzeczywistego wykonania.</p>
+        <p class="section-subtitle">Dlatego przy problemach warto połączyć ręczne testy poszczególnych części z&nbsp;analizą Trace rzeczywistego wykonania.</p>
       </div>
     </section>
 
@@ -272,10 +272,10 @@
       <div class="section-label">EDYTOR</div>
       <h2 class="section-title mobile-match-title">Czy do automatyzacji trzeba znać YAML?</h2>
       <div class="card">
-        <p class="section-subtitle">Nie. Typowe automatyzacje można tworzyć i edytować bezpośrednio w graficznym edytorze Home Assistant bez ręcznego pisania konfiguracji YAML.</p>
-        <p class="section-subtitle">Edytor pozwala wybierać wyzwalacze, warunki i akcje, a także tworzyć bardziej rozbudowaną logikę.</p>
-        <p class="section-subtitle">Znajomość YAML może być przydatna przy analizowaniu konfiguracji, kopiowaniu bardziej technicznych przykładów albo rozwiązaniach wymagających ręcznej edycji, ale nie jest warunkiem rozpoczęcia pracy z automatyzacjami.</p>
-        <p class="section-subtitle">Ważniejsze od sposobu zapisania konfiguracji jest zrozumienie jej logiki. Automatyzacja zbudowana w interfejsie może być równie nieczytelna jak źle zorganizowany YAML, jeżeli ma przypadkową strukturę i niejasne zależności.</p>
+        <p class="section-subtitle">Nie. Typowe automatyzacje można tworzyć i&nbsp;edytować bezpośrednio w&nbsp;graficznym edytorze Home Assistant bez ręcznego pisania konfiguracji YAML.</p>
+        <p class="section-subtitle">Edytor pozwala wybierać wyzwalacze, warunki i&nbsp;akcje, a&nbsp;także tworzyć bardziej rozbudowaną logikę.</p>
+        <p class="section-subtitle">Znajomość YAML może być przydatna przy analizowaniu konfiguracji, kopiowaniu bardziej technicznych przykładów albo rozwiązaniach wymagających ręcznej edycji, ale nie jest warunkiem rozpoczęcia pracy z&nbsp;automatyzacjami.</p>
+        <p class="section-subtitle">Ważniejsze od sposobu zapisania konfiguracji jest zrozumienie jej logiki. Automatyzacja zbudowana w&nbsp;interfejsie może być równie nieczytelna jak źle zorganizowany YAML, jeżeli ma przypadkową strukturę i&nbsp;niejasne zależności.</p>
       </div>
     </section>
 
@@ -283,18 +283,18 @@
       <div class="section-label">DOBRE PRAKTYKI</div>
       <h2 class="section-title mobile-match-title">Jak budować automatyzacje, które da się później utrzymać?</h2>
       <div class="card">
-        <p class="section-subtitle">Nazwy automatyzacji powinny jasno mówić, czego dotyczą. Przy większej liczbie reguł nazwa „Światło 2” niewiele wyjaśnia, natomiast opis odnoszący się do pomieszczenia i sposobu działania pozwala szybciej znaleźć właściwy element.</p>
+        <p class="section-subtitle">Nazwy automatyzacji powinny jasno mówić, czego dotyczą. Przy większej liczbie reguł nazwa „Światło 2” niewiele wyjaśnia, natomiast opis odnoszący się do pomieszczenia i&nbsp;sposobu działania pozwala szybciej znaleźć właściwy element.</p>
         <p class="section-subtitle">Warto również:</p>
         <ul>
           <li>nie kopiować tej samej logiki do wielu miejsc bez potrzeby,</li>
           <li>wydzielać powtarzające się sekwencje do skryptów, jeżeli rzeczywiście upraszcza to konfigurację,</li>
-          <li>zachować czytelny podział warunków i akcji,</li>
+          <li>zachować czytelny podział warunków i&nbsp;akcji,</li>
           <li>testować zmianę po jej wprowadzeniu,</li>
           <li>sprawdzać Trace przy nietypowym zachowaniu,</li>
           <li>nie naprawiać kilku różnych elementów jednocześnie bez ustalenia przyczyny,</li>
           <li>pamiętać, że problem może znajdować się poza samą automatyzacją.</li>
         </ul>
-        <p class="section-subtitle">Dobra automatyzacja nie musi być krótka za wszelką cenę. Powinna przede wszystkim mieć logiczną strukturę i zachowywać się w sposób, który można później zrozumieć i zweryfikować.</p>
+        <p class="section-subtitle">Dobra automatyzacja nie musi być krótka za wszelką cenę. Powinna przede wszystkim mieć logiczną strukturę i&nbsp;zachowywać się w&nbsp;sposób, który można później zrozumieć i&nbsp;zweryfikować.</p>
       </div>
     </section>
 
@@ -302,18 +302,18 @@
       <div class="section-label">PODSUMOWANIE</div>
       <h2 class="section-title mobile-match-title">Automatyzacja ma być przewidywalna, nie skomplikowana</h2>
       <div class="card">
-        <p class="section-subtitle">Automatyzacje Home Assistant mogą łączyć dane z wielu urządzeń i reagować na bardzo różne sytuacje, ale podstawowa zasada pozostaje taka sama: coś uruchamia logikę, warunki określają, czy ma ona przejść dalej, a akcje wykonują ustalone działania.</p>
+        <p class="section-subtitle">Automatyzacje Home Assistant mogą łączyć dane z&nbsp;wielu urządzeń i&nbsp;reagować na bardzo różne sytuacje, ale podstawowa zasada pozostaje taka sama: coś uruchamia logikę, warunki określają, czy ma ona przejść dalej, a&nbsp;akcje wykonują ustalone działania.</p>
         <p class="section-subtitle">Gdy system się rozrasta, znaczenia nabierają czytelne nazwy, odpowiedni podział logiki, właściwe tryby wykonania oraz możliwość prześledzenia tego, co rzeczywiście wydarzyło się podczas działania automatyzacji.</p>
-        <p class="section-subtitle">Jeżeli automatyzacja zachowuje się inaczej niż oczekiwano, najpierw ustal, czy problem znajduje się w wyzwalaczu, warunku, wykonaniu akcji, integracji czy komunikacji z urządzeniem. Dopiero wtedy wprowadzaj zmianę.</p>
+        <p class="section-subtitle">Jeżeli automatyzacja zachowuje się inaczej niż oczekiwano, najpierw ustal, czy problem znajduje się w&nbsp;wyzwalaczu, warunku, wykonaniu akcji, integracji czy komunikacji z&nbsp;urządzeniem. Dopiero wtedy wprowadzaj zmianę.</p>
       </div>
     </section>
 
     <section class="section">
       <div class="section-label">POMOC</div>
-      <h2 class="section-title mobile-match-title">Potrzebujesz pomocy z automatyzacjami Home Assistant?</h2>
+      <h2 class="section-title mobile-match-title">Potrzebujesz pomocy z&nbsp;automatyzacjami Home Assistant?</h2>
       <div class="card">
-        <p class="section-subtitle">Jeśli automatyzacje działają niestabilnie, uruchamiają się w niewłaściwym momencie albo chcesz uporządkować ich logikę, mogę pomóc przeanalizować obecną konfigurację, sprawdzić możliwe przyczyny problemu i wdrożyć uzgodnione zmiany.</p>
-        <a class="knowledge-help-link knowledge-help-link--mobile-flow" href="/pl/#kontakt"><span class="knowledge-help-main"><span class="knowledge-help-title">Skontaktuj się ze mną.</span><span class="knowledge-help-detail">Wstępna ocena zgłoszenia jest bezpłatna i bez zobowiązań.</span></span> <span class="knowledge-help-accent">→ kliknij tutaj</span></a>
+        <p class="section-subtitle">Jeśli automatyzacje działają niestabilnie, uruchamiają się w&nbsp;niewłaściwym momencie albo chcesz uporządkować ich logikę, mogę pomóc przeanalizować obecną konfigurację, sprawdzić możliwe przyczyny problemu i&nbsp;wdrożyć uzgodnione zmiany.</p>
+        <a class="knowledge-help-link" href="/pl/#kontakt"><span class="knowledge-help-accent">→ Zapraszam do kontaktu</span></a>
       </div>
     </section>
   </main>

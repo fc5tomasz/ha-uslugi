@@ -105,23 +105,23 @@
   <main>
     <section class="section"><a class="demo-back-link" href="/pl/poradniki/"><span aria-hidden="true">←</span> Poradniki</a>
       <div class="section-label">BAZA DANYCH</div>
-      <h1 class="section-title mobile-match-title">Baza danych Home Assistant – Recorder, SQLite i MariaDB</h1>
+      <h1 class="section-title mobile-match-title">Baza danych Home Assistant – Recorder, SQLite i&nbsp;MariaDB</h1>
       <p class="article-author">Autor: <a href="/pl/#o-mnie">Tomasz Furdal · HA Expert</a></p>
       <div class="card">
         <p class="section-subtitle">Home Assistant nie tylko pokazuje aktualny stan urządzeń. Zapisuje również historię zmian, dzięki czemu można później sprawdzić wcześniejsze stany encji, temperaturę, działanie urządzeń czy dane prezentowane na wykresach.</p>
-        <p class="section-subtitle">Za tę część systemu odpowiada przede wszystkim Recorder. W niewielkiej instalacji baza danych może przez długi czas pozostawać czymś, o czym użytkownik praktycznie nie musi myśleć. Wraz z rozbudową systemu liczba zapisów może jednak wyraźnie wzrosnąć.</p>
-        <p class="section-subtitle">Nie chodzi przy tym wyłącznie o liczbę urządzeń. Kilka bardzo często aktualizujących się sensorów może generować więcej zapisów niż wiele urządzeń, których stan zmienia się tylko kilka razy dziennie.</p>
-        <p class="section-subtitle">W tym poradniku wyjaśniam, czym jest Recorder, jak działa domyślna baza SQLite, co wpływa na ilość zapisywanych danych oraz kiedy można rozważyć przejście na MariaDB.</p>
+        <p class="section-subtitle">Za tę część systemu odpowiada przede wszystkim Recorder. W&nbsp;niewielkiej instalacji baza danych może przez długi czas pozostawać czymś, o&nbsp;czym użytkownik praktycznie nie musi myśleć. Wraz z&nbsp;rozbudową systemu liczba zapisów może jednak wyraźnie wzrosnąć.</p>
+        <p class="section-subtitle">Nie chodzi przy tym wyłącznie o&nbsp;liczbę urządzeń. Kilka bardzo często aktualizujących się sensorów może generować więcej zapisów niż wiele urządzeń, których stan zmienia się tylko kilka razy dziennie.</p>
+        <p class="section-subtitle">W&nbsp;tym poradniku wyjaśniam, czym jest Recorder, jak działa domyślna baza SQLite, co wpływa na ilość zapisywanych danych oraz kiedy można rozważyć przejście na MariaDB.</p>
       </div>
     </section>
 
     <section class="section">
       <div class="section-label">RECORDER</div>
-      <h2 class="section-title mobile-match-title">Czym jest Recorder w Home Assistant?</h2>
+      <h2 class="section-title mobile-match-title">Czym jest Recorder w&nbsp;Home Assistant?</h2>
       <div class="card">
-        <p class="section-subtitle">Recorder jest częścią Home Assistant odpowiedzialną za zapisywanie stanów encji i zdarzeń do bazy danych.</p>
-        <p class="section-subtitle">Gdy urządzenie lub integracja przekazuje nowy stan, informacja może zostać zapisana przez Recorder. Z danych znajdujących się w bazie korzystają między innymi Historia, Aktywność, wykresy na dashboardach i statystyki.</p>
-        <p class="section-subtitle">Przykładowo czujnik temperatury może zmienić wartość z 21,4°C na 21,5°C. Dla użytkownika jest to niewielka zmiana, ale dla Recordera oznacza kolejny stan, który może zostać zapisany.</p>
+        <p class="section-subtitle">Recorder jest częścią Home Assistant odpowiedzialną za zapisywanie stanów encji i&nbsp;zdarzeń do bazy danych.</p>
+        <p class="section-subtitle">Gdy urządzenie lub integracja przekazuje nowy stan, informacja może zostać zapisana przez Recorder. Z&nbsp;danych znajdujących się w&nbsp;bazie korzystają między innymi Historia, Aktywność, wykresy na dashboardach i&nbsp;statystyki.</p>
+        <p class="section-subtitle">Przykładowo czujnik temperatury może zmienić wartość z&nbsp;21,4°C na 21,5°C. Dla użytkownika jest to niewielka zmiana, ale dla Recordera oznacza kolejny stan, który może zostać zapisany.</p>
         <p class="section-subtitle">Jeżeli podobnych encji jest dużo albo aktualizują się bardzo często, liczba operacji zapisu rośnie.</p>
       </div>
     </section>
@@ -134,9 +134,9 @@
         <p class="section-subtitle">Znaczenie ma przede wszystkim częstotliwość zmian.</p>
         <p class="section-subtitle">Dużo danych mogą generować na przykład:</p>
         <ul>
-          <li>sensory energii i chwilowego poboru mocy,</li>
-          <li>często aktualizowane pomiary temperatury i wilgotności,</li>
-          <li>sensory techniczne i diagnostyczne,</li>
+          <li>sensory energii i&nbsp;chwilowego poboru mocy,</li>
+          <li>często aktualizowane pomiary temperatury i&nbsp;wilgotności,</li>
+          <li>sensory techniczne i&nbsp;diagnostyczne,</li>
           <li>dane sieciowe,</li>
           <li>urządzenia raportujące stan bardzo często,</li>
           <li>integracje udostępniające wiele dynamicznych encji.</li>
@@ -150,9 +150,9 @@
       <div class="section-label">SQLITE</div>
       <h2 class="section-title mobile-match-title">SQLite – domyślna baza Home Assistant</h2>
       <div class="card">
-        <p class="section-subtitle">Home Assistant domyślnie korzysta z SQLite. Nie wymaga ona osobnego serwera ani dodatkowej konfiguracji. Standardowa baza znajduje się w katalogu konfiguracji Home Assistant i jest zapisywana w pliku <strong>home-assistant_v2.db</strong>.</p>
-        <p class="section-subtitle">SQLite jest obecnie domyślnym i rekomendowanym silnikiem bazy Recordera, a Home Assistant określa go również jako najlepiej przetestowane rozwiązanie, pod które nowsze wersje systemu są mocno zoptymalizowane.</p>
-        <p class="section-subtitle">Jeżeli Recorder działa prawidłowo, historia jest kompletna, a baza nie powoduje problemów, nie ma potrzeby zmieniać SQLite tylko dlatego, że istnieje MariaDB.</p>
+        <p class="section-subtitle">Home Assistant domyślnie korzysta z&nbsp;SQLite. Nie wymaga ona osobnego serwera ani dodatkowej konfiguracji. Standardowa baza znajduje się w&nbsp;katalogu konfiguracji Home Assistant i&nbsp;jest zapisywana w&nbsp;pliku <strong>home-assistant_v2.db</strong>.</p>
+        <p class="section-subtitle">SQLite jest obecnie domyślnym i&nbsp;rekomendowanym silnikiem bazy Recordera, a&nbsp;Home Assistant określa go również jako najlepiej przetestowane rozwiązanie, pod które nowsze wersje systemu są mocno zoptymalizowane.</p>
+        <p class="section-subtitle">Jeżeli Recorder działa prawidłowo, historia jest kompletna, a&nbsp;baza nie powoduje problemów, nie ma potrzeby zmieniać SQLite tylko dlatego, że istnieje MariaDB.</p>
       </div>
     </section>
 
@@ -160,30 +160,30 @@
       <div class="section-label">OBJAWY</div>
       <h2 class="section-title mobile-match-title">Kiedy warto zainteresować się bazą danych?</h2>
       <div class="card">
-        <p class="section-subtitle">Nie każdy problem ze stabilnością Home Assistant ma związek z bazą danych.</p>
+        <p class="section-subtitle">Nie każdy problem ze stabilnością Home Assistant ma związek z&nbsp;bazą danych.</p>
         <p class="section-subtitle">Recorder warto jednak sprawdzić, gdy pojawiają się:</p>
         <ul>
-          <li>błędy Recordera w logach,</li>
+          <li>błędy Recordera w&nbsp;logach,</li>
           <li>brakujące fragmenty historii,</li>
-          <li>problemy z zapisywaniem stanów,</li>
-          <li>problemy podczas korzystania z historii,</li>
+          <li>problemy z&nbsp;zapisywaniem stanów,</li>
+          <li>problemy podczas korzystania z&nbsp;historii,</li>
           <li>szybko rosnący rozmiar bazy,</li>
           <li>mała ilość wolnego miejsca,</li>
-          <li>błędy związane z plikiem SQLite.</li>
+          <li>błędy związane z&nbsp;plikiem SQLite.</li>
         </ul>
-        <p class="section-subtitle">Przy SQLite znaczenie może mieć również sam nośnik. Home Assistant wskazuje awarię pamięci flash, nieprawidłowe zasilanie i nieczyste wyłączenie systemu jako możliwe przyczyny uszkodzeń bazy.</p>
-        <p class="section-subtitle">Przy podobnych objawach warto więc ustalić, czy problem rzeczywiście znajduje się w bazie, czy jego źródłem jest nośnik, zasilanie, brak miejsca albo inny element instalacji.</p>
+        <p class="section-subtitle">Przy SQLite znaczenie może mieć również sam nośnik. Home Assistant wskazuje awarię pamięci flash, nieprawidłowe zasilanie i&nbsp;nieczyste wyłączenie systemu jako możliwe przyczyny uszkodzeń bazy.</p>
+        <p class="section-subtitle">Przy podobnych objawach warto więc ustalić, czy problem rzeczywiście znajduje się w&nbsp;bazie, czy jego źródłem jest nośnik, zasilanie, brak miejsca albo inny element instalacji.</p>
       </div>
     </section>
 
     <section class="section">
       <div class="section-label">DOŚWIADCZENIE</div>
-      <h2 class="section-title mobile-match-title">Przykład z mojego własnego systemu</h2>
+      <h2 class="section-title mobile-match-title">Przykład z&nbsp;mojego własnego systemu</h2>
       <div class="card">
-        <p class="section-subtitle">W moim przypadku problemy zaczęły być wyraźnie widoczne wraz z rozbudową Home Assistant i zwiększeniem liczby urządzeń oraz zapisywanych danych.</p>
-        <p class="section-subtitle">Home Assistant pozornie działał, ale zdarzały się zaniki, a Recorder nie pracował prawidłowo. Nie wyglądało to jak pojedynczy problem jednej automatyzacji czy konkretnego urządzenia.</p>
-        <p class="section-subtitle">Po przejściu z SQLite na MariaDB problemy ustąpiły. Od tego czasu MariaDB działa w moim systemie stabilnie od około roku, również po wielu aktualizacjach Home Assistant.</p>
-        <p class="section-subtitle">Nie oznacza to, że MariaDB rozwiąże każdy problem z niestabilnością. To doświadczenie z konkretnej, rozbudowanej instalacji. W innym systemie podobne objawy mogą mieć inne źródło.</p>
+        <p class="section-subtitle">W&nbsp;moim przypadku problemy zaczęły być wyraźnie widoczne wraz z&nbsp;rozbudową Home Assistant i&nbsp;zwiększeniem liczby urządzeń oraz zapisywanych danych.</p>
+        <p class="section-subtitle">Home Assistant pozornie działał, ale zdarzały się zaniki, a&nbsp;Recorder nie pracował prawidłowo. Nie wyglądało to jak pojedynczy problem jednej automatyzacji czy konkretnego urządzenia.</p>
+        <p class="section-subtitle">Po przejściu z&nbsp;SQLite na MariaDB problemy ustąpiły. Od tego czasu MariaDB działa w&nbsp;moim systemie stabilnie od około roku, również po wielu aktualizacjach Home Assistant.</p>
+        <p class="section-subtitle">Nie oznacza to, że MariaDB rozwiąże każdy problem z&nbsp;niestabilnością. To doświadczenie z&nbsp;konkretnej, rozbudowanej instalacji. W&nbsp;innym systemie podobne objawy mogą mieć inne źródło.</p>
       </div>
     </section>
 
@@ -191,8 +191,8 @@
       <div class="section-label">FILTROWANIE</div>
       <h2 class="section-title mobile-match-title">Recorder nie musi zapisywać wszystkiego</h2>
       <div class="card">
-        <p class="section-subtitle">Home Assistant pozwala określić, które encje, domeny i zdarzenia mają trafiać do Recordera.</p>
-        <p class="section-subtitle">Służą do tego ustawienia <strong>include</strong> i <strong>exclude</strong>. Odpowiednie wykluczenie danych, których historia nie jest potrzebna, może zmniejszyć liczbę zapisów i ograniczyć rozmiar bazy.</p>
+        <p class="section-subtitle">Home Assistant pozwala określić, które encje, domeny i&nbsp;zdarzenia mają trafiać do Recordera.</p>
+        <p class="section-subtitle">Służą do tego ustawienia <strong>include</strong> i&nbsp;<strong>exclude</strong>. Odpowiednie wykluczenie danych, których historia nie jest potrzebna, może zmniejszyć liczbę zapisów i&nbsp;ograniczyć rozmiar bazy.</p>
         <p class="section-subtitle">Ma to szczególne znaczenie przy encjach technicznych, które często zmieniają stan, ale których wcześniejszych wartości użytkownik nigdy nie sprawdza.</p>
         <p class="section-subtitle">Jeżeli sensor aktualizuje się bardzo często, warto zadać sobie pytanie, czy pełna historia tej konkretnej encji rzeczywiście jest potrzebna.</p>
         <p class="section-subtitle">Przed wykluczeniem trzeba jednak sprawdzić, czy dane nie są wykorzystywane później przez historię, diagnostykę lub inne funkcje systemu.</p>
@@ -201,10 +201,10 @@
 
     <section class="section">
       <div class="section-label">HISTORIA</div>
-      <h2 class="section-title mobile-match-title">Historia i statystyki długoterminowe to nie dokładnie to samo</h2>
+      <h2 class="section-title mobile-match-title">Historia i&nbsp;statystyki długoterminowe to nie dokładnie to samo</h2>
       <div class="card">
         <p class="section-subtitle"><strong>purge_keep_days</strong> dotyczy szczegółowej historii przechowywanej przez Recorder. Domyślna wartość wynosi obecnie 10 dni.</p>
-        <p class="section-subtitle">Home Assistant posiada jednak również statystyki długoterminowe dla odpowiednich sensorów. Dane krótkoterminowe są zapisywane w większej szczegółowości, natomiast statystyki długoterminowe przechowują godzinowe podsumowania i nie są automatycznie usuwane w taki sam sposób jak szczegółowe stany.</p>
+        <p class="section-subtitle">Home Assistant posiada jednak również statystyki długoterminowe dla odpowiednich sensorów. Dane krótkoterminowe są zapisywane w&nbsp;większej szczegółowości, natomiast statystyki długoterminowe przechowują godzinowe podsumowania i&nbsp;nie są automatycznie usuwane w&nbsp;taki sam sposób jak szczegółowe stany.</p>
         <p class="section-subtitle">Dlatego ustawienie 10 dni historii nie oznacza automatycznie, że po dziesięciu dniach znikną wszystkie starsze dane ze wszystkich wykresów. Dla sensorów obsługujących statystyki długoterminowe Home Assistant może korzystać ze zgromadzonych danych zagregowanych.</p>
       </div>
     </section>
@@ -213,8 +213,8 @@
       <div class="section-label">RETENCJA</div>
       <h2 class="section-title mobile-match-title">Jak długo Recorder przechowuje szczegółową historię?</h2>
       <div class="card">
-        <p class="section-subtitle">Parametr <strong>purge_keep_days</strong> określa liczbę dni szczegółowej historii pozostawianej w bazie po czyszczeniu.</p>
-        <p class="section-subtitle">Domyślna wartość wynosi 10 dni. <strong>auto_purge</strong> jest domyślnie włączone, a Recorder okresowo usuwa starsze dane. Obecna konfiguracja posiada również mechanizm <strong>auto_repack</strong>, który okresowo pomaga odzyskiwać miejsce zajmowane wcześniej przez usunięte rekordy.</p>
+        <p class="section-subtitle">Parametr <strong>purge_keep_days</strong> określa liczbę dni szczegółowej historii pozostawianej w&nbsp;bazie po czyszczeniu.</p>
+        <p class="section-subtitle">Domyślna wartość wynosi 10 dni. <strong>auto_purge</strong> jest domyślnie włączone, a&nbsp;Recorder okresowo usuwa starsze dane. Obecna konfiguracja posiada również mechanizm <strong>auto_repack</strong>, który okresowo pomaga odzyskiwać miejsce zajmowane wcześniej przez usunięte rekordy.</p>
         <p class="section-subtitle">Dłuższa retencja oznacza większą ilość szczegółowych danych do przechowywania.</p>
         <p class="section-subtitle">Nie zawsze ma sens przechowywanie pełnej historii każdej encji przez bardzo długi czas. Warto dopasować ją do tego, jakie dane są później faktycznie potrzebne.</p>
       </div>
@@ -222,11 +222,11 @@
 
     <section class="section">
       <div class="section-label">ZAPIS</div>
-      <h2 class="section-title mobile-match-title">Jak często dane są zatwierdzane w bazie?</h2>
+      <h2 class="section-title mobile-match-title">Jak często dane są zatwierdzane w&nbsp;bazie?</h2>
       <div class="card">
-        <p class="section-subtitle">Recorder korzysta z parametru <strong>commit_interval</strong>.</p>
-        <p class="section-subtitle">Domyślna wartość wynosi obecnie 5 sekund. Zwiększenie jej ogranicza częstotliwość operacji zapisu na dysku, ale powoduje również większe opóźnienie fizycznego zatwierdzenia danych w bazie. Home Assistant wskazuje tę możliwość szczególnie w kontekście instalacji korzystających z pamięci flash i kart SD.</p>
-        <p class="section-subtitle">Nie ma jednak potrzeby zmieniać <strong>commit_interval</strong>, jeżeli nie rozwiązujemy konkretnego problemu. Jest to parametr Recordera, a nie uniwersalny sposób na przyspieszenie całego Home Assistant.</p>
+        <p class="section-subtitle">Recorder korzysta z&nbsp;parametru <strong>commit_interval</strong>.</p>
+        <p class="section-subtitle">Domyślna wartość wynosi obecnie 5 sekund. Zwiększenie jej ogranicza częstotliwość operacji zapisu na dysku, ale powoduje również większe opóźnienie fizycznego zatwierdzenia danych w&nbsp;bazie. Home Assistant wskazuje tę możliwość szczególnie w&nbsp;kontekście instalacji korzystających z&nbsp;pamięci flash i&nbsp;kart SD.</p>
+        <p class="section-subtitle">Nie ma jednak potrzeby zmieniać <strong>commit_interval</strong>, jeżeli nie rozwiązujemy konkretnego problemu. Jest to parametr Recordera, a&nbsp;nie uniwersalny sposób na przyspieszenie całego Home Assistant.</p>
       </div>
     </section>
 
@@ -235,7 +235,7 @@
       <h2 class="section-title mobile-match-title">Nośnik danych ma znaczenie</h2>
       <div class="card">
         <p class="section-subtitle">Recorder wykonuje regularne operacje zapisu.</p>
-        <p class="section-subtitle">Jeżeli Home Assistant działa na wolnym albo zużytym nośniku, baza może stać się jednym z elementów wpływających na działanie systemu. Oficjalna dokumentacja zwraca szczególną uwagę na karty SD, ponieważ intensywne zapisy mogą wpływać zarówno na czas reakcji systemu, jak i żywotność nośnika.</p>
+        <p class="section-subtitle">Jeżeli Home Assistant działa na wolnym albo zużytym nośniku, baza może stać się jednym z&nbsp;elementów wpływających na działanie systemu. Oficjalna dokumentacja zwraca szczególną uwagę na karty SD, ponieważ intensywne zapisy mogą wpływać zarówno na czas reakcji systemu, jak i&nbsp;żywotność nośnika.</p>
         <p class="section-subtitle">Przy problemach warto sprawdzić:</p>
         <ul>
           <li>ilość wolnego miejsca,</li>
@@ -244,28 +244,28 @@
           <li>stabilność zasilania,</li>
           <li>czy system nie jest regularnie wyłączany bez prawidłowego zamknięcia.</li>
         </ul>
-        <p class="section-subtitle">Zmiana bazy nie zastąpi naprawy problemu z dyskiem, zasilaniem albo brakiem miejsca.</p>
+        <p class="section-subtitle">Zmiana bazy nie zastąpi naprawy problemu z&nbsp;dyskiem, zasilaniem albo brakiem miejsca.</p>
       </div>
     </section>
 
     <section class="section">
       <div class="section-label">MARIADB</div>
-      <h2 class="section-title mobile-match-title">Czym jest MariaDB w Home Assistant?</h2>
+      <h2 class="section-title mobile-match-title">Czym jest MariaDB w&nbsp;Home Assistant?</h2>
       <div class="card">
-        <p class="section-subtitle">MariaDB jest jednym z silników baz danych obsługiwanych przez Recorder obok SQLite, MySQL i PostgreSQL.</p>
-        <p class="section-subtitle">W Home Assistant OS dostępna jest oficjalna aplikacja MariaDB. Można ją zainstalować przez <strong>Settings → Apps → Install app</strong>, przygotować bazę i użytkownika, a następnie skonfigurować Recorder tak, aby zapisywał dane w MariaDB zamiast w domyślnym pliku SQLite.</p>
-        <p class="section-subtitle">MariaDB działa wtedy jako osobna usługa bazodanowa, z którą łączy się Recorder.</p>
+        <p class="section-subtitle">MariaDB jest jednym z&nbsp;silników baz danych obsługiwanych przez Recorder obok SQLite, MySQL i&nbsp;PostgreSQL.</p>
+        <p class="section-subtitle">W&nbsp;Home Assistant OS dostępna jest oficjalna aplikacja MariaDB. Można ją zainstalować przez <strong>Settings → Apps → Install app</strong>, przygotować bazę i&nbsp;użytkownika, a&nbsp;następnie skonfigurować Recorder tak, aby zapisywał dane w&nbsp;MariaDB zamiast w&nbsp;domyślnym pliku SQLite.</p>
+        <p class="section-subtitle">MariaDB działa wtedy jako osobna usługa bazodanowa, z&nbsp;którą łączy się Recorder.</p>
       </div>
     </section>
 
     <section class="section">
       <div class="section-label">PRAKTYKA</div>
-      <h2 class="section-title mobile-match-title">MariaDB w codziennym działaniu</h2>
+      <h2 class="section-title mobile-match-title">MariaDB w&nbsp;codziennym działaniu</h2>
       <div class="card">
-        <p class="section-subtitle">Po prawidłowej konfiguracji MariaDB może po prostu działać w tle razem z Home Assistant.</p>
-        <p class="section-subtitle">W moim systemie pracuje w ten sposób od około roku. W tym czasie Home Assistant był wielokrotnie aktualizowany, a sama baza nie wymagała ode mnie bieżącej obsługi.</p>
-        <p class="section-subtitle">W praktyce po jej uruchomieniu korzystam z Home Assistant normalnie i nie muszę zajmować się bazą przy każdej aktualizacji systemu.</p>
-        <p class="section-subtitle">Warto uwzględnić ją w kopiach zapasowych, tak jak pozostałe ważne elementy instalacji.</p>
+        <p class="section-subtitle">Po prawidłowej konfiguracji MariaDB może po prostu działać w&nbsp;tle razem z&nbsp;Home Assistant.</p>
+        <p class="section-subtitle">W&nbsp;moim systemie pracuje w&nbsp;ten sposób od około roku. W&nbsp;tym czasie Home Assistant był wielokrotnie aktualizowany, a&nbsp;sama baza nie wymagała ode mnie bieżącej obsługi.</p>
+        <p class="section-subtitle">W&nbsp;praktyce po jej uruchomieniu korzystam z&nbsp;Home Assistant normalnie i&nbsp;nie muszę zajmować się bazą przy każdej aktualizacji systemu.</p>
+        <p class="section-subtitle">Warto uwzględnić ją w&nbsp;kopiach zapasowych, tak jak pozostałe ważne elementy instalacji.</p>
       </div>
     </section>
 
@@ -274,18 +274,18 @@
       <h2 class="section-title mobile-match-title">Kiedy można rozważyć MariaDB?</h2>
       <div class="card">
         <p class="section-subtitle">Nie ma jednej liczby urządzeń, po której należy zmienić SQLite na MariaDB.</p>
-        <p class="section-subtitle">MariaDB można rozważyć wtedy, gdy istnieje konkretny powód wynikający z zachowania danej instalacji, na przykład pojawiają się problemy związane z Recorderem, historia nie działa prawidłowo albo system generuje bardzo dużą liczbę zapisów.</p>
+        <p class="section-subtitle">MariaDB można rozważyć wtedy, gdy istnieje konkretny powód wynikający z&nbsp;zachowania danej instalacji, na przykład pojawiają się problemy związane z&nbsp;Recorderem, historia nie działa prawidłowo albo system generuje bardzo dużą liczbę zapisów.</p>
         <p class="section-subtitle">Przed zmianą warto sprawdzić:</p>
         <ul>
           <li>logi Recordera,</li>
           <li>ilość wolnego miejsca,</li>
           <li>stan nośnika,</li>
-          <li>rozmiar i zachowanie obecnej bazy,</li>
+          <li>rozmiar i&nbsp;zachowanie obecnej bazy,</li>
           <li>często aktualizujące się encje,</li>
-          <li>konfigurację <strong>include</strong> i <strong>exclude</strong>,</li>
+          <li>konfigurację <strong>include</strong> i&nbsp;<strong>exclude</strong>,</li>
           <li>długość przechowywanej szczegółowej historii.</li>
         </ul>
-        <p class="section-subtitle">SQLite pozostaje domyślną i rekomendowaną bazą Home Assistant. MariaDB jest dodatkową, obsługiwaną możliwością, która może dobrze pasować do konkretnej instalacji.</p>
+        <p class="section-subtitle">SQLite pozostaje domyślną i&nbsp;rekomendowaną bazą Home Assistant. MariaDB jest dodatkową, obsługiwaną możliwością, która może dobrze pasować do konkretnej instalacji.</p>
       </div>
     </section>
 
@@ -293,20 +293,20 @@
       <div class="section-label">INSTALACJA</div>
       <h2 class="section-title mobile-match-title">Jak wygląda przejście na MariaDB?</h2>
       <div class="card">
-        <p class="section-subtitle">W Home Assistant OS podstawowy proces wygląda następująco:</p>
+        <p class="section-subtitle">W&nbsp;Home Assistant OS podstawowy proces wygląda następująco:</p>
         <ol class="guide-steps">
           <li>wykonaj aktualną kopię zapasową Home Assistant;</li>
           <li>przejdź do <strong>Settings → Apps → Install app</strong>;</li>
           <li>zainstaluj oficjalną aplikację MariaDB;</li>
-          <li>przygotuj bazę, użytkownika i silne hasło;</li>
-          <li>uruchom MariaDB i sprawdź jej log;</li>
-          <li>skonfiguruj Recorder w Home Assistant tak, aby korzystał z przygotowanej bazy MariaDB;</li>
+          <li>przygotuj bazę, użytkownika i&nbsp;silne hasło;</li>
+          <li>uruchom MariaDB i&nbsp;sprawdź jej log;</li>
+          <li>skonfiguruj Recorder w&nbsp;Home Assistant tak, aby korzystał z&nbsp;przygotowanej bazy MariaDB;</li>
           <li>uruchom ponownie Home Assistant;</li>
           <li>sprawdź logi Recordera;</li>
-          <li>sprawdź, czy nowe stany pojawiają się w Historii;</li>
-          <li>sprawdź wykresy i pozostałe elementy korzystające z zapisanych danych.</li>
+          <li>sprawdź, czy nowe stany pojawiają się w&nbsp;Historii;</li>
+          <li>sprawdź wykresy i&nbsp;pozostałe elementy korzystające z&nbsp;zapisanych danych.</li>
         </ol>
-        <p class="section-subtitle">Oficjalna aplikacja MariaDB przewiduje konfigurację bazy, użytkowników i uprawnień, a dokumentacja pokazuje połączenie jej z Recorderem przez <strong>db_url</strong>.</p>
+        <p class="section-subtitle">Oficjalna aplikacja MariaDB przewiduje konfigurację bazy, użytkowników i&nbsp;uprawnień, a&nbsp;dokumentacja pokazuje połączenie jej z&nbsp;Recorderem przez <strong>db_url</strong>.</p>
       </div>
     </section>
 
@@ -316,7 +316,7 @@
       <div class="card">
         <p class="section-subtitle">To ważna rzecz przed zmianą.</p>
         <p class="section-subtitle">Home Assistant oficjalnie ostrzega, że zmiana bazy używanej przez Recorder może spowodować utratę istniejącej historii. Migracja dotychczasowych danych pomiędzy silnikami baz danych nie jest oficjalnie wspierana.</p>
-        <p class="section-subtitle">Dlatego przed zmianą warto wykonać kopię zapasową i zakładać, że nowa baza może rozpocząć zapisywanie historii od momentu przełączenia Recordera.</p>
+        <p class="section-subtitle">Dlatego przed zmianą warto wykonać kopię zapasową i&nbsp;zakładać, że nowa baza może rozpocząć zapisywanie historii od momentu przełączenia Recordera.</p>
       </div>
     </section>
 
@@ -326,8 +326,8 @@
       <div class="card">
         <p class="section-subtitle">Jeżeli Home Assistant zachowuje się niestabilnie, warto najpierw ustalić charakter problemu.</p>
         <p class="section-subtitle">Jeżeli urządzenia tracą komunikację, źródłem może być Zigbee, Wi-Fi albo konkretna integracja.</p>
-        <p class="section-subtitle">Jeżeli automatyzacja nie wykonuje działania, problem może znajdować się w wyzwalaczu, warunku, akcji albo urządzeniu.</p>
-        <p class="section-subtitle">Jeżeli natomiast pojawiają się błędy Recordera, braki w historii, problemy z zapisywaniem stanów, szybko rosnąca baza albo problemy z nośnikiem, wtedy baza danych jest jednym z elementów, które warto sprawdzić.</p>
+        <p class="section-subtitle">Jeżeli automatyzacja nie wykonuje działania, problem może znajdować się w&nbsp;wyzwalaczu, warunku, akcji albo urządzeniu.</p>
+        <p class="section-subtitle">Jeżeli natomiast pojawiają się błędy Recordera, braki w&nbsp;historii, problemy z&nbsp;zapisywaniem stanów, szybko rosnąca baza albo problemy z&nbsp;nośnikiem, wtedy baza danych jest jednym z&nbsp;elementów, które warto sprawdzić.</p>
         <a class="knowledge-link" href="/pl/integracje-home-assistant/">Integracje Home Assistant <span aria-hidden="true">→</span></a>
         <a class="knowledge-link" href="/pl/automatyzacje-home-assistant/">Automatyzacje Home Assistant <span aria-hidden="true">→</span></a>
       </div>
@@ -338,29 +338,29 @@
       <h2 class="section-title mobile-match-title">SQLite czy MariaDB – co wybrać?</h2>
       <div class="card">
         <p class="section-subtitle">Jeżeli Home Assistant działa prawidłowo na SQLite, nie ma potrzeby zmieniać bazy tylko dlatego, że MariaDB jest dostępna.</p>
-        <p class="section-subtitle">Jeżeli natomiast przy rozbudowanym systemie pojawiają się problemy związane z Recorderem, historią albo dużą liczbą zapisów, warto najpierw ustalić ich źródło. Jeżeli problemy wynikają z obciążenia Recordera i dużej liczby zapisów, w bardziej rozbudowanej instalacji rekomenduję przejście na MariaDB.</p>
-        <p class="section-subtitle">W moim systemie przejście na MariaDB rozwiązało problemy występujące wcześniej przy SQLite i od około roku ta konfiguracja działa stabilnie.</p>
-        <p class="section-subtitle">Nie oznacza to, że identyczny efekt wystąpi w każdej instalacji. Najważniejsze jest ustalenie, co faktycznie dzieje się w konkretnym systemie i dopiero na tej podstawie dobranie rozwiązania.</p>
+        <p class="section-subtitle">Jeżeli natomiast przy rozbudowanym systemie pojawiają się problemy związane z&nbsp;Recorderem, historią albo dużą liczbą zapisów, warto najpierw ustalić ich źródło. Jeżeli problemy wynikają z&nbsp;obciążenia Recordera i&nbsp;dużej liczby zapisów, w&nbsp;bardziej rozbudowanej instalacji rekomenduję przejście na MariaDB.</p>
+        <p class="section-subtitle">W&nbsp;moim systemie przejście na MariaDB rozwiązało problemy występujące wcześniej przy SQLite i&nbsp;od około roku ta konfiguracja działa stabilnie.</p>
+        <p class="section-subtitle">Nie oznacza to, że identyczny efekt wystąpi w&nbsp;każdej instalacji. Najważniejsze jest ustalenie, co faktycznie dzieje się w&nbsp;konkretnym systemie i&nbsp;dopiero na tej podstawie dobranie rozwiązania.</p>
       </div>
     </section>
 
     <section class="section">
       <div class="section-label">PODSUMOWANIE</div>
-      <h2 class="section-title mobile-match-title">Baza danych działa w tle, dopóki nie zaczyna mieć znaczenia</h2>
+      <h2 class="section-title mobile-match-title">Baza danych działa w&nbsp;tle, dopóki nie zaczyna mieć znaczenia</h2>
       <div class="card">
-        <p class="section-subtitle">W wielu instalacjach Home Assistant może przez lata działać na domyślnym SQLite bez potrzeby zajmowania się bazą danych.</p>
-        <p class="section-subtitle">Przy bardziej rozbudowanym systemie warto jednak wiedzieć, czym jest Recorder, które encje generują dużo zapisów, jak długo przechowywana jest szczegółowa historia i na jakim nośniku znajdują się dane.</p>
-        <p class="section-subtitle">SQLite pozostaje domyślnym i rekomendowanym rozwiązaniem Home Assistant. MariaDB jest obsługiwaną alternatywą, którą można rozważyć wtedy, gdy przemawia za tym zachowanie konkretnego systemu.</p>
-        <p class="section-subtitle">W moim przypadku przejście na MariaDB rozwiązało problemy z Recorderem, a od około roku baza działa stabilnie również po kolejnych aktualizacjach Home Assistant.</p>
+        <p class="section-subtitle">W&nbsp;wielu instalacjach Home Assistant może przez lata działać na domyślnym SQLite bez potrzeby zajmowania się bazą danych.</p>
+        <p class="section-subtitle">Przy bardziej rozbudowanym systemie warto jednak wiedzieć, czym jest Recorder, które encje generują dużo zapisów, jak długo przechowywana jest szczegółowa historia i&nbsp;na jakim nośniku znajdują się dane.</p>
+        <p class="section-subtitle">SQLite pozostaje domyślnym i&nbsp;rekomendowanym rozwiązaniem Home Assistant. MariaDB jest obsługiwaną alternatywą, którą można rozważyć wtedy, gdy przemawia za tym zachowanie konkretnego systemu.</p>
+        <p class="section-subtitle">W&nbsp;moim przypadku przejście na MariaDB rozwiązało problemy z&nbsp;Recorderem, a&nbsp;od około roku baza działa stabilnie również po kolejnych aktualizacjach Home Assistant.</p>
       </div>
     </section>
 
     <section class="section">
       <div class="section-label">POMOC</div>
-      <h2 class="section-title mobile-match-title">Potrzebujesz pomocy z bazą danych Home Assistant?</h2>
+      <h2 class="section-title mobile-match-title">Potrzebujesz pomocy z&nbsp;bazą danych Home Assistant?</h2>
       <div class="card">
-        <p class="section-subtitle">Jeśli Recorder działa nieprawidłowo, historia ma braki, baza szybko rośnie albo zastanawiasz się nad przejściem z SQLite na MariaDB, mogę pomóc sprawdzić obecną konfigurację, znaleźć możliwe źródło problemu i dobrać odpowiednie rozwiązanie.</p>
-        <a class="knowledge-help-link knowledge-help-link--mobile-flow" href="/pl/#kontakt"><span class="knowledge-help-main"><span class="knowledge-help-title">Skontaktuj się ze mną.</span><span class="knowledge-help-detail">Wstępna ocena zgłoszenia jest bezpłatna i bez zobowiązań.</span></span> <span class="knowledge-help-accent">→ kliknij tutaj</span></a>
+        <p class="section-subtitle">Jeśli Recorder działa nieprawidłowo, historia ma braki, baza szybko rośnie albo zastanawiasz się nad przejściem z&nbsp;SQLite na MariaDB, mogę pomóc sprawdzić obecną konfigurację, znaleźć możliwe źródło problemu i&nbsp;dobrać odpowiednie rozwiązanie.</p>
+        <a class="knowledge-help-link" href="/pl/#kontakt"><span class="knowledge-help-accent">→ Zapraszam do kontaktu</span></a>
       </div>
     </section>
   </main>
