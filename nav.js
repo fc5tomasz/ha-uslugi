@@ -125,6 +125,21 @@ const bindForumLinks = () => {
 
 const ensureDesktopForumLinks = () => {
   document.querySelectorAll(".nav > nav > ul").forEach((list) => {
+    const demoItem = Array.from(list.children).find((item) =>
+      item.querySelector("a[href*='/demo/']"),
+    );
+
+    if (!list.querySelector(".nav-mobile-only .forum-community-link")) {
+      const mobileItem = document.createElement("li");
+      const mobileLink = document.createElement("a");
+      mobileItem.className = "nav-mobile-only";
+      mobileLink.className = "forum-community-link";
+      mobileLink.href = getForumCommunityUrl();
+      mobileLink.textContent = "💬 Forum HA Expert";
+      mobileItem.append(mobileLink);
+      list.insertBefore(mobileItem, demoItem || null);
+    }
+
     if (list.querySelector(".forum-desktop-link")) {
       return;
     }
@@ -137,10 +152,6 @@ const ensureDesktopForumLinks = () => {
     forumLink.setAttribute("aria-label", "Forum HA Expert");
     forumLink.textContent = "Forum";
     forumItem.append(forumLink);
-
-    const demoItem = Array.from(list.children).find((item) =>
-      item.querySelector("a[href*='/demo/']"),
-    );
     list.insertBefore(forumItem, demoItem || null);
   });
 
