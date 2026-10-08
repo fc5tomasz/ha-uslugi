@@ -117,8 +117,8 @@
       <nav id="primary-nav" aria-label="Primary">
         <ul>
           <li><a href="/pl/#uslugi">Usługi</a></li>
+          <li><a href="/pl/konsultant-home-assistant/">Doradztwo</a></li>
           <li><a href="/pl/#o-mnie">O mnie</a></li>
-          <li><a href="/pl/#dla-kogo">Dla kogo</a></li>
           <li><a href="/pl/#jak-pracuje">Jak pracuję</a></li>
           <li><a href="/pl/#cennik">Cennik</a></li>
           <li><a href="/pl/#kontakt">Kontakt</a></li>
@@ -338,7 +338,7 @@
                 <input id="email" name="email" type="email" required autocomplete="off" />
               </div>
               <div class="form-group full">
-                <label for="message">Opis problemu<span>*</span></label>
+                <label for="message">Wiadomość<span>*</span></label>
                 <textarea id="message" name="message" required></textarea>
               </div>
             </div>
@@ -608,6 +608,33 @@
         form.removeAttribute("aria-busy");
       }
     });
+  </script>
+  <script>
+    // Kliknięcie bezpośredniego linku mailto: wysyła w tle wewnętrzne powiadomienie (Telegram + e-mail).
+    // sendBeacon nie blokuje i nie opóźnia otwarcia programu pocztowego.
+    (() => {
+      const isLocalPreview = /^(localhost|127\.0\.0\.1|192\.168\.2\.149|100\.109\.244\.70)$/.test(window.location.hostname);
+      const endpoint = isLocalPreview
+        ? `http://${window.location.hostname}:8092/api/contact`
+        : "https://formularz.ha-expert.com/api/contact";
+      const langField = document.querySelector('#contactForm input[name="lang"]');
+      let lastSentAt = 0;
+      document.addEventListener("click", (event) => {
+        const link = event.target instanceof Element ? event.target.closest('a[href^="mailto:"]') : null;
+        if (!link || !event.isTrusted || typeof navigator.sendBeacon !== "function") return;
+        if (Date.now() - lastSentAt < 30000) return;
+        lastSentAt = Date.now();
+        try {
+          const data = new FormData();
+          data.append("form_type", "mailto_click");
+          data.append("lang", langField ? langField.value : document.documentElement.lang);
+          data.append("page_path", window.location.pathname);
+          navigator.sendBeacon(endpoint, data);
+        } catch (error) {
+          // Powiadomienie jest pomocnicze; błąd nie może wpływać na otwarcie poczty.
+        }
+      });
+    })();
   </script>
 </body>
 </html>
