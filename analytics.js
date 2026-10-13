@@ -177,6 +177,8 @@
     if (!active || !event.isTrusted) return;
     const form = event.target.closest && event.target.closest("#contactForm");
     if (!form || form.hasAttribute(FORM_START_ATTRIBUTE)) return;
+    // "Napisz e-mail" sits inside the form, but opening a mail program is not a form start.
+    if (event.target.closest(".contact-email-action")) return;
     form.setAttribute(FORM_START_ATTRIBUTE, "true");
     track("contact_form_start", { path: pathOnly(), action_name: "contact_form" });
   };

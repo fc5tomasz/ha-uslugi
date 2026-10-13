@@ -318,7 +318,7 @@
   const consentScriptUrl = document.currentScript && document.currentScript.src;
   if (consentScriptUrl) {
     const tracker = document.createElement("script");
-    tracker.src = new URL("analytics.js?v=20260826-local-1", consentScriptUrl).href;
+    tracker.src = new URL("analytics.js?v=20261013-form-start-1", consentScriptUrl).href;
     tracker.async = true;
     document.head.appendChild(tracker);
   }

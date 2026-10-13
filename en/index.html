@@ -330,9 +330,9 @@
             <input type="hidden" name="landing_page" value="" />
             <input type="hidden" name="referrer" value="" />
             <input type="hidden" name="utm" value="" />
-            <div class="contact-honeypot" aria-hidden="true">
-              <label for="website">Website</label>
-              <input id="website" name="website" type="text" tabindex="-1" autocomplete="off" />
+            <div class="contact-honeypot" aria-hidden="true" hidden>
+              <label for="hpNote">Leave this field empty</label>
+              <input id="hpNote" name="hp_note" type="text" tabindex="-1" autocomplete="off" data-lpignore="true" data-1p-ignore data-bwignore data-form-type="other" />
             </div>
             <div class="form-grid">
               <div class="form-group">
@@ -428,6 +428,7 @@
         removeButton.setAttribute("aria-label", `Remove attachment ${file.name}`);
         removeButton.addEventListener("click", () => {
           selectedAttachments.splice(index, 1);
+          invalidateSubmission();
           renderAttachmentList();
         });
 
@@ -439,8 +440,14 @@
     attachmentsInput.addEventListener("change", (event) => {
       selectedAttachments.push(...Array.from(event.currentTarget.files || []));
       attachmentsInput.value = "";
+      invalidateSubmission();
       renderAttachmentList();
     });
+
+    // Każda zmiana treści wymaga nowego identyfikatora; ponowienie tej samej treści zachowuje go.
+    const invalidateSubmission = () => {
+      submissionIdInput.value = "";
+    };
 
     const getSubmissionId = () => {
       if (submissionIdInput.value) {
@@ -479,13 +486,111 @@
       return originalFormAction;
     };
 
-    form.addEventListener("submit", async (event) => {
-      event.preventDefault();
+    // Walidacja zgodna z Workerem ha-expert-contact (pola, adres, długości, załączniki).
+    const contactLimits = { name: 160, email: 320, message: 20000 };
+    const contactEmailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const contactBlockedExtensions = [".bat", ".cmd", ".com", ".exe", ".hta", ".html", ".htm", ".jar", ".js", ".msi", ".php", ".ps1", ".scr", ".sh", ".vbs"];
+    const contactMaxRequestBytes = 100 * 1024 * 1024;
+    const contactMessages = {
+      error: "Your message could not be sent. Please try again or email me directly at kontakt@ha-expert.com.",
+      unconfirmed: "I could not confirm whether your message was sent. Please try again shortly or email me directly at kontakt@ha-expert.com.",
+      inProgress: "Your previous attempt is still being processed. Please wait a moment and try again.",
+      blockedFile: "This file type is not supported. Please remove the attachment and try again.",
+      rateLimited: "There have been too many attempts to send your message. Please wait a minute and try again.",
+      tooLarge: "Your attachments are too large. Their combined size cannot exceed 100 MB. Please reduce their size and try again.",
+      invalidEmail: "Please check the email address you entered. It does not appear to be valid.",
+      fieldRequired: "Please fill in this field.",
+      fieldEmail: "Please enter a valid email address.",
+      tooLong: {
+        name: "The name you entered is too long. Please shorten it.",
+        email: "The email address you entered is too long. Please check it.",
+        message: "Your message is too long. Please shorten it and try again."
+      }
+    };
+    const contactFields = ["name", "email", "message"].map((fieldName) => form.elements[fieldName]);
+
+    // Przeglądarka sama zatrzymuje puste pole i adres bez „@”; tekst dymka ma być w języku strony.
+    contactFields.forEach((field) => {
+      field.addEventListener("invalid", () => {
+        if (field.validity.valueMissing) field.setCustomValidity(contactMessages.fieldRequired);
+        else if (field.validity.typeMismatch) field.setCustomValidity(contactMessages.fieldEmail);
+      });
+    });
+
+    contactFields.forEach((field) => {
+      field.addEventListener("input", () => {
+        field.setCustomValidity("");
+        invalidateSubmission();
+      });
+    });
+
+    const attachmentBytes = () => selectedAttachments.reduce((total, file) => total + file.size, 0);
+    const attachmentExtension = (fileName) => {
+      const dot = fileName.lastIndexOf(".");
+      return dot >= 0 ? fileName.slice(dot).toLowerCase() : "";
+    };
+
+    const showFormError = (text) => {
+      if (statusResetTimer) {
+        clearTimeout(statusResetTimer);
+        statusResetTimer = null;
+      }
+      statusEl.className = "form-status err";
+      statusEl.textContent = text;
+    };
+
+    const validateContactForm = () => {
+      const [nameInputField, emailField, messageField] = contactFields;
+      if (!nameInputField.value.trim()) nameInputField.value = "";
+      if (!messageField.value.trim()) messageField.value = "";
+      emailField.value = emailField.value.trim();
+      contactFields.forEach((field) => {
+        field.setCustomValidity("");
+        const limit = contactLimits[field.name];
+        if (field.value.trim().length > limit) field.setCustomValidity(contactMessages.tooLong[field.name]);
+      });
+      // Pole z samych spacji (całkiem puste pole i adres bez „@” zatrzymuje wcześniej przeglądarka).
+      contactFields.forEach((field) => {
+        if (field.validity.valueMissing) field.setCustomValidity(contactMessages.fieldRequired);
+      });
+      if (emailField.value && emailField.validity.valid && !contactEmailPattern.test(emailField.value)) {
+        emailField.setCustomValidity(contactMessages.fieldEmail);
+      }
       if (!form.checkValidity()) {
         form.reportValidity();
+        return false;
+      }
+      if (selectedAttachments.some((file) => contactBlockedExtensions.includes(attachmentExtension(file.name)))) {
+        showFormError(contactMessages.blockedFile);
+        return false;
+      }
+      if (attachmentBytes() + 64 * 1024 > contactMaxRequestBytes) {
+        showFormError(contactMessages.tooLarge);
+        return false;
+      }
+      return true;
+    };
+
+    // Komunikat po odpowiedzi innej niż potwierdzony sukces. Tam, gdzie wynik
+    // jest niepewny, strona nie twierdzi, że wiadomość na pewno nie dotarła.
+    const failureMessage = (status, result) => {
+      const code = result && typeof result.error === "string" ? result.error : "";
+      if (status === 409 || code === "in_progress") return contactMessages.inProgress;
+      if (status === 429) return contactMessages.rateLimited;
+      if (status === 413) return contactMessages.tooLarge;
+      if (code === "blocked_attachment_type") return contactMessages.blockedFile;
+      if (code === "invalid_email") return contactMessages.invalidEmail;
+      if (code === "delivery_failed") return contactMessages.error;
+      if (result && status >= 400 && status < 500) return contactMessages.error;
+      return contactMessages.unconfirmed;
+    };
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      if (isSubmitting) {
         return;
       }
-      if (isSubmitting) {
+      if (!validateContactForm()) {
         return;
       }
       isSubmitting = true;
@@ -499,8 +604,16 @@
       statusEl.className = "form-status";
       statusEl.textContent = "Sending...";
 
+      // 30 s bez załączników; z załącznikami co najmniej 180 s i więcej przy dużych plikach.
+      const timeoutMs = selectedAttachments.length
+        ? Math.max(180000, 30000 + Math.ceil(attachmentBytes() / 500))
+        : 30000;
+      const controller = typeof AbortController === "function" ? new AbortController() : null;
+      const timeoutTimer = controller ? window.setTimeout(() => controller.abort(), timeoutMs) : null;
+
       try {
-        getSubmissionId();
+        // Ten sam identyfikator przy ponowieniu tej samej treści: Worker i Resend nie zdublują wiadomości.
+        const submissionId = getSubmissionId();
         fillLeadContext();
         const formData = new FormData(form);
         selectedAttachments.forEach((file) => {
@@ -510,7 +623,8 @@
         const response = await fetch(getContactFormEndpoint(), {
           method: "POST",
           headers: { Accept: "application/json" },
-          body: formData
+          body: formData,
+          signal: controller ? controller.signal : undefined
         });
         const result = await response.json().catch(() => null);
 
@@ -518,15 +632,23 @@
           const isProductionSite = window.location.hostname === "ha-expert.com" || window.location.hostname === "www.ha-expert.com";
           const isDryRun = result.dry_run === true;
           if (isProductionSite && typeof gtag === "function") {
-            gtag('event', 'conversion', {'send_to': 'AW-18087588380/ej4vCOfps54cEJzk6rBD'});
+            gtag('event', 'conversion', {'send_to': 'AW-18087588380/ej4vCOfps54cEJzk6rBD', 'transaction_id': submissionId});
           }
           if (window.HAExpertAnalytics) {
             window.HAExpertAnalytics.track("contact_form_submit", { path: window.location.pathname, action_name: "contact_form" });
           }
           statusEl.className = "form-status ok";
-          statusEl.textContent = isDryRun
-            ? "The form test passed. No email or Telegram notification was sent."
-            : "Your message has been sent. I will reply as soon as possible.";
+          const successLines = ["Thank you for your message. It has been sent successfully.", "I will review it and reply to the email address you provided.", "If you do not receive my reply, please also check your spam folder."];
+          if (isDryRun) {
+            statusEl.textContent = "The form test passed. No email or Telegram notification was sent.";
+          } else {
+            statusEl.replaceChildren(...successLines.map((line, index) => {
+              const paragraph = document.createElement("p");
+              paragraph.textContent = line;
+              paragraph.style.cssText = `margin:${index ? ".4em" : "0"} 0 0;color:inherit;font:inherit;`;
+              return paragraph;
+            }));
+          }
           form.reset();
           selectedAttachments.length = 0;
           renderAttachmentList();
@@ -538,13 +660,17 @@
             statusResetTimer = null;
           }, 10000);
         } else {
-          throw new Error(`Contact service rejected the submission (${response.status})`);
+          console.error("Form submit failed:", response.status, result && result.error);
+          showFormError(failureMessage(response.status, result));
         }
       } catch (error) {
-        console.error("Form submit failed:", error);
-        statusEl.className = "form-status err";
-        statusEl.textContent = "The message could not be sent. Please try again or use the “Send an email” option.";
+        // Przekroczony czas lub błąd sieci: wynik nieznany, dane formularza zostają.
+        console.error("Form submit failed:", error && error.name);
+        showFormError(contactMessages.unconfirmed);
       } finally {
+        if (timeoutTimer) {
+          window.clearTimeout(timeoutTimer);
+        }
         isSubmitting = false;
         submitButton.disabled = false;
         submitButton.textContent = idleButtonText;
