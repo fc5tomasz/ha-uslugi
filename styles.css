@@ -83,11 +83,12 @@ body::after{
 
 a{color:inherit;text-decoration:none}
 
-body.pl-home-bg-test{
+body.pl-home-bg-test,
+body.advanced-support-page{
   background:
     radial-gradient(circle at 12% 18%, rgba(102,226,255,.17), transparent 24%),
     radial-gradient(circle at 82% 12%, rgba(18,200,132,.28), transparent 24%),
-    linear-gradient(180deg, rgba(14,52,40,.98) 0%, rgba(12,46,34,.94) 42%, rgba(8,33,25,.98) 100%);
+    linear-gradient(180deg, rgb(14,52,40) 0%, rgb(16,59,44) 42%, rgb(18,66,49) 100%) #124231;
 }
 
 body.pl-home-bg-test .hero-sub{
@@ -167,10 +168,14 @@ body.pl-home-bg-test .card-link-main{
 @media (min-width: 821px){
   body.pl-home-bg-test{
     --max:1380px;
+  }
+
+  body.pl-home-bg-test,
+  body.advanced-support-page{
     background:
       radial-gradient(circle at 12% 18%, rgba(102,226,255,.21), transparent 24%),
       radial-gradient(circle at 82% 12%, rgba(18,200,132,.42), transparent 25%),
-      linear-gradient(180deg, rgba(20,86,64,.98) 0%, rgba(17,70,52,.96) 42%, rgba(12,50,38,.98) 100%);
+      linear-gradient(180deg, rgb(16,60,45) 0%, rgb(17,63,47) 42%, rgb(18,66,49) 100%) #124231;
   }
 
   body.pl-home-bg-test header,
