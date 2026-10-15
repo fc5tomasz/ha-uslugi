@@ -1,0 +1,21 @@
+/* Localized service disclosure. Existing links, colors and hamburger remain. */
+html:is([lang|="pl"], [lang|="en"], [lang|="da"]) nav li[data-services] { position:relative; }
+html:is([lang|="pl"], [lang|="en"], [lang|="da"]) nav li[data-services] > a:hover,
+html:is([lang|="pl"], [lang|="en"], [lang|="da"]) nav li[data-services] > a:focus-visible,
+html:is([lang|="pl"], [lang|="en"], [lang|="da"]) nav li[data-services] > a.is-section-active { position:relative;color:var(--text);background:rgba(255,255,255,.055); }
+html:is([lang|="pl"], [lang|="en"], [lang|="da"]) nav li[data-services] > a:hover::after,
+html:is([lang|="pl"], [lang|="en"], [lang|="da"]) nav li[data-services] > a:focus-visible::after,
+html:is([lang|="pl"], [lang|="en"], [lang|="da"]) nav li[data-services] > a.is-section-active::after { content:"";position:absolute;right:13px;left:13px;bottom:4px;height:2px;border-radius:999px;background:linear-gradient(90deg,var(--accent-2),var(--accent)); }
+html:is([lang|="pl"], [lang|="en"], [lang|="da"]) nav li[data-services] > ul { position:absolute;top:100%;left:0;display:flex;align-items:stretch;flex-direction:column;gap:4px;min-width:210px;padding:12px;background:rgba(7,17,31,.98);border:1px solid rgba(132,156,187,.16);border-radius:20px;box-shadow:var(--shadow-card);z-index:61; }
+html:is([lang|="pl"], [lang|="en"], [lang|="da"]) nav li[data-services] > ul[hidden] { display:none; }
+html:is([lang|="pl"], [lang|="en"], [lang|="da"]) nav li[data-services] > ul a { display:block; }
+html:is([lang|="pl"], [lang|="en"], [lang|="da"]) nav li[data-services] > ul a[aria-current="page"] { color:var(--accent); }
+@media(max-width:1328px) {
+  html:is([lang|="pl"], [lang|="en"], [lang|="da"]) .nav.menu-open #primary-nav li[data-services] > a::after { display:none; }
+  html:is([lang|="pl"], [lang|="en"], [lang|="da"]) .nav.menu-open #primary-nav li[data-services] > a { color:var(--text); }
+  html:is([lang|="pl"], [lang|="en"], [lang|="da"]) .nav.menu-open #primary-nav li[data-services] > a.is-section-active { color:var(--accent); }
+  html:is([lang|="pl"], [lang|="en"], [lang|="da"]) .nav.menu-open #primary-nav li[data-services] > ul a { color:var(--text); }
+  html:is([lang|="pl"], [lang|="en"], [lang|="da"]) .nav.menu-open #primary-nav li[data-services] > ul a[aria-current="page"] { color:var(--accent); }
+  html:is([lang|="pl"], [lang|="en"], [lang|="da"]) .nav.menu-open nav li[data-services] > ul { position:static;min-width:0;padding:0 0 0 16px;border:0;border-radius:0;box-shadow:none;background:transparent;font-size:inherit; }
+  html:is([lang|="pl"], [lang|="en"], [lang|="da"]) .nav.menu-open nav li[data-services] > ul a { white-space:normal; }
+}

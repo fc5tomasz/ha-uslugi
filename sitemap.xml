@@ -544,4 +544,28 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ha-expert.com/en/services/" />
     <lastmod>2026-10-13</lastmod>
   </url>
+  <url>
+    <loc>https://ha-expert.com/pl/uslugi-dla-firm/</loc>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://ha-expert.com/pl/uslugi-dla-firm/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://ha-expert.com/en/services-for-businesses/" />
+    <xhtml:link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/ydelser-til-virksomheder/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ha-expert.com/en/services-for-businesses/" />
+    <lastmod>2026-10-15</lastmod>
+  </url>
+  <url>
+    <loc>https://ha-expert.com/en/services-for-businesses/</loc>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://ha-expert.com/pl/uslugi-dla-firm/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://ha-expert.com/en/services-for-businesses/" />
+    <xhtml:link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/ydelser-til-virksomheder/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ha-expert.com/en/services-for-businesses/" />
+    <lastmod>2026-10-15</lastmod>
+  </url>
+  <url>
+    <loc>https://ha-expert.com/dk/ydelser-til-virksomheder/</loc>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://ha-expert.com/pl/uslugi-dla-firm/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://ha-expert.com/en/services-for-businesses/" />
+    <xhtml:link rel="alternate" hreflang="da" href="https://ha-expert.com/dk/ydelser-til-virksomheder/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ha-expert.com/en/services-for-businesses/" />
+    <lastmod>2026-10-15</lastmod>
+  </url>
 </urlset>

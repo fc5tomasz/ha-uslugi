@@ -1,0 +1,16 @@
+/* Use the approved business-page typography without changing that stylesheet. */
+@import url("./business-services.css?v=20261015-3");
+
+@media (max-width: 820px) {
+  /* Catalog HTML declares its own important title sizes after linked styles. */
+  body.service-page main > .section :is(h1, h2, h3).section-title {
+    font-size:19px !important;
+  }
+  /* Service catalogs and consulting pages also present descriptions as lists. */
+  body.service-page main .section .card > ul > li {
+    font-family:Inter, "Avenir Next", "Segoe UI", sans-serif;
+    font-size:16px;
+    font-weight:400;
+    line-height:1.6;
+  }
+}

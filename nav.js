@@ -511,3 +511,50 @@ window.addEventListener("pageshow", refreshMobileBottomBar);
 window.addEventListener("resize", refreshMobileBottomBar);
 window.addEventListener("load", stabilizeInitialMobileView);
 window.addEventListener("pageshow", stabilizeInitialMobileView);
+
+(() => {
+  if (!["pl", "en", "da"].includes(document.documentElement.lang.split("-")[0].toLowerCase())) return;
+  // Shared mobile state for PL/EN/DK; desktop markers and menu structure stay unchanged.
+  const mobileNav = document.querySelector('#primary-nav');
+  const cleanPath = path => path.replace(/index\.html$/, '').replace(/\/?$/, '/');
+  const pagePath = cleanPath(window.location.pathname);
+  const homePath = `/${pagePath.split("/")[1]}/`;
+  let mobileFrame = false;
+  const syncMobileCurrent = () => {
+    mobileFrame = false;
+    const mobileLinks = mobileNav ? Array.from(mobileNav.querySelectorAll('a[href]')).filter(link => !link.matches('[role="button"], .nav-mobile-menu-cta')) : [];
+    mobileLinks.forEach(link => link.removeAttribute('data-mobile-current'));
+    if (window.innerWidth > 1328) return;
+    const links = mobileLinks.map(link => ({ link, url: new URL(link.href, window.location.href) }))
+      .filter(({ url }) => url.origin === window.location.origin);
+    let active;
+    if (pagePath === homePath) {
+      const headerHeight = document.querySelector('header')?.getBoundingClientRect().height || 0;
+      const probe = window.scrollY + headerHeight + Math.max(80, (window.innerHeight - headerHeight) * 0.3);
+      active = links.filter(({ url }) => cleanPath(url.pathname) === pagePath && url.hash)
+        .map(item => ({ ...item, target: document.getElementById(decodeURIComponent(item.url.hash.slice(1))) }))
+        .filter(item => item.target)
+        .map(item => ({ ...item, top: item.target.getBoundingClientRect().top + window.scrollY }))
+        .sort((a, b) => a.top - b.top)
+        .reduce((current, item) => item.top <= probe ? item : current, null);
+    } else {
+      active = links.filter(({ url }) => !url.hash && cleanPath(url.pathname) !== homePath && pagePath.startsWith(cleanPath(url.pathname)))
+        .sort((a, b) => b.url.pathname.length - a.url.pathname.length)[0];
+    }
+    active?.link.setAttribute('data-mobile-current', 'true');
+  };
+  const requestMobileCurrent = () => {
+    if (!mobileFrame) {
+      mobileFrame = true;
+      window.requestAnimationFrame(syncMobileCurrent);
+    }
+  };
+  window.addEventListener('scroll', requestMobileCurrent, { passive: true });
+  window.addEventListener('resize', requestMobileCurrent);
+  window.addEventListener('load', requestMobileCurrent);
+  window.addEventListener('pageshow', requestMobileCurrent);
+  window.addEventListener('hashchange', requestMobileCurrent);
+  document.querySelector('.nav-toggle')?.addEventListener('click', requestMobileCurrent);
+  requestMobileCurrent();
+
+})();

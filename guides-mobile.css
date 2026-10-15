@@ -1,0 +1,16 @@
+/* Content typography only; loaded by guide indexes and individual guides. */
+@media (max-width: 820px) {
+  body.knowledge-page main :is(h1, h2, h3, h4, h5, h6) {
+    font-family:Inter, "Avenir Next", "Segoe UI", sans-serif !important;
+    font-size:19px !important;
+    font-weight:700 !important;
+  }
+  body.knowledge-page main :is(p, li),
+  body.knowledge-page main .knowledge-link,
+  body.knowledge-page main .guide-toc a {
+    font-family:Inter, "Avenir Next", "Segoe UI", sans-serif !important;
+    font-size:16px !important;
+    font-weight:400 !important;
+    line-height:1.6 !important;
+  }
+}

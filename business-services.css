@@ -1,0 +1,18 @@
+/* Typography only; loaded exclusively by the three business service pages. */
+@media (max-width: 820px) {
+  body.service-page main .section :is(h1, h2, h3) {
+    font-family:Inter, "Avenir Next", "Segoe UI", sans-serif;
+    font-size:19px !important;
+    font-weight:700;
+  }
+  body.service-page main .section p {
+    font-family:Inter, "Avenir Next", "Segoe UI", sans-serif !important;
+    font-size:16px !important;
+    font-weight:400 !important;
+    line-height:1.6 !important;
+  }
+  /* Preserve the previously approved form label/control typography. */
+  body.service-page main > .section:last-child #contactForm :is(label, input, textarea, button, a, span, .form-status) {
+    font-size:17px;
+  }
+}

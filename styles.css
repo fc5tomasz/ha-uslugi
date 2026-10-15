@@ -3279,3 +3279,12 @@ html[lang="da"] .logo [data-i18n="logo_text"],html[lang="da-DK"] .logo [data-i18
   body.service-page .knowledge-help-link{margin-top:14px}
   body.service-page .knowledge-help-accent{font-size:19px;line-height:1.35}
 }
+
+/* Link weight is scoped to the three guide indexes, including mobile. */
+body.guides-index-page main a.knowledge-link { font-weight:400; }
+
+@media(max-width:1328px) {
+  html:is([lang|="pl"], [lang|="en"], [lang|="da"]) .nav.menu-open #primary-nav a { color:var(--text); }
+  html:is([lang|="pl"], [lang|="en"], [lang|="da"]) .nav.menu-open #primary-nav a::after { display:none; }
+  html:is([lang|="pl"], [lang|="en"], [lang|="da"]) .nav.menu-open #primary-nav a[data-mobile-current="true"] { color:var(--accent); }
+}
