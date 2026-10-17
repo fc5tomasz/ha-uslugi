@@ -178,6 +178,7 @@
   ]);
   const sourceGroup = () => HOME_PATHS.has(pathOnly()) ? "home"
     : /\/(projekty|projects|projekter)\//.test(pathOnly()) ? "projects"
+    : /\/demo\//.test(pathOnly()) ? "demo"
     : document.body.classList.contains("knowledge-page") && !offerPaths.has(pathOnly()) ? "guide"
     : offerPaths.has(pathOnly()) ? "offer" : "other";
   const observeForm = () => {
@@ -243,16 +244,18 @@
       } catch (error) { /* Ignore malformed or external links. */ }
     }
     if (link.matches(".forum-community-link, a[href^='https://forum.ha-expert.com']")) {
-      track("forum_click", { path: pathOnly(), action_name: "forum_link" }, { immediate: true }); return;
+      track("forum_click", { path: pathOnly(), action_name: link.closest("nav,header,.mobile-bottom-bar") ? "forum_menu" : link.closest("footer") ? "forum_footer" : "forum_content", element:link.closest("nav,header,.mobile-bottom-bar") ? "menu" : "content_link", source_group:sourceGroup() }, { immediate: true }); return;
     }
     if (link.matches("a[href^='mailto:']")) {
-      track("contact_email_click", { path: pathOnly(), action_name: "contact_email" }, { immediate: true }); return;
+      track("contact_email_click", { path: pathOnly(), action_name: link.closest("nav,header,.mobile-bottom-bar") ? "email_menu" : link.closest("footer") ? "email_footer" : link.matches(".contact-email-action") ? "email_contact_section" : "email_content", element:link.closest("nav,header,.mobile-bottom-bar") ? "menu" : "content_link", source_group:sourceGroup() }, { immediate: true }); return;
     }
     if (link.matches(".hero-contact-link,.nav-cta,a[href$='#kontakt'],a[href$='#contact']")) {
-      const actionName = link.classList.contains("hero-contact-link") ? "hero_contact" : link.classList.contains("nav-cta") ? "navigation_contact" : "primary_cta";
-      let contactTarget = null;
-      try { const url = new URL(link.href, location.href); if (url.origin === location.origin) contactTarget = url.pathname.replace(/\/index\.html$/, "/"); } catch (error) { /* Button without a URL. */ }
-      track("cta", { path: pathOnly(), action_name: actionName, target_path:contactTarget,
+      const actionName = link.classList.contains("hero-contact-link") ? "hero_contact" : link.classList.contains("nav-cta") ? "navigation_contact"
+        : link.matches(".knowledge-help-link") ? "guide_help_contact" : link.matches(".demo-contact-button") ? "demo_project_contact"
+        : link.matches(".mobile-bottom-link") ? "mobile_bar_contact" : link.closest("nav,header") ? "menu_contact" : "primary_cta";
+      let contactTarget = null, contactAnchor = null;
+      try { const url = new URL(link.href, location.href); if (url.origin === location.origin) { contactTarget = url.pathname.replace(/\/index\.html$/, "/"); if (["#kontakt","#contact"].includes(url.hash)) contactAnchor=url.hash; } } catch (error) { /* Button without a URL. */ }
+      track("cta", { path: pathOnly(), action_name: actionName, target_path:contactTarget, section:contactAnchor,
         element:link.closest(".nav,nav,header,.mobile-bottom-bar") ? "menu" : "cta", source_group:sourceGroup() }, { immediate: true });
     }
   };

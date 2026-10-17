@@ -357,7 +357,7 @@
   const consentScriptUrl = document.currentScript && document.currentScript.src;
   if (consentScriptUrl) {
     const tracker = document.createElement("script");
-    tracker.src = new URL("analytics.js?v=20261017-explicit-returning-v1", consentScriptUrl).href;
+    tracker.src = new URL("analytics.js?v=20261017-popularity-cta-v1", consentScriptUrl).href;
     tracker.async = true;
     document.head.appendChild(tracker);
   }

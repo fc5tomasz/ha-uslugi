@@ -1,0 +1,1266 @@
+{
+  "version": 1,
+  "pages": [
+    {
+      "path": "/pl/ai-home-assistant/",
+      "language": "PL",
+      "category": "guides",
+      "title": "AI w Home Assistant – kiedy dom może analizować sytuację i reagować",
+      "measured": true
+    },
+    {
+      "path": "/pl/automatyzacje-home-assistant/",
+      "language": "PL",
+      "category": "guides",
+      "title": "Automatyzacje Home Assistant – jak działają i jak je diagnozować",
+      "measured": true
+    },
+    {
+      "path": "/pl/backup-home-assistant/",
+      "language": "PL",
+      "category": "guides",
+      "title": "Backup Home Assistant: automatyczne kopie i odzyskiwanie systemu po awarii",
+      "measured": true
+    },
+    {
+      "path": "/pl/baza-danych-home-assistant/",
+      "language": "PL",
+      "category": "guides",
+      "title": "Baza danych Home Assistant – Recorder, SQLite i MariaDB",
+      "measured": true
+    },
+    {
+      "path": "/pl/co-to-jest-ha/",
+      "language": "PL",
+      "category": "guides",
+      "title": "Czym jest Home Assistant?",
+      "measured": true
+    },
+    {
+      "path": "/pl/dashboard-home-assistant/",
+      "language": "PL",
+      "category": "guides",
+      "title": "Dashboard Home Assistant – jak stworzyć czytelny panel sterowania",
+      "measured": true
+    },
+    {
+      "path": "/pl/demo/awarie/",
+      "language": "PL",
+      "category": "demo",
+      "title": "Zanik zasilania",
+      "measured": true
+    },
+    {
+      "path": "/pl/demo/dym/",
+      "language": "PL",
+      "category": "demo",
+      "title": "Wykrycie dymu",
+      "measured": true
+    },
+    {
+      "path": "/pl/demo/energia/",
+      "language": "PL",
+      "category": "demo",
+      "title": "Energia i dom",
+      "measured": true
+    },
+    {
+      "path": "/pl/demo/",
+      "language": "PL",
+      "category": "demo",
+      "title": "Zobacz, jak może działać Twój dom",
+      "measured": true
+    },
+    {
+      "path": "/pl/demo/oswietlenie/",
+      "language": "PL",
+      "category": "demo",
+      "title": "Oświetlenie domu",
+      "measured": true
+    },
+    {
+      "path": "/pl/demo/rolety/",
+      "language": "PL",
+      "category": "demo",
+      "title": "Rolety i ochrona przed słońcem",
+      "measured": true
+    },
+    {
+      "path": "/pl/demo/woda/",
+      "language": "PL",
+      "category": "demo",
+      "title": "Wyciek wody",
+      "measured": true
+    },
+    {
+      "path": "/pl/encja-unavailable-home-assistant/",
+      "language": "PL",
+      "category": "guides",
+      "title": "Encja niedostępna (unavailable) w Home Assistant – jak znaleźć przyczynę",
+      "measured": true
+    },
+    {
+      "path": "/pl/energia-home-assistant/",
+      "language": "PL",
+      "category": "guides",
+      "title": "Energia w Home Assistant: prąd, fotowoltaika, bateria i koszty",
+      "measured": true
+    },
+    {
+      "path": "/pl/esphome-home-assistant/",
+      "language": "PL",
+      "category": "guides",
+      "title": "ESPHome w Home Assistant: co to jest i kiedy warto go użyć?",
+      "measured": true
+    },
+    {
+      "path": "/pl/frigate-home-assistant/",
+      "language": "PL",
+      "category": "guides",
+      "title": "Frigate z Hikvision lub Dahua w Home Assistant: co daje, gdy masz już rejestrator?",
+      "measured": true
+    },
+    {
+      "path": "/pl/hacs-home-assistant-integracje-dodatki/",
+      "language": "PL",
+      "category": "guides",
+      "title": "HACS w Home Assistant: integracje i dodatki, które warto znać",
+      "measured": true
+    },
+    {
+      "path": "/pl/hacs-po-aktualizacji-2026-8/",
+      "language": "PL",
+      "category": "guides",
+      "title": "HACS przestał działać po aktualizacji 2026.8? Sprawdź, co się dzieje",
+      "measured": true
+    },
+    {
+      "path": "/pl/hikvision-home-assistant/",
+      "language": "PL",
+      "category": "guides",
+      "title": "Hikvision w Home Assistant: kamery jako część inteligentnego alarmu",
+      "measured": true
+    },
+    {
+      "path": "/pl/home-assistant-2026-9-po-aktualizacji/",
+      "language": "PL",
+      "category": "guides",
+      "title": "Home Assistant 2026.9 nie działa poprawnie po aktualizacji? Sprawdź, co się dzieje",
+      "measured": true
+    },
+    {
+      "path": "/pl/home-assistant-bez-internetu/",
+      "language": "PL",
+      "category": "guides",
+      "title": "Co naprawdę działa w Home Assistant bez internetu?",
+      "measured": true
+    },
+    {
+      "path": "/pl/home-assistant-multimedia/",
+      "language": "PL",
+      "category": "guides",
+      "title": "Home Assistant i multimedia: muzyka, amplituner, TV i sceny bez szukania pilota",
+      "measured": true
+    },
+    {
+      "path": "/pl/home-assistant-na-pc-mini-pc-laptopie/",
+      "language": "PL",
+      "category": "guides",
+      "title": "Home Assistant na PC, mini PC i laptopie – instalacja i konfiguracja od podstaw",
+      "measured": true
+    },
+    {
+      "path": "/pl/home-assistant-na-raspberry-pi/",
+      "language": "PL",
+      "category": "guides",
+      "title": "Home Assistant na Raspberry Pi 4 i 5 – instalacja krok po kroku",
+      "measured": true
+    },
+    {
+      "path": "/pl/home-assistant-nadwyzka-pv/",
+      "language": "PL",
+      "category": "guides",
+      "title": "Inteligentne zarządzanie nadwyżką PV w Home Assistant: off-grid, bufor, grzałki i priorytety",
+      "measured": true
+    },
+    {
+      "path": "/pl/home-assistant-nie-dziala-po-aktualizacji/",
+      "language": "PL",
+      "category": "guides",
+      "title": "Home Assistant nie działa po aktualizacji: co sprawdzić i jak odzyskać system?",
+      "measured": true
+    },
+    {
+      "path": "/pl/home-assistant-obecnosc-domownikow/",
+      "language": "PL",
+      "category": "guides",
+      "title": "Home Assistant wie, kiedy wracasz do domu: automatyzacje obecności",
+      "measured": true
+    },
+    {
+      "path": "/pl/home-assistant-ogrzewanie-koszty-energii/",
+      "language": "PL",
+      "category": "guides",
+      "title": "Home Assistant i ogrzewanie: kiedy bardziej opłaca się prąd, gaz lub pompa ciepła?",
+      "measured": true
+    },
+    {
+      "path": "/pl/home-assistant-wymaga-uporzadkowania/",
+      "language": "PL",
+      "category": "guides",
+      "title": "7 oznak, że Twój Home Assistant wymaga uporządkowania",
+      "measured": true
+    },
+    {
+      "path": "/pl/",
+      "language": "PL",
+      "category": "home",
+      "title": "Profesjonalna pomoc przy Home Assistant",
+      "measured": true
+    },
+    {
+      "path": "/pl/integracje-home-assistant/",
+      "language": "PL",
+      "category": "guides",
+      "title": "Integracje Home Assistant – jak łączyć urządzenia i systemy",
+      "measured": true
+    },
+    {
+      "path": "/pl/jak-zaplanowac-smart-home-home-assistant/",
+      "language": "PL",
+      "category": "guides",
+      "title": "Jak zaplanować smart home z Home Assistant: urządzenia, sterowanie i automatyzacje",
+      "measured": true
+    },
+    {
+      "path": "/pl/knx-home-assistant/",
+      "language": "PL",
+      "category": "guides",
+      "title": "KNX i Home Assistant: co można zintegrować i czego potrzebujesz?",
+      "measured": true
+    },
+    {
+      "path": "/pl/konserwacja-home-assistant/",
+      "language": "PL",
+      "category": "guides",
+      "title": "Konserwacja Home Assistant: jak utrzymać stabilny system przez lata?",
+      "measured": true
+    },
+    {
+      "path": "/pl/konsultant-home-assistant/",
+      "language": "PL",
+      "category": "services",
+      "title": "Konsultant Home Assistant: analiza i konkretny plan działania",
+      "measured": true
+    },
+    {
+      "path": "/pl/koordynator-zigbee-home-assistant/",
+      "language": "PL",
+      "category": "guides",
+      "title": "Koordynator Zigbee do Home Assistant – USB, LAN czy PoE?",
+      "measured": true
+    },
+    {
+      "path": "/pl/magazyn-energii-rozladowuje-sie-do-ev/",
+      "language": "PL",
+      "category": "guides",
+      "title": "Jak zatrzymać rozładowywanie magazynu energii do samochodu elektrycznego w Home Assistant",
+      "measured": true
+    },
+    {
+      "path": "/pl/matter-thread-home-assistant/",
+      "language": "PL",
+      "category": "guides",
+      "title": "Matter i Thread w Home Assistant: co to jest i czy warto?",
+      "measured": true
+    },
+    {
+      "path": "/pl/panel-scienny-home-assistant/",
+      "language": "PL",
+      "category": "guides",
+      "title": "Dedykowany panel ścienny do Home Assistant: Shelly Wall Display, NSPanel Pro i Aqara",
+      "measured": true
+    },
+    {
+      "path": "/pl/polityka-prywatnosci/",
+      "language": "PL",
+      "category": "privacy",
+      "title": "Polityka prywatności HA Expert",
+      "measured": true
+    },
+    {
+      "path": "/pl/poradniki/",
+      "language": "PL",
+      "category": "guides",
+      "title": "Poradniki Home Assistant",
+      "measured": true
+    },
+    {
+      "path": "/pl/projekty/energia-ev/",
+      "language": "PL",
+      "category": "projects",
+      "title": "Zarządzanie energią i ładowaniem EV",
+      "measured": true
+    },
+    {
+      "path": "/pl/projekty/",
+      "language": "PL",
+      "category": "projects",
+      "title": "Panele dopasowane do różnych potrzeb",
+      "measured": true
+    },
+    {
+      "path": "/pl/projekty/kamery-alarm/",
+      "language": "PL",
+      "category": "projects",
+      "title": "Kamery i alarm",
+      "measured": true
+    },
+    {
+      "path": "/pl/projekty/multimedia/",
+      "language": "PL",
+      "category": "projects",
+      "title": "Studio i multimedia w jednym panelu",
+      "measured": true
+    },
+    {
+      "path": "/pl/projekty/ogrzewanie/",
+      "language": "PL",
+      "category": "projects",
+      "title": "Ogrzewanie i źródła ciepła",
+      "measured": true
+    },
+    {
+      "path": "/pl/projekty/pomieszczenia/",
+      "language": "PL",
+      "category": "projects",
+      "title": "Sterowanie pomieszczeniami",
+      "measured": true
+    },
+    {
+      "path": "/pl/projekty/rekuperacja/",
+      "language": "PL",
+      "category": "projects",
+      "title": "Rekuperacja i wentylacja",
+      "measured": true
+    },
+    {
+      "path": "/pl/projekty/rolety/",
+      "language": "PL",
+      "category": "projects",
+      "title": "Inteligentne sterowanie roletami",
+      "measured": true
+    },
+    {
+      "path": "/pl/rekuperacja-home-assistant/",
+      "language": "PL",
+      "category": "guides",
+      "title": "Rekuperacja w Home Assistant: inteligentne sterowanie wentylacją",
+      "measured": true
+    },
+    {
+      "path": "/pl/satel-integra-home-assistant/",
+      "language": "PL",
+      "category": "guides",
+      "title": "Satel Integra w Home Assistant: co można zintegrować i co sprawdzić przed połączeniem",
+      "measured": true
+    },
+    {
+      "path": "/pl/stabilne-zigbee/",
+      "language": "PL",
+      "category": "guides",
+      "title": "Zigbee zrywa połączenie? Sprawdź przyczyny i możliwe rozwiązania",
+      "measured": true
+    },
+    {
+      "path": "/pl/stacja-pogodowa-home-assistant/",
+      "language": "PL",
+      "category": "guides",
+      "title": "Stacja pogodowa w Home Assistant: wiatr, deszcz, temperatura i automatyzacje",
+      "measured": true
+    },
+    {
+      "path": "/pl/tablet-scienny-home-assistant/",
+      "language": "PL",
+      "category": "guides",
+      "title": "Tablet ścienny do Home Assistant: panel, kiosk mode i typowe problemy",
+      "measured": true
+    },
+    {
+      "path": "/pl/tuya-home-assistant-lokalnie-czy-chmura/",
+      "language": "PL",
+      "category": "guides",
+      "title": "Tuya w Home Assistant: chmura czy sterowanie lokalne?",
+      "measured": true
+    },
+    {
+      "path": "/pl/uslugi/",
+      "language": "PL",
+      "category": "services",
+      "title": "Zakres usług Home Assistant",
+      "measured": true
+    },
+    {
+      "path": "/pl/uslugi-dla-firm/",
+      "language": "PL",
+      "category": "services",
+      "title": "Usługi dla firm",
+      "measured": true
+    },
+    {
+      "path": "/pl/zdalny-dostep-home-assistant/",
+      "language": "PL",
+      "category": "guides",
+      "title": "Zdalny dostęp do Home Assistant: Nabu Casa, Cloudflare Tunnel, VPN czy przekierowanie portów?",
+      "measured": true
+    },
+    {
+      "path": "/pl/zha-czy-zigbee2mqtt/",
+      "language": "PL",
+      "category": "guides",
+      "title": "ZHA czy Zigbee2MQTT w Home Assistant – co wybrać?",
+      "measured": true
+    },
+    {
+      "path": "/en/ai-home-assistant/",
+      "language": "EN",
+      "category": "guides",
+      "title": "AI in Home Assistant – when your home can analyse situations and respond",
+      "measured": true
+    },
+    {
+      "path": "/en/demo/blinds/",
+      "language": "EN",
+      "category": "demo",
+      "title": "Blinds and sun protection",
+      "measured": true
+    },
+    {
+      "path": "/en/demo/energy/",
+      "language": "EN",
+      "category": "demo",
+      "title": "Energy and home",
+      "measured": true
+    },
+    {
+      "path": "/en/demo/",
+      "language": "EN",
+      "category": "demo",
+      "title": "See how your home could work",
+      "measured": true
+    },
+    {
+      "path": "/en/demo/lighting/",
+      "language": "EN",
+      "category": "demo",
+      "title": "Home lighting",
+      "measured": true
+    },
+    {
+      "path": "/en/demo/power/",
+      "language": "EN",
+      "category": "demo",
+      "title": "Power outage",
+      "measured": true
+    },
+    {
+      "path": "/en/demo/smoke/",
+      "language": "EN",
+      "category": "demo",
+      "title": "Smoke detection",
+      "measured": true
+    },
+    {
+      "path": "/en/demo/water/",
+      "language": "EN",
+      "category": "demo",
+      "title": "Water leak",
+      "measured": true
+    },
+    {
+      "path": "/en/esphome-home-assistant/",
+      "language": "EN",
+      "category": "guides",
+      "title": "ESPHome in Home Assistant: what is it and when is it worth using?",
+      "measured": true
+    },
+    {
+      "path": "/en/frigate-home-assistant/",
+      "language": "EN",
+      "category": "guides",
+      "title": "Frigate with Hikvision or Dahua in Home Assistant: what does it add if you already have an NVR?",
+      "measured": true
+    },
+    {
+      "path": "/en/guides/",
+      "language": "EN",
+      "category": "guides",
+      "title": "Home Assistant Guides",
+      "measured": true
+    },
+    {
+      "path": "/en/hacs-2026-8-update-issues/",
+      "language": "EN",
+      "category": "guides",
+      "title": "HACS Broken After the Home Assistant 2026.8 Update? Here's What's Going On",
+      "measured": true
+    },
+    {
+      "path": "/en/hacs-home-assistant-integrations-add-ons/",
+      "language": "EN",
+      "category": "guides",
+      "title": "HACS for Home Assistant: integrations and add-ons worth knowing",
+      "measured": true
+    },
+    {
+      "path": "/en/hikvision-home-assistant/",
+      "language": "EN",
+      "category": "guides",
+      "title": "Hikvision in Home Assistant: cameras as part of a smart alarm system",
+      "measured": true
+    },
+    {
+      "path": "/en/home-assistant-2026-9-update-issues/",
+      "language": "EN",
+      "category": "guides",
+      "title": "Home Assistant 2026.9 not working correctly after the update? Here's what's going on",
+      "measured": true
+    },
+    {
+      "path": "/en/home-assistant-automations/",
+      "language": "EN",
+      "category": "guides",
+      "title": "Home Assistant automations – how they work and how to troubleshoot them",
+      "measured": true
+    },
+    {
+      "path": "/en/home-assistant-backup/",
+      "language": "EN",
+      "category": "guides",
+      "title": "Home Assistant backup: automatic backups and system recovery after failure",
+      "measured": true
+    },
+    {
+      "path": "/en/home-assistant-consultant/",
+      "language": "EN",
+      "category": "services",
+      "title": "Home Assistant consultant for clear, practical decisions",
+      "measured": true
+    },
+    {
+      "path": "/en/home-assistant-dashboard/",
+      "language": "EN",
+      "category": "guides",
+      "title": "Home Assistant dashboard – how to build a clear control panel",
+      "measured": true
+    },
+    {
+      "path": "/en/home-assistant-database/",
+      "language": "EN",
+      "category": "guides",
+      "title": "Home Assistant database – Recorder, SQLite and MariaDB",
+      "measured": true
+    },
+    {
+      "path": "/en/home-assistant-energy/",
+      "language": "EN",
+      "category": "guides",
+      "title": "Energy in Home Assistant: electricity, solar, battery and costs",
+      "measured": true
+    },
+    {
+      "path": "/en/home-assistant-entity-unavailable/",
+      "language": "EN",
+      "category": "guides",
+      "title": "Entity unavailable in Home Assistant – how to find the cause",
+      "measured": true
+    },
+    {
+      "path": "/en/home-assistant-heating-energy-costs/",
+      "language": "EN",
+      "category": "guides",
+      "title": "Home Assistant and heating: when is electricity, gas or a heat pump cheaper?",
+      "measured": true
+    },
+    {
+      "path": "/en/home-assistant-integrations/",
+      "language": "EN",
+      "category": "guides",
+      "title": "Home Assistant integrations – how to connect devices and systems",
+      "measured": true
+    },
+    {
+      "path": "/en/home-assistant-maintenance/",
+      "language": "EN",
+      "category": "guides",
+      "title": "Home Assistant maintenance: how to keep your system stable for years",
+      "measured": true
+    },
+    {
+      "path": "/en/home-assistant-multimedia/",
+      "language": "EN",
+      "category": "guides",
+      "title": "Home Assistant and multimedia: music, AV receiver, TV and scenes without hunting for the remote",
+      "measured": true
+    },
+    {
+      "path": "/en/home-assistant-needs-tidying-up/",
+      "language": "EN",
+      "category": "guides",
+      "title": "7 signs your Home Assistant needs tidying up",
+      "measured": true
+    },
+    {
+      "path": "/en/home-assistant-not-working-after-update/",
+      "language": "EN",
+      "category": "guides",
+      "title": "Home Assistant not working after an update: what to check and how to recover",
+      "measured": true
+    },
+    {
+      "path": "/en/home-assistant-on-pc-mini-pc-laptop/",
+      "language": "EN",
+      "category": "guides",
+      "title": "Home Assistant on a PC, mini PC or laptop – installation and setup from scratch",
+      "measured": true
+    },
+    {
+      "path": "/en/home-assistant-presence-automations/",
+      "language": "EN",
+      "category": "guides",
+      "title": "Home Assistant knows when you come home: presence automations",
+      "measured": true
+    },
+    {
+      "path": "/en/home-assistant-pv-surplus/",
+      "language": "EN",
+      "category": "guides",
+      "title": "Smart PV surplus management in Home Assistant: off-grid, thermal storage, heaters and priorities",
+      "measured": true
+    },
+    {
+      "path": "/en/home-assistant-remote-access/",
+      "language": "EN",
+      "category": "guides",
+      "title": "Remote access to Home Assistant: Nabu Casa, Cloudflare Tunnel, VPN or port forwarding?",
+      "measured": true
+    },
+    {
+      "path": "/en/home-assistant-ventilation-heat-recovery/",
+      "language": "EN",
+      "category": "guides",
+      "title": "Ventilation in Home Assistant: smart control of heat recovery and room ventilators",
+      "measured": true
+    },
+    {
+      "path": "/en/home-assistant-wall-display/",
+      "language": "EN",
+      "category": "guides",
+      "title": "Home Assistant wall display: Shelly Wall Display, NSPanel Pro and Aqara",
+      "measured": true
+    },
+    {
+      "path": "/en/home-assistant-wall-tablet/",
+      "language": "EN",
+      "category": "guides",
+      "title": "Home Assistant wall tablet: panel, kiosk mode and common problems",
+      "measured": true
+    },
+    {
+      "path": "/en/home-assistant-weather-station/",
+      "language": "EN",
+      "category": "guides",
+      "title": "Weather station in Home Assistant: wind, rain, temperature and automations",
+      "measured": true
+    },
+    {
+      "path": "/en/home-assistant-without-internet/",
+      "language": "EN",
+      "category": "guides",
+      "title": "What really works in Home Assistant without internet?",
+      "measured": true
+    },
+    {
+      "path": "/en/home-battery-draining-into-ev/",
+      "language": "EN",
+      "category": "guides",
+      "title": "How to stop your home battery draining into your EV with Home Assistant",
+      "measured": true
+    },
+    {
+      "path": "/en/how-to-plan-smart-home-home-assistant/",
+      "language": "EN",
+      "category": "guides",
+      "title": "How to plan a smart home with Home Assistant: devices, controls and automations",
+      "measured": true
+    },
+    {
+      "path": "/en/",
+      "language": "EN",
+      "category": "home",
+      "title": "Professional Home Assistant help",
+      "measured": true
+    },
+    {
+      "path": "/en/install-home-assistant-on-raspberry-pi/",
+      "language": "EN",
+      "category": "guides",
+      "title": "How to install Home Assistant on Raspberry Pi 4 and 5",
+      "measured": true
+    },
+    {
+      "path": "/en/knx-home-assistant/",
+      "language": "EN",
+      "category": "guides",
+      "title": "KNX and Home Assistant: what you can integrate and what you need",
+      "measured": true
+    },
+    {
+      "path": "/en/matter-thread-home-assistant/",
+      "language": "EN",
+      "category": "guides",
+      "title": "Matter and Thread in Home Assistant: what are they and are they worth using?",
+      "measured": true
+    },
+    {
+      "path": "/en/privacy-policy/",
+      "language": "EN",
+      "category": "privacy",
+      "title": "HA Expert Privacy Policy",
+      "measured": true
+    },
+    {
+      "path": "/en/projects/blinds/",
+      "language": "EN",
+      "category": "projects",
+      "title": "Smart blind control",
+      "measured": true
+    },
+    {
+      "path": "/en/projects/cameras-alarm/",
+      "language": "EN",
+      "category": "projects",
+      "title": "Cameras and alarm",
+      "measured": true
+    },
+    {
+      "path": "/en/projects/energy-ev/",
+      "language": "EN",
+      "category": "projects",
+      "title": "Energy management and EV charging",
+      "measured": true
+    },
+    {
+      "path": "/en/projects/heating/",
+      "language": "EN",
+      "category": "projects",
+      "title": "Heating and heat sources",
+      "measured": true
+    },
+    {
+      "path": "/en/projects/",
+      "language": "EN",
+      "category": "projects",
+      "title": "Dashboards for different needs",
+      "measured": true
+    },
+    {
+      "path": "/en/projects/multimedia/",
+      "language": "EN",
+      "category": "projects",
+      "title": "Studio and multimedia in one panel",
+      "measured": true
+    },
+    {
+      "path": "/en/projects/rooms/",
+      "language": "EN",
+      "category": "projects",
+      "title": "Room control",
+      "measured": true
+    },
+    {
+      "path": "/en/projects/ventilation/",
+      "language": "EN",
+      "category": "projects",
+      "title": "Heat recovery and ventilation",
+      "measured": true
+    },
+    {
+      "path": "/en/satel-integra-home-assistant/",
+      "language": "EN",
+      "category": "guides",
+      "title": "Satel Integra and Home Assistant: what you can integrate and what to check first",
+      "measured": true
+    },
+    {
+      "path": "/en/services/",
+      "language": "EN",
+      "category": "services",
+      "title": "Home Assistant Services",
+      "measured": true
+    },
+    {
+      "path": "/en/services-for-businesses/",
+      "language": "EN",
+      "category": "services",
+      "title": "Services for businesses",
+      "measured": true
+    },
+    {
+      "path": "/en/stable-zigbee/",
+      "language": "EN",
+      "category": "guides",
+      "title": "Zigbee connection dropping? Check the causes and possible solutions",
+      "measured": true
+    },
+    {
+      "path": "/en/tuya-home-assistant-local-vs-cloud/",
+      "language": "EN",
+      "category": "guides",
+      "title": "Tuya in Home Assistant: cloud or local control?",
+      "measured": true
+    },
+    {
+      "path": "/en/what-is-ha/",
+      "language": "EN",
+      "category": "guides",
+      "title": "What is Home Assistant?",
+      "measured": true
+    },
+    {
+      "path": "/en/zha-vs-zigbee2mqtt/",
+      "language": "EN",
+      "category": "guides",
+      "title": "ZHA or Zigbee2MQTT in Home Assistant – which should you choose?",
+      "measured": true
+    },
+    {
+      "path": "/en/zigbee-coordinator-home-assistant/",
+      "language": "EN",
+      "category": "guides",
+      "title": "Zigbee coordinator for Home Assistant – USB, LAN or PoE?",
+      "measured": true
+    },
+    {
+      "path": "/dk/ai-home-assistant/",
+      "language": "DK",
+      "category": "guides",
+      "title": "AI i Home Assistant – når hjemmet kan analysere situationen og reagere",
+      "measured": true
+    },
+    {
+      "path": "/dk/demo/belysning/",
+      "language": "DK",
+      "category": "demo",
+      "title": "Belysning i hjemmet",
+      "measured": true
+    },
+    {
+      "path": "/dk/demo/energi/",
+      "language": "DK",
+      "category": "demo",
+      "title": "Energi og hjem",
+      "measured": true
+    },
+    {
+      "path": "/dk/demo/",
+      "language": "DK",
+      "category": "demo",
+      "title": "Se, hvordan dit hjem kan fungere",
+      "measured": true
+    },
+    {
+      "path": "/dk/demo/roeg/",
+      "language": "DK",
+      "category": "demo",
+      "title": "Røgdetektering",
+      "measured": true
+    },
+    {
+      "path": "/dk/demo/solafskaermning/",
+      "language": "DK",
+      "category": "demo",
+      "title": "Rullegardiner og solafskærmning",
+      "measured": true
+    },
+    {
+      "path": "/dk/demo/stroem/",
+      "language": "DK",
+      "category": "demo",
+      "title": "Strømsvigt",
+      "measured": true
+    },
+    {
+      "path": "/dk/demo/vand/",
+      "language": "DK",
+      "category": "demo",
+      "title": "Vandudslip",
+      "measured": true
+    },
+    {
+      "path": "/dk/esphome-home-assistant/",
+      "language": "DK",
+      "category": "guides",
+      "title": "ESPHome i Home Assistant: hvad er det, og hvornår er det værd at bruge?",
+      "measured": true
+    },
+    {
+      "path": "/dk/frigate-home-assistant/",
+      "language": "DK",
+      "category": "guides",
+      "title": "Frigate med Hikvision eller Dahua i Home Assistant: hvad giver det, når du allerede har en optager?",
+      "measured": true
+    },
+    {
+      "path": "/dk/hacs-2026-8-opdatering/",
+      "language": "DK",
+      "category": "guides",
+      "title": "HACS virker ikke efter Home Assistant 2026.8-opdateringen? Se hvad der sker",
+      "measured": true
+    },
+    {
+      "path": "/dk/hacs-home-assistant-integrationer-udvidelser/",
+      "language": "DK",
+      "category": "guides",
+      "title": "HACS i Home Assistant: integrationer og udvidelser, der er værd at kende",
+      "measured": true
+    },
+    {
+      "path": "/dk/hikvision-home-assistant/",
+      "language": "DK",
+      "category": "guides",
+      "title": "Hikvision i Home Assistant: kameraer som en del af et intelligent alarmsystem",
+      "measured": true
+    },
+    {
+      "path": "/dk/home-assistant-2026-9-opdatering/",
+      "language": "DK",
+      "category": "guides",
+      "title": "Virker Home Assistant 2026.9 ikke korrekt efter opdateringen? Se, hvad der sker",
+      "measured": true
+    },
+    {
+      "path": "/dk/home-assistant-automatiseringer/",
+      "language": "DK",
+      "category": "guides",
+      "title": "Home Assistant-automatiseringer – sådan fungerer de, og sådan fejlsøger du dem",
+      "measured": true
+    },
+    {
+      "path": "/dk/home-assistant-backup/",
+      "language": "DK",
+      "category": "guides",
+      "title": "Home Assistant backup: automatiske sikkerhedskopier og gendannelse efter fejl",
+      "measured": true
+    },
+    {
+      "path": "/dk/home-assistant-dashboard/",
+      "language": "DK",
+      "category": "guides",
+      "title": "Home Assistant-dashboard – sådan bygger du et overskueligt kontrolpanel",
+      "measured": true
+    },
+    {
+      "path": "/dk/home-assistant-database/",
+      "language": "DK",
+      "category": "guides",
+      "title": "Home Assistant-database – Recorder, SQLite og MariaDB",
+      "measured": true
+    },
+    {
+      "path": "/dk/home-assistant-energi/",
+      "language": "DK",
+      "category": "guides",
+      "title": "Energi i Home Assistant: el, solceller, batteri og omkostninger",
+      "measured": true
+    },
+    {
+      "path": "/dk/home-assistant-entitet-utilgaengelig/",
+      "language": "DK",
+      "category": "guides",
+      "title": "Entitet utilgængelig i Home Assistant – sådan finder du årsagen",
+      "measured": true
+    },
+    {
+      "path": "/dk/home-assistant-fjernadgang/",
+      "language": "DK",
+      "category": "guides",
+      "title": "Fjernadgang til Home Assistant: Nabu Casa, Cloudflare Tunnel, VPN eller port forwarding?",
+      "measured": true
+    },
+    {
+      "path": "/dk/home-assistant-integrationer/",
+      "language": "DK",
+      "category": "guides",
+      "title": "Home Assistant-integrationer – sådan forbinder du enheder og systemer",
+      "measured": true
+    },
+    {
+      "path": "/dk/home-assistant-konsulent/",
+      "language": "DK",
+      "category": "services",
+      "title": "Home Assistant-konsulent med fokus på klare, praktiske løsninger",
+      "measured": true
+    },
+    {
+      "path": "/dk/home-assistant-multimedier/",
+      "language": "DK",
+      "category": "guides",
+      "title": "Home Assistant og multimedier: musik, receiver, TV og scener uden at lede efter fjernbetjeningen",
+      "measured": true
+    },
+    {
+      "path": "/dk/home-assistant-opvarmning-energipriser/",
+      "language": "DK",
+      "category": "guides",
+      "title": "Home Assistant og opvarmning: hvornår er el, gas eller varmepumpe billigst?",
+      "measured": true
+    },
+    {
+      "path": "/dk/home-assistant-paa-pc-mini-pc-baerbar/",
+      "language": "DK",
+      "category": "guides",
+      "title": "Home Assistant på PC, mini-PC eller bærbar – installation og opsætning fra bunden",
+      "measured": true
+    },
+    {
+      "path": "/dk/home-assistant-solcelleoverskud/",
+      "language": "DK",
+      "category": "guides",
+      "title": "Intelligent styring af solcelleoverskud i Home Assistant: off-grid, varmelager, elpatroner og prioriteter",
+      "measured": true
+    },
+    {
+      "path": "/dk/home-assistant-tilstedevaerelse/",
+      "language": "DK",
+      "category": "guides",
+      "title": "Home Assistant ved, hvornår du kommer hjem: automatisering med tilstedeværelse",
+      "measured": true
+    },
+    {
+      "path": "/dk/home-assistant-traenger-til-oprydning/",
+      "language": "DK",
+      "category": "guides",
+      "title": "7 tegn på, at din Home Assistant trænger til at blive ryddet op",
+      "measured": true
+    },
+    {
+      "path": "/dk/home-assistant-uden-internet/",
+      "language": "DK",
+      "category": "guides",
+      "title": "Hvad virker reelt i Home Assistant uden internet?",
+      "measured": true
+    },
+    {
+      "path": "/dk/home-assistant-vaegdisplay/",
+      "language": "DK",
+      "category": "guides",
+      "title": "Home Assistant-vægdisplay: Shelly Wall Display, NSPanel Pro og Aqara",
+      "measured": true
+    },
+    {
+      "path": "/dk/home-assistant-vaegtablet/",
+      "language": "DK",
+      "category": "guides",
+      "title": "Home Assistant-vægtablet: panel, kiosktilstand og typiske problemer",
+      "measured": true
+    },
+    {
+      "path": "/dk/home-assistant-vedligeholdelse/",
+      "language": "DK",
+      "category": "guides",
+      "title": "Vedligeholdelse af Home Assistant: sådan holder du systemet stabilt i mange år",
+      "measured": true
+    },
+    {
+      "path": "/dk/home-assistant-ventilation-varmegenvinding/",
+      "language": "DK",
+      "category": "guides",
+      "title": "Ventilation i Home Assistant: intelligent styring af varmegenvinding og rumventilatorer",
+      "measured": true
+    },
+    {
+      "path": "/dk/home-assistant-virker-ikke-efter-opdatering/",
+      "language": "DK",
+      "category": "guides",
+      "title": "Home Assistant virker ikke efter en opdatering: hvad skal du kontrollere, og hvordan gendanner du systemet?",
+      "measured": true
+    },
+    {
+      "path": "/dk/husbatteri-aflader-til-elbil/",
+      "language": "DK",
+      "category": "guides",
+      "title": "Sådan forhindrer du husbatteriet i at aflade til elbilen med Home Assistant",
+      "measured": true
+    },
+    {
+      "path": "/dk/hvad-er-ha/",
+      "language": "DK",
+      "category": "guides",
+      "title": "Hvad er Home Assistant?",
+      "measured": true
+    },
+    {
+      "path": "/dk/",
+      "language": "DK",
+      "category": "home",
+      "title": "Professionel hjælp til Home Assistant",
+      "measured": true
+    },
+    {
+      "path": "/dk/installer-home-assistant-paa-raspberry-pi/",
+      "language": "DK",
+      "category": "guides",
+      "title": "Sådan installerer du Home Assistant på Raspberry Pi 4 og 5",
+      "measured": true
+    },
+    {
+      "path": "/dk/knx-home-assistant/",
+      "language": "DK",
+      "category": "guides",
+      "title": "KNX og Home Assistant: hvad kan integreres, og hvad kræver det?",
+      "measured": true
+    },
+    {
+      "path": "/dk/matter-thread-home-assistant/",
+      "language": "DK",
+      "category": "guides",
+      "title": "Matter og Thread i Home Assistant: hvad er det, og er det værd at bruge?",
+      "measured": true
+    },
+    {
+      "path": "/dk/planlaeg-smart-home-home-assistant/",
+      "language": "DK",
+      "category": "guides",
+      "title": "Sådan planlægger du et smart home med Home Assistant: enheder, betjening og automatiseringer",
+      "measured": true
+    },
+    {
+      "path": "/dk/privatlivspolitik/",
+      "language": "DK",
+      "category": "privacy",
+      "title": "Privatlivspolitik for HA Expert",
+      "measured": true
+    },
+    {
+      "path": "/dk/projekter/energi-elbil/",
+      "language": "DK",
+      "category": "projects",
+      "title": "Energi- og elbilstyring",
+      "measured": true
+    },
+    {
+      "path": "/dk/projekter/",
+      "language": "DK",
+      "category": "projects",
+      "title": "Dashboards til forskellige behov",
+      "measured": true
+    },
+    {
+      "path": "/dk/projekter/kameraer-alarm/",
+      "language": "DK",
+      "category": "projects",
+      "title": "Kameraer og alarm",
+      "measured": true
+    },
+    {
+      "path": "/dk/projekter/multimedia/",
+      "language": "DK",
+      "category": "projects",
+      "title": "Studie og multimedie i ét panel",
+      "measured": true
+    },
+    {
+      "path": "/dk/projekter/opvarmning/",
+      "language": "DK",
+      "category": "projects",
+      "title": "Opvarmning og varmekilder",
+      "measured": true
+    },
+    {
+      "path": "/dk/projekter/rullegardiner/",
+      "language": "DK",
+      "category": "projects",
+      "title": "Intelligent styring af rullegardiner",
+      "measured": true
+    },
+    {
+      "path": "/dk/projekter/rum/",
+      "language": "DK",
+      "category": "projects",
+      "title": "Rumstyring",
+      "measured": true
+    },
+    {
+      "path": "/dk/projekter/ventilation/",
+      "language": "DK",
+      "category": "projects",
+      "title": "Varmegenvinding og ventilation",
+      "measured": true
+    },
+    {
+      "path": "/dk/satel-integra-home-assistant/",
+      "language": "DK",
+      "category": "guides",
+      "title": "Satel Integra i Home Assistant: hvad kan integreres, og hvad skal du tjekke først?",
+      "measured": true
+    },
+    {
+      "path": "/dk/stabilt-zigbee/",
+      "language": "DK",
+      "category": "guides",
+      "title": "Mister Zigbee forbindelsen? Se årsager og mulige løsninger",
+      "measured": true
+    },
+    {
+      "path": "/dk/tuya-home-assistant-lokal-eller-cloud/",
+      "language": "DK",
+      "category": "guides",
+      "title": "Tuya i Home Assistant: cloud eller lokal styring?",
+      "measured": true
+    },
+    {
+      "path": "/dk/vejledninger/",
+      "language": "DK",
+      "category": "guides",
+      "title": "Home Assistant-vejledninger",
+      "measured": true
+    },
+    {
+      "path": "/dk/vejrstation-home-assistant/",
+      "language": "DK",
+      "category": "guides",
+      "title": "Vejrstation i Home Assistant: vind, regn, temperatur og automatiseringer",
+      "measured": true
+    },
+    {
+      "path": "/dk/ydelser/",
+      "language": "DK",
+      "category": "services",
+      "title": "Home Assistant-ydelser",
+      "measured": true
+    },
+    {
+      "path": "/dk/ydelser-til-virksomheder/",
+      "language": "DK",
+      "category": "services",
+      "title": "Ydelser til virksomheder",
+      "measured": true
+    },
+    {
+      "path": "/dk/zha-eller-zigbee2mqtt/",
+      "language": "DK",
+      "category": "guides",
+      "title": "ZHA eller Zigbee2MQTT i Home Assistant – hvad skal du vælge?",
+      "measured": true
+    },
+    {
+      "path": "/dk/zigbee-koordinator-home-assistant/",
+      "language": "DK",
+      "category": "guides",
+      "title": "Zigbee-koordinator til Home Assistant – USB, LAN eller PoE?",
+      "measured": true
+    }
+  ],
+  "exceptions": []
+}
