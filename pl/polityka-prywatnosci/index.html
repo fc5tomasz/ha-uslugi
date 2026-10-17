@@ -29,7 +29,7 @@
       'analytics_storage': 'denied'
     });
   </script>
-  <script src="../../consent.js?v=20260829-consent-stats-local-1"></script>
+  <script src="../../consent.js?v=20261017-analytics-release-v3"></script>
   <script>
     gtag('js', new Date());
     gtag('config', 'AW-18087588380');
@@ -120,46 +120,18 @@
     <section class="section" id="wlasna-analityka">
       <h2 class="section-title mobile-match-title">4. Własna analityka HA Expert</h2>
       <div class="card policy-card">
-        <p>Własna analityka HA Expert służy do tworzenia anonimowych statystyk sposobu korzystania ze strony. HA Expert nie wykorzystuje jej do ustalania, kim jest odwiedzający, ani do rozpoznawania tej samej osoby podczas kolejnych, odrębnych wizyt.</p>
-        <p>Po wyrażeniu zgody na cel „analytics” system może zapisywać:</p>
-        <ul>
-          <li>losowy identyfikator sesji istniejący wyłącznie w <code>sessionStorage</code> bieżącej karty przeglądarki;</li>
-          <li>czas zdarzenia;</li>
-          <li>język strony;</li>
-          <li>oczyszczoną ścieżkę URL, bez parametrów zapytania i fragmentów adresu;</li>
-          <li>źródło wejścia, na przykład wyszukiwarkę, reklamę lub wejście bezpośrednie, oraz samą obecność wybranych parametrów kampanii bez zapisywania ich wartości;</li>
-          <li>kraj przekazany po stronie serwera przez warstwę infrastruktury, bez zapisywania surowego adresu IP w analityce HA Expert;</li>
-          <li>aktywny czas na stronie;</li>
-          <li>głębokość przewijania;</li>
-          <li>oglądane sekcje;</li>
-          <li>nazwane działania na stronie, na przykład kliknięcie w formularz kontaktowy.</li>
-        </ul>
-        <p>Własna analityka HA Expert nie zapisuje:</p>
-        <ul>
-          <li>imienia ani nazwiska odwiedzającego;</li>
-          <li>adresu e-mail;</li>
-          <li>treści ani danych wpisywanych do formularza kontaktowego;</li>
-          <li>surowego adresu IP;</li>
-          <li>pełnego ciągu User-Agent;</li>
-          <li>trwałego identyfikatora pozwalającego rozpoznać tę samą osobę podczas kolejnych wizyt;</li>
-          <li>ruchów myszy;</li>
-          <li>nagrań sesji.</li>
-        </ul>
-        <p>Losowy identyfikator sesji służy wyłącznie do połączenia zdarzeń w ramach jednej bieżącej sesji karty przeglądarki i nie służy do identyfikacji osoby.</p>
+        <p>Własna analityka HA Expert mierzy korzystanie ze strony. Nie służy do ustalania imienia, nazwiska ani tożsamości odwiedzającego. Zdarzenia sesyjne są wysyłane wyłącznie po zgodzie na analitykę.</p>
+<p>Po takiej zgodzie zapisywane mogą być: losowy identyfikator sesji w <code>sessionStorage</code>, czas zdarzenia, język, ścieżka strony bez parametrów, źródło wejścia, kraj przekazany przez infrastrukturę, wariant szerokości widoku desktop/mobile, aktywny czas, przewijanie oraz nazwane kliknięcia i etapy formularza. Nie zapisujemy surowego IP, pełnego User-Agent, treści pól formularza ani nagrań sesji.</p>
+<p><strong>Powroty przeglądarki wymagają osobnej zgody.</strong> Dopiero po zaznaczeniu tego celu w ustawieniach prywatności losowy identyfikator <code>ha_analytics_browser_v1</code> jest zapisywany w <code>localStorage</code> na maksymalnie 90 dni od utworzenia, bez przedłużania przy wizytach. Collector zapisuje jego skrót SHA-256 do połączenia sesji tej przeglądarki. Jest to identyfikacja pseudonimowa przeglądarki, nie osoby. Nie używamy IP ani fingerprintingu do rozpoznawania powrotów.</p>
+<p>Wycofanie zgody na powroty albo analitykę usuwa identyfikator z przeglądarki i przerywa dalsze łączenie wizyt. Ponowna zgoda tworzy nowy identyfikator. Wcześniej zapisane statystyki i powiązania sesji pozostają w zachowanej historii do zastosowania retencji; nie odtwarzamy powiązania z usuniętym identyfikatorem.</p>
+<p>Minimalne statystyki pokazania komunikatu i decyzji o zgodzie nie zawierają identyfikatora osoby ani sesji. Losowy identyfikator konkretnego zdarzenia służy wyłącznie krótkotrwałemu usuwaniu duplikatów, przez około 24 godziny. Niezależny licznik wiadomości przyjętych przez dostawcę wysyłki nie zawiera treści formularza ani danych kontaktowych; powiązanie z sesją występuje wyłącznie przy zgodzie analitycznej.</p>
       </div>
     </section>
 
     <section class="section" id="cookies">
       <h2 class="section-title mobile-match-title">5. Pliki cookie i podobne technologie</h2>
       <div class="card policy-card">
-        <p>HA Expert wykorzystuje mechanizm zgód, który pozwala osobno zdecydować o celach „analytics” i „marketing”.</p>
-        <ul>
-          <li><code>ha_consent_v2</code> jest zapisywany w <code>localStorage</code> przeglądarki i służy wyłącznie do zapamiętania decyzji użytkownika dotyczącej zgód. Pozostaje zapisany do czasu zmiany decyzji, wyczyszczenia danych witryny w przeglądarce albo zresetowania mechanizmu zgód przez stronę;</li>
-          <li>identyfikator sesji własnej analityki jest przechowywany w <code>sessionStorage</code> i przestaje być dostępny po zakończeniu danej sesji karty przeglądarki;</li>
-          <li>Google Analytics i Google Ads mogą korzystać z plików cookie i podobnych technologii zgodnie z udzielonymi zgodami oraz ustawieniami Google Consent Mode;</li>
-          <li>technologie bezwzględnie niezbędne do działania, bezpieczeństwa lub zapamiętania ustawień prywatności mogą działać bez zgody analitycznej lub marketingowej.</li>
-        </ul>
-        <p>Aktualne informacje o technologiach i okresach przechowywania stosowanych przez Google są publikowane w oficjalnej dokumentacji Google pod adresem <a href="https://policies.google.com/technologies/cookies">policies.google.com/<wbr>technologies/<wbr>cookies</a>.</p>
+        <p>Ustawienia prywatności pozwalają osobno wybrać analitykę, reklamy i marketing oraz powroty przeglądarki. Ostatni cel wymaga włączonej analityki i osobnego zaznaczenia. Wcześniejsza zgoda analityczna ani przycisk „Akceptuję analitykę i reklamy” nie włączają rozpoznawania powrotów.</p><p><code>ha_consent_v2</code> zapamiętuje wybrane cele w <code>localStorage</code>. Sesja używa <code>sessionStorage</code>. Opcjonalny <code>ha_analytics_browser_v1</code> ma limit 90 dni. Każdy cel można wycofać w tych samych ustawieniach; odmowa nie blokuje strony ani formularza. Google korzysta z własnych technologii zgodnie z wyborem analityki i reklam. Zgoda na powroty nie jest przekazywana do Google jako dodatkowy cel reklamowy.</p>
       </div>
     </section>
 
@@ -183,7 +155,7 @@
       <div class="card policy-card">
         <p>Przed udzieleniem zgody odpowiednie sygnały zgody Google (<code>ad_storage</code>, <code>ad_user_data</code>, <code>ad_personalization</code>, <code>analytics_storage</code>) są ustawione na „odmówiono”. Po dokonaniu wyboru przez użytkownika ustawienia są aktualizowane zgodnie z udzielonymi zgodami.</p>
         <p>W zależności od sposobu działania Google Consent Mode Google może przy braku zgody otrzymywać ograniczone sygnały techniczne lub pomiarowe bez użycia odpowiednich plików cookie. Zasady działania tych sygnałów określa Google.</p>
-        <p>Własna analityka HA Expert pozostaje całkowicie wyłączona, jeżeli użytkownik nie wyrazi zgody na cel „analytics”.</p>
+        <p>Sesyjne pomiary własnej analityki HA Expert pozostają wyłączone bez zgody na cel „analytics”. Minimalne statystyki zgody i serwerowy licznik wiadomości działają osobno, bez identyfikatora sesji przy braku tej zgody.</p>
       </div>
     </section>
 
@@ -191,7 +163,7 @@
       <h2 class="section-title mobile-match-title">8. Okres przechowywania danych</h2>
       <div class="card policy-card">
         <ul>
-          <li>dane własnej analityki HA Expert są przechowywane maksymalnie przez 180 dni od zarejestrowania zdarzenia, a następnie automatycznie usuwane;</li>
+          <li>dane własnej analityki podlegają osobnej procedurze retencji, domyślnie obejmującej usuwanie zdarzeń starszych niż 180 dni. Wygaśnięcie identyfikatora przeglądarki po 90 dniach nie usuwa wstecz danych z bazy;</li>
           <li>decyzja zapisana w <code>ha_consent_v2</code> pozostaje w przeglądarce do czasu jej zmiany, wyczyszczenia danych witryny albo zresetowania mechanizmu zgód;</li>
           <li>dane z korespondencji i formularza kontaktowego są przechowywane przez okres niezbędny do obsługi zapytania, realizacji współpracy oraz zabezpieczenia ewentualnych roszczeń;</li>
           <li>dane, których przechowywanie jest wymagane przez przepisy księgowe, podatkowe lub inne obowiązujące przepisy, są przechowywane przez wymagany prawem okres;</li>
@@ -226,9 +198,9 @@
           <li>wniesienia sprzeciwu wobec przetwarzania, gdy podstawą prawną jest prawnie uzasadniony interes;</li>
           <li>wycofania zgody w dowolnym momencie, gdy przetwarzanie opiera się na zgodzie.</li>
         </ul>
-        <p>Zgodę na cele „analytics” i „marketing” można w każdej chwili zmienić lub wycofać za pomocą ustawień prywatności dostępnych na stronie. Wycofanie zgody jest równie łatwe jak jej udzielenie i nie wpływa na zgodność z prawem przetwarzania dokonanego przed jej wycofaniem.</p>
+        <p>Zgodę na analitykę, marketing oraz powroty przeglądarki można w każdej chwili zmienić lub wycofać za pomocą ustawień prywatności dostępnych na stronie. Wycofanie zgody jest równie łatwe jak jej udzielenie i nie wpływa na zgodność z prawem przetwarzania dokonanego przed jej wycofaniem.</p>
         <p>Użytkownik ma prawo wnieść skargę do właściwego organu nadzorczego, w szczególności do <a href="https://www.datatilsynet.dk/">Datatilsynet</a> w Danii lub do organu ochrony danych właściwego dla miejsca swojego zwykłego pobytu, na przykład do <a href="https://uodo.gov.pl/">Prezesa Urzędu Ochrony Danych Osobowych</a> w Polsce.</p>
-        <p>Własna analityka HA Expert nie zawiera trwałego identyfikatora ani danych pozwalających HA Expert rozpoznać konkretną osobę pomiędzy odrębnymi wizytami. Z tego powodu ustalenie, które zdarzenia analityczne dotyczą konkretnej osoby, może być technicznie niemożliwe na podstawie samej jej tożsamości. HA Expert nie będzie pozyskiwać dodatkowych danych wyłącznie w celu identyfikacji osoby, jeżeli nie jest to wymagane przez obowiązujące przepisy.</p>
+        <p>Losowy identyfikator rozpoznaje przeglądarkę, nie tożsamość osoby. Nie łączymy go z danymi kontaktowymi ani treścią wiadomości w analityce. Samo podanie imienia lub adresu e-mail może nie wystarczyć do odnalezienia zdarzeń dotyczących konkretnej osoby. Nie zbieramy dodatkowych danych wyłącznie w celu jej identyfikacji.</p>
         <p>HA Expert nie wykorzystuje danych ze strony do podejmowania wobec użytkownika decyzji opartych wyłącznie na zautomatyzowanym przetwarzaniu, które wywoływałyby skutki prawne lub w podobny sposób istotnie na niego wpływały.</p>
       </div>
     </section>

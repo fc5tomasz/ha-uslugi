@@ -1,5 +1,6 @@
 (() => {
   const STORAGE_KEY = "ha_consent_v2";
+  const clearBrowserIdentity = () => { try { localStorage.removeItem("ha_analytics_browser_v1"); } catch (error) { /* storage unavailable */ } };
   const LEGACY_STORAGE_KEY = "ha_consent_v1";
   const CONSENT_VERSION = 2;
   const CONSENT_STATS_ENDPOINT = (() => {
@@ -16,11 +17,13 @@
     pl: {
       ariaLabel: "Ustawienia prywatności",
       message: "Za zgodą używamy analityki i narzędzi reklamowych, aby mierzyć korzystanie ze strony i skuteczność reklam.",
-      acceptAll: "Akceptuję wszystkie", rejectAll: "Odrzucam", settings: "Ustawienia",
+      acceptAll: "Akceptuję analitykę i reklamy", rejectAll: "Odrzucam", settings: "Ustawienia",
       settingsTitle: "Ustawienia prywatności",
       settingsIntro: "Niezbędne funkcje strony są zawsze aktywne. Pozostałe cele możesz wybrać osobno.",
       analyticsTitle: "Analityka",
-      analyticsText: "Google Analytics i anonimowa analityka HA Expert pomagają zrozumieć korzystanie ze strony.",
+      analyticsText: "Pomiar korzystania ze strony, bez łączenia odrębnych wizyt bez osobnej zgody.",
+      returningTitle: "Powroty przeglądarki",
+      returningText: "Opcjonalne łączenie wizyt tej przeglądarki losowym identyfikatorem w localStorage przez maksymalnie 90 dni. Wymaga analityki. Wycofanie usuwa identyfikator.",
       marketingTitle: "Reklamy i marketing",
       marketingText: "Google Ads mierzy skuteczność reklam i może personalizować reklamy zgodnie z Twoją decyzją.",
       save: "Zapisz wybór", privacyButton: "Ustawienia prywatności",
@@ -29,11 +32,13 @@
     en: {
       ariaLabel: "Privacy settings",
       message: "With your consent, we use analytics and advertising tools to measure how the website is used and how effective our ads are.",
-      acceptAll: "Accept all", rejectAll: "Reject all", settings: "Settings",
+      acceptAll: "Accept analytics and ads", rejectAll: "Reject all", settings: "Settings",
       settingsTitle: "Privacy settings",
       settingsIntro: "Essential site functions are always active. You can choose the other purposes separately.",
       analyticsTitle: "Analytics",
-      analyticsText: "Google Analytics and anonymous HA Expert analytics help us understand how the site is used.",
+      analyticsText: "Measurement of website use. Separate visits are not linked without separate consent.",
+      returningTitle: "Returning browser",
+      returningText: "Optionally link visits from this browser using a random identifier in localStorage for up to 90 days. Requires analytics. Withdrawal removes the identifier.",
       marketingTitle: "Advertising and marketing",
       marketingText: "Google Ads measures advertising performance and may personalise ads according to your choice.",
       save: "Save selection", privacyButton: "Privacy settings",
@@ -42,11 +47,13 @@
     da: {
       ariaLabel: "Privatlivsindstillinger",
       message: "Med dit samtykke bruger vi analyseværktøjer og annonceringsværktøjer til at måle brugen af hjemmesiden og effekten af vores annoncer.",
-      acceptAll: "Accepter alle", rejectAll: "Afvis alle", settings: "Indstillinger",
+      acceptAll: "Accepter analyse og reklamer", rejectAll: "Afvis alle", settings: "Indstillinger",
       settingsTitle: "Privatlivsindstillinger",
       settingsIntro: "Nødvendige funktioner på siden er altid aktive. Du kan vælge de øvrige formål separat.",
       analyticsTitle: "Analyse",
-      analyticsText: "Google Analytics og anonym HA Expert-analyse hjælper os med at forstå, hvordan siden bruges.",
+      analyticsText: "Måling af brugen af hjemmesiden. Separate besøg forbindes ikke uden særskilt samtykke.",
+      returningTitle: "Tilbagevendende browser",
+      returningText: "Forbind valgfrit besøg fra denne browser med en tilfældig identifikator i localStorage i op til 90 dage. Kræver analyse. Tilbagetrækning fjerner identifikatoren.",
       marketingTitle: "Annoncering og marketing",
       marketingText: "Google Ads måler effekten af annoncer og kan tilpasse annoncer efter dit valg.",
       save: "Gem valg", privacyButton: "Privatlivsindstillinger",
@@ -80,7 +87,7 @@
   const normalizeDecision = (value) => {
     if (!value || value.version !== CONSENT_VERSION) return null;
     if (typeof value.analytics !== "boolean" || typeof value.marketing !== "boolean") return null;
-    return { version: CONSENT_VERSION, analytics: value.analytics, marketing: value.marketing };
+    return { version: CONSENT_VERSION, analytics: value.analytics, marketing: value.marketing, returnVisits: value.analytics && value.returnVisits === true && value.returnVisitsNotice === 1, returnVisitsNotice: value.returnVisitsNotice === 1 ? 1 : 0 };
   };
 
   const readStoredDecision = () => {
@@ -131,7 +138,7 @@
     window.dispatchEvent(new CustomEvent("ha:consent-changed", { detail: { ...decision } }));
   };
 
-  const sendConsentStat = (eventType) => {
+  const sendConsentStat = (eventType, details = {}) => {
     if (!CONSENT_STATS_ENDPOINT || typeof window.fetch !== "function") return;
     try {
       void window.fetch(CONSENT_STATS_ENDPOINT, {
@@ -142,7 +149,7 @@
         referrerPolicy: "no-referrer",
         keepalive: true,
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ event_type: eventType })
+        body: JSON.stringify({ event_type: eventType, ...details })
       }).catch(() => {});
     } catch (error) {
       // Pomiar zbiorczy nigdy nie może wpływać na działanie bannera.
@@ -152,6 +159,20 @@
   const applyDecision = (decision, { persist = true, close = true } = {}) => {
     const normalized = normalizeDecision(decision);
     if (!normalized) return;
+    const previous = readStoredDecision();
+    const changed = !previous || previous.analytics !== normalized.analytics || previous.marketing !== normalized.marketing || previous.returnVisits !== normalized.returnVisits;
+    if (changed) {
+      const eventId = window.crypto && typeof window.crypto.randomUUID === "function"
+        ? window.crypto.randomUUID() : `${Date.now()}_${Math.random().toString(36).slice(2)}`;
+      sendConsentStat("decision", {
+        event_id: eventId, decision_kind: previous ? "change" : "first",
+        analytics: normalized.analytics, marketing: normalized.marketing,
+        withdrawn: Boolean(previous && previous.analytics && !normalized.analytics),
+        marketing_withdrawn: Boolean(previous && previous.marketing && !normalized.marketing),
+        return_visits: normalized.returnVisits, return_visits_withdrawn: Boolean(previous && previous.returnVisits && !normalized.returnVisits)
+      });
+    }
+    if (!normalized.analytics || !normalized.returnVisits) clearBrowserIdentity();
     if (persist) writeStoredDecision(normalized);
     sendConsentUpdate(normalized);
     dispatchConsentChange(normalized);
@@ -236,8 +257,13 @@
       options.className = "consent-banner__options";
       options.append(
         buildOption("analytics", copy.analyticsTitle, copy.analyticsText, selected.analytics),
-        buildOption("marketing", copy.marketingTitle, copy.marketingText, selected.marketing)
+        buildOption("marketing", copy.marketingTitle, copy.marketingText, selected.marketing),
+        buildOption("returnVisits", copy.returningTitle, copy.returningText, selected.returnVisits === true)
       );
+      const analyticsOption = options.querySelector('input[name="analytics"]');
+      const returningOption = options.querySelector('input[name="returnVisits"]');
+      const syncReturningOption = () => { returningOption.disabled = !analyticsOption.checked; if (!analyticsOption.checked) returningOption.checked = false; };
+      analyticsOption.addEventListener("change", syncReturningOption); syncReturningOption();
       copyWrap.append(title, intro, options);
     } else {
       const text = document.createElement("p");
@@ -253,17 +279,16 @@
         applyDecision({
           version: CONSENT_VERSION,
           analytics: banner.querySelector('input[name="analytics"]').checked,
-          marketing: banner.querySelector('input[name="marketing"]').checked
+          marketing: banner.querySelector('input[name="marketing"]').checked,
+          returnVisits: banner.querySelector('input[name="returnVisits"]').checked, returnVisitsNotice: 1
         });
       }));
     } else {
       actions.append(
         buildButton(copy.acceptAll, "consent-banner__btn consent-banner__btn--accept", () => {
-          sendConsentStat("accepted");
           applyDecision({ version: CONSENT_VERSION, analytics: true, marketing: true });
         }),
         buildButton(copy.rejectAll, "consent-banner__btn consent-banner__btn--reject", () => {
-          sendConsentStat("rejected");
           applyDecision({ version: CONSENT_VERSION, analytics: false, marketing: false });
         }),
         buildButton(copy.settings, "consent-banner__btn consent-banner__btn--settings", () => renderBanner("settings"))
@@ -285,7 +310,10 @@
     const mobileBottomBar = document.querySelector(".mobile-bottom-bar");
     if (mobileBottomBar) resizeObserver.observe(mobileBottomBar);
     updateBannerLayout();
-    if (mode === "initial") sendConsentStat("shown");
+    if (mode === "initial") sendConsentStat("render", {
+      event_id: window.crypto && typeof window.crypto.randomUUID === "function"
+        ? window.crypto.randomUUID() : `${Date.now()}_${Math.random().toString(36).slice(2)}`
+    });
   };
 
   const renderPrivacyButton = () => {
@@ -304,12 +332,23 @@
 
   migrateLegacyDenial();
   const initialDecision = readStoredDecision();
+  if (!initialDecision || !initialDecision.analytics || !initialDecision.returnVisits) clearBrowserIdentity();
   if (initialDecision) sendConsentUpdate(initialDecision);
   window.HAExpertConsent = Object.freeze({
     version: CONSENT_VERSION,
     get: () => readStoredDecision(),
     has: (purpose) => Boolean(readStoredDecision() && readStoredDecision()[purpose] === true),
     openSettings: () => document.body ? renderBanner("settings") : document.addEventListener("DOMContentLoaded", () => renderBanner("settings"), { once: true })
+  });
+  window.addEventListener("storage", event => {
+    if (event.key !== STORAGE_KEY && event.key !== null) return;
+    const decision = readStoredDecision();
+    const effective = decision || {version:CONSENT_VERSION,analytics:false,marketing:false};
+    if (!effective.analytics || !effective.returnVisits) clearBrowserIdentity();
+    sendConsentUpdate(effective);
+    dispatchConsentChange(effective);
+    if (decision) removeBanner();
+    else if (document.body) renderBanner("initial");
   });
   window.addEventListener("resize", updateBannerLayout);
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", initializeBody, { once: true });
@@ -318,7 +357,7 @@
   const consentScriptUrl = document.currentScript && document.currentScript.src;
   if (consentScriptUrl) {
     const tracker = document.createElement("script");
-    tracker.src = new URL("analytics.js?v=20261013-form-start-1", consentScriptUrl).href;
+    tracker.src = new URL("analytics.js?v=20261017-explicit-returning-v1", consentScriptUrl).href;
     tracker.async = true;
     document.head.appendChild(tracker);
   }

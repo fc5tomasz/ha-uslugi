@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="../../styles.css?v=20261015-menu-guides-2" />
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18087588380"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{'ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','analytics_storage':'denied'});</script>
-  <script src="../../consent.js?v=20260829-consent-stats-local-1"></script>
+  <script src="../../consent.js?v=20261017-analytics-release-v3"></script>
   <script>gtag('js',new Date());gtag('config','AW-18087588380');</script>
 </head>
 <body class="knowledge-page pl-home-bg-test policy-page">
@@ -106,46 +106,14 @@
     <section class="section" id="own-analytics">
       <h2 class="section-title mobile-match-title">4. HA Expert's own analytics</h2>
       <div class="card policy-card">
-        <p>HA Expert's own analytics is used to produce anonymous statistics about how the website is used. HA Expert does not use it to determine who a visitor is or to recognise the same person across separate visits.</p>
-        <p>After consent to the &ldquo;analytics&rdquo; purpose has been given, the system may record:</p>
-        <ul>
-          <li>a random session identifier stored only in <code>sessionStorage</code> for the current browser tab;</li>
-          <li>the event time;</li>
-          <li>the website language;</li>
-          <li>a sanitised URL path without query parameters or URL fragments;</li>
-          <li>the traffic source, for example a search engine, an advertisement or a direct visit, and only the presence of selected campaign parameters without storing their values;</li>
-          <li>the country supplied by the infrastructure layer on the server side, without storing the raw IP address in HA Expert analytics;</li>
-          <li>active time on the page;</li>
-          <li>scroll depth;</li>
-          <li>viewed sections;</li>
-          <li>named actions on the page, for example clicking the contact form.</li>
-        </ul>
-        <p>HA Expert's own analytics does not store:</p>
-        <ul>
-          <li>the visitor's first or last name;</li>
-          <li>an email address;</li>
-          <li>the content or data entered into the contact form;</li>
-          <li>the raw IP address;</li>
-          <li>the full User-Agent string;</li>
-          <li>a persistent identifier that would allow the same person to be recognised across separate visits;</li>
-          <li>mouse movements;</li>
-          <li>session recordings.</li>
-        </ul>
-        <p>The random session identifier is used only to connect events within one session of the current browser tab and is not used to identify a person.</p>
+        <p>HA Expert analytics measures website use. It does not determine a visitor's name or identity. Session events are sent only after analytics consent.</p><p>With that consent, recorded data may include a random session identifier in <code>sessionStorage</code>, event time, language, page path without parameters, entry source, country provided by infrastructure, desktop/mobile viewport variant, active time, scrolling, named clicks and form stages. We do not record raw IP addresses, full User-Agent strings, form contents or session recordings.</p><p><strong>Recognising a returning browser requires separate consent.</strong> Only after that purpose is selected in privacy settings is a random <code>ha_analytics_browser_v1</code> identifier stored in <code>localStorage</code> for up to 90 days from creation, without extending its lifetime on visits. The collector stores its SHA-256 hash to link sessions from that browser. This is pseudonymous browser recognition, not identification of a person. We do not use IP matching or fingerprinting for returning visits.</p><p>Withdrawing returning-browser or analytics consent removes the identifier from the browser and stops further linking. Giving consent again creates a new identifier. Previously recorded statistics and session links remain in retained history until retention is applied; the link to the removed identifier is not restored.</p><p>Minimal banner-render and consent-decision statistics contain no person or session identifier. A random identifier for each event is used only for short-lived deduplication, for approximately 24 hours. The independent counter of messages accepted by the sending provider contains no form contents or contact details; linking it to a session requires analytics consent.</p>
       </div>
     </section>
 
     <section class="section" id="cookies">
       <h2 class="section-title mobile-match-title">5. Cookies and similar technologies</h2>
       <div class="card policy-card">
-        <p>HA Expert uses a consent mechanism that allows users to decide separately about the &ldquo;analytics&rdquo; and &ldquo;marketing&rdquo; purposes.</p>
-        <ul>
-          <li><code>ha_consent_v2</code> is stored in the browser's <code>localStorage</code> and is used only to remember the user's consent choices. It remains stored until the choice is changed, the website data is cleared in the browser, or the consent mechanism is reset by the website;</li>
-          <li>the session identifier used by HA Expert's own analytics is stored in <code>sessionStorage</code> and is no longer available after that browser tab's session ends;</li>
-          <li>Google Analytics and Google Ads may use cookies and similar technologies in accordance with the consent given and Google Consent Mode settings;</li>
-          <li>technologies strictly necessary for the operation or security of the website, or for remembering privacy settings, may operate without analytics or marketing consent.</li>
-        </ul>
-        <p>Current information about the technologies used by Google and their retention periods is published in Google's official documentation at <a href="https://policies.google.com/technologies/cookies">policies.google.com/<wbr>technologies/<wbr>cookies</a>.</p>
+        <p>Privacy settings provide separate choices for analytics, advertising and marketing, and returning-browser recognition. The last purpose requires analytics and a separate selection. Existing analytics consent and the “Accept analytics and ads” button do not enable returning-browser recognition.</p><p><code>ha_consent_v2</code> remembers purpose choices in <code>localStorage</code>. Sessions use <code>sessionStorage</code>. The optional <code>ha_analytics_browser_v1</code> has a 90-day lifetime. Each purpose can be withdrawn in the same settings; refusing does not block the website or contact form. Google uses its technologies according to analytics and advertising choices. Returning-browser consent is not sent to Google as an additional advertising purpose.</p>
       </div>
     </section>
 
@@ -169,7 +137,7 @@
       <div class="card policy-card">
         <p>Before consent is given, the relevant Google consent signals (<code>ad_storage</code>, <code>ad_user_data</code>, <code>ad_personalization</code>, <code>analytics_storage</code>) are set to &ldquo;denied&rdquo;. After the user makes a choice, the settings are updated according to the consent given.</p>
         <p>Depending on how Google Consent Mode operates, Google may receive limited technical or measurement signals without the relevant cookies when consent has not been given. Google determines how these signals operate.</p>
-        <p>HA Expert's own analytics remains completely disabled if the user does not consent to the &ldquo;analytics&rdquo; purpose.</p>
+        <p>HA Expert session analytics remains disabled without analytics consent. Minimal consent statistics and the server message counter operate separately, without a session identifier when that consent is absent.</p>
       </div>
     </section>
 
@@ -177,7 +145,7 @@
       <h2 class="section-title mobile-match-title">8. Retention periods</h2>
       <div class="card policy-card">
         <ul>
-          <li>HA Expert's own analytics data is stored for a maximum of 180 days from the event and is then automatically deleted;</li>
+          <li>HA Expert analytics data is subject to a separate retention procedure, by default removing events older than 180 days. Expiry of the browser identifier after 90 days does not retroactively delete database records;</li>
           <li>the decision stored in <code>ha_consent_v2</code> remains in the browser until it is changed, website data is cleared, or the consent mechanism is reset;</li>
           <li>correspondence and contact form data is retained for as long as necessary to handle the enquiry, perform the cooperation and protect against potential legal claims;</li>
           <li>data that must be retained under accounting, tax or other applicable laws is retained for the period required by law;</li>
@@ -212,9 +180,9 @@
           <li>object to processing where the legal basis is a legitimate interest;</li>
           <li>withdraw consent at any time where processing is based on consent.</li>
         </ul>
-        <p>Consent for the &ldquo;analytics&rdquo; and &ldquo;marketing&rdquo; purposes can be changed or withdrawn at any time using the privacy settings available on the website. Withdrawing consent is as easy as giving it and does not affect the lawfulness of processing carried out before the withdrawal.</p>
+        <p>Consent for analytics, marketing and returning-browser recognition can be changed or withdrawn at any time using the privacy settings available on the website. Withdrawing consent is as easy as giving it and does not affect the lawfulness of processing carried out before the withdrawal.</p>
         <p>The user has the right to lodge a complaint with the competent supervisory authority, in particular <a href="https://www.datatilsynet.dk/english">Datatilsynet</a> in Denmark or the <a href="https://www.edpb.europa.eu/about-edpb/about-edpb/members_en">data protection authority</a> competent for the user's habitual residence.</p>
-        <p>HA Expert's own analytics does not contain a persistent identifier or data that enables HA Expert to recognise a particular person across separate visits. For this reason, it may be technically impossible to determine which analytics events relate to a particular person based solely on that person's identity. HA Expert will not collect additional data solely to identify a person unless required by applicable law.</p>
+        <p>The random identifier recognises a browser, not the identity of a person. Analytics does not link it to contact details or message contents. A name or email address alone may not identify the analytics events relating to a particular person. We do not collect additional identity data solely for that purpose.</p>
         <p>HA Expert does not use website data to make decisions about users based solely on automated processing that produce legal effects or similarly significantly affect them.</p>
       </div>
     </section>

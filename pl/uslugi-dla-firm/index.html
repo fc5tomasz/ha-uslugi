@@ -21,7 +21,7 @@
   <link rel="stylesheet" href="../../business-services.css?v=20261015-3" />
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18087588380"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{'ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','analytics_storage':'denied'});</script>
-  <script src="../../consent.js?v=20260829-consent-stats-local-1"></script>
+  <script src="../../consent.js?v=20261017-analytics-release-v3"></script>
   <script>gtag('js',new Date());gtag('config','AW-18087588380');</script>
 </head>
 <body class="knowledge-page pl-home-bg-test service-page">
@@ -357,6 +357,7 @@
         return;
       }
       if (!validateContactForm()) {
+        if (window.HAExpertAnalytics) window.HAExpertAnalytics.track("form_error", {path:location.pathname,action_name:"validation"});
         return;
       }
       isSubmitting = true;
@@ -382,6 +383,13 @@
         const submissionId = getSubmissionId();
         fillLeadContext();
         const formData = new FormData(form);
+        if (window.HAExpertAnalytics && window.HAExpertAnalytics.isActive()) {
+          const anonymousSession = window.HAExpertAnalytics.sessionId();
+          if (anonymousSession) {
+            formData.set("analytics_consent", "true");
+            formData.set("analytics_session_id", anonymousSession);
+          }
+        }
         selectedAttachments.forEach((file) => {
           formData.append(attachmentsInput.name, file, file.name);
         });
@@ -403,7 +411,7 @@
             gtag('event', 'conversion', {'send_to': 'AW-18087588380/ej4vCOfps54cEJzk6rBD', 'transaction_id': submissionId, 'form_source': 'Usługi dla firm'});
           }
           if (firstConfirmation && !isDryRun && hasContactAnalyticsConsent() && window.HAExpertAnalytics) {
-            window.HAExpertAnalytics.track("contact_form_submit", { path: window.location.pathname, action_name: "business", form_source: "Usługi dla firm" });
+            window.HAExpertAnalytics.track("contact_form_submit", { path: window.location.pathname, action_name: "client_ack", event_id: `ack_${submissionId}` });
           }
           statusEl.className = "form-status ok";
           const successLines = ["Dziękuję za wiadomość. Została pomyślnie wysłana.", "Zapoznam się z\u00a0jej treścią i\u00a0odpowiem na podany adres e-mail.", "Jeśli nie otrzymasz ode mnie odpowiedzi, proszę sprawdzić również folder Spam w\u00a0swojej poczcie."];
@@ -428,11 +436,13 @@
             statusResetTimer = null;
           }, 10000);
         } else {
+          if (window.HAExpertAnalytics) window.HAExpertAnalytics.track("form_error", {path:location.pathname,action_name:"server_response"});
           console.error("Form submit failed:", response.status, result && result.error);
           showFormError(failureMessage(response.status, result));
         }
       } catch (error) {
         // Przekroczony czas lub błąd sieci: wynik nieznany, dane formularza zostają.
+        if (window.HAExpertAnalytics) window.HAExpertAnalytics.track("form_error", {path:location.pathname,action_name:"unconfirmed"});
         console.error("Form submit failed:", error && error.name);
         showFormError(contactMessages.unconfirmed);
       } finally {

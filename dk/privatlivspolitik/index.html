@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="../../styles.css?v=20261015-menu-guides-2" />
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18087588380"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{'ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','analytics_storage':'denied'});</script>
-  <script src="../../consent.js?v=20260829-consent-stats-local-1"></script>
+  <script src="../../consent.js?v=20261017-analytics-release-v3"></script>
   <script>gtag('js',new Date());gtag('config','AW-18087588380');</script>
 </head>
 <body class="knowledge-page pl-home-bg-test policy-page">
@@ -106,46 +106,14 @@
     <section class="section" id="egen-analyse">
       <h2 class="section-title mobile-match-title">4. HA Experts egen analyse</h2>
       <div class="card policy-card">
-        <p>HA Experts egen analyse bruges til at udarbejde anonyme statistikker om brugen af hjemmesiden. HA Expert bruger den ikke til at fastslå, hvem en besøgende er, eller til at genkende den samme person ved separate besøg.</p>
-        <p>Efter samtykke til formålet "analytics" kan systemet registrere:</p>
-        <ul>
-          <li>en tilfældig sessionsidentifikator, som kun findes i <code>sessionStorage</code> for den aktuelle browserfane;</li>
-          <li>tidspunktet for hændelsen;</li>
-          <li>hjemmesidens sprog;</li>
-          <li>en renset URL-sti uden forespørgselsparametre og URL-fragmenter;</li>
-          <li>trafikkilde, for eksempel en søgemaskine, en annonce eller et direkte besøg, samt kun tilstedeværelsen af udvalgte kampagneparametre uden at gemme deres værdier;</li>
-          <li>land, som leveres på serversiden af infrastrukturlaget, uden at den rå IP-adresse gemmes i HA Experts analyse;</li>
-          <li>aktiv tid på siden;</li>
-          <li>scrolldybde;</li>
-          <li>viste sektioner;</li>
-          <li>navngivne handlinger på hjemmesiden, for eksempel klik på kontaktformularen.</li>
-        </ul>
-        <p>HA Experts egen analyse gemmer ikke:</p>
-        <ul>
-          <li>den besøgendes fornavn eller efternavn;</li>
-          <li>e-mailadresse;</li>
-          <li>indhold eller oplysninger, der indtastes i kontaktformularen;</li>
-          <li>rå IP-adresse;</li>
-          <li>den fulde User-Agent-streng;</li>
-          <li>en permanent identifikator, der gør det muligt at genkende den samme person ved separate besøg;</li>
-          <li>musebevægelser;</li>
-          <li>optagelser af sessioner.</li>
-        </ul>
-        <p>Den tilfældige sessionsidentifikator bruges kun til at forbinde hændelser inden for én aktuel session i browserfanen og bruges ikke til at identificere en person.</p>
+        <p>HA Experts egen analyse måler brugen af hjemmesiden. Den fastslår ikke den besøgendes navn eller identitet. Sessionshændelser sendes kun efter samtykke til analyse.</p><p>Med dette samtykke kan der registreres en tilfældig sessionsidentifikator i <code>sessionStorage</code>, tidspunkt, sprog, sidesti uden parametre, indgangskilde, land oplyst af infrastrukturen, desktop/mobile-visningsvariant, aktiv tid, rulning, navngivne klik og formulartrin. Vi registrerer ikke rå IP-adresser, fuld User-Agent, formularindhold eller sessionsoptagelser.</p><p><strong>Genkendelse af en tilbagevendende browser kræver særskilt samtykke.</strong> Først når dette formål vælges i privatlivsindstillingerne, gemmes den tilfældige identifikator <code>ha_analytics_browser_v1</code> i <code>localStorage</code> i højst 90 dage fra oprettelsen, uden forlængelse ved besøg. Collectoren gemmer dens SHA-256-hash for at forbinde browserens sessioner. Det er pseudonym genkendelse af en browser, ikke identifikation af en person. Vi bruger ikke IP-matching eller fingerprinting til genkendelse af tilbagevendende besøg.</p><p>Tilbagetrækning af samtykke til tilbagevendende besøg eller analyse fjerner identifikatoren fra browseren og stopper yderligere sammenkædning. Nyt samtykke opretter en ny identifikator. Tidligere registrerede statistikker og sessionsforbindelser forbliver i den bevarede historik, indtil opbevaringsproceduren anvendes; forbindelsen til den fjernede identifikator genskabes ikke.</p><p>Minimale statistikker om visning af samtykkebeskeden og samtykkevalg indeholder ingen person- eller sessionsidentifikator. En tilfældig identifikator for hver hændelse bruges kun til kortvarig fjernelse af dubletter i cirka 24 timer. Den uafhængige tæller for beskeder accepteret af afsendelsesleverandøren indeholder ikke formularindhold eller kontaktoplysninger; tilknytning til en session kræver analysesamtykke.</p>
       </div>
     </section>
 
     <section class="section" id="cookies">
       <h2 class="section-title mobile-match-title">5. Cookies og lignende teknologier</h2>
       <div class="card policy-card">
-        <p>HA Expert bruger en samtykkeløsning, der gør det muligt at vælge særskilt mellem formålene "analytics" og "marketing".</p>
-        <ul>
-          <li><code>ha_consent_v2</code> gemmes i browserens <code>localStorage</code> og bruges kun til at huske brugerens valg af samtykke. Oplysningen forbliver gemt, indtil brugeren ændrer valget, rydder hjemmesidens data i browseren, eller samtykkeløsningen nulstilles af hjemmesiden;</li>
-          <li>sessionsidentifikatoren til HA Experts egen analyse gemmes i <code>sessionStorage</code> og er ikke længere tilgængelig, når den pågældende browserfanes session afsluttes;</li>
-          <li>Google Analytics og Google Ads kan bruge cookies og lignende teknologier i overensstemmelse med det afgivne samtykke og indstillingerne i Google Consent Mode;</li>
-          <li>teknologier, der er strengt nødvendige for hjemmesidens funktion eller sikkerhed eller for at huske privatlivsindstillinger, kan fungere uden samtykke til analyse eller markedsføring.</li>
-        </ul>
-        <p>Aktuelle oplysninger om Googles teknologier og deres opbevaringsperioder findes i Googles officielle dokumentation på <a href="https://policies.google.com/technologies/cookies">policies.google.com/<wbr>technologies/<wbr>cookies</a>.</p>
+        <p>Privatlivsindstillingerne giver separate valg for analyse, annoncering og marketing samt genkendelse af tilbagevendende besøg. Det sidste formål kræver analyse og et særskilt valg. Tidligere analysesamtykke og knappen “Accepter analyse og reklamer” aktiverer ikke genkendelse af tilbagevendende besøg.</p><p><code>ha_consent_v2</code> husker formålsvalg i <code>localStorage</code>. Sessioner bruger <code>sessionStorage</code>. Den valgfrie <code>ha_analytics_browser_v1</code> har en levetid på 90 dage. Hvert formål kan trækkes tilbage i de samme indstillinger; afvisning blokerer ikke hjemmesiden eller kontaktformularen. Google bruger sine teknologier efter valgene for analyse og annoncering. Samtykke til tilbagevendende besøg sendes ikke til Google som et yderligere annonceringsformål.</p>
       </div>
     </section>
 
@@ -169,7 +137,7 @@
       <div class="card policy-card">
         <p>Før der gives samtykke, er de relevante Google-signaler (<code>ad_storage</code>, <code>ad_user_data</code>, <code>ad_personalization</code>, <code>analytics_storage</code>) indstillet til "denied". Når brugeren har foretaget sit valg, opdateres indstillingerne i overensstemmelse med det afgivne samtykke.</p>
         <p>Afhængigt af hvordan Google Consent Mode fungerer, kan Google ved manglende samtykke modtage begrænsede tekniske eller målingsrelaterede signaler uden brug af de relevante cookies. Google fastlægger, hvordan disse signaler fungerer.</p>
-        <p>HA Experts egen analyse forbliver helt deaktiveret, hvis brugeren ikke giver samtykke til formålet "analytics".</p>
+        <p>HA Experts sessionsanalyse er deaktiveret uden analysesamtykke. Minimale samtykkestatistikker og serverens beskedtæller fungerer separat, uden sessionsidentifikator når samtykket mangler.</p>
       </div>
     </section>
 
@@ -177,7 +145,7 @@
       <h2 class="section-title mobile-match-title">8. Opbevaringsperioder</h2>
       <div class="card policy-card">
         <ul>
-          <li>oplysninger fra HA Experts egen analyse opbevares i højst 180 dage fra hændelsen og slettes derefter automatisk;</li>
+          <li>HA Experts analysedata er omfattet af en særskilt opbevaringsprocedure, som som standard fjerner hændelser ældre end 180 dage. Udløb af browseridentifikatoren efter 90 dage sletter ikke tidligere registreringer i databasen;</li>
           <li>valget gemt i <code>ha_consent_v2</code> forbliver i browseren, indtil det ændres, hjemmesidens data ryddes, eller samtykkeløsningen nulstilles;</li>
           <li>oplysninger fra korrespondance og kontaktformularen opbevares, så længe det er nødvendigt for at behandle henvendelsen, gennemføre samarbejdet og beskytte mod eventuelle retskrav;</li>
           <li>oplysninger, som skal opbevares efter regnskabslovgivning, skattelovgivning eller anden gældende lovgivning, opbevares i den periode, loven kræver;</li>
@@ -212,9 +180,9 @@
           <li>at gøre indsigelse mod behandling, når retsgrundlaget er en legitim interesse;</li>
           <li>til enhver tid at trække et samtykke tilbage, når behandlingen er baseret på samtykke.</li>
         </ul>
-        <p>Samtykke til formålene "analytics" og "marketing" kan til enhver tid ændres eller trækkes tilbage via privatlivsindstillingerne på hjemmesiden. Det er lige så let at trække samtykket tilbage som at give det, og tilbagetrækningen påvirker ikke lovligheden af behandling, der fandt sted før tilbagetrækningen.</p>
+        <p>Samtykke til analyse, marketing og genkendelse af tilbagevendende besøg kan til enhver tid ændres eller trækkes tilbage via privatlivsindstillingerne på hjemmesiden. Det er lige så let at trække samtykket tilbage som at give det, og tilbagetrækningen påvirker ikke lovligheden af behandling, der fandt sted før tilbagetrækningen.</p>
         <p>Brugeren har ret til at indgive en klage til den kompetente tilsynsmyndighed, navnlig <a href="https://www.datatilsynet.dk/">Datatilsynet</a> i Danmark eller den <a href="https://www.edpb.europa.eu/about-edpb/about-edpb/members_en">databeskyttelsesmyndighed</a>, der er kompetent på brugerens sædvanlige bopælssted.</p>
-        <p>HA Experts egen analyse indeholder ikke en permanent identifikator eller oplysninger, der gør det muligt for HA Expert at genkende en bestemt person på tværs af separate besøg. Derfor kan det være teknisk umuligt alene ud fra en persons identitet at fastslå, hvilke analysehændelser der vedrører den pågældende person. HA Expert indsamler ikke yderligere oplysninger alene for at identificere en person, medmindre dette kræves af gældende lovgivning.</p>
+        <p>Den tilfældige identifikator genkender en browser, ikke en persons identitet. Analysen forbinder den ikke med kontaktoplysninger eller beskeders indhold. Navn eller e-mail alene er muligvis ikke nok til at finde analysehændelser for en bestemt person. Vi indsamler ikke yderligere identitetsoplysninger alene til dette formål.</p>
         <p>HA Expert bruger ikke oplysninger fra hjemmesiden til at træffe afgørelser om brugere, der alene er baseret på automatisk behandling og har retsvirkning eller på tilsvarende vis påvirker brugeren væsentligt.</p>
       </div>
     </section>

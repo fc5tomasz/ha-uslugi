@@ -21,7 +21,7 @@
   <link rel="stylesheet" href="../../services-mobile.css?v=20261015-2" />
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18087588380"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{'ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','analytics_storage':'denied'});</script>
-  <script src="../../consent.js?v=20260829-consent-stats-local-1"></script>
+  <script src="../../consent.js?v=20261017-analytics-release-v3"></script>
   <script>gtag('js',new Date());gtag('config','AW-18087588380');</script>
 </head>
 <body class="knowledge-page pl-home-bg-test service-page">
@@ -111,6 +111,7 @@
     const originalFormAction = form.action;
     let statusResetTimer = null;
     let isSubmitting = false;
+    const confirmedSubmissionIds = new Set();
     const selectedAttachments = [];
 
     const renderAttachmentList = () => {
@@ -293,6 +294,7 @@
         return;
       }
       if (!validateContactForm()) {
+        if (window.HAExpertAnalytics) window.HAExpertAnalytics.track("form_error", {path:location.pathname,action_name:"validation"});
         return;
       }
       isSubmitting = true;
@@ -318,6 +320,13 @@
         const submissionId = getSubmissionId();
         fillLeadContext();
         const formData = new FormData(form);
+        if (window.HAExpertAnalytics && window.HAExpertAnalytics.isActive()) {
+          const anonymousSession = window.HAExpertAnalytics.sessionId();
+          if (anonymousSession) {
+            formData.set("analytics_consent", "true");
+            formData.set("analytics_session_id", anonymousSession);
+          }
+        }
         selectedAttachments.forEach((file) => {
           formData.append(attachmentsInput.name, file, file.name);
         });
@@ -333,11 +342,13 @@
         if (response.ok && result && result.ok === true) {
           const isProductionSite = window.location.hostname === "ha-expert.com" || window.location.hostname === "www.ha-expert.com";
           const isDryRun = result.dry_run === true;
-          if (isProductionSite && typeof gtag === "function") {
+          const firstConfirmation = !confirmedSubmissionIds.has(submissionId);
+          if (!isDryRun) confirmedSubmissionIds.add(submissionId);
+          if (firstConfirmation && !isDryRun && isProductionSite && hasContactMarketingConsent() && typeof gtag === "function") {
             gtag('event', 'conversion', {'send_to': 'AW-18087588380/ej4vCOfps54cEJzk6rBD', 'transaction_id': submissionId});
           }
-          if (window.HAExpertAnalytics) {
-            window.HAExpertAnalytics.track("contact_form_submit", { path: window.location.pathname, action_name: "contact_form" });
+          if (firstConfirmation && !isDryRun && window.HAExpertAnalytics) {
+            window.HAExpertAnalytics.track("contact_form_submit", { path: window.location.pathname, action_name: "client_ack", event_id: `ack_${submissionId}` });
           }
           statusEl.className = "form-status ok";
           const successLines = ["Tak for din besked. Den er sendt.", "Jeg læser den og svarer på den e-mailadresse, du har oplyst.", "Hvis du ikke får svar fra mig, så tjek også din spammappe."];
@@ -362,11 +373,13 @@
             statusResetTimer = null;
           }, 10000);
         } else {
+          if (window.HAExpertAnalytics) window.HAExpertAnalytics.track("form_error", {path:location.pathname,action_name:"server_response"});
           console.error("Form submit failed:", response.status, result && result.error);
           showFormError(failureMessage(response.status, result));
         }
       } catch (error) {
         // Przekroczony czas lub błąd sieci: wynik nieznany, dane formularza zostają.
+        if (window.HAExpertAnalytics) window.HAExpertAnalytics.track("form_error", {path:location.pathname,action_name:"unconfirmed"});
         console.error("Form submit failed:", error && error.name);
         showFormError(contactMessages.unconfirmed);
       } finally {
