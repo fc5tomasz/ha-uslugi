@@ -59,6 +59,7 @@
       main .card-badge{font-size:24px;padding:0;overflow:hidden}
     }
   </style>
+  <link rel="stylesheet" href="/pl-services-nav.css?v=20261015-business-i18n-1" />
 </head>
 <body class="knowledge-page pl-home-bg-test">
   <header class="scrolled">
@@ -73,8 +74,8 @@
       <a class="nav-mobile-link contact-link" href="/en/#contact">Contact</a>
       <nav id="primary-nav" aria-label="Primary">
         <ul>
-          <li><a href="/en/services/">Services</a></li>
-          <li><a href="/en/home-assistant-consultant/">Consulting</a></li>
+
+          <li data-services><a href="/en/services/" role="button" aria-expanded="false" aria-controls="services-submenu">Services</a><ul id="services-submenu" hidden><li><a href="/en/services/">Services</a></li><li><a href="/en/home-assistant-consultant/">Consulting</a></li><li><a href="/en/services-for-businesses/">Services for businesses</a></li></ul></li>
           <li><a href="/en/#about-me">About me</a></li>
           <li><a href="/en/#how-i-work">How I work</a></li>
           <li><a href="/en/#pricing">Pricing</a></li>
@@ -268,7 +269,7 @@
     </div>
   </footer>
 
-  <script src="../../nav.js?v=20261015-menu-guides-2"></script><script src="/pl-services-nav.js?v=20261015-business-i18n-1"></script>
+  <script src="../../nav.js?v=20261015-menu-guides-2"></script><script src="/pl-services-nav.js?v=20261016-static-menu-1"></script>
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>

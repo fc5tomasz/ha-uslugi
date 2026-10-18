@@ -104,6 +104,7 @@
 
     gtag('config', 'AW-18087588380');
   </script>
+  <link rel="stylesheet" href="/pl-services-nav.css?v=20261015-business-i18n-1" />
 </head>
 <body class="pl-home-bg-test pl-projects-page">
   <header>
@@ -118,8 +119,8 @@
       <a class="nav-mobile-link contact-link" href="/dk/#kontakt">Kontakt</a>
       <nav id="primary-nav" aria-label="Primary">
         <ul>
-          <li><a href="/dk/ydelser/">Ydelser</a></li>
-          <li><a href="/dk/home-assistant-konsulent/">Rådgivning</a></li>
+
+          <li data-services><a href="/dk/ydelser/" role="button" aria-expanded="false" aria-controls="services-submenu">Ydelser</a><ul id="services-submenu" hidden><li><a href="/dk/ydelser/">Ydelser</a></li><li><a href="/dk/home-assistant-konsulent/">Rådgivning</a></li><li><a href="/dk/ydelser-til-virksomheder/">Ydelser til virksomheder</a></li></ul></li>
           <li><a href="/dk/#om-mig">Om mig</a></li>
           <li><a href="/dk/#saadan-arbejder-jeg">Sådan arbejder jeg</a></li>
           <li><a href="/dk/#priser">Priser</a></li>
@@ -217,7 +218,7 @@
     </div>
   </footer>
 
-  <script src="../../nav.js?v=20261015-menu-guides-2"></script><script src="/pl-services-nav.js?v=20261015-business-i18n-1"></script>
+  <script src="../../nav.js?v=20261015-menu-guides-2"></script><script src="/pl-services-nav.js?v=20261016-static-menu-1"></script>
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 

@@ -103,6 +103,7 @@
 
     gtag('config', 'AW-18087588380');
   </script>
+  <link rel="stylesheet" href="/pl-services-nav.css?v=20261015-business-i18n-1" />
 </head>
 <body class="pl-home-bg-test pl-home-page">
   <header>
@@ -117,8 +118,8 @@
       <a class="nav-mobile-link contact-link" href="/pl/#kontakt">Kontakt</a>
       <nav id="primary-nav" aria-label="Primary">
         <ul>
-          <li><a href="/pl/uslugi/">Zakres usług</a></li>
-          <li><a href="/pl/konsultant-home-assistant/">Doradztwo</a></li>
+
+          <li data-services><a href="/pl/uslugi/" role="button" aria-expanded="false" aria-controls="services-submenu">Usługi</a><ul id="services-submenu" hidden><li><a href="/pl/uslugi/">Zakres usług</a></li><li><a href="/pl/konsultant-home-assistant/">Doradztwo</a></li><li><a href="/pl/uslugi-dla-firm/">Usługi dla firm</a></li></ul></li>
           <li><a href="/pl/#o-mnie">O mnie</a></li>
           <li><a href="/pl/#jak-pracuje">Jak pracuję</a></li>
           <li><a href="/pl/#cennik">Cennik</a></li>
@@ -380,7 +381,7 @@
   </footer>
 
   <script src="../community.js?v=20260821-communities-1"></script>
-  <script src="../nav.js?v=20261015-menu-guides-2"></script><script src="/pl-services-nav.js?v=20261015-business-i18n-1"></script>
+  <script src="../nav.js?v=20261015-menu-guides-2"></script><script src="/pl-services-nav.js?v=20261016-static-menu-1"></script>
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 

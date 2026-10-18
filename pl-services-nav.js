@@ -1,44 +1,8 @@
-// Localized service disclosure, sharing the existing primary navigation and hamburger.
-const serviceNavigation = {
-  pl: { title: 'Usługi', entries: [['Zakres usług', '/pl/uslugi/'], ['Doradztwo', '/pl/konsultant-home-assistant/'], ['Usługi dla firm', '/pl/uslugi-dla-firm/']] },
-  en: { title: 'Services', entries: [['Services', '/en/services/'], ['Consulting', '/en/home-assistant-consultant/'], ['Services for businesses', '/en/services-for-businesses/']] },
-  da: { title: 'Ydelser', entries: [['Ydelser', '/dk/ydelser/'], ['Rådgivning', '/dk/home-assistant-konsulent/'], ['Ydelser til virksomheder', '/dk/ydelser-til-virksomheder/']] }
-}[document.documentElement.lang.split('-')[0].toLowerCase()];
-if (serviceNavigation) {
-  const sheet = document.createElement('link');
-  sheet.rel = 'stylesheet';
-  sheet.href = '/pl-services-nav.css?v=20261015-business-i18n-1';
-  document.head.append(sheet);
-  document.querySelectorAll('.nav > nav > ul').forEach((list) => {
-    const consulting = list.querySelector(`a[href="${serviceNavigation.entries[1][1]}"]`);
-    if (!consulting) return;
-    const item = consulting.closest('li');
-    list.querySelector(`a[href="${serviceNavigation.entries[0][1]}"]`)?.closest('li').remove();
-    item.dataset.services = '';
-    const toggle = document.createElement('a');
-    toggle.href = serviceNavigation.entries[0][1];
-    toggle.textContent = serviceNavigation.title;
-    toggle.setAttribute('role', 'button');
-    toggle.setAttribute('aria-expanded', 'false');
-    toggle.setAttribute('aria-controls', 'services-submenu');
-    const submenu = document.createElement('ul');
-    submenu.id = 'services-submenu';
-    submenu.hidden = true;
-    const entries = serviceNavigation.entries;
-    const current = window.location.pathname.replace(/index\.html$/, '').replace(/\/?$/, '/');
-    entries.forEach(([label, href]) => {
-      const li = document.createElement('li');
-      const link = document.createElement('a');
-      link.href = href;
-      link.textContent = label;
-      if (href === current) {
-        link.setAttribute('aria-current', 'page');
-        toggle.classList.add('is-section-active');
-      }
-      li.append(link);
-      submenu.append(li);
-    });
-    item.replaceChildren(toggle, submenu);
+// Enhance the service submenu already present in HTML; never generate navigation links.
+document.querySelectorAll(".nav > nav > ul > li[data-services]").forEach((item) => {
+    const toggle = item.querySelector(':scope > a[aria-controls="services-submenu"]');
+    const submenu = item.querySelector(':scope > ul');
+    if (!toggle || !submenu) return;
     const setOpen = (open, focus = false) => {
       submenu.hidden = !open;
       toggle.setAttribute('aria-expanded', String(open));
@@ -76,4 +40,3 @@ if (serviceNavigation) {
     document.querySelector('.nav-toggle')?.addEventListener('click', () => setOpen(false));
     window.addEventListener('resize', () => setOpen(false));
   });
-}

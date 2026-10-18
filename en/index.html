@@ -90,6 +90,7 @@
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{'ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','analytics_storage':'denied'});</script>
 <script src="../consent.js?v=20261017-popularity-v1"></script>
 <script>gtag('js',new Date());gtag('config','AW-18087588380');</script>
+  <link rel="stylesheet" href="/pl-services-nav.css?v=20261015-business-i18n-1" />
 </head>
 <body class="pl-home-bg-test en-home-page">
   <header>
@@ -104,8 +105,8 @@
       <a class="nav-mobile-link contact-link" href="/en/#contact">Contact</a>
       <nav id="primary-nav" aria-label="Primary">
         <ul>
-          <li><a href="/en/services/">Services</a></li>
-          <li><a href="/en/home-assistant-consultant/">Consulting</a></li>
+
+          <li data-services><a href="/en/services/" role="button" aria-expanded="false" aria-controls="services-submenu">Services</a><ul id="services-submenu" hidden><li><a href="/en/services/">Services</a></li><li><a href="/en/home-assistant-consultant/">Consulting</a></li><li><a href="/en/services-for-businesses/">Services for businesses</a></li></ul></li>
           <li><a href="/en/#about-me">About me</a></li>
           <li><a href="/en/#how-i-work">How I work</a></li>
           <li><a href="/en/#pricing">Pricing</a></li>
@@ -387,7 +388,7 @@
   </footer>
 
   <script src="../community.js?v=20260821-communities-1"></script>
-  <script src="../nav.js?v=20261015-menu-guides-2"></script><script src="/pl-services-nav.js?v=20261015-business-i18n-1"></script>
+  <script src="../nav.js?v=20261015-menu-guides-2"></script><script src="/pl-services-nav.js?v=20261016-static-menu-1"></script>
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
