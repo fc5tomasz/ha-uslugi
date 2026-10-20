@@ -629,11 +629,19 @@
           const isDryRun = result.dry_run === true;
           const firstConfirmation = !confirmedSubmissionIds.has(submissionId);
           if (!isDryRun) confirmedSubmissionIds.add(submissionId);
-          if (firstConfirmation && !isDryRun && isProductionSite && hasContactMarketingConsent() && typeof gtag === "function") {
-            gtag('event', 'conversion', {'send_to': 'AW-18087588380/ej4vCOfps54cEJzk6rBD', 'transaction_id': submissionId});
+          try {
+            if (firstConfirmation && !isDryRun && isProductionSite && (window.HAExpertConsent && window.HAExpertConsent.has("marketing")) && typeof gtag === "function") {
+              gtag('event', 'conversion', {'send_to': 'AW-18087588380/ej4vCOfps54cEJzk6rBD', 'transaction_id': submissionId});
+            }
+          } catch (measurementError) {
+            console.warn("Contact measurement unavailable", measurementError && measurementError.name);
           }
-          if (firstConfirmation && !isDryRun && window.HAExpertAnalytics) {
-            window.HAExpertAnalytics.track("contact_form_submit", { path: window.location.pathname, action_name: "client_ack", event_id: `ack_${submissionId}` });
+          try {
+            if (firstConfirmation && !isDryRun && window.HAExpertAnalytics) {
+              window.HAExpertAnalytics.track("contact_form_submit", { path: window.location.pathname, action_name: "client_ack", event_id: `ack_${submissionId}` });
+            }
+          } catch (measurementError) {
+            console.warn("Contact measurement unavailable", measurementError && measurementError.name);
           }
           statusEl.className = "form-status ok";
           const successLines = ["Tak for din besked. Den er sendt.", "Jeg læser den og svarer på den e-mailadresse, du har oplyst.", "Hvis du ikke får svar fra mig, så tjek også din spammappe."];
