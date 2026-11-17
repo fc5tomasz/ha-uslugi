@@ -11,6 +11,12 @@
     font-weight:400 !important;
     line-height:1.6 !important;
   }
+  body:is(.pl-home-page, .en-home-page, .dk-home-page) main :is(#pricing, #cennik, #priser) .pricing-price {
+    font-weight:700;
+  }
+  body:is(.pl-home-page, .en-home-page, .dk-home-page) main .hero-contact-link .hero-link-cta {
+    font-weight:600;
+  }
   body:is(.pl-home-page, .en-home-page, .dk-home-page) main #contactForm :is(label, input, textarea, button, a, span, .form-status) {
     font-family:Inter, "Avenir Next", "Segoe UI", sans-serif;
     font-size:17px;

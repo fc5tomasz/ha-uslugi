@@ -13,4 +13,7 @@
     font-weight:400;
     line-height:1.6;
   }
+  body.service-page main > .section:first-child .knowledge-help-link[href^="#"] .knowledge-help-accent {
+    font-weight:600;
+  }
 }
